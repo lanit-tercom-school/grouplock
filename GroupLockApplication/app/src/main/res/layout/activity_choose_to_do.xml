@@ -14,7 +14,8 @@
         android:id="@+id/EncodeButton"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:textSize="@dimen/abc_text_size_title_material" />
+        android:textSize="@dimen/abc_text_size_title_material"
+        android:onClick="GoToNextActivityTwo" />
 
     <Button
         android:layout_width="wrap_content"
@@ -23,7 +24,8 @@
         android:id="@+id/DecodeButton"
         android:layout_below="@+id/EncodeButton"
         android:layout_centerHorizontal="true"
-        android:textSize="@dimen/abc_text_size_title_material" />
+        android:textSize="@dimen/abc_text_size_title_material"
+        android:onClick="GoToNextActivityTwo" />
 
     <Spinner
         android:layout_width="wrap_content"

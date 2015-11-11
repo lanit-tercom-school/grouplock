@@ -17,6 +17,8 @@
         </activity>
         <activity android:name=".ChooseToDoActivity" >
         </activity>
+        <activity android:name=".LibraryActivity" >
+        </activity>
     </application>
 
 </manifest>
