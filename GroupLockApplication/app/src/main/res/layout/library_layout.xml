@@ -12,12 +12,13 @@
         android:layout_row="40"
         android:layout_column="31"
         android:src="@drawable/download_from_library"
-        android:layout_marginTop="149dp"
-        android:layout_marginLeft="45dp"
-        android:layout_marginStart="45dp"
-        android:layout_alignParentTop="true"
+        android:onClick="GoToChooseFileLibrary"
+        android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="49dp"
+        android:layout_marginStart="49dp"
+        android:layout_gravity="bottom|center" />
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -50,7 +51,8 @@
         android:id="@+id/textView"
         android:layout_above="@+id/textView2"
         android:layout_alignLeft="@+id/textView2"
-        android:layout_alignStart="@+id/textView2" />
+        android:layout_alignStart="@+id/textView2"
+        android:layout_gravity="center" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -58,9 +60,10 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text=" from Library"
         android:id="@+id/textView2"
-        android:layout_above="@+id/imageButton2"
+        android:layout_below="@+id/textView4"
         android:layout_alignLeft="@+id/imageButton"
-        android:layout_alignStart="@+id/imageButton" />
+        android:layout_alignStart="@+id/imageButton"
+        android:layout_gravity="center" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -68,7 +71,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text=" from Smartphone"
         android:id="@+id/textView3"
-        android:layout_below="@+id/textView"
+        android:layout_above="@+id/imageButton2"
         android:layout_alignLeft="@+id/imageButton2"
         android:layout_alignStart="@+id/imageButton2" />
 
@@ -78,8 +81,9 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Choose"
         android:id="@+id/textView4"
-        android:layout_alignTop="@+id/textView"
+        android:layout_above="@+id/textView3"
         android:layout_alignLeft="@+id/textView3"
-        android:layout_alignStart="@+id/textView3" />
+        android:layout_alignStart="@+id/textView3"
+        android:layout_gravity="center" />
 
 </RelativeLayout>

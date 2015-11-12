@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ChooseFileActivity">
+    <item
+        android:id="@+id/action_choose_file"
+        android:orderInCategory="100"
+        android:title="@string/action_choose_file"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/action_change_file"
+        android:orderInCategory="100"
+        android:title="@string/action_change_file"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/action_search_file"
+        android:orderInCategory="100"
+        android:title="@string/action_search_file"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/action_make_dir_file"
+        android:orderInCategory="100"
+        android:title="@string/action_make_dir_file"
+        app:showAsAction="never"/>
+</menu>

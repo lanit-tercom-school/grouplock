@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.Menu;
 import android.widget.TextView;
 import android.view.*;
+import java.io.*;
+import android.os.*;
 
 
 public class LibraryActivity extends Activity {
@@ -16,11 +18,12 @@ public class LibraryActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.library_layout);
     }
-    /*public void GoToChooseFileLibrary(View v)
+    public void GoToChooseFileLibrary(View v)
     {
-        Intent intent  = new Intent(this, LibraryActivity.class);
+        Intent intent  = new Intent(this,ChooseFileActivity.class);
         startActivity(intent);
     }
+    /*
     public void GoToChooseFileSF(View v)
     {
         Intent intent  = new Intent(this, LibraryActivity.class);
@@ -43,9 +46,17 @@ public class LibraryActivity extends Activity {
                    int id = item.getItemId();
 
 
+                   String folder="";
+                   String sdState = android.os.Environment.getExternalStorageState(); //Получаем состояние SD карты (подключена она или нет) - возвращается true и false соответственно
+                   if (sdState.equals(android.os.Environment.MEDIA_MOUNTED)) { // если true
+                       folder = Environment.getExternalStorageDirectory().toString();
+                   }
 
                    // Операции для выбранного пункта меню
                    switch (id) {
+                       case R.id.action_settings:
+
+                           return true;
                        case R.id.action_change:
 
                            return true;
@@ -54,6 +65,10 @@ public class LibraryActivity extends Activity {
                            return true;
                        case R.id.action_make_dir:
 
+                           File f1 = new File(folder); //Создаем файловую переменную
+                           if (!f1.exists()) { //Если папка не существует
+                               f1.mkdirs();  //создаем её
+                           }
                            return true;
                        default:
                            return super.onOptionsItemSelected(item);
