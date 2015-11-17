@@ -20,16 +20,16 @@ public class LibraryActivity extends Activity {
     }
     public void GoToChooseFileLibrary(View v)
     {
-        Intent intent  = new Intent(this,ChooseFileActivity.class);
+        Intent intent  = new Intent(this,ChooseFromLibraryActivity.class);
         startActivity(intent);
     }
-    /*
+
     public void GoToChooseFileSF(View v)
     {
-        Intent intent  = new Intent(this, LibraryActivity.class);
+        Intent intent  = new Intent(this, ChooseFileActivity.class);
         startActivity(intent);
     }
-    */
+
     public void GoToPrevStep(View v)
     {
         Intent intent  = new Intent(this, ChooseToDoActivity.class);
@@ -46,18 +46,12 @@ public class LibraryActivity extends Activity {
                    int id = item.getItemId();
 
 
-                   String folder="";
-                   String sdState = android.os.Environment.getExternalStorageState(); //Получаем состояние SD карты (подключена она или нет) - возвращается true и false соответственно
-                   if (sdState.equals(android.os.Environment.MEDIA_MOUNTED)) { // если true
-                       folder = Environment.getExternalStorageDirectory().toString();
-                   }
-
                    // Операции для выбранного пункта меню
                    switch (id) {
                        case R.id.action_settings:
 
                            return true;
-                       case R.id.action_change:
+                       /*case R.id.action_change:
 
                            return true;
                        case R.id.action_search:
@@ -65,11 +59,13 @@ public class LibraryActivity extends Activity {
                            return true;
                        case R.id.action_make_dir:
 
-                           File f1 = new File(folder); //Создаем файловую переменную
-                           if (!f1.exists()) { //Если папка не существует
-                               f1.mkdirs();  //создаем её
+                           File folder = new File(Environment.getExternalStorageDirectory() + "/map");
+                           boolean success = true;
+                           if (!folder.exists()) {
+                               success = folder.mkdir();
                            }
                            return true;
+                       */
                        default:
                            return super.onOptionsItemSelected(item);
                    }

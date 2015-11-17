@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">GroupLockApplication</string>
+    <string name="app_name">GroupLock Application</string>
 
     <string name="action_settings">Настройки</string>
     <string name="action_change">Изменить</string>
