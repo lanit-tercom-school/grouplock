@@ -3,4 +3,12 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <!--- for backGround -->
+    <color name="colorBackGroundButton">#4729D3FD</color>
+    <color name="colorBackGround">#defaf8</color>
+    <!---for text -->
+    <color name="colorText">#FF115295</color>
+    <color name="colorButtonText">#FF115284</color>
+    <!--- for choose something -->
+
 </resources>
