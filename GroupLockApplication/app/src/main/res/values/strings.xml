@@ -10,4 +10,14 @@
     <string name="action_change_file">Изменить</string>
     <string name="action_search_file">Поиск</string>
     <string name="action_make_dir_file">Создать папку</string>
+
+    <string-array name  = "Menu">
+        <item>CroupLockApplication</item>
+        <item>Home</item>
+        <item> Library</item>
+        <item> Info</item>
+        <item> Settings</item>
+    </string-array>
+
+
 </resources>
