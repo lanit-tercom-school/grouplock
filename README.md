@@ -5,3 +5,4 @@ Future scope:
 1) Implement android-based version
 2) iOs
 3) Windows phone version
+4) Algorithms investogation
