@@ -18,11 +18,8 @@
         </activity>
         <activity android:name=".ChooseToDoActivity" >
         </activity>
-        <activity android:name=".LibraryActivity" >
-        </activity>
-        <activity android:name=".ChooseFileActivity" >
-        </activity>
-        <activity android:name=".ChooseFromLibraryActivity" >
+        <activity android:name=".LibraryActivity" 
+                   android:label="Library">
         </activity>
     </application>
 

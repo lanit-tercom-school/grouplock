@@ -1,9 +1,10 @@
-<resources>
+﻿<resources>
     <string name="app_name">GroupLock Application</string>
 
     <string name="action_settings">Настройки</string>
     <string name="action_change">Изменить</string>
     <string name="action_search">Поиск</string>
+   <string name="action_create">Create Folder</string>
     <string name="action_make_dir">Создать папку</string>
 
     <string name="action_choose_file">Выбрать файл</string>
