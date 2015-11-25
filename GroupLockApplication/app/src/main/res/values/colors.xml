@@ -9,6 +9,6 @@
     <!---for text -->
     <color name="colorText">#FF115295</color>
     <color name="colorButtonText">#FF115284</color>
-    <!--- for choose something -->
-
+    <!--- for toolbar -->
+    <color name="colorToolbarText">#ffffff</color>
 </resources>

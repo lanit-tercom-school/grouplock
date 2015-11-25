@@ -12,13 +12,9 @@
     <string name="action_search_file">Поиск</string>
     <string name="action_make_dir_file">Создать папку</string>
 
-    <string-array name  = "Menu">
-        <item>CroupLockApplication</item>
-        <item>Home</item>
-        <item> Library</item>
-        <item> Info</item>
-        <item> Settings</item>
-    </string-array>
-
+    <string name="activity_home">Home</string>
+    <string name="activity_library">Library</string>
+    <string name="activity_info">Info</string>
+    <string name="activity_settings">Settings</string>
 
 </resources>

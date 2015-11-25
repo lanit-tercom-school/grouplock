@@ -35,8 +35,8 @@
       </menu>
     </item>
     <item
-        android:id="@+id/help_button"
-        app:showAsAction="always"
-        android:icon="@drawable/ic_info_outline_black_24dp"
-        android:title="Help"/>
+    android:id="@+id/help_button"
+    app:showAsAction="always"
+    android:icon="@drawable/ic_info_outline_black_24dp"
+    android:title="Help"/>
 </menu>

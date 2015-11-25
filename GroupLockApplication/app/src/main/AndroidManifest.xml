@@ -16,7 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ChooseToDoActivity" >
+        <activity android:name=".ChooseToDoActivity"
+            android:label="Home">
         </activity>
         <activity android:name=".LibraryActivity" 
                    android:label="Library">

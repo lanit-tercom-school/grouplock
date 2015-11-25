@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ChooseToDoActivity">
+
+
+<item android:id="@+id/menu_home"
+            android:icon="@drawable/ic_more_vert_black_24dp"
+            app:showAsAction="always"
+            android:title="@string/activity_home">
+
+            <menu>
+                <!-- Home / will display always -->
+                <item android:id="@+id/home"
+                    android:title="@string/activity_home"
+                    app:showAsAction="ifRoom" />
+
+                <!--Library / will display always -->
+                <item android:id="@+id/library"
+                    android:title="@string/activity_library"
+                    app:showAsAction="ifRoom"/>
+
+                <!-- Info -->
+                <item android:id="@+id/info"
+                    android:title="@string/activity_info"
+                    app:showAsAction="ifRoom"/>
+
+                <!-- Settings -->
+                <item android:id="@+id/settings"
+                    android:title="@string/activity_settings"
+                    app:showAsAction="never" />
+            </menu>
+        </item>
+    <item
+        android:id="@+id/help_button"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_info_outline_black_24dp"
+        android:title="Help"/>
+    </menu>
