@@ -55,11 +55,8 @@ public class ChooseToDoActivity extends AppCompatActivity  {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // получим идентификатор выбранного пункта меню
         int id = item.getItemId();
 
-
-        // Операции для выбранного пункта меню
         switch (id) {
             case R.id.library: {
                 Intent intent = new Intent(this, LibraryActivity.class);
