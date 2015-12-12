@@ -13,6 +13,13 @@ import android.widget.AdapterView;
 
 public class ChooseToDoActivity extends AppCompatActivity  {
 
+
+    static {
+        System.loadLibrary("librarys-jni");
+    }
+
+    public native String firstJNI();
+
     public int ForEncrypt;
 
     @Override
