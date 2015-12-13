@@ -80,3 +80,24 @@ T SecretScharing<T>::GetSecret(int k, int p, Pair<int,T> * keys) {
 		secret += p;
 	return secret;
 }
+
+int main()
+{
+	int secret = 11;
+	int k = 3;
+	int n = 5;
+	int p = SecretScharing<int>::GetPrimeNumber(36, 2);
+	Pair<int, int> * keys = SecretScharing<int>::GetKeys(secret, k, n, p);
+	std::cout << "secret = " << secret << " schema (" << k << "," << n << ") p = " << p << "\n";
+	for (int i = 0; i < n; i++)
+		std::cout << "(" << keys[i].x << "," << keys[i].y << ")\n";
+	
+	Pair<int, int> * keys_1 = new Pair<int, int>[k];
+	keys_1[0] = keys[4];
+	keys_1[1] = keys[3];
+	keys_1[2] = keys[2];
+	
+	secret = SecretScharing<int>::GetSecret(k, p, keys);
+	std::cout << "secret is " << secret;
+	return 0;
+}
