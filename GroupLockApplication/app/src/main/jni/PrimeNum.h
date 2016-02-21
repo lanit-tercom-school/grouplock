@@ -1,6 +1,8 @@
 /*
-оставить комент здесь
+input: any number x (maybe x is prime) and digit
+output: prime number more than x and has digit from input
 */
+
 #include <fstream>
 using namespace std;
 
