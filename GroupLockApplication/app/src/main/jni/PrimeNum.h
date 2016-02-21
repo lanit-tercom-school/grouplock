@@ -19,7 +19,7 @@ namespace PrimeNum{
 	private:
 		int pow(int deg);
 		void read(int n);
-		
+
 	};
 
 	void read(int n) {
@@ -35,9 +35,16 @@ namespace PrimeNum{
 	}
 
 	int choice_PrimeNum(int x, int digitX) {
-		long long a = pow(digitX - 1);
-		read(a * 10);
-		for (int i = a; i < a * 10; ++i) {
+		
+		long long mNumber_digitX = pow(digitX - 1);
+		long long a = mNumber_digitX;
+		
+		read(mNumber_digitX * 10);
+		
+		if (x > mNumber_digitX) {
+			a = x;
+		}
+		for (int i = a; i < mNumber_digitX * 10; ++i) {
 			if (list_primeNum[i] > x) return list_primeNum[i];
 		}
 	}
