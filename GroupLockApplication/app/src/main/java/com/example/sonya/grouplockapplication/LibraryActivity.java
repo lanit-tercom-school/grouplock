@@ -2,77 +2,96 @@ package com.example.sonya.grouplockapplication;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.*;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.*;
 
 import java.io.File;
+import java.io.FileFilter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
 public class LibraryActivity extends AppCompatActivity {
 
-    private List<String> directoryEntries = new ArrayList<String>();
-    private File currentDirectory = new File("/");
-    ListView list1;
+    private List<String> currentDirectoryEntries = new ArrayList<String>();
+    private File currentDirectory;
 
+    private String LIBRARY_FOLDER_NAME = "GroupLock";
+    private String ENCRYPTED_FOLDER_NAME = "Encrypted";
+    private String DECRYPTED_FOLDER_NAME = "Decrypted";
+    private String libraryRootPath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.library_layout);
         Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar_actionbar);
         setSupportActionBar(mToolbar);
-        File folder = new File("/storage/emulated/0"+"/GroupLockLibrary");
+
+        /* Check if directories exist, create if needed */
+        libraryRootPath = Environment.getExternalStorageDirectory().getPath() + "/" + LIBRARY_FOLDER_NAME;
+        File libraryRoot = new File(libraryRootPath);
         boolean success = true;
-        if (!folder.exists()) {
-            success = folder.mkdir();
+        if (!libraryRoot.exists()) {
+            success = libraryRoot.mkdir();
         }
-        File folder1 = new File("/storage/emulated/0"+"/GroupLockLibrary/Encrypted");
-        File folder2 = new File("/storage/emulated/0"+"/GroupLockLibrary/Decrypted");
+        File libraryEncryptedPath = new File(libraryRootPath + "/" + ENCRYPTED_FOLDER_NAME);
+        File libraryDecryptedPath = new File(libraryRootPath + "/" + DECRYPTED_FOLDER_NAME);
         success = true;
-        if (!folder1.exists()) {
-            success = folder1.mkdir();
+        if (!libraryEncryptedPath.exists()) {
+            success = libraryEncryptedPath.mkdir();
         }
         success = true;
-        if (!folder2.exists()) {
-            success = folder2.mkdir();
+        if (!libraryDecryptedPath.exists()) {
+            success = libraryDecryptedPath.mkdir();
         }
-        browseTo(new File("/storage/emulated/0/GroupLockLibrary"));
+        browseTo(libraryRoot);
 
     }
 
-    //browse to file or directory
-    private void browseTo(final File aDirectory){
+    private void browseTo(final File selectedItem){
         //if we want to browse directory
-        if (aDirectory.isDirectory()){
-            //fill list with files from this directory
-            this.currentDirectory = aDirectory;
-            fill(aDirectory.listFiles());
+        if (selectedItem.isDirectory()){
+            /* Show list with files from this directory
+               We need to sort it properly, all files should go after directories */
+            this.currentDirectory = selectedItem;
+            File[] files = selectedItem.listFiles(new FileFilter() {
+                @Override
+                public boolean accept(File pathname) {
+                    return !pathname.isDirectory();
+                }
+            });
+            Arrays.sort(files);
+            File[] dirs = selectedItem.listFiles(new FileFilter() {
+                @Override
+                public boolean accept(File pathname) {
+                    return pathname.isDirectory();
+                }
+            });
+            Arrays.sort(dirs);
+            showItems(concat(dirs, files));
 
-            //set titleManager text
-            TextView titleManager = (TextView) findViewById(R.id.titleManager);
-            titleManager.setText(aDirectory.getAbsolutePath());
+            TextView currentLocationInLibrary = (TextView) findViewById(R.id.current_location_in_library);
+            /* Remove part of the path before the library root -
+               user doesn't need to know where library is located physically */
+            currentLocationInLibrary.setText(selectedItem.getAbsolutePath().replace(libraryRootPath, ""));
         } else {
+            // TODO: find out why files don't open
+            /*
             //if we want to open file, show this dialog:
             //listener when YES button clicked
             DialogInterface.OnClickListener okButtonListener = new DialogInterface.OnClickListener(){
                 public void onClick(DialogInterface arg0, int arg1) {
                     //intent to navigate file
-                    Intent i = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse("file://" + aDirectory.getAbsolutePath()));
+                    Intent i = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse("file://" + selectedItem.getAbsolutePath()));
                     //start this activity
                     startActivity(i);
                 }
@@ -88,85 +107,57 @@ public class LibraryActivity extends AppCompatActivity {
             //create dialog
             new AlertDialog.Builder(this)
                     .setTitle("Подтверждение") //title
-                    .setMessage("Хотите открыть файл "+ aDirectory.getName() + "?") //message
+                    .setMessage("Хотите открыть файл "+ selectedItem.getName() + "?") //message
                     .setPositiveButton("Да", okButtonListener) //positive button
                     .setNegativeButton("Нет", cancelButtonListener) //negative button
                     .show(); //show dialog
+            */
         }
     }
 
-    //fill list
-    private void fill(File[] files) {
+    private void showItems(File[] files) {
         //clear list
-        this.directoryEntries.clear();
+        currentDirectoryEntries.clear();
 
-        if (this.currentDirectory.getParent() != null)
-            this.directoryEntries.add("..");
+        if (!currentDirectory.getAbsolutePath().equals(libraryRootPath))
+            currentDirectoryEntries.add("..");
 
         //add every file into list
         for (File file : files) {
-            if(file.isDirectory()){
-                this.directoryEntries.add(file.getName() + "/");
-            }else{
-                this.directoryEntries.add(file.getName());
-            }
+            currentDirectoryEntries.add(file.getName());
         }
 
-        // получаем элемент ListView
-        ListView seeDirectories = (ListView) findViewById(R.id.list_view);
+        GridView entriesListView = (GridView) findViewById(R.id.entries_list_view);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.library_entry, this.currentDirectoryEntries);
+        entriesListView.setAdapter(adapter);
 
-        // создаем адаптер
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.row, this.directoryEntries);
-
-        // устанавливаем для списка адаптер
-        seeDirectories.setAdapter(adapter);
-    }
-/*
-   @Override
-    protected void onListItemClick(ListView l, View v, int position, long id) {
-        //get selected file name
-        String selectedFileString = this.directoryEntries.get(position);
-        //if we select ".." then go upper
-        if(selectedFileString.equals("..")){
-            this.upOneLevel();
-        }
-        else {
-            //browse to clicked file or directory using browseTo()
-            File clickedFile = null;
-            clickedFile = new File(selectedFileString);
-            if (clickedFile.isDirectory()) {
-                if(clickedFile.canRead()){
-                    getDir(selectedFileString,position);
-                }else{
-                    new AlertDialog.Builder(this)
-                            .setTitle("[" + clickedFile.getName() + "] folder can't be read!")
-                            .setPositiveButton("OK", null).show();
+        /* Touch listener */
+        entriesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String selectedFileString = currentDirectoryEntries.get(position);
+                //if we select ".." then go upper
+                if(selectedFileString.equals("..")){
+                    browseToParent();
                 }
-            }else {
-                new AlertDialog.Builder(this)
-                        .setTitle("[" + clickedFile.getName() + "]")
-                        .setPositiveButton("OK", null).show();
-
+                else {
+                    browseTo(new File(currentDirectory.getAbsolutePath() + "/" + selectedFileString));
+                }
             }
-        }
+        });
+
+        // TODO: implement replace/rename/remove
     }
-*/
-    //browse to parent directory
-    private void upOneLevel(){
+
+    private void browseToParent(){
         if(this.currentDirectory.getParent() != null) {
             this.browseTo(this.currentDirectory.getParentFile());
         }
     }
 
-
-
-    public void GoToPrevStep(View v)
+    public void goToPrevStep(View v)
     {
-        Intent intent  = new Intent(this, ChooseToDoActivity.class);
-        startActivity(intent);
+        this.finish();
     }
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -174,70 +165,64 @@ public class LibraryActivity extends AppCompatActivity {
         return true;
     }
 
-
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // получим идентификатор выбранного пункта меню
         int id = item.getItemId();
 
-
-        // Операции для выбранного пункта меню
         switch (id) {
             case R.id.action_settings:
                 return true;
 
-            case R.id.action_change:
-                return true;
-
             case R.id.action_search:
                 return true;
+                // TODO: implement search
 
-            case R.id.action_create:
+            case R.id.action_create_folder:
 
-                //create dialog
-                AlertDialog.Builder alert =new AlertDialog.Builder(this)
-                        .setTitle("Создание папки") //title
-                        .setMessage("Введите название новой папки");
+                // Create dialog
+                AlertDialog.Builder alert = new AlertDialog.Builder(this)
+                        .setTitle(R.string.create_folder_dialogue_title) //title
+                        .setMessage(R.string.create_folder_dialogue_description);
 
                 // Set an EditText view to get user input
-                final EditText input = new EditText(this);
-                alert.setView(input);
+                final EditText newDirectoryNameInput = new EditText(this);
+                alert.setView(newDirectoryNameInput);
 
-                alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                alert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
-                        String value = input.getText().toString();
-
-                        String name = "/" + value;
-
-                        File folder = new File("/storage/emulated/0/GroupLockLibrary" +name);
+                        String name = "/" + newDirectoryNameInput.getText().toString();
+                        File folder = new File(currentDirectory.getAbsolutePath() + name);
                         boolean success = true;
                         if (!folder.exists()) {
                             success = folder.mkdir();
                         }
-                        Intent intent = getIntent();
-                        startActivity(intent);
+                        browseTo(currentDirectory);
                     }
                 });
                 alert.show();
                 return true;
-            case R.id.help_button:
-                //create dialog
-                AlertDialog.Builder helpMe =new AlertDialog.Builder(this)
-                        .setTitle("Information") //title
-                        .setMessage("Choose directory!");
 
-                // Set an EditText view to get user input
+            case R.id.help_button:
+                // Create dialog
+                AlertDialog.Builder helpMe = new AlertDialog.Builder(this)
+                        .setTitle(R.string.information_window_title)
+                        .setMessage(R.string.information_window_description);
+
                 helpMe.show();
                 return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
 
+    public File[] concat(File[] a, File[] b) {
+        int aLen = a.length;
+        int bLen = b.length;
+        File[] c = new File[aLen+bLen];
+        System.arraycopy(a, 0, c, 0, aLen);
+        System.arraycopy(b, 0, c, aLen, bLen);
+        return c;
+    }
 
-    //@Override
-    //protected int getListViewId() {
-    //    return R.id.list_view;
-    //}
 }
