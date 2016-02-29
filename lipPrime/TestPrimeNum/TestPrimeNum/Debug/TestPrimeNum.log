@@ -1,0 +1,18 @@
+﻿Сборка начата 29.02.2016 19:32:43.
+     1>Проект "C:\Users\User\documents\visual studio 2013\Projects\TestPrimeNum\TestPrimeNum\TestPrimeNum.vcxproj" в узле 2 (целевые объекты Build).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\UnitTest\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\TestPrimeNum.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /FC /errorReport:prompt unittest1.cpp
+         unittest1.cpp
+     1>c:\users\user\documents\visual studio 2013\projects\testprimenum\testprimenum\primenum.h(17): warning C4244: return: преобразование "__int64" в "int", возможна потеря данных
+     1>c:\users\user\documents\visual studio 2013\projects\testprimenum\testprimenum\primenum.h(28): warning C4244: инициализация: преобразование "__int64" в "int", возможна потеря данных
+     1>c:\users\user\documents\visual studio 2013\projects\testprimenum\testprimenum\primenum.h(31): warning C4715: PrimeNum::choice_PrimeNum: значение возвращается не при всех путях выполнения
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\User\documents\visual studio 2013\Projects\TestPrimeNum\Debug\TestPrimeNum.dll" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\UnitTest\lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\User\documents\visual studio 2013\Projects\TestPrimeNum\Debug\TestPrimeNum.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\User\documents\visual studio 2013\Projects\TestPrimeNum\Debug\TestPrimeNum.lib" /MACHINE:X86 /DLL Debug\stdafx.obj
+         Debug\unittest1.obj
+            ╤ючфрхЄё  сшсышюЄхър C:\Users\User\documents\visual studio 2013\Projects\TestPrimeNum\Debug\TestPrimeNum.lib ш юс·хъЄ C:\Users\User\documents\visual studio 2013\Projects\TestPrimeNum\Debug\TestPrimeNum.exp
+         TestPrimeNum.vcxproj -> C:\Users\User\documents\visual studio 2013\Projects\TestPrimeNum\Debug\TestPrimeNum.dll
+     1>Сборка проекта "C:\Users\User\documents\visual studio 2013\Projects\TestPrimeNum\TestPrimeNum\TestPrimeNum.vcxproj" завершена (целевые объекты Build).
+
+Сборка успешно завершена.
+
+Затраченное время: 00:00:00.80
