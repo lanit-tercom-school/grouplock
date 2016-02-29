@@ -3,43 +3,24 @@ input: any number x (maybe x is prime) and digit
 output: prime number more than x and has digit from input
 */
 
-#include <fstream>
 using namespace std;
 
 namespace PrimeNum{
-	static int list_primeNum[100001];
-	ifstream in("primeNumbers.in");
 
-	class prime {
-
-	public:
-		static int choice_PrimeNum(int x, int digitP);
-
-
-	private:
-		int pow(int deg);
-		void read(int n);
-
+	static int list_primeNum[100001] {
+    #include "primeNumbers.txt"
 	};
-
-	void read(int n) {
-		for (int i = 0; i <= n; ++i) {
-			in >> list_primeNum[i];
-		}
-	}
 
 	int pow(int deg) {
 		long long res = 1;
 		for (int i = 1; i <= deg; ++i) res *= 10;
 		return res;
 	}
-
+	
 	int choice_PrimeNum(int x, int digitX) {
 		
 		long long mNumber_digitX = pow(digitX - 1);
 		long long a = mNumber_digitX;
-		
-		read(mNumber_digitX * 10);
 		
 		if (x > mNumber_digitX) {
 			a = x;
