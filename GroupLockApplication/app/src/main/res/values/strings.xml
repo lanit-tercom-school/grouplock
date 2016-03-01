@@ -10,6 +10,11 @@
     <string name="information_window_title">Information</string>
     <string name="information_window_description">Tap to open a directory.\nHold an item to call the context menu</string>
 
+    <!-- Home Screen -->
+    <string name="home_button_encrypt">Encrypt</string>
+    <string name="home_button_decrypt">Decrypt</string>
+    <string name="home_info_message">Use these buttons to encrypt or decrypt your files. Use Load button to add files to library</string>
+
     <!-- Menu Items -->
     <string name="activity_home">Home</string>
     <string name="activity_library">Library</string>

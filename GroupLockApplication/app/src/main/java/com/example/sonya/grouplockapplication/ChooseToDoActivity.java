@@ -5,15 +5,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.Toast;
+import android.widget.TextView;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
-import android.widget.AdapterView;
 
 public class ChooseToDoActivity extends AppCompatActivity  {
-
-    public int ForEncrypt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,30 +19,18 @@ public class ChooseToDoActivity extends AppCompatActivity  {
         setSupportActionBar(mToolbar);
     }
 
-    public void ChooseEncrypt(View v)
-    {
-        ForEncrypt = 1;
-        GoToNextActivityTwo(v);
-    }
-
-    public void ChooseDecrypt(View v)
-    {
-        ForEncrypt = 2;
-        GoToNextActivityTwo(v);
-    }
-
-    private void GoToNextActivityTwo(View v)
+    public void chooseEncrypt(View v)
     {
         Intent intent  = new Intent(this, LibraryActivity.class);
         startActivity(intent);
     }
 
-    public void AskClick(View v) {
-        Toast toast = Toast.makeText(getApplicationContext(),
-                "Click button <Encrypt> or <Decrypt> for encrypt or decrypt file. Click <Load> for loading file from phone",
-                Toast.LENGTH_SHORT);
-        toast.show();
+    public void chooseDecrypt(View v)
+    {
+        Intent intent  = new Intent(this, LibraryActivity.class);
+        startActivity(intent);
     }
+    /* TODO: start Library activity with right config */
 
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.home_menu, menu);
@@ -68,14 +52,9 @@ public class ChooseToDoActivity extends AppCompatActivity  {
                 return true;
 
             case R.id.info:
-                return true;
-
-            case R.id.help_button:
             {
-                Toast toast = Toast.makeText(getApplicationContext(),
-                    "Click button <Encrypt> or <Decrypt> for encrypt or decrypt file. Click <Load> for loading file from phone",
-                    Toast.LENGTH_SHORT);
-                toast.show();
+                TextView infoMessage = (TextView) findViewById(R.id.textViewInfoMessage);
+                infoMessage.setVisibility(View.VISIBLE);
                 return true;
             }
 
