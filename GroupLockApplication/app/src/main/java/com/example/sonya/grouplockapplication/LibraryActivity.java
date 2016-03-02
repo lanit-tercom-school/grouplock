@@ -31,7 +31,7 @@ public class LibraryActivity extends AppCompatActivity {
 
     private ArrayList<File> filesToOperateWith;
 
-    private enum LibraryState {
+    public enum LibraryState {
         BROWSING,
         ENCRYPT_SELECTING,
         DECRYPT_SELECTING
@@ -63,11 +63,27 @@ public class LibraryActivity extends AppCompatActivity {
         if (!libraryDecryptedPath.exists()) {
             libraryDecryptedPath.mkdir();
         }
+
         filesToOperateWith = new ArrayList<File>();
-        currentLibraryState = LibraryState.BROWSING;
         btnNext = (Button) findViewById(R.id.btnNext);
         btnLoadFile = (Button) findViewById(R.id.btnLoadFile);
-        browseTo(libraryRoot);
+
+        /* Get library state if had been passed to */
+        Bundle b = getIntent().getExtras();
+        if (b != null && b.containsKey("state")) {
+            currentLibraryState = (LibraryState) b.get("state");
+            /* Find correct directory */
+            if (currentLibraryState == LibraryState.ENCRYPT_SELECTING) {
+                browseTo(new File(libraryRootPath + "/" + DECRYPTED_FOLDER_NAME));
+            } else if (currentLibraryState == LibraryState.DECRYPT_SELECTING) {
+                browseTo(new File(libraryRootPath + "/" + ENCRYPTED_FOLDER_NAME));
+            }
+            cryptActionSelect(currentLibraryState);
+        } else {
+            /* Library opened directly from menu */
+            currentLibraryState = LibraryState.BROWSING;
+            browseTo(libraryRoot);
+        }
 
     }
 

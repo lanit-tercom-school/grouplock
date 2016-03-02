@@ -22,15 +22,16 @@ public class ChooseToDoActivity extends AppCompatActivity  {
     public void chooseEncrypt(View v)
     {
         Intent intent  = new Intent(this, LibraryActivity.class);
+        intent.putExtra("state", LibraryActivity.LibraryState.ENCRYPT_SELECTING);
         startActivity(intent);
     }
 
     public void chooseDecrypt(View v)
     {
         Intent intent  = new Intent(this, LibraryActivity.class);
+        intent.putExtra("state", LibraryActivity.LibraryState.DECRYPT_SELECTING);
         startActivity(intent);
     }
-    /* TODO: start Library activity with right config */
 
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.home_menu, menu);
