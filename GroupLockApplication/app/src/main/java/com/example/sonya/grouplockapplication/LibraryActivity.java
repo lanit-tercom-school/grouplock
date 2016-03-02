@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.*;
@@ -28,6 +29,18 @@ public class LibraryActivity extends AppCompatActivity {
     private String DECRYPTED_FOLDER_NAME = "Decrypted";
     private String libraryRootPath;
 
+    private ArrayList<File> filesToOperateWith;
+
+    private enum LibraryState {
+        BROWSING,
+        ENCRYPT_SELECTING,
+        DECRYPT_SELECTING
+    }
+    private LibraryState currentLibraryState;
+
+    private Button btnNext, btnLoadFile;
+    MenuItem menuItemEncrypt, menuItemDecrypt;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -39,20 +52,21 @@ public class LibraryActivity extends AppCompatActivity {
         /* Check if directories exist, create if needed */
         libraryRootPath = Environment.getExternalStorageDirectory().getPath() + "/" + LIBRARY_FOLDER_NAME;
         File libraryRoot = new File(libraryRootPath);
-        boolean success = true;
         if (!libraryRoot.exists()) {
-            success = libraryRoot.mkdir();
+            libraryRoot.mkdir();
         }
         File libraryEncryptedPath = new File(libraryRootPath + "/" + ENCRYPTED_FOLDER_NAME);
         File libraryDecryptedPath = new File(libraryRootPath + "/" + DECRYPTED_FOLDER_NAME);
-        success = true;
         if (!libraryEncryptedPath.exists()) {
-            success = libraryEncryptedPath.mkdir();
+            libraryEncryptedPath.mkdir();
         }
-        success = true;
         if (!libraryDecryptedPath.exists()) {
-            success = libraryDecryptedPath.mkdir();
+            libraryDecryptedPath.mkdir();
         }
+        filesToOperateWith = new ArrayList<File>();
+        currentLibraryState = LibraryState.BROWSING;
+        btnNext = (Button) findViewById(R.id.btnNext);
+        btnLoadFile = (Button) findViewById(R.id.btnLoadFile);
         browseTo(libraryRoot);
 
     }
@@ -83,35 +97,26 @@ public class LibraryActivity extends AppCompatActivity {
             /* Remove part of the path before the library root -
                user doesn't need to know where library is located physically */
             currentLocationInLibrary.setText(selectedItem.getAbsolutePath().replace(libraryRootPath, ""));
-        } else {
-            // TODO: find out why files don't open
-            /*
-            //if we want to open file, show this dialog:
-            //listener when YES button clicked
-            DialogInterface.OnClickListener okButtonListener = new DialogInterface.OnClickListener(){
-                public void onClick(DialogInterface arg0, int arg1) {
-                    //intent to navigate file
-                    Intent i = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse("file://" + selectedItem.getAbsolutePath()));
-                    //start this activity
-                    startActivity(i);
-                }
-            };
-            //listener when NO button clicked
-            DialogInterface.OnClickListener cancelButtonListener = new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface arg0, int arg1) {
-                    //do nothing
-                    //or add something you want
-                }
-            };
 
-            //create dialog
-            new AlertDialog.Builder(this)
-                    .setTitle("Подтверждение") //title
-                    .setMessage("Хотите открыть файл "+ selectedItem.getName() + "?") //message
-                    .setPositiveButton("Да", okButtonListener) //positive button
-                    .setNegativeButton("Нет", cancelButtonListener) //negative button
-                    .show(); //show dialog
-            */
+            /* Enable/disable crypt menu items.
+               We can only encrypt from "Decrypted" directory and decrypt from "Encrypted" directory */
+            if (menuItemEncrypt != null) menuItemEncrypt.setEnabled(
+                    selectedItem.getAbsolutePath().contains(libraryRootPath + "/" + DECRYPTED_FOLDER_NAME));
+            if (menuItemDecrypt != null) menuItemDecrypt.setEnabled(!menuItemEncrypt.isEnabled());
+
+        } else {
+            if (currentLibraryState == LibraryState.DECRYPT_SELECTING ||
+                currentLibraryState == LibraryState.ENCRYPT_SELECTING) {
+                // Add/remove file from list
+                if (filesToOperateWith.contains(selectedItem)) {
+                    filesToOperateWith.remove(selectedItem);
+                    // TODO: checkbox
+                }
+                else {
+                    filesToOperateWith.add(selectedItem);
+                }
+                btnNext.setEnabled(!filesToOperateWith.isEmpty());
+            }
         }
     }
 
@@ -119,7 +124,13 @@ public class LibraryActivity extends AppCompatActivity {
         //clear list
         currentDirectoryEntries.clear();
 
-        if (!currentDirectory.getAbsolutePath().equals(libraryRootPath))
+        /* We can't go to the parent of the root.
+         * We also can't go out from "Decrypted" directory while encrypting and visa versa. */
+        if (!currentDirectory.getAbsolutePath().equals(libraryRootPath)
+             && !((currentDirectory.getAbsolutePath().equals(libraryRootPath + "/" + ENCRYPTED_FOLDER_NAME) &&
+                   currentLibraryState == LibraryState.DECRYPT_SELECTING)
+             ||   (currentDirectory.getAbsolutePath().equals(libraryRootPath + "/" + DECRYPTED_FOLDER_NAME) &&
+                   currentLibraryState == LibraryState.ENCRYPT_SELECTING)))
             currentDirectoryEntries.add("..");
 
         //add every file into list
@@ -159,9 +170,23 @@ public class LibraryActivity extends AppCompatActivity {
         this.finish();
     }
 
+    public void goToNextStep(View v) {
+        if (currentLibraryState == LibraryState.ENCRYPT_SELECTING) {
+            // TODO: go to encryption, transfer filesToOperateWith list
+            /* debug log */
+            Log.d("crypt", filesToOperateWith.size() + " items selected to encrypt");
+        } else if (currentLibraryState == LibraryState.DECRYPT_SELECTING) {
+            // TODO: go to decryption, transfer filesToOperateWith list
+            /* debug log */
+            Log.d("crypt", filesToOperateWith.size() + " items selected to decrypt");
+        }
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.library_menu, menu);
+        menuItemEncrypt = menu.findItem(R.id.action_encrypt);
+        menuItemDecrypt = menu.findItem(R.id.action_decrypt);
         return true;
     }
 
@@ -211,12 +236,32 @@ public class LibraryActivity extends AppCompatActivity {
                 helpMe.show();
                 return true;
 
+            case R.id.action_encrypt:
+                cryptActionSelect(LibraryState.ENCRYPT_SELECTING);
+                /* Debug log */
+                Log.d("crypt", "Encrypt action is selected");
+                return true;
+
+            case R.id.action_decrypt:
+                cryptActionSelect(LibraryState.DECRYPT_SELECTING);
+                /* Debug log */
+                Log.d("crypt", "Decrypt action is selected");
+                return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
 
-    public File[] concat(File[] a, File[] b) {
+    private void cryptActionSelect(LibraryState state) {
+        currentLibraryState = state;
+        btnLoadFile.setVisibility(View.INVISIBLE);
+        btnNext.setVisibility(View.VISIBLE);
+        btnNext.setEnabled(false);
+        browseTo(currentDirectory);
+    }
+
+    private File[] concat(File[] a, File[] b) {
         int aLen = a.length;
         int bLen = b.length;
         File[] c = new File[aLen+bLen];
