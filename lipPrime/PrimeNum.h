@@ -1,6 +1,8 @@
 /*
 input: any number x (maybe x is prime) and digit
 output: prime number more than x and has digit from input
+Ivanova Marina
+March 2016.
 */
 
 using namespace std;
@@ -8,7 +10,7 @@ using namespace std;
 namespace PrimeNum{
 
 	static int list_primeNum[100001] {
-    #include "primeNumbers.txt"
+		#include "primeNumbers.txt"
 	};
 
 	int pow(int deg) {
@@ -16,12 +18,12 @@ namespace PrimeNum{
 		for (int i = 1; i <= deg; ++i) res *= 10;
 		return res;
 	}
-	
+
 	int choice_PrimeNum(int x, int digitX) {
-		
+
 		long long mNumber_digitX = pow(digitX - 1);
 		long long a = mNumber_digitX;
-		
+
 		if (x > mNumber_digitX) {
 			a = x;
 		}

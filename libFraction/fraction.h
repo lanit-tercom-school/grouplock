@@ -1,6 +1,7 @@
 /*
 Class Fraction include operator+, operator-, operator*, operator/, operator% and method NOD
-Ivanova Marina March 2016
+Ivanova Marina
+March 2016.
 */
 class Fraction {
 public:
