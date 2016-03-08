@@ -143,7 +143,7 @@ public class LibraryActivity extends AppCompatActivity {
         }
 
         entriesListView = (GridView) findViewById(R.id.entries_list_view);
-        LibraryEntriesAdapter adapter = new LibraryEntriesAdapter(this, currentDirectoryEntries);
+        LibraryEntriesAdapter adapter = new LibraryEntriesAdapter(this, currentDirectoryEntries, currentLibraryState);
         entriesListView.setAdapter(adapter);
 
         /* Touch listener */

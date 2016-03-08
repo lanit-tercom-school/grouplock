@@ -16,11 +16,15 @@ public class LibraryEntriesAdapter extends BaseAdapter {
     Context context;
     LayoutInflater layoutInflater;
     ArrayList<LibraryEntry> libraryEntries;
+    private final LibraryActivity.LibraryState libraryState;
 
-    public LibraryEntriesAdapter(Context context, ArrayList<LibraryEntry> libraryEntries) {
+    public LibraryEntriesAdapter(Context context,
+                                 ArrayList<LibraryEntry> libraryEntries,
+                                 LibraryActivity.LibraryState state) {
         this.context = context;
         this.layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.libraryEntries = libraryEntries;
+        this.libraryState = state;
     }
 
     @Override
@@ -54,7 +58,10 @@ public class LibraryEntriesAdapter extends BaseAdapter {
         CheckBox isSelected = (CheckBox) view.findViewById(R.id.checkboxIsSelected);
         isSelected.setTag(position);
         /* Hide checkboxes on directories */
-        isSelected.setVisibility(entry.isDirectory() ? View.INVISIBLE : View.VISIBLE);
+        boolean checkboxVisible = !entry.isDirectory() &&
+                                  (libraryState == LibraryActivity.LibraryState.ENCRYPT_SELECTING ||
+                                   libraryState == LibraryActivity.LibraryState.DECRYPT_SELECTING);
+        isSelected.setVisibility(checkboxVisible ? View.VISIBLE : View.INVISIBLE);
         isSelected.setChecked(entry.isSelected());
         return view;
 
