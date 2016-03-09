@@ -47,9 +47,13 @@ cin >> acc;
 
 //else
 
-int* I = ByteArrayInInt(S1, acc, i - 1);
+IntBytes objMessage(acc);
+int Nsize = (i - 1)/acc;
+if((i - 1) % acc > 0) Nsize++;
+int* I = new int[Nsize];
+I = objMessage.byte_array_in_int(S1, i - 1);
 
-for(int j = 0; j < (i - 1) / acc + (i - 1) % acc; j++)
+for(int j = 0; j < Nsize; j++)
 {
 	cout<<I[j]<<" ";
 }

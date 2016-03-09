@@ -2,117 +2,92 @@
 #include <iostream>
 using namespace std;
 
-int power(int X, int p) //возведение в степень
-{
-	int Pow = 1;
-	for(int i = 1; i <= p; i++)
-	{
-		Pow *= X;
-	}
+/*
+* Issue #39: преобразование байтового массива в int[] и обратно с заданной точностью битов.
+* Автор: Шпарута Софья
+*/
+class IntBytes {
 
-	return Pow; 
-}
+private:
 
-int CountBits(int X) // считает кол-во разрядов числа в двоичном представлении
-{
-	int k = 0;
-	while(X > 0)
-	{
-		X = X / 2;
-		k++;
-	}
+	//точность битов
+	int accurancy;
 
-	return k;
-}
-
-char* ReverseChar(char* A, int size) //представляет массив Charов в обратном порядке
-{
-	for(int i = 0; i < size / 2; i++)
-	{
-		char x = A[i];
-		A[i] = A[size - 1 - i];
-		A[size - 1 - i] = x;
-	}
-	return A;
-}
-
-int* ReverseInt(int* A, int size) //представляет массив Intов в обратном порядке
-{
-	for(int i = 0; i < size/2; i++)
-	{
-		char x = A[i];
-		A[i] = A[size - 1 - i];
-		A[size - 1 - i] = x;
-	}
-	return A;
-}
-
-int* ByteArrayInInt(char* Bytes, int accuracy, int size)
-{
-	Bytes = ReverseChar(Bytes, size);
-
-	int Mod = size % accuracy;
-	int Count = size / accuracy;
-
-	int* first;
-	if(Mod > 0)
-		first = new int [Count + 1];
-	else
-		first = new int[Count];
-
-	for(int j = 0; j <= Count; j++)
-		first[j] = 0;
-
-	for(int j = 0; j < Count; j++)
-		for(int i = 0; i < accuracy; i++)
-		{
-			int b;
-			if(Bytes[i + (j * accuracy)]=='0')
-				b = 0;
-			else b = 1;
-
-			first[j] += (b * power(2, i)); 
+	//Считает кол-во разрядов в двоичном представлении числа
+	//Вход: Число X типа int
+	//Выход: Кол-во разрядов в двоичном представлении X (int)
+	int count_bits(int x) {
+		int k = 0;
+		while(x > 0) {
+			x = x / 2;
+			k++;
 		}
 
-		if(Mod > 0)
-		{
-			for(int i = 0; i < Mod; i++)
-			{
-				int b;
-				if(Bytes[i + (Count * accuracy)]=='0')
-					b = 0;
-				else b = 1;
+		return k;
+	}
 
-				first[Count] += (b * power(2, i)); 
+public:
+
+	//конструктор
+	IntBytes(int acc){
+		accurancy = acc;
+	}
+
+	//Преобразует массив типа byte(char) в массив типа int
+	//Вход: массив bytes типа char, int accuracy = точность битов, размер массива bytes (int)
+	//Выход: массив first типа int
+
+	int* byte_array_in_int(char* bytes, int size) {
+		int mod = size % accurancy;
+		int count = size / accurancy;
+		int i = 0;
+		int k = 1;
+
+		int* first;
+		if (mod > 0) {
+			first = new int [count + 1];
+			i = count;
+		}
+		else {
+			first = new int[count];
+			i = count - 1;
+		}
+
+		for(int j = 0; j <= i; j++) {
+			first[j] = 0;
+		}
+
+		for(int j = size - 1; j >= 0; j--) {
+				int b;
+				bytes[j] == '0' ? b = 0 : b = 1;			
+				first[i] += (b * pow(2, k - 1));
+				if(k == accurancy){
+					i--; 
+					k = 1;
+				}
+				else 
+					k++;
+		}
+
+		return first;
+	}
+
+	//Преобразует массив int в массив типа byte(char)
+	//Вход: массив ints типа int, int accuracy = точность битов, размер массива size (int)
+	//Выход: массив bytes типа char,
+
+	char* int_array_in_bytes(int* ints, int size) {
+		char* bytes = new char[accurancy * size];
+		for(int i = 0; i < size; i++) {
+			if(count_bits(ints[i]) > accurancy) return 0;
+			for(int j = accurancy - 1; j >= 0; j--) {
+				int a = ints[i] % 2;
+				a == 0 ? bytes[j + (i * accurancy)] = '0' :  bytes[j + (i * accurancy)] = '1';
+				ints[i] = ints[i] / 2;
 			}
 		}
-		
-		if(Mod == 0)
-			first = ReverseInt(first, Count);
-		else 
-			first = ReverseInt(first, Count + 1);
-		
-		return first;
-}
 
-char* IntArrayInBytes(int* Ints, int accurancy, int size)
-{
-	int Size = accurancy * size;
-	char* bytes = new char[accurancy * size];
-	for(int i = 0; i < size; i++)
-	{
-		if(CountBits(Ints[i]) > accurancy) return 0;
-		for(int j = accurancy - 1; j >= 0; j--)
-		{
-			int a = Ints[i] % 2;
-			if(a == 0)
-				bytes[j + (i * accurancy)] = '0';
-			else			
-                bytes[j + (i * accurancy)] = '1';
-			
-			Ints[i] = Ints[i] / 2;
-		}
+		return bytes;
 	}
+};
 
-	return bytes;
-}
