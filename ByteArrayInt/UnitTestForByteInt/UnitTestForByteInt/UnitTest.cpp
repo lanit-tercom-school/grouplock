@@ -12,22 +12,16 @@ namespace TestsIntBytes
 
 	public:
 
-		TEST_METHOD(TestForByteArrayInInt)
+		TEST_METHOD(TestForByteArrayInIntAcc3)
 		{
 			IntBytes test(3);
-			char* A = new char[15];
-			//char S[] = {40, 232};
-            char S[15] = {'0','1','0','1','0','0','0','1','1','1','0','1','0','0','0'};
-			//A = S;
+			vector<unsigned char> S; //0010100011101000
+			S.insert(S.end(), 40);
+			S.insert(S.end(), 232);
 
-			for(int i = 0; i < 15; i++)
-			{
-				A[i] = S[i];
-			}
-
-			int* B = test.byte_array_in_int(A, 15);
-			int* C = new int[5];
-			int S1[5] = {2, 4, 3, 5, 0};
+			vector<int> B = test.bits_array_in_int(S);
+			vector<int> C(6);
+			int S1[6] = {0, 2, 4, 3, 5, 0};
 
 			for(int i = 0; i < 5; i++)
 			{
@@ -38,82 +32,192 @@ namespace TestsIntBytes
 				Assert::AreEqual(B[i], C[i], L"Test failed", LINE_INFO());
 		}
 
-
 	public:
 
-		TEST_METHOD(TestForByteArrayInIntShouldFail)
+		TEST_METHOD(TestForByteArrayInIntAcc7)
 		{
-			IntBytes test(2);
-			char* A = new char[8];
-			//char S[] = {112};
-			char S[8] = {'0','1','1','1','0','0','0','0'};
+			IntBytes test(7);
+			vector<unsigned char> S; //00 1010001 1101000
+			S.insert(S.end(), 40);
+			S.insert(S.end(), 232);
 
-			for(int i = 0; i < 8; i++)
-			{
-				A[i] = S[i];
-			}
+			vector<int> B = test.bits_array_in_int(S);
+			vector<int> C(3);
+			int S1[3] = {0, 81, 104};
 
-			int* B = test.byte_array_in_int(A, 8);
-			int* C = new int[4];
-			int S1[4] = {1, 0, 8, 2};
-
-			for(int i = 0; i < 4; i++)
+			for(int i = 0; i < 3; i++)
 			{
 				C[i] = S1[i];
 			}
 
-			for(int i = 0; i < 4; i++)			
+			for(int i = 0; i < 3; i++)			
 				Assert::AreEqual(B[i], C[i], L"Test failed", LINE_INFO());
+		}
+
+
+	public:
+
+		TEST_METHOD(TestForByteArrayInIntAcc17)
+		{
+
+			IntBytes test(17);
+			vector<unsigned char> S; //00000100 00000000100000100 01000000101000100
+			//00 00010000 00000010 00001000 10000001 01000100
+			S.insert(S.begin(), 68);
+			S.insert(S.begin(), 129);
+			S.insert(S.begin(), 8);
+			S.insert(S.begin(), 2);
+			S.insert(S.begin(), 16);
+			S.insert(S.begin(), 0);
+
+			vector<int> B = test.bits_array_in_int(S);
+			vector<int> C(3);
+			int S1[3] = {4, 260, 33092};
+
+			for(int i = 0; i < 3; i++)
+			{
+				C[i] = S1[i];
+			}
+
+			Assert::AreEqual(B.size(), C.size(), L"Test failed", LINE_INFO());
+
+			for(int i = 0; i < C.size(); i++)			
+				Assert::AreEqual(B[i], C[i], L"Test failed", LINE_INFO());
+
 		}
 
 	public:
 
-		TEST_METHOD(TestForIntArrayInBytes)
+		TEST_METHOD(TestForIntArrayInBytesAcc2)
 		{
 			IntBytes test(2);
-			int* C = new int[4];
+			vector<int> C(4);
 			int S1[4] = {1, 0, 2, 2};			
 			for(int i = 0; i < 4; i++)
 			{
 				C[i] = S1[i];
 			}
 
-			char* A = new char[8];
-			char S[8] = {'0','1','0','0','1','0','1','0'};
-			for(int i = 0; i < 8; i++)
+			vector<unsigned char> S; //01001010
+			S.insert(S.end(), 74);
+			vector<unsigned char> B = test.int_array_in_bits(C);
+
+			Assert::AreEqual(B.size(), S.size(), L"Test failed", LINE_INFO());
+
+			for(int i = 0; i < S.size(); i++)			
+				Assert::AreEqual(B[i], S[i], L"Test failed", LINE_INFO());
+		}
+
+	public:
+
+		TEST_METHOD(TestForIntArrayInBytesAcc6)
+		{
+			IntBytes test(6);
+			vector<int> C(7);
+			int S1[7] = {1, 0, 2, 2, 8, 5, 4};	//000001 000000 000010 000010 001000 000101 000100
+			//00 00010000 00000010 00001000 10000001 01000100
+			for(int i = 0; i < 7; i++)
 			{
-				A[i] = S[i];
+				C[i] = S1[i];
 			}
 
-			char* B = test.int_array_in_bytes(C, 4);
-			int dif = 4 * 2 - 8;
-			for(int i = 0; i < 4; i++)			
-				Assert::AreEqual(B[i], A[i], L"Test failed", LINE_INFO());
+			vector<unsigned char> S; 
+			S.insert(S.begin(), 68);
+			S.insert(S.begin(), 129);
+			S.insert(S.begin(), 8);
+			S.insert(S.begin(), 2);
+			S.insert(S.begin(), 16);
+			S.insert(S.begin(), 0);
+
+			vector<unsigned char> B = test.int_array_in_bits(C);
+
+			Assert::AreEqual(B.size(), S.size(), L"Test failed", LINE_INFO());
+
+			for(int i = 0; i < S.size(); i++)			
+				Assert::AreEqual(B[i], S[i], L"Test failed", LINE_INFO());
+		}
+
+	public:
+
+		TEST_METHOD(TestForIntArrayInBytesAcc16)
+		{
+			IntBytes test(16);
+			vector<int> C(3);
+			int S1[3] = {16, 520, 33092};	//0000010000 0000001000001000 1000000101000100
+			//00 00010000 00000010 00001000 10000001 01000100
+			for(int i = 0; i < 3; i++)
+			{
+				C[i] = S1[i];
+			}
+
+			vector<unsigned char> S; 
+			S.insert(S.begin(), 68);
+			S.insert(S.begin(), 129);
+			S.insert(S.begin(), 8);
+			S.insert(S.begin(), 2);
+			S.insert(S.begin(), 16);
+			S.insert(S.begin(), 0);
+
+			vector<unsigned char> B = test.int_array_in_bits(C);
+
+			Assert::AreEqual(B.size(), S.size(), L"Test failed", LINE_INFO());
+
+			for(int i = 0; i < S.size(); i++)			
+				Assert::AreEqual(B[i], S[i], L"Test failed", LINE_INFO());
+		}
+
+	public:
+
+		TEST_METHOD(TestForByteArrayInIntShouldFail)
+		{
+
+			IntBytes test(33);
+			vector<unsigned char> S; //000001000 000000010000010001000000101000100
+			                         //00 00010000 00000010 00001000 10000001 01000100
+			S.insert(S.begin(), 68);
+			S.insert(S.begin(), 129);
+			S.insert(S.begin(), 8);
+			S.insert(S.begin(), 2);
+			S.insert(S.begin(), 16);
+			S.insert(S.begin(), 0);
+
+			vector<int> B = test.bits_array_in_int(S);
+			vector<int> C(2);
+			int S1[2] = {8, 34111812};
+
+			for(int i = 0; i < 2; i++)
+			{
+				C[i] = S1[i];
+			}
+
+			Assert::AreEqual(B.size(), C.size(), L"Test failed", LINE_INFO());
+
+			for(int i = 0; i < C.size(); i++)			
+				Assert::AreEqual(B[i], C[i], L"Test failed", LINE_INFO());
+
 		}
 
 	public:
 
 		TEST_METHOD(TestForIntArrayInBytesShouldFail)
 		{
-			IntBytes test(3);
-			int* C = new int[5];
-			int S1[5] = {2, 7, 3, 5, 0};			
-			for(int i = 0; i < 5; i++)
+			IntBytes test(35);
+			vector<int> C(1);
+			int S1[1] = {74};			
+			for(int i = 0; i < 4; i++)
 			{
 				C[i] = S1[i];
 			}
 
-			char* A = new char[15];
-			char S[15] = {'0','1','0','1','0','0','0','1','1','1','0','1','0','0','0'};
-			for(int i = 0; i < 15; i++)
-			{
-				A[i] = S[i];
-			}
+			vector<unsigned char> S; //01001010
+			S.insert(S.end(), 74);
+			vector<unsigned char> B = test.int_array_in_bits(C);
 
-			char* B = test.int_array_in_bytes(C, 5);
-			int dif = 3 * 5 - 15;
-			for(int i = 14; i >= 0; i++)			
-				Assert::AreEqual(B[i + dif], A[i], L"Test failed", LINE_INFO());
+			Assert::AreEqual(B.size(), S.size(), L"Test failed", LINE_INFO());
+
+			for(int i = 0; i < S.size(); i++)			
+				Assert::AreEqual(B[i], S[i], L"Test failed", LINE_INFO());
 		}
+
 	};
 }

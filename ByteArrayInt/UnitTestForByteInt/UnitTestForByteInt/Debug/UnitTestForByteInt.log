@@ -1,15 +1,25 @@
-﻿Построение начато 09.03.2016 19:26:55.
+﻿Построение начато 13.03.2016 2:10:46.
      1>Проект "C:\Users\Sonya\Desktop\GroupLock\Мои задания\UnitTestForByteInt\UnitTestForByteInt\UnitTestForByteInt.vcxproj" в узле 2 (целевые объекты Build).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\UnitTest\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\UnitTestForByteInt.pch" /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /FC /errorReport:prompt UnitTest.cpp
          UnitTest.cpp
-     1>c:\users\sonya\desktop\grouplock\мои задания\unittestforbyteint\unittestforbyteint\intbytes.h(49): warning C4244: +=: преобразование "double" в "int", возможна потеря данных
+     1>c:\users\sonya\desktop\grouplock\мои задания\unittestforbyteint\unittestforbyteint\intbytes.h(27): warning C4244: +=: преобразование "double" в "unsigned char", возможна потеря данных
+     1>c:\users\sonya\desktop\grouplock\мои задания\unittestforbyteint\unittestforbyteint\intbytes.h(73): warning C4018: <: несоответствие типов со знаком и без знака
+     1>c:\users\sonya\desktop\grouplock\мои задания\unittestforbyteint\unittestforbyteint\intbytes.h(114): warning C4244: +=: преобразование "double" в "int", возможна потеря данных
+     1>c:\users\sonya\desktop\grouplock\мои задания\unittestforbyteint\unittestforbyteint\intbytes.h(130): warning C4018: <: несоответствие типов со знаком и без знака
+     1>c:\users\sonya\desktop\grouplock\мои задания\unittestforbyteint\unittestforbyteint\unittest.cpp(84): warning C4018: <: несоответствие типов со знаком и без знака
+     1>c:\users\sonya\desktop\grouplock\мои задания\unittestforbyteint\unittestforbyteint\unittest.cpp(107): warning C4018: <: несоответствие типов со знаком и без знака
+     1>c:\users\sonya\desktop\grouplock\мои задания\unittestforbyteint\unittestforbyteint\unittest.cpp(136): warning C4018: <: несоответствие типов со знаком и без знака
+     1>c:\users\sonya\desktop\grouplock\мои задания\unittestforbyteint\unittestforbyteint\unittest.cpp(165): warning C4018: <: несоответствие типов со знаком и без знака
+     1>c:\users\sonya\desktop\grouplock\мои задания\unittestforbyteint\unittestforbyteint\unittest.cpp(195): warning C4018: <: несоответствие типов со знаком и без знака
+     1>c:\users\sonya\desktop\grouplock\мои задания\unittestforbyteint\unittestforbyteint\unittest.cpp(218): warning C4018: <: несоответствие типов со знаком и без знака
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Sonya\Desktop\GroupLock\Мои задания\UnitTestForByteInt\Debug\UnitTestForByteInt.dll" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\UnitTest\lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Sonya\Desktop\GroupLock\Мои задания\UnitTestForByteInt\Debug\UnitTestForByteInt.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Sonya\Desktop\GroupLock\Мои задания\UnitTestForByteInt\Debug\UnitTestForByteInt.lib" /MACHINE:X86 /DLL Debug\stdafx.obj
          Debug\UnitTest.obj
+            ╤ючфрхЄё  сшсышюЄхър C:\Users\Sonya\Desktop\GroupLock\╠юш чрфрэш \UnitTestForByteInt\Debug\UnitTestForByteInt.lib ш юс·хъЄ C:\Users\Sonya\Desktop\GroupLock\╠юш чрфрэш \UnitTestForByteInt\Debug\UnitTestForByteInt.exp
          UnitTestForByteInt.vcxproj -> C:\Users\Sonya\Desktop\GroupLock\Мои задания\UnitTestForByteInt\Debug\UnitTestForByteInt.dll
      1>Построение проекта "C:\Users\Sonya\Desktop\GroupLock\Мои задания\UnitTestForByteInt\UnitTestForByteInt\UnitTestForByteInt.vcxproj" завершено (целевые объекты Build).
 
 Построение успешно завершено.
 
-Затраченное время: 00:00:01.70
+Затраченное время: 00:00:01.62
