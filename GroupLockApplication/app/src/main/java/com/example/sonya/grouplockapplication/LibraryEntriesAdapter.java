@@ -52,17 +52,22 @@ public class LibraryEntriesAdapter extends BaseAdapter {
         }
 
         LibraryEntry entry = (LibraryEntry) getItem(position);
-        ((TextView) view.findViewById(R.id.textEntryName)).setText(
-                entry.isParent() ? ".." : entry.getName());
+        ((TextView) view.findViewById(R.id.textEntryName))
+                        .setText(entry.isParent() ? ".." : entry.getName());
 
         CheckBox isSelected = (CheckBox) view.findViewById(R.id.checkboxIsSelected);
         isSelected.setTag(position);
-        /* Hide checkboxes on directories */
-        boolean checkboxVisible = !entry.isDirectory() &&
+        /* Hide checkboxes on directories and filed that cannot be selected */
+        boolean checkboxVisible = entry.canBeSelected() &&
                                   (libraryState == LibraryActivity.LibraryState.ENCRYPT_SELECTING ||
                                    libraryState == LibraryActivity.LibraryState.DECRYPT_SELECTING);
         isSelected.setVisibility(checkboxVisible ? View.VISIBLE : View.INVISIBLE);
         isSelected.setChecked(entry.isSelected());
+        /* Change file view background if it cannot be selected */
+        if (!entry.isDirectory() && !entry.canBeSelected()) {
+            view.findViewById(R.id.textEntryName)
+                .setBackgroundResource(R.drawable.library_disabled_entry_background);
+        }
         return view;
 
     }

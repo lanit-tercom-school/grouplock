@@ -82,4 +82,17 @@ public class LibraryEntry {
     public void setSelected(boolean isSelected) {
         this.isSelected = isSelected;
     }
+
+    /**
+     * Shows whether this entry can be selected to be encrypted or decrypted.
+     * In current implementation it depends on the extension of the file - you can select .jpg files only.
+     *
+     * @return <code>true</code> if this entry is not a directory and can be selected to be encrypted or decrypted;
+     *         <code>false</code> otherwise.
+     *
+     */
+    public boolean canBeSelected() {
+        return !isDirectory() && getEntry().getName().endsWith(".jpg");
+    }
+
 }

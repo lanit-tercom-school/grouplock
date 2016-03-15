@@ -184,11 +184,17 @@ public class LibraryActivity extends AppCompatActivity {
     /**
      * Toggles file selection, changes checkbox and Next button states if needed.
      * Does nothing if <code>entry</code> is a directory.
+     * If entry is a file that cannot be selected, show warning message.
      * @param entry file to be toggled
      * @param index index of selected file
      */
     private void toggleFileSelection(LibraryEntry entry, int index) {
         if (entry.isDirectory()) {
+            return;
+        }
+
+        if (!entry.canBeSelected()) {
+            Toast.makeText(this, R.string.library_warning_file_cannot_be_selected, Toast.LENGTH_LONG).show();
             return;
         }
 

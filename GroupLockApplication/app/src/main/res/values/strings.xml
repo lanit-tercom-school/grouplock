@@ -12,6 +12,7 @@
     <string name="create_folder_dialogue_description">Enter directory name:</string>
     <string name="information_window_title">Information</string>
     <string name="information_window_description">Tap to open a directory.\nHold an item to call the context menu</string>
+    <string name="library_warning_file_cannot_be_selected">You can only select .jpg files in this version.</string>
 
     <!-- Home Screen -->
     <string name="home_button_encrypt">Encrypt</string>
