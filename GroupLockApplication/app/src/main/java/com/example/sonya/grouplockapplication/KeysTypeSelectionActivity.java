@@ -11,6 +11,10 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 
+import java.io.File;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class KeysTypeSelectionActivity extends AppCompatActivity
         implements CompoundButton.OnCheckedChangeListener, View.OnClickListener {
 
@@ -56,8 +60,12 @@ public class KeysTypeSelectionActivity extends AppCompatActivity
 
     @Override
     public void onClick(View v) {
+        ArrayList<LibraryEntry> files = getIntent().getParcelableArrayListExtra("files");
         // TODO: go to next activity and pass all needed data to it
-        Log.d("crypt", "qr");
+        for (LibraryEntry entry: files) {
+            File file = entry.getEntry();
+            Log.d("crypt", file.getAbsolutePath());
+        }
     }
 
 }

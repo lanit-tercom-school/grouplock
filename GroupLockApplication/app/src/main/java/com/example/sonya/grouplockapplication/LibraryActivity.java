@@ -255,13 +255,8 @@ public class LibraryActivity extends AppCompatActivity {
      */
     public void goToNextStep(View v) {
         if (currentLibraryState == LibraryState.ENCRYPT_SELECTING) {
-            // TODO: go to encryption, transfer filesToOperateWith list
-            /* debug log */
-            Log.d("crypt", filesToOperateWith.size() + " items selected to encrypt:\n");
-            for (LibraryEntry le : filesToOperateWith) {
-                Log.d("crypt", le.getEntry().toString());
-            }
             Intent intent  = new Intent(this, KeysTypeSelectionActivity.class);
+            intent.putExtra("files", filesToOperateWith);
             startActivity(intent);
         } else if (currentLibraryState == LibraryState.DECRYPT_SELECTING) {
             // TODO: go to decryption, transfer filesToOperateWith list

@@ -1,11 +1,15 @@
 package com.example.sonya.grouplockapplication;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+import android.util.Log;
+
 import java.io.File;
 
 /**
  * Entry (file or directory) in the library. Incapsulates <code>File</code> Java type.
  */
-public class LibraryEntry {
+public class LibraryEntry implements Parcelable {
 
     private File entry;
     private boolean isSelected;
@@ -43,6 +47,26 @@ public class LibraryEntry {
         isSelected = false;
         this.isParent = isParent;
     }
+
+    protected LibraryEntry(Parcel in) {
+        this.entry = new File(in.readString());
+        boolean[] ba = new boolean[2];
+        in.readBooleanArray(ba);
+        isSelected = ba[0];
+        isParent = ba[1];
+    }
+
+    public static final Creator<LibraryEntry> CREATOR = new Creator<LibraryEntry>() {
+        @Override
+        public LibraryEntry createFromParcel(Parcel in) {
+            return new LibraryEntry(in);
+        }
+
+        @Override
+        public LibraryEntry[] newArray(int size) {
+            return new LibraryEntry[size];
+        }
+    };
 
     public String getName() {
         return entry.getName();
@@ -95,4 +119,14 @@ public class LibraryEntry {
         return !isDirectory() && getEntry().getName().endsWith(".jpg");
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(getEntry().getAbsolutePath());
+        dest.writeBooleanArray(new boolean[]{isSelected, isParent});
+    }
 }
