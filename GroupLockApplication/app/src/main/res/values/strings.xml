@@ -19,6 +19,14 @@
     <string name="home_button_decrypt">Decrypt</string>
     <string name="home_info_message">Use these buttons to encrypt or decrypt your files. Use Load button to add files to library</string>
 
+    <!-- Key Types Selection -->
+    <string name="title_activity_keys_type_selection">Key types</string>
+    <string name="keys_type_selection_info">Select keys types:</string>
+    <string name="keys_type_selection_qr_code">QR code</string>
+    <string name="keys_type_selection_nfc">NFC tags</string>
+    <string name="keys_type_selection_fingerprint">Fingerprint</string>
+    <string name="keys_type_selection_warning">You can use QR codes only in this version</string>
+
     <!-- Menu Items -->
     <string name="activity_home">Home</string>
     <string name="activity_library">Library</string>

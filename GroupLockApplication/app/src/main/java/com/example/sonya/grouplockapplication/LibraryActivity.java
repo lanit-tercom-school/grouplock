@@ -2,6 +2,7 @@ package com.example.sonya.grouplockapplication;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
@@ -260,6 +261,8 @@ public class LibraryActivity extends AppCompatActivity {
             for (LibraryEntry le : filesToOperateWith) {
                 Log.d("crypt", le.getEntry().toString());
             }
+            Intent intent  = new Intent(this, KeysTypeSelectionActivity.class);
+            startActivity(intent);
         } else if (currentLibraryState == LibraryState.DECRYPT_SELECTING) {
             // TODO: go to decryption, transfer filesToOperateWith list
             /* debug log */
