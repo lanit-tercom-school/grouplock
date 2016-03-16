@@ -12,7 +12,6 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 
 import java.io.File;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class KeysTypeSelectionActivity extends AppCompatActivity

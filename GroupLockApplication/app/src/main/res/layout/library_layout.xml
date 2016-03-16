@@ -6,14 +6,19 @@
     android:orientation="vertical"
     tools:context=".LibraryActivity" >
 
-
-    <include layout="@layout/library_toolbar" />
+    <android.support.v7.widget.Toolbar
+            android:id="@+id/library_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:elevation="4dp"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
     <TextView android:id="@+id/current_location_in_library"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:padding="5dip"
-        android:layout_below="@+id/toolbar_actionbar"
+        android:layout_below="@id/library_toolbar"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
@@ -30,16 +35,6 @@
         android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:drawSelectorOnTop="false" />
-
-    <Button
-        android:layout_width="72dp"
-        android:layout_height="72dp"
-        android:id="@+id/button_go_back"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:onClick="goToPrevStep"
-        android:background="@drawable/ic_arrow_back_black_48dp"/>
 
     <Button
         android:layout_width="72dp"

@@ -64,7 +64,9 @@ public class LibraryEntriesAdapter extends BaseAdapter {
         isSelected.setVisibility(checkboxVisible ? View.VISIBLE : View.INVISIBLE);
         isSelected.setChecked(entry.isSelected());
         /* Change file view background if it cannot be selected */
-        if (!entry.isDirectory() && !entry.canBeSelected()) {
+        if (!entry.isDirectory() && !entry.canBeSelected() &&
+                                    (libraryState == LibraryActivity.LibraryState.ENCRYPT_SELECTING ||
+                                     libraryState == LibraryActivity.LibraryState.DECRYPT_SELECTING)) {
             view.findViewById(R.id.textEntryName)
                 .setBackgroundResource(R.drawable.library_disabled_entry_background);
         }

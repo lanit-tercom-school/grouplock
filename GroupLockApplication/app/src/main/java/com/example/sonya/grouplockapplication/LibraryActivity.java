@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -32,6 +33,8 @@ public class LibraryActivity extends AppCompatActivity {
 
     private ArrayList<LibraryEntry> filesToOperateWith;
     private GridView entriesListView;
+    private boolean showMenu;
+    private boolean avoidBrowsingMode;
 
     public enum LibraryState {
         BROWSING,
@@ -48,8 +51,10 @@ public class LibraryActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.library_layout);
-        Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar_actionbar);
+        Toolbar mToolbar = (Toolbar) findViewById(R.id.library_toolbar);
         setSupportActionBar(mToolbar);
+        ActionBar ab = getSupportActionBar();
+        ab.setDisplayHomeAsUpEnabled(true);
 
         /* Check if directories exist, create if needed */
         libraryRootPath = Environment.getExternalStorageDirectory().getPath() + "/" + LIBRARY_FOLDER_NAME;
@@ -74,6 +79,8 @@ public class LibraryActivity extends AppCompatActivity {
         Bundle b = getIntent().getExtras();
         if (b != null && b.containsKey("state")) {
             currentLibraryState = (LibraryState) b.get("state");
+            showMenu = false;
+            avoidBrowsingMode = true;
             /* Find correct directory */
             if (currentLibraryState == LibraryState.ENCRYPT_SELECTING) {
                 showDirectoryLayout(new LibraryEntry(libraryRootPath + "/" + DECRYPTED_FOLDER_NAME));
@@ -83,6 +90,8 @@ public class LibraryActivity extends AppCompatActivity {
             cryptActionSelect(currentLibraryState);
         } else {
             /* Library opened directly from menu */
+            showMenu = true;
+            avoidBrowsingMode = false;
             currentLibraryState = LibraryState.BROWSING;
             showDirectoryLayout(new LibraryEntry(libraryRoot));
         }
@@ -155,12 +164,19 @@ public class LibraryActivity extends AppCompatActivity {
            user doesn't need to know where library is located physically */
         currentLocationInLibrary.setText(entry.getEntry().getAbsolutePath().replace(libraryRootPath, ""));
 
-        /* Enable/disable crypt menu items.
-           We can only encrypt from "Decrypted" directory and decrypt from "Encrypted" directory */
+        invalidateOptionsMenu();
+    }
+
+    /**
+     * Enable/disable crypt menu items.
+     * We can only encrypt from "Decrypted" directory and decrypt from "Encrypted" directory
+     * */
+    private void setCryptMenuItemsAccess() {
         if (menuItemEncrypt != null && menuItemDecrypt != null) {
-            menuItemEncrypt.setEnabled(entry.getEntry().getAbsolutePath()
+            menuItemEncrypt.setEnabled(currentDirectory.getEntry().getAbsolutePath()
                                                        .contains(libraryRootPath + "/" + DECRYPTED_FOLDER_NAME));
-            menuItemDecrypt.setEnabled(!menuItemEncrypt.isEnabled());
+            menuItemDecrypt.setEnabled(currentDirectory.getEntry().getAbsolutePath()
+                                                       .contains(libraryRootPath + "/" + ENCRYPTED_FOLDER_NAME));
         }
     }
 
@@ -240,22 +256,13 @@ public class LibraryActivity extends AppCompatActivity {
     }
 
     /**
-     * Finishes current activity and thus goes to the previous one.
-     * @param v <code>View</code> that this method has been attached to.
-     */
-    public void goToPrevStep(View v)
-    {
-        this.finish();
-    }
-
-    /**
      * Depending of the current state, calls the encryption or the decryption <code>Activity</code>
      * and transfers it list of files to be enrcypted or decrypted.
      * @param v <code>View</code> that this method has been attached to.
      */
     public void goToNextStep(View v) {
         if (currentLibraryState == LibraryState.ENCRYPT_SELECTING) {
-            Intent intent  = new Intent(this, KeysTypeSelectionActivity.class);
+            Intent intent = new Intent(this, KeysTypeSelectionActivity.class);
             intent.putExtra("files", filesToOperateWith);
             startActivity(intent);
         } else if (currentLibraryState == LibraryState.DECRYPT_SELECTING) {
@@ -273,6 +280,15 @@ public class LibraryActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.library_menu, menu);
         menuItemEncrypt = menu.findItem(R.id.action_encrypt);
         menuItemDecrypt = menu.findItem(R.id.action_decrypt);
+        return true;
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        for (int i = 0; i < menu.size(); i++) {
+            menu.getItem(i).setVisible(showMenu);
+        }
+        setCryptMenuItemsAccess();
         return true;
     }
 
@@ -323,14 +339,14 @@ public class LibraryActivity extends AppCompatActivity {
 
             case R.id.action_encrypt:
                 cryptActionSelect(LibraryState.ENCRYPT_SELECTING);
-                /* Debug log */
-                Log.d("crypt", "Encrypt action is selected");
                 return true;
 
             case R.id.action_decrypt:
                 cryptActionSelect(LibraryState.DECRYPT_SELECTING);
-                /* Debug log */
-                Log.d("crypt", "Decrypt action is selected");
+                return true;
+
+            case android.R.id.home:
+                handleUpAction();
                 return true;
 
             default:
@@ -339,7 +355,7 @@ public class LibraryActivity extends AppCompatActivity {
     }
 
     /**
-     * Enters file selection mode.
+     * Enters file selection mode, changes title and hides menu.
      * @param state state to be set. Should be <code>LibraryState.ENCRYPT_SELECTING</code>
      *              or <code>LibraryState.DECRYPT_SELECTING</code> only. Otherwise method does nothing.
      */
@@ -347,10 +363,68 @@ public class LibraryActivity extends AppCompatActivity {
         if (state != LibraryState.ENCRYPT_SELECTING && state != LibraryState.DECRYPT_SELECTING) {
             return;
         }
+        if (state == LibraryState.ENCRYPT_SELECTING) {
+            getSupportActionBar().setTitle(R.string.action_encrypt);
+        } else {
+            getSupportActionBar().setTitle(R.string.action_decrypt);
+        }
+        setMenuVisible(false);
         currentLibraryState = state;
         btnLoadFile.setVisibility(View.INVISIBLE);
         btnNext.setVisibility(View.VISIBLE);
         btnNext.setEnabled(false);
         showDirectoryLayout(currentDirectory);
     }
+
+    /**
+     * Switches current directory to its parent if possible. Otherwise {@link #handleUpAction()} method is called.
+     * This method is called when device "Back" button is pressed.
+     */
+    @Override
+    public void onBackPressed() {
+        if (canGoToParent(currentDirectory)) {
+            showDirectoryLayout(new LibraryEntry(currentDirectory.getEntry().getParent()));
+        }
+        else {
+            handleUpAction();
+        }
+    }
+
+    /**
+     * Depending on the current state of the library, either closes this activity or
+     * sets <code>LibraryState.BROWSING</code> state, shows menu, and hides "Next step" button.
+     * This method is called when Back button on the Toolbar is pressed or when device "Back"
+     * button is pressed and it is impossible to go to the parent of current directory.
+     */
+    private void handleUpAction() {
+        switch (currentLibraryState) {
+            case BROWSING:
+                this.finish();
+                break;
+            case ENCRYPT_SELECTING:
+            case DECRYPT_SELECTING:
+                if (avoidBrowsingMode) {
+                    this.finish();
+                } else {
+                    setMenuVisible(true);
+                    getSupportActionBar().setTitle(R.string.library_activity_name);
+                    currentLibraryState = LibraryState.BROWSING;
+                    btnLoadFile.setVisibility(View.VISIBLE);
+                    btnNext.setVisibility(View.INVISIBLE);
+                    filesToOperateWith.clear();
+                    showDirectoryLayout(currentDirectory);
+                }
+                break;
+        }
+    }
+
+    /**
+     * Sets menu visibility.
+     * @param visible whether the menu should be visible
+     */
+    private void setMenuVisible(boolean visible) {
+        showMenu = visible;
+        invalidateOptionsMenu();
+    }
+
 }

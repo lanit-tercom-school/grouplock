@@ -2,5 +2,5 @@
     <solid android:color="#bcd0e3" />
     <stroke android:width="1dip" android:color="#a3b6cc"/>
     <!-- TODO: select colors -->
-    <corners android:radius="@dimen/activity_vertical_margin"/>
+    <corners android:radius="2dp"/>
 </shape>
