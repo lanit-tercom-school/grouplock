@@ -39,7 +39,7 @@ private:
 		for(int j = 7; j >= 0; j--) {
 			int a = byte % 2;
 			a == 0 ? bits[j] = '0' : bits[j] = '1';
-			byte = byte / 2;
+			byte /= 2;
 		}
 		return bits;
 	}
@@ -87,13 +87,16 @@ public:
 		if(acc <= 32){ 
 			accurancy = acc;
 		}
-		else return;
+		else accurancy = 0;
 	}
 
 	//Преобразует массив типа byte(char) в массив типа int
 	//Вход: массив bytes типа char, int accuracy = точность битов, размер массива bytes (int)
 	//Выход: массив first типа int
 	std::vector<int> bits_array_in_int(vector<unsigned char> bytes) {
+		std::vector<int> first;
+		if (accurancy == 0) return first;
+
 		bytes = convert_bytes_in_bits(bytes);
 
 		int mod = bytes.size() % accurancy;
@@ -101,7 +104,6 @@ public:
 		int i = 0;
 		int k = 1;
 
-		std::vector<int> first;
 		mod > 0 ? i = count : i = count - 1;
 
 		for(int j = 0; j <= i; j++) {
@@ -110,7 +112,7 @@ public:
 
 		for(int j = bytes.size() - 1; j >= 0; j--) {
 			int b;
-			bytes[j] == '0' ? b = 0 : b = 1;			
+			bytes[j] == '0' ? b = 0 : b = 1;
 			first[i] += (b * pow(2, k - 1));
 			if(k == accurancy){
 				i--; 
@@ -126,17 +128,27 @@ public:
 	//Вход: массив ints типа int, int accuracy = точность битов, размер массива size (int)
 	//Выход: массив bytes типа char,
 	std::vector<unsigned char> int_array_in_bits(std::vector<int> ints) {
-		std::vector<unsigned char> bytes(accurancy * ints.size());
+
+		std::vector<unsigned char> bytes;
+		if (accurancy == 0){
+			return bytes;
+		}
+
+		for(int i = 0; i < accurancy * ints.size(); i++){
+			bytes.insert(bytes.end(), '0');
+		}
+
 		for(int i = 0; i < ints.size(); i++) {
 			for(int j = accurancy - 1; j >= 0; j--) {
 				int a = ints[i] % 2;
-				a == 0 ? bytes[j + (i * accurancy)] = '0' :  bytes[j + (i * accurancy)] = '1';
-				ints[i] = ints[i] / 2;
+				if(a != 0){ 
+					bytes[j + (i * accurancy)] = '1';
+				}
+				ints[i] /= 2;
 			}
 		}
 
-		bytes = convert_bits_in_bytes(bytes);
-		return bytes;
+		return convert_bits_in_bytes(bytes);
 	}
 };
 
