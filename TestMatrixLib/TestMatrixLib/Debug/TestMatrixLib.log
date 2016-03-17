@@ -1,0 +1,7 @@
+﻿  UnitTest.cpp
+UnitTest.obj : error LNK2028: ёё√ыър эр эхЁрчЁх°хээє■ ыхъёхьє (0A0004F7) "extern "C" void __cdecl _invalid_parameter(wchar_t const *,wchar_t const *,wchar_t const *,unsigned int,unsigned int)" (?_invalid_parameter@@$$J0YAXPB_W00II@Z) т ЇєэъЎшш "void * __cdecl std::_Allocate(unsigned int,unsigned int,bool)" (?_Allocate@std@@$$FYAPAXII_N@Z)
+UnitTest.obj : error LNK2020: эхЁрчЁх°хээр  ыхъёхьр (0A0004F8) "extern "C" int __cdecl _CrtDbgReportW(int,wchar_t const *,int,wchar_t const *,wchar_t const *,...)" (?_CrtDbgReportW@@$$J0YAHHPB_WH00ZZ)
+UnitTest.obj : error LNK2020: эхЁрчЁх°хээр  ыхъёхьр (0A0004F9) "extern "C" int __cdecl _CrtDbgReportW(int,wchar_t const *,int,wchar_t const *,wchar_t const *,...)" (?_CrtDbgReportW@@$$J0YAHHPB_WH00ZZ)
+UnitTest.obj : error LNK2001: эхЁрчЁх°хээ√щ тэх°эшщ ёшьтюы ""extern "C" int __cdecl _CrtDbgReportW(int,wchar_t const *,int,wchar_t const *,wchar_t const *,...)" (?_CrtDbgReportW@@$$J0YAHHPB_WH00ZZ)"
+UnitTest.obj : error LNK2019: ёё√ыър эр эхЁрчЁх°хээ√щ тэх°эшщ ёшьтюы "extern "C" void __cdecl _invalid_parameter(wchar_t const *,wchar_t const *,wchar_t const *,unsigned int,unsigned int)" (?_invalid_parameter@@$$J0YAXPB_W00II@Z) т ЇєэъЎшш "void * __cdecl std::_Allocate(unsigned int,unsigned int,bool)" (?_Allocate@std@@$$FYAPAXII_N@Z)
+C:\Users\└фьшэшёЄЁрЄюЁ\Documents\GitHub\grouplock\TestMatrixLib\Debug\DefaultTest.dll : fatal error LNK1120: эхЁрчЁх°хээ√ї тэх°эшї ¤ыхьхэЄют: 5
