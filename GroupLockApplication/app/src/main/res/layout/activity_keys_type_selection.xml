@@ -1,0 +1,84 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context="com.example.sonya.grouplockapplication.KeysTypeSelectionActivity">
+
+    <android.support.v7.widget.Toolbar
+            android:id="@+id/keys_type_selection_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:elevation="4dp"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/keys_type_info"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/keys_type_selection_info"
+            android:layout_below="@id/keys_type_selection_toolbar"
+            android:layout_marginTop="32dp"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"/>
+
+    <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/keys_type_selection_qr_code"
+            android:id="@+id/checkBoxQRCode"
+            android:textSize="16sp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:layout_below="@id/keys_type_info" android:layout_alignLeft="@id/keys_type_info"
+            android:layout_alignStart="@id/keys_type_info" android:layout_marginTop="32dp"/>
+
+    <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/keys_type_selection_nfc"
+            android:id="@+id/checkBoxNFC"
+            android:textSize="16sp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:enabled="false"
+            android:layout_below="@id/checkBoxQRCode" android:layout_alignLeft="@id/keys_type_info"
+            android:layout_alignStart="@id/keys_type_info" android:layout_marginTop="20dp"/>
+
+    <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/keys_type_selection_fingerprint"
+            android:id="@+id/checkBoxFingerprint"
+            android:textSize="16sp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:enabled="false"
+            android:layout_below="@id/checkBoxNFC" android:layout_alignLeft="@id/keys_type_info"
+            android:layout_alignStart="@id/keys_type_info" android:layout_marginTop="20dp"/>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/keys_type_selection_warning"
+            android:layout_below="@id/checkBoxFingerprint"
+            android:layout_alignLeft="@id/keys_type_info"
+            android:layout_alignStart="@id/keys_type_info"
+            android:layout_marginTop="32dp"/>
+
+    <Button
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:text="@string/common_next_step"
+            android:id="@+id/keys_type_selection_btnNext"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"/>
+
+</RelativeLayout>
