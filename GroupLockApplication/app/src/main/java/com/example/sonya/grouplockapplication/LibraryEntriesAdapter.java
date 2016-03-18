@@ -13,9 +13,9 @@ import java.util.ArrayList;
 
 public class LibraryEntriesAdapter extends BaseAdapter {
 
-    Context context;
-    LayoutInflater layoutInflater;
-    ArrayList<LibraryEntry> libraryEntries;
+    private Context context;
+    private LayoutInflater layoutInflater;
+    private ArrayList<LibraryEntry> libraryEntries;
     private final LibraryActivity.LibraryState libraryState;
 
     public LibraryEntriesAdapter(Context context,
@@ -52,17 +52,22 @@ public class LibraryEntriesAdapter extends BaseAdapter {
         }
 
         LibraryEntry entry = (LibraryEntry) getItem(position);
+
+        /* Parent of the current directory is presented as ".." (two dots) */
         ((TextView) view.findViewById(R.id.textEntryName))
                         .setText(entry.isParent() ? ".." : entry.getName());
 
         CheckBox isSelected = (CheckBox) view.findViewById(R.id.checkboxIsSelected);
         isSelected.setTag(position);
-        /* Hide checkboxes on directories and filed that cannot be selected */
+
+        /* Hide checkboxes on directories and files that cannot be selected */
         boolean checkboxVisible = entry.canBeSelected() &&
                                   (libraryState == LibraryActivity.LibraryState.ENCRYPT_SELECTING ||
                                    libraryState == LibraryActivity.LibraryState.DECRYPT_SELECTING);
         isSelected.setVisibility(checkboxVisible ? View.VISIBLE : View.INVISIBLE);
+
         isSelected.setChecked(entry.isSelected());
+
         /* Change file view background if it cannot be selected */
         if (!entry.isDirectory() && !entry.canBeSelected() &&
                                     (libraryState == LibraryActivity.LibraryState.ENCRYPT_SELECTING ||
@@ -70,6 +75,7 @@ public class LibraryEntriesAdapter extends BaseAdapter {
             view.findViewById(R.id.textEntryName)
                 .setBackgroundResource(R.drawable.library_disabled_entry_background);
         }
+
         return view;
 
     }

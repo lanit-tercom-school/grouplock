@@ -2,58 +2,44 @@ package com.example.sonya.grouplockapplication;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.util.Log;
 
 import java.io.File;
 
 /**
- * Entry (file or directory) in the library. Incapsulates <code>File</code> Java type.
+ * Entry (file or directory) in the library. Extends <code>File</code> Java type.
  */
-public class LibraryEntry implements Parcelable {
+public class LibraryEntry extends File implements Parcelable {
 
-    private File entry;
     private boolean isSelected;
     private boolean isParent;
 
     /**
      *
-     * @param entry <code>File</code> object to be incapsulated inside this entry. You can get this object later
-     *              by calling {@link #getEntry()} method.
+     * @param entryFullName full name of created entry.
      */
-    public LibraryEntry(File entry) {
-        this.entry = entry;
+    public LibraryEntry(String entryFullName) {
+        super(entryFullName);
         isSelected = false;
         isParent = false;
     }
 
     /**
      *
-     * @param entryName full name of created entry.
-     */
-    public LibraryEntry(String entryName) {
-        this.entry = new File(entryName);
-        isSelected = false;
-        isParent = false;
-    }
-
-    /**
-     *
-     * @param entryName full name of created entry.
+     * @param entryFullName full name of created entry.
      * @param isParent whether this entry is parent of current directory. Used to make it possible to go back
      *                 and its name is presented as ".." (two dots).
      */
-    public LibraryEntry(String entryName, boolean isParent) {
-        this.entry = new File(entryName);
-        isSelected = false;
+    public LibraryEntry(String entryFullName, boolean isParent) {
+        this(entryFullName);
         this.isParent = isParent;
     }
 
     protected LibraryEntry(Parcel in) {
-        this.entry = new File(in.readString());
-        boolean[] ba = new boolean[2];
-        in.readBooleanArray(ba);
-        isSelected = ba[0];
-        isParent = ba[1];
+        this(in.readString());
+        boolean[] receivedBooleans = new boolean[2];
+        in.readBooleanArray(receivedBooleans);
+        isSelected = receivedBooleans[0];
+        isParent = receivedBooleans[1];
     }
 
     public static final Creator<LibraryEntry> CREATOR = new Creator<LibraryEntry>() {
@@ -67,21 +53,6 @@ public class LibraryEntry implements Parcelable {
             return new LibraryEntry[size];
         }
     };
-
-    public String getName() {
-        return entry.getName();
-    }
-
-    /**
-     * @return <code>File</code> structure incapsulated in this entry.
-     */
-    public File getEntry() {
-        return entry;
-    }
-
-    public boolean isDirectory() {
-        return entry.isDirectory();
-    }
 
     /**
      * @return <code>true</code> if this entry is a parent of directory opened by user;
@@ -116,7 +87,7 @@ public class LibraryEntry implements Parcelable {
      *
      */
     public boolean canBeSelected() {
-        return !isDirectory() && getEntry().getName().endsWith(".jpg");
+        return !isDirectory() && getName().endsWith(".jpg");
     }
 
     @Override
@@ -126,7 +97,7 @@ public class LibraryEntry implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(getEntry().getAbsolutePath());
+        dest.writeString(getAbsolutePath());
         dest.writeBooleanArray(new boolean[]{isSelected, isParent});
     }
 }

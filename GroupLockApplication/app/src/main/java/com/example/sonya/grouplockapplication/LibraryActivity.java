@@ -51,14 +51,16 @@ public class LibraryActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.library_layout);
+
         Toolbar mToolbar = (Toolbar) findViewById(R.id.library_toolbar);
         setSupportActionBar(mToolbar);
+
         ActionBar ab = getSupportActionBar();
         ab.setDisplayHomeAsUpEnabled(true);
 
         /* Check if directories exist, create if needed */
         libraryRootPath = Environment.getExternalStorageDirectory().getPath() + "/" + LIBRARY_FOLDER_NAME;
-        File libraryRoot = new File(libraryRootPath);
+        LibraryEntry libraryRoot = new LibraryEntry(libraryRootPath);
         if (!libraryRoot.exists()) {
             libraryRoot.mkdir();
         }
@@ -77,23 +79,36 @@ public class LibraryActivity extends AppCompatActivity {
 
         /* Get library state if had been passed to */
         Bundle b = getIntent().getExtras();
+
         if (b != null && b.containsKey("state")) {
+
+            /* State had been passed to created Activity. We need to get and save it. */
             currentLibraryState = (LibraryState) b.get("state");
+
             showMenu = false;
+
+            /* When Back button is pressed, Home screen should be shown,
+               so we do not want to enter LibraryState.BROWSING state */
             avoidBrowsingMode = true;
+
             /* Find correct directory */
             if (currentLibraryState == LibraryState.ENCRYPT_SELECTING) {
                 showDirectoryLayout(new LibraryEntry(libraryRootPath + "/" + DECRYPTED_FOLDER_NAME));
             } else if (currentLibraryState == LibraryState.DECRYPT_SELECTING) {
                 showDirectoryLayout(new LibraryEntry(libraryRootPath + "/" + ENCRYPTED_FOLDER_NAME));
             }
+
             cryptActionSelect(currentLibraryState);
+
         } else {
+
             /* Library opened directly from menu */
+
             showMenu = true;
             avoidBrowsingMode = false;
             currentLibraryState = LibraryState.BROWSING;
-            showDirectoryLayout(new LibraryEntry(libraryRoot));
+
+            showDirectoryLayout(libraryRoot);
         }
     }
 
@@ -111,14 +126,14 @@ public class LibraryActivity extends AppCompatActivity {
          * We need to sort it properly, all files should go after directories.
          * It is not sorted by default. */
         currentDirectory = entry;
-        File[] files = entry.getEntry().listFiles(new FileFilter() {
+        File[] files = entry.listFiles(new FileFilter() {
             @Override
             public boolean accept(File pathname) {
                 return !pathname.isDirectory();
             }
         });
         Arrays.sort(files);
-        File[] dirs = entry.getEntry().listFiles(new FileFilter() {
+        File[] dirs = entry.listFiles(new FileFilter() {
             @Override
             public boolean accept(File pathname) {
                 return pathname.isDirectory();
@@ -126,18 +141,20 @@ public class LibraryActivity extends AppCompatActivity {
         });
         Arrays.sort(dirs);
 
+        /* Form list of entries in the current directory */
         currentDirectoryEntries.clear();
         if (canGoToParent(currentDirectory)) {
-            currentDirectoryEntries.add(new LibraryEntry(currentDirectory.getEntry().getParent(), true));
+            /* Add link to the parent if needed */
+            currentDirectoryEntries.add(new LibraryEntry(currentDirectory.getParent(), true));
         }
         for (File directory: dirs) {
-            currentDirectoryEntries.add(new LibraryEntry(directory));
+            currentDirectoryEntries.add(new LibraryEntry(directory.getAbsolutePath()));
         }
         for (File file: files) {
-            /* Check whether file had been selected earlier */
+            /* Check whether file had been selected to be encrypted or decrypted earlier */
             boolean selected = false;
             for (LibraryEntry le : filesToOperateWith) {
-                if (le.getEntry().getAbsolutePath().equals(file.getAbsolutePath())) {
+                if (le.getAbsolutePath().equals(file.getAbsolutePath())) {
                     /* If true, add existing entry pointer to the list of entries of current directory
                      * in order not to redraw checkboxes. */
                     currentDirectoryEntries.add(le);
@@ -147,11 +164,12 @@ public class LibraryActivity extends AppCompatActivity {
             }
             /* If false, create new entry and add it to the list. */
             if (!selected) {
-                LibraryEntry fileEntry = new LibraryEntry(file);
+                LibraryEntry fileEntry = new LibraryEntry(file.getAbsolutePath());
                 currentDirectoryEntries.add(fileEntry);
             }
         }
 
+        /* Get container view for the entries */
         entriesListView = (GridView) findViewById(R.id.entries_list_view);
         LibraryEntriesAdapter adapter = new LibraryEntriesAdapter(this, currentDirectoryEntries, currentLibraryState);
         entriesListView.setAdapter(adapter);
@@ -159,11 +177,14 @@ public class LibraryActivity extends AppCompatActivity {
         /* Touch listener */
         entriesListView.setOnItemClickListener(onEntryClickListener);
 
+
+        /* Set title of the screen */
         TextView currentLocationInLibrary = (TextView) findViewById(R.id.current_location_in_library);
         /* Remove part of the path before the library root -
            user doesn't need to know where library is located physically */
-        currentLocationInLibrary.setText(entry.getEntry().getAbsolutePath().replace(libraryRootPath, ""));
+        currentLocationInLibrary.setText(entry.getAbsolutePath().replace(libraryRootPath, ""));
 
+        /* Redraw menu if needed */
         invalidateOptionsMenu();
     }
 
@@ -173,9 +194,9 @@ public class LibraryActivity extends AppCompatActivity {
      * */
     private void setCryptMenuItemsAccess() {
         if (menuItemEncrypt != null && menuItemDecrypt != null) {
-            menuItemEncrypt.setEnabled(currentDirectory.getEntry().getAbsolutePath()
+            menuItemEncrypt.setEnabled(currentDirectory.getAbsolutePath()
                                                        .contains(libraryRootPath + "/" + DECRYPTED_FOLDER_NAME));
-            menuItemDecrypt.setEnabled(currentDirectory.getEntry().getAbsolutePath()
+            menuItemDecrypt.setEnabled(currentDirectory.getAbsolutePath()
                                                        .contains(libraryRootPath + "/" + ENCRYPTED_FOLDER_NAME));
         }
     }
@@ -187,6 +208,8 @@ public class LibraryActivity extends AppCompatActivity {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             LibraryEntry selectedEntry = currentDirectoryEntries.get(position);
+            /* If directory is clicked on, go to its content.
+             * If file is clicked on and we select files, toggle its selection status */
             if (selectedEntry.isDirectory()) {
                 showDirectoryLayout(selectedEntry);
             } else {
@@ -217,20 +240,22 @@ public class LibraryActivity extends AppCompatActivity {
 
         entry.setSelected(!entry.isSelected());
 
-        // Toogle checkbox
+        /* Toggle checkbox */
         View v = entriesListView.getChildAt(index - entriesListView.getFirstVisiblePosition());
         if(v == null)
             return;
         CheckBox checkBox = (CheckBox) v.findViewById(R.id.checkboxIsSelected);
         checkBox.setChecked(entry.isSelected());
 
-        // Add/remove file from list
+        /* Add/remove file from list */
         if (filesToOperateWith.contains(entry)) {
             filesToOperateWith.remove(entry);
         }
         else {
             filesToOperateWith.add(entry);
         }
+
+        /* User must select at least one file to go further */
         btnNext.setEnabled(!filesToOperateWith.isEmpty());
     }
 
@@ -248,10 +273,10 @@ public class LibraryActivity extends AppCompatActivity {
 
         /* We can't go to the parent of the root.
          * We also can't go out from "Decrypted" directory while encrypting and visa versa. */
-        return !entry.getEntry().getAbsolutePath().equals(libraryRootPath)
-             && !((entry.getEntry().getAbsolutePath().equals(libraryRootPath + "/" + ENCRYPTED_FOLDER_NAME) &&
+        return !entry.getAbsolutePath().equals(libraryRootPath)
+             && !((entry.getAbsolutePath().equals(libraryRootPath + "/" + ENCRYPTED_FOLDER_NAME) &&
                    currentLibraryState == LibraryState.DECRYPT_SELECTING)
-             ||   (entry.getEntry().getAbsolutePath().equals(libraryRootPath + "/" + DECRYPTED_FOLDER_NAME) &&
+             ||   (entry.getAbsolutePath().equals(libraryRootPath + "/" + DECRYPTED_FOLDER_NAME) &&
                    currentLibraryState == LibraryState.ENCRYPT_SELECTING));
     }
 
@@ -261,18 +286,22 @@ public class LibraryActivity extends AppCompatActivity {
      * @param v <code>View</code> that this method has been attached to.
      */
     public void goToNextStep(View v) {
+
         if (currentLibraryState == LibraryState.ENCRYPT_SELECTING) {
             Intent intent = new Intent(this, KeysTypeSelectionActivity.class);
+            /* Pass files list to new activity */
             intent.putExtra("files", filesToOperateWith);
             startActivity(intent);
+
         } else if (currentLibraryState == LibraryState.DECRYPT_SELECTING) {
             // TODO: go to decryption, transfer filesToOperateWith list
             /* debug log */
             Log.d("crypt", filesToOperateWith.size() + " items selected to decrypt:\n");
             for (LibraryEntry le : filesToOperateWith) {
-                Log.d("crypt", le.getEntry().toString());
+                Log.d("crypt", le.toString());
             }
         }
+
     }
 
     @Override
@@ -285,6 +314,7 @@ public class LibraryActivity extends AppCompatActivity {
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
+        /* Show or hide every item in the menu */
         for (int i = 0; i < menu.size(); i++) {
             menu.getItem(i).setVisible(showMenu);
         }
@@ -315,10 +345,11 @@ public class LibraryActivity extends AppCompatActivity {
                 final EditText newDirectoryNameInput = new EditText(this);
                 alert.setView(newDirectoryNameInput);
 
+                // Create new folder when user presses OK button
                 alert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
                         String name = "/" + newDirectoryNameInput.getText().toString();
-                        File folder = new File(currentDirectory.getEntry().getAbsolutePath() + name);
+                        File folder = new File(currentDirectory.getAbsolutePath() + name);
                         if (!folder.exists()) {
                             folder.mkdir();
                         }
@@ -368,11 +399,15 @@ public class LibraryActivity extends AppCompatActivity {
         } else {
             getSupportActionBar().setTitle(R.string.action_decrypt);
         }
-        setMenuVisible(false);
+
         currentLibraryState = state;
+
+        setMenuVisible(false);
         btnLoadFile.setVisibility(View.INVISIBLE);
         btnNext.setVisibility(View.VISIBLE);
         btnNext.setEnabled(false);
+
+        /* Redraw current directory in order to show checkboxes */
         showDirectoryLayout(currentDirectory);
     }
 
@@ -383,7 +418,7 @@ public class LibraryActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         if (canGoToParent(currentDirectory)) {
-            showDirectoryLayout(new LibraryEntry(currentDirectory.getEntry().getParent()));
+            showDirectoryLayout(new LibraryEntry(currentDirectory.getParent()));
         }
         else {
             handleUpAction();
@@ -398,20 +433,27 @@ public class LibraryActivity extends AppCompatActivity {
      */
     private void handleUpAction() {
         switch (currentLibraryState) {
+
             case BROWSING:
                 this.finish();
                 break;
+
             case ENCRYPT_SELECTING:
             case DECRYPT_SELECTING:
                 if (avoidBrowsingMode) {
                     this.finish();
                 } else {
-                    setMenuVisible(true);
                     getSupportActionBar().setTitle(R.string.library_activity_name);
                     currentLibraryState = LibraryState.BROWSING;
+
+                    setMenuVisible(true);
                     btnLoadFile.setVisibility(View.VISIBLE);
                     btnNext.setVisibility(View.INVISIBLE);
+
+                    /* Forget what user had selected */
                     filesToOperateWith.clear();
+
+                    /* Redraw current directory in order to hide checkboxes */
                     showDirectoryLayout(currentDirectory);
                 }
                 break;
@@ -424,6 +466,7 @@ public class LibraryActivity extends AppCompatActivity {
      */
     private void setMenuVisible(boolean visible) {
         showMenu = visible;
+        /* Redraw menu if needed */
         invalidateOptionsMenu();
     }
 

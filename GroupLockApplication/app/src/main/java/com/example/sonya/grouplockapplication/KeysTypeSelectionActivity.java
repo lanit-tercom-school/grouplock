@@ -11,7 +11,6 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 
-import java.io.File;
 import java.util.ArrayList;
 
 public class KeysTypeSelectionActivity extends AppCompatActivity
@@ -27,6 +26,7 @@ public class KeysTypeSelectionActivity extends AppCompatActivity
         Toolbar mToolbar = (Toolbar) findViewById(R.id.keys_type_selection_toolbar);
         setSupportActionBar(mToolbar);
 
+        /* Add Back button at the top of the screen */
         ActionBar ab = getSupportActionBar();
         ab.setDisplayHomeAsUpEnabled(true);
 
@@ -43,6 +43,7 @@ public class KeysTypeSelectionActivity extends AppCompatActivity
         int id = item.getItemId();
 
         switch (id) {
+            /* If pressed Back button, close this screen and go to the previous one */
             case android.R.id.home:
                 this.finish();
                 return true;
@@ -59,11 +60,15 @@ public class KeysTypeSelectionActivity extends AppCompatActivity
 
     @Override
     public void onClick(View v) {
+        if (v.getId() != R.id.keys_type_selection_btnNext) {
+            return;
+        }
+
+        /* Get passed data from the previous screen */
         ArrayList<LibraryEntry> files = getIntent().getParcelableArrayListExtra("files");
         // TODO: go to next activity and pass all needed data to it
         for (LibraryEntry entry: files) {
-            File file = entry.getEntry();
-            Log.d("crypt", file.getAbsolutePath());
+            Log.d("crypt", entry.getAbsolutePath());
         }
     }
 
