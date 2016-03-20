@@ -12,7 +12,8 @@ before_install:
 script:
    - cd GroupLockApplication
    - dir
-   - ./gradlew build connectedCheck --stacktrace
+   - ./gradlew clean build
+  # - ./gradlew build connectedCheck --stacktrace
 
 #notifications:
   #slack: grouplock:dTkArNoCUeyRITfhTUwQAuBX
