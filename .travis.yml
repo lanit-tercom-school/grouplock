@@ -10,7 +10,8 @@ before_install:
  #updates permissions for travis
  
 script:
-   - ./GroupLockApplication/gradlew build connectedCheck
+   - cd GroupLockApplication
+   - gradlew build connectedCheck
 
 notifications:
   slack: grouplock:dTkArNoCUeyRITfhTUwQAuBX
