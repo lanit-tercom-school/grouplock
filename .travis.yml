@@ -5,15 +5,9 @@ android:
     - build-tools-23.0.1
     - android-23
 
-before_install:
- - chmod +x ./GroupLockApplication/gradlew
+#before_install:
+ #- chmod +x ./GroupLockApplication/gradlew
  #updates permissions for travis
- 
-script:
-   - cd GroupLockApplication
-   - dir
-   - ./gradlew clean build
-  # - ./gradlew build connectedCheck --stacktrace
 
 #notifications:
   #slack: grouplock:dTkArNoCUeyRITfhTUwQAuBX
