@@ -6,7 +6,7 @@ android:
     - android-23
 
 before_install:
- - chmod +x gradlew
+ - chmod +x ./GroupLockApplication/gradlew
  #updates permissions for travis
  
 script:
