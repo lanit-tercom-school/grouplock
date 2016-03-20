@@ -5,6 +5,10 @@ android:
     - build-tools-23.0.1
     - android-23
 
+before_install:
+ - chmod +x gradlew
+ #updates permissions for travis
+ 
 script:
    - ./GroupLockApplication/gradlew build connectedCheck
 
