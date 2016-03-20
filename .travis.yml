@@ -11,6 +11,7 @@ before_install:
  
 script:
    - cd GroupLockApplication
+   - dir
    - gradlew build connectedCheck
 
 notifications:
