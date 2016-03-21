@@ -1,7 +1,8 @@
 package com.example.sonya.grouplockapplication;
 
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
+//import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -13,7 +14,7 @@ import android.widget.CompoundButton;
 
 import java.util.ArrayList;
 
-public class KeysTypeSelectionActivity extends AppCompatActivity
+public class KeysTypeSelectionActivity extends ActionBarActivity/*AppCompatActivity*/
         implements CompoundButton.OnCheckedChangeListener, View.OnClickListener {
 
     private Button btnNextStep;

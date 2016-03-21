@@ -6,7 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
+//import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -20,7 +21,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 
-public class LibraryActivity extends AppCompatActivity {
+public class LibraryActivity extends ActionBarActivity/*AppCompatActivity*/ {
 
     private ArrayList<LibraryEntry> currentDirectoryEntries = new ArrayList<LibraryEntry>();
     private LibraryEntry currentDirectory;
