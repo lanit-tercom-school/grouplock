@@ -23,7 +23,6 @@
 #define TNT_ARRAY2D_H
 
 #include <cstdlib>
-#include <iostream>
 #ifdef TNT_BOUNDS_CHECK
 #include <assert.h>
 #endif
@@ -39,8 +38,6 @@ class Array2D
 
 
   private:
-
-
 
   	Array1D<T> data_;
 	Array1D<T*> v_;

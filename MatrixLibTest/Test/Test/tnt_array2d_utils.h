@@ -27,49 +27,6 @@
 namespace TNT
 {
 
-
-template <class T>
-std::ostream& operator<<(std::ostream &s, const Array2D<T> &A)
-{
-    int M=A.dim1();
-    int N=A.dim2();
-
-    s << M << " " << N << "\n";
-
-    for (int i=0; i<M; i++)
-    {
-        for (int j=0; j<N; j++)
-        {
-            s << A[i][j] << " ";
-        }
-        s << "\n";
-    }
-
-
-    return s;
-}
-
-template <class T>
-std::istream& operator>>(std::istream &s, Array2D<T> &A)
-{
-
-    int M, N;
-
-    s >> M >> N;
-
-	Array2D<T> B(M,N);
-
-    for (int i=0; i<M; i++)
-        for (int j=0; j<N; j++)
-        {
-            s >>  B[i][j];
-        }
-
-	A = B;
-    return s;
-}
-
-
 template <class T>
 Array2D<T> operator+(const Array2D<T> &A, const Array2D<T> &B)
 {
