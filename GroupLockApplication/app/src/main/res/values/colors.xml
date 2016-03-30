@@ -4,7 +4,7 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <!--- for backGround -->
-    <color name="colorBackGroundButton">#4729D3FD</color>
+    <color name="colorBackGroundButton">#FF115284</color>
     <color name="colorBackGround">#defaf8</color>
     <!---for text -->
     <color name="colorText">#FF115295</color>
