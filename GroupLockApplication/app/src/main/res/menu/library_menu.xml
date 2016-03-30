@@ -10,11 +10,6 @@
         android:title="Open Menu">
 
       <menu>
-          <!-- Change / will display always -->
-          <item android:id="@+id/action_change"
-              android:icon="@drawable/ic_mode_edit_black_24dp"
-              android:title="@string/action_change"
-              app:showAsAction="ifRoom" />
     <!-- Search / will display always -->
           <item android:id="@+id/action_search"
               android:icon="@drawable/ic_public_black_24dp"
@@ -22,9 +17,9 @@
               app:showAsAction="ifRoom"/>
 
     <!-- Create -->
-          <item android:id="@+id/action_create"
+          <item android:id="@+id/action_create_folder"
               android:icon="@drawable/ic_folder_open_black_24dp"
-              android:title="@string/action_create"
+              android:title="@string/action_create_folder"
               app:showAsAction="ifRoom"/>
 
     <!-- Settings -->
@@ -32,6 +27,18 @@
               android:icon="@drawable/ic_settings_applications_black_24dp"
               android:title="@string/action_settings"
               app:showAsAction="never" />
+
+    <!-- Encrypt -->
+          <item android:id="@+id/action_encrypt"
+                android:title="@string/action_encrypt"
+                android:enabled="false"
+                app:showAsAction="never" />
+
+    <!-- Decrypt -->
+          <item android:id="@+id/action_decrypt"
+                android:title="@string/action_decrypt"
+                android:enabled="false"
+                app:showAsAction="never" />
       </menu>
     </item>
     <item
