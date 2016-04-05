@@ -15,6 +15,8 @@
 		87B6921E1CB425E0008ACB6A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87B6921C1CB425E0008ACB6A /* LaunchScreen.storyboard */; };
 		87B692291CB425E0008ACB6A /* GroupLockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B692281CB425E0008ACB6A /* GroupLockTests.swift */; };
 		87B692341CB425E0008ACB6A /* GroupLockUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B692331CB425E0008ACB6A /* GroupLockUITests.swift */; };
+		87B6927F1CB45188008ACB6A /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B6927E1CB45188008ACB6A /* UIViewController.swift */; };
+		87DE60DE1CB46373005EA79E /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87DE60DD1CB46373005EA79E /* LocalAuthentication.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +39,7 @@
 /* Begin PBXFileReference section */
 		87B6920D1CB425E0008ACB6A /* GroupLock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GroupLock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87B692101CB425E0008ACB6A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		87B692121CB425E0008ACB6A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		87B692121CB425E0008ACB6A /* ViewController.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; tabWidth = 4; };
 		87B692151CB425E0008ACB6A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		87B692181CB425E0008ACB6A /* GroupLock.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GroupLock.xcdatamodel; sourceTree = "<group>"; };
 		87B6921A1CB425E0008ACB6A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +51,8 @@
 		87B6922F1CB425E0008ACB6A /* GroupLockUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GroupLockUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		87B692331CB425E0008ACB6A /* GroupLockUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupLockUITests.swift; sourceTree = "<group>"; };
 		87B692351CB425E0008ACB6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		87B6927E1CB45188008ACB6A /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; tabWidth = 4; };
+		87DE60DD1CB46373005EA79E /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87DE60DE1CB46373005EA79E /* LocalAuthentication.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,12 +84,15 @@
 		87B692041CB425E0008ACB6A = {
 			isa = PBXGroup;
 			children = (
+				87DE60DD1CB46373005EA79E /* LocalAuthentication.framework */,
 				87B6920F1CB425E0008ACB6A /* GroupLock */,
 				87B692271CB425E0008ACB6A /* GroupLockTests */,
 				87B692321CB425E0008ACB6A /* GroupLockUITests */,
 				87B6920E1CB425E0008ACB6A /* Products */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		87B6920E1CB425E0008ACB6A /* Products */ = {
 			isa = PBXGroup;
@@ -101,6 +109,7 @@
 			children = (
 				87B692101CB425E0008ACB6A /* AppDelegate.swift */,
 				87B692121CB425E0008ACB6A /* ViewController.swift */,
+				87B6927E1CB45188008ACB6A /* UIViewController.swift */,
 				87B692141CB425E0008ACB6A /* Main.storyboard */,
 				87B6921A1CB425E0008ACB6A /* Assets.xcassets */,
 				87B6921C1CB425E0008ACB6A /* LaunchScreen.storyboard */,
@@ -263,6 +272,7 @@
 			files = (
 				87B692131CB425E0008ACB6A /* ViewController.swift in Sources */,
 				87B692191CB425E0008ACB6A /* GroupLock.xcdatamodeld in Sources */,
+				87B6927F1CB45188008ACB6A /* UIViewController.swift in Sources */,
 				87B692111CB425E0008ACB6A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
