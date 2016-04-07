@@ -1,17 +1,2 @@
-﻿Сборка начата 04.03.2016 20:53:58.
-     1>Проект "c:\Users\User\documents\visual studio 2013\Projects\FractionTest\FractionTest\FractionTest.vcxproj" в узле 2 (целевые объекты Build).
-     1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\UnitTest\include" /I"C:\Program Files (x86)\Visual Leak Detector\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yc"stdafx.h" /Fp"Debug\FractionTest.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /FC /errorReport:prompt stdafx.cpp
-         stdafx.cpp
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\UnitTest\include" /I"C:\Program Files (x86)\Visual Leak Detector\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\FractionTest.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /FC /errorReport:prompt unittest1.cpp
-         unittest1.cpp
-       Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"c:\users\user\documents\visual studio 2013\Projects\FractionTest\Debug\FractionTest.dll" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\UnitTest\lib" /LIBPATH:"C:\Program Files (x86)\Visual Leak Detector\lib\Win32" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"c:\users\user\documents\visual studio 2013\Projects\FractionTest\Debug\FractionTest.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"c:\users\user\documents\visual studio 2013\Projects\FractionTest\Debug\FractionTest.lib" /MACHINE:X86 /DLL Debug\stdafx.obj
-         Debug\unittest1.obj
-            Создается библиотека c:\users\user\documents\visual studio 2013\Projects\FractionTest\Debug\FractionTest.lib и объект c:\users\user\documents\visual studio 2013\Projects\FractionTest\Debug\FractionTest.exp
-         FractionTest.vcxproj -> c:\users\user\documents\visual studio 2013\Projects\FractionTest\Debug\FractionTest.dll
-     1>Сборка проекта "c:\Users\User\documents\visual studio 2013\Projects\FractionTest\FractionTest\FractionTest.vcxproj" завершена (целевые объекты Build).
-
-Сборка успешно завершена.
-
-Затраченное время: 00:00:01.22
+﻿  unittest1.cpp
+  FractionTest.vcxproj -> C:\Users\Marina\Documents\Visual Studio 2015\Projects\FractionTest\Debug\FractionTest.dll

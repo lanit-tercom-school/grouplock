@@ -1,18 +1,17 @@
 /*
-<<<<<<< HEAD
 Class Fraction include operators: operator+, operator-, operator*, operator/, operator%, operator+=, operator-=,
 operator*=, operator/=, operator= (Fraction) and operator= (const);
 methods: ToString() for get HashCode
 functions: NOD(x,y), reduce(c,z)
 Ivanova Marina
-March 2016.
+April 2016.
 */
 
 #pragma once
-
+#include<math.h>
 int NOD(int x, int y) {
 	if (y == 0) {
-		return x;
+		return abs(x);
 	}
 	else {
 		return NOD(y, x % y);
@@ -26,16 +25,9 @@ void reduce(int& c, int& z) {
 	z /= nod;
 }
 
-=======
-Class Fraction include operator+, operator-, operator*, operator/, operator% and method NOD
-Ivanova Marina
-March 2016.
-*/
->>>>>>> db5a023192047c45c5efab633fc7fc466762ecf6
 class Fraction {
 	int c;
 	int z;
-<<<<<<< HEAD
 public:
 	Fraction() {};
 	Fraction(int x, int y) : c(x), z(y) {};
@@ -73,7 +65,8 @@ public:
 
 	// метод для получения хешкода дроби в виде строки: значение C значение Z
 	std::string ToString() {
-		return std::to_string(c) + std::to_string(z);
+		int sing = (c*z < 0 ? -1 : 1);
+		return std::to_string(sing) + std::to_string(abs(c)) + std::to_string(abs(z));
 	}
 
 	Fraction& operator=(const Fraction& frac) {
@@ -90,7 +83,7 @@ public:
 };
 
 bool operator==(const Fraction it, const Fraction other) {
-	return (it.c == other.c && it.z == other.z ? true : false);
+	return (abs(it.c) == abs(other.c) && abs(it.z) == abs(other.z) && it.c*it.z == other.c*other.z ? true : false);
 }
 
 bool operator!=(const Fraction it, const Fraction other) {
@@ -134,71 +127,3 @@ Fraction operator/(const Fraction it, const Fraction other) {
 
 
 
-=======
-	Fraction() {};
-
-	Fraction(int x, int y) {
-		c = x;
-		z = y;
-	};
-
-	int NOD(int x, int y) {
-		if (y == 0) {
-			return x;
-		}
-		else {
-			return NOD(y, x % y);
-		}
-	};
-
-	int operator%(int mod) {
-		if (c == mod) {
-			return 0;
-		}
-		while (NOD(c,z) != z) {
-		c +=mod;
-		}
-		return c/z;
-	};
-
-	Fraction operator+(Fraction other) {
-		Fraction s;
-		s.c = c*other.z+other.c*z;
-		s.z = z*other.z;
-		int nod = NOD(s.c, s.z);
-		s.c /= nod;
-		s.z /= nod;
-		return s;
-	};
-
-	Fraction operator-(Fraction other) {
-		Fraction s;
-		s.c = c*other.z-other.c*z;
-		s.z = z*other.z;
-		int nod = NOD(s.c, s.z);
-		s.c /= nod;
-		s.z /= nod;
-		return s;
-	};
-
-	Fraction operator*(Fraction other) {
-		Fraction s;
-		s.c = c*other.c;
-		s.z = z*other.z;
-		int nod = NOD(s.c, s.z);
-		s.c /= nod;
-		s.z /= nod;
-		return s;
-	};
-
-	Fraction operator/(Fraction other) {
-		Fraction s;
-		s.c = c*other.z;
-		s.z = z*other.c;
-		int nod = NOD(s.c, s.z);
-		s.c /= nod;
-		s.z /= nod;
-		return s;
-	};
-};
->>>>>>> db5a023192047c45c5efab633fc7fc466762ecf6
