@@ -13,7 +13,8 @@ class PasswordViewController: UIViewController {
     // MARK: UI elements
     @IBOutlet var enterPasswordLabel: UILabel!
     @IBOutlet var initialPasswordTextField: UITextField!
-              let proceedButton = UIButton(type: UIButtonType.System)
+              //let proceedButton = UIButton(type: UIButtonType.System)
+    @IBOutlet weak var proceedButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +37,7 @@ class PasswordViewController: UIViewController {
     
     // MARK: Helping Functions
     private func showProceedButton(button: UIButton) {
+        button.hidden = false
         button.frame = CGRectMake(100, 100, 100, 50)
         button.backgroundColor = UIColor(colorLiteralRed: 0.251, green: 0.643, blue: 0.239, alpha: 1.0)
         button.tintColor = UIColor.whiteColor()
@@ -46,6 +48,7 @@ class PasswordViewController: UIViewController {
         let xAlignmentConstraint = proceedButton.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor)
         let widthConstraint = proceedButton.widthAnchor.constraintEqualToConstant(130)
         NSLayoutConstraint.activateConstraints([topConstraint, xAlignmentConstraint, widthConstraint])
+
         
     }
 }

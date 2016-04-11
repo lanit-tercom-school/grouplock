@@ -17,6 +17,7 @@
 		87B692341CB425E0008ACB6A /* GroupLockUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B692331CB425E0008ACB6A /* GroupLockUITests.swift */; };
 		87B6927F1CB45188008ACB6A /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B6927E1CB45188008ACB6A /* UIViewController.swift */; };
 		87DE60DE1CB46373005EA79E /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87DE60DD1CB46373005EA79E /* LocalAuthentication.framework */; };
+		8A2443DF1CBAEC650057294F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2443DE1CBAEC650057294F /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		87B692351CB425E0008ACB6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87B6927E1CB45188008ACB6A /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; tabWidth = 4; };
 		87DE60DD1CB46373005EA79E /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
+		8A2443DE1CBAEC650057294F /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 			children = (
 				87B692101CB425E0008ACB6A /* AppDelegate.swift */,
 				87B692121CB425E0008ACB6A /* ViewController.swift */,
+				8A2443DE1CBAEC650057294F /* HomeViewController.swift */,
 				87B6927E1CB45188008ACB6A /* UIViewController.swift */,
 				87B692141CB425E0008ACB6A /* Main.storyboard */,
 				87B6921A1CB425E0008ACB6A /* Assets.xcassets */,
@@ -271,6 +274,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A2443DF1CBAEC650057294F /* HomeViewController.swift in Sources */,
 				87B692131CB425E0008ACB6A /* ViewController.swift in Sources */,
 				87B692191CB425E0008ACB6A /* GroupLock.xcdatamodeld in Sources */,
 				87B6927F1CB45188008ACB6A /* UIViewController.swift in Sources */,
