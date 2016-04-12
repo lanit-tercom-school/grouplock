@@ -113,7 +113,7 @@
         <scene sceneID="eTc-VS-54H">
             <objects>
                 <navigationController id="avk-LI-tTS" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" image="HomeButton" id="84E-Jf-byc"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="HomeButton" selectedImage="HomeButtonSelected" id="84E-Jf-byc"/>
                     <keyCommands/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="7fW-PK-l5W">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -140,7 +140,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="43" translatesAutoresizingMaskIntoConstraints="NO" id="kxM-cd-HTX">
-                                <rect key="frame" x="214" y="202.5" width="172" height="145"/>
+                                <rect key="frame" x="214" y="203" width="172" height="145"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a17-l4-2pD">
                                         <rect key="frame" x="0.0" y="0.0" width="172" height="51"/>
@@ -172,6 +172,11 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xkH-cI-Ff7">
+                                <rect key="frame" x="258" y="556" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.87843137250000003" green="0.90980392160000001" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" red="0.9959825873374939" green="0.99621325731277466" blue="0.99187678098678589" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -234,7 +239,7 @@
         <scene sceneID="VV6-CX-haO">
             <objects>
                 <navigationController id="VIk-k1-bAe" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Library" image="LibraryButton" id="AGL-aB-Nl8"/>
+                    <tabBarItem key="tabBarItem" title="Library" image="LibraryButton" selectedImage="LibraryButtonSelected" id="AGL-aB-Nl8"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="gEl-gc-FBW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -301,7 +306,7 @@
         <scene sceneID="0bw-e2-JC4">
             <objects>
                 <navigationController id="Azl-Cb-kWv" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" image="SettingsButton" id="s1J-xg-K40"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="SettingsButton" selectedImage="SettingsButtonSelected" id="s1J-xg-K40"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Lj8-XR-urY">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -317,7 +322,10 @@
     </scenes>
     <resources>
         <image name="HomeButton" width="32" height="32"/>
+        <image name="HomeButtonSelected" width="32" height="32"/>
         <image name="LibraryButton" width="32" height="32"/>
+        <image name="LibraryButtonSelected" width="32" height="32"/>
         <image name="SettingsButton" width="32" height="32"/>
+        <image name="SettingsButtonSelected" width="32" height="32"/>
     </resources>
 </document>
