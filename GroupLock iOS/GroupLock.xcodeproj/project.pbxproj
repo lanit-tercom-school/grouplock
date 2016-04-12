@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		87B692111CB425E0008ACB6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B692101CB425E0008ACB6A /* AppDelegate.swift */; };
-		87B692131CB425E0008ACB6A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B692121CB425E0008ACB6A /* ViewController.swift */; };
+		87B692131CB425E0008ACB6A /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B692121CB425E0008ACB6A /* PasswordViewController.swift */; };
 		87B692161CB425E0008ACB6A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87B692141CB425E0008ACB6A /* Main.storyboard */; };
 		87B692191CB425E0008ACB6A /* GroupLock.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 87B692171CB425E0008ACB6A /* GroupLock.xcdatamodeld */; };
 		87B6921B1CB425E0008ACB6A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87B6921A1CB425E0008ACB6A /* Assets.xcassets */; };
@@ -17,7 +17,10 @@
 		87B692341CB425E0008ACB6A /* GroupLockUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B692331CB425E0008ACB6A /* GroupLockUITests.swift */; };
 		87B6927F1CB45188008ACB6A /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B6927E1CB45188008ACB6A /* UIViewController.swift */; };
 		87DE60DE1CB46373005EA79E /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87DE60DD1CB46373005EA79E /* LocalAuthentication.framework */; };
-		8A2443DF1CBAEC650057294F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2443DE1CBAEC650057294F /* HomeViewController.swift */; };
+		8A5DFB0D1CBC6D67001C1778 /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5DFB0C1CBC6D67001C1778 /* UINavigationController.swift */; };
+		8A5DFB0F1CBC8802001C1778 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5DFB0E1CBC8802001C1778 /* TabBarController.swift */; };
+		8A5DFB131CBC8966001C1778 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5DFB121CBC8966001C1778 /* Colors.swift */; };
+		8AEBD9C71CBD742800EE0738 /* GroupLockMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEBD9C61CBD742800EE0738 /* GroupLockMainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,7 +43,7 @@
 /* Begin PBXFileReference section */
 		87B6920D1CB425E0008ACB6A /* GroupLock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GroupLock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87B692101CB425E0008ACB6A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		87B692121CB425E0008ACB6A /* ViewController.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; tabWidth = 4; };
+		87B692121CB425E0008ACB6A /* PasswordViewController.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; tabWidth = 4; };
 		87B692151CB425E0008ACB6A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		87B692181CB425E0008ACB6A /* GroupLock.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GroupLock.xcdatamodel; sourceTree = "<group>"; };
 		87B6921A1CB425E0008ACB6A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -54,7 +57,10 @@
 		87B692351CB425E0008ACB6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87B6927E1CB45188008ACB6A /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; tabWidth = 4; };
 		87DE60DD1CB46373005EA79E /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
-		8A2443DE1CBAEC650057294F /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		8A5DFB0C1CBC6D67001C1778 /* UINavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
+		8A5DFB0E1CBC8802001C1778 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		8A5DFB121CBC8966001C1778 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		8AEBD9C61CBD742800EE0738 /* GroupLockMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupLockMainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,9 +98,9 @@
 				87B692321CB425E0008ACB6A /* GroupLockUITests */,
 				87B6920E1CB425E0008ACB6A /* Products */,
 			);
-			indentWidth = 2;
+			indentWidth = 4;
 			sourceTree = "<group>";
-			tabWidth = 2;
+			tabWidth = 4;
 		};
 		87B6920E1CB425E0008ACB6A /* Products */ = {
 			isa = PBXGroup;
@@ -110,9 +116,12 @@
 			isa = PBXGroup;
 			children = (
 				87B692101CB425E0008ACB6A /* AppDelegate.swift */,
-				87B692121CB425E0008ACB6A /* ViewController.swift */,
-				8A2443DE1CBAEC650057294F /* HomeViewController.swift */,
+				8A5DFB121CBC8966001C1778 /* Colors.swift */,
 				87B6927E1CB45188008ACB6A /* UIViewController.swift */,
+				8A5DFB0C1CBC6D67001C1778 /* UINavigationController.swift */,
+				87B692121CB425E0008ACB6A /* PasswordViewController.swift */,
+				8A5DFB0E1CBC8802001C1778 /* TabBarController.swift */,
+				8AEBD9C61CBD742800EE0738 /* GroupLockMainViewController.swift */,
 				87B692141CB425E0008ACB6A /* Main.storyboard */,
 				87B6921A1CB425E0008ACB6A /* Assets.xcassets */,
 				87B6921C1CB425E0008ACB6A /* LaunchScreen.storyboard */,
@@ -274,10 +283,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A2443DF1CBAEC650057294F /* HomeViewController.swift in Sources */,
-				87B692131CB425E0008ACB6A /* ViewController.swift in Sources */,
+				8A5DFB131CBC8966001C1778 /* Colors.swift in Sources */,
+				8A5DFB0D1CBC6D67001C1778 /* UINavigationController.swift in Sources */,
+				8A5DFB0F1CBC8802001C1778 /* TabBarController.swift in Sources */,
+				87B692131CB425E0008ACB6A /* PasswordViewController.swift in Sources */,
 				87B692191CB425E0008ACB6A /* GroupLock.xcdatamodeld in Sources */,
 				87B6927F1CB45188008ACB6A /* UIViewController.swift in Sources */,
+				8AEBD9C71CBD742800EE0738 /* GroupLockMainViewController.swift in Sources */,
 				87B692111CB425E0008ACB6A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
