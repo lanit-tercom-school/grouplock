@@ -140,7 +140,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="43" translatesAutoresizingMaskIntoConstraints="NO" id="kxM-cd-HTX">
-                                <rect key="frame" x="214" y="227" width="172" height="145"/>
+                                <rect key="frame" x="214" y="202.5" width="172" height="145"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a17-l4-2pD">
                                         <rect key="frame" x="0.0" y="0.0" width="172" height="51"/>
@@ -176,7 +176,7 @@
                         <color key="backgroundColor" red="0.87843137250000003" green="0.90980392160000001" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" red="0.9959825873374939" green="0.99621325731277466" blue="0.99187678098678589" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="kxM-cd-HTX" firstAttribute="centerY" secondItem="Gqg-VS-QNg" secondAttribute="centerY" id="0Ne-VO-ZE2"/>
+                            <constraint firstItem="kxM-cd-HTX" firstAttribute="centerY" secondItem="Gqg-VS-QNg" secondAttribute="centerY" constant="-25" id="0Ne-VO-ZE2"/>
                             <constraint firstItem="kxM-cd-HTX" firstAttribute="centerX" secondItem="Gqg-VS-QNg" secondAttribute="centerX" id="baZ-E1-d69"/>
                         </constraints>
                     </view>
