@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PasswordViewController: UIViewController {
+class PasswordViewController: UIViewController/*, UITextFieldDelegate*/ {
     
     // MARK: UI elements
     @IBOutlet var enterPasswordLabel: UILabel!
@@ -20,24 +20,51 @@ class PasswordViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //initialPasswordTextField.delegate = self
+        initialPasswordTextField.becomeFirstResponder()
         hideKeyboardWhenTappedAround()
+        initialPasswordTextField.tintColor = projectColors.cursorColor();
         view.backgroundColor = projectColors.mainColor()
+        proceedButton.backgroundColor = projectColors.wrongPasswordColor()
         //proceedButton.translatesAutoresizingMaskIntoConstraints = false
         enterPasswordLabel.tintColor = projectColors.wrongPasswordColor()
     }
     
     // MARK: Event handling
     @IBAction func onPasswordTextField(sender: UITextField) {
-        proceedButton.hidden = false
+//        proceedButton.hidden = false
         //showProceedButton(proceedButton)
-        //proceedButton.addTarget(self, action: #selector(PasswordViewController.onProceedButton), forControlEvents: UIControlEvents.TouchUpInside)
+        proceedButton.addTarget(self, action: #selector(PasswordViewController.onProceedButton), forControlEvents: UIControlEvents.TouchUpInside)
     }
     
     func onProceedButton(sender: UIButton) {
         // Until password check is implemented, then remove this
+        initialPasswordTextField.resignFirstResponder()
+        initialPasswordTextField.backgroundColor = projectColors.rightPasswordColor()
+        proceedButton.backgroundColor = projectColors.rightPasswordColor()
         enterPasswordLabel.textColor = projectColors.rightPasswordColor()
         
+        let vc = self.storyboard!.instantiateViewControllerWithIdentifier("TabBarController") as! TabBarController
+        self.presentViewController(vc, animated: true, completion: nil)
+        
     }
+    
+//    func textFieldShouldReturn(textField: UITextField) -> Bool {
+//        //hide the keyboard
+//        initialPasswordTextField.resignFirstResponder()
+//        onProceedButton(proceedButton)
+//        return true
+//    }
+
+    @IBAction func textFieldOnChange(sender: UITextField) {
+        if sender.text?.characters.count != 0 {
+            proceedButton.hidden = false
+        } else {
+            proceedButton.hidden = true
+        }
+    }
+
+
     
     // MARK: Helping Functions
     //    private func showProceedButton(button: UIButton) {

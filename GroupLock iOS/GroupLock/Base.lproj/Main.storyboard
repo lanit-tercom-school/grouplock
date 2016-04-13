@@ -33,32 +33,32 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9k8-8d-eQT" userLabel="Initial Password Text Field">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9k8-8d-eQT" userLabel="Initial Password Text Field">
                                 <rect key="frame" x="175" y="255" width="250" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="81M-sj-372"/>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="400" id="POM-Xx-MaH"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="aSO-M9-uHC"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 <connections>
                                     <action selector="onPasswordTextField:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="Qlw-rO-AAc"/>
+                                    <action selector="textFieldOnChange:" destination="BYZ-38-t0r" eventType="editingChanged" id="ZTl-9w-orJ"/>
                                 </connections>
                             </textField>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I8c-sf-7NN">
-                                <rect key="frame" x="236" y="310" width="128" height="33"/>
+                                <rect key="frame" x="216" y="308" width="168" height="37"/>
                                 <color key="backgroundColor" red="0.25490196078431371" green="0.70196078431372544" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="128" id="4Ts-vX-s8X"/>
-                                    <constraint firstAttribute="height" constant="33" id="Rjp-Ta-qmz"/>
+                                    <constraint firstAttribute="width" constant="168" id="4Ts-vX-s8X"/>
+                                    <constraint firstAttribute="height" constant="37" id="Rjp-Ta-qmz"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                <state key="normal" title="I'm not a cheater">
+                                <state key="normal" title="I'M NOT A CHEATER">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
-                                <connections>
-                                    <segue destination="YPl-G6-tPp" kind="show" id="LqS-Ox-LhZ"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.18823529410000001" green="0.23921568630000001" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -68,7 +68,7 @@
                             <constraint firstItem="9k8-8d-eQT" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-30" id="Bdl-58-8XW"/>
                             <constraint firstItem="Fk7-jF-owG" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ECb-0B-yzo"/>
                             <constraint firstItem="9k8-8d-eQT" firstAttribute="top" secondItem="Fk7-jF-owG" secondAttribute="bottom" constant="22" id="Qpb-UZ-dNT"/>
-                            <constraint firstItem="I8c-sf-7NN" firstAttribute="top" secondItem="9k8-8d-eQT" secondAttribute="bottom" constant="25" id="SUJ-eI-KmW"/>
+                            <constraint firstItem="I8c-sf-7NN" firstAttribute="top" secondItem="9k8-8d-eQT" secondAttribute="bottom" constant="23" id="SUJ-eI-KmW"/>
                             <constraint firstItem="I8c-sf-7NN" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="k2G-IL-5bF"/>
                             <constraint firstItem="9k8-8d-eQT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="txq-eP-RGI"/>
                         </constraints>
@@ -93,7 +93,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="mLa-Ky-P8r">
             <objects>
-                <tabBarController id="YPl-G6-tPp" customClass="TabBarController" customModule="GroupLock" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarController" id="YPl-G6-tPp" customClass="TabBarController" customModule="GroupLock" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="ViM-bW-gfp">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

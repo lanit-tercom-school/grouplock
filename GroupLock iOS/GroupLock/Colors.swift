@@ -42,6 +42,11 @@ class Colors: NSObject {
     func passwordButtonColor() -> UIColor {
         return UIColor(colorLiteralRed: 0.251, green: 0.643, blue: 0.239, alpha: 1.0)
     }
+    
+    func cursorColor() -> UIColor {
+        return self.mainColor()//UIColor.blackColor()
+    }
+    
 }
 
 
