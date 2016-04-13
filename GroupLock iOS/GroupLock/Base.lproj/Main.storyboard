@@ -59,6 +59,9 @@
                                 <state key="normal" title="I'M NOT A CHEATER">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <segue destination="YPl-G6-tPp" kind="presentation" id="uX7-UK-MUp"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.18823529410000001" green="0.23921568630000001" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
