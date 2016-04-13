@@ -56,6 +56,7 @@ class PasswordViewController: UIViewController/*, UITextFieldDelegate*/ {
 //        return true
 //    }
 
+    
     @IBAction func textFieldOnChange(sender: UITextField) {
         if sender.text?.characters.count != 0 {
             proceedButton.hidden = false
