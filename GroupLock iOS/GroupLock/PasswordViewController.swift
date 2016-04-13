@@ -65,7 +65,6 @@ class PasswordViewController: UIViewController/*, UITextFieldDelegate*/ {
         }
     }
 
-
     
     // MARK: Helping Functions
     //    private func showProceedButton(button: UIButton) {
