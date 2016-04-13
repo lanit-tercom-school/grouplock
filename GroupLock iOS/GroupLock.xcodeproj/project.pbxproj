@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		50E04A448FE6C19FFC34B0B4 /* libPods-GroupLockUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C868FCB141DC0E95C800DEE2 /* libPods-GroupLockUITests.a */; };
 		87B692111CB425E0008ACB6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B692101CB425E0008ACB6A /* AppDelegate.swift */; };
 		87B692131CB425E0008ACB6A /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B692121CB425E0008ACB6A /* PasswordViewController.swift */; };
 		87B692161CB425E0008ACB6A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87B692141CB425E0008ACB6A /* Main.storyboard */; };
@@ -19,12 +18,13 @@
 		87B6927F1CB45188008ACB6A /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B6927E1CB45188008ACB6A /* UIViewController.swift */; };
 		87DE60DE1CB46373005EA79E /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87DE60DD1CB46373005EA79E /* LocalAuthentication.framework */; };
 		87F118EE1CBEFDD80038F956 /* UI.nss in Resources */ = {isa = PBXBuildFile; fileRef = 87F118ED1CBEFDD80038F956 /* UI.nss */; };
+		87F118F01CBF0CD40038F956 /* NUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87F118EF1CBF0CD40038F956 /* NUI.framework */; };
+		87F118F21CBF0CD60038F956 /* NUIParse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87F118F11CBF0CD60038F956 /* NUIParse.framework */; };
 		8A5DFB0D1CBC6D67001C1778 /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5DFB0C1CBC6D67001C1778 /* UINavigationController.swift */; };
 		8A5DFB0F1CBC8802001C1778 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5DFB0E1CBC8802001C1778 /* TabBarController.swift */; };
 		8A5DFB131CBC8966001C1778 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5DFB121CBC8966001C1778 /* Colors.swift */; };
 		8AEBD9C71CBD742800EE0738 /* GroupLockMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEBD9C61CBD742800EE0738 /* GroupLockMainViewController.swift */; };
-		A7920D5FC9721800AD467893 /* libPods-GroupLock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DC835358D02A60A0F9487FA /* libPods-GroupLock.a */; };
-		F88E3FB4ED1EAAC3AB86D443 /* libPods-GroupLockTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7298B20F37FD501EF07F4B74 /* libPods-GroupLockTests.a */; };
+		EE8910BFFD13FC71A281707E /* Pods_GroupLock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0549E79252AA94ACFC04E669 /* Pods_GroupLock.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,14 +45,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0D8DED0377A873493EA44772 /* Pods-GroupLockUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GroupLockUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GroupLockUITests/Pods-GroupLockUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		17CB11599A88A5AD21D65479 /* Pods-GroupLockUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GroupLockUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GroupLockUITests/Pods-GroupLockUITests.release.xcconfig"; sourceTree = "<group>"; };
+		0549E79252AA94ACFC04E669 /* Pods_GroupLock.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GroupLock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F6029F9F9CB6209244CD4E1 /* Pods-GroupLock.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GroupLock.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GroupLock/Pods-GroupLock.debug.xcconfig"; sourceTree = "<group>"; };
-		4416C0A74E8B8031A77CFD92 /* Pods-GroupLockTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GroupLockTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GroupLockTests/Pods-GroupLockTests.debug.xcconfig"; sourceTree = "<group>"; };
 		50AC35FD6E16A942EC2AE3DE /* Pods-GroupLock.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GroupLock.release.xcconfig"; path = "Pods/Target Support Files/Pods-GroupLock/Pods-GroupLock.release.xcconfig"; sourceTree = "<group>"; };
-		6DC835358D02A60A0F9487FA /* libPods-GroupLock.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GroupLock.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7298B20F37FD501EF07F4B74 /* libPods-GroupLockTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GroupLockTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8420C73249DD6AB1698F2517 /* Pods-GroupLockTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GroupLockTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GroupLockTests/Pods-GroupLockTests.release.xcconfig"; sourceTree = "<group>"; };
 		87B6920D1CB425E0008ACB6A /* GroupLock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GroupLock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87B692101CB425E0008ACB6A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		87B692121CB425E0008ACB6A /* PasswordViewController.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; tabWidth = 4; };
@@ -69,13 +64,13 @@
 		87B692351CB425E0008ACB6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87B6927E1CB45188008ACB6A /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; tabWidth = 4; };
 		87DE60DD1CB46373005EA79E /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
-		87F118E91CBEFD8C0038F956 /* GroupLock-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GroupLock-Bridging-Header.h"; sourceTree = "<group>"; };
 		87F118ED1CBEFDD80038F956 /* UI.nss */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UI.nss; sourceTree = "<group>"; };
+		87F118EF1CBF0CD40038F956 /* NUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NUI.framework; path = "../../../Library/Developer/Xcode/DerivedData/GroupLock-ffmgilidnbhbqnfkgswyglwucvmu/Build/Products/Debug-iphonesimulator/NUI.framework"; sourceTree = "<group>"; };
+		87F118F11CBF0CD60038F956 /* NUIParse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NUIParse.framework; path = "../../../Library/Developer/Xcode/DerivedData/GroupLock-ffmgilidnbhbqnfkgswyglwucvmu/Build/Products/Debug-iphonesimulator/NUIParse.framework"; sourceTree = "<group>"; };
 		8A5DFB0C1CBC6D67001C1778 /* UINavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
 		8A5DFB0E1CBC8802001C1778 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		8A5DFB121CBC8966001C1778 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		8AEBD9C61CBD742800EE0738 /* GroupLockMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupLockMainViewController.swift; sourceTree = "<group>"; };
-		C868FCB141DC0E95C800DEE2 /* libPods-GroupLockUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GroupLockUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,8 +78,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87F118F21CBF0CD60038F956 /* NUIParse.framework in Frameworks */,
+				87F118F01CBF0CD40038F956 /* NUI.framework in Frameworks */,
 				87DE60DE1CB46373005EA79E /* LocalAuthentication.framework in Frameworks */,
-				A7920D5FC9721800AD467893 /* libPods-GroupLock.a in Frameworks */,
+				EE8910BFFD13FC71A281707E /* Pods_GroupLock.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,7 +89,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F88E3FB4ED1EAAC3AB86D443 /* libPods-GroupLockTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,7 +96,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				50E04A448FE6C19FFC34B0B4 /* libPods-GroupLockUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,10 +107,6 @@
 			children = (
 				1F6029F9F9CB6209244CD4E1 /* Pods-GroupLock.debug.xcconfig */,
 				50AC35FD6E16A942EC2AE3DE /* Pods-GroupLock.release.xcconfig */,
-				4416C0A74E8B8031A77CFD92 /* Pods-GroupLockTests.debug.xcconfig */,
-				8420C73249DD6AB1698F2517 /* Pods-GroupLockTests.release.xcconfig */,
-				0D8DED0377A873493EA44772 /* Pods-GroupLockUITests.debug.xcconfig */,
-				17CB11599A88A5AD21D65479 /* Pods-GroupLockUITests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -160,7 +151,6 @@
 				87B6921C1CB425E0008ACB6A /* LaunchScreen.storyboard */,
 				87B6921F1CB425E0008ACB6A /* Info.plist */,
 				87B692171CB425E0008ACB6A /* GroupLock.xcdatamodeld */,
-				87F118E91CBEFD8C0038F956 /* GroupLock-Bridging-Header.h */,
 				87F118ED1CBEFDD80038F956 /* UI.nss */,
 			);
 			path = GroupLock;
@@ -187,9 +177,9 @@
 		ED68019345A0323D60D469A2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6DC835358D02A60A0F9487FA /* libPods-GroupLock.a */,
-				7298B20F37FD501EF07F4B74 /* libPods-GroupLockTests.a */,
-				C868FCB141DC0E95C800DEE2 /* libPods-GroupLockUITests.a */,
+				87F118F11CBF0CD60038F956 /* NUIParse.framework */,
+				87F118EF1CBF0CD40038F956 /* NUI.framework */,
+				0549E79252AA94ACFC04E669 /* Pods_GroupLock.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -622,7 +612,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ltschool.GroupLock;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "GroupLock/GroupLock-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -641,14 +630,13 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ltschool.GroupLock;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "GroupLock/GroupLock-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
 		87B6923C1CB425E0008ACB6A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4416C0A74E8B8031A77CFD92 /* Pods-GroupLockTests.debug.xcconfig */;
+			baseConfigurationReference = 1F6029F9F9CB6209244CD4E1 /* Pods-GroupLock.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = GroupLockTests/Info.plist;
@@ -661,7 +649,6 @@
 		};
 		87B6923D1CB425E0008ACB6A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8420C73249DD6AB1698F2517 /* Pods-GroupLockTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = GroupLockTests/Info.plist;
@@ -674,7 +661,7 @@
 		};
 		87B6923F1CB425E0008ACB6A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0D8DED0377A873493EA44772 /* Pods-GroupLockUITests.debug.xcconfig */;
+			baseConfigurationReference = 1F6029F9F9CB6209244CD4E1 /* Pods-GroupLock.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = GroupLockUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -686,7 +673,6 @@
 		};
 		87B692401CB425E0008ACB6A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 17CB11599A88A5AD21D65479 /* Pods-GroupLockUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = GroupLockUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
