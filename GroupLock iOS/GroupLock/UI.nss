@@ -10,12 +10,12 @@
 
 View {
 background-color: @primaryBackgroundColor;
+exclude-subviews: UITextField;
 }
 
 NavigationBar {
 bar-tint-color: @mainColor;
 font-color: @primaryFontColor;
-background-color: @mainColor;
 background-tint-color: @primaryFontColor;
 }
 
@@ -25,9 +25,19 @@ background-tint-color: @mainColor;
 
 BarButton {
 font-color: @primaryFontColor;
-background-tint-color: @primaryFontColor;
+
 }
 
+Button {
+background-color: @mainColor;
+font-color: @primaryFontColor;
+corner-radius: 0;
+}
+
+TextField {
+tint-color: @mainColor;
+corner-radius: 0;
+}
 
 
 /* PasswordViewController */
@@ -39,11 +49,6 @@ background-color: @mainColor;
 ProceedButton {
 background-color: #40A43D;
 font-color: @primaryFontColor;
-corner-radius: 0;
-}
-
-PasswordTextField {
-background-tint-color: @mainColor;
 corner-radius: 0;
 }
 

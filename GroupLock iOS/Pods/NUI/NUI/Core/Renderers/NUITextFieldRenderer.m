@@ -27,6 +27,11 @@
         [textField setBackgroundColor:[NUISettings getColor:@"background-color" withClass:className]];
     }
     
+    // Set tint color
+    if ([NUISettings hasProperty:@"tint-color" withClass:className]) {
+        [textField setTintColor:[NUISettings getColor:@"tint-color" withClass:className]];
+    }
+    
     // Set background gradient
     if ([NUISettings hasProperty:@"background-color-top" withClass:className]) {
         UIImage *gradient = [NUIGraphics

@@ -257,7 +257,7 @@
 				TargetAttributes = {
 					87B6920C1CB425E0008ACB6A = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = T28WAZY524;
+						DevelopmentTeam = N4X84VA3BB;
 					};
 					87B692231CB425E0008ACB6A = {
 						CreatedOnToolsVersion = 7.3;
@@ -531,7 +531,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-D DEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = ltschool.GroupLock;
+				PRODUCT_BUNDLE_IDENTIFIER = "lanit-tercom-school.GroupLock";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -550,7 +550,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-D RELEASE";
-				PRODUCT_BUNDLE_IDENTIFIER = ltschool.GroupLock;
+				PRODUCT_BUNDLE_IDENTIFIER = "lanit-tercom-school.GroupLock";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
