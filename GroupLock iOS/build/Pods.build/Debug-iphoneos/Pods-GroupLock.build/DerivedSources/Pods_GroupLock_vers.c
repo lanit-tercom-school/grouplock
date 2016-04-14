@@ -1,0 +1,1 @@
+ const unsigned char Pods_GroupLockVersionString[] __attribute__ ((used)) = "@(#)PROGRAM:Pods_GroupLock  PROJECT:Pods-1" "\n"; const double Pods_GroupLockVersionNumber __attribute__ ((used)) = (double)1.;

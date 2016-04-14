@@ -32,6 +32,9 @@
                                     </fragment>
                                 </attributedString>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="EnterPasswordLabel"/>
+                                </userDefinedRuntimeAttributes>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9k8-8d-eQT" userLabel="Initial Password Text Field">
                                 <rect key="frame" x="175" y="255" width="250" height="30"/>
@@ -43,8 +46,10 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="PasswordTextField"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="onPasswordTextField:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="Qlw-rO-AAc"/>
                                     <action selector="textFieldOnChange:" destination="BYZ-38-t0r" eventType="editingChanged" id="ZTl-9w-orJ"/>
                                 </connections>
                             </textField>
@@ -59,6 +64,13 @@
                                 <state key="normal" title="I'M NOT A CHEATER">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="ProceedButton"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="onProceedButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5JB-LI-JNG"/>
+                                    <segue destination="YPl-G6-tPp" kind="presentation" id="uX7-UK-MUp"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.18823529410000001" green="0.23921568630000001" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -66,18 +78,13 @@
                             <constraint firstItem="Fk7-jF-owG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4HS-hB-Nq6"/>
                             <constraint firstItem="I8c-sf-7NN" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7l9-ga-cRs"/>
                             <constraint firstItem="9k8-8d-eQT" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-30" id="Bdl-58-8XW"/>
-                            <constraint firstItem="Fk7-jF-owG" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ECb-0B-yzo"/>
                             <constraint firstItem="9k8-8d-eQT" firstAttribute="top" secondItem="Fk7-jF-owG" secondAttribute="bottom" constant="22" id="Qpb-UZ-dNT"/>
                             <constraint firstItem="I8c-sf-7NN" firstAttribute="top" secondItem="9k8-8d-eQT" secondAttribute="bottom" constant="23" id="SUJ-eI-KmW"/>
-                            <constraint firstItem="I8c-sf-7NN" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="k2G-IL-5bF"/>
                             <constraint firstItem="9k8-8d-eQT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="txq-eP-RGI"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="ECb-0B-yzo"/>
-                                <exclude reference="k2G-IL-5bF"/>
-                            </mask>
-                        </variation>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="PasswordView"/>
+                        </userDefinedRuntimeAttributes>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
@@ -112,10 +119,10 @@
         <!--Home-->
         <scene sceneID="eTc-VS-54H">
             <objects>
-                <navigationController id="avk-LI-tTS" sceneMemberID="viewController">
+                <navigationController id="avk-LI-tTS" customClass="NavigationController" customModule="GroupLock" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Home" image="HomeButton" selectedImage="HomeButtonSelected" id="84E-Jf-byc"/>
                     <keyCommands/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7fW-PK-l5W">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="7fW-PK-l5W">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -130,17 +137,17 @@
         <!--GroupLock-->
         <scene sceneID="e43-H1-Rg5">
             <objects>
-                <viewController id="qZR-CY-82Z" customClass="GroupLockMainViewController" customModule="GroupLock" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="qZR-CY-82Z" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="s0i-cH-rCT"/>
                         <viewControllerLayoutGuide type="bottom" id="HO9-uW-Z1N"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Gqg-VS-QNg">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="43" translatesAutoresizingMaskIntoConstraints="NO" id="kxM-cd-HTX">
-                                <rect key="frame" x="214" y="203" width="172" height="145"/>
+                                <rect key="frame" x="214" y="171" width="172" height="145"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a17-l4-2pD">
                                         <rect key="frame" x="0.0" y="0.0" width="172" height="51"/>
@@ -173,7 +180,6 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="0.87843137250000003" green="0.90980392160000001" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" red="0.9959825873374939" green="0.99621325731277466" blue="0.99187678098678589" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="kxM-cd-HTX" firstAttribute="centerY" secondItem="Gqg-VS-QNg" secondAttribute="centerY" constant="-25" id="0Ne-VO-ZE2"/>
@@ -183,10 +189,6 @@
                     <navigationItem key="navigationItem" title="GroupLock" id="wEn-rI-AJ1">
                         <barButtonItem key="backBarButtonItem" title="GroupLock" id="ZJf-JQ-HXe"/>
                     </navigationItem>
-                    <connections>
-                        <outlet property="decryptButton" destination="kac-3U-MlH" id="Rfr-ef-4he"/>
-                        <outlet property="encryptButton" destination="a17-l4-2pD" id="q0A-ps-PBv"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dh4-hd-SjP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -201,7 +203,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Cqg-wK-QYk"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="9m8-TJ-fWF">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.87843137250000003" green="0.90980392160000001" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -220,7 +222,7 @@
                         <viewControllerLayoutGuide type="bottom" id="GAj-MH-s2G"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Def-jz-ioh">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.87843137250000003" green="0.90980392160000001" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" red="0.9959825873374939" green="0.99621325731277466" blue="0.99187678098678589" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -233,9 +235,9 @@
         <!--Library-->
         <scene sceneID="VV6-CX-haO">
             <objects>
-                <navigationController id="VIk-k1-bAe" sceneMemberID="viewController">
+                <navigationController id="VIk-k1-bAe" customClass="NavigationController" customModule="GroupLock" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Library" image="LibraryButton" selectedImage="LibraryButtonSelected" id="AGL-aB-Nl8"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gEl-gc-FBW">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="gEl-gc-FBW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -256,7 +258,7 @@
                         <viewControllerLayoutGuide type="bottom" id="9La-Wv-cy1"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="178-xe-v9K">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.87843137250000003" green="0.90980392160000001" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -272,12 +274,12 @@
             <objects>
                 <tableViewController id="gnJ-jc-n0C" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="zml-1n-yJo">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.87843137250000003" green="0.90980392160000001" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="44" id="4IA-zD-6x7">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4IA-zD-6x7" id="1XG-3e-0PS">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -300,9 +302,9 @@
         <!--Settings-->
         <scene sceneID="0bw-e2-JC4">
             <objects>
-                <navigationController id="Azl-Cb-kWv" sceneMemberID="viewController">
+                <navigationController id="Azl-Cb-kWv" customClass="NavigationController" customModule="GroupLock" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Settings" image="SettingsButton" selectedImage="SettingsButtonSelected" id="s1J-xg-K40"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Lj8-XR-urY">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Lj8-XR-urY">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
