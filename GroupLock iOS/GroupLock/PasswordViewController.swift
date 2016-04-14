@@ -8,46 +8,26 @@
 
 import UIKit
 
-class PasswordViewController: UIViewController/*, UITextFieldDelegate*/ {
+class PasswordViewController: UIViewController {
     
     // MARK: UI elements
     @IBOutlet var enterPasswordLabel: UILabel!
     @IBOutlet var initialPasswordTextField: UITextField!
     @IBOutlet var proceedButton: UIButton!
-    let projectColors = Colors()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //initialPasswordTextField.delegate = self
-        
-        //        initialPasswordTextField.becomeFirstResponder()
-        
         hideKeyboardWhenTappedAround()
         
-        //        initialPasswordTextField.tintColor = projectColors.cursorColor();
-        
-        //        view.backgroundColor = projectColors.mainColor()
-        
-        //        proceedButton.backgroundColor = projectColors.wrongPasswordColor()
-        
-        proceedButton.translatesAutoresizingMaskIntoConstraints = false
-        
-        //        enterPasswordLabel.tintColor = projectColors.wrongPasswordColor()
+        initialPasswordTextField.becomeFirstResponder()
     }
     
     // MARK: Event handling
-    @IBAction func onPasswordTextField(sender: UITextField) {
-        proceedButton.hidden = true
+    @IBAction func onProceedButton(sender: UIButton) {
+        // password check
     }
-    
-    
-    //    func textFieldShouldReturn(textField: UITextField) -> Bool {
-    //        //hide the keyboard
-    //        initialPasswordTextField.resignFirstResponder()
-    //        onProceedButton(proceedButton)
-    //        return true
-    //    }
+
+
     
     
     @IBAction func textFieldOnChange(sender: UITextField) {

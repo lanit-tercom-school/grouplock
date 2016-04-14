@@ -1,5 +1,5 @@
 //
-//  TabBarController.swift
+//  NavigationController.swift
 //  GroupLock
 //
 //  Created by Sergej Jaskiewicz on 14.04.16.
@@ -7,15 +7,18 @@
 //
 
 import UIKit
+import NUI
 
-class TabBarController: UITabBarController {
+class NavigationController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
     }
 
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
     
 
     /*
