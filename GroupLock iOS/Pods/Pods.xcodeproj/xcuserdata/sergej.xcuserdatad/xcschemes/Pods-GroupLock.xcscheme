@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '7D3C05708C8468BC14DED808'
+               BlueprintIdentifier = '4EDA4A7FD6EE1C8C0D56E824'
                BlueprintName = 'Pods-GroupLock'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'Pods_GroupLock.framework'>

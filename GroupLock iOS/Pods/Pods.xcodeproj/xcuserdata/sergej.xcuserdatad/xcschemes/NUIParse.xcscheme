@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'BF740B7346544CB4E6C60035'
+               BlueprintIdentifier = 'DC1F67289AE529A49382D6C7'
                BlueprintName = 'NUIParse'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'NUIParse.framework'>
