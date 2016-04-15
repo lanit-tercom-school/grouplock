@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7BABCA666A589AF80007FE12 /* Pods_GroupLock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96E5492D4816B7DA3EE8F45D /* Pods_GroupLock.framework */; };
+		8748B2AF1CBFB73A000C57EB /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8748B2AE1CBFB73A000C57EB /* TabBarController.swift */; };
+		8748B2B11CBFB780000C57EB /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8748B2B01CBFB780000C57EB /* NavigationController.swift */; };
 		87B692111CB425E0008ACB6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B692101CB425E0008ACB6A /* AppDelegate.swift */; };
-		87B692131CB425E0008ACB6A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B692121CB425E0008ACB6A /* ViewController.swift */; };
+		87B692131CB425E0008ACB6A /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B692121CB425E0008ACB6A /* PasswordViewController.swift */; };
 		87B692161CB425E0008ACB6A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87B692141CB425E0008ACB6A /* Main.storyboard */; };
 		87B692191CB425E0008ACB6A /* GroupLock.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 87B692171CB425E0008ACB6A /* GroupLock.xcdatamodeld */; };
 		87B6921B1CB425E0008ACB6A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87B6921A1CB425E0008ACB6A /* Assets.xcassets */; };
@@ -17,6 +20,9 @@
 		87B692341CB425E0008ACB6A /* GroupLockUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B692331CB425E0008ACB6A /* GroupLockUITests.swift */; };
 		87B6927F1CB45188008ACB6A /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B6927E1CB45188008ACB6A /* UIViewController.swift */; };
 		87DE60DE1CB46373005EA79E /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87DE60DD1CB46373005EA79E /* LocalAuthentication.framework */; };
+		87F118EE1CBEFDD80038F956 /* UI.nss in Resources */ = {isa = PBXBuildFile; fileRef = 87F118ED1CBEFDD80038F956 /* UI.nss */; };
+		87F118F01CBF0CD40038F956 /* NUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87F118EF1CBF0CD40038F956 /* NUI.framework */; };
+		87F118F21CBF0CD60038F956 /* NUIParse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87F118F11CBF0CD60038F956 /* NUIParse.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,9 +43,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4EE77687B0E1F1453E33B6F6 /* Pods-GroupLock.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GroupLock.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GroupLock/Pods-GroupLock.debug.xcconfig"; sourceTree = "<group>"; };
+		8748B2AE1CBFB73A000C57EB /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		8748B2B01CBFB780000C57EB /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		87B6920D1CB425E0008ACB6A /* GroupLock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GroupLock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87B692101CB425E0008ACB6A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		87B692121CB425E0008ACB6A /* ViewController.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; tabWidth = 4; };
+		87B692121CB425E0008ACB6A /* PasswordViewController.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; tabWidth = 4; };
 		87B692151CB425E0008ACB6A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		87B692181CB425E0008ACB6A /* GroupLock.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GroupLock.xcdatamodel; sourceTree = "<group>"; };
 		87B6921A1CB425E0008ACB6A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -53,6 +62,11 @@
 		87B692351CB425E0008ACB6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87B6927E1CB45188008ACB6A /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; tabWidth = 4; };
 		87DE60DD1CB46373005EA79E /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
+		87F118ED1CBEFDD80038F956 /* UI.nss */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UI.nss; sourceTree = "<group>"; };
+		87F118EF1CBF0CD40038F956 /* NUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NUI.framework; path = "../../../Library/Developer/Xcode/DerivedData/GroupLock-ffmgilidnbhbqnfkgswyglwucvmu/Build/Products/Debug-iphonesimulator/NUI.framework"; sourceTree = "<group>"; };
+		87F118F11CBF0CD60038F956 /* NUIParse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NUIParse.framework; path = "../../../Library/Developer/Xcode/DerivedData/GroupLock-ffmgilidnbhbqnfkgswyglwucvmu/Build/Products/Debug-iphonesimulator/NUIParse.framework"; sourceTree = "<group>"; };
+		96E5492D4816B7DA3EE8F45D /* Pods_GroupLock.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GroupLock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1BED2D33CECDB83089990DD /* Pods-GroupLock.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GroupLock.release.xcconfig"; path = "Pods/Target Support Files/Pods-GroupLock/Pods-GroupLock.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,7 +74,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87F118F21CBF0CD60038F956 /* NUIParse.framework in Frameworks */,
+				87F118F01CBF0CD40038F956 /* NUI.framework in Frameworks */,
 				87DE60DE1CB46373005EA79E /* LocalAuthentication.framework in Frameworks */,
+				7BABCA666A589AF80007FE12 /* Pods_GroupLock.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +98,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		01A7C6A515754F8BA8F2769D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4EE77687B0E1F1453E33B6F6 /* Pods-GroupLock.debug.xcconfig */,
+				B1BED2D33CECDB83089990DD /* Pods-GroupLock.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		8748B2AD1CBFB031000C57EB /* Class Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				87B6927E1CB45188008ACB6A /* UIViewController.swift */,
+			);
+			name = "Class Extensions";
+			sourceTree = "<group>";
+		};
 		87B692041CB425E0008ACB6A = {
 			isa = PBXGroup;
 			children = (
@@ -89,10 +123,12 @@
 				87B692271CB425E0008ACB6A /* GroupLockTests */,
 				87B692321CB425E0008ACB6A /* GroupLockUITests */,
 				87B6920E1CB425E0008ACB6A /* Products */,
+				ED68019345A0323D60D469A2 /* Frameworks */,
+				01A7C6A515754F8BA8F2769D /* Pods */,
 			);
-			indentWidth = 2;
+			indentWidth = 4;
 			sourceTree = "<group>";
-			tabWidth = 2;
+			tabWidth = 4;
 		};
 		87B6920E1CB425E0008ACB6A /* Products */ = {
 			isa = PBXGroup;
@@ -107,9 +143,12 @@
 		87B6920F1CB425E0008ACB6A /* GroupLock */ = {
 			isa = PBXGroup;
 			children = (
+				8748B2AD1CBFB031000C57EB /* Class Extensions */,
+				87F118ED1CBEFDD80038F956 /* UI.nss */,
 				87B692101CB425E0008ACB6A /* AppDelegate.swift */,
-				87B692121CB425E0008ACB6A /* ViewController.swift */,
-				87B6927E1CB45188008ACB6A /* UIViewController.swift */,
+				87B692121CB425E0008ACB6A /* PasswordViewController.swift */,
+				8748B2AE1CBFB73A000C57EB /* TabBarController.swift */,
+				8748B2B01CBFB780000C57EB /* NavigationController.swift */,
 				87B692141CB425E0008ACB6A /* Main.storyboard */,
 				87B6921A1CB425E0008ACB6A /* Assets.xcassets */,
 				87B6921C1CB425E0008ACB6A /* LaunchScreen.storyboard */,
@@ -137,6 +176,16 @@
 			path = GroupLockUITests;
 			sourceTree = "<group>";
 		};
+		ED68019345A0323D60D469A2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				87F118F11CBF0CD60038F956 /* NUIParse.framework */,
+				87F118EF1CBF0CD40038F956 /* NUI.framework */,
+				96E5492D4816B7DA3EE8F45D /* Pods_GroupLock.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -144,9 +193,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 87B692381CB425E0008ACB6A /* Build configuration list for PBXNativeTarget "GroupLock" */;
 			buildPhases = (
+				423EEAF086366E2F0DAC37B2 /* Check Pods Manifest.lock */,
 				87B692091CB425E0008ACB6A /* Sources */,
 				87B6920A1CB425E0008ACB6A /* Frameworks */,
 				87B6920B1CB425E0008ACB6A /* Resources */,
+				C184C9577A401136E0FCC5CF /* Embed Pods Frameworks */,
+				3102A2EAB475018FE0FBAA6B /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -205,6 +257,7 @@
 				TargetAttributes = {
 					87B6920C1CB425E0008ACB6A = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = N4X84VA3BB;
 					};
 					87B692231CB425E0008ACB6A = {
 						CreatedOnToolsVersion = 7.3;
@@ -245,6 +298,7 @@
 			files = (
 				87B6921E1CB425E0008ACB6A /* LaunchScreen.storyboard in Resources */,
 				87B6921B1CB425E0008ACB6A /* Assets.xcassets in Resources */,
+				87F118EE1CBEFDD80038F956 /* UI.nss in Resources */,
 				87B692161CB425E0008ACB6A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -265,14 +319,64 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3102A2EAB475018FE0FBAA6B /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GroupLock/Pods-GroupLock-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		423EEAF086366E2F0DAC37B2 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C184C9577A401136E0FCC5CF /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GroupLock/Pods-GroupLock-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		87B692091CB425E0008ACB6A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				87B692131CB425E0008ACB6A /* ViewController.swift in Sources */,
+				87B692131CB425E0008ACB6A /* PasswordViewController.swift in Sources */,
+				8748B2B11CBFB780000C57EB /* NavigationController.swift in Sources */,
 				87B692191CB425E0008ACB6A /* GroupLock.xcdatamodeld in Sources */,
 				87B6927F1CB45188008ACB6A /* UIViewController.swift in Sources */,
+				8748B2AF1CBFB73A000C57EB /* TabBarController.swift in Sources */,
 				87B692111CB425E0008ACB6A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -417,28 +521,35 @@
 		};
 		87B692391CB425E0008ACB6A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4EE77687B0E1F1453E33B6F6 /* Pods-GroupLock.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = GroupLock/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "-D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = "lanit-tercom-school.GroupLock";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		87B6923A1CB425E0008ACB6A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B1BED2D33CECDB83089990DD /* Pods-GroupLock.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = GroupLock/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "-D RELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = "lanit-tercom-school.GroupLock";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
