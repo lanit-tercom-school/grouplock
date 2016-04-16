@@ -10,14 +10,25 @@
 		7BABCA666A589AF80007FE12 /* Pods_GroupLock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96E5492D4816B7DA3EE8F45D /* Pods_GroupLock.framework */; };
 		8748B2AF1CBFB73A000C57EB /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8748B2AE1CBFB73A000C57EB /* TabBarController.swift */; };
 		8748B2B11CBFB780000C57EB /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8748B2B01CBFB780000C57EB /* NavigationController.swift */; };
+		87B072C81CC0E13000916D09 /* NUIViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B072C71CC0E13000916D09 /* NUIViewTests.swift */; };
+		87B072CA1CC0E59D00916D09 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B072C91CC0E59D00916D09 /* UIColor.swift */; };
+		87B072CE1CC15FF700916D09 /* NUITests.nss in Resources */ = {isa = PBXBuildFile; fileRef = 87B072CD1CC15FF700916D09 /* NUITests.nss */; };
+		87B072D11CC1659700916D09 /* NUITests.nss in Resources */ = {isa = PBXBuildFile; fileRef = 87B072CD1CC15FF700916D09 /* NUITests.nss */; };
+		87B072D31CC1679200916D09 /* GroupLockUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B072D21CC1679200916D09 /* GroupLockUITests.swift */; };
+		87B072D51CC1680F00916D09 /* NUINavigationBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B072D41CC1680F00916D09 /* NUINavigationBarTests.swift */; };
+		87B072D91CC188EC00916D09 /* NUITabBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B072D81CC188EC00916D09 /* NUITabBarTests.swift */; };
+		87B072DB1CC1AB4200916D09 /* NUIBarButtonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B072DA1CC1AB4200916D09 /* NUIBarButtonTests.swift */; };
+		87B072DD1CC1AD9C00916D09 /* NUIButtonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B072DC1CC1AD9C00916D09 /* NUIButtonTests.swift */; };
+		87B072DF1CC1B13600916D09 /* NUITextFieldTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B072DE1CC1B13600916D09 /* NUITextFieldTests.swift */; };
+		87B072E21CC1B7B300916D09 /* NUIPasswordViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B072E11CC1B7B300916D09 /* NUIPasswordViewTests.swift */; };
+		87B072E41CC1B8E600916D09 /* NUIProceedButtonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B072E31CC1B8E600916D09 /* NUIProceedButtonTests.swift */; };
+		87B072E71CC1B9F900916D09 /* NUIEnterPasswordLabelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B072E61CC1B9F900916D09 /* NUIEnterPasswordLabelTests.swift */; };
 		87B692111CB425E0008ACB6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B692101CB425E0008ACB6A /* AppDelegate.swift */; };
 		87B692131CB425E0008ACB6A /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B692121CB425E0008ACB6A /* PasswordViewController.swift */; };
 		87B692161CB425E0008ACB6A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87B692141CB425E0008ACB6A /* Main.storyboard */; };
 		87B692191CB425E0008ACB6A /* GroupLock.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 87B692171CB425E0008ACB6A /* GroupLock.xcdatamodeld */; };
 		87B6921B1CB425E0008ACB6A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87B6921A1CB425E0008ACB6A /* Assets.xcassets */; };
 		87B6921E1CB425E0008ACB6A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87B6921C1CB425E0008ACB6A /* LaunchScreen.storyboard */; };
-		87B692291CB425E0008ACB6A /* GroupLockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B692281CB425E0008ACB6A /* GroupLockTests.swift */; };
-		87B692341CB425E0008ACB6A /* GroupLockUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B692331CB425E0008ACB6A /* GroupLockUITests.swift */; };
 		87B6927F1CB45188008ACB6A /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B6927E1CB45188008ACB6A /* UIViewController.swift */; };
 		87DE60DE1CB46373005EA79E /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87DE60DD1CB46373005EA79E /* LocalAuthentication.framework */; };
 		87F118EE1CBEFDD80038F956 /* UI.nss in Resources */ = {isa = PBXBuildFile; fileRef = 87F118ED1CBEFDD80038F956 /* UI.nss */; };
@@ -46,6 +57,18 @@
 		4EE77687B0E1F1453E33B6F6 /* Pods-GroupLock.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GroupLock.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GroupLock/Pods-GroupLock.debug.xcconfig"; sourceTree = "<group>"; };
 		8748B2AE1CBFB73A000C57EB /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		8748B2B01CBFB780000C57EB /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		87B072C71CC0E13000916D09 /* NUIViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NUIViewTests.swift; sourceTree = "<group>"; };
+		87B072C91CC0E59D00916D09 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		87B072CD1CC15FF700916D09 /* NUITests.nss */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NUITests.nss; sourceTree = "<group>"; };
+		87B072D21CC1679200916D09 /* GroupLockUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupLockUITests.swift; sourceTree = "<group>"; };
+		87B072D41CC1680F00916D09 /* NUINavigationBarTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NUINavigationBarTests.swift; sourceTree = "<group>"; };
+		87B072D81CC188EC00916D09 /* NUITabBarTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NUITabBarTests.swift; sourceTree = "<group>"; };
+		87B072DA1CC1AB4200916D09 /* NUIBarButtonTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NUIBarButtonTests.swift; sourceTree = "<group>"; };
+		87B072DC1CC1AD9C00916D09 /* NUIButtonTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NUIButtonTests.swift; sourceTree = "<group>"; };
+		87B072DE1CC1B13600916D09 /* NUITextFieldTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NUITextFieldTests.swift; sourceTree = "<group>"; };
+		87B072E11CC1B7B300916D09 /* NUIPasswordViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NUIPasswordViewTests.swift; sourceTree = "<group>"; };
+		87B072E31CC1B8E600916D09 /* NUIProceedButtonTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NUIProceedButtonTests.swift; sourceTree = "<group>"; };
+		87B072E61CC1B9F900916D09 /* NUIEnterPasswordLabelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NUIEnterPasswordLabelTests.swift; sourceTree = "<group>"; };
 		87B6920D1CB425E0008ACB6A /* GroupLock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GroupLock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87B692101CB425E0008ACB6A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		87B692121CB425E0008ACB6A /* PasswordViewController.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; tabWidth = 4; };
@@ -55,10 +78,8 @@
 		87B6921D1CB425E0008ACB6A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		87B6921F1CB425E0008ACB6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87B692241CB425E0008ACB6A /* GroupLockTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GroupLockTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		87B692281CB425E0008ACB6A /* GroupLockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupLockTests.swift; sourceTree = "<group>"; };
 		87B6922A1CB425E0008ACB6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87B6922F1CB425E0008ACB6A /* GroupLockUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GroupLockUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		87B692331CB425E0008ACB6A /* GroupLockUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupLockUITests.swift; sourceTree = "<group>"; };
 		87B692351CB425E0008ACB6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87B6927E1CB45188008ACB6A /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; tabWidth = 4; };
 		87DE60DD1CB46373005EA79E /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
@@ -111,8 +132,34 @@
 			isa = PBXGroup;
 			children = (
 				87B6927E1CB45188008ACB6A /* UIViewController.swift */,
+				87B072C91CC0E59D00916D09 /* UIColor.swift */,
 			);
 			name = "Class Extensions";
+			sourceTree = "<group>";
+		};
+		87B072C61CC0E0C400916D09 /* NUITests */ = {
+			isa = PBXGroup;
+			children = (
+				87B072C71CC0E13000916D09 /* NUIViewTests.swift */,
+				87B072D41CC1680F00916D09 /* NUINavigationBarTests.swift */,
+				87B072D81CC188EC00916D09 /* NUITabBarTests.swift */,
+				87B072DA1CC1AB4200916D09 /* NUIBarButtonTests.swift */,
+				87B072DC1CC1AD9C00916D09 /* NUIButtonTests.swift */,
+				87B072DE1CC1B13600916D09 /* NUITextFieldTests.swift */,
+				87B072E01CC1B77600916D09 /* PasswordViewController Custom Classes */,
+				87B072CD1CC15FF700916D09 /* NUITests.nss */,
+			);
+			name = NUITests;
+			sourceTree = "<group>";
+		};
+		87B072E01CC1B77600916D09 /* PasswordViewController Custom Classes */ = {
+			isa = PBXGroup;
+			children = (
+				87B072E11CC1B7B300916D09 /* NUIPasswordViewTests.swift */,
+				87B072E31CC1B8E600916D09 /* NUIProceedButtonTests.swift */,
+				87B072E61CC1B9F900916D09 /* NUIEnterPasswordLabelTests.swift */,
+			);
+			name = "PasswordViewController Custom Classes";
 			sourceTree = "<group>";
 		};
 		87B692041CB425E0008ACB6A = {
@@ -161,7 +208,7 @@
 		87B692271CB425E0008ACB6A /* GroupLockTests */ = {
 			isa = PBXGroup;
 			children = (
-				87B692281CB425E0008ACB6A /* GroupLockTests.swift */,
+				87B072C61CC0E0C400916D09 /* NUITests */,
 				87B6922A1CB425E0008ACB6A /* Info.plist */,
 			);
 			path = GroupLockTests;
@@ -170,7 +217,7 @@
 		87B692321CB425E0008ACB6A /* GroupLockUITests */ = {
 			isa = PBXGroup;
 			children = (
-				87B692331CB425E0008ACB6A /* GroupLockUITests.swift */,
+				87B072D21CC1679200916D09 /* GroupLockUITests.swift */,
 				87B692351CB425E0008ACB6A /* Info.plist */,
 			);
 			path = GroupLockUITests;
@@ -296,6 +343,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87B072D11CC1659700916D09 /* NUITests.nss in Resources */,
 				87B6921E1CB425E0008ACB6A /* LaunchScreen.storyboard in Resources */,
 				87B6921B1CB425E0008ACB6A /* Assets.xcassets in Resources */,
 				87F118EE1CBEFDD80038F956 /* UI.nss in Resources */,
@@ -307,6 +355,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87B072CE1CC15FF700916D09 /* NUITests.nss in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,6 +422,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				87B692131CB425E0008ACB6A /* PasswordViewController.swift in Sources */,
+				87B072CA1CC0E59D00916D09 /* UIColor.swift in Sources */,
 				8748B2B11CBFB780000C57EB /* NavigationController.swift in Sources */,
 				87B692191CB425E0008ACB6A /* GroupLock.xcdatamodeld in Sources */,
 				87B6927F1CB45188008ACB6A /* UIViewController.swift in Sources */,
@@ -385,7 +435,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				87B692291CB425E0008ACB6A /* GroupLockTests.swift in Sources */,
+				87B072DF1CC1B13600916D09 /* NUITextFieldTests.swift in Sources */,
+				87B072D91CC188EC00916D09 /* NUITabBarTests.swift in Sources */,
+				87B072E21CC1B7B300916D09 /* NUIPasswordViewTests.swift in Sources */,
+				87B072E41CC1B8E600916D09 /* NUIProceedButtonTests.swift in Sources */,
+				87B072D51CC1680F00916D09 /* NUINavigationBarTests.swift in Sources */,
+				87B072DB1CC1AB4200916D09 /* NUIBarButtonTests.swift in Sources */,
+				87B072DD1CC1AD9C00916D09 /* NUIButtonTests.swift in Sources */,
+				87B072C81CC0E13000916D09 /* NUIViewTests.swift in Sources */,
+				87B072E71CC1B9F900916D09 /* NUIEnterPasswordLabelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,7 +451,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				87B692341CB425E0008ACB6A /* GroupLockUITests.swift in Sources */,
+				87B072D31CC1679200916D09 /* GroupLockUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -526,6 +584,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEFINES_MODULE = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = GroupLock/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
@@ -545,6 +604,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEFINES_MODULE = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = GroupLock/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
@@ -583,10 +643,12 @@
 		87B6923F1CB425E0008ACB6A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = GroupLockUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "lanit-tercom-school.GroupLockUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_TARGET_NAME = GroupLock;
 			};
 			name = Debug;
@@ -594,6 +656,7 @@
 		87B692401CB425E0008ACB6A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = GroupLockUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "lanit-tercom-school.GroupLockUITests";
