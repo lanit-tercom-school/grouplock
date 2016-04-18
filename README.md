@@ -8,6 +8,9 @@ Hey! This is a GroupLock project. This will allow you (in near future) to stay n
 
 Future scope:
 1) Implement Android-based version
+
 2) Implement iOS-based version
+
 3) Implement Windows Phone-based version
+
 4) Algorithms investigation
