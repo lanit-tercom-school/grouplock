@@ -1,3 +1,5 @@
+/* Please consider adding unit tests for each new class and property */
+
 @primaryFontName: HelveticaNeue;
 @secondaryFontName: HelveticaNeue-Light;
 
@@ -25,7 +27,6 @@ background-tint-color: @mainColor;
 
 BarButton {
 font-color: @primaryFontColor;
-
 }
 
 Button {

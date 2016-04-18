@@ -25,7 +25,7 @@
                                 <attributedString key="attributedText">
                                     <fragment content="ENTER PASSWORD">
                                         <attributes>
-                                            <color key="NSColor" red="0.99215686274509807" green="0.22745098039215686" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <font key="NSFont" size="40" name="HelveticaNeue"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
@@ -38,15 +38,12 @@
                             </label>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I8c-sf-7NN">
                                 <rect key="frame" x="250" y="308" width="100" height="37"/>
-                                <color key="backgroundColor" red="0.25490196078431371" green="0.70196078431372544" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="4Ts-vX-s8X"/>
                                     <constraint firstAttribute="height" constant="37" id="Rjp-Ta-qmz"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                <state key="normal" title="Proceed">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
+                                <state key="normal" title="Proceed"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="ProceedButton"/>
                                 </userDefinedRuntimeAttributes>
@@ -63,7 +60,6 @@
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="400" id="POM-Xx-MaH"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="aSO-M9-uHC"/>
                                 </constraints>
-                                <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
                                 <connections>
@@ -71,7 +67,7 @@
                                 </connections>
                             </textField>
                         </subviews>
-                        <color key="backgroundColor" red="0.18823529410000001" green="0.23921568630000001" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Fk7-jF-owG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4HS-hB-Nq6"/>
                             <constraint firstItem="I8c-sf-7NN" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7l9-ga-cRs"/>
@@ -124,10 +120,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
-                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Fcv-8Y-wFC">
-                        <rect key="frame" x="0.0" y="556" width="600" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </toolbar>
                     <connections>
                         <segue destination="qZR-CY-82Z" kind="relationship" relationship="rootViewController" id="0cX-yT-SSC"/>
                     </connections>
@@ -153,13 +145,12 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a17-l4-2pD">
                                         <rect key="frame" x="0.0" y="0.0" width="172" height="51"/>
-                                        <color key="backgroundColor" red="0.18823529410000001" green="0.23921568630000001" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="51" id="IHV-CU-vIR"/>
                                             <constraint firstAttribute="width" constant="172" id="ZFa-gI-tIh"/>
                                         </constraints>
                                         <state key="normal" title="ENCRYPT">
-                                            <color key="titleColor" red="0.9959825873374939" green="0.99621325731277466" blue="0.99187678098678589" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
                                             <segue destination="7rm-kT-rrw" kind="show" id="A4I-bD-HTh"/>
@@ -167,13 +158,12 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kac-3U-MlH">
                                         <rect key="frame" x="0.0" y="94" width="172" height="51"/>
-                                        <color key="backgroundColor" red="0.18823529410000001" green="0.23921568630000001" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="51" id="7uI-SO-r6h"/>
                                             <constraint firstAttribute="width" constant="172" id="fFB-Ri-hes"/>
                                         </constraints>
                                         <state key="normal" title="DECRYPT">
-                                            <color key="titleColor" red="0.9959825873374939" green="0.99621325731277466" blue="0.99187678098678589" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
                                             <segue destination="AeK-f2-8gj" kind="show" id="vtb-Se-6Ed"/>
@@ -207,7 +197,6 @@
                     <view key="view" contentMode="scaleToFill" id="9m8-TJ-fWF">
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.87843137250000003" green="0.90980392160000001" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                 </viewController>
@@ -226,7 +215,6 @@
                     <view key="view" contentMode="scaleToFill" id="Def-jz-ioh">
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.87843137250000003" green="0.90980392160000001" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" red="0.9959825873374939" green="0.99621325731277466" blue="0.99187678098678589" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                 </viewController>
@@ -262,7 +250,6 @@
                     <view key="view" contentMode="scaleToFill" id="178-xe-v9K">
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.87843137250000003" green="0.90980392160000001" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="Library" id="V7p-9g-3MH"/>
@@ -287,7 +274,6 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.87843137250000003" green="0.90980392160000001" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
