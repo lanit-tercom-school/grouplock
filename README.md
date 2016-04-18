@@ -7,6 +7,7 @@ GroupLock
 Hey! This is a GroupLock project. This will allow you (in near future) to stay non-stressed about your file you sent to your mum.
 
 Future scope:
+
 1) Implement Android-based version
 
 2) Implement iOS-based version
