@@ -6,7 +6,7 @@ language: objective-c
   # - brew uninstall xctool && brew install --HEAD xctool
 
 after_success:
-  - bash <(curl -s https://codecov.io/bash) -J 'GroupLock'
+  - bash <(curl -s https://codecov.io/bash)
 
 matrix:
   include:
