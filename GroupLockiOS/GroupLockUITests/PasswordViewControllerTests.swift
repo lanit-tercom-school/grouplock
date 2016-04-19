@@ -45,7 +45,11 @@ class PasswordViewControllerTests: XCTestCase {
         app.descendantsMatchingType(.SecureTextField).element.typeText("a")
         XCTAssertEqual(proceedButton.hittable, true)
         
-        app.keyboards.keys["delete"].tap()
+        if app.keyboards.keys["delete"].exists {
+            app.keyboards.keys["delete"].tap()
+        } else {
+            app.keyboards.keys["Delete"].tap()
+        }
         XCTAssertEqual(proceedButton.hittable, false)
     }
     
@@ -58,3 +62,4 @@ class PasswordViewControllerTests: XCTestCase {
         XCTAssertEqual(app.tabBars.element.exists, true)
     }
 }
+
