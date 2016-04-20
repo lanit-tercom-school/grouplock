@@ -32,8 +32,8 @@ matrix:
       # components:
         # etc.
 
-befort_install:
-  - sh -c "if [ '$PLATFORM' = 'iOS' ]; then gem install xcpretty --no-rdoc --no-ri --no-document; fi"
+before_install:
+  - sh -c "if [ '$PLATFORM' = 'iOS' ]; then sudo gem install xcpretty --no-rdoc --no-ri --no-document; fi"
   # - sh -c "if [ '$PLATFORM' = 'Android' ]; then <# perform commands for Android build #>; fi"
 
 script:
