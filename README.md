@@ -3,6 +3,7 @@ GroupLock
 
 [![Build Status](https://travis-ci.org/lanit-tercom-school/grouplock.svg?branch=master)](https://travis-ci.org/lanit-tercom-school/grouplock)
 [![codecov.io](https://codecov.io/github/lanit-tercom-school/grouplock/coverage.svg?branch=master)](https://codecov.io/github/lanit-tercom-school/grouplock?branch=master)
+[![Platforms](https://img.shields.io/badge/platforms-iOS%20|%20Android-blue.svg)]()
 [![License](https://img.shields.io/badge/license-Apache%202.0-lightgrey.svg)](LICENSE)
 
 
