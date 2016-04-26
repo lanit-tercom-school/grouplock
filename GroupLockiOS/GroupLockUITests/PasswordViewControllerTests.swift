@@ -62,5 +62,11 @@ class PasswordViewControllerTests: XCTestCase {
         proceedButton.tap()
         XCTAssertEqual(app.tabBars.element.exists, true)
     }
+    
+    func testReturnKeyPerformSegue() {
+        let app = XCUIApplication()
+        app.keyboards.buttons["Done"].tap()
+        XCTAssertEqual(app.tabBars.element.exists, true)
+    }
 }
 

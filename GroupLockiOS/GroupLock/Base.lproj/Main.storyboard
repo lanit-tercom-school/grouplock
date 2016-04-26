@@ -47,7 +47,7 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="ProceedButton"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="onProceedButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5JB-LI-JNG"/>
+                                    <action selector="onProceedButton" destination="BYZ-38-t0r" eventType="touchUpInside" id="q3G-sP-YVO"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9k8-8d-eQT" userLabel="Initial Password Text Field">
@@ -93,7 +93,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="mLa-Ky-P8r">
             <objects>
-                <tabBarController storyboardIdentifier="TabBarController" id="YPl-G6-tPp" customClass="TabBarController" customModule="GroupLock" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarController" id="YPl-G6-tPp" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="ViM-bW-gfp">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -112,7 +112,7 @@
         <!--Home-->
         <scene sceneID="eTc-VS-54H">
             <objects>
-                <navigationController id="avk-LI-tTS" customClass="NavigationController" customModule="GroupLock" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController id="avk-LI-tTS" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Home" image="HomeButton" selectedImage="HomeButtonSelected" id="84E-Jf-byc"/>
                     <keyCommands/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="7fW-PK-l5W">
@@ -243,7 +243,7 @@
         <!--Library-->
         <scene sceneID="VV6-CX-haO">
             <objects>
-                <navigationController id="VIk-k1-bAe" customClass="NavigationController" customModule="GroupLock" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController id="VIk-k1-bAe" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Library" image="LibraryButton" selectedImage="LibraryButtonSelected" id="AGL-aB-Nl8"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="gEl-gc-FBW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -260,7 +260,7 @@
         <!--Settings-->
         <scene sceneID="0bw-e2-JC4">
             <objects>
-                <navigationController id="Azl-Cb-kWv" customClass="NavigationController" customModule="GroupLock" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController id="Azl-Cb-kWv" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Settings" image="SettingsButton" selectedImage="SettingsButtonSelected" id="s1J-xg-K40"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Lj8-XR-urY">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

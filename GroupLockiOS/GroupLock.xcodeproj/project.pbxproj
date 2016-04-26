@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		7BABCA666A589AF80007FE12 /* Pods_GroupLock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96E5492D4816B7DA3EE8F45D /* Pods_GroupLock.framework */; };
 		870C407D1CC69EAF00BE4BD0 /* PasswordViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870C407C1CC69EAF00BE4BD0 /* PasswordViewControllerTests.swift */; };
+		879797071CCFA61E0064C3AC /* File+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879797031CCFA61E0064C3AC /* File+CoreDataProperties.swift */; };
+		879797081CCFA61E0064C3AC /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879797041CCFA61E0064C3AC /* File.swift */; };
+		879797091CCFA61E0064C3AC /* Folder+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879797051CCFA61E0064C3AC /* Folder+CoreDataProperties.swift */; };
+		8797970A1CCFA61E0064C3AC /* Folder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879797061CCFA61E0064C3AC /* Folder.swift */; };
 		87B072C81CC0E13000916D09 /* NUIViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B072C71CC0E13000916D09 /* NUIViewTests.swift */; };
 		87B072CE1CC15FF700916D09 /* NUITests.nss in Resources */ = {isa = PBXBuildFile; fileRef = 87B072CD1CC15FF700916D09 /* NUITests.nss */; };
 		87B072D11CC1659700916D09 /* NUITests.nss in Resources */ = {isa = PBXBuildFile; fileRef = 87B072CD1CC15FF700916D09 /* NUITests.nss */; };
@@ -53,6 +57,12 @@
 /* Begin PBXFileReference section */
 		4EE77687B0E1F1453E33B6F6 /* Pods-GroupLock.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GroupLock.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GroupLock/Pods-GroupLock.debug.xcconfig"; sourceTree = "<group>"; };
 		870C407C1CC69EAF00BE4BD0 /* PasswordViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordViewControllerTests.swift; sourceTree = "<group>"; };
+		879796E71CCF9B4F0064C3AC /* NUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NUI.framework; path = "../../../Library/Developer/Xcode/DerivedData/GroupLock-buohvxdmrbgottfowybkjnxebhfv/Build/Products/Debug-iphoneos/NUI.framework"; sourceTree = "<group>"; };
+		879796E81CCF9B4F0064C3AC /* NUIParse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NUIParse.framework; path = "../../../Library/Developer/Xcode/DerivedData/GroupLock-buohvxdmrbgottfowybkjnxebhfv/Build/Products/Debug-iphoneos/NUIParse.framework"; sourceTree = "<group>"; };
+		879797031CCFA61E0064C3AC /* File+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "File+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		879797041CCFA61E0064C3AC /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		879797051CCFA61E0064C3AC /* Folder+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Folder+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		879797061CCFA61E0064C3AC /* Folder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Folder.swift; sourceTree = "<group>"; };
 		87B072C71CC0E13000916D09 /* NUIViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NUIViewTests.swift; sourceTree = "<group>"; };
 		87B072CD1CC15FF700916D09 /* NUITests.nss */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NUITests.nss; sourceTree = "<group>"; };
 		87B072D41CC1680F00916D09 /* NUINavigationBarTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NUINavigationBarTests.swift; sourceTree = "<group>"; };
@@ -130,6 +140,18 @@
 			name = "Class Extensions";
 			sourceTree = "<group>";
 		};
+		879797021CCFA5FC0064C3AC /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				879797031CCFA61E0064C3AC /* File+CoreDataProperties.swift */,
+				879797041CCFA61E0064C3AC /* File.swift */,
+				879797051CCFA61E0064C3AC /* Folder+CoreDataProperties.swift */,
+				879797061CCFA61E0064C3AC /* Folder.swift */,
+				87B692171CB425E0008ACB6A /* GroupLock.xcdatamodeld */,
+			);
+			name = CoreData;
+			sourceTree = "<group>";
+		};
 		87B072C61CC0E0C400916D09 /* NUITests */ = {
 			isa = PBXGroup;
 			children = (
@@ -191,7 +213,7 @@
 				87B6921A1CB425E0008ACB6A /* Assets.xcassets */,
 				87B6921C1CB425E0008ACB6A /* LaunchScreen.storyboard */,
 				87B6921F1CB425E0008ACB6A /* Info.plist */,
-				87B692171CB425E0008ACB6A /* GroupLock.xcdatamodeld */,
+				879797021CCFA5FC0064C3AC /* CoreData */,
 			);
 			path = GroupLock;
 			sourceTree = "<group>";
@@ -217,6 +239,8 @@
 		ED68019345A0323D60D469A2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				879796E71CCF9B4F0064C3AC /* NUI.framework */,
+				879796E81CCF9B4F0064C3AC /* NUIParse.framework */,
 				87F118F11CBF0CD60038F956 /* NUIParse.framework */,
 				87F118EF1CBF0CD40038F956 /* NUI.framework */,
 				96E5492D4816B7DA3EE8F45D /* Pods_GroupLock.framework */,
@@ -413,7 +437,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				87B692131CB425E0008ACB6A /* PasswordViewController.swift in Sources */,
+				879797091CCFA61E0064C3AC /* Folder+CoreDataProperties.swift in Sources */,
+				879797081CCFA61E0064C3AC /* File.swift in Sources */,
+				8797970A1CCFA61E0064C3AC /* Folder.swift in Sources */,
 				87B692191CB425E0008ACB6A /* GroupLock.xcdatamodeld in Sources */,
+				879797071CCFA61E0064C3AC /* File+CoreDataProperties.swift in Sources */,
 				87B6927F1CB45188008ACB6A /* UIViewController.swift in Sources */,
 				87B692111CB425E0008ACB6A /* AppDelegate.swift in Sources */,
 			);
