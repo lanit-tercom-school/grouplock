@@ -14,7 +14,8 @@ import CoreData
 
 extension Folder {
 
-    @NSManaged var name: String?
+    @NSManaged var name: String
+    @NSManaged var removable: Bool
     @NSManaged var files: NSSet?
     @NSManaged var subfolders: NSSet?
     @NSManaged var superfolder: Folder?

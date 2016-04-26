@@ -1,0 +1,12 @@
+{
+  "folders": [
+    {
+      "name": "Encrypted",
+      "removable": false
+    },
+    {
+      "name": "Decrypted",
+      "removable": false
+    }
+  ]
+}

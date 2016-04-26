@@ -13,6 +13,9 @@
 		879797081CCFA61E0064C3AC /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879797041CCFA61E0064C3AC /* File.swift */; };
 		879797091CCFA61E0064C3AC /* Folder+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879797051CCFA61E0064C3AC /* Folder+CoreDataProperties.swift */; };
 		8797970A1CCFA61E0064C3AC /* Folder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879797061CCFA61E0064C3AC /* Folder.swift */; };
+		8797970C1CCFD7400064C3AC /* default_folders.json in Resources */ = {isa = PBXBuildFile; fileRef = 8797970B1CCFD7400064C3AC /* default_folders.json */; };
+		8797970E1CCFEFB20064C3AC /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797970D1CCFEFB20064C3AC /* LibraryViewController.swift */; };
+		879797101CCFF4180064C3AC /* FolderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797970F1CCFF4180064C3AC /* FolderTableViewCell.swift */; };
 		87B072C81CC0E13000916D09 /* NUIViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B072C71CC0E13000916D09 /* NUIViewTests.swift */; };
 		87B072CE1CC15FF700916D09 /* NUITests.nss in Resources */ = {isa = PBXBuildFile; fileRef = 87B072CD1CC15FF700916D09 /* NUITests.nss */; };
 		87B072D11CC1659700916D09 /* NUITests.nss in Resources */ = {isa = PBXBuildFile; fileRef = 87B072CD1CC15FF700916D09 /* NUITests.nss */; };
@@ -63,6 +66,9 @@
 		879797041CCFA61E0064C3AC /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		879797051CCFA61E0064C3AC /* Folder+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Folder+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		879797061CCFA61E0064C3AC /* Folder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Folder.swift; sourceTree = "<group>"; };
+		8797970B1CCFD7400064C3AC /* default_folders.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = default_folders.json; sourceTree = "<group>"; };
+		8797970D1CCFEFB20064C3AC /* LibraryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
+		8797970F1CCFF4180064C3AC /* FolderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FolderTableViewCell.swift; sourceTree = "<group>"; };
 		87B072C71CC0E13000916D09 /* NUIViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NUIViewTests.swift; sourceTree = "<group>"; };
 		87B072CD1CC15FF700916D09 /* NUITests.nss */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NUITests.nss; sourceTree = "<group>"; };
 		87B072D41CC1680F00916D09 /* NUINavigationBarTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NUINavigationBarTests.swift; sourceTree = "<group>"; };
@@ -143,6 +149,7 @@
 		879797021CCFA5FC0064C3AC /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				8797970B1CCFD7400064C3AC /* default_folders.json */,
 				879797031CCFA61E0064C3AC /* File+CoreDataProperties.swift */,
 				879797041CCFA61E0064C3AC /* File.swift */,
 				879797051CCFA61E0064C3AC /* Folder+CoreDataProperties.swift */,
@@ -209,6 +216,8 @@
 				87F118ED1CBEFDD80038F956 /* UI.nss */,
 				87B692101CB425E0008ACB6A /* AppDelegate.swift */,
 				87B692121CB425E0008ACB6A /* PasswordViewController.swift */,
+				8797970D1CCFEFB20064C3AC /* LibraryViewController.swift */,
+				8797970F1CCFF4180064C3AC /* FolderTableViewCell.swift */,
 				87B692141CB425E0008ACB6A /* Main.storyboard */,
 				87B6921A1CB425E0008ACB6A /* Assets.xcassets */,
 				87B6921C1CB425E0008ACB6A /* LaunchScreen.storyboard */,
@@ -362,6 +371,7 @@
 				87B6921E1CB425E0008ACB6A /* LaunchScreen.storyboard in Resources */,
 				87B6921B1CB425E0008ACB6A /* Assets.xcassets in Resources */,
 				87F118EE1CBEFDD80038F956 /* UI.nss in Resources */,
+				8797970C1CCFD7400064C3AC /* default_folders.json in Resources */,
 				87B692161CB425E0008ACB6A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -437,12 +447,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				87B692131CB425E0008ACB6A /* PasswordViewController.swift in Sources */,
+				879797101CCFF4180064C3AC /* FolderTableViewCell.swift in Sources */,
 				879797091CCFA61E0064C3AC /* Folder+CoreDataProperties.swift in Sources */,
 				879797081CCFA61E0064C3AC /* File.swift in Sources */,
 				8797970A1CCFA61E0064C3AC /* Folder.swift in Sources */,
 				87B692191CB425E0008ACB6A /* GroupLock.xcdatamodeld in Sources */,
 				879797071CCFA61E0064C3AC /* File+CoreDataProperties.swift in Sources */,
 				87B6927F1CB45188008ACB6A /* UIViewController.swift in Sources */,
+				8797970E1CCFEFB20064C3AC /* LibraryViewController.swift in Sources */,
 				87B692111CB425E0008ACB6A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

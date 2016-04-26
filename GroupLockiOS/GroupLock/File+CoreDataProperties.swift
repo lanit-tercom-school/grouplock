@@ -14,8 +14,8 @@ import CoreData
 
 extension File {
 
-    @NSManaged var name: String?
     @NSManaged var contents: NSData?
+    @NSManaged var name: String
     @NSManaged var folder: Folder?
 
 }

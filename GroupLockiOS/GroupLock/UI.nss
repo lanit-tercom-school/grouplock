@@ -11,48 +11,58 @@
 /* General */
 
 View {
-background-color: @primaryBackgroundColor;
-exclude-subviews: UITextField;
+  background-color: @primaryBackgroundColor;
+  exclude-subviews: UITextField;
+}
+
+Table {
+  background-color: @primaryBackgroundColor;
+  separator-color: @mainColor;
+}
+
+TableCell {
+  background-color: @primaryBackgroundColor;
+  tint-color: @mainColor;
 }
 
 NavigationBar {
-bar-tint-color: @mainColor;
-font-color: @primaryFontColor;
-background-tint-color: @primaryFontColor;
+  bar-tint-color: @mainColor;
+  font-color: @primaryFontColor;
+  background-tint-color: @primaryFontColor;
 }
 
 TabBar {
-background-tint-color: @mainColor;
+  background-tint-color: @mainColor;
 }
 
 BarButton {
-font-color: @primaryFontColor;
+  font-color: @primaryFontColor;
 }
 
 Button {
-background-color: @mainColor;
-font-color: @primaryFontColor;
-corner-radius: 0;
+  background-color: @mainColor;
+  font-color: @primaryFontColor;
+  corner-radius: 0;
 }
 
 TextField {
-tint-color: @mainColor;
-corner-radius: 0;
+  tint-color: @mainColor;
+  corner-radius: 0;
 }
 
 
 /* PasswordViewController */
 
 PasswordView {
-background-color: @mainColor;
+  background-color: @mainColor;
 }
 
 ProceedButton {
-background-color: #40A43D;
-font-color: @primaryFontColor;
-corner-radius: 0;
+  background-color: #40A43D;
+  font-color: @primaryFontColor;
+  corner-radius: 0;
 }
 
 EnterPasswordLabel {
-font-color: #FD3A1C;
+  font-color: #FD3A1C;
 }
