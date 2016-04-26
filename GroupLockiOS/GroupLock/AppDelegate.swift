@@ -26,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         NUISettings.initWithStylesheet("UI")
         
+//        self.window?.backgroundColor = UIColor.whiteColor()
         return true
     }
     /*
