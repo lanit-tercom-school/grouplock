@@ -2,7 +2,7 @@
 //  File+CoreDataProperties.swift
 //  GroupLock
 //
-//  Created by Sergej Jaskiewicz on 26.04.16.
+//  Created by Sergej Jaskiewicz on 27.04.16.
 //  Copyright © 2016 Lanit-Tercom School. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -16,6 +16,7 @@ extension File {
 
     @NSManaged var contents: NSData?
     @NSManaged var name: String
-    @NSManaged var folder: Folder?
-
+    @NSManaged var encrypted: Bool
+    @NSManaged var folder: Folder
+    
 }

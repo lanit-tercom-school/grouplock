@@ -26,16 +26,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         NUISettings.initWithStylesheet("UI")
         
-        // Loading persistent settings for the app
         let defaults = NSUserDefaults.standardUserDefaults()
         
-        let isFirstLaunch = defaults.boolForKey("isFirstLaunch")
-        if isFirstLaunch {
-            initializeStoreWithDefaultData()
-            defaults.setBool(true, forKey: "isFirstLaunch")
+        let storeIsInitialized = defaults.boolForKey("storeIsInitialized")
+        if !storeIsInitialized {
+            FileManager.initializeStoreWithDefaultData()
+            defaults.setBool(true, forKey: "storeIsInitialized")
         }
         
-//        self.window?.backgroundColor = UIColor.whiteColor()
+        self.window?.backgroundColor = UIColor.whiteColor()
         return true
     }
     
@@ -126,47 +125,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 abort()
             }
         }
-    }
-    
-    private func initializeStoreWithDefaultData() {
-        let jsonFile: NSURL! = NSBundle.mainBundle().URLForResource("default_folders",
-                                                            withExtension: "json")
-        let jsonData = NSData(contentsOfURL: jsonFile)!
-        var jsonObject: [String : AnyObject]?
-        var preloadedFolders = [(name: String, removable: Bool)]()
-        
-        do {
-            jsonObject = try NSJSONSerialization.JSONObjectWithData(jsonData,
-                                                                    options: NSJSONReadingOptions(rawValue: 0)) as? [String : AnyObject]
-        } catch {
-            
-        }
-
-        guard let folders = jsonObject!["folders"] as? [AnyObject] else {
-            return
-        }
-        
-        for folder in folders {
-            guard let folderDict = folder as? [String : AnyObject] else {
-                continue
-            }
-            guard let name = folderDict["name"] as? String else {
-                continue
-            }
-            guard let removable = folderDict["removable"] as? Bool else {
-                continue
-            }
-            
-            preloadedFolders.append((name: name, removable: removable))
-        }
-        
-        for folder in preloadedFolders {
-            let folderEntity = NSEntityDescription.insertNewObjectForEntityForName("Folder",
-                                                                                   inManagedObjectContext: managedObjectContext) as! Folder
-            folderEntity.name = folder.name
-            folderEntity.removable = folder.removable
-        }
-        saveContext()
     }
     
 }

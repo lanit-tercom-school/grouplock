@@ -27,6 +27,7 @@
 		87B072E21CC1B7B300916D09 /* NUIPasswordViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B072E11CC1B7B300916D09 /* NUIPasswordViewTests.swift */; };
 		87B072E41CC1B8E600916D09 /* NUIProceedButtonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B072E31CC1B8E600916D09 /* NUIProceedButtonTests.swift */; };
 		87B072E71CC1B9F900916D09 /* NUIEnterPasswordLabelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B072E61CC1B9F900916D09 /* NUIEnterPasswordLabelTests.swift */; };
+		87B509C11CD0B67A00641EC3 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B509C01CD0B67A00641EC3 /* FileManager.swift */; };
 		87B692111CB425E0008ACB6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B692101CB425E0008ACB6A /* AppDelegate.swift */; };
 		87B692131CB425E0008ACB6A /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B692121CB425E0008ACB6A /* PasswordViewController.swift */; };
 		87B692161CB425E0008ACB6A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87B692141CB425E0008ACB6A /* Main.storyboard */; };
@@ -79,6 +80,7 @@
 		87B072E11CC1B7B300916D09 /* NUIPasswordViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NUIPasswordViewTests.swift; sourceTree = "<group>"; };
 		87B072E31CC1B8E600916D09 /* NUIProceedButtonTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NUIProceedButtonTests.swift; sourceTree = "<group>"; };
 		87B072E61CC1B9F900916D09 /* NUIEnterPasswordLabelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NUIEnterPasswordLabelTests.swift; sourceTree = "<group>"; };
+		87B509C01CD0B67A00641EC3 /* FileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		87B6920D1CB425E0008ACB6A /* GroupLock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GroupLock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87B692101CB425E0008ACB6A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		87B692121CB425E0008ACB6A /* PasswordViewController.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; tabWidth = 4; };
@@ -217,6 +219,7 @@
 				87B692101CB425E0008ACB6A /* AppDelegate.swift */,
 				87B692121CB425E0008ACB6A /* PasswordViewController.swift */,
 				8797970D1CCFEFB20064C3AC /* LibraryViewController.swift */,
+				87B509C01CD0B67A00641EC3 /* FileManager.swift */,
 				8797970F1CCFF4180064C3AC /* FolderTableViewCell.swift */,
 				87B692141CB425E0008ACB6A /* Main.storyboard */,
 				87B6921A1CB425E0008ACB6A /* Assets.xcassets */,
@@ -453,6 +456,7 @@
 				8797970A1CCFA61E0064C3AC /* Folder.swift in Sources */,
 				87B692191CB425E0008ACB6A /* GroupLock.xcdatamodeld in Sources */,
 				879797071CCFA61E0064C3AC /* File+CoreDataProperties.swift in Sources */,
+				87B509C11CD0B67A00641EC3 /* FileManager.swift in Sources */,
 				87B6927F1CB45188008ACB6A /* UIViewController.swift in Sources */,
 				8797970E1CCFEFB20064C3AC /* LibraryViewController.swift in Sources */,
 				87B692111CB425E0008ACB6A /* AppDelegate.swift in Sources */,

@@ -2,7 +2,7 @@
 //  Folder+CoreDataProperties.swift
 //  GroupLock
 //
-//  Created by Sergej Jaskiewicz on 26.04.16.
+//  Created by Sergej Jaskiewicz on 27.04.16.
 //  Copyright © 2016 Lanit-Tercom School. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -15,7 +15,6 @@ import CoreData
 extension Folder {
 
     @NSManaged var name: String
-    @NSManaged var removable: Bool
     @NSManaged var files: NSSet?
     @NSManaged var subfolders: NSSet?
     @NSManaged var superfolder: Folder?

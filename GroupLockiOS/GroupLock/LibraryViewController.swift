@@ -12,13 +12,16 @@ import CoreData
 class LibraryViewController: UITableViewController {
     
     private var folders = [Folder]()
-
-    override func viewDidLoad() {
+    
+    let managedObjectContext = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext
+    let managedObjectModel = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectModel
+    
+    override func viewWillAppear(animated: Bool) {
         super.viewDidLoad()
-        let managedObjectContext = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext
-        let folderFetchRequest = NSFetchRequest(entityName: "Folder")
+        
+        let rootFetchRequest = managedObjectModel?.fetchRequestTemplateForName("RootFetchRequest")
         do {
-            folders = try managedObjectContext?.executeFetchRequest(folderFetchRequest) as! [Folder]
+            folders = try managedObjectContext?.executeFetchRequest(rootFetchRequest!) as! [Folder]
         } catch {
             print(error)
         }
@@ -42,7 +45,5 @@ class LibraryViewController: UITableViewController {
 
         return cell
     }
- 
-
 
 }
