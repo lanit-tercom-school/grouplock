@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<transition xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/qr1"></item>
+    <item android:drawable="@drawable/qr2"></item>
+    <item android:drawable="@drawable/qr3"></item>
+    <item android:drawable="@drawable/qr4"></item>
+    <item android:drawable="@drawable/qr5"></item>
+</transition>
