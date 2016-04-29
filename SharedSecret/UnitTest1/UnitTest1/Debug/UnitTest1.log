@@ -1,0 +1,5 @@
+﻿  unittest1.cpp
+c:\users\marina\documents\visual studio 2015\projects\unittest1\unittest1\primenum.h(19): warning C4244: return: преобразование "__int64" в "int", возможна потеря данных
+c:\users\marina\documents\visual studio 2015\projects\unittest1\unittest1\primenum.h(30): warning C4244: инициализация: преобразование "__int64" в "int", возможна потеря данных
+c:\users\marina\documents\visual studio 2015\projects\unittest1\unittest1\primenum.h(33): warning C4715: PrimeNum::choice_PrimeNum: значение возвращается не при всех путях выполнения
+  UnitTest1.vcxproj -> c:\users\marina\documents\visual studio 2015\Projects\UnitTest1\Debug\UnitTest1.dll
