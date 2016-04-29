@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    tools:context=".NumberOfKeysActivity" >
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/keys_type_selection_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+    <Button
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:id="@+id/accEnc"
+        android:onClick="accEnc"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="Load to encrypted" />
+
+    <ImageView
+        android:layout_width="370dp"
+        android:layout_height="380dp"
+        android:id="@+id/imgView"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Load to decrypted"
+        android:id="@+id/accDec"
+        android:onClick="accDec"
+        android:layout_above="@+id/accEnc"
+        android:layout_alignLeft="@+id/accEnc"
+        android:layout_alignStart="@+id/accEnc"
+        android:layout_alignRight="@+id/accEnc"
+        android:layout_alignEnd="@+id/accEnc" />
+
+
+</RelativeLayout>

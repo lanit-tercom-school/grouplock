@@ -59,7 +59,7 @@ public class LibraryActivity extends AppCompatActivity {
         ab.setDisplayHomeAsUpEnabled(true);
 
         /* Check if directories exist, create if needed */
-        libraryRootPath = Environment.getExternalStorageDirectory().getPath() + "/" + LIBRARY_FOLDER_NAME;
+            libraryRootPath = Environment.getExternalStorageDirectory().getPath() + "/" + LIBRARY_FOLDER_NAME;
         LibraryEntry libraryRoot = new LibraryEntry(libraryRootPath);
         if (!libraryRoot.exists()) {
             libraryRoot.mkdir();

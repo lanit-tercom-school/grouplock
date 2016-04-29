@@ -21,6 +21,10 @@
             android:label="Home" >
         </activity>
         <activity
+            android:name=".LoadActivity"
+            android:label="Load" >
+        </activity>
+        <activity
             android:name=".LibraryActivity"
             android:label="Library" >
         </activity>
@@ -28,6 +32,9 @@
             android:name=".KeysTypeSelectionActivity"
             android:label="@string/title_activity_keys_type_selection">
         </activity>
+        <activity
+            android:name=".NumberOfKeysActivity"
+            android:label="Step 3/6"></activity>
     </application>
 
 </manifest>
