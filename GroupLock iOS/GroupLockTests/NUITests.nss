@@ -1,0 +1,3 @@
+ViewTest {
+background-color: red;
+}
