@@ -1,0 +1,6 @@
+framework module NUI {
+  umbrella header "NUI-umbrella.h"
+
+  export *
+  module * { export * }
+}
