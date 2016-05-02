@@ -1,5 +1,6 @@
 package com.example.sonya.grouplockapplication;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -61,7 +62,6 @@ public class KeysTypeSelectionActivity extends AppCompatActivity
     @Override
     public void onClick(View v) {
         if (v.getId() != R.id.keys_type_selection_btnNext) {
-            return;
         }
 
         /* Get passed data from the previous screen */
@@ -70,6 +70,9 @@ public class KeysTypeSelectionActivity extends AppCompatActivity
         for (LibraryEntry entry: files) {
             Log.d("crypt", entry.getAbsolutePath());
         }
+
+        Intent intent = new Intent(KeysTypeSelectionActivity.this, NumberOfKeysActivity.class);
+        startActivity(intent);
     }
 
 }

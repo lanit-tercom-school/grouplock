@@ -5,11 +5,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class ChooseToDoActivity extends AppCompatActivity  {
+public class ChooseToDoActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,7 +19,14 @@ public class ChooseToDoActivity extends AppCompatActivity  {
         setContentView(R.layout.activity_choose_to_do);
         Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar_actionbar);
         setSupportActionBar(mToolbar);
+
     }
+
+    public void loadPage(View view) {
+        Intent intent = new Intent(ChooseToDoActivity.this, LoadActivity.class);
+        startActivity(intent);
+    }
+
 
     public void chooseEncrypt(View v)
     {
