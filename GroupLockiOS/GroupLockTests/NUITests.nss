@@ -1,3 +1,0 @@
-ViewTest {
-background-color: red;
-}
