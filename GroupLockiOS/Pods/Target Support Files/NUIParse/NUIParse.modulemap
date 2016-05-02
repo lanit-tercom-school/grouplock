@@ -1,0 +1,6 @@
+framework module NUIParse {
+  umbrella header "NUIParse-umbrella.h"
+
+  export *
+  module * { export * }
+}
