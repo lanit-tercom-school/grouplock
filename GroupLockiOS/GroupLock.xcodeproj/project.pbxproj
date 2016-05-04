@@ -9,11 +9,12 @@
 /* Begin PBXBuildFile section */
 		7BABCA666A589AF80007FE12 /* Pods_GroupLock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96E5492D4816B7DA3EE8F45D /* Pods_GroupLock.framework */; };
 		870C407D1CC69EAF00BE4BD0 /* PasswordViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870C407C1CC69EAF00BE4BD0 /* PasswordViewControllerTests.swift */; };
+		873ED7B41CDA9A96005A8656 /* SupportDeclarations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873ED7B31CDA9A96005A8656 /* SupportDeclarations.swift */; };
+		873ED7B61CDAAD5E005A8656 /* FileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873ED7B51CDAAD5E005A8656 /* FileTableViewCell.swift */; };
 		879797071CCFA61E0064C3AC /* File+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879797031CCFA61E0064C3AC /* File+CoreDataProperties.swift */; };
 		879797081CCFA61E0064C3AC /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879797041CCFA61E0064C3AC /* File.swift */; };
 		879797091CCFA61E0064C3AC /* Folder+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879797051CCFA61E0064C3AC /* Folder+CoreDataProperties.swift */; };
 		8797970A1CCFA61E0064C3AC /* Folder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879797061CCFA61E0064C3AC /* Folder.swift */; };
-		8797970C1CCFD7400064C3AC /* default_folders.json in Resources */ = {isa = PBXBuildFile; fileRef = 8797970B1CCFD7400064C3AC /* default_folders.json */; };
 		8797970E1CCFEFB20064C3AC /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797970D1CCFEFB20064C3AC /* LibraryViewController.swift */; };
 		879797101CCFF4180064C3AC /* FolderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797970F1CCFF4180064C3AC /* FolderTableViewCell.swift */; };
 		87B072C81CC0E13000916D09 /* NUIViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B072C71CC0E13000916D09 /* NUIViewTests.swift */; };
@@ -61,13 +62,14 @@
 /* Begin PBXFileReference section */
 		4EE77687B0E1F1453E33B6F6 /* Pods-GroupLock.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GroupLock.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GroupLock/Pods-GroupLock.debug.xcconfig"; sourceTree = "<group>"; };
 		870C407C1CC69EAF00BE4BD0 /* PasswordViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordViewControllerTests.swift; sourceTree = "<group>"; };
+		873ED7B31CDA9A96005A8656 /* SupportDeclarations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportDeclarations.swift; sourceTree = "<group>"; };
+		873ED7B51CDAAD5E005A8656 /* FileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileTableViewCell.swift; sourceTree = "<group>"; };
 		879796E71CCF9B4F0064C3AC /* NUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NUI.framework; path = "../../../Library/Developer/Xcode/DerivedData/GroupLock-buohvxdmrbgottfowybkjnxebhfv/Build/Products/Debug-iphoneos/NUI.framework"; sourceTree = "<group>"; };
 		879796E81CCF9B4F0064C3AC /* NUIParse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NUIParse.framework; path = "../../../Library/Developer/Xcode/DerivedData/GroupLock-buohvxdmrbgottfowybkjnxebhfv/Build/Products/Debug-iphoneos/NUIParse.framework"; sourceTree = "<group>"; };
 		879797031CCFA61E0064C3AC /* File+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "File+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		879797041CCFA61E0064C3AC /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		879797051CCFA61E0064C3AC /* Folder+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Folder+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		879797061CCFA61E0064C3AC /* Folder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Folder.swift; sourceTree = "<group>"; };
-		8797970B1CCFD7400064C3AC /* default_folders.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = default_folders.json; sourceTree = "<group>"; };
 		8797970D1CCFEFB20064C3AC /* LibraryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
 		8797970F1CCFF4180064C3AC /* FolderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FolderTableViewCell.swift; sourceTree = "<group>"; };
 		87B072C71CC0E13000916D09 /* NUIViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NUIViewTests.swift; sourceTree = "<group>"; };
@@ -140,6 +142,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		873ED7B71CDAAD63005A8656 /* LibraryViewController Cells */ = {
+			isa = PBXGroup;
+			children = (
+				8797970F1CCFF4180064C3AC /* FolderTableViewCell.swift */,
+				873ED7B51CDAAD5E005A8656 /* FileTableViewCell.swift */,
+			);
+			name = "LibraryViewController Cells";
+			sourceTree = "<group>";
+		};
 		8748B2AD1CBFB031000C57EB /* Class Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -151,7 +162,6 @@
 		879797021CCFA5FC0064C3AC /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				8797970B1CCFD7400064C3AC /* default_folders.json */,
 				879797031CCFA61E0064C3AC /* File+CoreDataProperties.swift */,
 				879797041CCFA61E0064C3AC /* File.swift */,
 				879797051CCFA61E0064C3AC /* Folder+CoreDataProperties.swift */,
@@ -219,8 +229,9 @@
 				87B692101CB425E0008ACB6A /* AppDelegate.swift */,
 				87B692121CB425E0008ACB6A /* PasswordViewController.swift */,
 				8797970D1CCFEFB20064C3AC /* LibraryViewController.swift */,
+				873ED7B71CDAAD63005A8656 /* LibraryViewController Cells */,
 				87B509C01CD0B67A00641EC3 /* FileManager.swift */,
-				8797970F1CCFF4180064C3AC /* FolderTableViewCell.swift */,
+				873ED7B31CDA9A96005A8656 /* SupportDeclarations.swift */,
 				87B692141CB425E0008ACB6A /* Main.storyboard */,
 				87B6921A1CB425E0008ACB6A /* Assets.xcassets */,
 				87B6921C1CB425E0008ACB6A /* LaunchScreen.storyboard */,
@@ -273,6 +284,7 @@
 				87B6920B1CB425E0008ACB6A /* Resources */,
 				C184C9577A401136E0FCC5CF /* Embed Pods Frameworks */,
 				3102A2EAB475018FE0FBAA6B /* Copy Pods Resources */,
+				8760D2631CD7950F004C86D4 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -374,7 +386,6 @@
 				87B6921E1CB425E0008ACB6A /* LaunchScreen.storyboard in Resources */,
 				87B6921B1CB425E0008ACB6A /* Assets.xcassets in Resources */,
 				87F118EE1CBEFDD80038F956 /* UI.nss in Resources */,
-				8797970C1CCFD7400064C3AC /* default_folders.json in Resources */,
 				87B692161CB425E0008ACB6A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -427,6 +438,19 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		8760D2631CD7950F004C86D4 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "TAGS=\"TODO:|FIXME:\"\nERRORTAG=\"ERROR:\"\nfind \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" -or -name \"*.swift\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$|($ERRORTAG).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\" | perl -p -e \"s/($ERRORTAG)/ error: \\$1/\"";
+		};
 		C184C9577A401136E0FCC5CF /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -449,6 +473,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				873ED7B61CDAAD5E005A8656 /* FileTableViewCell.swift in Sources */,
 				87B692131CB425E0008ACB6A /* PasswordViewController.swift in Sources */,
 				879797101CCFF4180064C3AC /* FolderTableViewCell.swift in Sources */,
 				879797091CCFA61E0064C3AC /* Folder+CoreDataProperties.swift in Sources */,
@@ -459,6 +484,7 @@
 				87B509C11CD0B67A00641EC3 /* FileManager.swift in Sources */,
 				87B6927F1CB45188008ACB6A /* UIViewController.swift in Sources */,
 				8797970E1CCFEFB20064C3AC /* LibraryViewController.swift in Sources */,
+				873ED7B41CDA9A96005A8656 /* SupportDeclarations.swift in Sources */,
 				87B692111CB425E0008ACB6A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

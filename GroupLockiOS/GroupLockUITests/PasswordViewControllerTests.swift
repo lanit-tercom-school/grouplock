@@ -69,4 +69,3 @@ class PasswordViewControllerTests: XCTestCase {
         XCTAssertEqual(app.tabBars.element.exists, true)
     }
 }
-

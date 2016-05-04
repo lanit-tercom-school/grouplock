@@ -9,57 +9,104 @@
 import UIKit
 import CoreData
 
+/// FileManager object represents a singleton for imitating file system structure for Library.
 class FileManager: NSObject {
     
-    /*!
-     * @discussion Provides a singleton object of a file manager.
-     */
+    /// Provides a singleton object of a file manager.
     static let sharedInstance = FileManager()
     
-    /*!
-     * @discussion Loads the default set of folders into the persistent store. The set must be described in default_folders.json file.
+    private override init() {}
+    
+    private var managedObjectContext: NSManagedObjectContext {
+        return AppDelegate.sharedInstance.managedObjectContext
+    }
+    private var managedObjectModel: NSManagedObjectModel {
+        return AppDelegate.sharedInstance.managedObjectModel
+    }
+    
+    /// Provides an array of folders of the root directory
+    var rootDirectory: [Folder] {
+        let rootFetchRequest = managedObjectModel.fetchRequestTemplateForName("RootFetchRequest")
+        do {
+            let folders = try managedObjectContext.executeFetchRequest(rootFetchRequest!) as! [Folder]
+            return folders
+        } catch {
+            print(error)
+            abort()
+        }
+    }
+    
+    /**
+     Executes a request for all the folders contained in folder `directory` and returns an array of them.
+     
+     - parameter directory: The folder we want to get subfolders of.
+     
+     - returns: An array of folders.
      */
-    static func initializeStoreWithDefaultData() {
-        
-        let managedObjectContext = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext
-        
-        let jsonFile: NSURL! = NSBundle.mainBundle().URLForResource("default_folders",
-                                                                    withExtension: "json")
-        let jsonData = NSData(contentsOfURL: jsonFile)!
-        var jsonObject: [String : AnyObject]?
-        var preloadedFolders = [String]()
+    func folders(insideDirectory directory: Folder) -> [Folder] {
+        let fetchRequest = NSFetchRequest(entityName: "Folder")
+        fetchRequest.predicate = NSPredicate(format: "superfolder == %@", directory)
         
         do {
-            jsonObject = try NSJSONSerialization.JSONObjectWithData(jsonData,
-                                                                    options: NSJSONReadingOptions(rawValue: 0)) as? [String : AnyObject]
+            let folders = try managedObjectContext.executeFetchRequest(fetchRequest) as! [Folder]
+            return folders
         } catch {
+            print(error)
+            abort()
+        }
+    }
+    
+    /**
+     Executes a request for all the files contained in folder `directory` and returns an array of them.
+     
+     - parameter directory: The folder we want to get files contained in.
+     
+     - returns: An array of files.
+     */
+    func files(insideDirectory directory: Folder) -> [File] {
+        let fetchRequest = NSFetchRequest(entityName: "File")
+        fetchRequest.predicate = NSPredicate(format: "folder == %@", directory)
+        
+        do {
+            let files = try managedObjectContext.executeFetchRequest(fetchRequest) as! [File]
+            return files
+        } catch {
+            print(error)
+            abort()
+        }
+    }
+    
+
+    /**
+     Loads the default set of folders into the persistent store. The set must be described in default_folders.json file.
+     */
+    func initializeStoreWithDefaultData() {
+        
+        let encryptedFolder = Folder(name: "Encrypted", insertIntoManagedObjectContext: managedObjectContext)
+        let decryptedFolder = Folder(name: "Decrypted", insertIntoManagedObjectContext: managedObjectContext)
+        
+        
+        // This is hardcode for simulating a file structure
+        #if DEBUG
             
-        }
-        
-        guard let folders = jsonObject!["folders"] as? [AnyObject] else {
-            return
-        }
-        
-        for folder in folders {
-            guard let folderDict = folder as? [String : AnyObject] else {
-                continue
-            }
-            guard let name = folderDict["name"] as? String else {
-                continue
-            }
+            let subfolderInEncryptedFolder = Folder(name: "Encrypted Subfolder 1", insertIntoManagedObjectContext: managedObjectContext)
+            subfolderInEncryptedFolder.superfolder = encryptedFolder
             
-            preloadedFolders.append(name)
-        }
+            let subfolderInDecryptedFolder = Folder(name: "Decrypted Subfolder 1", insertIntoManagedObjectContext: managedObjectContext)
+            subfolderInDecryptedFolder.superfolder = decryptedFolder
+            
+            let fileInEncryptedFolder = File(name: "Encrypted File 1", insertIntoManagedObjectContext: managedObjectContext)
+            fileInEncryptedFolder.encrypted = true
+            fileInEncryptedFolder.folder = encryptedFolder
+            
+            let fileInDecryptedFolder = File(name: "Unencrypted File 1", insertIntoManagedObjectContext: managedObjectContext)
+            fileInDecryptedFolder.encrypted = false
+            fileInDecryptedFolder.folder = decryptedFolder
+            
+        #endif
         
-        for folderName in preloadedFolders {
-            guard let unwrappedManagedObjectContext = managedObjectContext else {
-                continue
-            }
-            let folderEntity = NSEntityDescription.insertNewObjectForEntityForName("Folder",
-                                                                                   inManagedObjectContext: unwrappedManagedObjectContext) as! Folder
-            folderEntity.name = folderName
-        }
-        (UIApplication.sharedApplication().delegate as? AppDelegate)?.saveContext()
+        
+        AppDelegate.sharedInstance.saveContext()
     }
     
     

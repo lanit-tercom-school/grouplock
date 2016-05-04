@@ -12,6 +12,11 @@ import CoreData
 
 class File: NSManagedObject {
 
-// Insert code here to add functionality to your managed object subclass
+    convenience init(name: String, insertIntoManagedObjectContext context: NSManagedObjectContext) {
+        let entityDescription = NSEntityDescription.entityForName("File", inManagedObjectContext: context)
+        self.init(entity: entityDescription!, insertIntoManagedObjectContext: context)
+        
+        self.name = name
+    }
 
 }
