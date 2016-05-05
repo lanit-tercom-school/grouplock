@@ -78,28 +78,33 @@ class FileManager: NSObject {
     
 
     /**
-     Loads the default set of folders into the persistent store. The set must be described in default_folders.json file.
+     Loads the default set of folders into the persistent store.
      */
     func initializeStoreWithDefaultData() {
         
         let encryptedFolder = Folder(name: "Encrypted", insertIntoManagedObjectContext: managedObjectContext)
         let decryptedFolder = Folder(name: "Decrypted", insertIntoManagedObjectContext: managedObjectContext)
         
+        // TODO: Use Dependency Injection
         
         // This is hardcode for simulating a file structure
         #if DEBUG
             
-            let subfolderInEncryptedFolder = Folder(name: "Encrypted Subfolder 1", insertIntoManagedObjectContext: managedObjectContext)
+            let subfolderInEncryptedFolder = Folder(name: "Encrypted Subfolder 1",
+                                                    insertIntoManagedObjectContext: managedObjectContext)
             subfolderInEncryptedFolder.superfolder = encryptedFolder
             
-            let subfolderInDecryptedFolder = Folder(name: "Decrypted Subfolder 1", insertIntoManagedObjectContext: managedObjectContext)
+            let subfolderInDecryptedFolder = Folder(name: "Decrypted Subfolder 1",
+                                                    insertIntoManagedObjectContext: managedObjectContext)
             subfolderInDecryptedFolder.superfolder = decryptedFolder
             
-            let fileInEncryptedFolder = File(name: "Encrypted File 1", insertIntoManagedObjectContext: managedObjectContext)
+            let fileInEncryptedFolder = File(name: "Encrypted File 1",
+                                             insertIntoManagedObjectContext: managedObjectContext)
             fileInEncryptedFolder.encrypted = true
             fileInEncryptedFolder.folder = encryptedFolder
             
-            let fileInDecryptedFolder = File(name: "Unencrypted File 1", insertIntoManagedObjectContext: managedObjectContext)
+            let fileInDecryptedFolder = File(name: "Unencrypted File 1",
+                                             insertIntoManagedObjectContext: managedObjectContext)
             fileInDecryptedFolder.encrypted = false
             fileInDecryptedFolder.folder = decryptedFolder
             

@@ -37,6 +37,7 @@
 		87B6921E1CB425E0008ACB6A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87B6921C1CB425E0008ACB6A /* LaunchScreen.storyboard */; };
 		87B6927F1CB45188008ACB6A /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B6927E1CB45188008ACB6A /* UIViewController.swift */; };
 		87DE60DE1CB46373005EA79E /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87DE60DD1CB46373005EA79E /* LocalAuthentication.framework */; };
+		87E795B81CDB9BEF0074823F /* StackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E795B71CDB9BEF0074823F /* StackTests.swift */; };
 		87F118EE1CBEFDD80038F956 /* UI.nss in Resources */ = {isa = PBXBuildFile; fileRef = 87F118ED1CBEFDD80038F956 /* UI.nss */; };
 		87F118F01CBF0CD40038F956 /* NUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87F118EF1CBF0CD40038F956 /* NUI.framework */; };
 		87F118F21CBF0CD60038F956 /* NUIParse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87F118F11CBF0CD60038F956 /* NUIParse.framework */; };
@@ -97,6 +98,7 @@
 		87B692351CB425E0008ACB6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87B6927E1CB45188008ACB6A /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; tabWidth = 4; };
 		87DE60DD1CB46373005EA79E /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
+		87E795B71CDB9BEF0074823F /* StackTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackTests.swift; sourceTree = "<group>"; };
 		87F118ED1CBEFDD80038F956 /* UI.nss */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UI.nss; sourceTree = "<group>"; };
 		87F118EF1CBF0CD40038F956 /* NUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NUI.framework; path = "../../../Library/Developer/Xcode/DerivedData/GroupLock-ffmgilidnbhbqnfkgswyglwucvmu/Build/Products/Debug-iphonesimulator/NUI.framework"; sourceTree = "<group>"; };
 		87F118F11CBF0CD60038F956 /* NUIParse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NUIParse.framework; path = "../../../Library/Developer/Xcode/DerivedData/GroupLock-ffmgilidnbhbqnfkgswyglwucvmu/Build/Products/Debug-iphonesimulator/NUIParse.framework"; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 			isa = PBXGroup;
 			children = (
 				87B072C61CC0E0C400916D09 /* NUITests */,
+				87E795B71CDB9BEF0074823F /* StackTests.swift */,
 				87B6922A1CB425E0008ACB6A /* Info.plist */,
 			);
 			path = GroupLockTests;
@@ -493,6 +496,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87E795B81CDB9BEF0074823F /* StackTests.swift in Sources */,
 				87B072DF1CC1B13600916D09 /* NUITextFieldTests.swift in Sources */,
 				87B072D91CC188EC00916D09 /* NUITabBarTests.swift in Sources */,
 				87B072E21CC1B7B300916D09 /* NUIPasswordViewTests.swift in Sources */,
@@ -569,6 +573,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = NO;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -616,6 +621,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = NO;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;

@@ -63,7 +63,8 @@ class LibraryViewController: UITableViewController {
     }
 
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(tableView: UITableView,
+                            cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         // FIXME: Switch-case? Maybe there is a better way?
         
@@ -74,11 +75,13 @@ class LibraryViewController: UITableViewController {
         case 1:
             let cell = tableView.dequeueReusableCellWithIdentifier("folderCell",
                                                                    forIndexPath: indexPath) as! FolderTableViewCell
+            
             cell.title.text = folders[indexPath.row].name
             return cell
             
         case 2:
-            let cell = tableView.dequeueReusableCellWithIdentifier("fileCell", forIndexPath: indexPath) as! FileTableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("fileCell",
+                                                                   forIndexPath: indexPath) as! FileTableViewCell
             cell.title.text = files[indexPath.row].name
             return cell
             
