@@ -95,6 +95,7 @@
         <scene sceneID="mLa-Ky-P8r">
             <objects>
                 <tabBarController storyboardIdentifier="TabBarController" id="YPl-G6-tPp" sceneMemberID="viewController">
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="ViM-bW-gfp">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -152,6 +153,9 @@
                                         <state key="normal" title="ENCRYPT">
                                             <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="HomeButton"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <segue destination="7rm-kT-rrw" kind="show" id="A4I-bD-HTh"/>
                                         </connections>
@@ -165,6 +169,9 @@
                                         <state key="normal" title="DECRYPT">
                                             <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="HomeButton"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <segue destination="AeK-f2-8gj" kind="show" id="vtb-Se-6Ed"/>
                                         </connections>
@@ -177,6 +184,9 @@
                             <constraint firstItem="kxM-cd-HTX" firstAttribute="centerY" secondItem="Gqg-VS-QNg" secondAttribute="centerY" constant="-25" id="0Ne-VO-ZE2"/>
                             <constraint firstItem="kxM-cd-HTX" firstAttribute="centerX" secondItem="Gqg-VS-QNg" secondAttribute="centerX" id="baZ-E1-d69"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="HomeView"/>
+                        </userDefinedRuntimeAttributes>
                     </view>
                     <navigationItem key="navigationItem" title="GroupLock" id="wEn-rI-AJ1">
                         <barButtonItem key="backBarButtonItem" title="GroupLock" id="ZJf-JQ-HXe"/>
@@ -264,6 +274,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="LibraryTableCell"/>
+                                </userDefinedRuntimeAttributes>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="folderCell" textLabel="OD4-Ce-M3B" detailTextLabel="hmD-sI-TFf" style="IBUITableViewCellStyleValue1" id="15Z-VW-Dav" customClass="FolderTableViewCell" customModule="GroupLock" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="72" width="600" height="44"/>
@@ -288,6 +301,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="LibraryTableCell"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="title" destination="OD4-Ce-M3B" id="GFH-Lm-ydH"/>
                                 </connections>
@@ -315,11 +331,17 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="LibraryTableCell"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="title" destination="LO5-ML-5ov" id="3tC-HJ-oNc"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="LibraryTable"/>
+                        </userDefinedRuntimeAttributes>
                         <connections>
                             <outlet property="dataSource" destination="B27-qf-ejK" id="S3w-hr-p3E"/>
                             <outlet property="delegate" destination="B27-qf-ejK" id="phE-K5-KQN"/>
@@ -328,6 +350,11 @@
                     <navigationItem key="navigationItem" title="Library" id="hWq-Bj-BPB">
                         <rightBarButtonItems>
                             <barButtonItem systemItem="edit" id="3l0-Lq-gOp"/>
+                            <barButtonItem title="Load" id="k8j-jT-nez">
+                                <connections>
+                                    <action selector="onLoad:" destination="B27-qf-ejK" id="o6b-C4-jnP"/>
+                                </connections>
+                            </barButtonItem>
                             <barButtonItem systemItem="search" id="z3G-Rn-YVx"/>
                         </rightBarButtonItems>
                     </navigationItem>

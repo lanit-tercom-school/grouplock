@@ -1,4 +1,6 @@
 /* Please consider adding unit tests for each new class and property */
+/* IMPORTANT: Do NOT use general classes like View or Table, because the stylesheet gets applied
+ * in undesired and unexpected places */
 
 @primaryFontName: HelveticaNeue;
 @secondaryFontName: HelveticaNeue-Light;
@@ -10,23 +12,6 @@
 @primaryFontColor: #FFFFFF;
 
 /* General */
-
-View {
-  background-color: @primaryBackgroundColor;
-  exclude-subviews: UITextField;
-}
-
-Table {
-  background-color: @primaryBackgroundColor;
-  separator-color: @mainColor;
-}
-
-TableCell {
-  background-color: @primaryBackgroundColor;
-  tint-color: @mainColor;
-  background-color-selected: @buttonColor;
-  font-color-highlighted: @primaryFontColor;
-}
 
 NavigationBar {
   bar-tint-color: @mainColor;
@@ -42,18 +27,6 @@ BarButton {
   font-color: @primaryFontColor;
 }
 
-Button {
-  background-color: @buttonColor;
-  font-color: @primaryFontColor;
-  corner-radius: 0;
-}
-
-TextField {
-  tint-color: @mainColor;
-  corner-radius: 0;
-}
-
-
 /* PasswordViewController */
 
 PasswordView {
@@ -68,4 +41,31 @@ ProceedButton {
 
 EnterPasswordLabel {
   font-color: #FF5222;
+}
+
+/* HomeViewController */
+
+HomeView {
+    background-color: @primaryBackgroundColor;
+    exclude-subviews: UITextField;
+}
+
+HomeButton {
+    background-color: @buttonColor;
+    font-color: @primaryFontColor;
+    corner-radius: 0;
+}
+
+/* LibraryViewController */
+
+LibraryTable {
+    background-color: @primaryBackgroundColor;
+    separator-color: @mainColor;
+}
+
+LibraryTableCell {
+    background-color: @primaryBackgroundColor;
+    tint-color: @mainColor;
+    background-color-selected: @buttonColor;
+    font-color-highlighted: @primaryFontColor;
 }

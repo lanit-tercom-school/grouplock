@@ -23,8 +23,8 @@ class LibraryViewController: UITableViewController {
     let managedObjectContext = AppDelegate.sharedInstance.managedObjectContext
     let managedObjectModel = AppDelegate.sharedInstance.managedObjectModel
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
         if pathStack.isEmpty {
             folders = FileManager.sharedInstance.rootDirectory
@@ -121,5 +121,50 @@ class LibraryViewController: UITableViewController {
         }
         
         tableView.reloadData()
+    }
+}
+
+extension LibraryViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    @IBAction func onLoad(sender: UIBarButtonItem) {
+        
+        let albumPicker = UIImagePickerController()
+        albumPicker.delegate = self
+        presentViewController(albumPicker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        dismissViewControllerAnimated(true, completion: alertName)
+        
+        
+        guard let media = info[UIImagePickerControllerOriginalImage] as? UIImage else {
+            NSLog("Cannot obtain an image from Image Picker")
+            return
+        }
+        guard let fileType = info[UIImagePickerControllerMediaType] as? String else {
+            NSLog("Cannot obtain an image from ImagePicker")
+            return
+        }
+        
+        
+    }
+    
+    func alertName() -> Void {
+        
+        let nameAlert = UIAlertController(title: "Name", message: "Type a desired name for this file.",
+                                          preferredStyle: .Alert)
+        
+        nameAlert.addTextFieldWithConfigurationHandler { (textField) in
+            
+        }
+        nameAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+        
+        self.presentViewController(nameAlert, animated: false, completion: nil)
+
+    }
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        dismissViewControllerAnimated(true, completion: nil)
     }
 }
