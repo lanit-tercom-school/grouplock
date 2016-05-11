@@ -13,7 +13,6 @@ import Foundation
  */
 struct Stack<Element> {
     
-    // TODO: Изучить реализацию стека в Swift
     internal var items = [Element]()
     
     /**

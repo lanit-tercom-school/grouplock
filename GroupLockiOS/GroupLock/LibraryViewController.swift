@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import MobileCoreServices
 
 class LibraryViewController: UITableViewController {
     
@@ -135,36 +136,26 @@ extension LibraryViewController: UIImagePickerControllerDelegate, UINavigationCo
     
     func imagePickerController(picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        dismissViewControllerAnimated(true, completion: alertName)
+        dismissViewControllerAnimated(true, completion: nil)
         
+        let fileURL = info[UIImagePickerControllerReferenceURL] as! NSURL
+        let fileType = info[UIImagePickerControllerMediaType] as! String
+        print(fileURL)
+        let fileContents = NSData(contentsOfURL: fileURL)
         
-        guard let media = info[UIImagePickerControllerOriginalImage] as? UIImage else {
-            NSLog("Cannot obtain an image from Image Picker")
-            return
-        }
-        guard let fileType = info[UIImagePickerControllerMediaType] as? String else {
-            NSLog("Cannot obtain an image from ImagePicker")
-            return
-        }
-        
-        
+        // TODO:
+    }
+
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func alertName() -> Void {
-        
+    func setFileName(file: File) {
         let nameAlert = UIAlertController(title: "Name", message: "Type a desired name for this file.",
                                           preferredStyle: .Alert)
-        
-        nameAlert.addTextFieldWithConfigurationHandler { (textField) in
-            
-        }
+        nameAlert.addTextFieldWithConfigurationHandler(nil)
         nameAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
         
         self.presentViewController(nameAlert, animated: false, completion: nil)
-
-    }
-    
-    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        dismissViewControllerAnimated(true, completion: nil)
     }
 }
