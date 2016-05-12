@@ -18,6 +18,5 @@ extension File {
     @NSManaged var encrypted: Bool
     @NSManaged var name: String
     @NSManaged var type: String
-    @NSManaged var folder: Folder
 
 }

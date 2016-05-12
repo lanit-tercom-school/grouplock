@@ -29,14 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         #endif
         
         NUISettings.initWithStylesheet("UI")
-        
-        let defaults = NSUserDefaults.standardUserDefaults()
-        
-        let storeIsInitialized = defaults.boolForKey("storeIsInitialized")
-        if !storeIsInitialized {
-            FileManager.sharedInstance.initializeStoreWithDefaultData()
-            defaults.setBool(true, forKey: "storeIsInitialized")
-        }
+
         
         self.window?.backgroundColor = UIColor.whiteColor()
         return true

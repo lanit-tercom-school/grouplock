@@ -12,116 +12,37 @@ import MobileCoreServices
 
 class LibraryViewController: UITableViewController {
     
-    /// Current list of folders displayed on the screen
-    private var folders = [Folder]()
     
     /// Current list of files displayed on the screen
     private var files = [File]()
     
-    /// Stack for tracking location in a structure
-    private var pathStack = Stack<Folder>()
-    
     let managedObjectContext = AppDelegate.sharedInstance.managedObjectContext
     let managedObjectModel = AppDelegate.sharedInstance.managedObjectModel
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        if pathStack.isEmpty {
-            folders = FileManager.sharedInstance.rootDirectory
-            files.removeAll()
-        } else {
-            folders = FileManager.sharedInstance.folders(insideDirectory: pathStack.peek()!)
-            files = FileManager.sharedInstance.files(insideDirectory: pathStack.peek()!)
-        }
-        
-    }
-
     // MARK: - Table view data source
-
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         
-        // First section is for returning to parent directory
-        // Second section lists folders
-        // Third section lists files
-        return 3
+        return 1
     }
-
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0:
-            if pathStack.isEmpty {
-                return 0
-            }
-            return 1
-        case 1:
-            return folders.count
-        case 2:
-            return files.count
-        default:
-            return 0
-        }
+        return files.count
     }
-
+    
     
     override func tableView(tableView: UITableView,
                             cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        // FIXME: Switch-case? Maybe there is a better way?
-        
-        
-        switch indexPath.section {
-        case 0:
-            return tableView.dequeueReusableCellWithIdentifier("parentDirectory")!
-        case 1:
-            let cell = tableView.dequeueReusableCellWithIdentifier("folderCell",
-                                                                   forIndexPath: indexPath) as! FolderTableViewCell
-            
-            cell.title.text = folders[indexPath.row].name
-            return cell
-            
-        case 2:
-            let cell = tableView.dequeueReusableCellWithIdentifier("fileCell",
-                                                                   forIndexPath: indexPath) as! FileTableViewCell
-            cell.title.text = files[indexPath.row].name
-            return cell
-            
-        default:
-            let cell = tableView.dequeueReusableCellWithIdentifier("fileCell", forIndexPath: indexPath)
-            return cell
-        }
+        let cell = tableView.dequeueReusableCellWithIdentifier("fileCell",
+                                                               forIndexPath: indexPath) as! FileTableViewCell
+        cell.title.text = files[indexPath.row].name
+        return cell
     }
-
+    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        // FIXME: Switch-case? Maybe there is a better way?
         
-        switch indexPath.section {
-        case 0:
-            pathStack.pop()
-            if pathStack.isEmpty {
-                folders = FileManager.sharedInstance.rootDirectory
-                files.removeAll()
-                break
-            }
-            folders = FileManager.sharedInstance.folders(insideDirectory: pathStack.peek()!)
-            files = FileManager.sharedInstance.files(insideDirectory: pathStack.peek()!)
-        case 1:
-            let selectedFolder = folders[indexPath.row]
-            folders = FileManager.sharedInstance.folders(insideDirectory: selectedFolder)
-            files = FileManager.sharedInstance.files(insideDirectory: selectedFolder)
-            
-            pathStack.push(selectedFolder)
-            
-    // TODO: Implement work with files
-        case 2:
-            break
-            
-        default:
-            break
-        }
-        
-        tableView.reloadData()
     }
 }
 
@@ -143,9 +64,34 @@ extension LibraryViewController: UIImagePickerControllerDelegate, UINavigationCo
         print(fileURL)
         let fileContents = NSData(contentsOfURL: fileURL)
         
-        // TODO:
+        let fileEntity = NSEntityDescription.entityForName("File", inManagedObjectContext: managedObjectContext)
+        let loadedFile = File(entity: fileEntity!, insertIntoManagedObjectContext: nil)
+        
+        pickEncryptionStatus(forFile: loadedFile)
+        
     }
-
+    
+    func pickEncryptionStatus(forFile file: File) {
+        let actionSheet = UIAlertController(title: nil, message: "What do you to load this file for?",
+                                            preferredStyle: .ActionSheet)
+        let forEncryption = UIAlertAction(title: "Encryption", style: .Default) { _ in
+            self.setEnctyptionStatus(forFile: file, encrypted: false)
+            self.setFileName(file)
+        }
+        let forDecryption = UIAlertAction(title: "Decryption", style: .Default) { _ in
+            self.setEnctyptionStatus(forFile: file, encrypted: true)
+            self.setFileName(file)
+        }
+        actionSheet.addAction(forEncryption)
+        actionSheet.addAction(forDecryption)
+        
+        presentViewController(actionSheet, animated: true, completion: nil)
+    }
+    
+    func setEnctyptionStatus(forFile file: File, encrypted status: Bool) {
+        file.encrypted = status
+    }
+    
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         dismissViewControllerAnimated(true, completion: nil)
     }
@@ -156,6 +102,6 @@ extension LibraryViewController: UIImagePickerControllerDelegate, UINavigationCo
         nameAlert.addTextFieldWithConfigurationHandler(nil)
         nameAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
         
-        self.presentViewController(nameAlert, animated: false, completion: nil)
+        presentViewController(nameAlert, animated: false, completion: nil)
     }
 }
