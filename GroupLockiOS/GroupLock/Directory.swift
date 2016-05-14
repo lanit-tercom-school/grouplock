@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum Directory {
-    case Encrypted
-    case Decrypted
+enum Directory: String {
+    case Encrypted = "ENCRYPTED"
+    case Decrypted = "DECRYPTED"
 }

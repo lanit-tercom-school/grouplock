@@ -1,4 +1,5 @@
 /* Please consider adding unit tests for each new class and property */
+
 /* IMPORTANT: Do NOT use general classes like View or Table, because the stylesheet gets applied
  * in undesired and unexpected places */
 
@@ -9,38 +10,38 @@
 @buttonColor: #335273;
 @primaryBackgroundColor: #E0E8F4;
 
-@primaryFontColor: #FFFFFF;
+@primaryFontColor: #E0E0E0;
 
 /* General */
 
 NavigationBar {
-  bar-tint-color: @mainColor;
-  font-color: @primaryFontColor;
-  background-tint-color: @primaryFontColor;
+    bar-tint-color: @mainColor;
+    font-color: @primaryFontColor;
+    background-tint-color: @primaryFontColor;
 }
 
 TabBar {
-  background-tint-color: @mainColor;
+    background-tint-color: @mainColor;
 }
 
 BarButton {
-  font-color: @primaryFontColor;
+    font-color: @primaryFontColor;
 }
 
 /* PasswordViewController */
 
 PasswordView {
-  background-color: #142F4DBF;
+    background-color: #142F4DBF;
 }
 
 ProceedButton {
-  background-color: #4CAF4D;
-  font-color: @primaryFontColor;
-  corner-radius: 0;
+    background-color: #4CAF4D;
+    font-color: white;
+    corner-radius: 0;
 }
 
 EnterPasswordLabel {
-  font-color: #FF5222;
+    font-color: #FF5222;
 }
 
 /* HomeViewController */
@@ -54,6 +55,18 @@ HomeButton {
     background-color: @buttonColor;
     font-color: @primaryFontColor;
     corner-radius: 0;
+}
+
+/* LibraryDirectoryViewController */
+
+DirectoryView {
+    background-color: @primaryBackgroundColor;
+}
+
+DirectoryButton {
+    background-color: @buttonColor;
+    font-color: @primaryBackgroundColor;
+    corner-radius: 4;
 }
 
 /* LibraryViewController */

@@ -14,10 +14,9 @@ class LibraryViewController: UITableViewController {
     
     
     /// Current list of files displayed on the screen
-    private var files = [File]()
+    var files = [File]()
     
     let managedObjectContext = AppDelegate.sharedInstance.managedObjectContext
-    let managedObjectModel = AppDelegate.sharedInstance.managedObjectModel
     
     // MARK: - Table view data source
     
@@ -52,6 +51,7 @@ extension LibraryViewController: UIImagePickerControllerDelegate, UINavigationCo
         
         let albumPicker = UIImagePickerController()
         albumPicker.delegate = self
+        albumPicker.navigationBar.translucent = false
         presentViewController(albumPicker, animated: true, completion: nil)
     }
     
@@ -67,20 +67,23 @@ extension LibraryViewController: UIImagePickerControllerDelegate, UINavigationCo
         let fileEntity = NSEntityDescription.entityForName("File", inManagedObjectContext: managedObjectContext)
         let loadedFile = File(entity: fileEntity!, insertIntoManagedObjectContext: nil)
         
-        pickEncryptionStatus(forFile: loadedFile)
+        loadedFile.contents = fileContents
+        loadedFile.type = fileType
+        
+        pickEncryptionStatus(forFile: loadedFile, completion: setFileName)
         
     }
     
-    func pickEncryptionStatus(forFile file: File) {
+    func pickEncryptionStatus(forFile file: File, completion: ((File) -> Void)?) {
         let actionSheet = UIAlertController(title: nil, message: "What do you to load this file for?",
                                             preferredStyle: .ActionSheet)
         let forEncryption = UIAlertAction(title: "Encryption", style: .Default) { _ in
-            self.setEnctyptionStatus(forFile: file, encrypted: false)
-            self.setFileName(file)
+            file.encrypted = false
+            completion?(file)
         }
         let forDecryption = UIAlertAction(title: "Decryption", style: .Default) { _ in
-            self.setEnctyptionStatus(forFile: file, encrypted: true)
-            self.setFileName(file)
+            file.encrypted = true
+            completion?(file)
         }
         actionSheet.addAction(forEncryption)
         actionSheet.addAction(forDecryption)
@@ -88,19 +91,25 @@ extension LibraryViewController: UIImagePickerControllerDelegate, UINavigationCo
         presentViewController(actionSheet, animated: true, completion: nil)
     }
     
-    func setEnctyptionStatus(forFile file: File, encrypted status: Bool) {
-        file.encrypted = status
-    }
-    
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func setFileName(file: File) {
+    func setFileName(file: File) -> Void {
         let nameAlert = UIAlertController(title: "Name", message: "Type a desired name for this file.",
                                           preferredStyle: .Alert)
         nameAlert.addTextFieldWithConfigurationHandler(nil)
-        nameAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+        
+        let action = UIAlertAction(title: "OK", style: .Default) { _ in
+            if let name = nameAlert.textFields?.first?.text {
+                file.name = name
+                self.managedObjectContext.insertObject(file)
+                AppDelegate.sharedInstance.saveContext()
+                self.tableView.reloadData()
+            }
+        }
+        
+        nameAlert.addAction(action)
         
         presentViewController(nameAlert, animated: false, completion: nil)
     }

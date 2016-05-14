@@ -20,9 +20,6 @@ class FileManager: NSObject {
     private var managedObjectContext: NSManagedObjectContext {
         return AppDelegate.sharedInstance.managedObjectContext
     }
-    private var managedObjectModel: NSManagedObjectModel {
-        return AppDelegate.sharedInstance.managedObjectModel
-    }
     
     /**
      Executes a request for all the files contained in `directory` and returns an array of them.
@@ -32,7 +29,13 @@ class FileManager: NSObject {
      - returns: An array of files.
      */
     func files(insideDirectory directory: Directory) -> [File] {
-        let fetchRequest = NSFetchRequest(entityName: "File")        
+        let fetchRequest = NSFetchRequest(entityName: "File")
+        switch directory {
+        case .Encrypted:
+            fetchRequest.predicate = NSPredicate(format: "encrypted == true")
+        case .Decrypted:
+            fetchRequest.predicate = NSPredicate(format: "encrypted == false")
+        }
         do {
             let files = try managedObjectContext.executeFetchRequest(fetchRequest) as! [File]
             return files
@@ -40,6 +43,19 @@ class FileManager: NSObject {
             print(error)
             abort()
         }
-    }   
+    }
     
+    func createFile(name: String, type: String, encrypted: Bool, contents: NSData?) -> File? {
+        guard let entity = NSEntityDescription.entityForName("File",
+                                                             inManagedObjectContext: managedObjectContext) else {
+            return nil
+        }
+        
+        let file = File(entity: entity, insertIntoManagedObjectContext: nil)
+        file.name = name
+        file.type = type
+        file.encrypted = encrypted
+        file.contents = contents
+        return file
+    }
 }
