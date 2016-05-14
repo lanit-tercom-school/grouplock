@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fk7-jF-owG">
-                                <rect key="frame" x="175" y="140" width="250" height="93"/>
+                                <rect key="frame" x="175" y="139" width="250" height="94"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="agr-ND-UIk"/>
                                 </constraints>
@@ -262,13 +262,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Phd-Ux-wLn">
-                                <rect key="frame" x="140" y="201" width="320" height="80"/>
+                                <rect key="frame" x="90" y="201" width="420" height="80"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gqh-NA-2JO">
-                                        <rect key="frame" x="0.0" y="0.0" width="150" height="80"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="XaN-2v-rv3"/>
-                                        </constraints>
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="80"/>
                                         <state key="normal" title="ENCRYPTED"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="DirectoryButton"/>
@@ -278,10 +275,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6m7-et-UIS">
-                                        <rect key="frame" x="170" y="0.0" width="150" height="80"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="Mdm-g8-3cd"/>
-                                        </constraints>
+                                        <rect key="frame" x="220" y="0.0" width="200" height="80"/>
                                         <state key="normal" title="DECRYPTED"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="DirectoryButton"/>
@@ -298,10 +292,14 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LAE-fK-m4Z">
                                 <rect key="frame" x="506" y="393" width="50" height="50"/>
                                 <state key="normal" image="DownloadButton"/>
+                                <connections>
+                                    <action selector="onLoad:" destination="9aL-Lb-Edi" eventType="touchUpInside" id="Azu-yR-flN"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Phd-Ux-wLn" firstAttribute="width" secondItem="onr-DE-bbm" secondAttribute="width" multiplier="0.7" id="VWA-Uc-Rc6"/>
                             <constraint firstItem="uzX-UX-lh2" firstAttribute="top" secondItem="LAE-fK-m4Z" secondAttribute="bottom" constant="44" id="dWM-oZ-5J1"/>
                             <constraint firstItem="Phd-Ux-wLn" firstAttribute="centerY" secondItem="onr-DE-bbm" secondAttribute="centerY" multiplier="0.9" id="e3M-nf-G6T"/>
                             <constraint firstAttribute="trailing" secondItem="LAE-fK-m4Z" secondAttribute="trailing" constant="44" id="v88-NV-5bV"/>
@@ -332,18 +330,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="fileCell" textLabel="LO5-ML-5ov" style="IBUITableViewCellStyleDefault" id="CMQ-io-mJo" customClass="FileTableViewCell" customModule="GroupLock" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="fileCell" textLabel="LO5-ML-5ov" detailTextLabel="NSk-7V-N2j" style="IBUITableViewCellStyleValue1" id="CMQ-io-mJo" customClass="FileTableViewCell" customModule="GroupLock" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CMQ-io-mJo" id="PXS-Ch-vZO">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="file.bmp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LO5-ML-5ov">
-                                            <rect key="frame" x="15" y="0.0" width="570" height="43.5"/>
+                                            <rect key="frame" x="15" y="12" width="59" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NSk-7V-N2j">
+                                            <rect key="frame" x="543" y="12" width="42" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -353,6 +358,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="title" destination="LO5-ML-5ov" id="3tC-HJ-oNc"/>
+                                    <outlet property="type" destination="NSk-7V-N2j" id="Sdl-Zf-9Kt"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

@@ -6,8 +6,8 @@
 //  Copyright © 2016 Lanit-Tercom School. All rights reserved.
 //
 
-import UIKit
 import CoreData
+import Photos
 
 /// FileManager object represents a singleton for imitating file system structure for Library.
 class FileManager: NSObject {
@@ -57,5 +57,28 @@ class FileManager: NSObject {
         file.encrypted = encrypted
         file.contents = contents
         return file
+    }
+    
+    func createFileFromURL(url: NSURL, withName name: String, encrypted: Bool) -> File? {
+        guard let fileType = url.pathExtension else {
+            return nil
+        }
+        let data = getImageContentsForURL(url)
+        return createFile(name, type: fileType, encrypted: encrypted, contents: data)
+    }
+    
+    private func getImageContentsForURL(url: NSURL) -> NSData? {
+        
+        let fetchResult = PHAsset.fetchAssetsWithALAssetURLs([url], options: nil)
+        if let asset = fetchResult.firstObject as? PHAsset {
+            var data: NSData?
+            let options = PHImageRequestOptions()
+            options.synchronous = true
+            PHImageManager.defaultManager().requestImageDataForAsset(asset, options: options, resultHandler: { (imageData, _, _, _) in
+                data = imageData
+            })
+            return data
+        }
+        return nil
     }
 }

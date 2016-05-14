@@ -14,7 +14,6 @@
 		879797071CCFA61E0064C3AC /* File+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879797031CCFA61E0064C3AC /* File+CoreDataProperties.swift */; };
 		879797081CCFA61E0064C3AC /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879797041CCFA61E0064C3AC /* File.swift */; };
 		8797970E1CCFEFB20064C3AC /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797970D1CCFEFB20064C3AC /* LibraryViewController.swift */; };
-		879797101CCFF4180064C3AC /* FolderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797970F1CCFF4180064C3AC /* FolderTableViewCell.swift */; };
 		87B072CE1CC15FF700916D09 /* NUITests.nss in Resources */ = {isa = PBXBuildFile; fileRef = 87B072CD1CC15FF700916D09 /* NUITests.nss */; };
 		87B072D11CC1659700916D09 /* NUITests.nss in Resources */ = {isa = PBXBuildFile; fileRef = 87B072CD1CC15FF700916D09 /* NUITests.nss */; };
 		87B072D51CC1680F00916D09 /* NUINavigationBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B072D41CC1680F00916D09 /* NUINavigationBarTests.swift */; };
@@ -65,7 +64,6 @@
 		879797031CCFA61E0064C3AC /* File+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "File+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		879797041CCFA61E0064C3AC /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		8797970D1CCFEFB20064C3AC /* LibraryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
-		8797970F1CCFF4180064C3AC /* FolderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FolderTableViewCell.swift; sourceTree = "<group>"; };
 		87B072CD1CC15FF700916D09 /* NUITests.nss */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NUITests.nss; sourceTree = "<group>"; };
 		87B072D41CC1680F00916D09 /* NUINavigationBarTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NUINavigationBarTests.swift; sourceTree = "<group>"; };
 		87B072D81CC188EC00916D09 /* NUITabBarTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NUITabBarTests.swift; sourceTree = "<group>"; };
@@ -137,7 +135,6 @@
 		873ED7B71CDAAD63005A8656 /* LibraryViewController Cells */ = {
 			isa = PBXGroup;
 			children = (
-				8797970F1CCFF4180064C3AC /* FolderTableViewCell.swift */,
 				873ED7B51CDAAD5E005A8656 /* FileTableViewCell.swift */,
 			);
 			name = "LibraryViewController Cells";
@@ -471,7 +468,6 @@
 			files = (
 				873ED7B61CDAAD5E005A8656 /* FileTableViewCell.swift in Sources */,
 				87B692131CB425E0008ACB6A /* PasswordViewController.swift in Sources */,
-				879797101CCFF4180064C3AC /* FolderTableViewCell.swift in Sources */,
 				879797081CCFA61E0064C3AC /* File.swift in Sources */,
 				8741CE871CE6872D0034A820 /* LibraryDirectoryViewController.swift in Sources */,
 				87B692191CB425E0008ACB6A /* GroupLock.xcdatamodeld in Sources */,
