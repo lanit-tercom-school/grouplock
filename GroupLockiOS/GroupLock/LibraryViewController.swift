@@ -99,8 +99,3 @@ class LibraryViewController: UITableViewController {
         dismissViewControllerAnimated(true, completion: nil)
     }
 }
-
-extension LibraryViewController {
-    
-    
-}

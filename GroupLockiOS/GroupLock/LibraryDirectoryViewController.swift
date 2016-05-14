@@ -36,9 +36,8 @@ class LibraryDirectoryViewController: UIViewController {
             destination.directory = directory
         }
     }
-}
-
-extension LibraryDirectoryViewController {
+    
+    // MARK: - Loading a new file using UIImagePickerController
     
     @IBAction func onLoad(sender: UIButton) {
         
@@ -65,5 +64,4 @@ extension LibraryDirectoryViewController {
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         dismissViewControllerAnimated(true, completion: nil)
     }
-    
 }
