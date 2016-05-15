@@ -14,6 +14,16 @@
 
 /* General */
 
+GeneralView {
+    background-color: @primaryBackgroundColor;
+}
+
+GeneralButton {
+    background-color: @buttonColor;
+    font-color: @primaryFontColor;
+    corner-radius: 0;
+}
+
 NavigationBar {
     bar-tint-color: @mainColor;
     font-color: @primaryFontColor;
@@ -44,24 +54,7 @@ EnterPasswordLabel {
     font-color: #FF5222;
 }
 
-/* HomeViewController */
-
-HomeView {
-    background-color: @primaryBackgroundColor;
-    exclude-subviews: UITextField;
-}
-
-HomeButton {
-    background-color: @buttonColor;
-    font-color: @primaryFontColor;
-    corner-radius: 0;
-}
-
 /* LibraryDirectoryViewController */
-
-DirectoryView {
-    background-color: @primaryBackgroundColor;
-}
 
 DirectoryButton {
     background-color: @buttonColor;
