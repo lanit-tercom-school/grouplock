@@ -6,8 +6,8 @@
 //  Copyright © 2016 Lanit-Tercom School. All rights reserved.
 //
 
-import UIKit
 import CoreData
+import Photos
 
 /// FileManager object represents a singleton for imitating file system structure for Library.
 class FileManager: NSObject {
@@ -20,53 +20,22 @@ class FileManager: NSObject {
     private var managedObjectContext: NSManagedObjectContext {
         return AppDelegate.sharedInstance.managedObjectContext
     }
-    private var managedObjectModel: NSManagedObjectModel {
-        return AppDelegate.sharedInstance.managedObjectModel
-    }
-    
-    /// Provides an array of folders of the root directory
-    var rootDirectory: [Folder] {
-        let rootFetchRequest = managedObjectModel.fetchRequestTemplateForName("RootFetchRequest")
-        do {
-            let folders = try managedObjectContext.executeFetchRequest(rootFetchRequest!) as! [Folder]
-            return folders
-        } catch {
-            print(error)
-            abort()
-        }
-    }
     
     /**
-     Executes a request for all the folders contained in folder `directory` and returns an array of them.
+     Executes a request for all the files contained in `directory` and returns an array of them.
      
-     - parameter directory: The folder we want to get subfolders of.
-     
-     - returns: An array of folders.
-     */
-    func folders(insideDirectory directory: Folder) -> [Folder] {
-        let fetchRequest = NSFetchRequest(entityName: "Folder")
-        fetchRequest.predicate = NSPredicate(format: "superfolder == %@", directory)
-        
-        do {
-            let folders = try managedObjectContext.executeFetchRequest(fetchRequest) as! [Folder]
-            return folders
-        } catch {
-            print(error)
-            abort()
-        }
-    }
-    
-    /**
-     Executes a request for all the files contained in folder `directory` and returns an array of them.
-     
-     - parameter directory: The folder we want to get files contained in.
+     - parameter directory: The directory we want to get files contained in.
      
      - returns: An array of files.
      */
-    func files(insideDirectory directory: Folder) -> [File] {
+    func files(insideDirectory directory: Directory) -> [File] {
         let fetchRequest = NSFetchRequest(entityName: "File")
-        fetchRequest.predicate = NSPredicate(format: "folder == %@", directory)
-        
+        switch directory {
+        case .Encrypted:
+            fetchRequest.predicate = NSPredicate(format: "encrypted == true")
+        case .Decrypted:
+            fetchRequest.predicate = NSPredicate(format: "encrypted == false")
+        }
         do {
             let files = try managedObjectContext.executeFetchRequest(fetchRequest) as! [File]
             return files
@@ -76,38 +45,40 @@ class FileManager: NSObject {
         }
     }
     
-
-    /**
-     Loads the default set of folders into the persistent store. The set must be described in default_folders.json file.
-     */
-    func initializeStoreWithDefaultData() {
+    func createFile(name: String, type: String, encrypted: Bool, contents: NSData?) -> File? {
+        guard let entity = NSEntityDescription.entityForName("File",
+                                                             inManagedObjectContext: managedObjectContext) else {
+            return nil
+        }
         
-        let encryptedFolder = Folder(name: "Encrypted", insertIntoManagedObjectContext: managedObjectContext)
-        let decryptedFolder = Folder(name: "Decrypted", insertIntoManagedObjectContext: managedObjectContext)
-        
-        
-        // This is hardcode for simulating a file structure
-        #if DEBUG
-            
-            let subfolderInEncryptedFolder = Folder(name: "Encrypted Subfolder 1", insertIntoManagedObjectContext: managedObjectContext)
-            subfolderInEncryptedFolder.superfolder = encryptedFolder
-            
-            let subfolderInDecryptedFolder = Folder(name: "Decrypted Subfolder 1", insertIntoManagedObjectContext: managedObjectContext)
-            subfolderInDecryptedFolder.superfolder = decryptedFolder
-            
-            let fileInEncryptedFolder = File(name: "Encrypted File 1", insertIntoManagedObjectContext: managedObjectContext)
-            fileInEncryptedFolder.encrypted = true
-            fileInEncryptedFolder.folder = encryptedFolder
-            
-            let fileInDecryptedFolder = File(name: "Unencrypted File 1", insertIntoManagedObjectContext: managedObjectContext)
-            fileInDecryptedFolder.encrypted = false
-            fileInDecryptedFolder.folder = decryptedFolder
-            
-        #endif
-        
-        
-        AppDelegate.sharedInstance.saveContext()
+        let file = File(entity: entity, insertIntoManagedObjectContext: nil)
+        file.name = name
+        file.type = type
+        file.encrypted = encrypted
+        file.contents = contents
+        return file
     }
     
+    func createFileFromURL(url: NSURL, withName name: String, encrypted: Bool) -> File? {
+        guard let fileType = url.pathExtension else {
+            return nil
+        }
+        let data = getImageContentsForURL(url)
+        return createFile(name, type: fileType, encrypted: encrypted, contents: data)
+    }
     
+    private func getImageContentsForURL(url: NSURL) -> NSData? {
+        
+        let fetchResult = PHAsset.fetchAssetsWithALAssetURLs([url], options: nil)
+        if let asset = fetchResult.firstObject as? PHAsset {
+            var data: NSData?
+            let options = PHImageRequestOptions()
+            options.synchronous = true
+            PHImageManager.defaultManager().requestImageDataForAsset(asset, options: options, resultHandler: { (imageData, _, _, _) in
+                data = imageData
+            })
+            return data
+        }
+        return nil
+    }
 }

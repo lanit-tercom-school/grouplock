@@ -8,115 +8,94 @@
 
 import UIKit
 import CoreData
+import MobileCoreServices
 
 class LibraryViewController: UITableViewController {
     
-    /// Current list of folders displayed on the screen
-    private var folders = [Folder]()
+    /// Current directory's contents displayed
+    var directory = Directory.Encrypted
     
     /// Current list of files displayed on the screen
-    private var files = [File]()
-    
-    /// Stack for tracking location in a structure
-    private var pathStack = Stack<Folder>()
+    var files: [File] {
+        return FileManager.sharedInstance.files(insideDirectory: directory)
+    }
     
     let managedObjectContext = AppDelegate.sharedInstance.managedObjectContext
-    let managedObjectModel = AppDelegate.sharedInstance.managedObjectModel
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
-        if pathStack.isEmpty {
-            folders = FileManager.sharedInstance.rootDirectory
-            files.removeAll()
-        } else {
-            folders = FileManager.sharedInstance.folders(insideDirectory: pathStack.peek()!)
-            files = FileManager.sharedInstance.files(insideDirectory: pathStack.peek()!)
-        }
-        
+        navigationItem.title = directory.rawValue
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         
-        // First section is for returning to parent directory
-        // Second section lists folders
-        // Third section lists files
-        return 3
+        return 1
     }
-
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0:
-            if pathStack.isEmpty {
-                return 0
-            }
-            return 1
-        case 1:
-            return folders.count
-        case 2:
-            return files.count
-        default:
-            return 0
-        }
-    }
-
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        // FIXME: Switch-case? Maybe there is a better way?
-        
-        
-        switch indexPath.section {
-        case 0:
-            return tableView.dequeueReusableCellWithIdentifier("parentDirectory")!
-        case 1:
-            let cell = tableView.dequeueReusableCellWithIdentifier("folderCell",
-                                                                   forIndexPath: indexPath) as! FolderTableViewCell
-            cell.title.text = folders[indexPath.row].name
-            return cell
-            
-        case 2:
-            let cell = tableView.dequeueReusableCellWithIdentifier("fileCell", forIndexPath: indexPath) as! FileTableViewCell
-            cell.title.text = files[indexPath.row].name
-            return cell
-            
-        default:
-            let cell = tableView.dequeueReusableCellWithIdentifier("fileCell", forIndexPath: indexPath)
-            return cell
-        }
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return files.count
     }
-
+    
+    
+    override func tableView(tableView: UITableView,
+                            cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("fileCell",
+                                                               forIndexPath: indexPath) as! FileTableViewCell
+        cell.title.text = files[indexPath.row].name
+        cell.type.text = files[indexPath.row].type
+        return cell
+    }
+    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        // FIXME: Switch-case? Maybe there is a better way?
         
-        switch indexPath.section {
-        case 0:
-            pathStack.pop()
-            if pathStack.isEmpty {
-                folders = FileManager.sharedInstance.rootDirectory
-                files.removeAll()
-                break
+    }
+    
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(tableView: UITableView, didEndEditingRowAtIndexPath indexPath: NSIndexPath) {
+        
+    }
+    
+    // MARK: - Loading a new file using UIImagePickerController
+    
+    @IBAction func onLoad(sender: UIBarButtonItem) {
+        
+        presentImagePicker()
+    }
+    
+    func imagePickerController(picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        dismissViewControllerAnimated(true, completion: nil)
+        
+        let fileURL = info[UIImagePickerControllerReferenceURL] as! NSURL
+        
+        // Create a new file with some default settings
+        if let loadedFile = FileManager.sharedInstance.createFileFromURL(fileURL, withName: "__defaultName", encrypted: false) {
+            
+            // Depending on which direcrory we're in, put the file into it
+            switch directory {
+            case .Decrypted:
+                loadedFile.encrypted = false
+            case .Encrypted:
+                loadedFile.encrypted = true
             }
-            folders = FileManager.sharedInstance.folders(insideDirectory: pathStack.peek()!)
-            files = FileManager.sharedInstance.files(insideDirectory: pathStack.peek()!)
-        case 1:
-            let selectedFolder = folders[indexPath.row]
-            folders = FileManager.sharedInstance.folders(insideDirectory: selectedFolder)
-            files = FileManager.sharedInstance.files(insideDirectory: selectedFolder)
-            
-            pathStack.push(selectedFolder)
-            
-    // TODO: Implement work with files
-        case 2:
-            break
-            
-        default:
-            break
+            setFileNameAlert(loadedFile, completion: { (file) in
+                self.managedObjectContext.insertObject(file)
+                AppDelegate.sharedInstance.saveContext()
+                self.tableView.reloadData()
+            })
         }
         
-        tableView.reloadData()
+    }
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        dismissViewControllerAnimated(true, completion: nil)
     }
 }

@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Password View Controller-->
@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fk7-jF-owG">
-                                <rect key="frame" x="175" y="139.5" width="250" height="93.5"/>
+                                <rect key="frame" x="175" y="139" width="250" height="94"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="agr-ND-UIk"/>
                                 </constraints>
@@ -95,6 +95,7 @@
         <scene sceneID="mLa-Ky-P8r">
             <objects>
                 <tabBarController storyboardIdentifier="TabBarController" id="YPl-G6-tPp" sceneMemberID="viewController">
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="ViM-bW-gfp">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -152,6 +153,9 @@
                                         <state key="normal" title="ENCRYPT">
                                             <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="HomeButton"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <segue destination="7rm-kT-rrw" kind="show" id="A4I-bD-HTh"/>
                                         </connections>
@@ -165,6 +169,9 @@
                                         <state key="normal" title="DECRYPT">
                                             <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="HomeButton"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <segue destination="AeK-f2-8gj" kind="show" id="vtb-Se-6Ed"/>
                                         </connections>
@@ -177,6 +184,9 @@
                             <constraint firstItem="kxM-cd-HTX" firstAttribute="centerY" secondItem="Gqg-VS-QNg" secondAttribute="centerY" constant="-25" id="0Ne-VO-ZE2"/>
                             <constraint firstItem="kxM-cd-HTX" firstAttribute="centerX" secondItem="Gqg-VS-QNg" secondAttribute="centerX" id="baZ-E1-d69"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="HomeView"/>
+                        </userDefinedRuntimeAttributes>
                     </view>
                     <navigationItem key="navigationItem" title="GroupLock" id="wEn-rI-AJ1">
                         <barButtonItem key="backBarButtonItem" title="GroupLock" id="ZJf-JQ-HXe"/>
@@ -232,7 +242,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="B27-qf-ejK" kind="relationship" relationship="rootViewController" id="hB8-SH-QRN"/>
+                        <segue destination="9aL-Lb-Edi" kind="relationship" relationship="rootViewController" id="LDx-sv-erp"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vnN-N5-b4j" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -240,74 +250,102 @@
             <point key="canvasLocation" x="1624" y="282"/>
         </scene>
         <!--Library-->
+        <scene sceneID="D7r-no-96W">
+            <objects>
+                <viewController id="9aL-Lb-Edi" customClass="LibraryDirectoryViewController" customModule="GroupLock" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jfh-iz-ZFI"/>
+                        <viewControllerLayoutGuide type="bottom" id="uzX-UX-lh2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="onr-DE-bbm">
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Phd-Ux-wLn">
+                                <rect key="frame" x="90" y="201" width="420" height="80"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gqh-NA-2JO">
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="80"/>
+                                        <state key="normal" title="ENCRYPTED"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="DirectoryButton"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="onDirectory:" destination="9aL-Lb-Edi" eventType="touchUpInside" id="BK1-ah-NdU"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6m7-et-UIS">
+                                        <rect key="frame" x="220" y="0.0" width="200" height="80"/>
+                                        <state key="normal" title="DECRYPTED"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="DirectoryButton"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="onDirectory:" destination="9aL-Lb-Edi" eventType="touchUpInside" id="qDj-Of-u1h"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="80" id="8Dm-vx-Dec"/>
+                                </constraints>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LAE-fK-m4Z">
+                                <rect key="frame" x="506" y="393" width="50" height="50"/>
+                                <state key="normal" image="DownloadButton"/>
+                                <connections>
+                                    <action selector="onLoad:" destination="9aL-Lb-Edi" eventType="touchUpInside" id="Azu-yR-flN"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Phd-Ux-wLn" firstAttribute="width" secondItem="onr-DE-bbm" secondAttribute="width" multiplier="0.7" id="VWA-Uc-Rc6"/>
+                            <constraint firstItem="uzX-UX-lh2" firstAttribute="top" secondItem="LAE-fK-m4Z" secondAttribute="bottom" constant="44" id="dWM-oZ-5J1"/>
+                            <constraint firstItem="Phd-Ux-wLn" firstAttribute="centerY" secondItem="onr-DE-bbm" secondAttribute="centerY" multiplier="0.9" id="e3M-nf-G6T"/>
+                            <constraint firstAttribute="trailing" secondItem="LAE-fK-m4Z" secondAttribute="trailing" constant="44" id="v88-NV-5bV"/>
+                            <constraint firstItem="Phd-Ux-wLn" firstAttribute="centerX" secondItem="onr-DE-bbm" secondAttribute="centerX" id="ztd-fx-V8Z"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="DirectoryView"/>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <navigationItem key="navigationItem" title="Library" id="GAm-cg-AX0"/>
+                    <connections>
+                        <outlet property="decryptedButton" destination="6m7-et-UIS" id="hEi-6H-e2H"/>
+                        <outlet property="encryptedButton" destination="gqh-NA-2JO" id="IZ2-DL-6iC"/>
+                        <outlet property="loadButton" destination="LAE-fK-m4Z" id="YWF-DC-Yc4"/>
+                        <segue destination="B27-qf-ejK" kind="show" identifier="toFiles" id="Pt8-7Y-Vs6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lET-3Y-jAH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2309" y="282"/>
+        </scene>
+        <!--Library Table View Controller-->
         <scene sceneID="gjD-cL-gjw">
             <objects>
-                <tableViewController id="B27-qf-ejK" customClass="LibraryViewController" customModule="GroupLock" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="LibraryTable" id="B27-qf-ejK" userLabel="Library Table View Controller" customClass="LibraryViewController" customModule="GroupLock" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ztz-gx-Scm">
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="parentDirectory" textLabel="2Je-Ah-fXc" style="IBUITableViewCellStyleDefault" id="t6k-6H-Kzq" userLabel="parentDirectory">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="fileCell" textLabel="LO5-ML-5ov" detailTextLabel="NSk-7V-N2j" style="IBUITableViewCellStyleValue1" id="CMQ-io-mJo" customClass="FileTableViewCell" customModule="GroupLock" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="t6k-6H-Kzq" id="hmg-Pd-rBh">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text=".." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2Je-Ah-fXc">
-                                            <rect key="frame" x="15" y="0.0" width="570" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="folderCell" textLabel="OD4-Ce-M3B" detailTextLabel="hmD-sI-TFf" style="IBUITableViewCellStyleValue1" id="15Z-VW-Dav" customClass="FolderTableViewCell" customModule="GroupLock" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="72" width="600" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="15Z-VW-Dav" id="vgy-qF-nhz">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Folder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OD4-Ce-M3B">
-                                            <rect key="frame" x="15" y="12" width="46" height="19.5"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Folder" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hmD-sI-TFf">
-                                            <rect key="frame" x="539" y="12" width="46" height="19.5"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="title" destination="OD4-Ce-M3B" id="GFH-Lm-ydH"/>
-                                </connections>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="fileCell" textLabel="LO5-ML-5ov" detailTextLabel="p0E-aL-7cx" style="IBUITableViewCellStyleValue1" id="CMQ-io-mJo" customClass="FileTableViewCell" customModule="GroupLock" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="116" width="600" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CMQ-io-mJo" id="PXS-Ch-vZO">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="file.bmp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LO5-ML-5ov">
-                                            <rect key="frame" x="15" y="12" width="59" height="19.5"/>
+                                            <rect key="frame" x="15" y="12" width="59" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="File" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="p0E-aL-7cx">
-                                            <rect key="frame" x="559.5" y="12" width="25.5" height="19.5"/>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NSk-7V-N2j">
+                                            <rect key="frame" x="543" y="12" width="42" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
@@ -315,26 +353,34 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="LibraryTableCell"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="title" destination="LO5-ML-5ov" id="3tC-HJ-oNc"/>
+                                    <outlet property="type" destination="NSk-7V-N2j" id="Sdl-Zf-9Kt"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="LibraryTable"/>
+                        </userDefinedRuntimeAttributes>
                         <connections>
                             <outlet property="dataSource" destination="B27-qf-ejK" id="S3w-hr-p3E"/>
                             <outlet property="delegate" destination="B27-qf-ejK" id="phE-K5-KQN"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Library" id="hWq-Bj-BPB">
-                        <rightBarButtonItems>
-                            <barButtonItem systemItem="edit" id="3l0-Lq-gOp"/>
-                            <barButtonItem systemItem="search" id="z3G-Rn-YVx"/>
-                        </rightBarButtonItems>
+                    <navigationItem key="navigationItem" title="Load" id="m61-HX-spX">
+                        <barButtonItem key="rightBarButtonItem" title="Load" id="LIo-yX-Oj3">
+                            <connections>
+                                <action selector="onLoad:" destination="B27-qf-ejK" id="ddS-fe-yuU"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i8x-6Z-CQl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2309" y="282"/>
+            <point key="canvasLocation" x="3038" y="282"/>
         </scene>
         <!--Settings-->
         <scene sceneID="0bw-e2-JC4">
@@ -374,6 +420,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="DownloadButton" width="50" height="50"/>
         <image name="HomeButton" width="32" height="32"/>
         <image name="HomeButtonSelected" width="32" height="32"/>
         <image name="LibraryButton" width="32" height="32"/>
