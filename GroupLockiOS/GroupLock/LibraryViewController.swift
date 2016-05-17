@@ -45,8 +45,12 @@ class LibraryViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("fileCell",
                                                                forIndexPath: indexPath) as! FileTableViewCell
+        
+        cell.correspondingFile = files[indexPath.row]
         cell.title.text = files[indexPath.row].name
         cell.type.text = files[indexPath.row].type
+
+        
         return cell
     }
     
@@ -97,5 +101,15 @@ class LibraryViewController: UITableViewController {
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "viewFile" {
+            guard let cell = sender as? FileTableViewCell,
+                let destination = segue.destinationViewController as? ViewFileViewController else {
+                return
+            }
+            destination.correspondingFile = cell.correspondingFile
+        }
     }
 }

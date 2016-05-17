@@ -11,6 +11,7 @@
 		870C407D1CC69EAF00BE4BD0 /* PasswordViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870C407C1CC69EAF00BE4BD0 /* PasswordViewControllerTests.swift */; };
 		873ED7B61CDAAD5E005A8656 /* FileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873ED7B51CDAAD5E005A8656 /* FileTableViewCell.swift */; };
 		8741CE871CE6872D0034A820 /* LibraryDirectoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8741CE861CE6872D0034A820 /* LibraryDirectoryViewController.swift */; };
+		874BEC691CE9385400F6CDE9 /* ViewFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874BEC681CE9385400F6CDE9 /* ViewFileViewController.swift */; };
 		879797071CCFA61E0064C3AC /* File+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879797031CCFA61E0064C3AC /* File+CoreDataProperties.swift */; };
 		879797081CCFA61E0064C3AC /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879797041CCFA61E0064C3AC /* File.swift */; };
 		8797970E1CCFEFB20064C3AC /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797970D1CCFEFB20064C3AC /* LibraryViewController.swift */; };
@@ -59,6 +60,7 @@
 		870C407C1CC69EAF00BE4BD0 /* PasswordViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordViewControllerTests.swift; sourceTree = "<group>"; };
 		873ED7B51CDAAD5E005A8656 /* FileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileTableViewCell.swift; sourceTree = "<group>"; };
 		8741CE861CE6872D0034A820 /* LibraryDirectoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryDirectoryViewController.swift; sourceTree = "<group>"; };
+		874BEC681CE9385400F6CDE9 /* ViewFileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewFileViewController.swift; sourceTree = "<group>"; };
 		879796E71CCF9B4F0064C3AC /* NUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NUI.framework; path = "../../../Library/Developer/Xcode/DerivedData/GroupLock-buohvxdmrbgottfowybkjnxebhfv/Build/Products/Debug-iphoneos/NUI.framework"; sourceTree = "<group>"; };
 		879796E81CCF9B4F0064C3AC /* NUIParse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NUIParse.framework; path = "../../../Library/Developer/Xcode/DerivedData/GroupLock-buohvxdmrbgottfowybkjnxebhfv/Build/Products/Debug-iphoneos/NUIParse.framework"; sourceTree = "<group>"; };
 		879797031CCFA61E0064C3AC /* File+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "File+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -214,6 +216,7 @@
 				87B692121CB425E0008ACB6A /* PasswordViewController.swift */,
 				8741CE861CE6872D0034A820 /* LibraryDirectoryViewController.swift */,
 				8797970D1CCFEFB20064C3AC /* LibraryViewController.swift */,
+				874BEC681CE9385400F6CDE9 /* ViewFileViewController.swift */,
 				873ED7B71CDAAD63005A8656 /* LibraryViewController Cells */,
 				87FD453D1CE4BCBA00984269 /* Supporting */,
 				87B692141CB425E0008ACB6A /* Main.storyboard */,
@@ -467,6 +470,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				873ED7B61CDAAD5E005A8656 /* FileTableViewCell.swift in Sources */,
+				874BEC691CE9385400F6CDE9 /* ViewFileViewController.swift in Sources */,
 				87B692131CB425E0008ACB6A /* PasswordViewController.swift in Sources */,
 				879797081CCFA61E0064C3AC /* File.swift in Sources */,
 				8741CE871CE6872D0034A820 /* LibraryDirectoryViewController.swift in Sources */,
