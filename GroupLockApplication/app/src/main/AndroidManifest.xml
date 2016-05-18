@@ -32,6 +32,7 @@
             android:name=".KeysTypeSelectionActivity"
             android:label="@string/title_activity_keys_type_selection">
         </activity>
+
         <activity android:name=".SettingsActivity"
             android:label="Settings">
         </activity>
