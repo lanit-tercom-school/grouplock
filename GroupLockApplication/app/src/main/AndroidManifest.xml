@@ -21,6 +21,10 @@
             android:label="Home" >
         </activity>
         <activity
+            android:name=".LoadActivity"
+            android:label="Load" >
+        </activity>
+        <activity
             android:name=".LibraryActivity"
             android:label="Library" >
         </activity>
@@ -31,6 +35,9 @@
         <activity android:name=".SettingsActivity"
             android:label="Settings">
         </activity>
+        <activity
+            android:name=".NumberOfKeysActivity"
+            android:label="Step 3/6"></activity>
     </application>
 
 </manifest>
