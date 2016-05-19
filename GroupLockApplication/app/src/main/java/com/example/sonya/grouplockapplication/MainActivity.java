@@ -22,16 +22,22 @@ public class MainActivity extends Activity implements OnClickListener {
     Button EnterButton;
     SharedPreferences sPref;
     String savedText;
+    boolean passReq;
     final String SAVED_TEXT = "saved_text";
+    final String REQ_PASS= "req_pass";
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        loadData();
         setContentView(R.layout.activity_main);
         editText = (EditText) findViewById(R.id.editText);
 
         EnterButton  = (Button) findViewById(R.id.EnterButton);
         EnterButton.setOnClickListener(this);
-        loadText();
+        // loadText();
+        if (passReq==false)
+            GoToNextActivity();
+
     }
     @Override
     public void onClick(View v) {
@@ -40,35 +46,38 @@ public class MainActivity extends Activity implements OnClickListener {
             case R.id.EnterButton:
                 if (savedText.equals("")) {
                     saveText();
-                    GoToNextActivity(v);
+                    GoToNextActivity();
                 }
                 else
                 if (editText.getText().toString().equals(savedText)) {
                     Toast.makeText(this, "Accept!", Toast.LENGTH_SHORT).show();
-                    GoToNextActivity(v);
+                    GoToNextActivity();
                 }
                 else {
                     Toast.makeText(this, "Password is incorrect", Toast.LENGTH_SHORT).show();
                 }
-                 break;
+                break;
             default:
                 break;
         }
     }
 
     void saveText() {
-        sPref = getPreferences(MODE_PRIVATE);
+        //sPref = getPreferences(MODE_PRIVATE);
+        sPref = getSharedPreferences("DB",MODE_PRIVATE);
         Editor ed = sPref.edit();
         ed.putString(SAVED_TEXT, editText.getText().toString());
         ed.commit();
         Toast.makeText(this, "Text saved", Toast.LENGTH_SHORT).show();
     }
 
-    void loadText() {
-        sPref = getPreferences(MODE_PRIVATE);
+    void loadData() {
+        sPref = getSharedPreferences("DB",MODE_PRIVATE);
         savedText = sPref.getString(SAVED_TEXT, "");
+        passReq = sPref.getBoolean("req_pass", true);
     }
-    public void GoToNextActivity(View v)
+
+    public void GoToNextActivity()
     {
         Intent intent = new Intent(this, ChooseToDoActivity.class);
         startActivity(intent);

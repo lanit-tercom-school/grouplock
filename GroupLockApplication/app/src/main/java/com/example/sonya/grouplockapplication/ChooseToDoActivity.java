@@ -58,8 +58,11 @@ public class ChooseToDoActivity extends AppCompatActivity {
                 return true;
             }
 
-            case R.id.settings:
+            case R.id.settings: {
+                Intent intent = new Intent(this, SettingsActivity.class);
+                startActivity(intent);
                 return true;
+            }
 
             case R.id.info:
             {
