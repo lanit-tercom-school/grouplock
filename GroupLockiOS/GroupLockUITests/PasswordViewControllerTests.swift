@@ -17,6 +17,7 @@ class PasswordViewControllerTests: XCTestCase {
         
         // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
+        
         // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
         XCUIApplication().launch()
 
@@ -24,6 +25,7 @@ class PasswordViewControllerTests: XCTestCase {
     }
     
     override func tearDown() {
+        
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         XCUIApplication().terminate()
         super.tearDown()
@@ -33,6 +35,8 @@ class PasswordViewControllerTests: XCTestCase {
         
         let keyboard = XCUIApplication().keyboards.element
         XCTAssertEqual(keyboard.exists, true)
+        
+        // TODO: Проверить, что клавиатура не исчезает при тапе по ней
         
         XCUIApplication().childrenMatchingType(.Window).elementBoundByIndex(0).tap()
         XCTAssertEqual(keyboard.exists, false)
@@ -46,6 +50,8 @@ class PasswordViewControllerTests: XCTestCase {
         app.descendantsMatchingType(.SecureTextField).element.typeText("a")
         XCTAssertEqual(proceedButton.hittable, true)
         
+        
+        // TODO: Найти константу для имени кнопки Delete
         if app.keyboards.keys["delete"].exists {
             app.keyboards.keys["delete"].tap()
         } else {
@@ -62,5 +68,10 @@ class PasswordViewControllerTests: XCTestCase {
         proceedButton.tap()
         XCTAssertEqual(app.tabBars.element.exists, true)
     }
+    
+    func testReturnKeyPerformSegue() {
+        let app = XCUIApplication()
+        app.keyboards.buttons["Done"].tap()
+        XCTAssertEqual(app.tabBars.element.exists, true)
+    }
 }
-

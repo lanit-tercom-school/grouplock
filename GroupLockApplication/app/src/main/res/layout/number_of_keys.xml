@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="fill_parent"
+android:layout_height="fill_parent"
+android:orientation="vertical"
+tools:context=".NumberOfKeysActivity" >
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/keys_type_selection_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+    <Button
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:id="@+id/button3"
+        android:background="@drawable/ic_arrow_forward_grey_48dp"
+        android:clickable="false"
+        android:enabled="true"
+        android:focusable="true"
+        android:layout_alignBottom="@+id/textView"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <NumberPicker
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/minKeys"
+        android:layout_above="@+id/button4"
+        android:layout_alignRight="@+id/textView"
+        android:layout_alignEnd="@+id/textView"
+        android:layout_marginRight="35dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="150dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/maxStart"
+        android:id="@+id/textMax"
+        android:layout_above="@+id/maxKeys"
+        android:layout_alignRight="@+id/maxKeys"
+        android:layout_alignEnd="@+id/maxKeys"
+        android:textSize="15dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/minStart"
+        android:id="@+id/textMin"
+        android:layout_above="@+id/minKeys"
+        android:layout_alignLeft="@+id/minKeys"
+        android:layout_alignStart="@+id/minKeys"
+        android:textSize="15dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/NumHead"
+        android:id="@+id/textView"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:textSize="20dp" />
+
+    <Button
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:id="@+id/button4"
+        android:background="@drawable/ic_info_outline_black_24dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <NumberPicker
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/maxKeys"
+        android:layout_alignTop="@+id/minKeys"
+        android:layout_alignLeft="@+id/textView"
+        android:layout_alignStart="@+id/textView"
+        android:layout_marginLeft="39dp"
+        android:layout_marginStart="39dp" />
+
+
+</RelativeLayout>

@@ -1,58 +1,77 @@
 /* Please consider adding unit tests for each new class and property */
 
+/* IMPORTANT: Do NOT use general classes like View or Table, because the stylesheet gets applied
+ * in undesired and unexpected places */
+
 @primaryFontName: HelveticaNeue;
 @secondaryFontName: HelveticaNeue-Light;
 
-@mainColor: #303D55;
+@mainColor: #142F4D;
+@buttonColor: #335273;
 @primaryBackgroundColor: #E0E8F4;
 
-@primaryFontColor: #FFFFFF;
+@primaryFontColor: #E0E0E0;
 
 /* General */
 
-View {
-background-color: @primaryBackgroundColor;
-exclude-subviews: UITextField;
+GeneralView {
+    background-color: @primaryBackgroundColor;
+}
+
+GeneralButton {
+    background-color: @buttonColor;
+    font-color: @primaryFontColor;
+    corner-radius: 0;
 }
 
 NavigationBar {
-bar-tint-color: @mainColor;
-font-color: @primaryFontColor;
-background-tint-color: @primaryFontColor;
+    bar-tint-color: @mainColor;
+    font-color: @primaryFontColor;
+    background-tint-color: @primaryFontColor;
 }
 
 TabBar {
-background-tint-color: @mainColor;
+    background-tint-color: @mainColor;
 }
 
 BarButton {
-font-color: @primaryFontColor;
+    font-color: @primaryFontColor;
 }
-
-Button {
-background-color: @mainColor;
-font-color: @primaryFontColor;
-corner-radius: 0;
-}
-
-TextField {
-tint-color: @mainColor;
-corner-radius: 0;
-}
-
 
 /* PasswordViewController */
 
 PasswordView {
-background-color: @mainColor;
+    background-color: #142F4DBF;
 }
 
 ProceedButton {
-background-color: #40A43D;
-font-color: @primaryFontColor;
-corner-radius: 0;
+    background-color: #4CAF4D;
+    font-color: white;
+    corner-radius: 0;
 }
 
 EnterPasswordLabel {
-font-color: #FD3A1C;
+    font-color: #FF5222;
+}
+
+/* LibraryDirectoryViewController */
+
+DirectoryButton {
+    background-color: @buttonColor;
+    font-color: @primaryBackgroundColor;
+    corner-radius: 4;
+}
+
+/* LibraryViewController */
+
+LibraryTable {
+    background-color: @primaryBackgroundColor;
+    separator-color: @mainColor;
+}
+
+LibraryTableCell {
+    background-color: @primaryBackgroundColor;
+    tint-color: @mainColor;
+    background-color-selected: @buttonColor;
+    font-color-highlighted: @primaryFontColor;
 }

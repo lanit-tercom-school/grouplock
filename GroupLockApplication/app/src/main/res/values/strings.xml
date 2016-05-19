@@ -37,4 +37,17 @@
     <!-- common -->
     <string name="common_next_step">Next step</string>
 
+    <!-- NumberOfKeys -->
+    <string name="minKeys">Min: %1$d</string>
+    <string name="maxKeys">Max: %1$d</string>
+    <string name="maxStart">Max: 0</string>
+    <string name="minStart">Min: 0</string>
+    <string name="NumHead">Step 3/6</string>
+    <string name="infoNumbers">Select the minimum number of keys and maximum number of participants.</string>
+
+
+    <!-- Loading -->
+    <string name="loadEnc">Load to encrypted</string>
+    <string name="loadDec">Load to decrypted</string>
+
 </resources>

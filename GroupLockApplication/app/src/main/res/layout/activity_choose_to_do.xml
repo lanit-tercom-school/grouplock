@@ -68,6 +68,7 @@ tools:context=".LibraryActivity" >
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
+        android:onClick="loadPage"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"

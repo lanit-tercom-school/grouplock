@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PasswordViewController: UIViewController {
+class PasswordViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: UI elements
     @IBOutlet var enterPasswordLabel: UILabel!
@@ -19,16 +19,16 @@ class PasswordViewController: UIViewController {
         super.viewDidLoad()
         hideKeyboardWhenTappedAround()
         
+        initialPasswordTextField.delegate = self
         initialPasswordTextField.becomeFirstResponder()
     }
     
     // MARK: Event handling
-    @IBAction func onProceedButton(sender: UIButton) {
+    @IBAction func onProceedButton() {
+        initialPasswordTextField.resignFirstResponder()
         // password check
+        performSegueWithIdentifier("toMainScreen", sender: nil)
     }
-
-
-    
     
     @IBAction func textFieldOnChange(sender: UITextField) {
         if sender.text?.characters.count != 0 {
@@ -36,6 +36,11 @@ class PasswordViewController: UIViewController {
         } else {
             proceedButton.hidden = true
         }
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        onProceedButton()
+        return true
     }
     
 }
