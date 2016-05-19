@@ -10,7 +10,7 @@ coverage:
   status:
     patch:
       default:
-        target: '30'
+        target: auto
     project:
       default:
         target: auto
