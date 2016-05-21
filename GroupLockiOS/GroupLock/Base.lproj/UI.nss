@@ -24,6 +24,18 @@ GeneralButton {
     corner-radius: 0;
 }
 
+GeneralTable {
+    background-color: @primaryBackgroundColor;
+    separator-color: @mainColor;
+}
+
+GeneralTableCell {
+    background-color: @primaryBackgroundColor;
+    tint-color: @mainColor;
+    background-color-selected: @buttonColor;
+    font-color-highlighted: @primaryFontColor;
+}
+
 NavigationBar {
     bar-tint-color: @mainColor;
     font-color: @primaryFontColor;
@@ -62,16 +74,10 @@ DirectoryButton {
     corner-radius: 4;
 }
 
-/* LibraryViewController */
+/* ChooseFileViewController */
 
-LibraryTable {
-    background-color: @primaryBackgroundColor;
-    separator-color: @mainColor;
-}
-
-LibraryTableCell {
-    background-color: @primaryBackgroundColor;
-    tint-color: @mainColor;
-    background-color-selected: @buttonColor;
-    font-color-highlighted: @primaryFontColor;
+CollectionViewCell {
+    corner-radius: 5;
+    border-color: #4CAF4DC7;
+    selected-border-width: 10;
 }

@@ -16,11 +16,11 @@ class LibraryViewController: UITableViewController {
     var directory = Directory.Encrypted
     
     /// Current list of files displayed on the screen
-    var files: [File] {
+    private var files: [File] {
         return FileManager.sharedInstance.files(insideDirectory: directory)
     }
     
-    let managedObjectContext = AppDelegate.sharedInstance.managedObjectContext
+    private let managedObjectContext = AppDelegate.sharedInstance.managedObjectContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,8 +55,7 @@ class LibraryViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-        
+        tableView.cellForRowAtIndexPath(indexPath)?.selected = false
     }
     
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -81,7 +80,8 @@ class LibraryViewController: UITableViewController {
         let fileURL = info[UIImagePickerControllerReferenceURL] as! NSURL
         
         // Create a new file with some default settings
-        if let loadedFile = FileManager.sharedInstance.createFileFromURL(fileURL, withName: "__defaultName", encrypted: false) {
+        if let loadedFile = FileManager.sharedInstance.createFileFromURL(fileURL, withName: "__defaultName",
+                                                                         encrypted: false) {
             
             // Depending on which direcrory we're in, put the file into it
             switch directory {
@@ -90,11 +90,11 @@ class LibraryViewController: UITableViewController {
             case .Encrypted:
                 loadedFile.encrypted = true
             }
-            setFileNameAlert(loadedFile, completion: { (file) in
+            setFileNameAlert(loadedFile) { (file) in
                 self.managedObjectContext.insertObject(file)
                 AppDelegate.sharedInstance.saveContext()
                 self.tableView.reloadData()
-            })
+            }
         }
         
     }

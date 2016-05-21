@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
@@ -19,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fk7-jF-owG">
-                                <rect key="frame" x="175" y="139" width="250" height="94"/>
+                                <rect key="frame" x="175" y="139" width="250" height="93.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="agr-ND-UIk"/>
                                 </constraints>
@@ -133,7 +134,7 @@
         <!--Home View Controller-->
         <scene sceneID="e43-H1-Rg5">
             <objects>
-                <viewController id="qZR-CY-82Z" userLabel="Home View Controller" sceneMemberID="viewController">
+                <viewController id="qZR-CY-82Z" userLabel="Home View Controller" customClass="HomeViewController" customModule="GroupLock" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="s0i-cH-rCT"/>
                         <viewControllerLayoutGuide type="bottom" id="HO9-uW-Z1N"/>
@@ -157,8 +158,11 @@
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="GeneralButton"/>
                                         </userDefinedRuntimeAttributes>
+                                        <variation key="widthClass=regular" misplaced="YES">
+                                            <rect key="frame" x="0.0" y="0.0" width="172" height="51"/>
+                                        </variation>
                                         <connections>
-                                            <segue destination="7rm-kT-rrw" kind="show" id="A4I-bD-HTh"/>
+                                            <action selector="onEncrypt" destination="qZR-CY-82Z" eventType="touchUpInside" id="KSU-kX-AOt"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kac-3U-MlH">
@@ -173,11 +177,17 @@
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="GeneralButton"/>
                                         </userDefinedRuntimeAttributes>
+                                        <variation key="widthClass=regular" misplaced="YES">
+                                            <rect key="frame" x="0.0" y="94" width="172" height="51"/>
+                                        </variation>
                                         <connections>
-                                            <segue destination="AeK-f2-8gj" kind="show" id="vtb-Se-6Ed"/>
+                                            <action selector="onDecrypt" destination="qZR-CY-82Z" eventType="touchUpInside" id="i9n-m1-bIZ"/>
                                         </connections>
                                     </button>
                                 </subviews>
+                                <variation key="widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="314" y="171" width="172" height="145"/>
+                                </variation>
                             </stackView>
                         </subviews>
                         <color key="tintColor" red="0.9959825873374939" green="0.99621325731277466" blue="0.99187678098678589" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -192,46 +202,130 @@
                     <navigationItem key="navigationItem" title="GroupLock" id="wEn-rI-AJ1">
                         <barButtonItem key="backBarButtonItem" title="GroupLock" id="ZJf-JQ-HXe"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="decryptButton" destination="kac-3U-MlH" id="Z6x-5f-cOG"/>
+                        <outlet property="encryptButton" destination="a17-l4-2pD" id="0Ho-Iw-ahG"/>
+                        <segue destination="X0n-VS-yrO" kind="show" identifier="chooseFileToEncrypt" id="1th-xA-eDy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dh4-hd-SjP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2309" y="-601"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="dHY-3n-RBM">
+        <!--Chose File View Controller-->
+        <scene sceneID="mVe-dl-GrD">
             <objects>
-                <viewController id="AeK-f2-8gj" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="wXC-0e-Rng"/>
-                        <viewControllerLayoutGuide type="bottom" id="Cqg-wK-QYk"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="9m8-TJ-fWF">
+                <collectionViewController id="X0n-VS-yrO" userLabel="Chose File View Controller" customClass="ChooseFileViewController" customModule="GroupLock" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="xy1-d9-7SE">
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ggf-9M-X4d" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tNw-zV-nGE">
+                            <size key="itemSize" width="120" height="120"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="fileToProcessCell" id="kQ2-9z-jjv" userLabel="fileToProcessCell" customClass="ChooseFileViewCell" customModule="GroupLock" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1tE-t8-DAR">
+                                            <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="1tE-t8-DAR" secondAttribute="height" multiplier="1:1" id="Q1z-xZ-Ygz"/>
+                                            </constraints>
+                                        </imageView>
+                                        <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="te5-de-tJz">
+                                            <rect key="frame" x="0.0" y="90" width="120" height="30"/>
+                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Bbg-1J-DSZ">
+                                                <rect key="frame" x="0.0" y="0.0" width="120" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filename" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="47c-Hj-uXH">
+                                                        <rect key="frame" x="0.0" y="0.0" width="120" height="30"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="47c-Hj-uXH" secondAttribute="trailing" id="3rK-9P-A7s"/>
+                                                    <constraint firstItem="47c-Hj-uXH" firstAttribute="leading" secondItem="Bbg-1J-DSZ" secondAttribute="leading" id="7uV-rR-kWc"/>
+                                                    <constraint firstAttribute="bottom" secondItem="47c-Hj-uXH" secondAttribute="bottom" id="aII-Rf-K2D"/>
+                                                    <constraint firstItem="47c-Hj-uXH" firstAttribute="top" secondItem="Bbg-1J-DSZ" secondAttribute="top" id="jcn-m8-QYL"/>
+                                                </constraints>
+                                            </view>
+                                            <blurEffect style="dark"/>
+                                        </visualEffectView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="bottomMargin" secondItem="te5-de-tJz" secondAttribute="bottom" constant="-8" id="KJJ-My-BZM"/>
+                                    <constraint firstItem="1tE-t8-DAR" firstAttribute="width" secondItem="kQ2-9z-jjv" secondAttribute="width" id="PfS-og-tWY"/>
+                                    <constraint firstItem="1tE-t8-DAR" firstAttribute="centerX" secondItem="kQ2-9z-jjv" secondAttribute="centerX" id="QtP-kP-V1D"/>
+                                    <constraint firstItem="1tE-t8-DAR" firstAttribute="centerY" secondItem="kQ2-9z-jjv" secondAttribute="centerY" id="Zqn-Mx-mRY"/>
+                                    <constraint firstItem="te5-de-tJz" firstAttribute="height" secondItem="kQ2-9z-jjv" secondAttribute="height" multiplier="0.25" id="b1g-Z6-pH1"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="te5-de-tJz" secondAttribute="trailing" constant="-8" id="hmk-uv-B27"/>
+                                    <constraint firstItem="te5-de-tJz" firstAttribute="leading" secondItem="kQ2-9z-jjv" secondAttribute="leadingMargin" constant="-8" id="mdB-6H-sIJ"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="CollectionViewCell"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="filenameLabel" destination="47c-Hj-uXH" id="Iaa-tz-Iiq"/>
+                                    <outlet property="thumbnailView" destination="1tE-t8-DAR" id="SgE-Sr-3VE"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="GeneralView"/>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <outlet property="dataSource" destination="X0n-VS-yrO" id="FZa-NO-aYl"/>
+                            <outlet property="delegate" destination="X0n-VS-yrO" id="Q2y-nW-Kuj"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Choose Files" id="f2O-VM-a5B">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Next" id="Leg-Dc-weu">
+                            <connections>
+                                <segue destination="vTA-sU-hsi" kind="show" id="FDU-TG-gZg"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="nextButton" destination="Leg-Dc-weu" id="JeA-sP-bOL"/>
+                    </connections>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nCl-wd-5JS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3221" y="-573"/>
+            <point key="canvasLocation" x="3054" y="-601"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="ltF-r8-AbR">
+        <!--Key Type View Controller-->
+        <scene sceneID="6cz-Mg-rff">
             <objects>
-                <viewController id="7rm-kT-rrw" sceneMemberID="viewController">
+                <viewController id="vTA-sU-hsi" userLabel="Key Type View Controller" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="ptG-VE-yyR"/>
-                        <viewControllerLayoutGuide type="bottom" id="GAj-MH-s2G"/>
+                        <viewControllerLayoutGuide type="top" id="VyY-QW-SD6"/>
+                        <viewControllerLayoutGuide type="bottom" id="faO-N4-gBT"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Def-jz-ioh">
+                    <view key="view" contentMode="scaleToFill" id="B4w-Jp-sc7">
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="tintColor" red="0.9959825873374939" green="0.99621325731277466" blue="0.99187678098678589" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="GeneralView"/>
+                        </userDefinedRuntimeAttributes>
                     </view>
+                    <navigationItem key="navigationItem" title="Choose Key Type" id="Eh1-9k-KC5"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="FjL-l1-s6o" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Pb-Kn-JY6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3099" y="-1281"/>
+            <point key="canvasLocation" x="3729" y="-601"/>
         </scene>
         <!--Library-->
         <scene sceneID="VV6-CX-haO">
@@ -250,10 +344,10 @@
             </objects>
             <point key="canvasLocation" x="1624" y="282"/>
         </scene>
-        <!--Library-->
+        <!--Library Directory View Controller-->
         <scene sceneID="D7r-no-96W">
             <objects>
-                <viewController id="9aL-Lb-Edi" customClass="LibraryDirectoryViewController" customModule="GroupLock" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="9aL-Lb-Edi" userLabel="Library Directory View Controller" customClass="LibraryDirectoryViewController" customModule="GroupLock" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jfh-iz-ZFI"/>
                         <viewControllerLayoutGuide type="bottom" id="uzX-UX-lh2"/>
@@ -271,6 +365,18 @@
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="DirectoryButton"/>
                                         </userDefinedRuntimeAttributes>
+                                        <variation key="widthClass=regular" misplaced="YES">
+                                            <rect key="frame" x="0.0" y="0.0" width="270" height="80"/>
+                                        </variation>
+                                        <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="0.0" y="0.0" width="130" height="80"/>
+                                        </variation>
+                                        <variation key="heightClass=compact-widthClass=regular" misplaced="YES">
+                                            <rect key="frame" x="0.0" y="0.0" width="270" height="80"/>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="0.0" y="0.0" width="130" height="80"/>
+                                        </variation>
                                         <connections>
                                             <action selector="onDirectory:" destination="9aL-Lb-Edi" eventType="touchUpInside" id="BK1-ah-NdU"/>
                                         </connections>
@@ -281,6 +387,18 @@
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="DirectoryButton"/>
                                         </userDefinedRuntimeAttributes>
+                                        <variation key="widthClass=regular" misplaced="YES">
+                                            <rect key="frame" x="290" y="0.0" width="270" height="80"/>
+                                        </variation>
+                                        <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="150" y="0.0" width="130" height="80"/>
+                                        </variation>
+                                        <variation key="heightClass=compact-widthClass=regular" misplaced="YES">
+                                            <rect key="frame" x="290" y="0.0" width="270" height="80"/>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="150" y="0.0" width="130" height="80"/>
+                                        </variation>
                                         <connections>
                                             <action selector="onDirectory:" destination="9aL-Lb-Edi" eventType="touchUpInside" id="qDj-Of-u1h"/>
                                         </connections>
@@ -322,10 +440,10 @@
             </objects>
             <point key="canvasLocation" x="2309" y="282"/>
         </scene>
-        <!--Library Table View Controller-->
+        <!--Library View Controller-->
         <scene sceneID="gjD-cL-gjw">
             <objects>
-                <tableViewController storyboardIdentifier="LibraryTable" id="B27-qf-ejK" userLabel="Library Table View Controller" customClass="LibraryViewController" customModule="GroupLock" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="LibraryTable" id="B27-qf-ejK" userLabel="Library View Controller" customClass="LibraryViewController" customModule="GroupLock" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ztz-gx-Scm">
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -342,7 +460,7 @@
                                             <rect key="frame" x="15" y="12" width="59" height="19.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NSk-7V-N2j">
@@ -355,7 +473,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="LibraryTableCell"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="GeneralTableCell"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="title" destination="LO5-ML-5ov" id="3tC-HJ-oNc"/>
@@ -365,7 +483,7 @@
                             </tableViewCell>
                         </prototypes>
                         <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="LibraryTable"/>
+                            <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="GeneralTable"/>
                         </userDefinedRuntimeAttributes>
                         <connections>
                             <outlet property="dataSource" destination="B27-qf-ejK" id="S3w-hr-p3E"/>
@@ -396,7 +514,7 @@
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AoC-eP-gw4">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AoC-eP-gw4">
                                 <rect key="frame" x="20" y="20" width="560" height="459"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="459" id="So4-k1-sxN"/>
