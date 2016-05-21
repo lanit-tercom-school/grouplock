@@ -45,6 +45,11 @@ class FileManager: NSObject {
         }
     }
     
+    /**
+     Creates NSManagedObject file.
+     
+     - returns: Created file
+     */
     func createFile(name: String, type: String, encrypted: Bool, contents: NSData?) -> File? {
         guard let entity = NSEntityDescription.entityForName("File",
                                                              inManagedObjectContext: managedObjectContext) else {
