@@ -19,4 +19,7 @@ class HomeViewController: UIViewController {
     @IBAction func onDecrypt() {
 
     }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+    }
 }

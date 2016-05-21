@@ -17,7 +17,8 @@
 
 @mainColor: #142F4D;
 @buttonColor: #335273;
-@primaryBackgroundColor: #C4DBE8;
+@primaryBackgroundColor: #EDF4F8;
+@selectionColor: #4CAF4DC7;
 
 @primaryFontColor: #E0E0E0;
 @primaryFontColorDisabled: #E0E0E014;
@@ -89,6 +90,17 @@ DirectoryButton {
 
 CollectionViewCell {
     corner-radius: 4;
-    border-color: #4CAF4DC7;
+    border-color: @selectionColor;
     selected-border-width: 10;
+}
+
+/* KeyTypeViewController */
+
+KeyTypeButton {
+    background-color: #8A9EA8;
+    background-color-selected: @selectionColor;
+    background-color-disabled: #B9C9D2;
+    font-color: @mainColor;
+    font-color-selected: #474747;
+    tint-color: clear;
 }

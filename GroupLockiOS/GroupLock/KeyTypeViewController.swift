@@ -12,6 +12,8 @@ class KeyTypeViewController: UIViewController {
 
     var files: [File]?
     
+    private var keyTypes = Set<KeyType>()
+            
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,4 +24,20 @@ class KeyTypeViewController: UIViewController {
         
     }
 
+    @IBAction func onKeyType(sender: UIButton) {
+        let keyTypeDictionary = ["QR-CODE" : KeyType.QRCode]
+        
+        if sender.selected {
+            sender.selected = false
+            if let deselectedKeyType = keyTypeDictionary[sender.titleLabel?.text ?? "?"] {
+                keyTypes.remove(deselectedKeyType)
+            }
+        } else {
+            sender.selected = true
+            if let selectedKeyType = keyTypeDictionary[sender.titleLabel?.text ?? "?"] {
+                keyTypes.insert(selectedKeyType)
+            }
+        }
+        
+    }
 }

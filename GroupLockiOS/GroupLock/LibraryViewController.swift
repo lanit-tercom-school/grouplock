@@ -17,6 +17,8 @@ class LibraryViewController: UITableViewController {
     
     /// Current list of files displayed on the screen
     private var files: [File] {
+        // FIXME: This causes a lag when entering this screen.
+        // This property must be stored and has to be set in the background.
         return FileManager.sharedInstance.files(insideDirectory: directory)
     }
     
@@ -26,6 +28,10 @@ class LibraryViewController: UITableViewController {
         super.viewDidLoad()
         
         navigationItem.title = directory.rawValue
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        tableView.reloadData()
     }
     
     // MARK: - Table view data source

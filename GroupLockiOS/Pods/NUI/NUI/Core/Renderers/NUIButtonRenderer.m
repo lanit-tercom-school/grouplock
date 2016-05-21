@@ -50,6 +50,11 @@
         [button setBackgroundImage:[NUISettings getImageFromColor:@"background-color-disabled" withClass:className] forState:UIControlStateDisabled];
     }
     
+    // Set tint color
+    if ([NUISettings hasProperty:@"tint-color" withClass:className]) {
+        [button setTintColor:[NUISettings getColor:@"tint-color" withClass:className]];
+    }
+    
     // Set background gradient
     if ([NUISettings hasProperty:@"background-color-top" withClass:className]) {
         CAGradientLayer *gradientLayer = [NUIGraphics

@@ -13,15 +13,17 @@ class ChooseFileViewController: UICollectionViewController, UICollectionViewDele
     
     @IBOutlet weak var nextButton: UIBarButtonItem!
     
-    private var files: [File] {
-        return FileManager.sharedInstance.files(insideDirectory: .Decrypted)
-    }
+    private var files = [File]()
     private var selectedFiles = [Int : File]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView?.applyNUI()
         collectionView?.allowsMultipleSelection = true
+        
+        // FIXME: This causes a lag when entering this screen. This property has to be set in the background.
+        files = FileManager.sharedInstance.files(insideDirectory: .Decrypted)
+        
         nextButton.setTitleTextAttributes(
             [NSForegroundColorAttributeName : NUISettings.getColor("font-color-disabled", withClass: "BarButton")],
             forState: .Disabled
@@ -29,9 +31,8 @@ class ChooseFileViewController: UICollectionViewController, UICollectionViewDele
 
     }
     
-    override func viewWillAppear(animated: Bool) {
-        collectionView?.reloadData()
-    }
+    // TODO: collectionView must be reloaded as it appears.
+    // But this is a subtle moment. Need to resolve selection issue.
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "encryptFiles" {
@@ -58,12 +59,15 @@ class ChooseFileViewController: UICollectionViewController, UICollectionViewDele
         let cellToConfigure = collectionView.dequeueReusableCellWithReuseIdentifier("fileToProcessCell",
                                                                          forIndexPath: indexPath)
         let cell = cellToConfigure as! ChooseFileViewCell
-        
         if let fileContents = files[indexPath.item].contents {
             cell.thumbnailView.image = UIImage(data: fileContents)
         }
         
         cell.filenameLabel.text = files[indexPath.item].name
+        
+        // For the purposes of finer performance
+        cell.layer.shouldRasterize = true
+        cell.layer.rasterizationScale = UIScreen.mainScreen().scale
         
         return cell
     }
