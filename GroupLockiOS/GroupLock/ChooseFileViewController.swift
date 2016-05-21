@@ -22,7 +22,10 @@ class ChooseFileViewController: UICollectionViewController, UICollectionViewDele
         super.viewDidLoad()
         collectionView?.applyNUI()
         collectionView?.allowsMultipleSelection = true
-        nextButton.setTitleTextAttributes([NSForegroundColorAttributeName : UIColor.clearColor()], forState: .Disabled)
+        nextButton.setTitleTextAttributes(
+            [NSForegroundColorAttributeName : NUISettings.getColor("font-color-disabled", withClass: "BarButton")],
+            forState: .Disabled
+        )
 
     }
     

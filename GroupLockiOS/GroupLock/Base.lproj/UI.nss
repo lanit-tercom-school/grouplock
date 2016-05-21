@@ -1,16 +1,26 @@
-/* Please consider adding unit tests for each new class and property */
-
-/* IMPORTANT: Do NOT use general classes like View or Table, because the stylesheet gets applied
- * in undesired and unexpected places */
+/*
+ * In this file 8-digits hex color representation is used.
+ * First 6 of the digits are standard hex representation of a color.
+ * Last 2 ones are the value of alpha channel.
+ * It means that to get a decimal of this value, you need to translate it into decimal notation and divide by 255.
+ *
+ *
+ * Please consider adding unit tests for each new class and property.
+ *
+ *
+ * IMPORTANT: Do NOT use general classes like View or Table, because the stylesheet gets applied
+ * in undesired and unexpected places.
+ */
 
 @primaryFontName: HelveticaNeue;
 @secondaryFontName: HelveticaNeue-Light;
 
 @mainColor: #142F4D;
 @buttonColor: #335273;
-@primaryBackgroundColor: #E0E8F4;
+@primaryBackgroundColor: #C4DBE8;
 
 @primaryFontColor: #E0E0E0;
+@primaryFontColorDisabled: #E0E0E014;
 
 /* General */
 
@@ -48,6 +58,7 @@ TabBar {
 
 BarButton {
     font-color: @primaryFontColor;
+    font-color-disabled: @primaryFontColorDisabled;
 }
 
 /* PasswordViewController */
@@ -77,7 +88,7 @@ DirectoryButton {
 /* ChooseFileViewController */
 
 CollectionViewCell {
-    corner-radius: 5;
+    corner-radius: 4;
     border-color: #4CAF4DC7;
     selected-border-width: 10;
 }
