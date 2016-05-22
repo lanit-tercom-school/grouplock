@@ -8,6 +8,7 @@
 
 #import "NUITextFieldRenderer.h"
 #import "NUIViewRenderer.h"
+#import "NUITextInputTraitsRenderer.h"
 
 @implementation NUITextFieldRenderer
 
@@ -25,11 +26,6 @@
     // Set background color
     if ([NUISettings hasProperty:@"background-color" withClass:className]) {
         [textField setBackgroundColor:[NUISettings getColor:@"background-color" withClass:className]];
-    }
-    
-    // Set tint color
-    if ([NUISettings hasProperty:@"tint-color" withClass:className]) {
-        [textField setTintColor:[NUISettings getColor:@"tint-color" withClass:className]];
     }
     
     // Set background gradient
@@ -55,9 +51,17 @@
         [textField setBorderStyle:[NUISettings getBorderStyle:@"border-style" withClass:className]];
     }
 
+    // Set the tint color (cursor color)
+    if ([NUISettings hasProperty:@"tint-color" withClass:className]) {
+        [textField setTintColor:[NUISettings getColor:@"tint-color" withClass:className]];
+    }
+    
     [NUIViewRenderer renderSize:textField withClass:className];
     [NUIViewRenderer renderBorder:textField withClass:className];
     [NUIViewRenderer renderShadow:textField withClass:className];
+    if([textField conformsToProtocol:@protocol(UITextInputTraits)]) {
+        [NUITextInputTraitsRenderer renderKeyboard:(id<UITextInputTraits>)textField withClass:className];
+    }
 }
 
 @end

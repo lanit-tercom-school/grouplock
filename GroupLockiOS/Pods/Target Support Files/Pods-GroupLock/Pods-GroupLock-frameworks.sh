@@ -84,10 +84,10 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "Pods-GroupLock/NUI.framework"
-  install_framework "Pods-GroupLock/NUIParse.framework"
+  install_framework "$CONFIGURATION_BUILD_DIR/NUI/NUI.framework"
+  install_framework "$CONFIGURATION_BUILD_DIR/NUIParse/NUIParse.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "Pods-GroupLock/NUI.framework"
-  install_framework "Pods-GroupLock/NUIParse.framework"
+  install_framework "$CONFIGURATION_BUILD_DIR/NUI/NUI.framework"
+  install_framework "$CONFIGURATION_BUILD_DIR/NUIParse/NUIParse.framework"
 fi

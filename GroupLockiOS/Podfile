@@ -3,5 +3,5 @@ source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks!
 
 target 'GroupLock' do
-    pod 'NUI'
+    pod 'NUI', :git => 'https://github.com/broadwaylamb/nui.git', :branch => 'grouplock'
 end

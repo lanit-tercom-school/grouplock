@@ -34,6 +34,10 @@
     if ([NUISettings hasProperty:@"background-color" withClass:className]) {
         [button setBackgroundColor:[NUISettings getColor:@"background-color" withClass:className]];
     }
+    
+    if ([NUISettings hasProperty:@"background-color-normal" withClass:className]) {
+        [button setBackgroundImage:[NUISettings getImageFromColor:@"background-color-normal" withClass:className] forState:UIControlStateNormal];
+    }
     if ([NUISettings hasProperty:@"background-color-highlighted" withClass:className]) {
         [button setBackgroundImage:[NUISettings getImageFromColor:@"background-color-highlighted" withClass:className] forState:UIControlStateHighlighted];
     }
