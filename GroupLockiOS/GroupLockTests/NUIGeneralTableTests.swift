@@ -1,8 +1,8 @@
 //
-//  NUIEnterPasswordLabelTests.swift
+//  NUIGeneralTableTests.swift
 //  GroupLock
 //
-//  Created by Sergej Jaskiewicz on 16.04.16.
+//  Created by Sergej Jaskiewicz on 22.05.16.
 //  Copyright © 2016 Lanit-Tercom School. All rights reserved.
 //
 
@@ -10,14 +10,15 @@ import XCTest
 import NUI
 @testable import GroupLock
 
-class NUIEnterPasswordLabelTests: XCTestCase {
+class NUIGeneralTableTests: XCTestCase {
     
-    let correspondingClass = "EnterPasswordLabel"
+    let correspondingClass = "GeneralTable"
     
     // System Under Test:
-    var sut: UILabel!
+    var sut: UITableView!
     
-    var fontColor: UIColor?
+    var backgroundColor: UIColor?
+    var separatorColor: UIColor?
     
     override func setUp() {
         super.setUp()
@@ -25,13 +26,13 @@ class NUIEnterPasswordLabelTests: XCTestCase {
         
         NUISettings.initWithStylesheet("UI")
         
-        sut = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 10))
+        sut = UITableView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
         sut.nuiClass = correspondingClass
         sut.applyNUI()
         
         // We'll take all the properties for this particular SUT from the NSS-file as control properties
-        fontColor = NUISettings.getColor("font-color", withClass: correspondingClass)
-        
+        backgroundColor = NUISettings.getColor("background-color", withClass: correspondingClass)
+        separatorColor  = NUISettings.getColor("separator-color",  withClass: correspondingClass)
     }
     
     override func tearDown() {
@@ -42,8 +43,12 @@ class NUIEnterPasswordLabelTests: XCTestCase {
         super.tearDown()
     }
     
-    func testSerFontColor() {
-        XCTAssertEqual(sut.textColor, fontColor, "NUI should set UILabel text color")
+    func testSetBackgroundColor() {
+        XCTAssertEqual(sut.backgroundColor, backgroundColor, "NUI should set UITableView background color")
+    }
+    
+    func testSetSeparatorColor() {
+        XCTAssertEqual(sut.separatorColor, separatorColor, "NUI should set UITableView separator color")
     }
     
 }
