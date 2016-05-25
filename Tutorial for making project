@@ -1,0 +1,15 @@
+1. Download Java Development Kit from http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+2. Download Android Studio from https://developer.android.com/sdk/index.html
+3. Sign up for genymotion.com (https://www.genymotion.com/account/create/) and download Genymotion with VirtualBox from https://www.genymotion.com/pricing-and-licensing/
+
+
+4. Install JDK
+5. Install Android Studio
+6. Install VirtualBox and Genymotion. After installation run Genymotion and add virtual device.
+
+Run Android Studio.
+1. Go to File/Open choose GroupLockApplication and press OK
+2. Go to Preferences/Plugins and click "Browse Repositories", then search for Genymotion. Right click and choose "Download and Install".
+3. Restart Android Studio and you should see a new icon (Genymotion Device Manager) in your IDE.
+4. Open "Genymotion Device Manager" and start you virtual device.
+5. In Android Studio, press the "Play" or "Debug" button, and you should see the dialog that asks you to choose an emulator and one of the emulators will be the Genymotion emulator. After you choose that emulator and press "OK", it will run the application in the Genymotion emulator

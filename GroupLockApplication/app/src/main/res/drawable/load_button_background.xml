@@ -1,0 +1,18 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <stroke android:width="4dip" android:color="#142F4D"/>
+            <solid android:color="#ffcee9f2" />
+            <corners android:radius="36dp"/>
+        </shape>
+    </item>
+    <item>
+        <bitmap android:gravity="center" android:src="@drawable/ic_load_button" android:tileMode="disabled" />
+    </item>
+</layer-list>
+
+
+<!-- Button icon downloaded from http://www.flaticon.com/free-icon/download-button_532
+     We can choose any other color there if needed.
+     We also need to comply with the following license agreement:
+     http://file005.flaticon.com/downloads/license/license.pdf -->

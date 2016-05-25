@@ -6,55 +6,62 @@
     android:orientation="vertical"
     tools:context=".LibraryActivity" >
 
+    <android.support.v7.widget.Toolbar
+            android:id="@+id/library_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:elevation="4dp"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
-    <include layout="@layout/library_toolbar" />
-
-    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical"
-        android:layout_width="wrap_content"
-        android:layout_height="fill_parent"
-        android:layout_above="@+id/button"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@+id/toolbar_actionbar"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
-
-        <TableRow>
-            <TextView android:id="@+id/titleManager"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:padding="5dip"
-                />
-        </TableRow>
-        <TableRow>
-            <ListView android:id="@+id/list_view"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:drawSelectorOnTop="false" />
-        </TableRow>
-    </TableLayout>
-
-    <Button
-        android:layout_width="72dp"
-        android:layout_height="72dp"
-        android:id="@+id/button"
-        android:layout_alignParentBottom="true"
+    <TextView android:id="@+id/current_location_in_library"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dip"
+        android:layout_below="@id/library_toolbar"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:onClick="GoToPrevStep"
-        android:background="@drawable/ic_arrow_back_black_48dp"/>
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:textSize="@dimen/abc_text_size_medium_material" />
+
+    <GridView android:id="@+id/entries_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/current_location_in_library"
+        android:numColumns="2"
+        android:horizontalSpacing="10dp"
+        android:verticalSpacing="10dp"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:drawSelectorOnTop="false" />
 
     <Button
         android:layout_width="72dp"
         android:layout_height="72dp"
         android:shape="ring"
-        android:id="@+id/button3"
+        android:id="@+id/btnLoadFile"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:background="@drawable/ic_arrow_drop_down_circle_black_48dp"/>
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:background="@drawable/load_button_background"/>
+
+    <Button
+            android:id="@+id/btnNext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toStartOf="@id/btnLoadFile"
+            android:layout_toLeftOf="@id/btnLoadFile"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:visibility="invisible"
+            android:enabled="false"
+            android:onClick="goToNextStep"
+            android:text="@string/common_next_step"/>
 
 
 </RelativeLayout>

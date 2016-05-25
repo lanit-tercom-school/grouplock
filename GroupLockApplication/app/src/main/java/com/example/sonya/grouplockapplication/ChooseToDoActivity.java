@@ -5,15 +5,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.Toast;
+import android.widget.Button;
+import android.widget.TextView;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
-import android.widget.AdapterView;
 
-public class ChooseToDoActivity extends AppCompatActivity  {
+public class ChooseToDoActivity extends AppCompatActivity {
 
-    public int ForEncrypt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,31 +19,27 @@ public class ChooseToDoActivity extends AppCompatActivity  {
         setContentView(R.layout.activity_choose_to_do);
         Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar_actionbar);
         setSupportActionBar(mToolbar);
+
     }
 
-    public void ChooseEncrypt(View v)
-    {
-        ForEncrypt = 1;
-        GoToNextActivityTwo(v);
-    }
-
-    public void ChooseDecrypt(View v)
-    {
-        ForEncrypt = 2;
-        GoToNextActivityTwo(v);
-    }
-
-    private void GoToNextActivityTwo(View v)
-    {
-        Intent intent  = new Intent(this, LibraryActivity.class);
+    public void loadPage(View view) {
+        Intent intent = new Intent(ChooseToDoActivity.this, LoadActivity.class);
         startActivity(intent);
     }
 
-    public void AskClick(View v) {
-        Toast toast = Toast.makeText(getApplicationContext(),
-                "Click button <Encrypt> or <Decrypt> for encrypt or decrypt file. Click <Load> for loading file from phone",
-                Toast.LENGTH_SHORT);
-        toast.show();
+
+    public void chooseEncrypt(View v)
+    {
+        Intent intent  = new Intent(this, LibraryActivity.class);
+        intent.putExtra("state", LibraryActivity.LibraryState.ENCRYPT_SELECTING);
+        startActivity(intent);
+    }
+
+    public void chooseDecrypt(View v)
+    {
+        Intent intent  = new Intent(this, LibraryActivity.class);
+        intent.putExtra("state", LibraryActivity.LibraryState.DECRYPT_SELECTING);
+        startActivity(intent);
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -64,18 +58,16 @@ public class ChooseToDoActivity extends AppCompatActivity  {
                 return true;
             }
 
-            case R.id.settings:
+            case R.id.settings: {
+                Intent intent = new Intent(this, SettingsActivity.class);
+                startActivity(intent);
                 return true;
+            }
 
             case R.id.info:
-                return true;
-
-            case R.id.help_button:
             {
-                Toast toast = Toast.makeText(getApplicationContext(),
-                    "Click button <Encrypt> or <Decrypt> for encrypt or decrypt file. Click <Load> for loading file from phone",
-                    Toast.LENGTH_SHORT);
-                toast.show();
+                TextView infoMessage = (TextView) findViewById(R.id.textViewInfoMessage);
+                infoMessage.setVisibility(View.VISIBLE);
                 return true;
             }
 

@@ -1,20 +1,53 @@
 ﻿<resources>
     <string name="app_name">GroupLock Application</string>
 
-    <string name="action_settings">Настройки</string>
-    <string name="action_change">Изменить</string>
-    <string name="action_search">Поиск</string>
-   <string name="action_create">Create Folder</string>
-    <string name="action_make_dir">Создать папку</string>
+    <!-- Library -->
+    <string name="library_activity_name">Library</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_search">Search</string>
+    <string name="action_create_folder">Create Folder</string>
+    <string name="action_encrypt">Encrypt</string>
+    <string name="action_decrypt">Decrypt</string>
+    <string name="action_help">Help</string>
+    <string name="create_folder_dialogue_title">Create folder</string>
+    <string name="create_folder_dialogue_description">Enter directory name:</string>
+    <string name="information_window_title">Information</string>
+    <string name="information_window_description">Tap to open a directory.\nHold an item to call the context menu</string>
+    <string name="library_warning_file_cannot_be_selected">You can only select .jpg files in this version.</string>
 
-    <string name="action_choose_file">Выбрать файл</string>
-    <string name="action_change_file">Изменить</string>
-    <string name="action_search_file">Поиск</string>
-    <string name="action_make_dir_file">Создать папку</string>
+    <!-- Home Screen -->
+    <string name="home_button_encrypt">Encrypt</string>
+    <string name="home_button_decrypt">Decrypt</string>
+    <string name="home_info_message">Use these buttons to encrypt or decrypt your files. Use Load button to add files to library</string>
 
+    <!-- Key Types Selection -->
+    <string name="title_activity_keys_type_selection">Key types</string>
+    <string name="keys_type_selection_info">Select keys types:</string>
+    <string name="keys_type_selection_qr_code">QR code</string>
+    <string name="keys_type_selection_nfc">NFC tags</string>
+    <string name="keys_type_selection_fingerprint">Fingerprint</string>
+    <string name="keys_type_selection_warning">You can use QR codes only in this version</string>
+
+    <!-- Menu Items -->
     <string name="activity_home">Home</string>
     <string name="activity_library">Library</string>
     <string name="activity_info">Info</string>
     <string name="activity_settings">Settings</string>
+
+    <!-- common -->
+    <string name="common_next_step">Next step</string>
+
+    <!-- NumberOfKeys -->
+    <string name="minKeys">Min: %1$d</string>
+    <string name="maxKeys">Max: %1$d</string>
+    <string name="maxStart">Max: 0</string>
+    <string name="minStart">Min: 0</string>
+    <string name="NumHead">Step 3/6</string>
+    <string name="infoNumbers">Select the minimum number of keys and maximum number of participants.</string>
+
+
+    <!-- Loading -->
+    <string name="loadEnc">Load to encrypted</string>
+    <string name="loadDec">Load to decrypted</string>
 
 </resources>
