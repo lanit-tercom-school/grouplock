@@ -1,8 +1,8 @@
 //
-//  NUIEnterPasswordLabelTests.swift
+//  NUIGeneralViewTests.swift
 //  GroupLock
 //
-//  Created by Sergej Jaskiewicz on 16.04.16.
+//  Created by Sergej Jaskiewicz on 22.05.16.
 //  Copyright © 2016 Lanit-Tercom School. All rights reserved.
 //
 
@@ -10,14 +10,14 @@ import XCTest
 import NUI
 @testable import GroupLock
 
-class NUIEnterPasswordLabelTests: XCTestCase {
+class NUIGeneralViewTests: XCTestCase {
     
-    let correspondingClass = "EnterPasswordLabel"
+    let correspondingClass = "GeneralView"
     
     // System Under Test:
-    var sut: UILabel!
+    var sut: UIView!
     
-    var fontColor: UIColor?
+    var backgroundColor: UIColor?
     
     override func setUp() {
         super.setUp()
@@ -25,12 +25,12 @@ class NUIEnterPasswordLabelTests: XCTestCase {
         
         NUISettings.initWithStylesheet("UI")
         
-        sut = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 10))
+        sut = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
         sut.nuiClass = correspondingClass
         sut.applyNUI()
         
         // We'll take all the properties for this particular SUT from the NSS-file as control properties
-        fontColor = NUISettings.getColor("font-color", withClass: correspondingClass)
+        backgroundColor = NUISettings.getColor("background-color", withClass: correspondingClass)
         
     }
     
@@ -42,8 +42,8 @@ class NUIEnterPasswordLabelTests: XCTestCase {
         super.tearDown()
     }
     
-    func testSerFontColor() {
-        XCTAssertEqual(sut.textColor, fontColor, "NUI should set UILabel text color")
+    func testBackgroundColor() {
+        XCTAssertEqual(sut.backgroundColor, backgroundColor, "NUI should set UIView background color")
     }
     
 }

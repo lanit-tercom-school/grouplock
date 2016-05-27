@@ -26,7 +26,7 @@ class NUIPasswordViewTests: XCTestCase {
         NUISettings.initWithStylesheet("UI")
         
         sut = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
-        sut.nuiClass = "PasswordView"
+        sut.nuiClass = correspondingClass
         sut.applyNUI()
         
         // We'll take all the properties for this particular SUT from the NSS-file as control properties
