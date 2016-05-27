@@ -9,7 +9,7 @@ GroupLock
 | Travis CI (iOS) | [![Build Status](https://travis-ci.org/lanit-tercom-school/grouplock.svg?branch=master)](https://travis-ci.org/lanit-tercom-school/grouplock) |
 | Code Coverage (iOS) | [![codecov](https://codecov.io/gh/lanit-tercom-school/grouplock/branch/master/graph/badge.svg)](https://codecov.io/gh/lanit-tercom-school/grouplock) |
 | Code Quality (Swift) | [![codebeat badge](https://codebeat.co/badges/ca8bbb83-555b-443a-ad6e-eee0e1b8c24e)](https://codebeat.co/projects/github-com-lanit-tercom-school-grouplock) |
-| Code Quality (Java) | [![Codacy Badge](https://api.codacy.com/project/badge/Grade/a11a8331fa464c7abddfccbe911631f1)](https://www.codacy.com/app/seergy_pro/grouplock?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=lanit-tercom-school/grouplock&amp;utm_campaign=Badge_Grade) |
+| Code Quality (Java) | [![Codacy Badge](https://api.codacy.com/project/badge/Grade/a11a8331fa464c7abddfccbe911631f1)](https://www.codacy.com/app/lanit-tercom-school/grouplock?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=lanit-tercom-school/grouplock&amp;utm_campaign=Badge_Grade) |
 
 
 Hey! This is a GroupLock project. This will allow you (in near future) to stay non-stressed about your file you sent to your mum.
