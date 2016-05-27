@@ -89,18 +89,18 @@ DirectoryButton {
 /* ChooseFileViewController */
 
 CollectionViewCell {
-    corner-radius: 4;
-    border-color: @selectionColor;
-    selected-border-width: 10;
+    corner-radius: 4;                               /* TESTED */
+    border-color: @selectionColor;                  /* TESTED */
+    selected-border-width: 10;                      /* CUSTOM */
 }
 
 /* KeyTypeViewController */
 
 KeyTypeButton {
-    background-color: #8A9EA8;
-    background-color-selected: @selectionColor;
-    background-color-disabled: #B9C9D2;
-    font-color: @mainColor;
-    font-color-selected: #474747;
-    tint-color: clear;
+    background-color: #8A9EA8;                      /* TESTED */
+    background-color-selected: @selectionColor;     /* TESTED */
+    background-color-disabled: #B9C9D2;             /* TESTED */
+    font-color: @mainColor;                         /* TESTED */
+    font-color-selected: #474747;                   /* TESTED */
+    tint-color: clear;                              /* TESTED */
 }
