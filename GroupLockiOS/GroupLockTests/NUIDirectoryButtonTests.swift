@@ -1,8 +1,8 @@
 //
-//  NUIProceedButtonTests.swift
+//  NUIDirectoryButtonTests.swift
 //  GroupLock
 //
-//  Created by Sergej Jaskiewicz on 16.04.16.
+//  Created by Sergej Jaskiewicz on 22.05.16.
 //  Copyright © 2016 Lanit-Tercom School. All rights reserved.
 //
 
@@ -10,9 +10,9 @@ import XCTest
 import NUI
 @testable import GroupLock
 
-class NUIProceedButtonTests: XCTestCase {
+class NUIDirectoryButtonTests: XCTestCase {
     
-    let correspondingClass = "ProceedButton"
+    let correspondingClass = "DirectoryButton"
     
     // System Under Test:
     var sut: UIButton!
@@ -35,7 +35,6 @@ class NUIProceedButtonTests: XCTestCase {
         backgroundColor = NUISettings.getColor("background-color", withClass: correspondingClass)
         fontColor       = NUISettings.getColor("font-color",       withClass: correspondingClass)
         cornerRadius    = NUISettings.getFloat("corner-radius",    withClass: correspondingClass)
-        
     }
     
     override func tearDown() {
@@ -46,14 +45,12 @@ class NUIProceedButtonTests: XCTestCase {
         super.tearDown()
     }
     
-    // MARK: Test Methods
-    
     func testSetBackgroundColor() {
         XCTAssertEqual(sut.backgroundColor, backgroundColor, "NUI should set UIButton background color")
     }
     
-    func testSetFontColor() {
-        XCTAssertEqual(sut.currentTitleColor, fontColor, "NUI should set UIButton current title color")
+    func testSetTintColor() {
+        XCTAssertEqual(sut.currentTitleColor, fontColor, "NUI should set UIButton font color")
     }
     
     func testSetCornerRadius() {

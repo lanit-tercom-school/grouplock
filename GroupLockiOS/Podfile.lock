@@ -13,7 +13,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   NUI:
-    :commit: 98d343f040e477b4d70c6e8e3fd8ad0f592f8a5c
+    :commit: 9575a63670b4e422a972775c9a501377eda0767e
     :git: https://github.com/broadwaylamb/nui.git
 
 SPEC CHECKSUMS:

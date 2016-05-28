@@ -9,7 +9,7 @@
  *
  *
  * IMPORTANT: Do NOT use general classes like View or Table, because the stylesheet gets applied
- * in undesired and unexpected places.
+ * in undesired and unexpected places. Use instead custom classes like GeneralView and apply them to each element.
  */
 
 @primaryFontName: HelveticaNeue;
@@ -26,81 +26,81 @@
 /* General */
 
 GeneralView {
-    background-color: @primaryBackgroundColor;
+    background-color: @primaryBackgroundColor;      /* TESTED */
 }
 
 GeneralButton {
-    background-color: @buttonColor;
-    font-color: @primaryFontColor;
-    corner-radius: 0;
+    background-color: @buttonColor;                 /* TESTED */
+    font-color: @primaryFontColor;                  /* TESTED */
+    corner-radius: 0;                               /* TESTED */
 }
 
 GeneralTable {
-    background-color: @primaryBackgroundColor;
-    separator-color: @mainColor;
+    background-color: @primaryBackgroundColor;      /* TESTED */
+    separator-color: @mainColor;                    /* TESTED */
 }
 
 GeneralTableCell {
-    background-color: @primaryBackgroundColor;
-    tint-color: @mainColor;
-    background-color-selected: @buttonColor;
-    font-color-highlighted: @primaryFontColor;
+    background-color: @primaryBackgroundColor;      /* TESTED */
+    tint-color: @mainColor;                         /* TESTED */
+    background-color-selected: @buttonColor;        /* TESTED */
+    font-color-highlighted: @primaryFontColor;      /* TESTED */
 }
 
 NavigationBar {
-    bar-tint-color: @mainColor;
-    font-color: @primaryFontColor;
-    background-tint-color: @primaryFontColor;
+    bar-tint-color: @mainColor;                     /* TESTED */
+    font-color: @primaryFontColor;                  /* TESTED */
+    background-tint-color: @primaryFontColor;       /* TESTED */
 }
 
 TabBar {
-    background-tint-color: @mainColor;
+    background-tint-color: @mainColor;              /* TESTED */
 }
 
 BarButton {
-    font-color: @primaryFontColor;
-    font-color-disabled: @primaryFontColorDisabled;
+    font-color: @primaryFontColor;                  /* TESTED */
+    font-color-disabled: @primaryFontColorDisabled; /* TESTED */
 }
 
 /* PasswordViewController */
 
 PasswordView {
-    background-color: #142F4DBF;
+    background-color: #142F4DBF;                    /* TESTED */
 }
 
 ProceedButton {
-    background-color: #4CAF4D;
-    font-color: white;
-    corner-radius: 0;
+    background-color: #4CAF4D;                      /* TESTED */
+    font-color: white;                              /* TESTED */
+    corner-radius: 0;                               /* TESTED */
 }
 
-EnterPasswordLabel {
-    font-color: #FF5222;
+EnterPasswordLabel {                                /* TESTED */
+    font-color: #FF5222;                            /* TESTED */
 }
 
 /* LibraryDirectoryViewController */
 
 DirectoryButton {
-    background-color: @buttonColor;
-    font-color: @primaryBackgroundColor;
-    corner-radius: 4;
+    background-color: @buttonColor;                 /* TESTED */
+    font-color: @primaryBackgroundColor;            /* TESTED */
+    corner-radius: 4;                               /* TESTED */
 }
 
 /* ChooseFileViewController */
 
 CollectionViewCell {
-    corner-radius: 4;
-    border-color: @selectionColor;
-    selected-border-width: 10;
+    corner-radius: 4;                               /* TESTED */
+    border-color: @selectionColor;                  /* TESTED */
+    selected-border-width: 10;                      /* CUSTOM */
 }
 
 /* KeyTypeViewController */
 
 KeyTypeButton {
-    background-color: #8A9EA8;
-    background-color-selected: @selectionColor;
-    background-color-disabled: #B9C9D2;
-    font-color: @mainColor;
-    font-color-selected: #474747;
-    tint-color: clear;
+    background-color: #8A9EA8;                      /* TESTED */
+    background-color-selected: @selectionColor;     /* TESTED */
+    background-color-disabled: #B9C9D2;             /* TESTED */
+    font-color: @mainColor;                         /* TESTED */
+    font-color-selected: #474747;                   /* TESTED */
+    tint-color: clear;                              /* TESTED */
 }
