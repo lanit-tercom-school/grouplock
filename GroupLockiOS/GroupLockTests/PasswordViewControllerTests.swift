@@ -45,9 +45,32 @@ class PasswordViewControllerTests: XCTestCase {
         
         sut.onProceedButton()
         
-        XCTAssert(!sut.initialPasswordTextField.isFirstResponder(),
+        XCTAssertFalse(sut.initialPasswordTextField.isFirstResponder(),
                   "initialPasswordTextField should lose keyboard focus")
     }
 
+    func testShowHideProceedButton() {
+        XCTAssertTrue(sut.proceedButton.hidden, "Proceed button should be hidden when view is initially loaded")
+        
+        let textField = UITextField(frame: CGRectZero)
+        textField.text = ""
+        sut.textFieldOnChange(textField)
+        XCTAssertTrue(sut.proceedButton.hidden, "Proceed button should be hidden when the text field is empty")
+        
+        textField.text = "some text"
+        sut.textFieldOnChange(textField)
+        XCTAssertFalse(sut.proceedButton.hidden,
+                       "Proceed button should not be hidden when the text field contains any text")
+        
+        textField.text = ""
+        sut.textFieldOnChange(textField)
+        XCTAssertTrue(sut.proceedButton.hidden, "Proceed button should be hidden when the text field is empty")
+    }
     
+    func testTextFieldReturn() {
+        let textField = UITextField(frame: CGRectZero)
+        
+        XCTAssert(sut.textFieldShouldReturn(textField), "Text field should process pressing the Return key.")
+        XCTAssertFalse(textField.isFirstResponder(), "Text field should lose keyboard focus")
+    }
 }

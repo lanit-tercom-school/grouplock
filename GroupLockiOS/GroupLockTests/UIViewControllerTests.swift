@@ -44,7 +44,7 @@ class UIViewControllerTests: XCTestCase {
         sut.view.addSubview(textField)
         textField.becomeFirstResponder()
         sut.dismissKeyboard()
-        XCTAssert(!textField.isFirstResponder(), "Text field should lose keyboard focus")
+        XCTAssertFalse(textField.isFirstResponder(), "Text field should lose keyboard focus")
     }
 
 }

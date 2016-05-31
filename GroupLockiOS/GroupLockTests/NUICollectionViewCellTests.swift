@@ -34,7 +34,6 @@ class CollectionViewCellTests: XCTestCase {
         // We'll take all the properties for this particular SUT from the NSS-file as control properties
         cornerRadius        = NUISettings.getFloat("corner-radius",         withClass: correspondingClass)
         borderColor         = NUISettings.getColor("border-color",          withClass: correspondingClass)
-        borderWidth         = NUISettings.getFloat("selected-border-width", withClass: correspondingClass)
     }
     
     override func tearDown() {

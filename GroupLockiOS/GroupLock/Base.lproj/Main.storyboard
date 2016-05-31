@@ -96,7 +96,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="mLa-Ky-P8r">
             <objects>
-                <tabBarController storyboardIdentifier="TabBarController" id="YPl-G6-tPp" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarController" title="Tab Bar Controller" id="YPl-G6-tPp" sceneMemberID="viewController">
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="ViM-bW-gfp">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
