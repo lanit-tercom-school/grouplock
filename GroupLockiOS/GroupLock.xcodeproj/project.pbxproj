@@ -39,7 +39,7 @@
 		87B6921B1CB425E0008ACB6A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87B6921A1CB425E0008ACB6A /* Assets.xcassets */; };
 		87B6921E1CB425E0008ACB6A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87B6921C1CB425E0008ACB6A /* LaunchScreen.storyboard */; };
 		87B6927F1CB45188008ACB6A /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B6927E1CB45188008ACB6A /* UIViewController.swift */; };
-		87BC182B1CF8BF7F0023B417 /* KeyTypeButtonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BC182A1CF8BF7F0023B417 /* KeyTypeButtonTests.swift */; };
+		87BC182B1CF8BF7F0023B417 /* NUIKeyTypeButtonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BC182A1CF8BF7F0023B417 /* NUIKeyTypeButtonTests.swift */; };
 		87C49EA11CF1EBDB006C0A83 /* NUIGeneralTableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C49EA01CF1EBDB006C0A83 /* NUIGeneralTableTests.swift */; };
 		87C49EA31CF1F0E5006C0A83 /* NUIGeneralButtonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C49EA21CF1F0E5006C0A83 /* NUIGeneralButtonTests.swift */; };
 		87C49EA51CF1F349006C0A83 /* NUIGeneralTableCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C49EA41CF1F349006C0A83 /* NUIGeneralTableCellTests.swift */; };
@@ -115,7 +115,7 @@
 		87B6922F1CB425E0008ACB6A /* GroupLockUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GroupLockUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		87B692351CB425E0008ACB6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87B6927E1CB45188008ACB6A /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; tabWidth = 4; };
-		87BC182A1CF8BF7F0023B417 /* KeyTypeButtonTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyTypeButtonTests.swift; sourceTree = "<group>"; };
+		87BC182A1CF8BF7F0023B417 /* NUIKeyTypeButtonTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NUIKeyTypeButtonTests.swift; sourceTree = "<group>"; };
 		87C49EA01CF1EBDB006C0A83 /* NUIGeneralTableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NUIGeneralTableTests.swift; sourceTree = "<group>"; };
 		87C49EA21CF1F0E5006C0A83 /* NUIGeneralButtonTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NUIGeneralButtonTests.swift; sourceTree = "<group>"; };
 		87C49EA41CF1F349006C0A83 /* NUIGeneralTableCellTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NUIGeneralTableCellTests.swift; sourceTree = "<group>"; };
@@ -315,7 +315,7 @@
 		87BC18291CF8BF500023B417 /* KeyTypeViewController Custom Classes */ = {
 			isa = PBXGroup;
 			children = (
-				87BC182A1CF8BF7F0023B417 /* KeyTypeButtonTests.swift */,
+				87BC182A1CF8BF7F0023B417 /* NUIKeyTypeButtonTests.swift */,
 			);
 			name = "KeyTypeViewController Custom Classes";
 			sourceTree = "<group>";
@@ -683,7 +683,7 @@
 				87C49EA31CF1F0E5006C0A83 /* NUIGeneralButtonTests.swift in Sources */,
 				871C6AE11CF1E8A7004C5B38 /* NUIGeneralViewTests.swift in Sources */,
 				87B072D51CC1680F00916D09 /* NUINavigationBarTests.swift in Sources */,
-				87BC182B1CF8BF7F0023B417 /* KeyTypeButtonTests.swift in Sources */,
+				87BC182B1CF8BF7F0023B417 /* NUIKeyTypeButtonTests.swift in Sources */,
 				877ED3351CF8B18900C5D0D4 /* NUICollectionViewCellTests.swift in Sources */,
 				87B072DB1CC1AB4200916D09 /* NUIBarButtonTests.swift in Sources */,
 				87B072E71CC1B9F900916D09 /* NUIEnterPasswordLabelTests.swift in Sources */,

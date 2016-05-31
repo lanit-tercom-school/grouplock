@@ -10,7 +10,7 @@ import XCTest
 import NUI
 @testable import GroupLock
 
-class CollectionViewCellTests: XCTestCase {
+class NUICollectionViewCellTests: XCTestCase {
     
     let correspondingClass = "CollectionViewCell"
     
