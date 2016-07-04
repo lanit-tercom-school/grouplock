@@ -26,7 +26,7 @@ class NUIEnterPasswordLabelTests: XCTestCase {
         NUISettings.initWithStylesheet("UI")
         
         sut = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 10))
-        sut.nuiClass = "EnterPasswordLabel"
+        sut.nuiClass = correspondingClass
         sut.applyNUI()
         
         // We'll take all the properties for this particular SUT from the NSS-file as control properties

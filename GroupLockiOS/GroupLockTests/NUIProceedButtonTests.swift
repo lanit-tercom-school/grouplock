@@ -28,7 +28,7 @@ class NUIProceedButtonTests: XCTestCase {
         NUISettings.initWithStylesheet("UI")
         
         sut = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 10))
-        sut.nuiClass = "ProceedButton"
+        sut.nuiClass = correspondingClass
         sut.applyNUI()
         
         // We'll take all the properties for this particular SUT from the NSS-file as control properties
