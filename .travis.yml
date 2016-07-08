@@ -41,8 +41,7 @@ matrix:
         # etc.
 
 before_install:
-  - travis_retry sh -c "if [ '$PLATFORM' = 'iOS' ]; then rvm install 2.2; fi"
-  - travis_retry sh -c "if [ '$PLATFORM' = 'iOS' ]; then rvm use 2.2; fi"
+  - rvm use 2.2
   - travis_retry sh -c "if [ '$PLATFORM' = 'iOS' ]; then sudo gem install xcpretty --no-rdoc --no-ri --no-document; fi"
   - travis_retry sh -c "if [ '$PLATFORM' = 'iOS' ]; then sudo gem install cocoapods --no-rdoc --no-ri; fi"
   - travis_retry sh -c "if [ '$PLATFORM' = 'iOS' ]; then pod install --project-directory=GroupLockiOS; fi"
