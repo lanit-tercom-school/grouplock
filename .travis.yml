@@ -41,7 +41,7 @@ matrix:
         # etc.
 
 before_install:
-  - rvm use system
+  - rvm use 2.2
   - sh -c "if [ '$PLATFORM' = 'iOS' ]; then sudo gem install xcpretty --no-rdoc --no-ri --no-document; fi"
   - sh -c "if [ '$PLATFORM' = 'iOS' ]; then sudo gem install cocoapods --no-rdoc --no-ri; fi"
   - sh -c "if [ '$PLATFORM' = 'iOS' ]; then pod install --project-directory=GroupLockiOS; fi"
