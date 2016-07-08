@@ -14,15 +14,15 @@ import com.google.zxing.integration.android.IntentResult;
 
 public class QrReaderActivity extends AppCompatActivity {
 
-    private Button button;
+    private Button buttonRead;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qr);
-        button = (Button) this.findViewById(R.id.ScanQR);
+        buttonRead = (Button) this.findViewById(R.id.ScanQR);
         final Activity activity = this;
-        button.setOnClickListener(new View.OnClickListener() {
+        buttonRead.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 IntentIntegrator integrator = new IntentIntegrator(activity);
@@ -51,5 +51,11 @@ public class QrReaderActivity extends AppCompatActivity {
             // This is important, otherwise the result will not be passed to the fragment
             super.onActivityResult(requestCode, resultCode, data);
         }
+    }
+
+    public void buttonCreate(View v)
+    {
+        Intent intent = new Intent(this, QrCreateActivity.class);
+        startActivity(intent);
     }
 }

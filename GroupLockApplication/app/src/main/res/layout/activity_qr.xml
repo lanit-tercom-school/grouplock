@@ -12,11 +12,20 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Сканировать QR-код"
+        android:text="Scan QR code"
         android:id="@+id/ScanQR"
         android:layout_below="@+id/include"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="85dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Generate QR Code"
+        android:id="@+id/CreateQR"
+        android:onClick="buttonCreate"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 
 
 
