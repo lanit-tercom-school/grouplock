@@ -48,6 +48,7 @@
 		87F118F01CBF0CD40038F956 /* NUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87F118EF1CBF0CD40038F956 /* NUI.framework */; };
 		87F118F21CBF0CD60038F956 /* NUIParse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87F118F11CBF0CD60038F956 /* NUIParse.framework */; };
 		87FD45381CE4B32800984269 /* Directory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FD45371CE4B32800984269 /* Directory.swift */; };
+		8AE919DA1D2F508A002024AC /* NumberOfKeysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE919D91D2F508A002024AC /* NumberOfKeysViewController.swift */; };
 		A12E5CE327034B916D1870EA /* Pods_GroupLock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78D44004286621EC4A941066 /* Pods_GroupLock.framework */; };
 		F989871300CA3BD210D3B2C2 /* Pods_GroupLockUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12E6A7C0DA0A408E64B7328B /* Pods_GroupLockUITests.framework */; };
 /* End PBXBuildFile section */
@@ -125,6 +126,7 @@
 		87F118F11CBF0CD60038F956 /* NUIParse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NUIParse.framework; path = "../../../Library/Developer/Xcode/DerivedData/GroupLock-ffmgilidnbhbqnfkgswyglwucvmu/Build/Products/Debug-iphonesimulator/NUIParse.framework"; sourceTree = "<group>"; };
 		87FD45371CE4B32800984269 /* Directory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Directory.swift; sourceTree = "<group>"; };
 		8A5BAE3AF1557FD0CA843812 /* Pods-GroupLockUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GroupLockUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GroupLockUITests/Pods-GroupLockUITests.release.xcconfig"; sourceTree = "<group>"; };
+		8AE919D91D2F508A002024AC /* NumberOfKeysViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberOfKeysViewController.swift; sourceTree = "<group>"; };
 		AF19EA1836F48CDF9CE2777A /* Pods-GroupLockTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GroupLockTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GroupLockTests/Pods-GroupLockTests.release.xcconfig"; sourceTree = "<group>"; };
 		BFDF8566C80CCDB2E8A9388F /* Pods-GroupLock.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GroupLock.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GroupLock/Pods-GroupLock.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -211,6 +213,7 @@
 				8713DE4A1CEFA5400089C92A /* ChooseFileViewController.swift */,
 				878C29A21CF0B9D300323C9D /* ChooseFileViewCell.swift */,
 				878C29A41CF0D7E300323C9D /* KeyTypeViewController.swift */,
+				8AE919D91D2F508A002024AC /* NumberOfKeysViewController.swift */,
 			);
 			name = Encryption;
 			sourceTree = "<group>";
@@ -376,13 +379,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 87B692381CB425E0008ACB6A /* Build configuration list for PBXNativeTarget "GroupLock" */;
 			buildPhases = (
-				256C3A224374B5E367D161E5 /* 📦 Check Pods Manifest.lock */,
+				256C3A224374B5E367D161E5 /* [CP] Check Pods Manifest.lock */,
 				87B692091CB425E0008ACB6A /* Sources */,
 				87B6920A1CB425E0008ACB6A /* Frameworks */,
 				87B6920B1CB425E0008ACB6A /* Resources */,
 				8760D2631CD7950F004C86D4 /* ShellScript */,
-				CACE0EB81A618413524FFC78 /* 📦 Embed Pods Frameworks */,
-				5375B2386BB06D3969610FAB /* 📦 Copy Pods Resources */,
+				CACE0EB81A618413524FFC78 /* [CP] Embed Pods Frameworks */,
+				5375B2386BB06D3969610FAB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -397,12 +400,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 87B6923B1CB425E0008ACB6A /* Build configuration list for PBXNativeTarget "GroupLockTests" */;
 			buildPhases = (
-				45FAD6FFE2780505B4491AF9 /* 📦 Check Pods Manifest.lock */,
+				45FAD6FFE2780505B4491AF9 /* [CP] Check Pods Manifest.lock */,
 				87B692201CB425E0008ACB6A /* Sources */,
 				87B692211CB425E0008ACB6A /* Frameworks */,
 				87B692221CB425E0008ACB6A /* Resources */,
-				B1B2720ADBDBDE385087D164 /* 📦 Embed Pods Frameworks */,
-				C3EECE5EA2E9CB30A492F51C /* 📦 Copy Pods Resources */,
+				B1B2720ADBDBDE385087D164 /* [CP] Embed Pods Frameworks */,
+				C3EECE5EA2E9CB30A492F51C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -418,11 +421,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 87B6923E1CB425E0008ACB6A /* Build configuration list for PBXNativeTarget "GroupLockUITests" */;
 			buildPhases = (
-				D46AF9780882B88097B199A0 /* 📦 Check Pods Manifest.lock */,
+				D46AF9780882B88097B199A0 /* [CP] Check Pods Manifest.lock */,
 				87B6922B1CB425E0008ACB6A /* Sources */,
 				87B6922C1CB425E0008ACB6A /* Frameworks */,
 				87B6922D1CB425E0008ACB6A /* Resources */,
-				9CFEDDD72DA490012B007B84 /* 📦 Copy Pods Resources */,
+				9CFEDDD72DA490012B007B84 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -446,7 +449,7 @@
 				TargetAttributes = {
 					87B6920C1CB425E0008ACB6A = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = N4X84VA3BB;
+						DevelopmentTeam = T28WAZY524;
 					};
 					87B692231CB425E0008ACB6A = {
 						CreatedOnToolsVersion = 7.3;
@@ -509,14 +512,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		256C3A224374B5E367D161E5 /* 📦 Check Pods Manifest.lock */ = {
+		256C3A224374B5E367D161E5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -524,14 +527,14 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		45FAD6FFE2780505B4491AF9 /* 📦 Check Pods Manifest.lock */ = {
+		45FAD6FFE2780505B4491AF9 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -539,14 +542,14 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		5375B2386BB06D3969610FAB /* 📦 Copy Pods Resources */ = {
+		5375B2386BB06D3969610FAB /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -567,14 +570,14 @@
 			shellPath = /bin/sh;
 			shellScript = "TAGS=\"TODO:|FIXME:\"\nERRORTAG=\"ERROR:\"\nfind \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" -or -name \"*.swift\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$|($ERRORTAG).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\" | perl -p -e \"s/($ERRORTAG)/ error: \\$1/\"";
 		};
-		9CFEDDD72DA490012B007B84 /* 📦 Copy Pods Resources */ = {
+		9CFEDDD72DA490012B007B84 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -582,14 +585,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GroupLockUITests/Pods-GroupLockUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B1B2720ADBDBDE385087D164 /* 📦 Embed Pods Frameworks */ = {
+		B1B2720ADBDBDE385087D164 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -597,14 +600,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GroupLockTests/Pods-GroupLockTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C3EECE5EA2E9CB30A492F51C /* 📦 Copy Pods Resources */ = {
+		C3EECE5EA2E9CB30A492F51C /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -612,14 +615,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GroupLockTests/Pods-GroupLockTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		CACE0EB81A618413524FFC78 /* 📦 Embed Pods Frameworks */ = {
+		CACE0EB81A618413524FFC78 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -627,14 +630,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GroupLock/Pods-GroupLock-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D46AF9780882B88097B199A0 /* 📦 Check Pods Manifest.lock */ = {
+		D46AF9780882B88097B199A0 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -663,6 +666,7 @@
 				879797071CCFA61E0064C3AC /* File+CoreDataProperties.swift in Sources */,
 				87B509C11CD0B67A00641EC3 /* FileManager.swift in Sources */,
 				87B6927F1CB45188008ACB6A /* UIViewController.swift in Sources */,
+				8AE919DA1D2F508A002024AC /* NumberOfKeysViewController.swift in Sources */,
 				87FD45381CE4B32800984269 /* Directory.swift in Sources */,
 				8797970E1CCFEFB20064C3AC /* LibraryViewController.swift in Sources */,
 				87B692111CB425E0008ACB6A /* AppDelegate.swift in Sources */,
@@ -838,14 +842,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = GroupLock/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-D DEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = "lanit-tercom-school.GroupLock";
+				PRODUCT_BUNDLE_IDENTIFIER = "lt-school.GroupLock";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -858,14 +864,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = GroupLock/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-D RELEASE";
-				PRODUCT_BUNDLE_IDENTIFIER = "lanit-tercom-school.GroupLock";
+				PRODUCT_BUNDLE_IDENTIFIER = "lt-school.GroupLock";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

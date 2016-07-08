@@ -318,6 +318,7 @@
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="onKeyType:" destination="vTA-sU-hsi" eventType="touchUpInside" id="IX2-Pm-YwS"/>
+                                            <segue destination="PUy-bJ-rb1" kind="show" id="Dda-2a-aci"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FrU-oc-tTg">
@@ -384,6 +385,100 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Pb-Kn-JY6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3729" y="-601"/>
+        </scene>
+        <!--Choose Number Of Keys-->
+        <scene sceneID="S7w-4u-xQY">
+            <objects>
+                <viewController id="PUy-bJ-rb1" customClass="NumberOfKeysViewController" customModule="GroupLock" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="u5W-qr-D7n"/>
+                        <viewControllerLayoutGuide type="bottom" id="NUO-f3-vRZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="r3Z-vU-RLw">
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="FTt-4u-ZFf">
+                                <rect key="frame" x="150" y="70" width="300" height="243"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jOz-6n-55i">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="27"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="MIN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TUx-fJ-fvF">
+                                                <rect key="frame" x="0.0" y="0.0" width="150" height="27"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="MaxMinLabel"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="MAX" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bsY-E3-Lql">
+                                                <rect key="frame" x="150" y="0.0" width="150" height="27"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="MaxMinLabel"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="300" id="4mk-T8-ezL"/>
+                                            <constraint firstItem="bsY-E3-Lql" firstAttribute="width" secondItem="TUx-fJ-fvF" secondAttribute="width" id="VSJ-GA-Gmz"/>
+                                        </constraints>
+                                    </stackView>
+                                    <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="02R-1n-hYV">
+                                        <rect key="frame" x="0.0" y="27" width="300" height="216"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="PUy-bJ-rb1" id="yH7-4C-ywg"/>
+                                            <outlet property="delegate" destination="PUy-bJ-rb1" id="PUQ-pU-3T1"/>
+                                        </connections>
+                                    </pickerView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="FTt-4u-ZFf" firstAttribute="centerX" secondItem="r3Z-vU-RLw" secondAttribute="centerX" id="49e-l1-Whm"/>
+                            <constraint firstItem="FTt-4u-ZFf" firstAttribute="top" secondItem="u5W-qr-D7n" secondAttribute="bottom" constant="70" id="Mte-KB-i2h"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="GeneralView"/>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <navigationItem key="navigationItem" title="Choose Number Of Keys" id="Jgk-CV-ccW">
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="3N9-g4-PfW">
+                            <connections>
+                                <segue destination="HEe-yN-wu7" kind="show" id="Lei-5G-IFL"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Blp-kg-ZzC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4385" y="-601"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="q5a-bC-fCN">
+            <objects>
+                <viewController id="HEe-yN-wu7" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="d9C-hs-mQj"/>
+                        <viewControllerLayoutGuide type="bottom" id="bWB-of-WSr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6tZ-xD-zZt">
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="GeneralView"/>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="m8w-b8-aDb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5061" y="-601"/>
         </scene>
         <!--Library-->
         <scene sceneID="VV6-CX-haO">
@@ -511,18 +606,18 @@
                                 <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CMQ-io-mJo" id="PXS-Ch-vZO">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="file.bmp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LO5-ML-5ov">
-                                            <rect key="frame" x="15" y="12" width="59" height="20"/>
+                                            <rect key="frame" x="15" y="12" width="59" height="19.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NSk-7V-N2j">
-                                            <rect key="frame" x="543" y="12" width="42" height="20"/>
+                                            <rect key="frame" x="543.5" y="12" width="41.5" height="19.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
@@ -626,6 +721,9 @@
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="GeneralView"/>
+                        </userDefinedRuntimeAttributes>
                     </view>
                     <navigationItem key="navigationItem" id="xI3-u1-zD5"/>
                 </viewController>
