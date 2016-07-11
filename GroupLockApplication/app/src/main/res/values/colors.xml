@@ -2,7 +2,8 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#00c3ff</color>
+   <!-- <color name="colorAccent">#FF4081</color>-->
     <!--- for backGround -->
     <color name="colorBackGroundButton">#FF115284</color>
     <color name="colorBackGround">#defaf8</color>

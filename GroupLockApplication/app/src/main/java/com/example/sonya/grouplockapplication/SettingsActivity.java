@@ -26,10 +26,11 @@ public class SettingsActivity extends AppCompatActivity {
 
 
         Switch switchPass = (Switch)findViewById(R.id.switchPass);
-        if (passReq)
+        switchPass.setChecked(passReq);
+       /* if (passReq)
             switchPass.setChecked(true);
         else
-            switchPass.setChecked(false);
+            switchPass.setChecked(false);*/
 
 
         switchPass.setOnCheckedChangeListener(new OnCheckedChangeListener() {

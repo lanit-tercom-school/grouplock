@@ -37,7 +37,16 @@
         </activity>
         <activity
             android:name=".NumberOfKeysActivity"
-            android:label="Step 3/6"></activity>
+            android:label="Step 3/6">
+        </activity>
+        <activity android:name=".QrReaderActivity"
+            android:label="QrReader">
+        </activity>
+        <activity android:name=".QrCreateActivity"
+            android:label="QrReader">
+        </activity>
+
+
     </application>
 
 </manifest>
