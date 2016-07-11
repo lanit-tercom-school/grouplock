@@ -31,6 +31,10 @@
                 <item android:id="@+id/settings"
                     android:title="@string/activity_settings"
                     app:showAsAction="never" />
+
+                <item android:id="@+id/qr"
+                    android:title="Qr"
+                    app:showAsAction="ifRoom" />
             </menu>
         </item>
     </menu>
