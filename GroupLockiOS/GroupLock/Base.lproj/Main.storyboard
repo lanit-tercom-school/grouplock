@@ -64,7 +64,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
                                 <connections>
-                                    <action selector="textFieldOnChange:" destination="BYZ-38-t0r" eventType="editingChanged" id="ZTl-9w-orJ"/>
+                                    <action selector="textFieldEditingChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="Lgd-iR-Qyv"/>
                                 </connections>
                             </textField>
                         </subviews>
@@ -84,7 +84,7 @@
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
                         <outlet property="enterPasswordLabel" destination="Fk7-jF-owG" id="HaP-BM-lLx"/>
-                        <outlet property="initialPasswordTextField" destination="9k8-8d-eQT" id="EtE-Be-66A"/>
+                        <outlet property="passwordTextField" destination="9k8-8d-eQT" id="AwJ-Mw-RT6"/>
                         <outlet property="proceedButton" destination="I8c-sf-7NN" id="sbW-op-xND"/>
                         <segue destination="YPl-G6-tPp" kind="show" identifier="toMainScreen" id="Zv5-VT-twQ"/>
                     </connections>
@@ -404,10 +404,10 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jOz-6n-55i">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="27"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="MIN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TUx-fJ-fvF">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MIN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TUx-fJ-fvF">
                                                 <rect key="frame" x="0.0" y="0.0" width="150" height="27"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="MaxMinLabel"/>
@@ -416,7 +416,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="MAX" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bsY-E3-Lql">
                                                 <rect key="frame" x="150" y="0.0" width="150" height="27"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="MaxMinLabel"/>

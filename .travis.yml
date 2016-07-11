@@ -41,10 +41,11 @@ matrix:
         # etc.
 
 before_install:
-  - travis_retry sh -c "if [ '$PLATFORM' = 'iOS' ]; then sudo gem install xcpretty --no-rdoc --no-ri --no-document; fi"
-  - travis_retry sh -c "if [ '$PLATFORM' = 'iOS' ]; then sudo gem install cocoapods --no-rdoc --no-ri; fi"
-  - travis_retry sh -c "if [ '$PLATFORM' = 'iOS' ]; then pod install --project-directory=GroupLockiOS; fi"
-# - travis_retry sh -c "if [ '$PLATFORM' = 'Android' ]; then <# perform commands for Android build #>; fi"
+  - rvm use 2.2
+  - sh -c "if [ '$PLATFORM' = 'iOS' ]; then sudo gem install xcpretty --no-rdoc --no-ri --no-document; fi"
+  - sh -c "if [ '$PLATFORM' = 'iOS' ]; then sudo gem install cocoapods --no-rdoc --no-ri; fi"
+  - sh -c "if [ '$PLATFORM' = 'iOS' ]; then pod install --project-directory=GroupLockiOS; fi"
+# - sh -c "if [ '$PLATFORM' = 'Android' ]; then <# perform commands for Android build #>; fi"
 
 script:
   - travis_retry sh -c "if [ '$PLATFORM' = 'iOS' ]; then set -o pipefail && xcodebuild -workspace GroupLockiOS/GroupLock.xcworkspace -scheme GroupLock -destination \"platform=iOS Simulator,name=$DEVICE,OS=$VERSION\" build test | xcpretty; fi"
