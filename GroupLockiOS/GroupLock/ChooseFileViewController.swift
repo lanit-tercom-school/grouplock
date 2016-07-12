@@ -9,12 +9,23 @@
 import UIKit
 import NUI
 
+protocol ChooseFileViewControllerInput {
+    
+}
+
+protocol ChooseFileViewControllerOutput {
+    
+}
+
 class ChooseFileViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    @IBOutlet weak var nextButton: UIBarButtonItem!
+    var output: ChooseFileViewControllerOutput!
+    var router: ChooseFileRouter!
     
-    private var files = [File]()
-    private var selectedFiles = [Int : File]()
+    @IBOutlet var nextButton: UIBarButtonItem!
+    
+    var files = [File]()
+    var selectedFiles = [Int : File]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,14 +44,6 @@ class ChooseFileViewController: UICollectionViewController, UICollectionViewDele
     
     // TODO: collectionView must be reloaded as it appears.
     // But this is a subtle moment. Need to resolve selection issue.
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "encryptFiles" {
-            let destination = segue.destinationViewController as! KeyTypeViewController
-            let conveyedFiles = Array(selectedFiles.values)
-            destination.files = conveyedFiles
-        }
-    }
 
     // MARK: UICollectionViewDataSource
 

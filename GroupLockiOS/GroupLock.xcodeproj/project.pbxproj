@@ -54,6 +54,12 @@
 		87FFF03F1D33C020007315C7 /* PasswordInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FFF03B1D33C020007315C7 /* PasswordInteractorTests.swift */; };
 		87FFF0401D33C020007315C7 /* PasswordPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FFF03C1D33C020007315C7 /* PasswordPresenterTests.swift */; };
 		87FFF0411D33C020007315C7 /* PasswordViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FFF03D1D33C020007315C7 /* PasswordViewControllerTests.swift */; };
+		87FFF04E1D34E9AE007315C7 /* ChooseFileConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FFF0481D34E9AE007315C7 /* ChooseFileConfigurator.swift */; };
+		87FFF04F1D34E9AE007315C7 /* ChooseFileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FFF0491D34E9AE007315C7 /* ChooseFileInteractor.swift */; };
+		87FFF0501D34E9AE007315C7 /* ChooseFileModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FFF04A1D34E9AE007315C7 /* ChooseFileModels.swift */; };
+		87FFF0511D34E9AE007315C7 /* ChooseFilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FFF04B1D34E9AE007315C7 /* ChooseFilePresenter.swift */; };
+		87FFF0521D34E9AE007315C7 /* ChooseFileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FFF04C1D34E9AE007315C7 /* ChooseFileRouter.swift */; };
+		87FFF0531D34E9AE007315C7 /* ChooseFileWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FFF04D1D34E9AE007315C7 /* ChooseFileWorker.swift */; };
 		8AE919DA1D2F508A002024AC /* NumberOfKeysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE919D91D2F508A002024AC /* NumberOfKeysViewController.swift */; };
 		A12E5CE327034B916D1870EA /* Pods_GroupLock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78D44004286621EC4A941066 /* Pods_GroupLock.framework */; };
 		F989871300CA3BD210D3B2C2 /* Pods_GroupLockUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12E6A7C0DA0A408E64B7328B /* Pods_GroupLockUITests.framework */; };
@@ -137,6 +143,12 @@
 		87FFF03B1D33C020007315C7 /* PasswordInteractorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordInteractorTests.swift; sourceTree = "<group>"; };
 		87FFF03C1D33C020007315C7 /* PasswordPresenterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordPresenterTests.swift; sourceTree = "<group>"; };
 		87FFF03D1D33C020007315C7 /* PasswordViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordViewControllerTests.swift; sourceTree = "<group>"; };
+		87FFF0481D34E9AE007315C7 /* ChooseFileConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseFileConfigurator.swift; sourceTree = "<group>"; };
+		87FFF0491D34E9AE007315C7 /* ChooseFileInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseFileInteractor.swift; sourceTree = "<group>"; };
+		87FFF04A1D34E9AE007315C7 /* ChooseFileModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseFileModels.swift; sourceTree = "<group>"; };
+		87FFF04B1D34E9AE007315C7 /* ChooseFilePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseFilePresenter.swift; sourceTree = "<group>"; };
+		87FFF04C1D34E9AE007315C7 /* ChooseFileRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseFileRouter.swift; sourceTree = "<group>"; };
+		87FFF04D1D34E9AE007315C7 /* ChooseFileWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseFileWorker.swift; sourceTree = "<group>"; };
 		8A5BAE3AF1557FD0CA843812 /* Pods-GroupLockUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GroupLockUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GroupLockUITests/Pods-GroupLockUITests.release.xcconfig"; sourceTree = "<group>"; };
 		8AE919D91D2F508A002024AC /* NumberOfKeysViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberOfKeysViewController.swift; sourceTree = "<group>"; };
 		AF19EA1836F48CDF9CE2777A /* Pods-GroupLockTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GroupLockTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GroupLockTests/Pods-GroupLockTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -233,10 +245,9 @@
 		878C29A81CF0EA3B00323C9D /* Encryption */ = {
 			isa = PBXGroup;
 			children = (
-				8713DE4A1CEFA5400089C92A /* ChooseFileViewController.swift */,
-				878C29A21CF0B9D300323C9D /* ChooseFileViewCell.swift */,
-				878C29A41CF0D7E300323C9D /* KeyTypeViewController.swift */,
-				8AE919D91D2F508A002024AC /* NumberOfKeysViewController.swift */,
+				87FFF0431D34E955007315C7 /* ChooseFileScene */,
+				87FAC9EE1D34ECB600FE3602 /* KeyTypeScene */,
+				87FAC9EF1D34ECBE00FE3602 /* NumberOfKeysScene */,
 			);
 			name = Encryption;
 			sourceTree = "<group>";
@@ -355,6 +366,22 @@
 			name = "LibraryDirectoryViewController Custom Classes";
 			sourceTree = "<group>";
 		};
+		87FAC9EE1D34ECB600FE3602 /* KeyTypeScene */ = {
+			isa = PBXGroup;
+			children = (
+				878C29A41CF0D7E300323C9D /* KeyTypeViewController.swift */,
+			);
+			name = KeyTypeScene;
+			sourceTree = "<group>";
+		};
+		87FAC9EF1D34ECBE00FE3602 /* NumberOfKeysScene */ = {
+			isa = PBXGroup;
+			children = (
+				8AE919D91D2F508A002024AC /* NumberOfKeysViewController.swift */,
+			);
+			name = NumberOfKeysScene;
+			sourceTree = "<group>";
+		};
 		87FD453D1CE4BCBA00984269 /* Supporting */ = {
 			isa = PBXGroup;
 			children = (
@@ -377,6 +404,21 @@
 				87FFF03D1D33C020007315C7 /* PasswordViewControllerTests.swift */,
 			);
 			name = PasswordSceneTests;
+			sourceTree = "<group>";
+		};
+		87FFF0431D34E955007315C7 /* ChooseFileScene */ = {
+			isa = PBXGroup;
+			children = (
+				87FFF04C1D34E9AE007315C7 /* ChooseFileRouter.swift */,
+				8713DE4A1CEFA5400089C92A /* ChooseFileViewController.swift */,
+				87FFF0491D34E9AE007315C7 /* ChooseFileInteractor.swift */,
+				87FFF04B1D34E9AE007315C7 /* ChooseFilePresenter.swift */,
+				87FFF0481D34E9AE007315C7 /* ChooseFileConfigurator.swift */,
+				87FFF04A1D34E9AE007315C7 /* ChooseFileModels.swift */,
+				87FFF04D1D34E9AE007315C7 /* ChooseFileWorker.swift */,
+				878C29A21CF0B9D300323C9D /* ChooseFileViewCell.swift */,
+			);
+			name = ChooseFileScene;
 			sourceTree = "<group>";
 		};
 		A02222C0E747EFBDF0E74680 /* Pods */ = {
@@ -687,9 +729,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				878C29A51CF0D7E300323C9D /* KeyTypeViewController.swift in Sources */,
+				87FFF0511D34E9AE007315C7 /* ChooseFilePresenter.swift in Sources */,
+				87FFF04F1D34E9AE007315C7 /* ChooseFileInteractor.swift in Sources */,
 				878AF3771CF10A4700CB247B /* KeyType.swift in Sources */,
 				873ED7B61CDAAD5E005A8656 /* FileTableViewCell.swift in Sources */,
 				874BEC691CE9385400F6CDE9 /* ViewFileViewController.swift in Sources */,
+				87FFF04E1D34E9AE007315C7 /* ChooseFileConfigurator.swift in Sources */,
 				87B692131CB425E0008ACB6A /* PasswordViewController.swift in Sources */,
 				879797081CCFA61E0064C3AC /* File.swift in Sources */,
 				8741CE871CE6872D0034A820 /* LibraryDirectoryViewController.swift in Sources */,
@@ -698,9 +743,12 @@
 				87FFF0311D33ACCE007315C7 /* PasswordPresenter.swift in Sources */,
 				87FFF02F1D33ACCE007315C7 /* PasswordInteractor.swift in Sources */,
 				8713DE4B1CEFA5400089C92A /* ChooseFileViewController.swift in Sources */,
+				87FFF0521D34E9AE007315C7 /* ChooseFileRouter.swift in Sources */,
+				87FFF0531D34E9AE007315C7 /* ChooseFileWorker.swift in Sources */,
 				87B692191CB425E0008ACB6A /* GroupLock.xcdatamodeld in Sources */,
 				879797071CCFA61E0064C3AC /* File+CoreDataProperties.swift in Sources */,
 				87B509C11CD0B67A00641EC3 /* FileManager.swift in Sources */,
+				87FFF0501D34E9AE007315C7 /* ChooseFileModels.swift in Sources */,
 				87B6927F1CB45188008ACB6A /* UIViewController.swift in Sources */,
 				8AE919DA1D2F508A002024AC /* NumberOfKeysViewController.swift in Sources */,
 				87FD45381CE4B32800984269 /* Directory.swift in Sources */,
