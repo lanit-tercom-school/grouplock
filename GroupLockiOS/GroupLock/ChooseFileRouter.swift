@@ -30,7 +30,7 @@ class ChooseFileRouter: ChooseFileRouterInput {
     func passDataToKeyTypeScene(segue: UIStoryboardSegue) {
         
         let destination = segue.destinationViewController as! KeyTypeViewController
-        let conveyedFiles = Array(viewController.selectedFiles.values)
+        let conveyedFiles = Array(viewController.output.selectedFiles.values)
         destination.files = conveyedFiles
     }
 }

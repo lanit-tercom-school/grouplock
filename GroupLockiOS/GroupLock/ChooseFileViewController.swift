@@ -8,38 +8,45 @@
 
 import UIKit
 import NUI
+import JSQDataSourcesKit
 
 protocol ChooseFileViewControllerInput {
-    
+    func displayCollectionView(with viewModel: ChooseFileViewModel)
 }
 
 protocol ChooseFileViewControllerOutput {
-    
+    var files: [File] { get set }
+    var selectedFiles: [Int : File] { get set }
+    func fetchFiles()
 }
 
-class ChooseFileViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class ChooseFileViewController: UICollectionViewController, ChooseFileViewControllerInput {
     
     var output: ChooseFileViewControllerOutput!
     var router: ChooseFileRouter!
     
-    @IBOutlet var nextButton: UIBarButtonItem!
+    private let relativeInset = CGFloat(1.0 / 12.0)
     
-    var files = [File]()
-    var selectedFiles = [Int : File]()
+    typealias CollectionViewCellFactory = ViewFactory<File, ChooseFileViewCell>
+    private var dataSourceProvider:  DataSourceProvider<FetchedResultsController<File>,
+                                                                      CollectionViewCellFactory,
+                                                                      CollectionViewCellFactory>!
+    
+    @IBOutlet var nextButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        output.fetchFiles()
         collectionView?.applyNUI()
         collectionView?.allowsMultipleSelection = true
         
         // FIXME: This causes a lag when entering this screen. This property has to be set in the background.
-        files = FileManager.sharedInstance.files(insideDirectory: .Decrypted)
         
         nextButton.setTitleTextAttributes(
             [NSForegroundColorAttributeName : NUISettings.getColor("font-color-disabled", withClass: "BarButton")],
             forState: .Disabled
         )
-
     }
     
     // TODO: collectionView must be reloaded as it appears.
@@ -47,32 +54,34 @@ class ChooseFileViewController: UICollectionViewController, UICollectionViewDele
 
     // MARK: UICollectionViewDataSource
 
-    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 1
-    }
-
-
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return files.count
-    }
-
-    override func collectionView(collectionView: UICollectionView,
-                                 cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    func displayCollectionView(with viewModel: ChooseFileViewModel) {
         
-        let cellToConfigure = collectionView.dequeueReusableCellWithReuseIdentifier("fileToProcessCell",
-                                                                         forIndexPath: indexPath)
-        let cell = cellToConfigure as! ChooseFileViewCell
-        if let fileContents = files[indexPath.item].contents {
-            cell.thumbnailView.image = UIImage(data: fileContents)
+        let cellFactory = ViewFactory(reuseIdentifier: "fileToProcessCell")
+        { (cell, item: File?, type, parentView, indexPath) -> ChooseFileViewCell in
+            
+            cell.filenameLabel.text = viewModel.formatFileInfo(item!).name
+            cell.thumbnailView.image = viewModel.formatFileInfo(item!).thumbnail
+            
+            return cell
         }
         
-        cell.filenameLabel.text = files[indexPath.item].name
+        let fetchedResultsDelegateProvider = FetchedResultsDelegateProvider(
+            cellFactory: cellFactory,
+            collectionView: collectionView!
+        )
         
-        // For the purposes of finer performance
-        cell.layer.shouldRasterize = true
-        cell.layer.rasterizationScale = UIScreen.mainScreen().scale
+        viewModel.fetchedResultsController.delegate = fetchedResultsDelegateProvider
+            .collectionDelegate
         
-        return cell
+        let collectionViewDataSourceProvider = DataSourceProvider(
+            dataSource: viewModel.fetchedResultsController,
+            cellFactory: cellFactory,
+            supplementaryFactory: cellFactory
+        )
+        
+        dataSourceProvider = collectionViewDataSourceProvider
+        
+        collectionView?.dataSource = dataSourceProvider.collectionViewDataSource
     }
 
     // MARK: UICollectionViewDelegate
@@ -85,7 +94,7 @@ class ChooseFileViewController: UICollectionViewController, UICollectionViewDele
         cell.layer.borderWidth = CGFloat(NUISettings.getFloat("selected-border-width",
                                                               withClass: "CollectionViewCell"))
         nextButton.enabled = true
-        selectedFiles[indexPath.item] = files[indexPath.item]
+        output.selectedFiles[indexPath.item] = output.files[indexPath.item]
     }
     
     override func collectionView(collectionView: UICollectionView,
@@ -94,17 +103,15 @@ class ChooseFileViewController: UICollectionViewController, UICollectionViewDele
         let cell = collectionView.cellForItemAtIndexPath(indexPath) as! ChooseFileViewCell
         cell.layer.borderWidth = 0
         
-        selectedFiles[indexPath.item] = nil
+        output.selectedFiles[indexPath.item] = nil
         
-        if selectedFiles.count == 0 {
+        if output.selectedFiles.count == 0 {
             nextButton.enabled = false
         }
     }
-    
-    
-    // MARK: UICollectionViewDelegateFlowLayout
-    
-    private let relativeInset = CGFloat(1.0 / 12.0)
+}
+
+extension ChooseFileViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
@@ -125,5 +132,12 @@ class ChooseFileViewController: UICollectionViewController, UICollectionViewDele
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
         let sectionInset = collectionView.frame.width * relativeInset / 1.5
         return sectionInset
+    }
+}
+
+extension ChooseFileViewController {
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        ChooseFileConfigurator.configure(self)
     }
 }
