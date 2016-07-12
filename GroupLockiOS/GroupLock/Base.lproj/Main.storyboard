@@ -275,7 +275,7 @@
                             <outlet property="delegate" destination="X0n-VS-yrO" id="Q2y-nW-Kuj"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Choose Files" id="f2O-VM-a5B">
+                    <navigationItem key="navigationItem" title="Files" id="f2O-VM-a5B">
                         <barButtonItem key="backBarButtonItem" title="Back" id="zu9-7U-oVW"/>
                         <barButtonItem key="rightBarButtonItem" enabled="NO" title="Next" id="Leg-Dc-weu">
                             <connections>
@@ -378,7 +378,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Choose Key Type" id="Eh1-9k-KC5">
+                    <navigationItem key="navigationItem" title="Key Type" id="Eh1-9k-KC5">
                         <barButtonItem key="backBarButtonItem" title="Back" id="Kxk-XD-55A"/>
                     </navigationItem>
                 </viewController>
@@ -386,7 +386,7 @@
             </objects>
             <point key="canvasLocation" x="3729" y="-601"/>
         </scene>
-        <!--Choose Number Of Keys-->
+        <!--Number Of Keys-->
         <scene sceneID="S7w-4u-xQY">
             <objects>
                 <viewController id="PUy-bJ-rb1" customClass="NumberOfKeysViewController" customModule="GroupLock" customModuleProvider="target" sceneMemberID="viewController">
@@ -398,56 +398,59 @@
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="FTt-4u-ZFf">
-                                <rect key="frame" x="150" y="70" width="300" height="243"/>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="02R-1n-hYV">
+                                <rect key="frame" x="140" y="160" width="320" height="216"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="216" id="sE3-QD-iEi"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="PUy-bJ-rb1" id="yH7-4C-ywg"/>
+                                    <outlet property="delegate" destination="PUy-bJ-rb1" id="PUQ-pU-3T1"/>
+                                </connections>
+                            </pickerView>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jOz-6n-55i">
+                                <rect key="frame" x="150" y="93" width="300" height="27"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jOz-6n-55i">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="27"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MIN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TUx-fJ-fvF">
-                                                <rect key="frame" x="0.0" y="0.0" width="150" height="27"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="MaxMinLabel"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="MAX" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bsY-E3-Lql">
-                                                <rect key="frame" x="150" y="0.0" width="150" height="27"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="MaxMinLabel"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </label>
-                                        </subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MIN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TUx-fJ-fvF">
+                                        <rect key="frame" x="0.0" y="0.0" width="150" height="27"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="300" id="4mk-T8-ezL"/>
-                                            <constraint firstItem="bsY-E3-Lql" firstAttribute="width" secondItem="TUx-fJ-fvF" secondAttribute="width" id="VSJ-GA-Gmz"/>
+                                            <constraint firstAttribute="height" constant="27" id="ijc-3p-IN8"/>
                                         </constraints>
-                                    </stackView>
-                                    <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="02R-1n-hYV">
-                                        <rect key="frame" x="0.0" y="27" width="300" height="216"/>
-                                        <connections>
-                                            <outlet property="dataSource" destination="PUy-bJ-rb1" id="yH7-4C-ywg"/>
-                                            <outlet property="delegate" destination="PUy-bJ-rb1" id="PUQ-pU-3T1"/>
-                                        </connections>
-                                    </pickerView>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="MaxMinLabel"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MAX" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bsY-E3-Lql">
+                                        <rect key="frame" x="150" y="0.0" width="150" height="27"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="MaxMinLabel"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="4mk-T8-ezL"/>
+                                    <constraint firstItem="bsY-E3-Lql" firstAttribute="width" secondItem="TUx-fJ-fvF" secondAttribute="width" id="VSJ-GA-Gmz"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="FTt-4u-ZFf" firstAttribute="centerX" secondItem="r3Z-vU-RLw" secondAttribute="centerX" id="49e-l1-Whm"/>
-                            <constraint firstItem="FTt-4u-ZFf" firstAttribute="top" secondItem="u5W-qr-D7n" secondAttribute="bottom" constant="70" id="Mte-KB-i2h"/>
+                            <constraint firstItem="02R-1n-hYV" firstAttribute="centerX" secondItem="r3Z-vU-RLw" secondAttribute="centerX" id="16F-cp-14s"/>
+                            <constraint firstItem="02R-1n-hYV" firstAttribute="top" secondItem="jOz-6n-55i" secondAttribute="bottom" constant="40" id="HTX-EN-a0a"/>
+                            <constraint firstItem="02R-1n-hYV" firstAttribute="centerY" secondItem="r3Z-vU-RLw" secondAttribute="centerY" id="lAT-27-msT"/>
+                            <constraint firstItem="jOz-6n-55i" firstAttribute="centerX" secondItem="r3Z-vU-RLw" secondAttribute="centerX" id="mWG-uQ-FRM"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="GeneralView"/>
                         </userDefinedRuntimeAttributes>
                     </view>
-                    <navigationItem key="navigationItem" title="Choose Number Of Keys" id="Jgk-CV-ccW">
+                    <navigationItem key="navigationItem" title="Number Of Keys" id="Jgk-CV-ccW">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="3N9-g4-PfW">
                             <connections>
                                 <segue destination="HEe-yN-wu7" kind="show" id="Lei-5G-IFL"/>
@@ -643,7 +646,8 @@
                             <outlet property="delegate" destination="B27-qf-ejK" id="phE-K5-KQN"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Load" id="m61-HX-spX">
+                    <navigationItem key="navigationItem" id="m61-HX-spX">
+                        <nil key="title"/>
                         <barButtonItem key="rightBarButtonItem" title="Load" id="LIo-yX-Oj3">
                             <connections>
                                 <action selector="onLoad:" destination="B27-qf-ejK" id="ddS-fe-yuU"/>
