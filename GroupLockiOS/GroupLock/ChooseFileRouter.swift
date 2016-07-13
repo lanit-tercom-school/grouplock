@@ -16,7 +16,6 @@ class ChooseFileRouter: ChooseFileRouterInput {
     
     weak var viewController: ChooseFileViewController!
     
-    
     // MARK: - Communication
     
     func passDataToNextScene(segue: UIStoryboardSegue) {
@@ -28,9 +27,7 @@ class ChooseFileRouter: ChooseFileRouterInput {
     }
     
     func passDataToKeyTypeScene(segue: UIStoryboardSegue) {
-        
         let destination = segue.destinationViewController as! KeyTypeViewController
-        let conveyedFiles = Array(viewController.output.selectedFiles.values)
-        destination.files = conveyedFiles
+        destination.files = viewController.output.chosenFiles
     }
 }

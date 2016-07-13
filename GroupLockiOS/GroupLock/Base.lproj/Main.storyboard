@@ -270,6 +270,9 @@
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="GeneralView"/>
                         </userDefinedRuntimeAttributes>
+                        <connections>
+                            <outlet property="delegate" destination="X0n-VS-yrO" id="GmC-Rs-fSd"/>
+                        </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Files" id="f2O-VM-a5B">
                         <barButtonItem key="backBarButtonItem" title="Back" id="zu9-7U-oVW"/>
