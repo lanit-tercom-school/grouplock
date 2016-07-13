@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		3840EBFA7B53C9AE65049B02 /* Pods_GroupLockTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23C928C9715923C6E7C20031 /* Pods_GroupLockTests.framework */; };
-		870C407D1CC69EAF00BE4BD0 /* PasswordViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870C407C1CC69EAF00BE4BD0 /* PasswordViewControllerTests.swift */; };
 		8713DE4B1CEFA5400089C92A /* ChooseFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8713DE4A1CEFA5400089C92A /* ChooseFileViewController.swift */; };
 		8713DE4F1CEFAAF30089C92A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8713DE4E1CEFAAF30089C92A /* HomeViewController.swift */; };
 		871C6AE11CF1E8A7004C5B38 /* NUIGeneralViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871C6AE01CF1E8A7004C5B38 /* NUIGeneralViewTests.swift */; };
@@ -64,18 +63,10 @@
 		87FFF0531D34E9AE007315C7 /* ChooseFileWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FFF04D1D34E9AE007315C7 /* ChooseFileWorker.swift */; };
 		8AE919DA1D2F508A002024AC /* NumberOfKeysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE919D91D2F508A002024AC /* NumberOfKeysViewController.swift */; };
 		A12E5CE327034B916D1870EA /* Pods_GroupLock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78D44004286621EC4A941066 /* Pods_GroupLock.framework */; };
-		F989871300CA3BD210D3B2C2 /* Pods_GroupLockUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12E6A7C0DA0A408E64B7328B /* Pods_GroupLockUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		87B692251CB425E0008ACB6A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 87B692051CB425E0008ACB6A /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 87B6920C1CB425E0008ACB6A;
-			remoteInfo = GroupLock;
-		};
-		87B692301CB425E0008ACB6A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 87B692051CB425E0008ACB6A /* Project object */;
 			proxyType = 1;
@@ -91,7 +82,6 @@
 		23C928C9715923C6E7C20031 /* Pods_GroupLockTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GroupLockTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71996D16419A209B9D5BAD92 /* Pods-GroupLock.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GroupLock.release.xcconfig"; path = "Pods/Target Support Files/Pods-GroupLock/Pods-GroupLock.release.xcconfig"; sourceTree = "<group>"; };
 		78D44004286621EC4A941066 /* Pods_GroupLock.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GroupLock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		870C407C1CC69EAF00BE4BD0 /* PasswordViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordViewControllerTests.swift; sourceTree = "<group>"; };
 		8713DE4A1CEFA5400089C92A /* ChooseFileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseFileViewController.swift; sourceTree = "<group>"; };
 		8713DE4E1CEFAAF30089C92A /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		871C6AE01CF1E8A7004C5B38 /* NUIGeneralViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NUIGeneralViewTests.swift; sourceTree = "<group>"; };
@@ -128,8 +118,6 @@
 		87B6921F1CB425E0008ACB6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87B692241CB425E0008ACB6A /* GroupLockTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GroupLockTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		87B6922A1CB425E0008ACB6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		87B6922F1CB425E0008ACB6A /* GroupLockUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GroupLockUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		87B692351CB425E0008ACB6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87B6927E1CB45188008ACB6A /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; tabWidth = 4; };
 		87BC182A1CF8BF7F0023B417 /* NUIKeyTypeButtonTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NUIKeyTypeButtonTests.swift; sourceTree = "<group>"; };
 		87C49EA01CF1EBDB006C0A83 /* NUIGeneralTableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NUIGeneralTableTests.swift; sourceTree = "<group>"; };
@@ -176,14 +164,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3840EBFA7B53C9AE65049B02 /* Pods_GroupLockTests.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		87B6922C1CB425E0008ACB6A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F989871300CA3BD210D3B2C2 /* Pods_GroupLockUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,7 +280,6 @@
 				87DE60DD1CB46373005EA79E /* LocalAuthentication.framework */,
 				87B6920F1CB425E0008ACB6A /* GroupLock */,
 				87B692271CB425E0008ACB6A /* GroupLockTests */,
-				87B692321CB425E0008ACB6A /* GroupLockUITests */,
 				87B6920E1CB425E0008ACB6A /* Products */,
 				ED68019345A0323D60D469A2 /* Frameworks */,
 				A02222C0E747EFBDF0E74680 /* Pods */,
@@ -314,7 +293,6 @@
 			children = (
 				87B6920D1CB425E0008ACB6A /* GroupLock.app */,
 				87B692241CB425E0008ACB6A /* GroupLockTests.xctest */,
-				87B6922F1CB425E0008ACB6A /* GroupLockUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -343,15 +321,6 @@
 				87B6922A1CB425E0008ACB6A /* Info.plist */,
 			);
 			path = GroupLockTests;
-			sourceTree = "<group>";
-		};
-		87B692321CB425E0008ACB6A /* GroupLockUITests */ = {
-			isa = PBXGroup;
-			children = (
-				870C407C1CC69EAF00BE4BD0 /* PasswordViewControllerTests.swift */,
-				87B692351CB425E0008ACB6A /* Info.plist */,
-			);
-			path = GroupLockUITests;
 			sourceTree = "<group>";
 		};
 		87BC18291CF8BF500023B417 /* KeyTypeViewController Custom Classes */ = {
@@ -499,26 +468,6 @@
 			productReference = 87B692241CB425E0008ACB6A /* GroupLockTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		87B6922E1CB425E0008ACB6A /* GroupLockUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 87B6923E1CB425E0008ACB6A /* Build configuration list for PBXNativeTarget "GroupLockUITests" */;
-			buildPhases = (
-				D46AF9780882B88097B199A0 /* [CP] Check Pods Manifest.lock */,
-				87B6922B1CB425E0008ACB6A /* Sources */,
-				87B6922C1CB425E0008ACB6A /* Frameworks */,
-				87B6922D1CB425E0008ACB6A /* Resources */,
-				9CFEDDD72DA490012B007B84 /* [CP] Copy Pods Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				87B692311CB425E0008ACB6A /* PBXTargetDependency */,
-			);
-			name = GroupLockUITests;
-			productName = GroupLockUITests;
-			productReference = 87B6922F1CB425E0008ACB6A /* GroupLockUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -534,11 +483,6 @@
 						DevelopmentTeam = T28WAZY524;
 					};
 					87B692231CB425E0008ACB6A = {
-						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = N4X84VA3BB;
-						TestTargetID = 87B6920C1CB425E0008ACB6A;
-					};
-					87B6922E1CB425E0008ACB6A = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = N4X84VA3BB;
 						TestTargetID = 87B6920C1CB425E0008ACB6A;
@@ -560,7 +504,6 @@
 			targets = (
 				87B6920C1CB425E0008ACB6A /* GroupLock */,
 				87B692231CB425E0008ACB6A /* GroupLockTests */,
-				87B6922E1CB425E0008ACB6A /* GroupLockUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -578,13 +521,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		87B692221CB425E0008ACB6A /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		87B6922D1CB425E0008ACB6A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -652,21 +588,6 @@
 			shellPath = /bin/sh;
 			shellScript = "TAGS=\"TODO:|FIXME:\"\nERRORTAG=\"ERROR:\"\nfind \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" -or -name \"*.swift\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$|($ERRORTAG).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\" | perl -p -e \"s/($ERRORTAG)/ error: \\$1/\"";
 		};
-		9CFEDDD72DA490012B007B84 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GroupLockUITests/Pods-GroupLockUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		B1B2720ADBDBDE385087D164 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -710,21 +631,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GroupLock/Pods-GroupLock-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D46AF9780882B88097B199A0 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -791,14 +697,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		87B6922B1CB425E0008ACB6A /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				870C407D1CC69EAF00BE4BD0 /* PasswordViewControllerTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -806,11 +704,6 @@
 			isa = PBXTargetDependency;
 			target = 87B6920C1CB425E0008ACB6A /* GroupLock */;
 			targetProxy = 87B692251CB425E0008ACB6A /* PBXContainerItemProxy */;
-		};
-		87B692311CB425E0008ACB6A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 87B6920C1CB425E0008ACB6A /* GroupLock */;
-			targetProxy = 87B692301CB425E0008ACB6A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1000,33 +893,6 @@
 			};
 			name = Release;
 		};
-		87B6923F1CB425E0008ACB6A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 02E8D6F8D3650701A5DA7A9E /* Pods-GroupLockUITests.debug.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				INFOPLIST_FILE = GroupLockUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "lanit-tercom-school.GroupLockUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TEST_TARGET_NAME = GroupLock;
-			};
-			name = Debug;
-		};
-		87B692401CB425E0008ACB6A /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8A5BAE3AF1557FD0CA843812 /* Pods-GroupLockUITests.release.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				INFOPLIST_FILE = GroupLockUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "lanit-tercom-school.GroupLockUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = GroupLock;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1053,15 +919,6 @@
 			buildConfigurations = (
 				87B6923C1CB425E0008ACB6A /* Debug */,
 				87B6923D1CB425E0008ACB6A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		87B6923E1CB425E0008ACB6A /* Build configuration list for PBXNativeTarget "GroupLockUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				87B6923F1CB425E0008ACB6A /* Debug */,
-				87B692401CB425E0008ACB6A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

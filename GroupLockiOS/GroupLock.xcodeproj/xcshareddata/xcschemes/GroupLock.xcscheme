@@ -38,16 +38,47 @@
                BlueprintName = "GroupLockTests"
                ReferencedContainer = "container:GroupLock.xcodeproj">
             </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "87B6922E1CB425E0008ACB6A"
-               BuildableName = "GroupLockUITests.xctest"
-               BlueprintName = "GroupLockUITests"
-               ReferencedContainer = "container:GroupLock.xcodeproj">
-            </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "NUIBarButtonTests">
+               </Test>
+               <Test
+                  Identifier = "NUICollectionViewCellTests">
+               </Test>
+               <Test
+                  Identifier = "NUIDirectoryButtonTests">
+               </Test>
+               <Test
+                  Identifier = "NUIEnterPasswordLabelTests">
+               </Test>
+               <Test
+                  Identifier = "NUIGeneralButtonTests">
+               </Test>
+               <Test
+                  Identifier = "NUIGeneralTableCellTests">
+               </Test>
+               <Test
+                  Identifier = "NUIGeneralTableTests">
+               </Test>
+               <Test
+                  Identifier = "NUIGeneralViewTests">
+               </Test>
+               <Test
+                  Identifier = "NUIKeyTypeButtonTests">
+               </Test>
+               <Test
+                  Identifier = "NUINavigationBarTests">
+               </Test>
+               <Test
+                  Identifier = "NUIPasswordViewTests">
+               </Test>
+               <Test
+                  Identifier = "NUIProceedButtonTests">
+               </Test>
+               <Test
+                  Identifier = "NUITabBarTests">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
       <MacroExpansion>
