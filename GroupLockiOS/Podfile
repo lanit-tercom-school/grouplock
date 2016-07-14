@@ -4,6 +4,7 @@ use_frameworks!
 
 def shared_pods
     pod 'NUI', :git => 'https://github.com/broadwaylamb/nui.git', :branch => 'grouplock'
+    pod 'JSQDataSourcesKit'
 end
 
 target 'GroupLock' do
@@ -11,9 +12,5 @@ target 'GroupLock' do
 end
 
 target 'GroupLockTests' do
-    shared_pods
-end
-
-target 'GroupLockUITests' do
     shared_pods
 end

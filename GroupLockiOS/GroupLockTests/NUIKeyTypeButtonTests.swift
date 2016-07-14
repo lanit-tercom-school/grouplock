@@ -1,5 +1,5 @@
 //
-//  KeyTypeButtonTests.swift
+//  NUIeyTypeButtonTests.swift
 //  GroupLock
 //
 //  Created by Sergej Jaskiewicz on 27.05.16.
@@ -10,7 +10,7 @@ import XCTest
 import NUI
 @testable import GroupLock
 
-class KeyTypeButtonTests: XCTestCase {
+class NUIKeyTypeButtonTests: XCTestCase {
     
     let correspondingClass = "KeyTypeButton"
     

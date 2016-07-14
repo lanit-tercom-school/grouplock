@@ -104,3 +104,9 @@ KeyTypeButton {
     font-color-selected: #474747;                   /* TESTED */
     tint-color: clear;                              /* TESTED */
 }
+
+/* NumberOfKeysViewController */
+
+MaxMinLabel {
+    font-color: @mainColor;
+}

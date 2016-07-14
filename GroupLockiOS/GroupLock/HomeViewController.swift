@@ -10,8 +10,8 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
-    @IBOutlet weak var encryptButton: UIButton!
-    @IBOutlet weak var decryptButton: UIButton!
+    @IBOutlet var encryptButton: UIButton!
+    @IBOutlet var decryptButton: UIButton!
     
     @IBAction func onEncrypt() {
         performSegueWithIdentifier("chooseFileToEncrypt", sender: encryptButton)
