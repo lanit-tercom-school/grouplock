@@ -42,8 +42,8 @@ struct ChooseFile {
                 var name: String
                 var thumbnail: UIImage?
             }
-            
-            var fileInfoDataSource: FileInfoDataSource
+        
+            var fileInfoDataSource: PresentedDataSource<FetchedResultsController<File>, FileInfo>
         }
     }
     

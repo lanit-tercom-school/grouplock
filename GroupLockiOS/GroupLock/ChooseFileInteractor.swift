@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import CoreData
 import JSQDataSourcesKit
 
 protocol ChooseFileInteractorInput {
@@ -46,9 +45,10 @@ class ChooseFileInteractor: ChooseFileInteractorInput {
     
     func configureFetchedResultsController(request: ChooseFile.Configure.Request) {
         
-        let worker = ChooseFileWorker()
-        let fetchRequest = worker.createFetchRequest(forEncryptedFiles: !encryption)
-        let fetchedResultsController = worker.createFetchedResultsController(with: fetchRequest)
+        worker = ChooseFileWorker()
+        let fetchedResultsController = worker.createFetchedResultsController(
+            forEncryptedFiles: !request.forEncryption
+        )
         
         self.fetchedResultsController = fetchedResultsController
         let response = ChooseFile.Configure.Response(fetchedResultsController: fetchedResultsController)

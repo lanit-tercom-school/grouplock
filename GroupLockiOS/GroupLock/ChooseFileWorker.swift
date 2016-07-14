@@ -13,17 +13,13 @@ class ChooseFileWorker {
     
     // MARK: Business Logic
     
-    func createFetchRequest(forEncryptedFiles encrypted: Bool) -> NSFetchRequest {
+    func createFetchedResultsController(forEncryptedFiles encrypted: Bool) -> FetchedResultsController<File> {
+        
         let fetchRequest = NSFetchRequest(entityName: "File")
         fetchRequest.predicate = NSPredicate(format: "encrypted == \(encrypted)")
         fetchRequest.sortDescriptors = [
             NSSortDescriptor(key: "name", ascending: true)
         ]
-        return fetchRequest
-    }
-    
-    
-    func createFetchedResultsController(with fetchRequest: NSFetchRequest) -> FetchedResultsController<File> {
         
         let managedObjectContext = AppDelegate.sharedInstance.managedObjectContext
         let fetchedResultsController = FetchedResultsController<File>(fetchRequest: fetchRequest,

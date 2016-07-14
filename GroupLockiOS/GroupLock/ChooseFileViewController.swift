@@ -9,7 +9,6 @@
 import UIKit
 import NUI
 import JSQDataSourcesKit
-import CoreData
 
 protocol ChooseFileViewControllerInput {
     func displayFiles(with viewModel: ChooseFile.Configure.ViewModel)
@@ -33,12 +32,14 @@ class ChooseFileViewController: UICollectionViewController, ChooseFileViewContro
     
     var output: ChooseFileViewControllerOutput!
     var router: ChooseFileRouter!
-        
-    private typealias CollectionViewCellFactory = ViewFactory<ChooseFile.Configure.ViewModel.FileInfo,
-                                                              ChooseFileViewCell>
-    private var dataSourceProvider:  DataSourceProvider<FileInfoDataSource,
-                                                        CollectionViewCellFactory,
-                                                        CollectionViewCellFactory>!
+    
+    private typealias FileInfo = ChooseFile.Configure.ViewModel.FileInfo
+    private typealias CollectionViewCellFactory = ViewFactory<FileInfo, ChooseFileViewCell>
+    private typealias DataSource = FetchedResultsController<File>
+    private typealias FileInfoFetchedResultsController = PresentedDataSource<DataSource, FileInfo>
+    private var dataSourceProvider: DataSourceProvider<FileInfoFetchedResultsController,
+                                                       CollectionViewCellFactory,
+                                                       CollectionViewCellFactory>!
     
     @IBOutlet var nextButton: UIBarButtonItem!
     
@@ -146,7 +147,8 @@ extension ChooseFileViewController: UICollectionViewDelegateFlowLayout {
         return UIEdgeInsets(top: sectionInset, left: sectionInset, bottom: sectionInset, right: sectionInset)
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
 
         return CollectionViewLayoutProperties.getSectionInset(forCollectionView: collectionView) *
             CollectionViewLayoutProperties.minimumLineSpacingFactor

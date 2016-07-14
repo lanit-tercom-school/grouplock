@@ -25,7 +25,7 @@ class ChooseFilePresenter: ChooseFilePresenterInput {
     
     func presentFiles(response response: ChooseFile.Configure.Response) {
         
-        let fileInfoDataSource = FileInfoDataSource(fetchedResultsController: response.fetchedResultsController)
+        let fileInfoDataSource = PresentedDataSource(dataSourceToPresent: response.fetchedResultsController)
         { (file) -> ChooseFile.Configure.ViewModel.FileInfo in
             
             let fileName = file.name

@@ -14,8 +14,13 @@
 		87305BE41CF0885C00CF7A87 /* UI.nss in Resources */ = {isa = PBXBuildFile; fileRef = 87305BE61CF0885C00CF7A87 /* UI.nss */; };
 		873ED7B61CDAAD5E005A8656 /* FileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873ED7B51CDAAD5E005A8656 /* FileTableViewCell.swift */; };
 		8741CE871CE6872D0034A820 /* LibraryDirectoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8741CE861CE6872D0034A820 /* LibraryDirectoryViewController.swift */; };
-		8748017E1D365349001A086C /* FileInfoDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8748017D1D365349001A086C /* FileInfoDataSource.swift */; };
+		8748017E1D365349001A086C /* PresentedDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8748017D1D365349001A086C /* PresentedDataSource.swift */; };
 		874801821D3660D7001A086C /* CollectionViewLayoutProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874801811D3660D7001A086C /* CollectionViewLayoutProperties.swift */; };
+		8748018C1D36C434001A086C /* ChooseFileInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874801881D36C434001A086C /* ChooseFileInteractorTests.swift */; };
+		8748018D1D36C434001A086C /* ChooseFilePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874801891D36C434001A086C /* ChooseFilePresenterTests.swift */; };
+		8748018E1D36C434001A086C /* ChooseFileViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8748018A1D36C434001A086C /* ChooseFileViewControllerTests.swift */; };
+		8748018F1D36C434001A086C /* ChooseFileWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8748018B1D36C434001A086C /* ChooseFileWorkerTests.swift */; };
+		874801911D36CB8E001A086C /* PresentedDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874801901D36CB8E001A086C /* PresentedDataSourceTests.swift */; };
 		874BEC691CE9385400F6CDE9 /* ViewFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874BEC681CE9385400F6CDE9 /* ViewFileViewController.swift */; };
 		877ED32F1CF7B1E300C5D0D4 /* UIViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877ED32E1CF7B1E300C5D0D4 /* UIViewControllerTests.swift */; };
 		877ED3351CF8B18900C5D0D4 /* NUICollectionViewCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877ED3341CF8B18900C5D0D4 /* NUICollectionViewCellTests.swift */; };
@@ -88,8 +93,13 @@
 		87305BE51CF0885C00CF7A87 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text; name = Base; path = Base.lproj/UI.nss; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.css; };
 		873ED7B51CDAAD5E005A8656 /* FileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileTableViewCell.swift; sourceTree = "<group>"; };
 		8741CE861CE6872D0034A820 /* LibraryDirectoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryDirectoryViewController.swift; sourceTree = "<group>"; };
-		8748017D1D365349001A086C /* FileInfoDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileInfoDataSource.swift; sourceTree = "<group>"; };
+		8748017D1D365349001A086C /* PresentedDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentedDataSource.swift; sourceTree = "<group>"; };
 		874801811D3660D7001A086C /* CollectionViewLayoutProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewLayoutProperties.swift; sourceTree = "<group>"; };
+		874801881D36C434001A086C /* ChooseFileInteractorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseFileInteractorTests.swift; sourceTree = "<group>"; };
+		874801891D36C434001A086C /* ChooseFilePresenterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseFilePresenterTests.swift; sourceTree = "<group>"; };
+		8748018A1D36C434001A086C /* ChooseFileViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseFileViewControllerTests.swift; sourceTree = "<group>"; };
+		8748018B1D36C434001A086C /* ChooseFileWorkerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseFileWorkerTests.swift; sourceTree = "<group>"; };
+		874801901D36CB8E001A086C /* PresentedDataSourceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentedDataSourceTests.swift; sourceTree = "<group>"; };
 		874BEC681CE9385400F6CDE9 /* ViewFileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewFileViewController.swift; sourceTree = "<group>"; };
 		877ED32E1CF7B1E300C5D0D4 /* UIViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerTests.swift; sourceTree = "<group>"; };
 		877ED3341CF8B18900C5D0D4 /* NUICollectionViewCellTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NUICollectionViewCellTests.swift; sourceTree = "<group>"; };
@@ -188,6 +198,18 @@
 				878C29A81CF0EA3B00323C9D /* Encryption */,
 			);
 			name = "Home Stack";
+			sourceTree = "<group>";
+		};
+		874801871D36C3F8001A086C /* ChooseFileSceneTests */ = {
+			isa = PBXGroup;
+			children = (
+				874801881D36C434001A086C /* ChooseFileInteractorTests.swift */,
+				874801891D36C434001A086C /* ChooseFilePresenterTests.swift */,
+				8748018A1D36C434001A086C /* ChooseFileViewControllerTests.swift */,
+				8748018B1D36C434001A086C /* ChooseFileWorkerTests.swift */,
+				874801901D36CB8E001A086C /* PresentedDataSourceTests.swift */,
+			);
+			name = ChooseFileSceneTests;
 			sourceTree = "<group>";
 		};
 		8748B2AD1CBFB031000C57EB /* Class Extensions */ = {
@@ -316,6 +338,7 @@
 			isa = PBXGroup;
 			children = (
 				87FFF0341D33BFB1007315C7 /* PasswordSceneTests */,
+				874801871D36C3F8001A086C /* ChooseFileSceneTests */,
 				877ED3301CF7B1F000C5D0D4 /* ViewController Tests */,
 				87B072C61CC0E0C400916D09 /* NUI Tests */,
 				87B6922A1CB425E0008ACB6A /* Info.plist */,
@@ -390,7 +413,7 @@
 				87FFF04A1D34E9AE007315C7 /* ChooseFileModels.swift */,
 				87FFF04D1D34E9AE007315C7 /* ChooseFileWorker.swift */,
 				878C29A21CF0B9D300323C9D /* ChooseFileViewCell.swift */,
-				8748017D1D365349001A086C /* FileInfoDataSource.swift */,
+				8748017D1D365349001A086C /* PresentedDataSource.swift */,
 				874801811D3660D7001A086C /* CollectionViewLayoutProperties.swift */,
 			);
 			name = ChooseFileScene;
@@ -667,7 +690,7 @@
 				87FD45381CE4B32800984269 /* Directory.swift in Sources */,
 				87FFF0321D33ACCE007315C7 /* PasswordRouter.swift in Sources */,
 				8797970E1CCFEFB20064C3AC /* LibraryViewController.swift in Sources */,
-				8748017E1D365349001A086C /* FileInfoDataSource.swift in Sources */,
+				8748017E1D365349001A086C /* PresentedDataSource.swift in Sources */,
 				87B692111CB425E0008ACB6A /* AppDelegate.swift in Sources */,
 				87FFF02E1D33ACCE007315C7 /* PasswordConfigurator.swift in Sources */,
 			);
@@ -686,12 +709,17 @@
 				87C49EA51CF1F349006C0A83 /* NUIGeneralTableCellTests.swift in Sources */,
 				87C49EA31CF1F0E5006C0A83 /* NUIGeneralButtonTests.swift in Sources */,
 				87FFF0401D33C020007315C7 /* PasswordPresenterTests.swift in Sources */,
+				8748018F1D36C434001A086C /* ChooseFileWorkerTests.swift in Sources */,
 				871C6AE11CF1E8A7004C5B38 /* NUIGeneralViewTests.swift in Sources */,
 				87FFF03F1D33C020007315C7 /* PasswordInteractorTests.swift in Sources */,
+				8748018C1D36C434001A086C /* ChooseFileInteractorTests.swift in Sources */,
 				87B072D51CC1680F00916D09 /* NUINavigationBarTests.swift in Sources */,
+				8748018E1D36C434001A086C /* ChooseFileViewControllerTests.swift in Sources */,
 				87BC182B1CF8BF7F0023B417 /* NUIKeyTypeButtonTests.swift in Sources */,
+				874801911D36CB8E001A086C /* PresentedDataSourceTests.swift in Sources */,
 				877ED3351CF8B18900C5D0D4 /* NUICollectionViewCellTests.swift in Sources */,
 				87B072DB1CC1AB4200916D09 /* NUIBarButtonTests.swift in Sources */,
+				8748018D1D36C434001A086C /* ChooseFilePresenterTests.swift in Sources */,
 				87B072E71CC1B9F900916D09 /* NUIEnterPasswordLabelTests.swift in Sources */,
 				87C49EA91CF1FB85006C0A83 /* NUIDirectoryButtonTests.swift in Sources */,
 			);
