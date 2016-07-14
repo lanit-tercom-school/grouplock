@@ -200,6 +200,13 @@
 			name = "Home Stack";
 			sourceTree = "<group>";
 		};
+		873419AB1D37CB21005D036C /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Layout;
+			sourceTree = "<group>";
+		};
 		874801871D36C3F8001A086C /* ChooseFileSceneTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -322,6 +329,7 @@
 		87B6920F1CB425E0008ACB6A /* GroupLock */ = {
 			isa = PBXGroup;
 			children = (
+				873419AB1D37CB21005D036C /* Layout */,
 				8748B2AD1CBFB031000C57EB /* Class Extensions */,
 				87305BE61CF0885C00CF7A87 /* UI.nss */,
 				87B692141CB425E0008ACB6A /* Main.storyboard */,
@@ -385,6 +393,7 @@
 				87B509C01CD0B67A00641EC3 /* FileManager.swift */,
 				87FD45371CE4B32800984269 /* Directory.swift */,
 				878AF3761CF10A4700CB247B /* KeyType.swift */,
+				874801811D3660D7001A086C /* CollectionViewLayoutProperties.swift */,
 				87B6921A1CB425E0008ACB6A /* Assets.xcassets */,
 				87B6921C1CB425E0008ACB6A /* LaunchScreen.storyboard */,
 				87B6921F1CB425E0008ACB6A /* Info.plist */,
@@ -414,7 +423,6 @@
 				87FFF04D1D34E9AE007315C7 /* ChooseFileWorker.swift */,
 				878C29A21CF0B9D300323C9D /* ChooseFileViewCell.swift */,
 				8748017D1D365349001A086C /* PresentedDataSource.swift */,
-				874801811D3660D7001A086C /* CollectionViewLayoutProperties.swift */,
 			);
 			name = ChooseFileScene;
 			sourceTree = "<group>";

@@ -43,9 +43,14 @@ class ChooseFileViewController: UICollectionViewController, ChooseFileViewContro
     
     @IBOutlet var nextButton: UIBarButtonItem!
     
+    
+    // MARK: - View lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        configureCollectionView()
+        
         let request = ChooseFile.Configure.Request(forEncryption: output.encryption)
         output.configureFetchedResultsController(request)
         
@@ -64,8 +69,7 @@ class ChooseFileViewController: UICollectionViewController, ChooseFileViewContro
         output.fetchFiles(ChooseFile.FetchFiles.Request())
     }
     
-    // TODO: collectionView must be reloaded as it appears.
-    // But this is a subtle moment. Need to resolve selection issue.
+    // MARK: - Methods to invoke during viewDidLoad
 
     func displayFiles(with viewModel: ChooseFile.Configure.ViewModel) {
         
@@ -99,8 +103,18 @@ class ChooseFileViewController: UICollectionViewController, ChooseFileViewContro
         
         collectionView?.dataSource = dataSourceProvider.collectionViewDataSource
     }
+    
+    func configureCollectionView() {
+        
+        guard let collectionViewLayout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout else {
+            return
+        }
+        
+        CollectionViewGridLayout.setCollectionViewFlowLayout(for: collectionView!,
+                                                             withBaseLayout: collectionViewLayout)
+    }
 
-    // MARK: UICollectionViewDelegate
+    // MARK: - UICollectionViewDelegate
     
     override func collectionView(collectionView: UICollectionView,
                                  didSelectItemAtIndexPath indexPath: NSIndexPath) {
@@ -126,32 +140,6 @@ class ChooseFileViewController: UICollectionViewController, ChooseFileViewContro
         if output.numberOfSelectedFiles == 0 {
             nextButton.enabled = false
         }
-    }
-}
-
-extension ChooseFileViewController: UICollectionViewDelegateFlowLayout {
-
-    func collectionView(collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                               sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-
-        let width = CollectionViewLayoutProperties.getItemWidth(forCollectionView: collectionView)
-        return CGSize(width: width, height: width)
-    }
-    
-    func collectionView(collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                               insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-        
-        let sectionInset = CollectionViewLayoutProperties.getSectionInset(forCollectionView: collectionView)
-        return UIEdgeInsets(top: sectionInset, left: sectionInset, bottom: sectionInset, right: sectionInset)
-    }
-    
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
-                        minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
-
-        return CollectionViewLayoutProperties.getSectionInset(forCollectionView: collectionView) *
-            CollectionViewLayoutProperties.minimumLineSpacingFactor
     }
 }
 

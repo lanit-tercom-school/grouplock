@@ -1,5 +1,5 @@
 //
-//  CollectionViewLayoutProperties.swift
+//  CollectionViewGridLayout.swift
 //  GroupLock
 //
 //  Created by Sergej Jaskiewicz on 13.07.16.
@@ -8,16 +8,39 @@
 
 import UIKit
 
-struct CollectionViewLayoutProperties {
+class CollectionViewGridLayout {
     
     static let relativeInset = CGFloat(1.0 / 12.0)
     static let minimumLineSpacingFactor = CGFloat(2.0 / 3.0)
     
-    static func getSectionInset(forCollectionView collectionView: UICollectionView) -> CGFloat {
+    private static func getSectionInset(for collectionView: UICollectionView) -> CGFloat {
         return collectionView.frame.width * relativeInset
     }
     
-    static func getItemWidth(forCollectionView collectionView: UICollectionView) -> CGFloat {
-        return (collectionView.frame.width - 3*getSectionInset(forCollectionView: collectionView)) / 2
+    private static func getItemWidth(for collectionView: UICollectionView) -> CGFloat {
+        return (collectionView.frame.width - 3*getSectionInset(for: collectionView)) / 2
+    }
+    
+    
+    /// Creates a new `UICollectionViewFlowLayout` object with properties specified in the
+    /// `CollectionViewLayoutProperties` class
+    static func setCollectionViewFlowLayout(for collectionView: UICollectionView, withBaseLayout baseLayout: UICollectionViewFlowLayout?) {
+        
+        var layout: UICollectionViewFlowLayout
+        
+        if baseLayout != nil {
+            layout = baseLayout!
+        } else {
+            layout = UICollectionViewFlowLayout()
+        }
+
+        let width = getItemWidth(for: collectionView)
+        layout.itemSize = CGSize(width: width, height: width)
+        let sectionInset = getSectionInset(for: collectionView)
+        layout.sectionInset = UIEdgeInsets(top: sectionInset,
+                                           left: sectionInset,
+                                           bottom: sectionInset,
+                                           right: sectionInset)
+        layout.minimumLineSpacing = sectionInset * minimumLineSpacingFactor
     }
 }
