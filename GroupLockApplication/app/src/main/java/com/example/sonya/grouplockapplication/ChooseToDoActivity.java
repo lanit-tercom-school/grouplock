@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.view.Menu;
 import android.view.MenuItem;
 
+
 public class ChooseToDoActivity extends AppCompatActivity {
 
 
@@ -68,6 +69,13 @@ public class ChooseToDoActivity extends AppCompatActivity {
             {
                 TextView infoMessage = (TextView) findViewById(R.id.textViewInfoMessage);
                 infoMessage.setVisibility(View.VISIBLE);
+                return true;
+            }
+
+            case R.id.qr:
+            {
+                Intent intent = new Intent(this, QrReaderActivity.class);
+                startActivity(intent);
                 return true;
             }
 
