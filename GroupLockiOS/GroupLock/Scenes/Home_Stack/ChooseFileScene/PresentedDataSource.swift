@@ -8,16 +8,18 @@
 
 import JSQDataSourcesKit
 
-struct PresentedDataSource<DataSource: DataSourceProtocol, ViewModel>: DataSourceProtocol {
-    
-    typealias Item = ViewModel
+class PresentedDataSource<DataSource: DataSourceProtocol, ViewModel>: DataSourceProtocol {
     
     private var dataSourceToPresent: DataSource
-    private var formatDataSource: (DataSource.Item) -> Item
+    private var formatDataSource: (DataSource.Item) -> ViewModel
     
-    init(dataSourceToPresent: DataSource, formatDataSource: (DataSource.Item) -> Item) {
+    init(dataSourceToPresent: DataSource, formatDataSource: (DataSource.Item) -> ViewModel) {
         self.dataSourceToPresent = dataSourceToPresent
         self.formatDataSource = formatDataSource
+    }
+    
+    func setFormatDataSource(closure: (DataSource.Item) -> ViewModel) {
+        formatDataSource = closure
     }
     
     func numberOfSections() -> Int {
@@ -28,12 +30,12 @@ struct PresentedDataSource<DataSource: DataSourceProtocol, ViewModel>: DataSourc
         return dataSourceToPresent.numberOfItems(inSection: section)
     }
     
-    func items(inSection section: Int) -> [Item]? {
+    func items(inSection section: Int) -> [ViewModel]? {
         let fetchedItems = dataSourceToPresent.items(inSection: section)
         return fetchedItems?.map { formatDataSource($0) }
     }
     
-    func item(atRow row: Int, inSection section: Int) -> Item? {
+    func item(atRow row: Int, inSection section: Int) -> ViewModel? {
         guard let fetchedItem = dataSourceToPresent.item(atRow: row, inSection: section) else {
             return nil
         }

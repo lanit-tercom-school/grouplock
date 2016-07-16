@@ -13,6 +13,7 @@
 		871C6AE11CF1E8A7004C5B38 /* NUIGeneralViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871C6AE01CF1E8A7004C5B38 /* NUIGeneralViewTests.swift */; };
 		87305BE41CF0885C00CF7A87 /* UI.nss in Resources */ = {isa = PBXBuildFile; fileRef = 87305BE61CF0885C00CF7A87 /* UI.nss */; };
 		873419B21D37D686005D036C /* GroupLock.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 873419B01D37D686005D036C /* GroupLock.xcdatamodeld */; };
+		873419B51D3817BC005D036C /* test-image.png in Resources */ = {isa = PBXBuildFile; fileRef = 873419B41D3817BC005D036C /* test-image.png */; };
 		873ED7B61CDAAD5E005A8656 /* FileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873ED7B51CDAAD5E005A8656 /* FileTableViewCell.swift */; };
 		8741CE871CE6872D0034A820 /* LibraryDirectoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8741CE861CE6872D0034A820 /* LibraryDirectoryViewController.swift */; };
 		8748017E1D365349001A086C /* PresentedDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8748017D1D365349001A086C /* PresentedDataSource.swift */; };
@@ -92,6 +93,7 @@
 		871C6AE01CF1E8A7004C5B38 /* NUIGeneralViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NUIGeneralViewTests.swift; sourceTree = "<group>"; };
 		87305BE51CF0885C00CF7A87 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text; name = Base; path = Base.lproj/UI.nss; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.css; };
 		873419B11D37D686005D036C /* GroupLock.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GroupLock.xcdatamodel; sourceTree = "<group>"; };
+		873419B41D3817BC005D036C /* test-image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "test-image.png"; sourceTree = "<group>"; };
 		873ED7B51CDAAD5E005A8656 /* FileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FileTableViewCell.swift; path = Scenes/Library_Stack/FileTableViewCell.swift; sourceTree = "<group>"; };
 		8741CE861CE6872D0034A820 /* LibraryDirectoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LibraryDirectoryViewController.swift; path = Scenes/Library_Stack/LibraryDirectoryViewController.swift; sourceTree = "<group>"; };
 		8748017D1D365349001A086C /* PresentedDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PresentedDataSource.swift; path = Scenes/Home_Stack/ChooseFileScene/PresentedDataSource.swift; sourceTree = "<group>"; };
@@ -208,6 +210,14 @@
 				874801811D3660D7001A086C /* CollectionViewLayoutProperties.swift */,
 			);
 			name = Layout;
+			sourceTree = "<group>";
+		};
+		873419B31D3817A0005D036C /* Test Resources */ = {
+			isa = PBXGroup;
+			children = (
+				873419B41D3817BC005D036C /* test-image.png */,
+			);
+			name = "Test Resources";
 			sourceTree = "<group>";
 		};
 		874801871D36C3F8001A086C /* ChooseFileSceneTests */ = {
@@ -338,6 +348,7 @@
 		87B692271CB425E0008ACB6A /* GroupLockTests */ = {
 			isa = PBXGroup;
 			children = (
+				873419B31D3817A0005D036C /* Test Resources */,
 				87FFF0341D33BFB1007315C7 /* PasswordSceneTests */,
 				874801871D36C3F8001A086C /* ChooseFileSceneTests */,
 				877ED3301CF7B1F000C5D0D4 /* ViewController Tests */,
@@ -547,6 +558,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				873419B51D3817BC005D036C /* test-image.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

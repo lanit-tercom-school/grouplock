@@ -38,7 +38,7 @@ struct ChooseFile {
         
         struct ViewModel {
             
-            struct FileInfo {
+            struct FileInfo: Equatable {
                 var name: String
                 var thumbnail: UIImage?
             }
@@ -68,4 +68,8 @@ struct ChooseFile {
         
         struct ViewModel {}
     }
+}
+
+func ==(lhs: ChooseFile.Configure.ViewModel.FileInfo, rhs: ChooseFile.Configure.ViewModel.FileInfo) -> Bool {
+    return lhs.name == rhs.name && lhs.thumbnail == rhs.thumbnail
 }

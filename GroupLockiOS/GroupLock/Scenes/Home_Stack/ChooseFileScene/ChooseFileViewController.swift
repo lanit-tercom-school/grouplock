@@ -54,9 +54,6 @@ class ChooseFileViewController: UICollectionViewController, ChooseFileViewContro
         let request = ChooseFile.Configure.Request(forEncryption: output.encryption)
         output.configureFetchedResultsController(request)
         
-        collectionView?.applyNUI()
-        collectionView?.allowsMultipleSelection = true
-        
         nextButton.setTitleTextAttributes(
             [NSForegroundColorAttributeName : NUISettings.getColor("font-color-disabled", withClass: "BarButton")],
             forState: .Disabled
@@ -70,7 +67,22 @@ class ChooseFileViewController: UICollectionViewController, ChooseFileViewContro
     }
     
     // MARK: - Methods to invoke during viewDidLoad
-
+    
+    private func configureCollectionView() {
+        
+        collectionView?.applyNUI()
+        collectionView?.allowsMultipleSelection = true
+        
+        guard let collectionViewLayout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout else {
+            return
+        }
+        
+        CollectionViewGridLayout.setCollectionViewFlowLayout(for: collectionView!,
+                                                             withBaseLayout: collectionViewLayout)
+    }
+    
+    // MARK: - ChooseFileViewControllerInput
+    
     func displayFiles(with viewModel: ChooseFile.Configure.ViewModel) {
         
         let cellFactory = ViewFactory(reuseIdentifier: "fileToProcessCell")
@@ -102,16 +114,6 @@ class ChooseFileViewController: UICollectionViewController, ChooseFileViewContro
         dataSourceProvider = collectionViewDataSourceProvider
         
         collectionView?.dataSource = dataSourceProvider.collectionViewDataSource
-    }
-    
-    func configureCollectionView() {
-        
-        guard let collectionViewLayout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout else {
-            return
-        }
-        
-        CollectionViewGridLayout.setCollectionViewFlowLayout(for: collectionView!,
-                                                             withBaseLayout: collectionViewLayout)
     }
 
     // MARK: - UICollectionViewDelegate

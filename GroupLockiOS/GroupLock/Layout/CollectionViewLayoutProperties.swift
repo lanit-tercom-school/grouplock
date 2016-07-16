@@ -23,7 +23,7 @@ class CollectionViewGridLayout {
     
     
     /// Creates a new `UICollectionViewFlowLayout` object with properties specified in the
-    /// `CollectionViewLayoutProperties` class
+    /// `CollectionViewGridLayout` class
     static func setCollectionViewFlowLayout(for collectionView: UICollectionView, withBaseLayout baseLayout: UICollectionViewFlowLayout?) {
         
         var layout: UICollectionViewFlowLayout
@@ -42,5 +42,7 @@ class CollectionViewGridLayout {
                                            bottom: sectionInset,
                                            right: sectionInset)
         layout.minimumLineSpacing = sectionInset * minimumLineSpacingFactor
+        
+        collectionView.collectionViewLayout = layout
     }
 }

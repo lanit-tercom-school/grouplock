@@ -10,18 +10,18 @@ import XCTest
 import JSQDataSourcesKit
 @testable import GroupLock
 
-struct Seeds {
-    struct DataSource {
-        static let numberOfSections = 23
-        static let numberOfItemsInSection = 42
-        static let itemsInSection = [4, 8, 15, 16, 23, 42]
-        static let itemAtRowInSection = 42
-        static let headerTitleInSection = "Header title in section"
-        static let footerTitleInSection = "Footer title in section"
-    }
-}
-
 class PresentedDataSourceTests: XCTestCase {
+    
+    struct Seeds {
+        struct DataSource {
+            static let numberOfSections = 23
+            static let numberOfItemsInSection = 42
+            static let itemsInSection = [4, 8, 15, 16, 23, 42]
+            static let itemAtRowInSection = 42
+            static let headerTitleInSection = "Header title in section"
+            static let footerTitleInSection = "Footer title in section"
+        }
+    }
     
     // MARK: Subject under test
     var sut: PresentedDataSource<DataSourceStub, String>!

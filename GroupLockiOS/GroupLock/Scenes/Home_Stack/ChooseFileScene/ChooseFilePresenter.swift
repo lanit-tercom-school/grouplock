@@ -6,7 +6,6 @@
 //  Copyright (c) 2016 Lanit-Tercom School. All rights reserved.
 //
 
-import Foundation
 import JSQDataSourcesKit
 
 protocol ChooseFilePresenterInput {
@@ -23,20 +22,22 @@ class ChooseFilePresenter: ChooseFilePresenterInput {
     
     // MARK: - Presentation logic
     
+    func dataFormatter(file: File) -> ChooseFile.Configure.ViewModel.FileInfo {
+        
+        let fileName = file.name
+        var thumbnail: UIImage?
+        if let fileContents = file.contents {
+            thumbnail = UIImage(data: fileContents)
+        }
+        
+        let fileInfo = ChooseFile.Configure.ViewModel.FileInfo(name: fileName, thumbnail: thumbnail)
+        return fileInfo
+    }
+    
     func presentFiles(response response: ChooseFile.Configure.Response) {
         
-        let fileInfoDataSource = PresentedDataSource(dataSourceToPresent: response.fetchedResultsController)
-        { (file) -> ChooseFile.Configure.ViewModel.FileInfo in
-            
-            let fileName = file.name
-            var thumbnail: UIImage?
-            if let fileContents = file.contents {
-                thumbnail = UIImage(data: fileContents)
-            }
-            
-            let fileInfo = ChooseFile.Configure.ViewModel.FileInfo(name: fileName, thumbnail: thumbnail)
-            return fileInfo
-        }
+        let fileInfoDataSource = PresentedDataSource(dataSourceToPresent: response.fetchedResultsController,
+                                                     formatDataSource: dataFormatter)
         
         let viewModel = ChooseFile.Configure.ViewModel(fileInfoDataSource: fileInfoDataSource)
         output.displayFiles(with: viewModel)

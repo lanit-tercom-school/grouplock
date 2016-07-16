@@ -7,9 +7,19 @@
 //
 
 import XCTest
+import JSQDataSourcesKit
+import CoreData
 @testable import GroupLock
 
 class ChooseFilePresenterTests: XCTestCase {
+    
+    struct Seeds {
+        struct FileFormat {
+            static let fileName = "File Name"
+            static let fileContents = NSData(contentsOfFile: "test-image")
+            static let fileThumbnail = UIImage()
+        }
+    }
     
     // MARK: Subject under test
     var sut: ChooseFilePresenter!
@@ -29,6 +39,7 @@ class ChooseFilePresenterTests: XCTestCase {
     
     // MARK: - Test doubles
     
-    // MARK: - Tests
     
+    // MARK: - Tests
+
 }
