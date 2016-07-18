@@ -13,6 +13,6 @@ class FileTableViewCell: UITableViewCell {
     @IBOutlet var title: UILabel!
     @IBOutlet var type: UILabel!
     
-    var correspondingFile: File!
+    var correspondingFile: ManagedFile!
     
 }

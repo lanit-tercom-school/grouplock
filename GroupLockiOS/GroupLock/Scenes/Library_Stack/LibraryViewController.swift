@@ -16,7 +16,7 @@ class LibraryViewController: UITableViewController {
     var directory = Directory.Encrypted
     
     /// Current list of files displayed on the screen
-    private var files: [File] {
+    private var files: [ManagedFile] {
         // FIXME: This causes a lag when entering this screen.
         // This property must be stored and has to be set in the background.
         return FileManager.sharedInstance.files(insideDirectory: directory)

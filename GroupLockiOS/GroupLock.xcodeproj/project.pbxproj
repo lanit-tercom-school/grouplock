@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3840EBFA7B53C9AE65049B02 /* Pods_GroupLockTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23C928C9715923C6E7C20031 /* Pods_GroupLockTests.framework */; };
+		8704DEB31D3CCD8E0017F88E /* ManagedFile+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8704DEB11D3CCD8E0017F88E /* ManagedFile+CoreDataProperties.swift */; };
+		8704DEB71D3CD0CC0017F88E /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8704DEB61D3CD0CC0017F88E /* File.swift */; };
 		8713DE4B1CEFA5400089C92A /* ChooseFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8713DE4A1CEFA5400089C92A /* ChooseFileViewController.swift */; };
 		8713DE4F1CEFAAF30089C92A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8713DE4E1CEFAAF30089C92A /* HomeViewController.swift */; };
 		871C6AE11CF1E8A7004C5B38 /* NUIGeneralViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871C6AE01CF1E8A7004C5B38 /* NUIGeneralViewTests.swift */; };
@@ -29,8 +31,7 @@
 		878AF3771CF10A4700CB247B /* KeyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878AF3761CF10A4700CB247B /* KeyType.swift */; };
 		878C29A31CF0B9D300323C9D /* ChooseFileViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878C29A21CF0B9D300323C9D /* ChooseFileViewCell.swift */; };
 		878C29A51CF0D7E300323C9D /* KeyTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878C29A41CF0D7E300323C9D /* KeyTypeViewController.swift */; };
-		879797071CCFA61E0064C3AC /* File+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879797031CCFA61E0064C3AC /* File+CoreDataProperties.swift */; };
-		879797081CCFA61E0064C3AC /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879797041CCFA61E0064C3AC /* File.swift */; };
+		879797081CCFA61E0064C3AC /* ManagedFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879797041CCFA61E0064C3AC /* ManagedFile.swift */; };
 		8797970E1CCFEFB20064C3AC /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797970D1CCFEFB20064C3AC /* LibraryViewController.swift */; };
 		87B072D51CC1680F00916D09 /* NUINavigationBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B072D41CC1680F00916D09 /* NUINavigationBarTests.swift */; };
 		87B072D91CC188EC00916D09 /* NUITabBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B072D81CC188EC00916D09 /* NUITabBarTests.swift */; };
@@ -88,6 +89,8 @@
 		23C928C9715923C6E7C20031 /* Pods_GroupLockTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GroupLockTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71996D16419A209B9D5BAD92 /* Pods-GroupLock.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GroupLock.release.xcconfig"; path = "Pods/Target Support Files/Pods-GroupLock/Pods-GroupLock.release.xcconfig"; sourceTree = "<group>"; };
 		78D44004286621EC4A941066 /* Pods_GroupLock.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GroupLock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8704DEB11D3CCD8E0017F88E /* ManagedFile+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ManagedFile+CoreDataProperties.swift"; path = "CoreData/ManagedFile+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		8704DEB61D3CD0CC0017F88E /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = File.swift; path = Models/File.swift; sourceTree = "<group>"; };
 		8713DE4A1CEFA5400089C92A /* ChooseFileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChooseFileViewController.swift; path = Scenes/Home_Stack/ChooseFileScene/ChooseFileViewController.swift; sourceTree = "<group>"; };
 		8713DE4E1CEFAAF30089C92A /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = Scenes/Home_Stack/HomeViewController.swift; sourceTree = "<group>"; };
 		871C6AE01CF1E8A7004C5B38 /* NUIGeneralViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NUIGeneralViewTests.swift; sourceTree = "<group>"; };
@@ -111,8 +114,7 @@
 		878C29A41CF0D7E300323C9D /* KeyTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyTypeViewController.swift; path = Scenes/Home_Stack/KeyTypeScene/KeyTypeViewController.swift; sourceTree = "<group>"; };
 		879796E71CCF9B4F0064C3AC /* NUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NUI.framework; path = "../../../Library/Developer/Xcode/DerivedData/GroupLock-buohvxdmrbgottfowybkjnxebhfv/Build/Products/Debug-iphoneos/NUI.framework"; sourceTree = "<group>"; };
 		879796E81CCF9B4F0064C3AC /* NUIParse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NUIParse.framework; path = "../../../Library/Developer/Xcode/DerivedData/GroupLock-buohvxdmrbgottfowybkjnxebhfv/Build/Products/Debug-iphoneos/NUIParse.framework"; sourceTree = "<group>"; };
-		879797031CCFA61E0064C3AC /* File+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "File+CoreDataProperties.swift"; path = "CoreData/File+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		879797041CCFA61E0064C3AC /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = File.swift; path = CoreData/File.swift; sourceTree = "<group>"; };
+		879797041CCFA61E0064C3AC /* ManagedFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagedFile.swift; path = CoreData/ManagedFile.swift; sourceTree = "<group>"; };
 		8797970D1CCFEFB20064C3AC /* LibraryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LibraryViewController.swift; path = Scenes/Library_Stack/LibraryViewController.swift; sourceTree = "<group>"; };
 		87B072D41CC1680F00916D09 /* NUINavigationBarTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NUINavigationBarTests.swift; sourceTree = "<group>"; };
 		87B072D81CC188EC00916D09 /* NUITabBarTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NUITabBarTests.swift; sourceTree = "<group>"; };
@@ -182,6 +184,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8704DEB51D3CD0AC0017F88E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8704DEB61D3CD0CC0017F88E /* File.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		8713DE4C1CEFA5520089C92A /* Library Stack */ = {
 			isa = PBXGroup;
 			children = (
@@ -271,8 +281,8 @@
 		879797021CCFA5FC0064C3AC /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				879797031CCFA61E0064C3AC /* File+CoreDataProperties.swift */,
-				879797041CCFA61E0064C3AC /* File.swift */,
+				8704DEB11D3CCD8E0017F88E /* ManagedFile+CoreDataProperties.swift */,
+				879797041CCFA61E0064C3AC /* ManagedFile.swift */,
 				873419B01D37D686005D036C /* GroupLock.xcdatamodeld */,
 			);
 			name = CoreData;
@@ -332,6 +342,7 @@
 		87B6920F1CB425E0008ACB6A /* GroupLock */ = {
 			isa = PBXGroup;
 			children = (
+				8704DEB51D3CD0AC0017F88E /* Models */,
 				873419AB1D37CB21005D036C /* Layout */,
 				8748B2AD1CBFB031000C57EB /* Class Extensions */,
 				87305BE61CF0885C00CF7A87 /* UI.nss */,
@@ -683,8 +694,9 @@
 				874BEC691CE9385400F6CDE9 /* ViewFileViewController.swift in Sources */,
 				87FFF04E1D34E9AE007315C7 /* ChooseFileConfigurator.swift in Sources */,
 				874801821D3660D7001A086C /* CollectionViewLayoutProperties.swift in Sources */,
+				8704DEB71D3CD0CC0017F88E /* File.swift in Sources */,
 				87B692131CB425E0008ACB6A /* PasswordViewController.swift in Sources */,
-				879797081CCFA61E0064C3AC /* File.swift in Sources */,
+				879797081CCFA61E0064C3AC /* ManagedFile.swift in Sources */,
 				8741CE871CE6872D0034A820 /* LibraryDirectoryViewController.swift in Sources */,
 				878C29A31CF0B9D300323C9D /* ChooseFileViewCell.swift in Sources */,
 				8713DE4F1CEFAAF30089C92A /* HomeViewController.swift in Sources */,
@@ -693,11 +705,11 @@
 				8713DE4B1CEFA5400089C92A /* ChooseFileViewController.swift in Sources */,
 				87FFF0521D34E9AE007315C7 /* ChooseFileRouter.swift in Sources */,
 				87FFF0531D34E9AE007315C7 /* ChooseFileWorker.swift in Sources */,
-				879797071CCFA61E0064C3AC /* File+CoreDataProperties.swift in Sources */,
 				87B509C11CD0B67A00641EC3 /* FileManager.swift in Sources */,
 				87FFF0501D34E9AE007315C7 /* ChooseFileModels.swift in Sources */,
 				87B6927F1CB45188008ACB6A /* UIViewController.swift in Sources */,
 				8AE919DA1D2F508A002024AC /* NumberOfKeysViewController.swift in Sources */,
+				8704DEB31D3CCD8E0017F88E /* ManagedFile+CoreDataProperties.swift in Sources */,
 				87FD45381CE4B32800984269 /* Directory.swift in Sources */,
 				87FFF0321D33ACCE007315C7 /* PasswordRouter.swift in Sources */,
 				8797970E1CCFEFB20064C3AC /* LibraryViewController.swift in Sources */,

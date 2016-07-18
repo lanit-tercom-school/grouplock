@@ -7,6 +7,7 @@
 //
 
 import CoreData
+import JSQCoreDataKit
 import Photos
 
 /// FileManager object represents a singleton for imitating file system structure for Library.
@@ -17,7 +18,7 @@ class FileManager: NSObject {
     
     private override init() {}
     
-    private var managedObjectContext: NSManagedObjectContext {
+    private var context: NSManagedObjectContext {
         return AppDelegate.sharedInstance.managedObjectContext
     }
     
@@ -28,8 +29,9 @@ class FileManager: NSObject {
      
      - returns: An array of files.
      */
-    func files(insideDirectory directory: Directory) -> [File] {
-        let fetchRequest = NSFetchRequest(entityName: "File")
+    func files(insideDirectory directory: Directory) -> [ManagedFile] {
+        let entityDescription = entity(name: "File", context: context)
+        let fetchRequest = FetchRequest<ManagedFile>(entity: entityDescription)
         switch directory {
         case .Encrypted:
             fetchRequest.predicate = NSPredicate(format: "encrypted == true")
@@ -37,7 +39,7 @@ class FileManager: NSObject {
             fetchRequest.predicate = NSPredicate(format: "encrypted == false")
         }
         do {
-            let files = try managedObjectContext.executeFetchRequest(fetchRequest) as! [File]
+            let files = try context.fetch(request: fetchRequest)
             return files
         } catch {
             print(error)
@@ -50,13 +52,13 @@ class FileManager: NSObject {
      
      - returns: Created file
      */
-    func createFile(name: String, type: String, encrypted: Bool, contents: NSData?) -> File? {
+    func createFile(name: String, type: String, encrypted: Bool, contents: NSData?) -> ManagedFile? {
         guard let entity = NSEntityDescription.entityForName("File",
-                                                             inManagedObjectContext: managedObjectContext) else {
+                                                             inManagedObjectContext: context) else {
             return nil
         }
         
-        let file = File(entity: entity, insertIntoManagedObjectContext: nil)
+        let file = ManagedFile(entity: entity, insertIntoManagedObjectContext: nil)
         file.name = name
         file.type = type
         file.encrypted = encrypted
@@ -64,7 +66,7 @@ class FileManager: NSObject {
         return file
     }
     
-    func createFileFromURL(url: NSURL, withName name: String, encrypted: Bool) -> File? {
+    func createFileFromURL(url: NSURL, withName name: String, encrypted: Bool) -> ManagedFile? {
         guard let fileType = url.pathExtension else {
             return nil
         }

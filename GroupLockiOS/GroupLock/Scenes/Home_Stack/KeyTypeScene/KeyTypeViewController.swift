@@ -10,7 +10,7 @@ import UIKit
 
 class KeyTypeViewController: UIViewController {
 
-    var files: [File]?
+    var files: [ManagedFile]?
     
     private var keyTypes = Set<KeyType>()
             

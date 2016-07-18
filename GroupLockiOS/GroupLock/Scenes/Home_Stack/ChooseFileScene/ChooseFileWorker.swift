@@ -8,12 +8,13 @@
 
 import CoreData
 import JSQDataSourcesKit
+import JSQCoreDataKit
 
 class ChooseFileWorker {
     
     // MARK: Business Logic
     
-    func createFetchedResultsController(forEncryptedFiles encrypted: Bool) -> FetchedResultsController<File> {
+    func createFetchedResultsController(forEncryptedFiles encrypted: Bool) -> FetchedResultsController<ManagedFile> {
         
         let fetchRequest = NSFetchRequest(entityName: "File")
         fetchRequest.predicate = NSPredicate(format: "encrypted == \(encrypted)")
@@ -22,7 +23,7 @@ class ChooseFileWorker {
         ]
         
         let managedObjectContext = AppDelegate.sharedInstance.managedObjectContext
-        let fetchedResultsController = FetchedResultsController<File>(fetchRequest: fetchRequest,
+        let fetchedResultsController = FetchedResultsController<ManagedFile>(fetchRequest: fetchRequest,
                                                                       managedObjectContext: managedObjectContext,
                                                                       sectionNameKeyPath: nil,
                                                                       cacheName: nil)

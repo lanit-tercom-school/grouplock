@@ -36,7 +36,7 @@ extension UIViewController: UIImagePickerControllerDelegate, UINavigationControl
         presentViewController(albumPicker, animated: true, completion: nil)
     }
     
-    func pickEncryptionStatusAlert(forFile file: File, completion: ((File) -> Void)?) {
+    func pickEncryptionStatusAlert(forFile file: ManagedFile, completion: ((ManagedFile) -> Void)?) {
         let actionSheet = UIAlertController(title: nil, message: "What do you to load this file for?",
                                             preferredStyle: .ActionSheet)
         let forEncryption = UIAlertAction(title: "Encryption", style: .Default) { _ in
@@ -54,7 +54,7 @@ extension UIViewController: UIImagePickerControllerDelegate, UINavigationControl
     }
     
     // TODO: Implement uniqueness check
-    func setFileNameAlert(file: File, completion: ((File) -> Void)?) -> Void {
+    func setFileNameAlert(file: ManagedFile, completion: ((ManagedFile) -> Void)?) -> Void {
         let nameAlert = UIAlertController(title: "Name", message: "Type a desired name for this file.",
                                           preferredStyle: .Alert)
         nameAlert.addTextFieldWithConfigurationHandler(nil)

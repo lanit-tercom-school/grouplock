@@ -24,7 +24,7 @@ protocol ChooseFileViewControllerOutput {
     func fileSelected(request: ChooseFile.SelectFiles.Request)
     func fileDeselected(request: ChooseFile.SelectFiles.Request)
     
-    var chosenFiles: [File] { get }
+    var chosenFiles: [ManagedFile] { get }
     var encryption: Bool { get set }
 }
 
@@ -35,7 +35,7 @@ class ChooseFileViewController: UICollectionViewController, ChooseFileViewContro
     
     private typealias FileInfo = ChooseFile.Configure.ViewModel.FileInfo
     private typealias CollectionViewCellFactory = ViewFactory<FileInfo, ChooseFileViewCell>
-    private typealias DataSource = FetchedResultsController<File>
+    private typealias DataSource = FetchedResultsController<ManagedFile>
     private typealias FileInfoFetchedResultsController = PresentedDataSource<DataSource, FileInfo>
     private var dataSourceProvider: DataSourceProvider<FileInfoFetchedResultsController,
                                                        CollectionViewCellFactory,

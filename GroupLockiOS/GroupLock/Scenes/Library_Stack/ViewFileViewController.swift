@@ -12,7 +12,7 @@ class ViewFileViewController: UIViewController {
     
     @IBOutlet var imageView: UIImageView!
     
-    var correspondingFile: File!
+    var correspondingFile: ManagedFile!
     
     override func viewDidLoad() {
         

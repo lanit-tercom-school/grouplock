@@ -22,7 +22,7 @@ class ChooseFilePresenter: ChooseFilePresenterInput {
     
     // MARK: - Presentation logic
     
-    func dataFormatter(file: File) -> ChooseFile.Configure.ViewModel.FileInfo {
+    func dataFormatter(file: ManagedFile) -> ChooseFile.Configure.ViewModel.FileInfo {
         
         let fileName = file.name
         var thumbnail: UIImage?

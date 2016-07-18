@@ -1,10 +1,12 @@
 PODS:
+  - JSQCoreDataKit (4.0.2)
   - JSQDataSourcesKit (4.0.0)
   - NUI (0.5.5):
     - NUIParse
   - NUIParse (1.3)
 
 DEPENDENCIES:
+  - JSQCoreDataKit
   - JSQDataSourcesKit
   - NUI (from `https://github.com/broadwaylamb/nui.git`, branch `grouplock`)
 
@@ -19,10 +21,11 @@ CHECKOUT OPTIONS:
     :git: https://github.com/broadwaylamb/nui.git
 
 SPEC CHECKSUMS:
+  JSQCoreDataKit: 5ff8701184611be7769926b91a0cba2115e4e69a
   JSQDataSourcesKit: b222332f42dd117417788038f50a0c79e2fc70ff
   NUI: 53de7278003235deb2a375fe6f04c7a3aa3e49eb
   NUIParse: 2e3885ba7807477266396292626bd387d34c2338
 
-PODFILE CHECKSUM: bfecdd9d98314158075960b700ac4aaaacbc13fd
+PODFILE CHECKSUM: 18102a8cec961bc71f5c041066b7364b51821430
 
 COCOAPODS: 1.0.1

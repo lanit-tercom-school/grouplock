@@ -33,7 +33,7 @@ struct ChooseFile {
         }
         
         struct Response {
-            var fetchedResultsController: FetchedResultsController<File>
+            var fetchedResultsController: FetchedResultsController<ManagedFile>
         }
         
         struct ViewModel {
@@ -43,7 +43,7 @@ struct ChooseFile {
                 var thumbnail: UIImage?
             }
         
-            var fileInfoDataSource: PresentedDataSource<FetchedResultsController<File>, FileInfo>
+            var fileInfoDataSource: PresentedDataSource<FetchedResultsController<ManagedFile>, FileInfo>
         }
     }
     
