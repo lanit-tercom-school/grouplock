@@ -23,7 +23,7 @@ struct ProvideKey {
         }
         
         struct ViewModel {
-            var qrCode: UIImage
+            var qrCodes: [UIImage]
         }
     }
 }
