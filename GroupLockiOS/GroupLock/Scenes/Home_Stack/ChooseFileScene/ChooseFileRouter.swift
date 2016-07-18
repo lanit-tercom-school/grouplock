@@ -19,15 +19,14 @@ class ChooseFileRouter: ChooseFileRouterInput {
     // MARK: - Communication
     
     func passDataToNextScene(segue: UIStoryboardSegue) {
-        // NOTE: Teach the router which scenes it can communicate with
         
-        if segue.identifier == "encryptFiles" {
+        if segue.identifier == "toKeyType" {
             passDataToKeyTypeScene(segue)
         }
     }
     
     func passDataToKeyTypeScene(segue: UIStoryboardSegue) {
         let destination = segue.destinationViewController as! KeyTypeViewController
-        destination.files = viewController.output.chosenFiles
+        destination.output.files = viewController.output.chosenFiles
     }
 }

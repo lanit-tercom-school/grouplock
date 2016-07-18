@@ -6,7 +6,7 @@
 //  Copyright © 2016 Lanit-Tercom School. All rights reserved.
 //
 
-import CoreGraphics
+import CoreImage
 
 /// Wrapper for the crypto library
 class Crypto {
@@ -33,9 +33,9 @@ class Crypto {
      
      - returns: Encrypted image
      */
-    static func encryptImage(image image: CGImage, withEncryptionKey key: String) -> CGImage {
+    static func encryptImage(image image: CIImage, withEncryptionKey key: String) -> CIImage {
         
         // implementation goes here
-        return image
+        return image.imageByApplyingOrientation(2)
     }
 }

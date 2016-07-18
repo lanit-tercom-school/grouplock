@@ -28,9 +28,12 @@ class ProvideKeyPresenter: ProvideKeyPresenterInput {
         
         // ...
         
-        let uiImageQRCode = UIImage()
         
-        let viewModel = ProvideKey.Configure.ViewModel(qrCode: uiImageQRCode)
+        let uiImageQRCodes = [
+            UIImage()
+        ]
+        
+        let viewModel = ProvideKey.Configure.ViewModel(qrCodes: uiImageQRCodes)
         
         output.displayKeys(with: viewModel)
     }

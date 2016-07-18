@@ -8,36 +8,36 @@
 
 import UIKit
 
-class KeyTypeViewController: UIViewController {
+protocol KeyTypeViewControllerInput {
+    func onKeyType(sender: UIButton)
+}
 
-    var files: [ManagedFile] = []
+protocol KeyTypeViewControllerOutput {
+    var files: [ManagedFile] { get set }
+    var keyType: KeyType { get }
     
-    private var keyTypes = Set<KeyType>()
-            
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    func setKeyType(request: KeyTypeModels.SetType.Request)
+}
 
-        // Do any additional setup after loading the view.
-    }
+class KeyTypeViewController: UIViewController, KeyTypeViewControllerInput {
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
-    }
-
+    var output: KeyTypeViewControllerOutput!
+    var router: KeyTypeRouter!
+    
+    // MARK: - Event handling
     @IBAction func onKeyType(sender: UIButton) {
-        let keyTypeDictionary = ["QR-CODE" : KeyType.QRCode]
         
-        if sender.selected {
-            sender.selected = false
-            if let deselectedKeyType = keyTypeDictionary[sender.titleLabel?.text ?? "?"] {
-                keyTypes.remove(deselectedKeyType)
-            }
-        } else {
-            sender.selected = true
-            if let selectedKeyType = keyTypeDictionary[sender.titleLabel?.text ?? "?"] {
-                keyTypes.insert(selectedKeyType)
-            }
-        }
+        assert(sender.titleLabel?.text != nil, "The button title text must be a type of key representation")
         
+        let request = KeyTypeModels.SetType.Request(keyName: sender.titleLabel!.text!)
+        output.setKeyType(request)
+        router.navigateToNumberOfKeysScene()
+    }
+}
+
+extension KeyTypeViewController {
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        KeyTypeConfigurator.configure(self)
     }
 }

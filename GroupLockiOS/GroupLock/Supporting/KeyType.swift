@@ -8,6 +8,6 @@
 
 import Foundation
 
-enum KeyType {
-    case QRCode
+enum KeyType: String {
+    case QRCode = "QR-CODE"
 }

@@ -33,6 +33,13 @@
 		8748018F1D36C434001A086C /* ChooseFileWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8748018B1D36C434001A086C /* ChooseFileWorkerTests.swift */; };
 		874801911D36CB8E001A086C /* PresentedDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874801901D36CB8E001A086C /* PresentedDataSourceTests.swift */; };
 		874BEC691CE9385400F6CDE9 /* ViewFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874BEC681CE9385400F6CDE9 /* ViewFileViewController.swift */; };
+		87736F121D3D49C200B93D7B /* KeyTypeConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87736F0C1D3D49C200B93D7B /* KeyTypeConfigurator.swift */; };
+		87736F131D3D49C200B93D7B /* KeyTypeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87736F0D1D3D49C200B93D7B /* KeyTypeInteractor.swift */; };
+		87736F141D3D49C200B93D7B /* KeyTypeModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87736F0E1D3D49C200B93D7B /* KeyTypeModels.swift */; };
+		87736F151D3D49C200B93D7B /* KeyTypePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87736F0F1D3D49C200B93D7B /* KeyTypePresenter.swift */; };
+		87736F161D3D49C200B93D7B /* KeyTypeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87736F101D3D49C200B93D7B /* KeyTypeRouter.swift */; };
+		87736F1D1D3D565300B93D7B /* KeyTypeInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87736F191D3D565300B93D7B /* KeyTypeInteractorTests.swift */; };
+		87736F1F1D3D565300B93D7B /* KeyTypeViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87736F1B1D3D565300B93D7B /* KeyTypeViewControllerTests.swift */; };
 		877ED32F1CF7B1E300C5D0D4 /* UIViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877ED32E1CF7B1E300C5D0D4 /* UIViewControllerTests.swift */; };
 		877ED3351CF8B18900C5D0D4 /* NUICollectionViewCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877ED3341CF8B18900C5D0D4 /* NUICollectionViewCellTests.swift */; };
 		878AF3771CF10A4700CB247B /* KeyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878AF3761CF10A4700CB247B /* KeyType.swift */; };
@@ -121,6 +128,13 @@
 		8748018B1D36C434001A086C /* ChooseFileWorkerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseFileWorkerTests.swift; sourceTree = "<group>"; };
 		874801901D36CB8E001A086C /* PresentedDataSourceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentedDataSourceTests.swift; sourceTree = "<group>"; };
 		874BEC681CE9385400F6CDE9 /* ViewFileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewFileViewController.swift; path = Scenes/Library_Stack/ViewFileViewController.swift; sourceTree = "<group>"; };
+		87736F0C1D3D49C200B93D7B /* KeyTypeConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyTypeConfigurator.swift; path = Scenes/Home_Stack/KeyTypeScene/KeyTypeConfigurator.swift; sourceTree = "<group>"; };
+		87736F0D1D3D49C200B93D7B /* KeyTypeInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyTypeInteractor.swift; path = Scenes/Home_Stack/KeyTypeScene/KeyTypeInteractor.swift; sourceTree = "<group>"; };
+		87736F0E1D3D49C200B93D7B /* KeyTypeModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyTypeModels.swift; path = Scenes/Home_Stack/KeyTypeScene/KeyTypeModels.swift; sourceTree = "<group>"; };
+		87736F0F1D3D49C200B93D7B /* KeyTypePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyTypePresenter.swift; path = Scenes/Home_Stack/KeyTypeScene/KeyTypePresenter.swift; sourceTree = "<group>"; };
+		87736F101D3D49C200B93D7B /* KeyTypeRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyTypeRouter.swift; path = Scenes/Home_Stack/KeyTypeScene/KeyTypeRouter.swift; sourceTree = "<group>"; };
+		87736F191D3D565300B93D7B /* KeyTypeInteractorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyTypeInteractorTests.swift; sourceTree = "<group>"; };
+		87736F1B1D3D565300B93D7B /* KeyTypeViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyTypeViewControllerTests.swift; sourceTree = "<group>"; };
 		877ED32E1CF7B1E300C5D0D4 /* UIViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerTests.swift; sourceTree = "<group>"; };
 		877ED3341CF8B18900C5D0D4 /* NUICollectionViewCellTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NUICollectionViewCellTests.swift; sourceTree = "<group>"; };
 		878AF3761CF10A4700CB247B /* KeyType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyType.swift; path = Supporting/KeyType.swift; sourceTree = "<group>"; };
@@ -298,6 +312,15 @@
 			name = PasswordScene;
 			sourceTree = "<group>";
 		};
+		87736F181D3D562800B93D7B /* KeyTypesceneTests */ = {
+			isa = PBXGroup;
+			children = (
+				87736F191D3D565300B93D7B /* KeyTypeInteractorTests.swift */,
+				87736F1B1D3D565300B93D7B /* KeyTypeViewControllerTests.swift */,
+			);
+			name = KeyTypesceneTests;
+			sourceTree = "<group>";
+		};
 		877ED3301CF7B1F000C5D0D4 /* ViewController Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -399,6 +422,7 @@
 				873419B31D3817A0005D036C /* Test Resources */,
 				87FFF0341D33BFB1007315C7 /* PasswordSceneTests */,
 				874801871D36C3F8001A086C /* ChooseFileSceneTests */,
+				87736F181D3D562800B93D7B /* KeyTypesceneTests */,
 				877ED3301CF7B1F000C5D0D4 /* ViewController Tests */,
 				87B072C61CC0E0C400916D09 /* NUI Tests */,
 				87B6922A1CB425E0008ACB6A /* Info.plist */,
@@ -425,7 +449,12 @@
 		87FAC9EE1D34ECB600FE3602 /* KeyTypeScene */ = {
 			isa = PBXGroup;
 			children = (
+				87736F101D3D49C200B93D7B /* KeyTypeRouter.swift */,
 				878C29A41CF0D7E300323C9D /* KeyTypeViewController.swift */,
+				87736F0D1D3D49C200B93D7B /* KeyTypeInteractor.swift */,
+				87736F0F1D3D49C200B93D7B /* KeyTypePresenter.swift */,
+				87736F0C1D3D49C200B93D7B /* KeyTypeConfigurator.swift */,
+				87736F0E1D3D49C200B93D7B /* KeyTypeModels.swift */,
 			);
 			name = KeyTypeScene;
 			sourceTree = "<group>";
@@ -734,15 +763,19 @@
 				874801821D3660D7001A086C /* CollectionViewLayoutProperties.swift in Sources */,
 				8704DEB71D3CD0CC0017F88E /* File.swift in Sources */,
 				87B692131CB425E0008ACB6A /* PasswordViewController.swift in Sources */,
+				87736F121D3D49C200B93D7B /* KeyTypeConfigurator.swift in Sources */,
+				87736F151D3D49C200B93D7B /* KeyTypePresenter.swift in Sources */,
 				879797081CCFA61E0064C3AC /* ManagedFile.swift in Sources */,
 				8741CE871CE6872D0034A820 /* LibraryDirectoryViewController.swift in Sources */,
 				8704DECC1D3D03990017F88E /* ProvideKeyConfigurator.swift in Sources */,
 				878C29A31CF0B9D300323C9D /* ChooseFileViewCell.swift in Sources */,
 				8713DE4F1CEFAAF30089C92A /* HomeViewController.swift in Sources */,
 				87FFF0311D33ACCE007315C7 /* PasswordPresenter.swift in Sources */,
+				87736F161D3D49C200B93D7B /* KeyTypeRouter.swift in Sources */,
 				87FFF02F1D33ACCE007315C7 /* PasswordInteractor.swift in Sources */,
 				8713DE4B1CEFA5400089C92A /* ChooseFileViewController.swift in Sources */,
 				87FFF0521D34E9AE007315C7 /* ChooseFileRouter.swift in Sources */,
+				87736F141D3D49C200B93D7B /* KeyTypeModels.swift in Sources */,
 				8704DED01D3D03990017F88E /* ProvideKeyRouter.swift in Sources */,
 				87FFF0531D34E9AE007315C7 /* ChooseFileWorker.swift in Sources */,
 				87B509C11CD0B67A00641EC3 /* FileManager.swift in Sources */,
@@ -754,6 +787,7 @@
 				8704DEB31D3CCD8E0017F88E /* ManagedFile+CoreDataProperties.swift in Sources */,
 				87FD45381CE4B32800984269 /* Directory.swift in Sources */,
 				87FFF0321D33ACCE007315C7 /* PasswordRouter.swift in Sources */,
+				87736F131D3D49C200B93D7B /* KeyTypeInteractor.swift in Sources */,
 				8797970E1CCFEFB20064C3AC /* LibraryViewController.swift in Sources */,
 				8704DECE1D3D03990017F88E /* ProvideKeyModels.swift in Sources */,
 				8748017E1D365349001A086C /* PresentedDataSource.swift in Sources */,
@@ -773,8 +807,10 @@
 				87B072E21CC1B7B300916D09 /* NUIPasswordViewTests.swift in Sources */,
 				877ED32F1CF7B1E300C5D0D4 /* UIViewControllerTests.swift in Sources */,
 				87C49EA11CF1EBDB006C0A83 /* NUIGeneralTableTests.swift in Sources */,
+				87736F1F1D3D565300B93D7B /* KeyTypeViewControllerTests.swift in Sources */,
 				87B072E41CC1B8E600916D09 /* NUIProceedButtonTests.swift in Sources */,
 				87C49EA51CF1F349006C0A83 /* NUIGeneralTableCellTests.swift in Sources */,
+				87736F1D1D3D565300B93D7B /* KeyTypeInteractorTests.swift in Sources */,
 				87C49EA31CF1F0E5006C0A83 /* NUIGeneralButtonTests.swift in Sources */,
 				87FFF0401D33C020007315C7 /* PasswordPresenterTests.swift in Sources */,
 				8748018F1D36C434001A086C /* ChooseFileWorkerTests.swift in Sources */,
