@@ -10,6 +10,13 @@
 		3840EBFA7B53C9AE65049B02 /* Pods_GroupLockTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23C928C9715923C6E7C20031 /* Pods_GroupLockTests.framework */; };
 		8704DEB31D3CCD8E0017F88E /* ManagedFile+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8704DEB11D3CCD8E0017F88E /* ManagedFile+CoreDataProperties.swift */; };
 		8704DEB71D3CD0CC0017F88E /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8704DEB61D3CD0CC0017F88E /* File.swift */; };
+		8704DECC1D3D03990017F88E /* ProvideKeyConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8704DEC51D3D03990017F88E /* ProvideKeyConfigurator.swift */; };
+		8704DECD1D3D03990017F88E /* ProvideKeyInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8704DEC61D3D03990017F88E /* ProvideKeyInteractor.swift */; };
+		8704DECE1D3D03990017F88E /* ProvideKeyModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8704DEC71D3D03990017F88E /* ProvideKeyModels.swift */; };
+		8704DECF1D3D03990017F88E /* ProvideKeyPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8704DEC81D3D03990017F88E /* ProvideKeyPresenter.swift */; };
+		8704DED01D3D03990017F88E /* ProvideKeyRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8704DEC91D3D03990017F88E /* ProvideKeyRouter.swift */; };
+		8704DED11D3D03990017F88E /* ProvideKeyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8704DECA1D3D03990017F88E /* ProvideKeyViewController.swift */; };
+		8704DED51D3D08320017F88E /* EncryptionKeyProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8704DED41D3D08320017F88E /* EncryptionKeyProvider.swift */; };
 		8713DE4B1CEFA5400089C92A /* ChooseFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8713DE4A1CEFA5400089C92A /* ChooseFileViewController.swift */; };
 		8713DE4F1CEFAAF30089C92A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8713DE4E1CEFAAF30089C92A /* HomeViewController.swift */; };
 		871C6AE11CF1E8A7004C5B38 /* NUIGeneralViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871C6AE01CF1E8A7004C5B38 /* NUIGeneralViewTests.swift */; };
@@ -91,6 +98,13 @@
 		78D44004286621EC4A941066 /* Pods_GroupLock.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GroupLock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8704DEB11D3CCD8E0017F88E /* ManagedFile+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ManagedFile+CoreDataProperties.swift"; path = "CoreData/ManagedFile+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		8704DEB61D3CD0CC0017F88E /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = File.swift; path = Models/File.swift; sourceTree = "<group>"; };
+		8704DEC51D3D03990017F88E /* ProvideKeyConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProvideKeyConfigurator.swift; path = Scenes/Home_Stack/ProvideKeyScene/ProvideKeyConfigurator.swift; sourceTree = "<group>"; };
+		8704DEC61D3D03990017F88E /* ProvideKeyInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProvideKeyInteractor.swift; path = Scenes/Home_Stack/ProvideKeyScene/ProvideKeyInteractor.swift; sourceTree = "<group>"; };
+		8704DEC71D3D03990017F88E /* ProvideKeyModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProvideKeyModels.swift; path = Scenes/Home_Stack/ProvideKeyScene/ProvideKeyModels.swift; sourceTree = "<group>"; };
+		8704DEC81D3D03990017F88E /* ProvideKeyPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProvideKeyPresenter.swift; path = Scenes/Home_Stack/ProvideKeyScene/ProvideKeyPresenter.swift; sourceTree = "<group>"; };
+		8704DEC91D3D03990017F88E /* ProvideKeyRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProvideKeyRouter.swift; path = Scenes/Home_Stack/ProvideKeyScene/ProvideKeyRouter.swift; sourceTree = "<group>"; };
+		8704DECA1D3D03990017F88E /* ProvideKeyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProvideKeyViewController.swift; path = Scenes/Home_Stack/ProvideKeyScene/ProvideKeyViewController.swift; sourceTree = "<group>"; };
+		8704DED41D3D08320017F88E /* EncryptionKeyProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncryptionKeyProvider.swift; sourceTree = "<group>"; };
 		8713DE4A1CEFA5400089C92A /* ChooseFileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChooseFileViewController.swift; path = Scenes/Home_Stack/ChooseFileScene/ChooseFileViewController.swift; sourceTree = "<group>"; };
 		8713DE4E1CEFAAF30089C92A /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = Scenes/Home_Stack/HomeViewController.swift; sourceTree = "<group>"; };
 		871C6AE01CF1E8A7004C5B38 /* NUIGeneralViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NUIGeneralViewTests.swift; sourceTree = "<group>"; };
@@ -192,6 +206,27 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		8704DEC41D3D031A0017F88E /* ProvideKeyScene */ = {
+			isa = PBXGroup;
+			children = (
+				8704DEC51D3D03990017F88E /* ProvideKeyConfigurator.swift */,
+				8704DEC61D3D03990017F88E /* ProvideKeyInteractor.swift */,
+				8704DEC71D3D03990017F88E /* ProvideKeyModels.swift */,
+				8704DEC81D3D03990017F88E /* ProvideKeyPresenter.swift */,
+				8704DEC91D3D03990017F88E /* ProvideKeyRouter.swift */,
+				8704DECA1D3D03990017F88E /* ProvideKeyViewController.swift */,
+			);
+			name = ProvideKeyScene;
+			sourceTree = "<group>";
+		};
+		8704DED31D3D08120017F88E /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				8704DED41D3D08320017F88E /* EncryptionKeyProvider.swift */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
 		8713DE4C1CEFA5520089C92A /* Library Stack */ = {
 			isa = PBXGroup;
 			children = (
@@ -210,6 +245,7 @@
 				87FFF0431D34E955007315C7 /* ChooseFileScene */,
 				87FAC9EE1D34ECB600FE3602 /* KeyTypeScene */,
 				87FAC9EF1D34ECBE00FE3602 /* NumberOfKeysScene */,
+				8704DEC41D3D031A0017F88E /* ProvideKeyScene */,
 			);
 			name = "Home Stack";
 			sourceTree = "<group>";
@@ -342,6 +378,7 @@
 		87B6920F1CB425E0008ACB6A /* GroupLock */ = {
 			isa = PBXGroup;
 			children = (
+				8704DED31D3D08120017F88E /* Core */,
 				8704DEB51D3CD0AC0017F88E /* Models */,
 				873419AB1D37CB21005D036C /* Layout */,
 				8748B2AD1CBFB031000C57EB /* Class Extensions */,
@@ -690,6 +727,7 @@
 				87FFF0511D34E9AE007315C7 /* ChooseFilePresenter.swift in Sources */,
 				87FFF04F1D34E9AE007315C7 /* ChooseFileInteractor.swift in Sources */,
 				878AF3771CF10A4700CB247B /* KeyType.swift in Sources */,
+				8704DECF1D3D03990017F88E /* ProvideKeyPresenter.swift in Sources */,
 				873ED7B61CDAAD5E005A8656 /* FileTableViewCell.swift in Sources */,
 				874BEC691CE9385400F6CDE9 /* ViewFileViewController.swift in Sources */,
 				87FFF04E1D34E9AE007315C7 /* ChooseFileConfigurator.swift in Sources */,
@@ -698,22 +736,28 @@
 				87B692131CB425E0008ACB6A /* PasswordViewController.swift in Sources */,
 				879797081CCFA61E0064C3AC /* ManagedFile.swift in Sources */,
 				8741CE871CE6872D0034A820 /* LibraryDirectoryViewController.swift in Sources */,
+				8704DECC1D3D03990017F88E /* ProvideKeyConfigurator.swift in Sources */,
 				878C29A31CF0B9D300323C9D /* ChooseFileViewCell.swift in Sources */,
 				8713DE4F1CEFAAF30089C92A /* HomeViewController.swift in Sources */,
 				87FFF0311D33ACCE007315C7 /* PasswordPresenter.swift in Sources */,
 				87FFF02F1D33ACCE007315C7 /* PasswordInteractor.swift in Sources */,
 				8713DE4B1CEFA5400089C92A /* ChooseFileViewController.swift in Sources */,
 				87FFF0521D34E9AE007315C7 /* ChooseFileRouter.swift in Sources */,
+				8704DED01D3D03990017F88E /* ProvideKeyRouter.swift in Sources */,
 				87FFF0531D34E9AE007315C7 /* ChooseFileWorker.swift in Sources */,
 				87B509C11CD0B67A00641EC3 /* FileManager.swift in Sources */,
 				87FFF0501D34E9AE007315C7 /* ChooseFileModels.swift in Sources */,
 				87B6927F1CB45188008ACB6A /* UIViewController.swift in Sources */,
 				8AE919DA1D2F508A002024AC /* NumberOfKeysViewController.swift in Sources */,
+				8704DECD1D3D03990017F88E /* ProvideKeyInteractor.swift in Sources */,
+				8704DED11D3D03990017F88E /* ProvideKeyViewController.swift in Sources */,
 				8704DEB31D3CCD8E0017F88E /* ManagedFile+CoreDataProperties.swift in Sources */,
 				87FD45381CE4B32800984269 /* Directory.swift in Sources */,
 				87FFF0321D33ACCE007315C7 /* PasswordRouter.swift in Sources */,
 				8797970E1CCFEFB20064C3AC /* LibraryViewController.swift in Sources */,
+				8704DECE1D3D03990017F88E /* ProvideKeyModels.swift in Sources */,
 				8748017E1D365349001A086C /* PresentedDataSource.swift in Sources */,
+				8704DED51D3D08320017F88E /* EncryptionKeyProvider.swift in Sources */,
 				87B692111CB425E0008ACB6A /* AppDelegate.swift in Sources */,
 				873419B21D37D686005D036C /* GroupLock.xcdatamodeld in Sources */,
 				87FFF02E1D33ACCE007315C7 /* PasswordConfigurator.swift in Sources */,
