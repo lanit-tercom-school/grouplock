@@ -2,6 +2,8 @@ package com.example.sonya.grouplockapplication;
 
 import android.annotation.TargetApi;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
@@ -10,9 +12,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.sonya.grouplockapplication.Encryption.check;
 
 
 /**
@@ -63,19 +68,28 @@ public class NumberOfKeysActivity extends AppCompatActivity {
 
             @Override
             public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
-                if ((np1.getValue() != 0) && (np2.getValue() != 0) && (np1.getValue() <= np2.getValue()))
+                if ((np1.getValue() != 0) && (np2.getValue() != 0))
                     nextEnable();   //enable button for turn to the next page
                 else nextDisable(); //disable button for turn to the next page
+
 
                 switch (picker.getId()) {
                     case R.id.minKeys: {
                         String header = getString(R.string.minKeys);
                         textMin.setText(String.format(header,newVal));
+                        if (np1.getValue()>np2.getValue()) {
+                            np2.setValue(np1.getValue());
+                            textMax.setText(String.format(getString(R.string.maxKeys), newVal));
+                        }
                         break;
                     }
                     case R.id.maxKeys: {
                         String header = getString(R.string.maxKeys);
-                        textMax.setText(String.format(header,newVal));;
+                        textMax.setText(String.format(header,newVal));
+                        if (np2.getValue()<np1.getValue()) {
+                            np1.setValue(np2.getValue());
+                            textMin.setText(String.format(getString(R.string.minKeys), newVal));
+                        }
                         break;
                     }
 
@@ -91,7 +105,10 @@ public class NumberOfKeysActivity extends AppCompatActivity {
 
                     case R.id.button3: {
                         if (check) {    //go to the next page if button active
-                            Intent intent = new Intent(NumberOfKeysActivity.this, ChooseToDoActivity.class);
+                            Intent intent = new Intent(NumberOfKeysActivity.this, EncrImgAndQr.class);
+                         //   Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.cat3);
+                         //   intent.putExtra("image", bitmap);
+
                             startActivity(intent);
 
                         } else {        //info if button disable
@@ -103,6 +120,7 @@ public class NumberOfKeysActivity extends AppCompatActivity {
                         break;
                     }
                     case R.id.button4: { //info button
+
                         toast = Toast.makeText(getApplicationContext(),
                                 R.string.infoNumbers,
                                 Toast.LENGTH_LONG);

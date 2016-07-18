@@ -86,5 +86,13 @@ tools:context=".NumberOfKeysActivity" >
         android:layout_marginLeft="39dp"
         android:layout_marginStart="39dp" />
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageKS"
+        android:layout_below="@+id/maxKeys"
+        android:layout_toRightOf="@+id/button4"
+        android:layout_toEndOf="@+id/button4" />
+
 
 </RelativeLayout>

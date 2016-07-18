@@ -43,7 +43,10 @@
             android:label="QrReader">
         </activity>
         <activity android:name=".QrCreateActivity"
-            android:label="QrReader">
+            android:label="QrCreate">
+        </activity>
+        <activity android:name=".EncrImgAndQr"
+            android:label="EncrImg">
         </activity>
 
 
