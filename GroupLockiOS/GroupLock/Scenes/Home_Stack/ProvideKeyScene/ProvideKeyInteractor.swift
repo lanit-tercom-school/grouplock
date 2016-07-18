@@ -10,6 +10,7 @@ import Foundation
 
 protocol ProvideKeyInteractorInput {
     func getKeys(request: ProvideKey.Configure.Request)
+    
 }
 
 protocol ProvideKeyInteractorOutput {
@@ -26,9 +27,9 @@ class ProvideKeyInteractor: ProvideKeyInteractorInput {
     
     func getKeys(request: ProvideKey.Configure.Request) {
         
-        let keys = EncryptionKeyProvider.getKeys(min: numberOfKeys.0, max: numberOfKeys.1)
+        let keys = Crypto.getKeys(min: numberOfKeys.0, max: numberOfKeys.1)
         
-        let response = ProvideKey.Configure.Response(encryptionKeys: keys)
+        let response = ProvideKey.Configure.Response(decryptionKeys: keys)
         
         output.createQRCodes(response)
     }

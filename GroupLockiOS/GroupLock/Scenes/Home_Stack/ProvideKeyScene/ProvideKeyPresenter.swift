@@ -24,7 +24,7 @@ class ProvideKeyPresenter: ProvideKeyPresenterInput {
     
     func createQRCodes(response: ProvideKey.Configure.Response) {
         
-        let keys = response.encryptionKeys
+        let keys = response.decryptionKeys
         
         // ...
         

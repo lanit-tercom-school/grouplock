@@ -16,7 +16,7 @@
 		8704DECF1D3D03990017F88E /* ProvideKeyPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8704DEC81D3D03990017F88E /* ProvideKeyPresenter.swift */; };
 		8704DED01D3D03990017F88E /* ProvideKeyRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8704DEC91D3D03990017F88E /* ProvideKeyRouter.swift */; };
 		8704DED11D3D03990017F88E /* ProvideKeyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8704DECA1D3D03990017F88E /* ProvideKeyViewController.swift */; };
-		8704DED51D3D08320017F88E /* EncryptionKeyProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8704DED41D3D08320017F88E /* EncryptionKeyProvider.swift */; };
+		8704DED51D3D08320017F88E /* Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8704DED41D3D08320017F88E /* Crypto.swift */; };
 		8713DE4B1CEFA5400089C92A /* ChooseFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8713DE4A1CEFA5400089C92A /* ChooseFileViewController.swift */; };
 		8713DE4F1CEFAAF30089C92A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8713DE4E1CEFAAF30089C92A /* HomeViewController.swift */; };
 		871C6AE11CF1E8A7004C5B38 /* NUIGeneralViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871C6AE01CF1E8A7004C5B38 /* NUIGeneralViewTests.swift */; };
@@ -104,7 +104,7 @@
 		8704DEC81D3D03990017F88E /* ProvideKeyPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProvideKeyPresenter.swift; path = Scenes/Home_Stack/ProvideKeyScene/ProvideKeyPresenter.swift; sourceTree = "<group>"; };
 		8704DEC91D3D03990017F88E /* ProvideKeyRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProvideKeyRouter.swift; path = Scenes/Home_Stack/ProvideKeyScene/ProvideKeyRouter.swift; sourceTree = "<group>"; };
 		8704DECA1D3D03990017F88E /* ProvideKeyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProvideKeyViewController.swift; path = Scenes/Home_Stack/ProvideKeyScene/ProvideKeyViewController.swift; sourceTree = "<group>"; };
-		8704DED41D3D08320017F88E /* EncryptionKeyProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncryptionKeyProvider.swift; sourceTree = "<group>"; };
+		8704DED41D3D08320017F88E /* Crypto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Crypto.swift; path = Core/Crypto.swift; sourceTree = "<group>"; };
 		8713DE4A1CEFA5400089C92A /* ChooseFileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChooseFileViewController.swift; path = Scenes/Home_Stack/ChooseFileScene/ChooseFileViewController.swift; sourceTree = "<group>"; };
 		8713DE4E1CEFAAF30089C92A /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = Scenes/Home_Stack/HomeViewController.swift; sourceTree = "<group>"; };
 		871C6AE01CF1E8A7004C5B38 /* NUIGeneralViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NUIGeneralViewTests.swift; sourceTree = "<group>"; };
@@ -222,7 +222,7 @@
 		8704DED31D3D08120017F88E /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				8704DED41D3D08320017F88E /* EncryptionKeyProvider.swift */,
+				8704DED41D3D08320017F88E /* Crypto.swift */,
 			);
 			name = Core;
 			sourceTree = "<group>";
@@ -757,7 +757,7 @@
 				8797970E1CCFEFB20064C3AC /* LibraryViewController.swift in Sources */,
 				8704DECE1D3D03990017F88E /* ProvideKeyModels.swift in Sources */,
 				8748017E1D365349001A086C /* PresentedDataSource.swift in Sources */,
-				8704DED51D3D08320017F88E /* EncryptionKeyProvider.swift in Sources */,
+				8704DED51D3D08320017F88E /* Crypto.swift in Sources */,
 				87B692111CB425E0008ACB6A /* AppDelegate.swift in Sources */,
 				873419B21D37D686005D036C /* GroupLock.xcdatamodeld in Sources */,
 				87FFF02E1D33ACCE007315C7 /* PasswordConfigurator.swift in Sources */,

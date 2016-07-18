@@ -19,7 +19,7 @@ struct ProvideKey {
         }
         
         struct Response {
-            var encryptionKeys: [String]
+            var decryptionKeys: [String]
         }
         
         struct ViewModel {
