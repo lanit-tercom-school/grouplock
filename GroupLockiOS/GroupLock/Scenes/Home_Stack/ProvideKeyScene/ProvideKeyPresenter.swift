@@ -26,20 +26,20 @@ class ProvideKeyPresenter: ProvideKeyPresenterInput {
         
         let keys = response.decryptionKeys
         
-        var uiImageQRCodes = [UIImage()]
+        var uiImageQRCodes = [UIImage]()
         
         for key in keys {
             let data = key.dataUsingEncoding(NSISOLatin1StringEncoding, allowLossyConversion: false)
-            let filter = CIFilter(name: "CIQRCodeGenerator")
-            filter!.setValue(data, forKey: "inputMessage")
-            filter!.setValue("Q", forKey: "inputCorrectionLevel")
+            guard let filter = CIFilter(name: "CIQRCodeGenerator") else { return }
+            filter.setValue(data, forKey: "inputMessage")
+            filter.setValue("Q", forKey: "inputCorrectionLevel")
             
-            let ciImageQRCode = filter!.outputImage
+            guard let ciImageQRCode = filter.outputImage else { return }
             
-            let scaleX = 1080 / ciImageQRCode!.extent.size.width
-            let scaleY = 1080 / ciImageQRCode!.extent.size.height
+            let scaleX = 1080 / ciImageQRCode.extent.width
+            let scaleY = 1080 / ciImageQRCode.extent.height
             
-            let transformedImage = ciImageQRCode!.imageByApplyingTransform(CGAffineTransformMakeScale(scaleX, scaleY))
+            let transformedImage = ciImageQRCode.imageByApplyingTransform(CGAffineTransformMakeScale(scaleX, scaleY))
 
             uiImageQRCodes.append(UIImage(CIImage: transformedImage))
             
