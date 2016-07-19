@@ -48,6 +48,9 @@
         <activity android:name=".EncrImgAndQr"
             android:label="EncrImg">
         </activity>
+        <activity android:name=".DecrImg"
+            android:label="DecrImg">
+        </activity>
 
 
     </application>

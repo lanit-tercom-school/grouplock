@@ -13,10 +13,10 @@ public class EncrBMP implements IEncryption {
         image=img;
     }
 
-    EncrBMP(Bitmap img, String keyDecr){
+  /*  EncrBMP(Bitmap img, String keyDecr){
         image=img;
         keyForDecr=keyDecr;
-    }
+    }*/
 
     public String EncrImg(){
 
@@ -34,7 +34,10 @@ public class EncrBMP implements IEncryption {
         return image;
     }
 
-    public Bitmap ResultDecr(){
-        return null;
+    public Bitmap ResultDecr(String DecrKey){
+        check Deshifr = new check(image);
+        Deshifr.decr(DecrKey);
+        image=Deshifr.result;
+        return image;
     }
 }

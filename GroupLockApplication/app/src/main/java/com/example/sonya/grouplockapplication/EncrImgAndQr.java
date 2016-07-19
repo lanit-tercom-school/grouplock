@@ -8,6 +8,7 @@ import android.graphics.Point;
 import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -24,8 +25,11 @@ import android.widget.Toast;
 
 import com.example.sonya.grouplockapplication.Encryption.Factory;
 import com.example.sonya.grouplockapplication.Encryption.IEncryption;
+import com.example.sonya.grouplockapplication.Encryption.SaveBMP;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.WriterException;
+
+import java.io.IOException;
 
 
 /**
@@ -48,11 +52,22 @@ public class EncrImgAndQr extends AppCompatActivity {
         IwQr=(ImageView)findViewById(R.id.imageQr);
 
 
-        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.cat3);
+      //  Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.cat3);
+        Bitmap bitmap = BitmapFactory.decodeFile(Environment.getExternalStorageDirectory().getAbsolutePath() + "/GroupLock/Decrypted/AA.bmp");
+
         Factory factory = new Factory(bitmap);
         IEncryption EncrClass = factory.getClass("bmp");
         String Key=EncrClass.EncrImg();
         Bitmap img=EncrClass.ResultEncr();
+
+        String sdcardBmpPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/GroupLock/Encrypted/AA.bmp";
+
+        SaveBMP bmpUtil = new SaveBMP();
+        try {
+            boolean isSaveResult = bmpUtil.save(img, sdcardBmpPath);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         IwEncrImg.setImageBitmap(img);
         Log.i("Sth", Key);
@@ -66,7 +81,7 @@ public class EncrImgAndQr extends AppCompatActivity {
         int width = point.x;
         int height = point.y;
         int smallerDimension = width < height ? width : height;
-        smallerDimension = smallerDimension * 2/4;
+        smallerDimension = smallerDimension /4;
 
         //Encode with a QR Code image
         QRCodeEncoder qrCodeEncoder = new QRCodeEncoder(Key,

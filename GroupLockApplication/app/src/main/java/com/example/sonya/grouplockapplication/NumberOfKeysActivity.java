@@ -68,9 +68,7 @@ public class NumberOfKeysActivity extends AppCompatActivity {
 
             @Override
             public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
-                if ((np1.getValue() != 0) && (np2.getValue() != 0))
-                    nextEnable();   //enable button for turn to the next page
-                else nextDisable(); //disable button for turn to the next page
+
 
 
                 switch (picker.getId()) {
@@ -94,6 +92,10 @@ public class NumberOfKeysActivity extends AppCompatActivity {
                     }
 
                 }
+
+                if ((np1.getValue() != 0) && (np2.getValue() != 0))
+                    nextEnable();   //enable button for turn to the next page
+                else nextDisable(); //disable button for turn to the next page
             }
         };
 
@@ -106,9 +108,6 @@ public class NumberOfKeysActivity extends AppCompatActivity {
                     case R.id.button3: {
                         if (check) {    //go to the next page if button active
                             Intent intent = new Intent(NumberOfKeysActivity.this, EncrImgAndQr.class);
-                         //   Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.cat3);
-                         //   intent.putExtra("image", bitmap);
-
                             startActivity(intent);
 
                         } else {        //info if button disable

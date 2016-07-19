@@ -18,7 +18,7 @@ public class EncrJPG implements IEncryption {
         return null;
     }
 
-    public Bitmap ResultDecr(){
+    public Bitmap ResultDecr(String DecrKey){
         return null;
     }
 }

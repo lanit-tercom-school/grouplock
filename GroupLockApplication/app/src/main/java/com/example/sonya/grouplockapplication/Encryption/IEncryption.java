@@ -7,5 +7,5 @@ public interface IEncryption {
     String EncrImg();           //шифрует изображение и возвращает ключ
     Bitmap ResultEncr();
 
-    Bitmap ResultDecr();
+    Bitmap ResultDecr(String DecrKey);
 }

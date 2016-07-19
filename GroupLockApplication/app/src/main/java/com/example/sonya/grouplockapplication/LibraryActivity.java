@@ -294,6 +294,12 @@ public class LibraryActivity extends AppCompatActivity {
             startActivity(intent);
 
         } else if (currentLibraryState == LibraryState.DECRYPT_SELECTING) {
+
+            Intent intent = new Intent(this, DecrImg.class);
+            /* Pass files list to new activity */
+            intent.putExtra("files", filesToOperateWith);
+            startActivity(intent);
+
             // TODO: go to decryption, transfer filesToOperateWith list
             /* debug log */
             Log.d("crypt", filesToOperateWith.size() + " items selected to decrypt:\n");
