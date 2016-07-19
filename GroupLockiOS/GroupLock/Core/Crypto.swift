@@ -38,4 +38,7 @@ class Crypto {
         // implementation goes here
         return image.imageByApplyingOrientation(2)
     }
+    
+    /// Provides a maximum number of keys that can be generated
+    static let maximumNumberOfKeys = 15
 }

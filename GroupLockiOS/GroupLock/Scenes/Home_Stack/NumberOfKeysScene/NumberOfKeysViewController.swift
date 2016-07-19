@@ -10,16 +10,11 @@ import UIKit
 
 class NumberOfKeysViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
-    let maximumNumberOfKeys = 15
-    var options : [Int] = []
+    var options = [Int](1...Crypto.maximumNumberOfKeys)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        for i in 1...maximumNumberOfKeys {
-            options.append(i)
-        }
-        
+       
     }
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
@@ -37,7 +32,9 @@ class NumberOfKeysViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView.selectedRowInComponent(0) > pickerView.selectedRowInComponent(1) {
-            pickerView.selectRow(pickerView.selectedRowInComponent(component), inComponent: -component + 1 , animated: true)
+            pickerView.selectRow(pickerView.selectedRowInComponent(component),
+                                 inComponent: -component + 1,
+                                 animated: true)
         }
     }
     

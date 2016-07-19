@@ -65,6 +65,7 @@
 		87C49EA31CF1F0E5006C0A83 /* NUIGeneralButtonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C49EA21CF1F0E5006C0A83 /* NUIGeneralButtonTests.swift */; };
 		87C49EA51CF1F349006C0A83 /* NUIGeneralTableCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C49EA41CF1F349006C0A83 /* NUIGeneralTableCellTests.swift */; };
 		87C49EA91CF1FB85006C0A83 /* NUIDirectoryButtonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C49EA81CF1FB85006C0A83 /* NUIDirectoryButtonTests.swift */; };
+		87CF826A1D3E3058000147EB /* ProvideKeyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CF82691D3E3058000147EB /* ProvideKeyCell.swift */; };
 		87DE60DE1CB46373005EA79E /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87DE60DD1CB46373005EA79E /* LocalAuthentication.framework */; };
 		87F118F01CBF0CD40038F956 /* NUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87F118EF1CBF0CD40038F956 /* NUI.framework */; };
 		87F118F21CBF0CD60038F956 /* NUIParse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87F118F11CBF0CD60038F956 /* NUIParse.framework */; };
@@ -166,6 +167,7 @@
 		87C49EA21CF1F0E5006C0A83 /* NUIGeneralButtonTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NUIGeneralButtonTests.swift; sourceTree = "<group>"; };
 		87C49EA41CF1F349006C0A83 /* NUIGeneralTableCellTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NUIGeneralTableCellTests.swift; sourceTree = "<group>"; };
 		87C49EA81CF1FB85006C0A83 /* NUIDirectoryButtonTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NUIDirectoryButtonTests.swift; sourceTree = "<group>"; };
+		87CF82691D3E3058000147EB /* ProvideKeyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProvideKeyCell.swift; path = Scenes/Home_Stack/ProvideKeyScene/ProvideKeyCell.swift; sourceTree = "<group>"; };
 		87DE60DD1CB46373005EA79E /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		87F118EF1CBF0CD40038F956 /* NUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NUI.framework; path = "../../../Library/Developer/Xcode/DerivedData/GroupLock-ffmgilidnbhbqnfkgswyglwucvmu/Build/Products/Debug-iphonesimulator/NUI.framework"; sourceTree = "<group>"; };
 		87F118F11CBF0CD60038F956 /* NUIParse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NUIParse.framework; path = "../../../Library/Developer/Xcode/DerivedData/GroupLock-ffmgilidnbhbqnfkgswyglwucvmu/Build/Products/Debug-iphonesimulator/NUIParse.framework"; sourceTree = "<group>"; };
@@ -223,12 +225,13 @@
 		8704DEC41D3D031A0017F88E /* ProvideKeyScene */ = {
 			isa = PBXGroup;
 			children = (
-				8704DEC51D3D03990017F88E /* ProvideKeyConfigurator.swift */,
-				8704DEC61D3D03990017F88E /* ProvideKeyInteractor.swift */,
-				8704DEC71D3D03990017F88E /* ProvideKeyModels.swift */,
-				8704DEC81D3D03990017F88E /* ProvideKeyPresenter.swift */,
 				8704DEC91D3D03990017F88E /* ProvideKeyRouter.swift */,
 				8704DECA1D3D03990017F88E /* ProvideKeyViewController.swift */,
+				8704DEC61D3D03990017F88E /* ProvideKeyInteractor.swift */,
+				8704DEC81D3D03990017F88E /* ProvideKeyPresenter.swift */,
+				8704DEC51D3D03990017F88E /* ProvideKeyConfigurator.swift */,
+				8704DEC71D3D03990017F88E /* ProvideKeyModels.swift */,
+				87CF82691D3E3058000147EB /* ProvideKeyCell.swift */,
 			);
 			name = ProvideKeyScene;
 			sourceTree = "<group>";
@@ -793,6 +796,7 @@
 				8748017E1D365349001A086C /* PresentedDataSource.swift in Sources */,
 				8704DED51D3D08320017F88E /* Crypto.swift in Sources */,
 				87B692111CB425E0008ACB6A /* AppDelegate.swift in Sources */,
+				87CF826A1D3E3058000147EB /* ProvideKeyCell.swift in Sources */,
 				873419B21D37D686005D036C /* GroupLock.xcdatamodeld in Sources */,
 				87FFF02E1D33ACCE007315C7 /* PasswordConfigurator.swift in Sources */,
 			);

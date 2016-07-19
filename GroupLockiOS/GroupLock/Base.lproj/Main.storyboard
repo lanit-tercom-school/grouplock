@@ -463,12 +463,12 @@
             </objects>
             <point key="canvasLocation" x="4385" y="-601"/>
         </scene>
-        <!--Collection View Controller-->
+        <!--Provide Key View Controller-->
         <scene sceneID="GQ5-4G-oR8">
             <objects>
-                <collectionViewController id="nBG-Ui-WPY" sceneMemberID="viewController">
+                <collectionViewController id="nBG-Ui-WPY" customClass="ProvideKeyViewController" customModule="GroupLock" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="w2s-Bi-0nc">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="m9l-jz-Hub">
                             <size key="itemSize" width="192" height="192"/>
@@ -477,37 +477,46 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="bNQ-5u-euP">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="QRCodeCell" id="bNQ-5u-euP" customClass="ProvideKeyCell" customModule="GroupLock" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="192" height="192"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="192" height="192"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gjb-q1-3fM">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gjb-q1-3fM" userLabel="QR-Code View">
                                             <rect key="frame" x="0.0" y="0.0" width="192" height="192"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="gjb-q1-3fM" secondAttribute="height" multiplier="1:1" id="d9J-g3-WAq"/>
+                                            </constraints>
                                         </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="gjb-q1-3fM" firstAttribute="width" secondItem="bNQ-5u-euP" secondAttribute="width" id="E7t-du-Tg4"/>
-                                    <constraint firstItem="gjb-q1-3fM" firstAttribute="width" secondItem="bNQ-5u-euP" secondAttribute="height" multiplier="1:1" id="YB8-Rc-Aqz"/>
-                                    <constraint firstItem="gjb-q1-3fM" firstAttribute="centerY" secondItem="bNQ-5u-euP" secondAttribute="centerY" id="Yh3-dT-KYe"/>
-                                    <constraint firstItem="gjb-q1-3fM" firstAttribute="centerX" secondItem="bNQ-5u-euP" secondAttribute="centerX" id="p5e-Kn-s7G"/>
-                                    <constraint firstItem="gjb-q1-3fM" firstAttribute="height" secondItem="bNQ-5u-euP" secondAttribute="height" id="uRv-8T-SPq"/>
+                                    <constraint firstItem="gjb-q1-3fM" firstAttribute="width" secondItem="bNQ-5u-euP" secondAttribute="width" id="M4E-5K-9OU"/>
+                                    <constraint firstItem="gjb-q1-3fM" firstAttribute="centerY" secondItem="bNQ-5u-euP" secondAttribute="centerY" id="MOl-6R-M4C"/>
+                                    <constraint firstItem="gjb-q1-3fM" firstAttribute="centerX" secondItem="bNQ-5u-euP" secondAttribute="centerX" id="TAl-xm-63g"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="CollectionViewCell"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="keyImageView" destination="gjb-q1-3fM" id="Fp9-hm-GMO"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="GeneralView"/>
+                        </userDefinedRuntimeAttributes>
                         <connections>
-                            <outlet property="dataSource" destination="nBG-Ui-WPY" id="uNk-8v-0XB"/>
                             <outlet property="delegate" destination="nBG-Ui-WPY" id="1FB-zW-jLh"/>
                         </connections>
                     </collectionView>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="req-1E-p2b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5046" y="-605"/>
+            <point key="canvasLocation" x="5096" y="-601"/>
         </scene>
         <!--Library-->
         <scene sceneID="VV6-CX-haO">
@@ -635,18 +644,18 @@
                                 <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CMQ-io-mJo" id="PXS-Ch-vZO">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="file.bmp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LO5-ML-5ov">
-                                            <rect key="frame" x="15" y="12" width="59" height="20"/>
+                                            <rect key="frame" x="15" y="12" width="59" height="19.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NSk-7V-N2j">
-                                            <rect key="frame" x="543" y="12" width="42" height="20"/>
+                                            <rect key="frame" x="543.5" y="12" width="41.5" height="19.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
