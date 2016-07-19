@@ -9,12 +9,14 @@
 import Foundation
 
 protocol ProvideKeyInteractorInput {
-    func getKeys(request: ProvideKey.Configure.Request)
+    var numberOfKeys: (Int, Int) { get set }
     
+    func getKeys(request: ProvideKey.Configure.Request)
 }
 
 protocol ProvideKeyInteractorOutput {
     func createQRCodes(response: ProvideKey.Configure.Response)
+    
 }
 
 class ProvideKeyInteractor: ProvideKeyInteractorInput {
@@ -24,7 +26,7 @@ class ProvideKeyInteractor: ProvideKeyInteractorInput {
     // MARK: - Business logic
     
     var numberOfKeys = (1, 1)
-    
+        
     func getKeys(request: ProvideKey.Configure.Request) {
         
         let keys = Crypto.getKeys(min: numberOfKeys.0, max: numberOfKeys.1)

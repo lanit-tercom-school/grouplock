@@ -92,6 +92,12 @@ class ChooseFileViewController: UICollectionViewController, ChooseFileViewContro
             cell.filenameLabel.text = item?.name
             cell.thumbnailView.image = item?.thumbnail
             
+            if !cell.selected {
+                self.visualizeDeselection(forCell: cell)
+            } else {
+                self.visualizeSelection(forCell: cell)
+            }
+            
             return cell
         }
         
@@ -115,6 +121,15 @@ class ChooseFileViewController: UICollectionViewController, ChooseFileViewContro
         
         collectionView?.dataSource = dataSourceProvider.collectionViewDataSource
     }
+    
+    private func visualizeSelection(forCell cell: UICollectionViewCell) {
+        cell.layer.borderWidth = CGFloat(NUISettings.getFloat("selected-border-width",
+            withClass: "CollectionViewCell"))
+    }
+    
+    private func visualizeDeselection(forCell cell: UICollectionViewCell) {
+        cell.layer.borderWidth = 0
+    }
 
     // MARK: - UICollectionViewDelegate
     
@@ -123,8 +138,7 @@ class ChooseFileViewController: UICollectionViewController, ChooseFileViewContro
         
         let cell = collectionView.cellForItemAtIndexPath(indexPath) as! ChooseFileViewCell
         
-        cell.layer.borderWidth = CGFloat(NUISettings.getFloat("selected-border-width",
-                                                              withClass: "CollectionViewCell"))
+        visualizeSelection(forCell: cell)
         nextButton.enabled = true
         let request = ChooseFile.SelectFiles.Request(indexPath: indexPath)
         output.fileSelected(request)
@@ -134,7 +148,7 @@ class ChooseFileViewController: UICollectionViewController, ChooseFileViewContro
                                  didDeselectItemAtIndexPath indexPath: NSIndexPath) {
         
         let cell = collectionView.cellForItemAtIndexPath(indexPath) as! ChooseFileViewCell
-        cell.layer.borderWidth = 0
+        visualizeDeselection(forCell: cell)
         
         let request = ChooseFile.SelectFiles.Request(indexPath: indexPath)
         output.fileDeselected(request)

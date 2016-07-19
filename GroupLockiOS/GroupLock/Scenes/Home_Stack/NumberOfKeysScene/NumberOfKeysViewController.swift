@@ -10,6 +10,8 @@ import UIKit
 
 class NumberOfKeysViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
+    @IBOutlet var pickerView: UIPickerView!
+    
     var options = [Int](1...Crypto.maximumNumberOfKeys)
     
     override func viewDidLoad() {
@@ -38,4 +40,10 @@ class NumberOfKeysViewController: UIViewController, UIPickerViewDelegate, UIPick
         }
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let destination = segue.destinationViewController as? ProvideKeyViewController {
+            destination.output.numberOfKeys = (options[pickerView.selectedRowInComponent(0)],
+                                               options[pickerView.selectedRowInComponent(1)])
+        }
+    }
 }

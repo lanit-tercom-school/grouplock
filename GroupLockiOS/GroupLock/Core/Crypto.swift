@@ -22,7 +22,7 @@ class Crypto {
     static func getKeys(min min: Int, max: Int) -> [String] {
         
         // implementation goes here
-        return ["Hello", "World"]
+        return [Int](1...max).map { String($0) }
     }
     
     /**

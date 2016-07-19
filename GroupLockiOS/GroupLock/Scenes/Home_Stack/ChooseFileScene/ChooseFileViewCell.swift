@@ -12,10 +12,4 @@ class ChooseFileViewCell: UICollectionViewCell {
     
     @IBOutlet weak var thumbnailView: UIImageView!
     @IBOutlet weak var filenameLabel: UILabel!
-    
-    override func prepareForReuse() {
-        if !selected {
-            layer.borderWidth = 0
-        }
-    }
 }

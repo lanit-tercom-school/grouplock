@@ -11,4 +11,5 @@ import UIKit
 class ProvideKeyCell: UICollectionViewCell {
 
     @IBOutlet var keyImageView: UIImageView!
+    @IBOutlet var darkeningView: UIView!
 }

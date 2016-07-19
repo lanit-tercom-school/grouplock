@@ -452,18 +452,22 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <navigationItem key="navigationItem" title="Number Of Keys" id="Jgk-CV-ccW">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="HLb-FG-cDF"/>
                         <barButtonItem key="rightBarButtonItem" title="Next" id="3N9-g4-PfW">
                             <connections>
                                 <segue destination="nBG-Ui-WPY" kind="show" id="tde-5B-Flf"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="pickerView" destination="02R-1n-hYV" id="Ydh-XG-evt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Blp-kg-ZzC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4385" y="-601"/>
         </scene>
-        <!--Provide Key View Controller-->
+        <!--Your Keys-->
         <scene sceneID="GQ5-4G-oR8">
             <objects>
                 <collectionViewController id="nBG-Ui-WPY" customClass="ProvideKeyViewController" customModule="GroupLock" customModuleProvider="target" sceneMemberID="viewController">
@@ -490,18 +494,27 @@
                                                 <constraint firstAttribute="width" secondItem="gjb-q1-3fM" secondAttribute="height" multiplier="1:1" id="d9J-g3-WAq"/>
                                             </constraints>
                                         </imageView>
+                                        <view hidden="YES" alpha="0.65000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xmp-Xa-haS" userLabel="Darkening View">
+                                            <rect key="frame" x="0.0" y="0.0" width="192" height="192"/>
+                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
+                                    <constraint firstItem="Xmp-Xa-haS" firstAttribute="leading" secondItem="gjb-q1-3fM" secondAttribute="leading" id="8lG-FL-ofn"/>
                                     <constraint firstItem="gjb-q1-3fM" firstAttribute="width" secondItem="bNQ-5u-euP" secondAttribute="width" id="M4E-5K-9OU"/>
                                     <constraint firstItem="gjb-q1-3fM" firstAttribute="centerY" secondItem="bNQ-5u-euP" secondAttribute="centerY" id="MOl-6R-M4C"/>
                                     <constraint firstItem="gjb-q1-3fM" firstAttribute="centerX" secondItem="bNQ-5u-euP" secondAttribute="centerX" id="TAl-xm-63g"/>
+                                    <constraint firstItem="Xmp-Xa-haS" firstAttribute="trailing" secondItem="gjb-q1-3fM" secondAttribute="trailing" id="sLH-EJ-0x4"/>
+                                    <constraint firstItem="Xmp-Xa-haS" firstAttribute="bottom" secondItem="gjb-q1-3fM" secondAttribute="bottom" id="tO4-8G-kqs"/>
+                                    <constraint firstItem="Xmp-Xa-haS" firstAttribute="top" secondItem="gjb-q1-3fM" secondAttribute="top" id="wTB-ne-ruV"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="CollectionViewCell"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <outlet property="darkeningView" destination="Xmp-Xa-haS" id="D3F-Oe-jeC"/>
                                     <outlet property="keyImageView" destination="gjb-q1-3fM" id="Fp9-hm-GMO"/>
                                 </connections>
                             </collectionViewCell>
@@ -513,10 +526,11 @@
                             <outlet property="delegate" destination="nBG-Ui-WPY" id="1FB-zW-jLh"/>
                         </connections>
                     </collectionView>
+                    <navigationItem key="navigationItem" title="Your Keys" id="LcH-P9-HxB"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="req-1E-p2b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5096" y="-601"/>
+            <point key="canvasLocation" x="5138" y="-580"/>
         </scene>
         <!--Library-->
         <scene sceneID="VV6-CX-haO">
