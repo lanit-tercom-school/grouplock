@@ -6,7 +6,6 @@ coverage:
   range: "30...80"
   ignore:
   - GroupLockiOS/GroupLockTests/*
-  - GroupLockiOS/GroupLockUITests/*
   status:
     patch:
       default:

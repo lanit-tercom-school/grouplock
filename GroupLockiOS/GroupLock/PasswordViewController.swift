@@ -8,39 +8,73 @@
 
 import UIKit
 
-class PasswordViewController: UIViewController, UITextFieldDelegate {
+protocol PasswordViewControllerInput {
+    
+    // MARK: UI-sent actions
+    func onProceedButton()
+    func textFieldEditingChanged(sender: UITextField)
+    func textFieldShouldReturn(textField: UITextField) -> Bool
+}
+
+protocol PasswordViewControllerOutput {
+    func passwordIsCorrect(password: String?) -> Bool
+}
+
+class PasswordViewController: UIViewController, PasswordViewControllerInput {
+    
+    var output: PasswordViewControllerOutput!
+    var router: PasswordRouter!
     
     // MARK: UI elements
     @IBOutlet var enterPasswordLabel: UILabel!
-    @IBOutlet var initialPasswordTextField: UITextField!
+    @IBOutlet var passwordTextField: UITextField!
     @IBOutlet var proceedButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        hideKeyboardWhenTappedAround()
         
-        initialPasswordTextField.delegate = self
-        initialPasswordTextField.becomeFirstResponder()
+        passwordTextField.delegate = self
+        passwordTextField.becomeFirstResponder()
     }
     
     // MARK: Event handling
     @IBAction func onProceedButton() {
-        initialPasswordTextField.resignFirstResponder()
-        // password check
-        performSegueWithIdentifier("toMainScreen", sender: nil)
+        processPasswordFromTextField(passwordTextField)
     }
     
-    @IBAction func textFieldOnChange(sender: UITextField) {
-        if sender.text?.characters.count != 0 {
+    @IBAction func textFieldEditingChanged(sender: UITextField) {
+        if sender.text != nil && sender.text!.characters.count != 0 {
             proceedButton.hidden = false
         } else {
             proceedButton.hidden = true
         }
     }
     
+    // MARK: Password correctness processing
+    private func processPasswordFromTextField(textField: UITextField) -> Bool {
+        
+        if output.passwordIsCorrect(textField.text) {
+            passwordTextField.resignFirstResponder()
+            router.navigateToMainScreen()
+            return true
+        } else {
+            // ...
+            return false
+        }
+    }
+}
+
+extension PasswordViewController: UITextFieldDelegate {
+    
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        onProceedButton()
+        processPasswordFromTextField(textField)
         return true
     }
-    
+}
+
+extension PasswordViewController {
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        PasswordConfigurator.configure(self)
+    }
 }

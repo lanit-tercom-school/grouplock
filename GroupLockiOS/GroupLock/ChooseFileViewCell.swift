@@ -18,7 +18,4 @@ class ChooseFileViewCell: UICollectionViewCell {
             layer.borderWidth = 0
         }
     }
-    override func preferredLayoutAttributesFittingAttributes(layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
-        return layoutAttributes
-    }
 }
