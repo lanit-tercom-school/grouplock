@@ -8,30 +8,40 @@
 
 import UIKit
 
-class NumberOfKeysViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+protocol NumberOfKeysViewControllerInput {
+    
+}
+
+protocol NumberOfKeysViewControllerOutput {
+    var numberOfKeys: Int { get }
+    var files: [ManagedFile]! { get set }
+}
+
+class NumberOfKeysViewController: UIViewController {
+    
+    var output: NumberOfKeysViewControllerOutput!
+    var router: NumberOfKeysRouter!
     
     @IBOutlet var pickerView: UIPickerView!
-    
-    var options = [Int](1...Crypto.maximumNumberOfKeys)
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-       
-    }
+}
+
+extension NumberOfKeysViewController: UIPickerViewDataSource {
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 2
     }
     
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return options.count
+        return output.numberOfKeys
         
     }
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return "\(options[row])"
+        return "\(row + 1)"
     }
-    
+}
+
+extension NumberOfKeysViewController: UIPickerViewDelegate {
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView.selectedRowInComponent(0) > pickerView.selectedRowInComponent(1) {
             pickerView.selectRow(pickerView.selectedRowInComponent(component),
@@ -39,11 +49,11 @@ class NumberOfKeysViewController: UIViewController, UIPickerViewDelegate, UIPick
                                  animated: true)
         }
     }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let destination = segue.destinationViewController as? ProvideKeyViewController {
-            destination.output.numberOfKeys = (options[pickerView.selectedRowInComponent(0)],
-                                               options[pickerView.selectedRowInComponent(1)])
-        }
+}
+
+extension NumberOfKeysViewController {
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        NumberOfKeysConfigurator.configure(self)
     }
 }

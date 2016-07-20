@@ -34,6 +34,6 @@ class KeyTypeRouter: KeyTypeRouterInput {
     func passDataToNumberOfKeysScene(segue: UIStoryboardSegue) {
         
         let numberOfKeysViewController = segue.destinationViewController as! NumberOfKeysViewController
-        
+        numberOfKeysViewController.output.files = viewController.output.files
     }
 }

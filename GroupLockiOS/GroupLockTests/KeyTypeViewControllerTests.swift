@@ -60,7 +60,7 @@ class KeyTypeViewControllerTests: XCTestCase {
         var setKeyType_called = false
         var receivedKeyName = "none"
         
-        var files: [ManagedFile]  = []
+        var files: [ManagedFile]!
         var keyType = Seeds.SetKeyType.defaultKeyType
         
         func setKeyType(request: KeyTypeModels.SetType.Request) {
@@ -71,11 +71,11 @@ class KeyTypeViewControllerTests: XCTestCase {
     }
     
     class KeyTypeRouterSpy: KeyTypeRouter {
-        
-        var navigateToNumberOfKeysScene_called = false
-        
-        override func navigateToNumberOfKeysScene() {
-            navigateToNumberOfKeysScene_called = true
+                
+        var passDataToNumberOfKeysScene_called = false
+
+        override func passDataToNumberOfKeysScene(segue: UIStoryboardSegue) {
+            passDataToNumberOfKeysScene_called = true
         }
     }
     
@@ -114,11 +114,12 @@ class KeyTypeViewControllerTests: XCTestCase {
         XCTAssertEqual(expectedValue, returnedValue, "The text on a key type button should be passed to output")
     }
     
-    func test_ThatKeyTypeButtons_PerformSegueToNumberOfKeysScene() {
+    func test_ThatKeyTypeButtons_TriggerPassingDataToNumberOfKeysScene() {
         
         // Given
         let keyTypeRouterSpy = KeyTypeRouterSpy()
         sut.router = keyTypeRouterSpy
+        sut.router.viewController = sut
         let keyTypeButton = UIButton(type: .Custom)
         keyTypeButton.titleLabel?.text = Seeds.SetKeyType.buttonLabelText
         
@@ -126,7 +127,7 @@ class KeyTypeViewControllerTests: XCTestCase {
         sut.onKeyType(keyTypeButton)
         
         // Then
-        XCTAssertTrue(keyTypeRouterSpy.navigateToNumberOfKeysScene_called,
-                      "Tapping on a key type button should trigger a segue to NumberOfKeys scene")
+        XCTAssertTrue(keyTypeRouterSpy.passDataToNumberOfKeysScene_called,
+                      "Tapping on a key type button should trigger passing data to NumberOfKeys scene")
     }
 }

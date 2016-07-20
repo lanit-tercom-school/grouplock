@@ -21,11 +21,6 @@ class KeyTypeInteractorTests: XCTestCase {
         sut = KeyTypeInteractor()
     }
     
-    override func tearDown() {
-        
-        super.tearDown()
-    }
-    
     // MARK: - Test doubles
     
     // MARK: - Tests

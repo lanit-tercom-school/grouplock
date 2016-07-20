@@ -29,6 +29,7 @@ class ProvideKeyPresenter: ProvideKeyPresenterInput {
         var uiImageQRCodes = [UIImage]()
         
         for key in keys {
+            // TODO: Вынести в отдельный класс
             let data = key.dataUsingEncoding(NSISOLatin1StringEncoding, allowLossyConversion: false)
             guard let filter = CIFilter(name: "CIQRCodeGenerator") else { return }
             filter.setValue(data, forKey: "inputMessage")

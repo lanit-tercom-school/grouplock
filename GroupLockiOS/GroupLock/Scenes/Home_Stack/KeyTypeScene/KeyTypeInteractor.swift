@@ -9,7 +9,7 @@
 import Foundation
 
 protocol KeyTypeInteractorInput {
-    var files: [ManagedFile] { get set }
+    var files: [ManagedFile]! { get set }
     var keyType: KeyType { get }
     
     func setKeyType(request: KeyTypeModels.SetType.Request)
@@ -25,7 +25,7 @@ class KeyTypeInteractor: KeyTypeInteractorInput {
     
     // MARK: - Business logic
     
-    var files = [ManagedFile]()
+    var files: [ManagedFile]!
     var keyType: KeyType = .QRCode
     
     func setKeyType(request: KeyTypeModels.SetType.Request) {
