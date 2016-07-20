@@ -30,6 +30,7 @@ import com.google.zxing.BarcodeFormat;
 import com.google.zxing.WriterException;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 
 /**
@@ -38,9 +39,16 @@ import java.io.IOException;
 
 public class EncrImgAndQr extends AppCompatActivity {
 
-    Button goNext,helpButton;
+
     ImageView IwEncrImg;
     ImageView IwQr;
+
+    Bundle b;
+    private ArrayList<LibraryEntry> filesToOperateWith;
+    int minK;
+    int maxK;
+    String nameFile;
+
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     @Override
@@ -51,16 +59,25 @@ public class EncrImgAndQr extends AppCompatActivity {
         IwEncrImg=(ImageView)findViewById(R.id.imageEncr);
         IwQr=(ImageView)findViewById(R.id.imageQr);
 
+        b = getIntent().getExtras();
+
+        minK = (Integer)b.get("minK");
+        maxK = (Integer)b.get("maxK");
+        Log.i("EncrImgAndQr",Integer.toString(minK));
+        Log.i("EncrImgAndQr",Integer.toString(maxK));
+        filesToOperateWith = (ArrayList<LibraryEntry>)b.get("files");
+        nameFile=filesToOperateWith.get(0).getName();
+        Log.i("EncrImgAndQr", filesToOperateWith.get(0).getName());
 
       //  Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.cat3);
-        Bitmap bitmap = BitmapFactory.decodeFile(Environment.getExternalStorageDirectory().getAbsolutePath() + "/GroupLock/Decrypted/AA.bmp");
+        Bitmap bitmap = BitmapFactory.decodeFile(Environment.getExternalStorageDirectory().getAbsolutePath() + "/GroupLock/Decrypted/" + nameFile);
 
         Factory factory = new Factory(bitmap);
         IEncryption EncrClass = factory.getClass("bmp");
         String Key=EncrClass.EncrImg();
         Bitmap img=EncrClass.ResultEncr();
 
-        String sdcardBmpPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/GroupLock/Encrypted/AA.bmp";
+        String sdcardBmpPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/GroupLock/Encrypted/" + nameFile;
 
         SaveBMP bmpUtil = new SaveBMP();
         try {

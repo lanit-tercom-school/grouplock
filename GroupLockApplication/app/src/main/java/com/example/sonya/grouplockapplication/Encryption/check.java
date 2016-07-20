@@ -17,13 +17,11 @@ public class check {
 
     public check(Bitmap bm){
         source=bm;
-        Log.i("Inf","bmp загрузилась");
-
     }
 
     public void encr(){
         Random rand = new Random();
-        int size=40;
+        int size=80;
         int[] k=new int[size];
         for (int i = 0; i < size; i++) {
             k[i] = rand.nextInt(255 - 1) + 1;

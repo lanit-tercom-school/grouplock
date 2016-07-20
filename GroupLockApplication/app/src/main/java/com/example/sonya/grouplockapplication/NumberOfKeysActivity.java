@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -18,6 +19,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.sonya.grouplockapplication.Encryption.check;
+
+import java.util.ArrayList;
 
 
 /**
@@ -31,6 +34,9 @@ public class NumberOfKeysActivity extends AppCompatActivity {
     boolean check = false;
     Toast toast;
     TextView textMin, textMax;
+
+    private ArrayList<LibraryEntry> filesToOperateWith;
+    Bundle b;
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     @Override
@@ -61,6 +67,13 @@ public class NumberOfKeysActivity extends AppCompatActivity {
         setSupportActionBar(mToolbar);
         ActionBar ab = getSupportActionBar();
         ab.setDisplayHomeAsUpEnabled(true);
+
+        b = getIntent().getExtras();
+        if(b!=null&& b.containsKey("files")){
+            filesToOperateWith = (ArrayList<LibraryEntry>)b.get("files");
+            Log.i("что же произошло?", "Получены файлы для шифрования");
+            Log.i("nameF", filesToOperateWith.get(0).getAbsolutePath());
+        }
 
         //EventListener for numberpickers
 
@@ -108,6 +121,9 @@ public class NumberOfKeysActivity extends AppCompatActivity {
                     case R.id.button3: {
                         if (check) {    //go to the next page if button active
                             Intent intent = new Intent(NumberOfKeysActivity.this, EncrImgAndQr.class);
+                            intent.putExtras(b);
+                            intent.putExtra("minK", np1.getValue());
+                            intent.putExtra("maxK", np2.getValue());
                             startActivity(intent);
 
                         } else {        //info if button disable

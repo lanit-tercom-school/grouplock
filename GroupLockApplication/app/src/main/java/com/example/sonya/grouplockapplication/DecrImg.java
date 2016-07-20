@@ -33,6 +33,7 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 
 /**
@@ -44,6 +45,10 @@ public class DecrImg extends AppCompatActivity {
     ImageView IwDecrImg;
     IEncryption EncrClass;
 
+    Bundle b;
+    private ArrayList<LibraryEntry> filesToOperateWith;
+    String nameFile;
+
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,9 +58,12 @@ public class DecrImg extends AppCompatActivity {
 
         IwDecrImg=(ImageView)findViewById(R.id.imageDecr);
 
+        b = getIntent().getExtras();
+        filesToOperateWith = (ArrayList<LibraryEntry>)b.get("files");
+        nameFile=filesToOperateWith.get(0).getName();
 
         //  Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.cat3);
-        Bitmap bitmap = BitmapFactory.decodeFile(Environment.getExternalStorageDirectory().getAbsolutePath() + "/GroupLock/Encrypted/AA.bmp");
+        Bitmap bitmap = BitmapFactory.decodeFile(Environment.getExternalStorageDirectory().getAbsolutePath() + "/GroupLock/Encrypted/" + nameFile);
         Factory factory = new Factory(bitmap);
         EncrClass = factory.getClass("bmp");
 
@@ -82,7 +90,7 @@ public class DecrImg extends AppCompatActivity {
                 Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show();
             } else {
                 Log.d("MainActivity", "Scanned");
-                Toast.makeText(this, "Scanned123: " + result.getContents(), Toast.LENGTH_LONG).show();
+             //   Toast.makeText(this, "Scanned123: " + result.getContents(), Toast.LENGTH_LONG).show();
                 Rashifr(result.getContents());
             }
         } else {
