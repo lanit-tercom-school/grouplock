@@ -33,10 +33,10 @@ class Crypto {
      
      - returns: Encrypted image
      */
-    static func encryptImage(image image: CIImage, withEncryptionKey key: String) -> CIImage {
+    static func encryptImage(image image: NSData, withEncryptionKey key: String) -> NSData {
         
         // implementation goes here
-        return image.imageByApplyingOrientation(2)
+        return image
     }
     
     /// Provides a maximum number of keys that can be generated

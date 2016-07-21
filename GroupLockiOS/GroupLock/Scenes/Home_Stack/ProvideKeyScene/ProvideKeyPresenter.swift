@@ -26,25 +26,11 @@ class ProvideKeyPresenter: ProvideKeyPresenterInput {
         
         let keys = response.decryptionKeys
         
-        var uiImageQRCodes = [UIImage]()
+        let screenSize = UIScreen.mainScreen().nativeBounds.size
+        let screenWidth = min(screenSize.width, screenSize.height)
         
-        for key in keys {
-            // TODO: Вынести в отдельный класс
-            let data = key.dataUsingEncoding(NSISOLatin1StringEncoding, allowLossyConversion: false)
-            guard let filter = CIFilter(name: "CIQRCodeGenerator") else { return }
-            filter.setValue(data, forKey: "inputMessage")
-            filter.setValue("Q", forKey: "inputCorrectionLevel")
-            
-            guard let ciImageQRCode = filter.outputImage else { return }
-            
-            let scaleX = 1080 / ciImageQRCode.extent.width
-            let scaleY = 1080 / ciImageQRCode.extent.height
-            
-            let transformedImage = ciImageQRCode.imageByApplyingTransform(CGAffineTransformMakeScale(scaleX, scaleY))
-
-            uiImageQRCodes.append(UIImage(CIImage: transformedImage))
-            
-            // TODO: – Переделать всё с учетом разного масштаба изображений QR-кодов. На данный момент в массив помещаются изображения фиксированного размера (1080x1080)
+        let uiImageQRCodes = keys.map {
+            return QRCode(string: $0)?.createUIImage(width: screenWidth) ?? UIImage()
         }
         
         let viewModel = ProvideKey.Configure.ViewModel(qrCodes: uiImageQRCodes)
