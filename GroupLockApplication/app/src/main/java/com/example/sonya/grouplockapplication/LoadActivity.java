@@ -45,7 +45,10 @@ public class LoadActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.load_layout);
 
-        Toolbar mToolbar = (Toolbar) findViewById(R.id.keys_type_selection_toolbar);
+      /*  Toolbar mToolbar = (Toolbar) findViewById(R.id.keys_type_selection_toolbar);
+        setSupportActionBar(mToolbar);*/
+
+        Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar_actionbar);
         setSupportActionBar(mToolbar);
         ActionBar ab = getSupportActionBar();
         ab.setDisplayHomeAsUpEnabled(true);

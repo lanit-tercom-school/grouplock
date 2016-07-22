@@ -193,12 +193,13 @@ public class LibraryActivity extends AppCompatActivity {
      * We can only encrypt from "Decrypted" directory and decrypt from "Encrypted" directory
      * */
     private void setCryptMenuItemsAccess() {
-        if (menuItemEncrypt != null && menuItemDecrypt != null) {
-            menuItemEncrypt.setEnabled(currentDirectory.getAbsolutePath()
-                                                       .contains(libraryRootPath + "/" + DECRYPTED_FOLDER_NAME));
-            menuItemDecrypt.setEnabled(currentDirectory.getAbsolutePath()
-                                                       .contains(libraryRootPath + "/" + ENCRYPTED_FOLDER_NAME));
-        }
+            if (menuItemEncrypt != null && menuItemDecrypt != null) {
+                Log.i("Libr",currentDirectory.getAbsolutePath());
+                menuItemEncrypt.setEnabled(currentDirectory.getAbsolutePath()
+                        .contains(libraryRootPath + "/" + DECRYPTED_FOLDER_NAME));
+                menuItemDecrypt.setEnabled(currentDirectory.getAbsolutePath()
+                        .contains(libraryRootPath + "/" + ENCRYPTED_FOLDER_NAME));
+            }
     }
 
     /**
@@ -289,7 +290,7 @@ public class LibraryActivity extends AppCompatActivity {
     public void goToNextStep(View v) {
 
         if (currentLibraryState == LibraryState.ENCRYPT_SELECTING) {
-            Intent intent = new Intent(this, NumberOfKeysActivity.class);
+            Intent intent = new Intent(this, KeysTypeSelectionActivity.class);
             /* Pass files list to new activity */
             intent.putExtra("files", filesToOperateWith);
             startActivity(intent);

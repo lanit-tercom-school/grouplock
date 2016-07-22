@@ -21,7 +21,7 @@ public class check {
 
     public void encr(){
         Random rand = new Random();
-        int size=80;
+        int size=100;
         int[] k=new int[size];
         for (int i = 0; i < size; i++) {
             k[i] = rand.nextInt(255 - 1) + 1;

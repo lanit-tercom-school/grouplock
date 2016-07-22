@@ -4,13 +4,14 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
-    tools:context=".EncrImgAndQr" >
+    tools:context=".EncrImgAndQr"
+    android:background="@color/colorBackGround">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/keys_type_selection_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
+        android:background="@color/colorToolbar"
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
@@ -20,7 +21,7 @@
         android:id="@+id/imageEncr"
         android:layout_below="@+id/keys_type_selection_toolbar"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="81dp" />
+        android:layout_marginTop="40dp" />
 
     <ImageView
         android:layout_width="wrap_content"

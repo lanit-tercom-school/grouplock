@@ -2,14 +2,22 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#00c3ff</color>
+    <color name="colorAccent">#FF115284</color>
    <!-- <color name="colorAccent">#FF4081</color>-->
     <!--- for backGround -->
-    <color name="colorBackGroundButton">#FF115284</color>
-    <color name="colorBackGround">#defaf8</color>
+    <color name="colorBackGroundButton">#335273</color>
+    <color name="colorBackGroundPass">#4F637A</color>
+    <color name="colorBackGround">#C4DBE8</color>
     <!---for text -->
     <color name="colorText">#FF115295</color>
     <color name="colorButtonText">#FF115284</color>
     <!--- for toolbar -->
     <color name="colorToolbarText">#ffffff</color>
+    <color name="colorToolbar">#142F4D</color>
+
+    <!--- for mainActivity -->
+    <color name="colorPasswordCorrect">#4CAF4D</color>
+    <color name="colorPasswordIncorrect">#FF5222</color>
+
+
 </resources>

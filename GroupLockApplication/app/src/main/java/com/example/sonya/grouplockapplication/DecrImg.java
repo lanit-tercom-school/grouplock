@@ -32,6 +32,7 @@ import com.google.zxing.WriterException;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -101,7 +102,16 @@ public class DecrImg extends AppCompatActivity {
 
     protected void Rashifr(String DecrKey){
 
-        IwDecrImg.setImageBitmap(EncrClass.ResultDecr(DecrKey));
+        Bitmap img = EncrClass.ResultDecr(DecrKey);
+        IwDecrImg.setImageBitmap(img);
+        SaveBMP bmpUtil = new SaveBMP();
+        try {
+            boolean isSaveResult = bmpUtil.save(img, Environment.getExternalStorageDirectory().getAbsolutePath() + "/GroupLock/Decrypted/" + nameFile);
+            File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/GroupLock/Encrypted/", nameFile);
+            file.delete();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

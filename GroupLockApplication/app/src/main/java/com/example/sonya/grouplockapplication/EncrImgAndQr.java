@@ -29,6 +29,7 @@ import com.example.sonya.grouplockapplication.Encryption.SaveBMP;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.WriterException;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -88,6 +89,8 @@ public class EncrImgAndQr extends AppCompatActivity {
 
         IwEncrImg.setImageBitmap(img);
         Log.i("Sth", Key);
+        File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/GroupLock/Decrypted/", nameFile);
+        file.delete();
 
         //!!!!!!!!!!
 
@@ -98,7 +101,7 @@ public class EncrImgAndQr extends AppCompatActivity {
         int width = point.x;
         int height = point.y;
         int smallerDimension = width < height ? width : height;
-        smallerDimension = smallerDimension /4;
+        smallerDimension = smallerDimension /2;
 
         //Encode with a QR Code image
         QRCodeEncoder qrCodeEncoder = new QRCodeEncoder(Key,
@@ -112,6 +115,8 @@ public class EncrImgAndQr extends AppCompatActivity {
             Bitmap bitmap2 = qrCodeEncoder.encodeAsBitmap();
             //ImageView myImage = (ImageView) findViewById(R.id.imageView1);
             IwQr.setImageBitmap(bitmap2);
+
+
 
         } catch (WriterException e) {
             e.printStackTrace();

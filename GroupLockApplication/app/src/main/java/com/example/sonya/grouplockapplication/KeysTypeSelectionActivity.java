@@ -19,6 +19,9 @@ public class KeysTypeSelectionActivity extends AppCompatActivity
 
     private Button btnNextStep;
 
+    private ArrayList<LibraryEntry> filesToOperateWith;
+    Bundle b;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +33,13 @@ public class KeysTypeSelectionActivity extends AppCompatActivity
         /* Add Back button at the top of the screen */
         ActionBar ab = getSupportActionBar();
         ab.setDisplayHomeAsUpEnabled(true);
+
+        b = getIntent().getExtras();
+        if(b!=null&& b.containsKey("files")){
+            filesToOperateWith = (ArrayList<LibraryEntry>)b.get("files");
+            Log.i("что же произошло?", "Получены файлы для шифрования");
+            Log.i("nameF", filesToOperateWith.get(0).getAbsolutePath());
+        }
 
         btnNextStep = (Button) findViewById(R.id.keys_type_selection_btnNext);
         btnNextStep.setEnabled(false);
@@ -72,6 +82,7 @@ public class KeysTypeSelectionActivity extends AppCompatActivity
         }
 
         Intent intent = new Intent(KeysTypeSelectionActivity.this, NumberOfKeysActivity.class);
+        intent.putExtras(b);
         startActivity(intent);
     }
 
