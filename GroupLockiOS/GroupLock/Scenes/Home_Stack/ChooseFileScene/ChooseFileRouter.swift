@@ -26,7 +26,7 @@ class ChooseFileRouter: ChooseFileRouterInput {
     }
     
     func passDataToKeyTypeScene(segue: UIStoryboardSegue) {
-        let destination = segue.destinationViewController as! KeyTypeViewController
-        destination.output.files = viewController.output.chosenFiles
+        let keyTypeViewController = segue.destinationViewController as! KeyTypeViewController
+        keyTypeViewController.output.files = viewController.output.chosenFiles
     }
 }

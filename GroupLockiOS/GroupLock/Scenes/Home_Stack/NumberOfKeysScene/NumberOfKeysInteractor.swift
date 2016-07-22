@@ -10,7 +10,7 @@ import Foundation
 
 protocol NumberOfKeysInteractorInput {
     var numberOfKeys: Int { get }
-    var files: [ManagedFile]! { get }
+    var files: [File]! { get }
 }
 
 protocol NumberOfKeysInteractorOutput {
@@ -25,5 +25,5 @@ class NumberOfKeysInteractor: NumberOfKeysInteractorInput {
     
     var numberOfKeys = Crypto.maximumNumberOfKeys
     
-    var files: [ManagedFile]!
+    var files: [File]!
 }

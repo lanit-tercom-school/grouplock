@@ -14,7 +14,7 @@ protocol NumberOfKeysViewControllerInput {
 
 protocol NumberOfKeysViewControllerOutput {
     var numberOfKeys: Int { get }
-    var files: [ManagedFile]! { get set }
+    var files: [File]! { get set }
 }
 
 class NumberOfKeysViewController: UIViewController {

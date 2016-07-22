@@ -19,7 +19,7 @@ protocol ChooseFileInteractorInput {
     func fileSelected(request: ChooseFile.SelectFiles.Request)
     func fileDeselected(request: ChooseFile.SelectFiles.Request)
     
-    var chosenFiles: [ManagedFile] { get }
+    var chosenFiles: [File] { get }
     var encryption: Bool { get set }
 }
 
@@ -72,14 +72,8 @@ class ChooseFileInteractor: ChooseFileInteractorInput {
         selectedFiles.remove(request.indexPath)
     }
     
-    var chosenFiles: [ManagedFile] {
-        
-        var chosenFiles = [ManagedFile]()
-        for indexPath in selectedFiles {
-            chosenFiles.append(fetchedResultsController[indexPath])
-        }
-        
-        return chosenFiles
+    var chosenFiles: [File] {
+        return selectedFiles.map { File(fetchedResultsController[$0]) }
     }
     
 }

@@ -24,7 +24,7 @@ protocol ChooseFileViewControllerOutput {
     func fileSelected(request: ChooseFile.SelectFiles.Request)
     func fileDeselected(request: ChooseFile.SelectFiles.Request)
     
-    var chosenFiles: [ManagedFile] { get }
+    var chosenFiles: [File] { get }
     var encryption: Bool { get set }
 }
 

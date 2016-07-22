@@ -295,8 +295,16 @@
 				87FAC9EE1D34ECB600FE3602 /* KeyTypeScene */,
 				87FAC9EF1D34ECBE00FE3602 /* NumberOfKeysScene */,
 				8704DEC41D3D031A0017F88E /* ProvideKeyScene */,
+				873022651D4213DE00222606 /* EncryptedFileScene */,
 			);
 			name = "Home Stack";
+			sourceTree = "<group>";
+		};
+		873022651D4213DE00222606 /* EncryptedFileScene */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = EncryptedFileScene;
 			sourceTree = "<group>";
 		};
 		873419AB1D37CB21005D036C /* Layout */ = {

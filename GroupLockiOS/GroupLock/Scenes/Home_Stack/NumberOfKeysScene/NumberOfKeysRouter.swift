@@ -32,5 +32,6 @@ class NumberOfKeysRouter: NumberOfKeysRouterInput {
         let provideKeysViewController = segue.destinationViewController as! ProvideKeyViewController
         provideKeysViewController.output.numberOfKeys = (viewController.pickerView.selectedRowInComponent(0) + 1,
                                                          viewController.pickerView.selectedRowInComponent(1) + 1)
+        provideKeysViewController.output.files = viewController.output.files
     }
 }
