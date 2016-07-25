@@ -7,10 +7,14 @@
 //
 
 import UIKit
+import JSQDataSourcesKit
 
 class EncryptedFileDataSource: NSObject, UICollectionViewDataSource {
     
     private var viewModel: EncryptedFile.Fetch.ViewModel
+    
+    var cellProvider: FileCollectionViewCellProviderProtocol =
+        FileCollectionViewCellProvider(reuseIdentifier: "EncryptedFileCell")
     
     init(viewModel: EncryptedFile.Fetch.ViewModel) {
         self.viewModel = viewModel
@@ -22,9 +26,7 @@ class EncryptedFileDataSource: NSObject, UICollectionViewDataSource {
     
     func collectionView(collectionView: UICollectionView,
                         cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView
-            .dequeueReusableCellWithReuseIdentifier("EncryptedFileCell",
-                                                    forIndexPath: indexPath) as! FileCollectionViewCell
+        let cell = cellProvider.cell(for: collectionView, at: indexPath)
         let fileInfo = viewModel.fileInfo[indexPath.item]
         cell.filenameLabel.text = fileInfo.fileName
         cell.thumbnailView.image = fileInfo.fileThumbnail

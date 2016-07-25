@@ -48,6 +48,10 @@
 		8748018F1D36C434001A086C /* ChooseFileWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8748018B1D36C434001A086C /* ChooseFileWorkerTests.swift */; };
 		874801911D36CB8E001A086C /* PresentedDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874801901D36CB8E001A086C /* PresentedDataSourceTests.swift */; };
 		874BEC691CE9385400F6CDE9 /* ViewFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874BEC681CE9385400F6CDE9 /* ViewFileViewController.swift */; };
+		87671EC91D4622A100A0C353 /* EncryptedFileInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87671EC51D4622A100A0C353 /* EncryptedFileInteractorTests.swift */; };
+		87671ECA1D4622A100A0C353 /* EncryptedFilePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87671EC61D4622A100A0C353 /* EncryptedFilePresenterTests.swift */; };
+		87671ECB1D4622A100A0C353 /* EncryptedFileViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87671EC71D4622A100A0C353 /* EncryptedFileViewControllerTests.swift */; };
+		87671ECE1D46249100A0C353 /* EncryptedFileDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87671ECD1D46249100A0C353 /* EncryptedFileDataSourceTests.swift */; };
 		87736F121D3D49C200B93D7B /* KeyTypeConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87736F0C1D3D49C200B93D7B /* KeyTypeConfigurator.swift */; };
 		87736F131D3D49C200B93D7B /* KeyTypeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87736F0D1D3D49C200B93D7B /* KeyTypeInteractor.swift */; };
 		87736F141D3D49C200B93D7B /* KeyTypeModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87736F0E1D3D49C200B93D7B /* KeyTypeModels.swift */; };
@@ -57,6 +61,7 @@
 		87736F1F1D3D565300B93D7B /* KeyTypeViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87736F1B1D3D565300B93D7B /* KeyTypeViewControllerTests.swift */; };
 		877ED32F1CF7B1E300C5D0D4 /* UIViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877ED32E1CF7B1E300C5D0D4 /* UIViewControllerTests.swift */; };
 		877ED3351CF8B18900C5D0D4 /* NUICollectionViewCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877ED3341CF8B18900C5D0D4 /* NUICollectionViewCellTests.swift */; };
+		8789D1991D465CAF0000AA8D /* FileCollectionViewCellProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8789D1981D465CAF0000AA8D /* FileCollectionViewCellProvider.swift */; };
 		878AF3771CF10A4700CB247B /* KeyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878AF3761CF10A4700CB247B /* KeyType.swift */; };
 		878C29A31CF0B9D300323C9D /* FileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878C29A21CF0B9D300323C9D /* FileCollectionViewCell.swift */; };
 		878C29A51CF0D7E300323C9D /* KeyTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878C29A41CF0D7E300323C9D /* KeyTypeViewController.swift */; };
@@ -162,6 +167,10 @@
 		8748018B1D36C434001A086C /* ChooseFileWorkerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseFileWorkerTests.swift; sourceTree = "<group>"; };
 		874801901D36CB8E001A086C /* PresentedDataSourceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentedDataSourceTests.swift; sourceTree = "<group>"; };
 		874BEC681CE9385400F6CDE9 /* ViewFileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewFileViewController.swift; path = Scenes/Library_Stack/ViewFileViewController.swift; sourceTree = "<group>"; };
+		87671EC51D4622A100A0C353 /* EncryptedFileInteractorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncryptedFileInteractorTests.swift; sourceTree = "<group>"; };
+		87671EC61D4622A100A0C353 /* EncryptedFilePresenterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncryptedFilePresenterTests.swift; sourceTree = "<group>"; };
+		87671EC71D4622A100A0C353 /* EncryptedFileViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncryptedFileViewControllerTests.swift; sourceTree = "<group>"; };
+		87671ECD1D46249100A0C353 /* EncryptedFileDataSourceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncryptedFileDataSourceTests.swift; sourceTree = "<group>"; };
 		87736F0C1D3D49C200B93D7B /* KeyTypeConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyTypeConfigurator.swift; path = Scenes/Home_Stack/KeyTypeScene/KeyTypeConfigurator.swift; sourceTree = "<group>"; };
 		87736F0D1D3D49C200B93D7B /* KeyTypeInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyTypeInteractor.swift; path = Scenes/Home_Stack/KeyTypeScene/KeyTypeInteractor.swift; sourceTree = "<group>"; };
 		87736F0E1D3D49C200B93D7B /* KeyTypeModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyTypeModels.swift; path = Scenes/Home_Stack/KeyTypeScene/KeyTypeModels.swift; sourceTree = "<group>"; };
@@ -171,6 +180,7 @@
 		87736F1B1D3D565300B93D7B /* KeyTypeViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyTypeViewControllerTests.swift; sourceTree = "<group>"; };
 		877ED32E1CF7B1E300C5D0D4 /* UIViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerTests.swift; sourceTree = "<group>"; };
 		877ED3341CF8B18900C5D0D4 /* NUICollectionViewCellTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NUICollectionViewCellTests.swift; sourceTree = "<group>"; };
+		8789D1981D465CAF0000AA8D /* FileCollectionViewCellProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FileCollectionViewCellProvider.swift; path = Layout/FileCollectionViewCellProvider.swift; sourceTree = "<group>"; };
 		878AF3761CF10A4700CB247B /* KeyType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyType.swift; path = Supporting/KeyType.swift; sourceTree = "<group>"; };
 		878C29A21CF0B9D300323C9D /* FileCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FileCollectionViewCell.swift; path = Layout/FileCollectionViewCell.swift; sourceTree = "<group>"; };
 		878C29A41CF0D7E300323C9D /* KeyTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyTypeViewController.swift; path = Scenes/Home_Stack/KeyTypeScene/KeyTypeViewController.swift; sourceTree = "<group>"; };
@@ -334,6 +344,7 @@
 			children = (
 				874801811D3660D7001A086C /* CollectionViewLayoutProperties.swift */,
 				878C29A21CF0B9D300323C9D /* FileCollectionViewCell.swift */,
+				8789D1981D465CAF0000AA8D /* FileCollectionViewCellProvider.swift */,
 			);
 			name = Layout;
 			sourceTree = "<group>";
@@ -365,6 +376,17 @@
 				87B6927E1CB45188008ACB6A /* UIViewController.swift */,
 			);
 			name = "Class Extensions";
+			sourceTree = "<group>";
+		};
+		87671EC41D46226F00A0C353 /* EncryptedFileTests */ = {
+			isa = PBXGroup;
+			children = (
+				87671EC51D4622A100A0C353 /* EncryptedFileInteractorTests.swift */,
+				87671EC61D4622A100A0C353 /* EncryptedFilePresenterTests.swift */,
+				87671EC71D4622A100A0C353 /* EncryptedFileViewControllerTests.swift */,
+				87671ECD1D46249100A0C353 /* EncryptedFileDataSourceTests.swift */,
+			);
+			name = EncryptedFileTests;
 			sourceTree = "<group>";
 		};
 		877078441D33A47500A61E96 /* PasswordScene */ = {
@@ -509,6 +531,7 @@
 				874801871D36C3F8001A086C /* ChooseFileSceneTests */,
 				87736F181D3D562800B93D7B /* KeyTypeSceneTests */,
 				870DBF991D3F9BBB004430A5 /* NumberOfKeysSceneTests */,
+				87671EC41D46226F00A0C353 /* EncryptedFileTests */,
 				877ED3301CF7B1F000C5D0D4 /* ViewController Tests */,
 				87B072C61CC0E0C400916D09 /* NUI Tests */,
 				87B6922A1CB425E0008ACB6A /* Info.plist */,
@@ -853,6 +876,7 @@
 				87EA7C3F1D40C76D008FB4DA /* QRCode.swift in Sources */,
 				873ED7B61CDAAD5E005A8656 /* FileTableViewCell.swift in Sources */,
 				874BEC691CE9385400F6CDE9 /* ViewFileViewController.swift in Sources */,
+				8789D1991D465CAF0000AA8D /* FileCollectionViewCellProvider.swift in Sources */,
 				8730226F1D42197100222606 /* EncryptedFileModels.swift in Sources */,
 				87FFF04E1D34E9AE007315C7 /* ChooseFileConfigurator.swift in Sources */,
 				874801821D3660D7001A086C /* CollectionViewLayoutProperties.swift in Sources */,
@@ -910,6 +934,7 @@
 			files = (
 				87B072D91CC188EC00916D09 /* NUITabBarTests.swift in Sources */,
 				87FFF0411D33C020007315C7 /* PasswordViewControllerTests.swift in Sources */,
+				87671ECB1D4622A100A0C353 /* EncryptedFileViewControllerTests.swift in Sources */,
 				87B072E21CC1B7B300916D09 /* NUIPasswordViewTests.swift in Sources */,
 				877ED32F1CF7B1E300C5D0D4 /* UIViewControllerTests.swift in Sources */,
 				87C49EA11CF1EBDB006C0A83 /* NUIGeneralTableTests.swift in Sources */,
@@ -920,18 +945,21 @@
 				87AA218B1D4108BA00FDF227 /* ImageComparison.swift in Sources */,
 				87736F1D1D3D565300B93D7B /* KeyTypeInteractorTests.swift in Sources */,
 				87C49EA31CF1F0E5006C0A83 /* NUIGeneralButtonTests.swift in Sources */,
+				87671ECE1D46249100A0C353 /* EncryptedFileDataSourceTests.swift in Sources */,
 				87FFF0401D33C020007315C7 /* PasswordPresenterTests.swift in Sources */,
 				87AA21861D40DE8E00FDF227 /* QRCodeTests.swift in Sources */,
 				8748018F1D36C434001A086C /* ChooseFileWorkerTests.swift in Sources */,
 				871C6AE11CF1E8A7004C5B38 /* NUIGeneralViewTests.swift in Sources */,
 				87FFF03F1D33C020007315C7 /* PasswordInteractorTests.swift in Sources */,
 				8748018C1D36C434001A086C /* ChooseFileInteractorTests.swift in Sources */,
+				87671EC91D4622A100A0C353 /* EncryptedFileInteractorTests.swift in Sources */,
 				87B072D51CC1680F00916D09 /* NUINavigationBarTests.swift in Sources */,
 				8748018E1D36C434001A086C /* ChooseFileViewControllerTests.swift in Sources */,
 				87BC182B1CF8BF7F0023B417 /* NUIKeyTypeButtonTests.swift in Sources */,
 				874801911D36CB8E001A086C /* PresentedDataSourceTests.swift in Sources */,
 				877ED3351CF8B18900C5D0D4 /* NUICollectionViewCellTests.swift in Sources */,
 				87B072DB1CC1AB4200916D09 /* NUIBarButtonTests.swift in Sources */,
+				87671ECA1D4622A100A0C353 /* EncryptedFilePresenterTests.swift in Sources */,
 				8748018D1D36C434001A086C /* ChooseFilePresenterTests.swift in Sources */,
 				870DBFA01D3F9BE9004430A5 /* NumberOfKeysViewControllerTests.swift in Sources */,
 				87B072E71CC1B9F900916D09 /* NUIEnterPasswordLabelTests.swift in Sources */,
