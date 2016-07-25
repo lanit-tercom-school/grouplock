@@ -12,14 +12,19 @@ import android.os.Environment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Display;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.NumberPicker;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,8 +46,7 @@ import java.util.ArrayList;
 public class EncrImgAndQr extends AppCompatActivity {
 
 
-    ImageView IwEncrImg;
-    ImageView IwQr;
+    int VALUE_OF_ALPHA = 10;
 
     Bundle b;
     private ArrayList<LibraryEntry> filesToOperateWith;
@@ -50,18 +54,25 @@ public class EncrImgAndQr extends AppCompatActivity {
     int maxK;
     String nameFile;
 
+    ArrayList<Bitmap> QrCodes=new ArrayList<Bitmap>();
+    ArrayList<ImageButton> buttonList = new ArrayList<ImageButton>();
+    boolean[] viwedQR;
+
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Загрузка контента формы и toolbar
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_encr_img_and_qr);
+        Toolbar mToolbar = (Toolbar) findViewById(R.id.encr_img_and_qr_toolbar);
+        setSupportActionBar(mToolbar);
+        ActionBar ab = getSupportActionBar();
+        ab.setDisplayHomeAsUpEnabled(true);
 
-        IwEncrImg=(ImageView)findViewById(R.id.imageEncr);
-        IwQr=(ImageView)findViewById(R.id.imageQr);
 
+        // Получение необходимых данных, для шифрования файла
         b = getIntent().getExtras();
-
         minK = (Integer)b.get("minK");
         maxK = (Integer)b.get("maxK");
         Log.i("EncrImgAndQr",Integer.toString(minK));
@@ -70,16 +81,59 @@ public class EncrImgAndQr extends AppCompatActivity {
         nameFile=filesToOperateWith.get(0).getName();
         Log.i("EncrImgAndQr", filesToOperateWith.get(0).getName());
 
-      //  Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.cat3);
+        //Загружаем файл из библиотеки и шифруем его
         Bitmap bitmap = BitmapFactory.decodeFile(Environment.getExternalStorageDirectory().getAbsolutePath() + "/GroupLock/Decrypted/" + nameFile);
-
         Factory factory = new Factory(bitmap);
         IEncryption EncrClass = factory.getClass("bmp");
-        String Key=EncrClass.EncrImg();
+        EncrClass.EncrImg();
         Bitmap img=EncrClass.ResultEncr();
+        String[] Key = EncrClass.PartsOfSecret(minK, maxK);
 
+        // Выводим QR-коды:
+        Display display = getWindowManager().getDefaultDisplay();
+        DisplayMetrics metricsB = new DisplayMetrics();
+        display.getMetrics(metricsB);
+        double WidthScreen=metricsB.widthPixels*0.265;
+
+        int nKeys=Key.length;
+        viwedQR = new boolean[nKeys];
+        Log.i("cyvbjnk",Integer.toString(nKeys));
+        TableLayout tableLayout = (TableLayout) findViewById(R.id.tableLayout2);
+
+        for(int i=0;i<(nKeys/3)+1;i++){
+            TableRow tableRow = new TableRow(this);
+            tableRow.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            for(int j = 0; j < 3; j++) {
+                final int numberimage = i * 3 + j;
+                if (numberimage >= nKeys) break;
+                Bitmap QrOriginal = crQR(Key[numberimage]);
+                Bitmap QrNewSize = Bitmap.createScaledBitmap(QrOriginal, (int) WidthScreen,
+                        (int) WidthScreen, false);
+
+                buttonList.add(new ImageButton(this));
+                buttonList.get(numberimage).setImageBitmap(QrNewSize);
+                viwedQR[numberimage]=false;
+
+                buttonList.get(numberimage).setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View v) {
+                        if (!viwedQR[numberimage]) {
+                            Intent intent = new Intent(EncrImgAndQr.this, OpenQrActivity.class);
+                            intent.putExtra("QrCode", QrCodes.get(numberimage));
+                            startActivity(intent);
+
+                            buttonList.get(numberimage).setAlpha(VALUE_OF_ALPHA);
+                            viwedQR[numberimage]=true;
+                        }
+                    }
+                });
+                tableRow.addView(buttonList.get(numberimage), j);
+            }
+            tableLayout.addView(tableRow, i);
+        }
+
+
+        // Сохраняем получившейся результат
         String sdcardBmpPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/GroupLock/Encrypted/" + nameFile;
-
         SaveBMP bmpUtil = new SaveBMP();
         try {
             boolean isSaveResult = bmpUtil.save(img, sdcardBmpPath);
@@ -87,13 +141,14 @@ public class EncrImgAndQr extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        IwEncrImg.setImageBitmap(img);
-        Log.i("Sth", Key);
+        // Удаляем исходную картинку
         File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/GroupLock/Decrypted/", nameFile);
         file.delete();
+    }
 
-        //!!!!!!!!!!
 
+    public Bitmap crQR(String shifr){
+        Bitmap bitmap = null;
         WindowManager manager = (WindowManager) getSystemService(WINDOW_SERVICE);
         Display display = manager.getDefaultDisplay();
         Point point = new Point();
@@ -101,10 +156,10 @@ public class EncrImgAndQr extends AppCompatActivity {
         int width = point.x;
         int height = point.y;
         int smallerDimension = width < height ? width : height;
-        smallerDimension = smallerDimension /2;
+        smallerDimension = smallerDimension /3;
 
         //Encode with a QR Code image
-        QRCodeEncoder qrCodeEncoder = new QRCodeEncoder(Key,
+        QRCodeEncoder qrCodeEncoder = new QRCodeEncoder(shifr,
                 null,
                 "TEXT_TYPE",
                 BarcodeFormat.QR_CODE.toString(),
@@ -112,68 +167,13 @@ public class EncrImgAndQr extends AppCompatActivity {
 
 
         try {
-            Bitmap bitmap2 = qrCodeEncoder.encodeAsBitmap();
-            //ImageView myImage = (ImageView) findViewById(R.id.imageView1);
-            IwQr.setImageBitmap(bitmap2);
-
-
+            bitmap = qrCodeEncoder.encodeAsBitmap();
+            QrCodes.add(bitmap);
 
         } catch (WriterException e) {
             e.printStackTrace();
         }
-
-        //!!!!!!!!!!
-
-
-       /* Intent intent = getIntent();
-        Bitmap bm=intent.getParcelableExtra("image");
-        Iw.setImageBitmap(bm);*/
-
-        //Iw.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.cat));
-        /*goNext = (Button) findViewById(R.id.button3);
-        helpButton = (Button) findViewById(R.id.button4);*/
-
-
-        Toolbar mToolbar = (Toolbar) findViewById(R.id.keys_type_selection_toolbar);
-        setSupportActionBar(mToolbar);
-        ActionBar ab = getSupportActionBar();
-        ab.setDisplayHomeAsUpEnabled(true);
-
-        //EventListener for numberpickers
-
-
-        //EventListener for buttons
-        View.OnClickListener onClickListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                switch (v.getId()) {
-
-               /*     case R.id.button3: {
-                        if (check) {    //go to the next page if button active
-                            Intent intent = new Intent(EncrImgAndQr.this, ChooseToDoActivity.class);
-                            startActivity(intent);
-
-                        } else {        //info if button disable
-                            toast = Toast.makeText(getApplicationContext(),
-                                    R.string.infoNumbers,
-                                    Toast.LENGTH_SHORT);
-                            toast.show();
-                        }
-                        break;
-                    }
-                    case R.id.button4: { //info button
-                        toast = Toast.makeText(getApplicationContext(),
-                                R.string.infoNumbers,
-                                Toast.LENGTH_LONG);
-                        toast.show();
-                        break;
-                    }*/
-                }
-            }
-        };
-
-   //     goNext.setOnClickListener(onClickListener);
-   //     helpButton.setOnClickListener(onClickListener);
+        return bitmap;
     }
 
 

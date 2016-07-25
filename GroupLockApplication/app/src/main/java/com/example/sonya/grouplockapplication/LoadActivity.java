@@ -69,12 +69,12 @@ public class LoadActivity extends AppCompatActivity {
     //save image
     public void accDec(View view) {
         SaveImage(temp,"Decrypted");
-        Intent intent = new Intent(LoadActivity.this, LibraryActivity.class);
+        Intent intent = new Intent(LoadActivity.this, ChooseToDoActivity.class);
         startActivity(intent);
     }
     public void accEnc(View view) {
         SaveImage(temp, "Encrypted");
-        Intent intent = new Intent(LoadActivity.this, LibraryActivity.class);
+        Intent intent = new Intent(LoadActivity.this, ChooseToDoActivity.class);
         startActivity(intent);
     }
 

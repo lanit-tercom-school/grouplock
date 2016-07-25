@@ -65,6 +65,14 @@
             android:label="DecrImg"
             android:screenOrientation="portrait">
         </activity>
+        <activity android:name=".OutputQrActivity"
+            android:label="OutputQrActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".OpenQrActivity"
+            android:label="OpenQrActivity"
+            android:screenOrientation="portrait">
+        </activity>
 
 
     </application>

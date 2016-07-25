@@ -18,7 +18,7 @@ public class EncrBMP implements IEncryption {
         keyForDecr=keyDecr;
     }*/
 
-    public String EncrImg(){
+    public void EncrImg(){
 
         /*
            Алгоритм шифрования BMP
@@ -27,7 +27,7 @@ public class EncrBMP implements IEncryption {
         check Shifr = new check(image);
         Shifr.encr();
         image=Shifr.result;
-        return Shifr.key;
+        keyForDecr = Shifr.key;
     }
 
     public Bitmap ResultEncr(){
@@ -39,5 +39,10 @@ public class EncrBMP implements IEncryption {
         Deshifr.decr(DecrKey);
         image=Deshifr.result;
         return image;
+    }
+
+    public String[] PartsOfSecret(int minK, int maxK){
+        SecretSharing Sec=new SecretSharing(keyForDecr,minK,maxK);
+        return Sec.Sharing();
     }
 }

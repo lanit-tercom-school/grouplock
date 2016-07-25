@@ -19,5 +19,7 @@
     <color name="colorPasswordCorrect">#4CAF4D</color>
     <color name="colorPasswordIncorrect">#FF5222</color>
 
+    <!--- for Library -->
+    <color name="colorFiles">#7397AC</color>
 
 </resources>

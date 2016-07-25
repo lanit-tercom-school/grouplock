@@ -290,7 +290,7 @@ public class LibraryActivity extends AppCompatActivity {
     public void goToNextStep(View v) {
 
         if (currentLibraryState == LibraryState.ENCRYPT_SELECTING) {
-            Intent intent = new Intent(this, KeysTypeSelectionActivity.class);
+            Intent intent = new Intent(this, NumberOfKeysActivity.class);
             /* Pass files list to new activity */
             intent.putExtra("files", filesToOperateWith);
             startActivity(intent);
