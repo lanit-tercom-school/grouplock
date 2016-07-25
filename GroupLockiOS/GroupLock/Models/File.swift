@@ -21,6 +21,13 @@ struct File: Equatable {
         type = managedFile.type
         contents = managedFile.contents
     }
+    
+    init(name: String, type: String, encrypted: Bool, contents: NSData?) {
+        self.name = name
+        self.type = type
+        self.encrypted = encrypted
+        self.contents = contents
+    }
 }
 
 func ==(lhs: File, rhs: File) -> Bool {

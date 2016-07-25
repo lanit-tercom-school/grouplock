@@ -34,7 +34,7 @@ class ChooseFileViewController: UICollectionViewController, ChooseFileViewContro
     var router: ChooseFileRouter!
     
     private typealias FileInfo = ChooseFile.Configure.ViewModel.FileInfo
-    private typealias CollectionViewCellFactory = ViewFactory<FileInfo, ChooseFileViewCell>
+    private typealias CollectionViewCellFactory = ViewFactory<FileInfo, FileCollectionViewCell>
     private typealias DataSource = FetchedResultsController<ManagedFile>
     private typealias FileInfoFetchedResultsController = PresentedDataSource<DataSource, FileInfo>
     private var dataSourceProvider: DataSourceProvider<FileInfoFetchedResultsController,
@@ -87,15 +87,15 @@ class ChooseFileViewController: UICollectionViewController, ChooseFileViewContro
         
         let cellFactory = ViewFactory(reuseIdentifier: "fileToProcessCell")
         { (cell, item: ChooseFile.Configure.ViewModel.FileInfo?,
-            type, parentView, indexPath) -> ChooseFileViewCell in
+            type, parentView, indexPath) -> FileCollectionViewCell in
             
             cell.filenameLabel.text = item?.name
             cell.thumbnailView.image = item?.thumbnail
             
             if !cell.selected {
-                self.visualizeDeselection(forCell: cell)
+                cell.visualizeDeselection()
             } else {
-                self.visualizeSelection(forCell: cell)
+                cell.visualizeSelection()
             }
             
             return cell
@@ -121,24 +121,15 @@ class ChooseFileViewController: UICollectionViewController, ChooseFileViewContro
         
         collectionView?.dataSource = dataSourceProvider.collectionViewDataSource
     }
-    
-    private func visualizeSelection(forCell cell: UICollectionViewCell) {
-        cell.layer.borderWidth = CGFloat(NUISettings.getFloat("selected-border-width",
-            withClass: "CollectionViewCell"))
-    }
-    
-    private func visualizeDeselection(forCell cell: UICollectionViewCell) {
-        cell.layer.borderWidth = 0
-    }
 
     // MARK: - UICollectionViewDelegate
     
     override func collectionView(collectionView: UICollectionView,
                                  didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
-        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! ChooseFileViewCell
+        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! FileCollectionViewCell
         
-        visualizeSelection(forCell: cell)
+        cell.visualizeSelection()
         nextButton.enabled = true
         let request = ChooseFile.SelectFiles.Request(indexPath: indexPath)
         output.fileSelected(request)
@@ -147,8 +138,8 @@ class ChooseFileViewController: UICollectionViewController, ChooseFileViewContro
     override func collectionView(collectionView: UICollectionView,
                                  didDeselectItemAtIndexPath indexPath: NSIndexPath) {
         
-        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! ChooseFileViewCell
-        visualizeDeselection(forCell: cell)
+        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! FileCollectionViewCell
+        cell.visualizeDeselection()
         
         let request = ChooseFile.SelectFiles.Request(indexPath: indexPath)
         output.fileDeselected(request)

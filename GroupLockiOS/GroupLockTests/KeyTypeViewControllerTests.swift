@@ -60,7 +60,7 @@ class KeyTypeViewControllerTests: XCTestCase {
         var setKeyType_called = false
         var receivedKeyName = "none"
         
-        var files: [ManagedFile]!
+        var files: [File]!
         var keyType = Seeds.SetKeyType.defaultKeyType
         
         func setKeyType(request: KeyTypeModels.SetType.Request) {
