@@ -13,7 +13,7 @@ protocol KeyTypeViewControllerInput {
 }
 
 protocol KeyTypeViewControllerOutput {
-    var files: [File]! { get set }
+    var files: [File] { get set }
     var keyType: KeyType { get }
     
     func setKeyType(request: KeyTypeModels.SetType.Request)

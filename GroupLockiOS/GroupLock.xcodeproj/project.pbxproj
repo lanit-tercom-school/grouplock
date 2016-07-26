@@ -17,6 +17,8 @@
 		8704DED01D3D03990017F88E /* ProvideKeyRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8704DEC91D3D03990017F88E /* ProvideKeyRouter.swift */; };
 		8704DED11D3D03990017F88E /* ProvideKeyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8704DECA1D3D03990017F88E /* ProvideKeyViewController.swift */; };
 		8704DED51D3D08320017F88E /* Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8704DED41D3D08320017F88E /* Crypto.swift */; };
+		870D094F1D47701000B65A0C /* EncryptedFileModelsComparison.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870D094E1D47701000B65A0C /* EncryptedFileModelsComparison.swift */; };
+		870D09511D477E8D00B65A0C /* EquatableModel+XCTAssertEqual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870D09501D477E8D00B65A0C /* EquatableModel+XCTAssertEqual.swift */; };
 		870DBF921D3F932C004430A5 /* NumberOfKeysConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870DBF8C1D3F932C004430A5 /* NumberOfKeysConfigurator.swift */; };
 		870DBF931D3F932C004430A5 /* NumberOfKeysInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870DBF8D1D3F932C004430A5 /* NumberOfKeysInteractor.swift */; };
 		870DBF941D3F932C004430A5 /* NumberOfKeysModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870DBF8E1D3F932C004430A5 /* NumberOfKeysModels.swift */; };
@@ -67,6 +69,7 @@
 		878C29A51CF0D7E300323C9D /* KeyTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878C29A41CF0D7E300323C9D /* KeyTypeViewController.swift */; };
 		879797081CCFA61E0064C3AC /* ManagedFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879797041CCFA61E0064C3AC /* ManagedFile.swift */; };
 		8797970E1CCFEFB20064C3AC /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8797970D1CCFEFB20064C3AC /* LibraryViewController.swift */; };
+		87A2081B1D48025200793B54 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A2081A1D48025200793B54 /* Extensions.swift */; };
 		87AA21861D40DE8E00FDF227 /* QRCodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87AA21851D40DE8E00FDF227 /* QRCodeTests.swift */; };
 		87AA21881D40F01C00FDF227 /* QR-Code.png in Resources */ = {isa = PBXBuildFile; fileRef = 87AA21871D40F01C00FDF227 /* QR-Code.png */; };
 		87AA218B1D4108BA00FDF227 /* ImageComparison.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87AA218A1D4108BA00FDF227 /* ImageComparison.swift */; };
@@ -137,6 +140,8 @@
 		8704DEC91D3D03990017F88E /* ProvideKeyRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProvideKeyRouter.swift; path = Scenes/Home_Stack/ProvideKeyScene/ProvideKeyRouter.swift; sourceTree = "<group>"; };
 		8704DECA1D3D03990017F88E /* ProvideKeyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProvideKeyViewController.swift; path = Scenes/Home_Stack/ProvideKeyScene/ProvideKeyViewController.swift; sourceTree = "<group>"; };
 		8704DED41D3D08320017F88E /* Crypto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Crypto.swift; path = Core/Crypto.swift; sourceTree = "<group>"; };
+		870D094E1D47701000B65A0C /* EncryptedFileModelsComparison.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncryptedFileModelsComparison.swift; sourceTree = "<group>"; };
+		870D09501D477E8D00B65A0C /* EquatableModel+XCTAssertEqual.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EquatableModel+XCTAssertEqual.swift"; sourceTree = "<group>"; };
 		870DBF8C1D3F932C004430A5 /* NumberOfKeysConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NumberOfKeysConfigurator.swift; path = Scenes/Home_Stack/NumberOfKeysScene/NumberOfKeysConfigurator.swift; sourceTree = "<group>"; };
 		870DBF8D1D3F932C004430A5 /* NumberOfKeysInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NumberOfKeysInteractor.swift; path = Scenes/Home_Stack/NumberOfKeysScene/NumberOfKeysInteractor.swift; sourceTree = "<group>"; };
 		870DBF8E1D3F932C004430A5 /* NumberOfKeysModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NumberOfKeysModels.swift; path = Scenes/Home_Stack/NumberOfKeysScene/NumberOfKeysModels.swift; sourceTree = "<group>"; };
@@ -188,6 +193,7 @@
 		879796E81CCF9B4F0064C3AC /* NUIParse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NUIParse.framework; path = "../../../Library/Developer/Xcode/DerivedData/GroupLock-buohvxdmrbgottfowybkjnxebhfv/Build/Products/Debug-iphoneos/NUIParse.framework"; sourceTree = "<group>"; };
 		879797041CCFA61E0064C3AC /* ManagedFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagedFile.swift; path = CoreData/ManagedFile.swift; sourceTree = "<group>"; };
 		8797970D1CCFEFB20064C3AC /* LibraryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LibraryViewController.swift; path = Scenes/Library_Stack/LibraryViewController.swift; sourceTree = "<group>"; };
+		87A2081A1D48025200793B54 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		87AA21851D40DE8E00FDF227 /* QRCodeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeTests.swift; sourceTree = "<group>"; };
 		87AA21871D40F01C00FDF227 /* QR-Code.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "QR-Code.png"; sourceTree = "<group>"; };
 		87AA218A1D4108BA00FDF227 /* ImageComparison.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageComparison.swift; sourceTree = "<group>"; };
@@ -385,6 +391,7 @@
 				87671EC61D4622A100A0C353 /* EncryptedFilePresenterTests.swift */,
 				87671EC71D4622A100A0C353 /* EncryptedFileViewControllerTests.swift */,
 				87671ECD1D46249100A0C353 /* EncryptedFileDataSourceTests.swift */,
+				870D094E1D47701000B65A0C /* EncryptedFileModelsComparison.swift */,
 			);
 			name = EncryptedFileTests;
 			sourceTree = "<group>";
@@ -448,6 +455,8 @@
 			isa = PBXGroup;
 			children = (
 				87AA218A1D4108BA00FDF227 /* ImageComparison.swift */,
+				870D09501D477E8D00B65A0C /* EquatableModel+XCTAssertEqual.swift */,
+				87A2081A1D48025200793B54 /* Extensions.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -934,6 +943,7 @@
 			files = (
 				87B072D91CC188EC00916D09 /* NUITabBarTests.swift in Sources */,
 				87FFF0411D33C020007315C7 /* PasswordViewControllerTests.swift in Sources */,
+				870D094F1D47701000B65A0C /* EncryptedFileModelsComparison.swift in Sources */,
 				87671ECB1D4622A100A0C353 /* EncryptedFileViewControllerTests.swift in Sources */,
 				87B072E21CC1B7B300916D09 /* NUIPasswordViewTests.swift in Sources */,
 				877ED32F1CF7B1E300C5D0D4 /* UIViewControllerTests.swift in Sources */,
@@ -951,6 +961,7 @@
 				8748018F1D36C434001A086C /* ChooseFileWorkerTests.swift in Sources */,
 				871C6AE11CF1E8A7004C5B38 /* NUIGeneralViewTests.swift in Sources */,
 				87FFF03F1D33C020007315C7 /* PasswordInteractorTests.swift in Sources */,
+				87A2081B1D48025200793B54 /* Extensions.swift in Sources */,
 				8748018C1D36C434001A086C /* ChooseFileInteractorTests.swift in Sources */,
 				87671EC91D4622A100A0C353 /* EncryptedFileInteractorTests.swift in Sources */,
 				87B072D51CC1680F00916D09 /* NUINavigationBarTests.swift in Sources */,
@@ -959,6 +970,7 @@
 				874801911D36CB8E001A086C /* PresentedDataSourceTests.swift in Sources */,
 				877ED3351CF8B18900C5D0D4 /* NUICollectionViewCellTests.swift in Sources */,
 				87B072DB1CC1AB4200916D09 /* NUIBarButtonTests.swift in Sources */,
+				870D09511D477E8D00B65A0C /* EquatableModel+XCTAssertEqual.swift in Sources */,
 				87671ECA1D4622A100A0C353 /* EncryptedFilePresenterTests.swift in Sources */,
 				8748018D1D36C434001A086C /* ChooseFilePresenterTests.swift in Sources */,
 				870DBFA01D3F9BE9004430A5 /* NumberOfKeysViewControllerTests.swift in Sources */,

@@ -23,13 +23,16 @@ extension UIImage {
         return originalData == data
     }
     
-    private var normilizedData: NSData {
+    private var normilizedData: NSData? {
         let sizeInPixels = CGSize(width: size.width * scale, height: size.height * scale)
         UIGraphicsBeginImageContext(sizeInPixels)
         drawInRect(CGRect(x: 0, y: 0, width: sizeInPixels.width, height: sizeInPixels.height))
         let drawnImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        return UIImagePNGRepresentation(drawnImage)!
+        if let drawnImage = drawnImage {
+            return UIImagePNGRepresentation(drawnImage)
+        }
+        return nil
     }
 }
 

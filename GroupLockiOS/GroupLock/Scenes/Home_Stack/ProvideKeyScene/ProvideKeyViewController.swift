@@ -15,7 +15,7 @@ protocol ProvideKeyViewControllerInput {
 }
 
 protocol ProvideKeyViewControllerOutput {
-    var files: [File]! { get set }
+    var files: [File] { get set }
     var numberOfKeys: (Int, Int) { get set }
     
     func getKeys(request: ProvideKey.Configure.Request)

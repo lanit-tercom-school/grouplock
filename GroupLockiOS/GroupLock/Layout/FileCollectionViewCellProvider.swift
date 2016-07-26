@@ -13,11 +13,11 @@ protocol FileCollectionViewCellProviderProtocol {
     func cell(for collectionView: UICollectionView, at: NSIndexPath) -> FileCollectionViewCell
 }
 
-class FileCollectionViewCellProvider: FileCollectionViewCellProviderProtocol {
+struct FileCollectionViewCellProvider: FileCollectionViewCellProviderProtocol {
     
     private var reuseIdentifier: String
     
-    required init(reuseIdentifier: String) {
+    init(reuseIdentifier: String) {
         self.reuseIdentifier = reuseIdentifier
     }
     

@@ -31,5 +31,8 @@ struct File: Equatable {
 }
 
 func ==(lhs: File, rhs: File) -> Bool {
-    return lhs.contents == rhs.contents
+    return lhs.name == rhs.name
+        && lhs.type == rhs.type
+        && lhs.encrypted == rhs.encrypted
+        && lhs.contents == rhs.contents
 }

@@ -9,7 +9,7 @@
 import Foundation
 
 protocol ProvideKeyInteractorInput {
-    var files: [File]! { get set }
+    var files: [File] { get set }
     var numberOfKeys: (Int, Int) { get set }
     
     func getKeys(request: ProvideKey.Configure.Request)
@@ -24,7 +24,7 @@ class ProvideKeyInteractor: ProvideKeyInteractorInput {
     
     var output: ProvideKeyInteractorOutput!
     
-    var files: [File]!
+    var files: [File] = []
     
     // MARK: - Business logic
     

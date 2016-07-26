@@ -9,7 +9,7 @@
 import UIKit
 
 protocol EncryptedFileInteractorInput {
-    var encryptedFiles: [File]! { get set }
+    var encryptedFiles: [File] { get set }
     
     func fetchFiles(request: EncryptedFile.Fetch.Request)
     func prepareFilesForSharing(request: EncryptedFile.Share.Request)
@@ -40,7 +40,7 @@ class EncryptedFileInteractor: EncryptedFileInteractorInput {
     
     // MARK: - Business logic
     
-    var encryptedFiles: [File]!/* = HardcodedFiles.ef */
+    var encryptedFiles: [File] = []/* = HardcodedFiles.ef */
     
     private var selectedFiles = Set<NSIndexPath>()
     

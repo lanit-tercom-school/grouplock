@@ -65,7 +65,7 @@ class NumberOfKeysViewControllerTests: XCTestCase {
     
     class NumberOfKeysViewControllerOutputStub: NumberOfKeysViewControllerOutput {
         var numberOfKeys = Seeds.PickerViewDataSource.numberOfKeys
-        var files: [File]!
+        var files: [File] = []
     }
     
     class NumberOfKeysRouterSpy: NumberOfKeysRouter {

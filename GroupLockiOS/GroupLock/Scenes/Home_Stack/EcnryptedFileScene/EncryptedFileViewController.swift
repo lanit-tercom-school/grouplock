@@ -14,7 +14,7 @@ protocol EncryptedFileViewControllerInput {
 }
 
 protocol EncryptedFileViewControllerOutput {
-    var encryptedFiles: [File]! { get set }
+    var encryptedFiles: [File] { get set }
     
     func fetchFiles(request: EncryptedFile.Fetch.Request)
     func prepareFilesForSharing(request: EncryptedFile.Share.Request)
