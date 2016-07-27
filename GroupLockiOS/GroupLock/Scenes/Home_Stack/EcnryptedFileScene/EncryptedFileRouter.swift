@@ -26,7 +26,6 @@ class EncryptedFileRouter: EncryptedFileRouterInput {
     
     func passDataToNextScene(segue: UIStoryboardSegue) {
         
-        
     }
     
 }

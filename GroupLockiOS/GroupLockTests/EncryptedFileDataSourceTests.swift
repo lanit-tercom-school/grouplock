@@ -38,7 +38,8 @@ class EncryptedFileDataSourceTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        sut = EncryptedFileDataSource(viewModel: Seeds.viewModel)
+        sut = EncryptedFileDataSource()
+        sut.updateViewModel(Seeds.viewModel)
         
         sut.cellProvider = FileCollectionViewCellProviderStub(reuseIdentifier: "Dummy")
         

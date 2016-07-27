@@ -28,34 +28,22 @@ class EncryptedFileViewController: UICollectionViewController, EncryptedFileView
     var output: EncryptedFileViewControllerOutput!
     var router: EncryptedFileRouter!
     
-    var collectionViewDataSource: UICollectionViewDataSource!
+    var collectionViewDataSource: EncryptedFileDataSourceProtocol = EncryptedFileDataSource()
+    var collectionViewConfigurator: CollectionViewConfigurator = FileCollectionViewConfigurator()
     
     // MARK: - View Controller lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configureCollectionView()
+        collectionViewConfigurator.configure(collectionView!, allowsMultipleSelection: true)
         output.fetchFiles(EncryptedFile.Fetch.Request())
     }
     
     // MARK: - Display logic
     
-    private func configureCollectionView() {
-        
-        collectionView?.applyNUI()
-        collectionView?.allowsMultipleSelection = true
-        
-        guard let collectionViewLayout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout else {
-            return
-        }
-        
-        CollectionViewGridLayout.setCollectionViewFlowLayout(for: collectionView!,
-                                                             withBaseLayout: collectionViewLayout)
-    }
-    
     func displayFiles(viewModel: EncryptedFile.Fetch.ViewModel) {
-        collectionViewDataSource = EncryptedFileDataSource(viewModel: viewModel)
+        collectionViewDataSource.updateViewModel(viewModel)
         collectionView?.dataSource = collectionViewDataSource
         collectionView?.reloadData()
     }

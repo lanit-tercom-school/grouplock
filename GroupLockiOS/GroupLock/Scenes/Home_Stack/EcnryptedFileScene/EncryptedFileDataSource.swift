@@ -7,16 +7,19 @@
 //
 
 import UIKit
-import JSQDataSourcesKit
 
-class EncryptedFileDataSource: NSObject, UICollectionViewDataSource {
+protocol EncryptedFileDataSourceProtocol: UICollectionViewDataSource {
+    func updateViewModel(viewModel: EncryptedFile.Fetch.ViewModel)
+}
+
+class EncryptedFileDataSource: NSObject, EncryptedFileDataSourceProtocol {
     
-    private var viewModel: EncryptedFile.Fetch.ViewModel
+    private var viewModel: EncryptedFile.Fetch.ViewModel!
     
     var cellProvider: FileCollectionViewCellProviderProtocol =
         FileCollectionViewCellProvider(reuseIdentifier: "EncryptedFileCell")
     
-    init(viewModel: EncryptedFile.Fetch.ViewModel) {
+    func updateViewModel(viewModel: EncryptedFile.Fetch.ViewModel) {
         self.viewModel = viewModel
     }
 
