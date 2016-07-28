@@ -1,0 +1,21 @@
+﻿Сборка начата 14.07.2016 14:35:46.
+     1>Проект "d:\MyDoc\visual studio 2015\Projects\sodium7\sodium7\sodium7.vcxproj" в узле 2 (целевые объекты Build).
+     1>ClCompile:
+         D:\Программы\Новая папка (2)\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /sdl /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Release\\" /Fd"Release\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt sodium7.cpp stdafx.cpp
+         sodium7.cpp
+         stdafx.cpp
+       Link:
+         D:\Программы\Новая папка (2)\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"d:\MyDoc\visual studio 2015\Projects\sodium7\Release\sodium7.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"d:\MyDoc\visual studio 2015\Projects\sodium7\Release\sodium7.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG:incremental /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"d:\MyDoc\visual studio 2015\Projects\sodium7\Release\sodium7.lib" /MACHINE:X86 /SAFESEH Release\sodium7.obj
+         Release\stdafx.obj
+         libsodium1010msvc\Win32\Release\v140\dynamic\libsodium.lib
+         Создание кода
+         0 of 79 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+           0 functions were new in current compilation
+           0 functions had inline decision re-evaluated but remain unchanged
+         Создание кода завершено
+         sodium7.vcxproj -> d:\MyDoc\visual studio 2015\Projects\sodium7\Release\sodium7.exe
+     1>Сборка проекта "d:\MyDoc\visual studio 2015\Projects\sodium7\sodium7\sodium7.vcxproj" завершена (целевые объекты Build).
+
+Сборка успешно завершена.
+
+Затраченное время: 00:00:00.99
