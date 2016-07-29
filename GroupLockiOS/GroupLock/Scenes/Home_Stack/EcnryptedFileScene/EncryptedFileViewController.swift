@@ -44,12 +44,12 @@ class EncryptedFileViewController: UICollectionViewController, EncryptedFileView
     
     func displayFiles(viewModel: EncryptedFile.Fetch.ViewModel) {
         collectionViewDataSource.updateViewModel(viewModel)
-        collectionView?.dataSource = collectionViewDataSource
-        collectionView?.reloadData()
+        collectionView!.dataSource = collectionViewDataSource
+        collectionView!.reloadData()
     }
     
     func displaySharingInterface(response: EncryptedFile.Share.Response) {
-        
+        // TODO: Disable Share button if no files were selected
         let activityViewController = UIActivityViewController(activityItems: response.dataToShare,
                                                               applicationActivities: nil)
         
