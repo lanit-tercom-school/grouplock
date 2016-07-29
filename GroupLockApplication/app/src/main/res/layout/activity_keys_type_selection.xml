@@ -2,13 +2,14 @@
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                tools:context="com.example.sonya.grouplockapplication.KeysTypeSelectionActivity">
+                tools:context="com.example.sonya.grouplockapplication.KeysTypeSelectionActivity"
+    android:background="@color/colorBackGround">
 
     <android.support.v7.widget.Toolbar
             android:id="@+id/keys_type_selection_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
+            android:background="@color/colorToolbar"
             android:elevation="4dp"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
 

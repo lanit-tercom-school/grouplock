@@ -87,7 +87,9 @@ public class LibraryEntry extends File implements Parcelable {
      *
      */
     public boolean canBeSelected() {
-        return !isDirectory() && getName().endsWith(".jpg");
+        return !isDirectory() && (getName().endsWith(".jpg")||getName().endsWith(".JPG")||
+                getName().endsWith(".jepg")||getName().endsWith(".JEPG")||
+                getName().endsWith(".bmp")||getName().endsWith(".BMP"));
     }
 
     @Override
