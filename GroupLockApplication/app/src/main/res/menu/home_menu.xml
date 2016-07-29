@@ -10,6 +10,7 @@
             app:showAsAction="always"
             android:title="@string/activity_home">
 
+
             <menu>
                 <!-- Home / will display always -->
                 <item android:id="@+id/home"

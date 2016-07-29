@@ -15,6 +15,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.io.IOException;
+import java.lang.String;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
@@ -31,16 +33,22 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 
+import com.example.sonya.grouplockapplication.Encryption.SaveBMP;
+
 public class LoadActivity extends AppCompatActivity {
     private static int RESULT_LOAD_IMG = 1;
     String imgDecodableString;
-    File destination;
+    String nameFile;
+  //  File destination;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.load_layout);
 
-        Toolbar mToolbar = (Toolbar) findViewById(R.id.keys_type_selection_toolbar);
+      /*  Toolbar mToolbar = (Toolbar) findViewById(R.id.keys_type_selection_toolbar);
+        setSupportActionBar(mToolbar);*/
+
+        Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar_actionbar);
         setSupportActionBar(mToolbar);
         ActionBar ab = getSupportActionBar();
         ab.setDisplayHomeAsUpEnabled(true);
@@ -61,12 +69,12 @@ public class LoadActivity extends AppCompatActivity {
     //save image
     public void accDec(View view) {
         SaveImage(temp,"Decrypted");
-        Intent intent = new Intent(LoadActivity.this, LibraryActivity.class);
+        Intent intent = new Intent(LoadActivity.this, ChooseToDoActivity.class);
         startActivity(intent);
     }
     public void accEnc(View view) {
         SaveImage(temp, "Encrypted");
-        Intent intent = new Intent(LoadActivity.this, LibraryActivity.class);
+        Intent intent = new Intent(LoadActivity.this, ChooseToDoActivity.class);
         startActivity(intent);
     }
 
@@ -92,6 +100,12 @@ public class LoadActivity extends AppCompatActivity {
 
                 int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
                 imgDecodableString = cursor.getString(columnIndex);
+
+                nameFile=String.copyValueOf(imgDecodableString.toCharArray(),
+                        imgDecodableString.lastIndexOf('/')+1,
+                        imgDecodableString.length() - imgDecodableString.lastIndexOf('/')-1);
+
+              //  Log.i("WTF????", nameFile);
                 cursor.close();
                 ImageView imgView = (ImageView) findViewById(R.id.imgView);
                 // Set the Image in ImageView after decoding the String
@@ -114,23 +128,35 @@ public class LoadActivity extends AppCompatActivity {
     //save image in externalStorage
     private void SaveImage(Bitmap finalBitmap, String str) {
         String root = Environment.getExternalStorageDirectory().toString();
-        File myDir = new File(root + "/GroupLock/" + str);
-        myDir.mkdirs();
-        Random generator = new Random();
-        int n = 10000;
-        n = generator.nextInt(n);
-        String fname = "Image-"+ n +".jpg";
-        File file = new File (myDir, fname);
-        if (file.exists ()) file.delete ();
-        try {
-            FileOutputStream out = new FileOutputStream(file);
-            finalBitmap.compress(Bitmap.CompressFormat.JPEG, 90, out);
-            out.flush();
-            out.close();
 
-        } catch (Exception e) {
-            e.printStackTrace();
+        String typeFile=String.copyValueOf(nameFile.toCharArray(), nameFile.lastIndexOf('.') + 1,
+                nameFile.length() - nameFile.lastIndexOf('.') - 1);
+
+        if (typeFile.equals("jpg")||typeFile.equals("jpeg")||
+                typeFile.equals("JPG")||typeFile.equals("JPEG")) {
+            try {
+                File myDir = new File(root + "/GroupLock/" + str);
+                myDir.mkdirs();
+                File file = new File (myDir, nameFile);
+                if (file.exists ()) file.delete ();
+                FileOutputStream out = new FileOutputStream(file);
+                finalBitmap.compress(Bitmap.CompressFormat.JPEG, 90, out);
+                out.flush();
+                out.close();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else if (typeFile.equals("bmp")||typeFile.equals("BMP")) {
+            SaveBMP SB = new SaveBMP();
+            try {
+                SB.save(finalBitmap, root + "/GroupLock/" + str + "/" + nameFile);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
+
+
     }
 
     @Override

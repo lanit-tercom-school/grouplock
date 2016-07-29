@@ -28,6 +28,7 @@
         android:layout_alignRight="@id/textEntryName"
         android:focusableInTouchMode="false"
         android:clickable="false"
-        android:focusable="false"/>
+        android:focusable="false"
+        android:buttonTint="#75ad77"/>
 
 </RelativeLayout>
