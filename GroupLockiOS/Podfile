@@ -5,6 +5,8 @@ use_frameworks!
 def shared_pods
     pod 'NUI', :git => 'https://github.com/broadwaylamb/nui.git', :branch => 'grouplock'
     pod 'JSQDataSourcesKit'
+    pod 'JSQCoreDataKit'
+    pod 'Agrume', :git => 'https://github.com/JanGorman/Agrume.git'
 end
 
 target 'GroupLock' do
