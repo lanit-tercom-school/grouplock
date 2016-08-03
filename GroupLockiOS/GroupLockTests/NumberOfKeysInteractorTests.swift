@@ -11,6 +11,10 @@ import XCTest
 
 class NumberOfKeysInteractorTests: XCTestCase {
 
+    struct Seeds {
+        static let maximumNumberOfKeys = 42
+    }
+
     // MARK: Subject under test
     var sut: NumberOfKeysInteractor!
 
@@ -23,17 +27,33 @@ class NumberOfKeysInteractorTests: XCTestCase {
 
     // MARK: - Test doubles
 
+    class CryptoWrapperFake: CryptoWrapperProtocol {
+
+        let maximumNumberOfKeys = Seeds.maximumNumberOfKeys
+
+        func getKeys(min min: Int, max: Int) -> [String] {
+            return []
+        }
+
+        func encryptImage(image image: NSData, withEncryptionKey key: String) -> NSData {
+            return NSData()
+        }
+    }
+
     // MARK: - Tests
 
     func test_ThatNumberOfKeysInteractor_FetchesMaximumNumberOfKeysFromCrypto() {
 
         // Given
-        let expectedNumber = Crypto.maximumNumberOfKeys
+        let cryptoWrapperFake = CryptoWrapperFake()
+        sut.cryptoLibrary = cryptoWrapperFake
+
 
         // When
         let returnedNumber = sut.numberOfKeys
 
         // Then
+        let expectedNumber = Seeds.maximumNumberOfKeys
         XCTAssertEqual(expectedNumber, returnedNumber,
                        "NumberOfKeysInteractor should fetch maximum number of keys from the Crypto class")
     }

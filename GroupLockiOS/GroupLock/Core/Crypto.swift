@@ -9,7 +9,10 @@
 import CoreImage
 
 /// Wrapper for the crypto library
-class Crypto {
+protocol CryptoWrapperProtocol {
+
+    /// Provides a maximum number of keys that can be generated
+    var maximumNumberOfKeys: Int { get }
 
     /**
      Forms a request for the crypto library to provide an array of decryption keys.
@@ -19,11 +22,7 @@ class Crypto {
 
      - returns: An array of decryption keys constructed by a crypto library.
      */
-    static func getKeys(min min: Int, max: Int) -> [String] {
-
-        // implementation goes here
-        return [Int](1...max).map { String($0) }
-    }
+    func getKeys(min min: Int, max: Int) -> [String]
 
     /**
      Forms a request for the crypto library to encrypt given image using given encryption key.
@@ -33,12 +32,23 @@ class Crypto {
 
      - returns: Encrypted image
      */
-    static func encryptImage(image image: NSData, withEncryptionKey key: String) -> NSData {
+    func encryptImage(image image: NSData, withEncryptionKey key: String) -> NSData
+}
+
+/// Default implementation of the `CryptoWrapperProtocol`
+class Crypto: CryptoWrapperProtocol {
+
+    func getKeys(min min: Int, max: Int) -> [String] {
+
+        // implementation goes here
+        return [Int](1...max).map { String($0) }
+    }
+
+    func encryptImage(image image: NSData, withEncryptionKey key: String) -> NSData {
 
         // implementation goes here
         return image
     }
 
-    /// Provides a maximum number of keys that can be generated
-    static let maximumNumberOfKeys = 15
+    let maximumNumberOfKeys = 15
 }

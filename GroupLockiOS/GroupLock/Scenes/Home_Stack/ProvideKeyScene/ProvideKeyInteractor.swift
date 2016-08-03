@@ -26,13 +26,15 @@ class ProvideKeyInteractor: ProvideKeyInteractorInput {
 
     var files: [File] = []
 
+    var cryptoLibrary: CryptoWrapperProtocol = Crypto()
+
     // MARK: - Business logic
 
     var numberOfKeys = (1, 1)
 
     func getKeys(request: ProvideKey.Configure.Request) {
 
-        let keys = Crypto.getKeys(min: numberOfKeys.0, max: numberOfKeys.1)
+        let keys = cryptoLibrary.getKeys(min: numberOfKeys.0, max: numberOfKeys.1)
 
         let response = ProvideKey.Configure.Response(decryptionKeys: keys)
 
