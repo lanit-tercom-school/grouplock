@@ -26,34 +26,25 @@ class ProvideKeyViewController: UICollectionViewController, ProvideKeyViewContro
     var output: ProvideKeyViewControllerOutput!
     var router: ProvideKeyRouter!
 
-    private typealias CollectionViewCellFactory = ViewFactory<UIImage, ProvideKeyCell>
-    private typealias CollectionViewDataSource = DataSource<Section<UIImage>>
-    private var dataSourceProvider: DataSourceProvider<CollectionViewDataSource,
+    var collectionViewConfigurator: CollectionViewConfiguratorProtocol = CollectionViewConfigurator()
+
+    typealias CollectionViewCellFactory = ViewFactory<UIImage, ProvideKeyCell>
+    typealias CollectionViewDataSource = DataSource<Section<UIImage>>
+    var dataSourceProvider: DataSourceProvider<CollectionViewDataSource,
                                                        CollectionViewCellFactory,
                                                        CollectionViewCellFactory>!
-    private var dataSource: CollectionViewDataSource!
+    var dataSource: CollectionViewDataSource!
+
+    lazy var agrume: AgrumeProtocol = { return Agrume(images: self.dataSource[0].items) }()
 
     // MARK: - View Controller lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        configureCollectionView()
+        // swiftlint:disable:next force_unwrapping (when this method is invoked collectionView is initialized)
+        collectionViewConfigurator.configure(collectionView!, allowsMultipleSelection: true)
         output.getKeys(ProvideKey.Configure.Request())
-    }
-
-    func configureCollectionView() {
-
-        collectionView?.applyNUI()
-        collectionView?.allowsMultipleSelection = true
-
-        guard let collectionViewLayout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout else {
-            return
-        }
-
-        // swiftlint:disable:next force_unwrapping (since by this time collectionView is initialized)
-        CollectionViewGridLayout.setCollectionViewFlowLayout(for: collectionView!,
-                                                             withBaseLayout: collectionViewLayout)
     }
 
     // MARK: - Display logic
@@ -91,9 +82,8 @@ class ProvideKeyViewController: UICollectionViewController, ProvideKeyViewContro
 
         darkenItem(atIndexPath: indexPath)
 
-        let agrume = Agrume(images: dataSource[indexPath.section].items)
         agrume.showFrom(self)
-        agrume.showImageAtIndex(indexPath.row)
+        agrume.showImageAtIndex(indexPath.item)
         agrume.didScroll = { [ unowned self ] index in
             let indexPathToDarken = NSIndexPath(forItem: index, inSection: indexPath.section)
             self.darkenItem(atIndexPath: indexPathToDarken)

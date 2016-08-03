@@ -17,6 +17,7 @@
 		8704DED01D3D03990017F88E /* ProvideKeyRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8704DEC91D3D03990017F88E /* ProvideKeyRouter.swift */; };
 		8704DED11D3D03990017F88E /* ProvideKeyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8704DECA1D3D03990017F88E /* ProvideKeyViewController.swift */; };
 		8704DED51D3D08320017F88E /* Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8704DED41D3D08320017F88E /* Crypto.swift */; };
+		870912271D523B66006222BA /* Agrume.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870912261D523B66006222BA /* Agrume.swift */; };
 		870D094F1D47701000B65A0C /* EncryptedFileModelsComparison.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870D094E1D47701000B65A0C /* EncryptedFileModelsComparison.swift */; };
 		870D09511D477E8D00B65A0C /* EquatableModel+XCTAssertEqual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870D09501D477E8D00B65A0C /* EquatableModel+XCTAssertEqual.swift */; };
 		870DBF921D3F932C004430A5 /* NumberOfKeysConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870DBF8C1D3F932C004430A5 /* NumberOfKeysConfigurator.swift */; };
@@ -132,6 +133,7 @@
 		8704DEC91D3D03990017F88E /* ProvideKeyRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProvideKeyRouter.swift; path = Scenes/Home_Stack/ProvideKeyScene/ProvideKeyRouter.swift; sourceTree = "<group>"; };
 		8704DECA1D3D03990017F88E /* ProvideKeyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProvideKeyViewController.swift; path = Scenes/Home_Stack/ProvideKeyScene/ProvideKeyViewController.swift; sourceTree = "<group>"; };
 		8704DED41D3D08320017F88E /* Crypto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Crypto.swift; path = Core/Crypto.swift; sourceTree = "<group>"; };
+		870912261D523B66006222BA /* Agrume.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Agrume.swift; path = Class_Extensions/Agrume.swift; sourceTree = "<group>"; };
 		870D094E1D47701000B65A0C /* EncryptedFileModelsComparison.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncryptedFileModelsComparison.swift; sourceTree = "<group>"; };
 		870D09501D477E8D00B65A0C /* EquatableModel+XCTAssertEqual.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EquatableModel+XCTAssertEqual.swift"; sourceTree = "<group>"; };
 		870DBF8C1D3F932C004430A5 /* NumberOfKeysConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NumberOfKeysConfigurator.swift; path = Scenes/Home_Stack/NumberOfKeysScene/NumberOfKeysConfigurator.swift; sourceTree = "<group>"; };
@@ -375,6 +377,7 @@
 			isa = PBXGroup;
 			children = (
 				87B6927E1CB45188008ACB6A /* UIViewController.swift */,
+				870912261D523B66006222BA /* Agrume.swift */,
 			);
 			name = "Class Extensions";
 			sourceTree = "<group>";
@@ -847,6 +850,7 @@
 				8789D1991D465CAF0000AA8D /* FileCollectionViewCellProvider.swift in Sources */,
 				8730226F1D42197100222606 /* EncryptedFileModels.swift in Sources */,
 				87FFF04E1D34E9AE007315C7 /* ChooseFileConfigurator.swift in Sources */,
+				870912271D523B66006222BA /* Agrume.swift in Sources */,
 				874801821D3660D7001A086C /* CollectionViewLayoutProperties.swift in Sources */,
 				8704DEB71D3CD0CC0017F88E /* File.swift in Sources */,
 				87B692131CB425E0008ACB6A /* PasswordViewController.swift in Sources */,
