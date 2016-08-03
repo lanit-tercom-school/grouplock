@@ -28,7 +28,6 @@
 		870DBFA01D3F9BE9004430A5 /* NumberOfKeysViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870DBF9C1D3F9BE9004430A5 /* NumberOfKeysViewControllerTests.swift */; };
 		8713DE4B1CEFA5400089C92A /* ChooseFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8713DE4A1CEFA5400089C92A /* ChooseFileViewController.swift */; };
 		8713DE4F1CEFAAF30089C92A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8713DE4E1CEFAAF30089C92A /* HomeViewController.swift */; };
-		871C6AE11CF1E8A7004C5B38 /* NUIGeneralViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871C6AE01CF1E8A7004C5B38 /* NUIGeneralViewTests.swift */; };
 		8730226D1D42197100222606 /* EncryptedFileConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873022661D42197100222606 /* EncryptedFileConfigurator.swift */; };
 		8730226E1D42197100222606 /* EncryptedFileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873022671D42197100222606 /* EncryptedFileInteractor.swift */; };
 		8730226F1D42197100222606 /* EncryptedFileModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873022681D42197100222606 /* EncryptedFileModels.swift */; };
@@ -62,7 +61,6 @@
 		87736F1D1D3D565300B93D7B /* KeyTypeInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87736F191D3D565300B93D7B /* KeyTypeInteractorTests.swift */; };
 		87736F1F1D3D565300B93D7B /* KeyTypeViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87736F1B1D3D565300B93D7B /* KeyTypeViewControllerTests.swift */; };
 		877ED32F1CF7B1E300C5D0D4 /* UIViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877ED32E1CF7B1E300C5D0D4 /* UIViewControllerTests.swift */; };
-		877ED3351CF8B18900C5D0D4 /* NUICollectionViewCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877ED3341CF8B18900C5D0D4 /* NUICollectionViewCellTests.swift */; };
 		8789D1991D465CAF0000AA8D /* FileCollectionViewCellProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8789D1981D465CAF0000AA8D /* FileCollectionViewCellProvider.swift */; };
 		878AF3771CF10A4700CB247B /* KeyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878AF3761CF10A4700CB247B /* KeyType.swift */; };
 		878C29A31CF0B9D300323C9D /* FileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878C29A21CF0B9D300323C9D /* FileCollectionViewCell.swift */; };
@@ -75,12 +73,6 @@
 		87AA218B1D4108BA00FDF227 /* ImageComparison.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87AA218A1D4108BA00FDF227 /* ImageComparison.swift */; };
 		87AEA5F41D48CA63009D8619 /* FileCollectionViewConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87AEA5F31D48CA63009D8619 /* FileCollectionViewConfigurator.swift */; };
 		87AEA5F61D48E97A009D8619 /* OptionalArray+XCTAssertEqual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87AEA5F51D48E97A009D8619 /* OptionalArray+XCTAssertEqual.swift */; };
-		87B072D51CC1680F00916D09 /* NUINavigationBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B072D41CC1680F00916D09 /* NUINavigationBarTests.swift */; };
-		87B072D91CC188EC00916D09 /* NUITabBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B072D81CC188EC00916D09 /* NUITabBarTests.swift */; };
-		87B072DB1CC1AB4200916D09 /* NUIBarButtonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B072DA1CC1AB4200916D09 /* NUIBarButtonTests.swift */; };
-		87B072E21CC1B7B300916D09 /* NUIPasswordViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B072E11CC1B7B300916D09 /* NUIPasswordViewTests.swift */; };
-		87B072E41CC1B8E600916D09 /* NUIProceedButtonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B072E31CC1B8E600916D09 /* NUIProceedButtonTests.swift */; };
-		87B072E71CC1B9F900916D09 /* NUIEnterPasswordLabelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B072E61CC1B9F900916D09 /* NUIEnterPasswordLabelTests.swift */; };
 		87B509C11CD0B67A00641EC3 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B509C01CD0B67A00641EC3 /* FileManager.swift */; };
 		87B692111CB425E0008ACB6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B692101CB425E0008ACB6A /* AppDelegate.swift */; };
 		87B692131CB425E0008ACB6A /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B692121CB425E0008ACB6A /* PasswordViewController.swift */; };
@@ -88,11 +80,6 @@
 		87B6921B1CB425E0008ACB6A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87B6921A1CB425E0008ACB6A /* Assets.xcassets */; };
 		87B6921E1CB425E0008ACB6A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87B6921C1CB425E0008ACB6A /* LaunchScreen.storyboard */; };
 		87B6927F1CB45188008ACB6A /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B6927E1CB45188008ACB6A /* UIViewController.swift */; };
-		87BC182B1CF8BF7F0023B417 /* NUIKeyTypeButtonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BC182A1CF8BF7F0023B417 /* NUIKeyTypeButtonTests.swift */; };
-		87C49EA11CF1EBDB006C0A83 /* NUIGeneralTableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C49EA01CF1EBDB006C0A83 /* NUIGeneralTableTests.swift */; };
-		87C49EA31CF1F0E5006C0A83 /* NUIGeneralButtonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C49EA21CF1F0E5006C0A83 /* NUIGeneralButtonTests.swift */; };
-		87C49EA51CF1F349006C0A83 /* NUIGeneralTableCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C49EA41CF1F349006C0A83 /* NUIGeneralTableCellTests.swift */; };
-		87C49EA91CF1FB85006C0A83 /* NUIDirectoryButtonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C49EA81CF1FB85006C0A83 /* NUIDirectoryButtonTests.swift */; };
 		87CF826A1D3E3058000147EB /* ProvideKeyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CF82691D3E3058000147EB /* ProvideKeyCell.swift */; };
 		87DE60DE1CB46373005EA79E /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87DE60DD1CB46373005EA79E /* LocalAuthentication.framework */; };
 		87EA7C3F1D40C76D008FB4DA /* QRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EA7C3E1D40C76D008FB4DA /* QRCode.swift */; };
@@ -153,7 +140,6 @@
 		870DBF9C1D3F9BE9004430A5 /* NumberOfKeysViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberOfKeysViewControllerTests.swift; sourceTree = "<group>"; };
 		8713DE4A1CEFA5400089C92A /* ChooseFileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChooseFileViewController.swift; path = Scenes/Home_Stack/ChooseFileScene/ChooseFileViewController.swift; sourceTree = "<group>"; };
 		8713DE4E1CEFAAF30089C92A /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = Scenes/Home_Stack/HomeViewController.swift; sourceTree = "<group>"; };
-		871C6AE01CF1E8A7004C5B38 /* NUIGeneralViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NUIGeneralViewTests.swift; sourceTree = "<group>"; };
 		873022661D42197100222606 /* EncryptedFileConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EncryptedFileConfigurator.swift; path = Scenes/Home_Stack/EcnryptedFileScene/EncryptedFileConfigurator.swift; sourceTree = "<group>"; };
 		873022671D42197100222606 /* EncryptedFileInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EncryptedFileInteractor.swift; path = Scenes/Home_Stack/EcnryptedFileScene/EncryptedFileInteractor.swift; sourceTree = "<group>"; };
 		873022681D42197100222606 /* EncryptedFileModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EncryptedFileModels.swift; path = Scenes/Home_Stack/EcnryptedFileScene/EncryptedFileModels.swift; sourceTree = "<group>"; };
@@ -186,7 +172,6 @@
 		87736F191D3D565300B93D7B /* KeyTypeInteractorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyTypeInteractorTests.swift; sourceTree = "<group>"; };
 		87736F1B1D3D565300B93D7B /* KeyTypeViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyTypeViewControllerTests.swift; sourceTree = "<group>"; };
 		877ED32E1CF7B1E300C5D0D4 /* UIViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerTests.swift; sourceTree = "<group>"; };
-		877ED3341CF8B18900C5D0D4 /* NUICollectionViewCellTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NUICollectionViewCellTests.swift; sourceTree = "<group>"; };
 		8789D1981D465CAF0000AA8D /* FileCollectionViewCellProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FileCollectionViewCellProvider.swift; path = Layout/FileCollectionViewCellProvider.swift; sourceTree = "<group>"; };
 		878AF3761CF10A4700CB247B /* KeyType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyType.swift; path = Supporting/KeyType.swift; sourceTree = "<group>"; };
 		878C29A21CF0B9D300323C9D /* FileCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FileCollectionViewCell.swift; path = Layout/FileCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -201,12 +186,6 @@
 		87AA218A1D4108BA00FDF227 /* ImageComparison.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageComparison.swift; sourceTree = "<group>"; };
 		87AEA5F31D48CA63009D8619 /* FileCollectionViewConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FileCollectionViewConfigurator.swift; path = Layout/FileCollectionViewConfigurator.swift; sourceTree = "<group>"; };
 		87AEA5F51D48E97A009D8619 /* OptionalArray+XCTAssertEqual.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "OptionalArray+XCTAssertEqual.swift"; sourceTree = "<group>"; };
-		87B072D41CC1680F00916D09 /* NUINavigationBarTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NUINavigationBarTests.swift; sourceTree = "<group>"; };
-		87B072D81CC188EC00916D09 /* NUITabBarTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NUITabBarTests.swift; sourceTree = "<group>"; };
-		87B072DA1CC1AB4200916D09 /* NUIBarButtonTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NUIBarButtonTests.swift; sourceTree = "<group>"; };
-		87B072E11CC1B7B300916D09 /* NUIPasswordViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NUIPasswordViewTests.swift; sourceTree = "<group>"; };
-		87B072E31CC1B8E600916D09 /* NUIProceedButtonTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NUIProceedButtonTests.swift; sourceTree = "<group>"; };
-		87B072E61CC1B9F900916D09 /* NUIEnterPasswordLabelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NUIEnterPasswordLabelTests.swift; sourceTree = "<group>"; };
 		87B509C01CD0B67A00641EC3 /* FileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FileManager.swift; path = Supporting/FileManager.swift; sourceTree = "<group>"; };
 		87B6920D1CB425E0008ACB6A /* GroupLock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GroupLock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87B692101CB425E0008ACB6A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Supporting/AppDelegate.swift; sourceTree = "<group>"; };
@@ -218,11 +197,6 @@
 		87B692241CB425E0008ACB6A /* GroupLockTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GroupLockTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		87B6922A1CB425E0008ACB6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87B6927E1CB45188008ACB6A /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.swift; name = UIViewController.swift; path = Class_Extensions/UIViewController.swift; sourceTree = "<group>"; tabWidth = 4; };
-		87BC182A1CF8BF7F0023B417 /* NUIKeyTypeButtonTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NUIKeyTypeButtonTests.swift; sourceTree = "<group>"; };
-		87C49EA01CF1EBDB006C0A83 /* NUIGeneralTableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NUIGeneralTableTests.swift; sourceTree = "<group>"; };
-		87C49EA21CF1F0E5006C0A83 /* NUIGeneralButtonTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NUIGeneralButtonTests.swift; sourceTree = "<group>"; };
-		87C49EA41CF1F349006C0A83 /* NUIGeneralTableCellTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NUIGeneralTableCellTests.swift; sourceTree = "<group>"; };
-		87C49EA81CF1FB85006C0A83 /* NUIDirectoryButtonTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NUIDirectoryButtonTests.swift; sourceTree = "<group>"; };
 		87CF82691D3E3058000147EB /* ProvideKeyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProvideKeyCell.swift; path = Scenes/Home_Stack/ProvideKeyScene/ProvideKeyCell.swift; sourceTree = "<group>"; };
 		87DE60DD1CB46373005EA79E /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		87EA7C3E1D40C76D008FB4DA /* QRCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QRCode.swift; path = Core/QRCode.swift; sourceTree = "<group>"; };
@@ -430,14 +404,6 @@
 			name = "ViewController Tests";
 			sourceTree = "<group>";
 		};
-		877ED3331CF8B16400C5D0D4 /* ChooseFileViewController Custom Classes */ = {
-			isa = PBXGroup;
-			children = (
-				877ED3341CF8B18900C5D0D4 /* NUICollectionViewCellTests.swift */,
-			);
-			name = "ChooseFileViewController Custom Classes";
-			sourceTree = "<group>";
-		};
 		879797021CCFA5FC0064C3AC /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -465,34 +431,6 @@
 				87A2081A1D48025200793B54 /* Extensions.swift */,
 			);
 			name = Helpers;
-			sourceTree = "<group>";
-		};
-		87B072C61CC0E0C400916D09 /* NUI Tests */ = {
-			isa = PBXGroup;
-			children = (
-				871C6AE01CF1E8A7004C5B38 /* NUIGeneralViewTests.swift */,
-				87C49EA21CF1F0E5006C0A83 /* NUIGeneralButtonTests.swift */,
-				87C49EA01CF1EBDB006C0A83 /* NUIGeneralTableTests.swift */,
-				87C49EA41CF1F349006C0A83 /* NUIGeneralTableCellTests.swift */,
-				87B072D41CC1680F00916D09 /* NUINavigationBarTests.swift */,
-				87B072D81CC188EC00916D09 /* NUITabBarTests.swift */,
-				87B072DA1CC1AB4200916D09 /* NUIBarButtonTests.swift */,
-				87B072E01CC1B77600916D09 /* PasswordViewController Custom Classes */,
-				877ED3331CF8B16400C5D0D4 /* ChooseFileViewController Custom Classes */,
-				87BC18291CF8BF500023B417 /* KeyTypeViewController Custom Classes */,
-				87C49EA71CF1FB1A006C0A83 /* LibraryDirectoryViewController Custom Classes */,
-			);
-			name = "NUI Tests";
-			sourceTree = "<group>";
-		};
-		87B072E01CC1B77600916D09 /* PasswordViewController Custom Classes */ = {
-			isa = PBXGroup;
-			children = (
-				87B072E11CC1B7B300916D09 /* NUIPasswordViewTests.swift */,
-				87B072E31CC1B8E600916D09 /* NUIProceedButtonTests.swift */,
-				87B072E61CC1B9F900916D09 /* NUIEnterPasswordLabelTests.swift */,
-			);
-			name = "PasswordViewController Custom Classes";
 			sourceTree = "<group>";
 		};
 		87B692041CB425E0008ACB6A = {
@@ -548,26 +486,9 @@
 				870DBF991D3F9BBB004430A5 /* NumberOfKeysSceneTests */,
 				87671EC41D46226F00A0C353 /* EncryptedFileTests */,
 				877ED3301CF7B1F000C5D0D4 /* ViewController Tests */,
-				87B072C61CC0E0C400916D09 /* NUI Tests */,
 				87B6922A1CB425E0008ACB6A /* Info.plist */,
 			);
 			path = GroupLockTests;
-			sourceTree = "<group>";
-		};
-		87BC18291CF8BF500023B417 /* KeyTypeViewController Custom Classes */ = {
-			isa = PBXGroup;
-			children = (
-				87BC182A1CF8BF7F0023B417 /* NUIKeyTypeButtonTests.swift */,
-			);
-			name = "KeyTypeViewController Custom Classes";
-			sourceTree = "<group>";
-		};
-		87C49EA71CF1FB1A006C0A83 /* LibraryDirectoryViewController Custom Classes */ = {
-			isa = PBXGroup;
-			children = (
-				87C49EA81CF1FB85006C0A83 /* NUIDirectoryButtonTests.swift */,
-			);
-			name = "LibraryDirectoryViewController Custom Classes";
 			sourceTree = "<group>";
 		};
 		87FAC9EE1D34ECB600FE3602 /* KeyTypeScene */ = {
@@ -676,6 +597,7 @@
 				8760D2631CD7950F004C86D4 /* ShellScript */,
 				CACE0EB81A618413524FFC78 /* [CP] Embed Pods Frameworks */,
 				5375B2386BB06D3969610FAB /* [CP] Copy Pods Resources */,
+				8793DE1A1D4C18A10071C397 /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -830,6 +752,20 @@
 			shellPath = /bin/sh;
 			shellScript = "TAGS=\"TODO:|FIXME:\"\nERRORTAG=\"ERROR:\"\nfind \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" -or -name \"*.swift\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$|($ERRORTAG).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\" | perl -p -e \"s/($ERRORTAG)/ error: \\$1/\"";
 		};
+		8793DE1A1D4C18A10071C397 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nfi";
+		};
 		B1B2720ADBDBDE385087D164 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -948,42 +884,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				87B072D91CC188EC00916D09 /* NUITabBarTests.swift in Sources */,
 				87FFF0411D33C020007315C7 /* PasswordViewControllerTests.swift in Sources */,
 				870D094F1D47701000B65A0C /* EncryptedFileModelsComparison.swift in Sources */,
 				87671ECB1D4622A100A0C353 /* EncryptedFileViewControllerTests.swift in Sources */,
-				87B072E21CC1B7B300916D09 /* NUIPasswordViewTests.swift in Sources */,
 				877ED32F1CF7B1E300C5D0D4 /* UIViewControllerTests.swift in Sources */,
 				87AEA5F61D48E97A009D8619 /* OptionalArray+XCTAssertEqual.swift in Sources */,
-				87C49EA11CF1EBDB006C0A83 /* NUIGeneralTableTests.swift in Sources */,
 				870DBF9E1D3F9BE9004430A5 /* NumberOfKeysInteractorTests.swift in Sources */,
 				87736F1F1D3D565300B93D7B /* KeyTypeViewControllerTests.swift in Sources */,
-				87B072E41CC1B8E600916D09 /* NUIProceedButtonTests.swift in Sources */,
-				87C49EA51CF1F349006C0A83 /* NUIGeneralTableCellTests.swift in Sources */,
 				87AA218B1D4108BA00FDF227 /* ImageComparison.swift in Sources */,
 				87736F1D1D3D565300B93D7B /* KeyTypeInteractorTests.swift in Sources */,
-				87C49EA31CF1F0E5006C0A83 /* NUIGeneralButtonTests.swift in Sources */,
 				87671ECE1D46249100A0C353 /* EncryptedFileDataSourceTests.swift in Sources */,
 				87FFF0401D33C020007315C7 /* PasswordPresenterTests.swift in Sources */,
 				87AA21861D40DE8E00FDF227 /* QRCodeTests.swift in Sources */,
 				8748018F1D36C434001A086C /* ChooseFileWorkerTests.swift in Sources */,
-				871C6AE11CF1E8A7004C5B38 /* NUIGeneralViewTests.swift in Sources */,
 				87FFF03F1D33C020007315C7 /* PasswordInteractorTests.swift in Sources */,
 				87A2081B1D48025200793B54 /* Extensions.swift in Sources */,
 				8748018C1D36C434001A086C /* ChooseFileInteractorTests.swift in Sources */,
 				87671EC91D4622A100A0C353 /* EncryptedFileInteractorTests.swift in Sources */,
-				87B072D51CC1680F00916D09 /* NUINavigationBarTests.swift in Sources */,
 				8748018E1D36C434001A086C /* ChooseFileViewControllerTests.swift in Sources */,
-				87BC182B1CF8BF7F0023B417 /* NUIKeyTypeButtonTests.swift in Sources */,
 				874801911D36CB8E001A086C /* PresentedDataSourceTests.swift in Sources */,
-				877ED3351CF8B18900C5D0D4 /* NUICollectionViewCellTests.swift in Sources */,
-				87B072DB1CC1AB4200916D09 /* NUIBarButtonTests.swift in Sources */,
 				870D09511D477E8D00B65A0C /* EquatableModel+XCTAssertEqual.swift in Sources */,
 				87671ECA1D4622A100A0C353 /* EncryptedFilePresenterTests.swift in Sources */,
 				8748018D1D36C434001A086C /* ChooseFilePresenterTests.swift in Sources */,
 				870DBFA01D3F9BE9004430A5 /* NumberOfKeysViewControllerTests.swift in Sources */,
-				87B072E71CC1B9F900916D09 /* NUIEnterPasswordLabelTests.swift in Sources */,
-				87C49EA91CF1FB85006C0A83 /* NUIDirectoryButtonTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

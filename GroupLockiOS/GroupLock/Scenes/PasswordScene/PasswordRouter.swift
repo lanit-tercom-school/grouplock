@@ -13,21 +13,21 @@ protocol PasswordRouterInput {
 }
 
 class PasswordRouter: PasswordRouterInput {
-    
+
     weak var viewController: PasswordViewController!
-    
+
     // MARK: - Navigation
     func navigateToMainScreen() {
         viewController.performSegueWithIdentifier("toMainScreen", sender: self)
     }
-    
+
     // MARK: - Communication
-    
+
     func passDataToNextScene(segue: UIStoryboardSegue) {
         // NOTE: Teach the router which scenes it can communicate with
-        
+
         if segue.identifier == "toMainScreen" {
-            
+
         }
     }
 }

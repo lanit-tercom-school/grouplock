@@ -13,26 +13,27 @@ protocol KeyTypeRouterInput {
 }
 
 class KeyTypeRouter: KeyTypeRouterInput {
-    
+
     weak var viewController: KeyTypeViewController!
-    
+
     // MARK: - Navigation
-    
+
     func navigateToNumberOfKeysScene() {
         viewController.performSegueWithIdentifier("NumberOfKeys", sender: nil)
     }
-    
+
     // MARK: - Communication
-    
+
     func passDataToNextScene(segue: UIStoryboardSegue) {
-        
+
         if segue.identifier == "NumberOfKeys" {
             passDataToNumberOfKeysScene(segue)
         }
     }
-    
+
     func passDataToNumberOfKeysScene(segue: UIStoryboardSegue) {
-        
+
+        // swiftlint:disable:next force_cast (since the destination is known)
         let numberOfKeysViewController = segue.destinationViewController as! NumberOfKeysViewController
         numberOfKeysViewController.output.files = viewController.output.files
     }

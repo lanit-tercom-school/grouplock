@@ -21,19 +21,19 @@ extension NumberOfKeysInteractor: NumberOfKeysViewControllerOutput {}
 extension NumberOfKeysPresenter: NumberOfKeysInteractorOutput {}
 
 class NumberOfKeysConfigurator {
-    
+
     // MARK: - Configuration
-    
+
     static func configure(viewController: NumberOfKeysViewController) {
         let router = NumberOfKeysRouter()
         router.viewController = viewController
-        
+
         let presenter = NumberOfKeysPresenter()
         presenter.output = viewController
-        
+
         let interactor = NumberOfKeysInteractor()
         interactor.output = presenter
-        
+
         viewController.output = interactor
         viewController.router = router
     }

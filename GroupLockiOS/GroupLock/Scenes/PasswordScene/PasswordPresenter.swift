@@ -9,18 +9,18 @@
 import Foundation
 
 protocol PasswordPresenterInput {
-    
+
 }
 
 protocol PasswordPresenterOutput: class {
-    
+
 }
 
 class PasswordPresenter: PasswordPresenterInput {
-    
+
     weak var output: PasswordPresenterOutput!
-    
+
     // MARK: - Presentation logic
-    
-    
+
+
 }

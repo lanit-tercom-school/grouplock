@@ -8,23 +8,23 @@
 
 import XCTest
 
-internal func XCTAssertEqual<T : Equatable>(@autoclosure expression1: () throws -> [T]?,
+internal func XCTAssertEqual<T: Equatable>(@autoclosure expression1: () throws -> [T]?,
                                    @autoclosure _ expression2: () throws -> [T]?,
                                    @autoclosure _ message: () -> String = "",
                                    file: StaticString = #file,
                                    line: UInt = #line) {
-    
+
     func nilAssertion(@autoclosure expression1: () throws -> [T]?,
                                 @autoclosure _ expression2: () throws -> [T]?) rethrows -> Bool {
-        
+
         let (value1, value2) = (try expression1(), try expression2())
-        
+
         if value1 == nil && value2 == nil {
             return true
         }
         return false
     }
-    
+
     do {
         let bothNil = try nilAssertion(expression1, expression2)
         if bothNil {
@@ -37,5 +37,5 @@ internal func XCTAssertEqual<T : Equatable>(@autoclosure expression1: () throws 
     } catch {
         XCTAssert(try nilAssertion(expression1, expression2), message, file: file, line: line)
     }
-    
+
 }

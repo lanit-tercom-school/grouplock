@@ -13,12 +13,12 @@ protocol EncryptedFileDataSourceProtocol: UICollectionViewDataSource {
 }
 
 class EncryptedFileDataSource: NSObject, EncryptedFileDataSourceProtocol {
-    
+
     private var viewModel: EncryptedFile.Fetch.ViewModel!
-    
+
     var cellProvider: FileCollectionViewCellProviderProtocol =
         FileCollectionViewCellProvider(reuseIdentifier: "EncryptedFileCell")
-    
+
     func updateViewModel(viewModel: EncryptedFile.Fetch.ViewModel) {
         self.viewModel = viewModel
     }
@@ -26,7 +26,7 @@ class EncryptedFileDataSource: NSObject, EncryptedFileDataSourceProtocol {
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.fileInfo.count
     }
-    
+
     func collectionView(collectionView: UICollectionView,
                         cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = cellProvider.cell(for: collectionView, at: indexPath)
@@ -34,13 +34,13 @@ class EncryptedFileDataSource: NSObject, EncryptedFileDataSourceProtocol {
         cell.filenameLabel.text = fileInfo.fileName
         cell.thumbnailView.image = fileInfo.fileThumbnail
         cell.lockIcon.hidden = !fileInfo.encrypted
-        
+
         if cell.selected {
             cell.visualizeSelection()
         } else {
             cell.visualizeDeselection()
         }
-        
+
         return cell
     }
 }

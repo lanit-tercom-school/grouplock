@@ -13,8 +13,10 @@ class ManagedFile: NSManagedObject {
 
     convenience init(name: String, insertIntoManagedObjectContext context: NSManagedObjectContext) {
         let entityDescription = NSEntityDescription.entityForName("File", inManagedObjectContext: context)
+
+        // swiftlint:disable:next force_unwrapping (since this entityDescription is correct)
         self.init(entity: entityDescription!, insertIntoManagedObjectContext: context)
-        
+
         self.name = name
     }
 
@@ -24,5 +26,5 @@ class ManagedFile: NSManagedObject {
         encrypted = file.encrypted
         contents = file.contents
     }
-    
+
 }
