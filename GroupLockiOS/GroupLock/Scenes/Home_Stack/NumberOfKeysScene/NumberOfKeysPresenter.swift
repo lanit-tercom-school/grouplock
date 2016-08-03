@@ -17,9 +17,9 @@ protocol NumberOfKeysPresenterOutput: class {
 }
 
 class NumberOfKeysPresenter: NumberOfKeysPresenterInput {
-    
+
     weak var output: NumberOfKeysPresenterOutput!
-    
+
     // MARK: - Presentation logic
-    
+
 }

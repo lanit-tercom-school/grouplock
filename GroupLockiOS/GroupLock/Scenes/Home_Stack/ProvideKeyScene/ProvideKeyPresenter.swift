@@ -17,24 +17,24 @@ protocol ProvideKeyPresenterOutput: class {
 }
 
 class ProvideKeyPresenter: ProvideKeyPresenterInput {
-    
+
     weak var output: ProvideKeyPresenterOutput!
-    
+
     // MARK: - Presentation logic
-    
+
     func createQRCodes(response: ProvideKey.Configure.Response) {
-        
+
         let keys = response.decryptionKeys
-        
+
         let screenSize = UIScreen.mainScreen().nativeBounds.size
         let screenWidth = min(screenSize.width, screenSize.height)
-        
+
         let uiImageQRCodes = keys.map {
             return QRCode(string: $0)?.createUIImage(width: screenWidth) ?? UIImage()
         }
-        
+
         let viewModel = ProvideKey.Configure.ViewModel(qrCodes: uiImageQRCodes)
-        
+
         output.displayKeys(with: viewModel)
     }
 }

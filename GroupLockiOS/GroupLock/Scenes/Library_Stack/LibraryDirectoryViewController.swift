@@ -11,17 +11,17 @@ import CoreData
 import MobileCoreServices
 
 class LibraryDirectoryViewController: UIViewController {
-    
+
     @IBOutlet var encryptedButton: UIButton!
     @IBOutlet var decryptedButton: UIButton!
     @IBOutlet var loadButton: UIButton!
-    
+
     private let managedObjectContext = AppDelegate.sharedInstance.managedObjectContext
-    
+
     @IBAction func onDirectory(sender: UIButton) {
         performSegueWithIdentifier("toFiles", sender: sender)
     }
-    
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let sender = sender as? UIButton,
             let destination = segue.destinationViewController as? LibraryViewController {
@@ -37,35 +37,36 @@ class LibraryDirectoryViewController: UIViewController {
             destination.directory = directory
         }
     }
-    
+
     // MARK: - Loading a new file using UIImagePickerController
-    
+
     @IBAction func onLoad(sender: UIButton) {
-        
+
         presentImagePicker()
     }
-    
+
     func imagePickerController(picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         dismissViewControllerAnimated(true, completion: nil)
-        
+
+        // swiftlint:disable:next force_cast (since the value for this key is an instance of NSURL)
         let fileURL = info[UIImagePickerControllerReferenceURL] as! NSURL
-        
+
         if let loadedFile = FileManager.sharedInstance.createFileFromURL(fileURL,
                                                                          withName: "__defaultName",
                                                                          encrypted: false) {
-            
+
             pickEncryptionStatusAlert(forFile: loadedFile) { (file) in
                 self.setFileNameAlert(file) { (file) in
                     self.managedObjectContext.insertObject(file)
                     AppDelegate.sharedInstance.saveContext()
                 }
-                
+
             }
         }
-        
+
     }
-    
+
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         dismissViewControllerAnimated(true, completion: nil)
     }

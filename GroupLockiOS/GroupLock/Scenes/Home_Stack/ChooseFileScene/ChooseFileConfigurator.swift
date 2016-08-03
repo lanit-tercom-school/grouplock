@@ -21,19 +21,19 @@ extension ChooseFileInteractor: ChooseFileViewControllerOutput {}
 extension ChooseFilePresenter: ChooseFileInteractorOutput {}
 
 class ChooseFileConfigurator {
-    
+
     // MARK: - Configuration
-    
+
     static func configure(viewController: ChooseFileViewController) {
         let router = ChooseFileRouter()
         router.viewController = viewController
-        
+
         let presenter = ChooseFilePresenter()
         presenter.output = viewController
-        
+
         let interactor = ChooseFileInteractor()
         interactor.output = presenter
-        
+
         viewController.output = interactor
         viewController.router = router
     }

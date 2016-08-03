@@ -9,7 +9,7 @@
 import UIKit
 
 protocol PasswordViewControllerInput {
-    
+
     // MARK: UI-sent actions
     func onProceedButton()
     func textFieldEditingChanged(sender: UITextField)
@@ -21,38 +21,39 @@ protocol PasswordViewControllerOutput {
 }
 
 class PasswordViewController: UIViewController, PasswordViewControllerInput {
-    
+
     var output: PasswordViewControllerOutput!
     var router: PasswordRouter!
-    
+
     // MARK: UI elements
     @IBOutlet var enterPasswordLabel: UILabel!
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet var proceedButton: UIButton!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         passwordTextField.delegate = self
         passwordTextField.becomeFirstResponder()
     }
-    
+
     // MARK: Event handling
     @IBAction func onProceedButton() {
         processPasswordFromTextField(passwordTextField)
     }
-    
+
     @IBAction func textFieldEditingChanged(sender: UITextField) {
-        if sender.text != nil && sender.text!.characters.count != 0 {
+        // swiftlint:disable:next force_unwrapping (since we explicitly check for nil)
+        if sender.text != nil && !sender.text!.characters.isEmpty {
             proceedButton.hidden = false
         } else {
             proceedButton.hidden = true
         }
     }
-    
+
     // MARK: Password correctness processing
     private func processPasswordFromTextField(textField: UITextField) -> Bool {
-        
+
         if output.passwordIsCorrect(textField.text) {
             passwordTextField.resignFirstResponder()
             router.navigateToMainScreen()
@@ -65,7 +66,7 @@ class PasswordViewController: UIViewController, PasswordViewControllerInput {
 }
 
 extension PasswordViewController: UITextFieldDelegate {
-    
+
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         processPasswordFromTextField(textField)
         return true

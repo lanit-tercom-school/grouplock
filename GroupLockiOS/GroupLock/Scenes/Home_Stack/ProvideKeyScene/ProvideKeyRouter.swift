@@ -9,20 +9,20 @@
 import UIKit
 
 protocol ProvideKeyRouterInput {
-    
+
 }
 
 class ProvideKeyRouter: ProvideKeyRouterInput {
-    
-    weak var viewController: ProvideKeyViewController!
-    
-    // MARK: - Navigation
-    
 
-    
+    weak var viewController: ProvideKeyViewController!
+
+    // MARK: - Navigation
+
+
+
     // MARK: - Communication
-    
+
     func passDataToNextScene(segue: UIStoryboardSegue) {
-        
+
     }
 }

@@ -21,19 +21,19 @@ extension KeyTypeInteractor: KeyTypeViewControllerOutput {}
 extension KeyTypePresenter: KeyTypeInteractorOutput {}
 
 class KeyTypeConfigurator {
-    
+
     // MARK: - Configuration
-    
+
     static func configure(viewController: KeyTypeViewController) {
         let router = KeyTypeRouter()
         router.viewController = viewController
-        
+
         let presenter = KeyTypePresenter()
         presenter.output = viewController
-        
+
         let interactor = KeyTypeInteractor()
         interactor.output = presenter
-        
+
         viewController.output = interactor
         viewController.router = router
     }

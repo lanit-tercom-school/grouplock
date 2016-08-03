@@ -12,10 +12,10 @@ import UIKit
  *  Manages layout configuration for a collection view object
  */
 protocol CollectionViewConfigurator {
-    
+
     /**
      Applies specified settings to a given collection view.
-     
+
      - parameter collectionView:          View to apply settings to.
      - parameter allowsMultipleSelection: Specifies whether multiple cells can be selected.
      */
@@ -23,15 +23,15 @@ protocol CollectionViewConfigurator {
 }
 
 struct FileCollectionViewConfigurator: CollectionViewConfigurator {
-    
+
     func configure(collectionView: UICollectionView, allowsMultipleSelection: Bool = false) {
         collectionView.applyNUI()
         collectionView.allowsMultipleSelection = allowsMultipleSelection
-        
+
         guard let collectionViewLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout else {
             return
         }
-        
+
         CollectionViewGridLayout.setCollectionViewFlowLayout(for: collectionView,
                                                              withBaseLayout: collectionViewLayout)
     }

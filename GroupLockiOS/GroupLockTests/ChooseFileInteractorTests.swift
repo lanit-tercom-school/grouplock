@@ -10,24 +10,24 @@ import XCTest
 @testable import GroupLock
 
 class ChooseFileInteractorTests: XCTestCase {
-    
+
     // MARK: Subject under test
     var sut: ChooseFileInteractor!
-    
+
     // MARK: - Test lifecycle
     override func setUp() {
         super.setUp()
-        
+
         sut = ChooseFileInteractor()
     }
-    
+
     override func tearDown() {
-        
+
         super.tearDown()
     }
-    
+
     // MARK: - Test doubles
-    
+
     // MARK: - Tests
-    
+
 }

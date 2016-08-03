@@ -9,12 +9,12 @@
 import UIKit
 
 extension UIImage {
-    
+
     /**
      Performs UIImage comparison pixel-by-pixel.
-     
+
      - parameter image: Image to compare with.
-     
+
      - returns: `true` iff pixel data of `image` is the same as the receiver's pixel data.
      */
     func isEqualToImage(image: UIImage) -> Bool {
@@ -22,7 +22,7 @@ extension UIImage {
         let originalData = self.normilizedData
         return originalData == data
     }
-    
+
     private var normilizedData: NSData? {
         let sizeInPixels = CGSize(width: size.width * scale, height: size.height * scale)
         UIGraphicsBeginImageContext(sizeInPixels)
@@ -37,13 +37,13 @@ extension UIImage {
 }
 
 extension CGImage {
-    
+
     /**
      Performs CGImage comparison pixel-by-pixel using UIImage. Quick and not very universal way, suitable for
      testing purposes only.
-     
+
      - parameter image: Image to compare with.
-     
+
      - returns: `true` iff pixel data of `image` is the same as the receiver's pixel data.
      */
     func isEqualToImage(image: CGImage) -> Bool {

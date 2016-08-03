@@ -10,18 +10,18 @@ import UIKit
 
 // MARK: Scene
 struct ProvideKey {
-    
+
     // MARK: Use Case
     struct Configure {
-        
+
         struct Request {
-            
+
         }
-        
+
         struct Response {
             var decryptionKeys: [String]
         }
-        
+
         struct ViewModel {
             var qrCodes: [UIImage]
         }

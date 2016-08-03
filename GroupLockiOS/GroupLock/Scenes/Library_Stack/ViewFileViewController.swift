@@ -9,19 +9,19 @@
 import UIKit
 
 class ViewFileViewController: UIViewController {
-    
+
     @IBOutlet var imageView: UIImageView!
-    
+
     var correspondingFile: ManagedFile!
-    
+
     override func viewDidLoad() {
-        
+
         navigationItem.title = correspondingFile.name
-        
+
         guard let contents = correspondingFile.contents else {
             return
         }
         imageView.image = UIImage(data: contents)
     }
-    
+
 }

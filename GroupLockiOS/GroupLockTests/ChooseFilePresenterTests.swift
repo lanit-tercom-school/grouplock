@@ -12,7 +12,7 @@ import CoreData
 @testable import GroupLock
 
 class ChooseFilePresenterTests: XCTestCase {
-    
+
     struct Seeds {
         struct FileFormat {
             static let fileName = "File Name"
@@ -20,26 +20,26 @@ class ChooseFilePresenterTests: XCTestCase {
             static let fileThumbnail = UIImage()
         }
     }
-    
+
     // MARK: Subject under test
     var sut: ChooseFilePresenter!
-    
+
     // MARK: - Test lifecycle
-    
+
     override func setUp() {
         super.setUp()
-        
+
         sut = ChooseFilePresenter()
     }
-    
+
     override func tearDown() {
-        
+
         super.tearDown()
     }
-    
+
     // MARK: - Test doubles
-    
-    
+
+
     // MARK: - Tests
 
 }

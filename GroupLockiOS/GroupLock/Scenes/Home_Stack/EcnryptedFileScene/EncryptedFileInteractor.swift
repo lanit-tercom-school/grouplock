@@ -10,7 +10,7 @@ import UIKit
 
 protocol EncryptedFileInteractorInput {
     var encryptedFiles: [File] { get set }
-    
+
     func fetchFiles(request: EncryptedFile.Fetch.Request)
     func prepareFilesForSharing(request: EncryptedFile.Share.Request)
     func fileSelected(request: EncryptedFile.SelectFiles.Request)
@@ -23,6 +23,7 @@ protocol EncryptedFileInteractorOutput {
     func shareFiles(response: EncryptedFile.Share.Response)
 }
 
+// swiftlint:disable line_length
 /*
 struct HardcodedFiles {
     static let ef = [
@@ -34,24 +35,26 @@ struct HardcodedFiles {
     ]
 }
 */
+// swiftlint:enable line_length
+
 class EncryptedFileInteractor: EncryptedFileInteractorInput {
-    
+
     var output: EncryptedFileInteractorOutput!
-    
+
     // MARK: - Business logic
-    
+
     var encryptedFiles: [File] = []/* = HardcodedFiles.ef */
-    
+
     private var selectedFiles = Set<NSIndexPath>()
-    
+
     func fetchFiles(request: EncryptedFile.Fetch.Request) {
-        
+
         let response = EncryptedFile.Fetch.Response(files: encryptedFiles)
         output.presentFiles(response)
     }
-    
+
     func prepareFilesForSharing(request: EncryptedFile.Share.Request) {
-        
+
         let dataToShare = selectedFiles.map { encryptedFiles[$0.item].contents ?? NSData() }
         let excludedActivityTypes = [
             UIActivityTypePrint,
@@ -63,26 +66,26 @@ class EncryptedFileInteractor: EncryptedFileInteractorInput {
             UIActivityTypeAddToReadingList,
             UIActivityTypePostToTencentWeibo
         ]
-        
+
         let response = EncryptedFile.Share.Response(dataToShare: dataToShare,
                                                     excludedActivityTypes: excludedActivityTypes)
         output.shareFiles(response)
     }
-    
+
     func fileSelected(request: EncryptedFile.SelectFiles.Request) {
         selectedFiles.insert(request.indexPath)
     }
-    
+
     func fileDeselected(request: EncryptedFile.SelectFiles.Request) {
         selectedFiles.remove(request.indexPath)
     }
-    
+
     func saveFiles(request: EncryptedFile.SaveFiles.Request) {
-        
+
         for file in encryptedFiles {
             _ = ManagedFile(file, insertIntoManagedObjectContext: AppDelegate.sharedInstance.managedObjectContext)
         }
-        
+
         AppDelegate.sharedInstance.saveContext()
     }
 }

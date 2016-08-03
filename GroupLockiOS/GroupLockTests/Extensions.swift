@@ -10,10 +10,10 @@ import Foundation
 
 extension NSData: Comparable {}
 
-public func <(lhs: NSData, rhs: NSData) -> Bool {
+public func < (lhs: NSData, rhs: NSData) -> Bool {
     return lhs.length < rhs.length
 }
 
-public func <=(lhs: NSData, rhs: NSData) -> Bool {
+public func <= (lhs: NSData, rhs: NSData) -> Bool {
     return lhs.length <= rhs.length
 }

@@ -10,5 +10,5 @@ import Foundation
 
 // MARK: Scene
 struct NumberOfKeys {
-    
+
 }

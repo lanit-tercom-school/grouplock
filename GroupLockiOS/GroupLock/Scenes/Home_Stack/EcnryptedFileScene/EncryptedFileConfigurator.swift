@@ -21,19 +21,19 @@ extension EncryptedFileInteractor: EncryptedFileViewControllerOutput {}
 extension EncryptedFilePresenter: EncryptedFileInteractorOutput {}
 
 class EncryptedFileConfigurator {
-    
+
     // MARK: - Configuration
-    
+
     static func configure(viewController: EncryptedFileViewController) {
         let router = EncryptedFileRouter()
         router.viewController = viewController
-        
+
         let presenter = EncryptedFilePresenter()
         presenter.output = viewController
-        
+
         let interactor = EncryptedFileInteractor()
         interactor.output = presenter
-        
+
         viewController.output = interactor
         viewController.router = router
     }

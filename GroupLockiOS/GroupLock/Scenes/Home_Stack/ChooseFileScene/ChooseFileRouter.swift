@@ -13,19 +13,20 @@ protocol ChooseFileRouterInput {
 }
 
 class ChooseFileRouter: ChooseFileRouterInput {
-    
+
     weak var viewController: ChooseFileViewController!
-    
+
     // MARK: - Communication
-    
+
     func passDataToNextScene(segue: UIStoryboardSegue) {
-        
+
         if segue.identifier == "toKeyType" {
             passDataToKeyTypeScene(segue)
         }
     }
-    
+
     func passDataToKeyTypeScene(segue: UIStoryboardSegue) {
+        // swiftlint:disable:next force_cast (since the destination is known)
         let keyTypeViewController = segue.destinationViewController as! KeyTypeViewController
         keyTypeViewController.output.files = viewController.output.chosenFiles
     }

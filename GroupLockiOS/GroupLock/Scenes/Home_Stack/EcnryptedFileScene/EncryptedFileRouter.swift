@@ -13,19 +13,19 @@ protocol EncryptedFileRouterInput {
 }
 
 class EncryptedFileRouter: EncryptedFileRouterInput {
-    
+
     weak var viewController: EncryptedFileViewController!
-    
+
     // MARK: - Navigation
-    
+
     func returnToHomeScene() {
         viewController.performSegueWithIdentifier("ReturnToHomeScreen", sender: nil)
     }
-    
+
     // MARK: - Communication
-    
+
     func passDataToNextScene(segue: UIStoryboardSegue) {
-        
+
     }
-    
+
 }

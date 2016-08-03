@@ -11,23 +11,23 @@ import MobileCoreServices
 import NUI
 
 extension UIViewController {
-    
+
     func hideKeyboardWhenTappedAround() {
-        
+
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(
             target: self, action: #selector(UIViewController.dismissKeyboard))
-        
+
         view.addGestureRecognizer(tap)
     }
-    
+
     func dismissKeyboard() {
         view.endEditing(true)
     }
-    
+
 }
 
 extension UIViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
+
     func presentImagePicker() {
         let albumPicker = UIImagePickerController()
         albumPicker.delegate = self
@@ -35,7 +35,7 @@ extension UIViewController: UIImagePickerControllerDelegate, UINavigationControl
         albumPicker.mediaTypes = [kUTTypeImage as String]
         presentViewController(albumPicker, animated: true, completion: nil)
     }
-    
+
     func pickEncryptionStatusAlert(forFile file: ManagedFile, completion: ((ManagedFile) -> Void)?) {
         let actionSheet = UIAlertController(title: nil, message: "What do you to load this file for?",
                                             preferredStyle: .ActionSheet)
@@ -49,25 +49,25 @@ extension UIViewController: UIImagePickerControllerDelegate, UINavigationControl
         }
         actionSheet.addAction(forEncryption)
         actionSheet.addAction(forDecryption)
-        
+
         presentViewController(actionSheet, animated: true, completion: nil)
     }
-    
+
     // TODO: Implement uniqueness check
     func setFileNameAlert(file: ManagedFile, completion: ((ManagedFile) -> Void)?) -> Void {
         let nameAlert = UIAlertController(title: "Name", message: "Type a desired name for this file.",
                                           preferredStyle: .Alert)
         nameAlert.addTextFieldWithConfigurationHandler(nil)
-        
+
         let action = UIAlertAction(title: "OK", style: .Default) { _ in
             if let name = nameAlert.textFields?.first?.text {
                 file.name = name
                 completion?(file)
             }
         }
-        
+
         nameAlert.addAction(action)
-        
+
         presentViewController(nameAlert, animated: false, completion: nil)
     }
 }

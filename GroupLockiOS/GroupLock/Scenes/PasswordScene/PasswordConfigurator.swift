@@ -21,19 +21,19 @@ extension PasswordInteractor: PasswordViewControllerOutput {}
 extension PasswordPresenter: PasswordInteractorOutput {}
 
 class PasswordConfigurator {
-    
+
     // MARK: - Configuration
-    
+
     static func configure(viewController: PasswordViewController) {
         let router = PasswordRouter()
         router.viewController = viewController
-        
+
         let presenter = PasswordPresenter()
         presenter.output = viewController
-        
+
         let interactor = PasswordInteractor()
         interactor.output = presenter
-        
+
         viewController.output = interactor
         viewController.router = router
     }

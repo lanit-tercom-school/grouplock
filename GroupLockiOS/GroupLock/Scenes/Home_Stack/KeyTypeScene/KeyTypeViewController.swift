@@ -15,20 +15,20 @@ protocol KeyTypeViewControllerInput {
 protocol KeyTypeViewControllerOutput {
     var files: [File] { get set }
     var keyType: KeyType { get }
-    
+
     func setKeyType(request: KeyTypeModels.SetType.Request)
 }
 
 class KeyTypeViewController: UIViewController, KeyTypeViewControllerInput {
-    
+
     var output: KeyTypeViewControllerOutput!
     var router: KeyTypeRouter!
-    
+
     // MARK: - Event handling
     @IBAction func onKeyType(sender: UIButton) {
-        
+
         assert(sender.titleLabel?.text != nil, "The button title text must be a type of key representation")
-        
+        // swiftlint:disable:next force_unwrapping (since we have the assertion)
         let request = KeyTypeModels.SetType.Request(keyName: sender.titleLabel!.text!)
         output.setKeyType(request)
         router.navigateToNumberOfKeysScene()

@@ -14,16 +14,16 @@ protocol NumberOfKeysInteractorInput {
 }
 
 protocol NumberOfKeysInteractorOutput {
-    
+
 }
 
 class NumberOfKeysInteractor: NumberOfKeysInteractorInput {
-    
+
     var output: NumberOfKeysInteractorOutput!
-    
+
     // MARK: - Business logic
-    
+
     var numberOfKeys = Crypto.maximumNumberOfKeys
-    
+
     var files: [File] = []
 }

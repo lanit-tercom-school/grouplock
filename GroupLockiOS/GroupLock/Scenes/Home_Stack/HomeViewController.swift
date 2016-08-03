@@ -12,14 +12,14 @@ class HomeViewController: UIViewController {
 
     @IBOutlet var encryptButton: UIButton!
     @IBOutlet var decryptButton: UIButton!
-    
+
     @IBAction func onEncrypt() {
         performSegueWithIdentifier("chooseFileToEncrypt", sender: encryptButton)
     }
     @IBAction func onDecrypt() {
 
     }
-    
-    
+
+
     @IBAction func unwindToHome(segue: UIStoryboardSegue) {}
 }
