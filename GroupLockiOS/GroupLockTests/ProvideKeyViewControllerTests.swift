@@ -93,7 +93,7 @@ class ProvideKeyViewControllerTests: XCTestCase {
         }
     }
 
-    class AgrumeSpy: AgrumeProtocol {
+    class AgrumeSpy: ImageViewer {
 
         var shown = false
         var initialImageIndex = -1

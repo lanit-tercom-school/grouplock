@@ -35,7 +35,7 @@ class ProvideKeyViewController: UICollectionViewController, ProvideKeyViewContro
                                                        CollectionViewCellFactory>!
     var dataSource: CollectionViewDataSource!
 
-    lazy var agrume: AgrumeProtocol = { return Agrume(images: self.dataSource[0].items) }()
+    lazy var agrume: ImageViewer = { return Agrume(images: self.dataSource[0].items) }()
 
     // MARK: - View Controller lifecycle
 
