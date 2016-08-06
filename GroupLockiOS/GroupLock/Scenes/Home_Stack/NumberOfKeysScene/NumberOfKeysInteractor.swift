@@ -21,9 +21,11 @@ class NumberOfKeysInteractor: NumberOfKeysInteractorInput {
 
     var output: NumberOfKeysInteractorOutput!
 
+    var cryptoLibrary: CryptoWrapperProtocol = Crypto()
+
     // MARK: - Business logic
 
-    var numberOfKeys = Crypto.maximumNumberOfKeys
+    var numberOfKeys: Int { return cryptoLibrary.maximumNumberOfKeys }
 
     var files: [File] = []
 }

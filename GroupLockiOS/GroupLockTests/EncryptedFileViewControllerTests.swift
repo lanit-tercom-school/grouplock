@@ -106,7 +106,7 @@ class EncryptedFileViewControllerTests: XCTestCase {
         }
     }
 
-    class FileCollectionViewConfiguratorSpy: CollectionViewConfigurator {
+    class CollectionViewConfiguratorSpy: CollectionViewConfiguratorProtocol {
         var collectionViewConfigurated: UICollectionView?
         var allowsMultipleSelection: Bool?
         func configure(collectionView: UICollectionView, allowsMultipleSelection: Bool) {
@@ -198,20 +198,20 @@ class EncryptedFileViewControllerTests: XCTestCase {
     func test_ThatEncryptedFileViewController_ConfiguresCollectionViewOnLoad() {
 
         // Given
-        let fileCollectionViewConfiguratorSpy = FileCollectionViewConfiguratorSpy()
-        sut.collectionViewConfigurator = fileCollectionViewConfiguratorSpy
+        let collectionViewConfiguratorSpy = CollectionViewConfiguratorSpy()
+        sut.collectionViewConfigurator = collectionViewConfiguratorSpy
 
         // When
         loadView()
 
         // Then
-        XCTAssertNotNil(fileCollectionViewConfiguratorSpy.collectionViewConfigurated,
+        XCTAssertNotNil(collectionViewConfiguratorSpy.collectionViewConfigurated,
                         "EncryptedFileViewController should tell CollectionViewConfigurator to configure" +
             " its collection view")
-        XCTAssertNotNil(fileCollectionViewConfiguratorSpy.allowsMultipleSelection)
-        XCTAssertTrue(sut.collectionView === fileCollectionViewConfiguratorSpy.collectionViewConfigurated,
+        XCTAssertNotNil(collectionViewConfiguratorSpy.allowsMultipleSelection)
+        XCTAssertTrue(sut.collectionView === collectionViewConfiguratorSpy.collectionViewConfigurated,
                       "EncryptedFileViewController should pass CollectionViewConfigurator its collection view")
-        XCTAssertTrue(fileCollectionViewConfiguratorSpy.allowsMultipleSelection!,
+        XCTAssertTrue(collectionViewConfiguratorSpy.allowsMultipleSelection!,
                       "EncryptedFileViewController should allow multiple selection in its collection view")
     }
 

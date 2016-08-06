@@ -29,7 +29,7 @@ class EncryptedFileViewController: UICollectionViewController, EncryptedFileView
     var router: EncryptedFileRouter!
 
     var collectionViewDataSource: EncryptedFileDataSourceProtocol = EncryptedFileDataSource()
-    var collectionViewConfigurator: CollectionViewConfigurator = FileCollectionViewConfigurator()
+    var collectionViewConfigurator: CollectionViewConfiguratorProtocol = CollectionViewConfigurator()
 
     // MARK: - View Controller lifecycle
 

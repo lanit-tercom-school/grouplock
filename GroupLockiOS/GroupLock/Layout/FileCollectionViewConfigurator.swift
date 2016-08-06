@@ -11,7 +11,7 @@ import UIKit
 /**
  *  Manages layout configuration for a collection view object
  */
-protocol CollectionViewConfigurator {
+protocol CollectionViewConfiguratorProtocol {
 
     /**
      Applies specified settings to a given collection view.
@@ -22,7 +22,7 @@ protocol CollectionViewConfigurator {
     func configure(collectionView: UICollectionView, allowsMultipleSelection: Bool)
 }
 
-struct FileCollectionViewConfigurator: CollectionViewConfigurator {
+struct CollectionViewConfigurator: CollectionViewConfiguratorProtocol {
 
     func configure(collectionView: UICollectionView, allowsMultipleSelection: Bool = false) {
         collectionView.applyNUI()
