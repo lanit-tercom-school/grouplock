@@ -85,6 +85,12 @@
 		87B6921E1CB425E0008ACB6A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87B6921C1CB425E0008ACB6A /* LaunchScreen.storyboard */; };
 		87B6927F1CB45188008ACB6A /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B6927E1CB45188008ACB6A /* UIViewController.swift */; };
 		87CF826A1D3E3058000147EB /* ProvideKeyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CF82691D3E3058000147EB /* ProvideKeyCell.swift */; };
+		87D0AE0D1D59E190005BDCFD /* ScanningConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D0AE061D59E190005BDCFD /* ScanningConfigurator.swift */; };
+		87D0AE0E1D59E190005BDCFD /* ScanningInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D0AE071D59E190005BDCFD /* ScanningInteractor.swift */; };
+		87D0AE0F1D59E190005BDCFD /* ScanningModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D0AE081D59E190005BDCFD /* ScanningModels.swift */; };
+		87D0AE101D59E190005BDCFD /* ScanningPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D0AE091D59E190005BDCFD /* ScanningPresenter.swift */; };
+		87D0AE111D59E190005BDCFD /* ScanningRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D0AE0A1D59E190005BDCFD /* ScanningRouter.swift */; };
+		87D0AE121D59E190005BDCFD /* ScanningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D0AE0B1D59E190005BDCFD /* ScanningViewController.swift */; };
 		87DE60DE1CB46373005EA79E /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87DE60DD1CB46373005EA79E /* LocalAuthentication.framework */; };
 		87EA7C3F1D40C76D008FB4DA /* QRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EA7C3E1D40C76D008FB4DA /* QRCode.swift */; };
 		87F118F01CBF0CD40038F956 /* NUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87F118EF1CBF0CD40038F956 /* NUI.framework */; };
@@ -206,6 +212,12 @@
 		87B6922A1CB425E0008ACB6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87B6927E1CB45188008ACB6A /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.swift; name = UIViewController.swift; path = Class_Extensions/UIViewController.swift; sourceTree = "<group>"; tabWidth = 4; };
 		87CF82691D3E3058000147EB /* ProvideKeyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProvideKeyCell.swift; path = Scenes/Home_Stack/ProvideKeyScene/ProvideKeyCell.swift; sourceTree = "<group>"; };
+		87D0AE061D59E190005BDCFD /* ScanningConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScanningConfigurator.swift; path = Scenes/Home_Stack/ScanningScene/ScanningConfigurator.swift; sourceTree = "<group>"; };
+		87D0AE071D59E190005BDCFD /* ScanningInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScanningInteractor.swift; path = Scenes/Home_Stack/ScanningScene/ScanningInteractor.swift; sourceTree = "<group>"; };
+		87D0AE081D59E190005BDCFD /* ScanningModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScanningModels.swift; path = Scenes/Home_Stack/ScanningScene/ScanningModels.swift; sourceTree = "<group>"; };
+		87D0AE091D59E190005BDCFD /* ScanningPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScanningPresenter.swift; path = Scenes/Home_Stack/ScanningScene/ScanningPresenter.swift; sourceTree = "<group>"; };
+		87D0AE0A1D59E190005BDCFD /* ScanningRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScanningRouter.swift; path = Scenes/Home_Stack/ScanningScene/ScanningRouter.swift; sourceTree = "<group>"; };
+		87D0AE0B1D59E190005BDCFD /* ScanningViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScanningViewController.swift; path = Scenes/Home_Stack/ScanningScene/ScanningViewController.swift; sourceTree = "<group>"; };
 		87DE60DD1CB46373005EA79E /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		87EA7C3E1D40C76D008FB4DA /* QRCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QRCode.swift; path = Core/QRCode.swift; sourceTree = "<group>"; };
 		87F118EF1CBF0CD40038F956 /* NUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NUI.framework; path = "../../../Library/Developer/Xcode/DerivedData/GroupLock-ffmgilidnbhbqnfkgswyglwucvmu/Build/Products/Debug-iphonesimulator/NUI.framework"; sourceTree = "<group>"; };
@@ -313,6 +325,7 @@
 				87FAC9EF1D34ECBE00FE3602 /* NumberOfKeysScene */,
 				8704DEC41D3D031A0017F88E /* ProvideKeyScene */,
 				873022651D4213DE00222606 /* EncryptedFileScene */,
+				87D0AE051D59E154005BDCFD /* ScanningScene */,
 			);
 			name = "Home Stack";
 			sourceTree = "<group>";
@@ -509,6 +522,19 @@
 				87B6922A1CB425E0008ACB6A /* Info.plist */,
 			);
 			path = GroupLockTests;
+			sourceTree = "<group>";
+		};
+		87D0AE051D59E154005BDCFD /* ScanningScene */ = {
+			isa = PBXGroup;
+			children = (
+				87D0AE0A1D59E190005BDCFD /* ScanningRouter.swift */,
+				87D0AE0B1D59E190005BDCFD /* ScanningViewController.swift */,
+				87D0AE071D59E190005BDCFD /* ScanningInteractor.swift */,
+				87D0AE091D59E190005BDCFD /* ScanningPresenter.swift */,
+				87D0AE061D59E190005BDCFD /* ScanningConfigurator.swift */,
+				87D0AE081D59E190005BDCFD /* ScanningModels.swift */,
+			);
+			name = ScanningScene;
 			sourceTree = "<group>";
 		};
 		87FAC9EE1D34ECB600FE3602 /* KeyTypeScene */ = {
@@ -851,6 +877,7 @@
 				8730226F1D42197100222606 /* EncryptedFileModels.swift in Sources */,
 				87FFF04E1D34E9AE007315C7 /* ChooseFileConfigurator.swift in Sources */,
 				870912271D523B66006222BA /* Agrume.swift in Sources */,
+				87D0AE111D59E190005BDCFD /* ScanningRouter.swift in Sources */,
 				874801821D3660D7001A086C /* CollectionViewLayoutProperties.swift in Sources */,
 				8704DEB71D3CD0CC0017F88E /* File.swift in Sources */,
 				87B692131CB425E0008ACB6A /* PasswordViewController.swift in Sources */,
@@ -865,13 +892,16 @@
 				87FFF0311D33ACCE007315C7 /* PasswordPresenter.swift in Sources */,
 				87736F161D3D49C200B93D7B /* KeyTypeRouter.swift in Sources */,
 				873022701D42197100222606 /* EncryptedFilePresenter.swift in Sources */,
+				87D0AE101D59E190005BDCFD /* ScanningPresenter.swift in Sources */,
 				87FFF02F1D33ACCE007315C7 /* PasswordInteractor.swift in Sources */,
 				8713DE4B1CEFA5400089C92A /* ChooseFileViewController.swift in Sources */,
 				873022721D42197100222606 /* EncryptedFileViewController.swift in Sources */,
+				87D0AE0F1D59E190005BDCFD /* ScanningModels.swift in Sources */,
 				87FFF0521D34E9AE007315C7 /* ChooseFileRouter.swift in Sources */,
 				87736F141D3D49C200B93D7B /* KeyTypeModels.swift in Sources */,
 				870DBF951D3F932C004430A5 /* NumberOfKeysPresenter.swift in Sources */,
 				870DBF931D3F932C004430A5 /* NumberOfKeysInteractor.swift in Sources */,
+				87D0AE121D59E190005BDCFD /* ScanningViewController.swift in Sources */,
 				8704DED01D3D03990017F88E /* ProvideKeyRouter.swift in Sources */,
 				8730226E1D42197100222606 /* EncryptedFileInteractor.swift in Sources */,
 				87FFF0531D34E9AE007315C7 /* ChooseFileWorker.swift in Sources */,
@@ -894,8 +924,10 @@
 				8704DED51D3D08320017F88E /* Crypto.swift in Sources */,
 				87B692111CB425E0008ACB6A /* AppDelegate.swift in Sources */,
 				87AEA5F41D48CA63009D8619 /* FileCollectionViewConfigurator.swift in Sources */,
+				87D0AE0D1D59E190005BDCFD /* ScanningConfigurator.swift in Sources */,
 				87CF826A1D3E3058000147EB /* ProvideKeyCell.swift in Sources */,
 				870DBF961D3F932C004430A5 /* NumberOfKeysRouter.swift in Sources */,
+				87D0AE0E1D59E190005BDCFD /* ScanningInteractor.swift in Sources */,
 				873419B21D37D686005D036C /* GroupLock.xcdatamodeld in Sources */,
 				87FFF02E1D33ACCE007315C7 /* PasswordConfigurator.swift in Sources */,
 			);
