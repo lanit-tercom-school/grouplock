@@ -24,6 +24,7 @@ class ScanningInteractor: NSObject, ScanningInteractorInput {
     var output: ScanningInteractorOutput!
 
     var captureSession: AVCaptureSession!
+
     var scannedKeys = Set<String>()
 
     // MARK: - Business logic
@@ -54,7 +55,7 @@ extension ScanningInteractor: AVCaptureMetadataOutputObjectsDelegate {
     func captureOutput(captureOutput: AVCaptureOutput!,
                        didOutputMetadataObjects metadataObjects: [AnyObject]!,
                                                 fromConnection connection: AVCaptureConnection!) {
-        guard !metadataObjects.isEmpty else { return }
+        guard metadataObjects != nil && !metadataObjects.isEmpty else { return }
 
         if let metadataObject = metadataObjects.first as? AVMetadataMachineReadableCodeObject {
             scannedKeys.insert(metadataObject.stringValue)

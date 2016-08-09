@@ -24,15 +24,15 @@ class ScanningViewController: UIViewController, ScanningViewControllerInput {
     var output: ScanningViewControllerOutput!
     var router: ScanningRouter!
 
-    @IBOutlet var cameraView: UIView!
-
     // MARK: - View Controller lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navigationController?.setNavigationBarHidden(true, animated: true)
+        tabBarController?.tabBar.hidden = true
         output.configureCaptureSession(Scanning.Configure.Request())
-        configurePreview(cameraView)
+        configurePreview(view)
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -45,12 +45,17 @@ class ScanningViewController: UIViewController, ScanningViewControllerInput {
         super.viewWillDisappear(animated)
     }
 
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+
     func configurePreview(view: UIView) {
         let previewLayer = AVCaptureVideoPreviewLayer(session: output.captureSession)
         previewLayer.frame = view.layer.frame
         previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
         view.layer.addSublayer(previewLayer)
     }
+
 
     // MARK: - Display logic
 
