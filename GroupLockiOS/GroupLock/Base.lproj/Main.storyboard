@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="16A254g" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="16A270f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -130,7 +130,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aDx-lO-Ovx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1624" y="-601"/>
+            <point key="canvasLocation" x="1660" y="-505"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="e43-H1-Rg5">
@@ -163,7 +163,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="172" height="51"/>
                                         </variation>
                                         <connections>
-                                            <action selector="onEncrypt" destination="qZR-CY-82Z" eventType="touchUpInside" id="KSU-kX-AOt"/>
+                                            <segue destination="X0n-VS-yrO" kind="show" id="KN1-gi-ukS"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kac-3U-MlH">
@@ -182,7 +182,7 @@
                                             <rect key="frame" x="0.0" y="94" width="172" height="51"/>
                                         </variation>
                                         <connections>
-                                            <action selector="onDecrypt" destination="qZR-CY-82Z" eventType="touchUpInside" id="i9n-m1-bIZ"/>
+                                            <segue destination="X0n-VS-yrO" kind="show" id="YAd-wT-HK7"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -204,14 +204,13 @@
                         <barButtonItem key="backBarButtonItem" title="GroupLock" id="ZJf-JQ-HXe"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="decryptButton" destination="kac-3U-MlH" id="Z6x-5f-cOG"/>
-                        <outlet property="encryptButton" destination="a17-l4-2pD" id="0Ho-Iw-ahG"/>
-                        <segue destination="X0n-VS-yrO" kind="show" identifier="chooseFileToEncrypt" id="1th-xA-eDy"/>
+                        <outlet property="decryptButton" destination="kac-3U-MlH" id="muF-eE-7tn"/>
+                        <outlet property="encryptButton" destination="a17-l4-2pD" id="azV-MF-gqW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dh4-hd-SjP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2309" y="-601"/>
+            <point key="canvasLocation" x="2345" y="-505"/>
         </scene>
         <!--Chose File View Controller-->
         <scene sceneID="mVe-dl-GrD">
@@ -279,17 +278,19 @@
                         <barButtonItem key="backBarButtonItem" title="Back" id="zu9-7U-oVW"/>
                         <barButtonItem key="rightBarButtonItem" enabled="NO" title="Next" id="Leg-Dc-weu">
                             <connections>
-                                <segue destination="vTA-sU-hsi" kind="show" identifier="KeyType" id="4aj-4M-Izd"/>
+                                <action selector="onNext:" destination="X0n-VS-yrO" id="hdh-s7-IKc"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="nextButton" destination="Leg-Dc-weu" id="JeA-sP-bOL"/>
+                        <segue destination="vTA-sU-hsi" kind="show" identifier="toKeyType" id="g8x-R8-mIC"/>
+                        <segue destination="Sli-Ax-YQY" kind="show" identifier="toScanning" id="heG-EJ-oCN"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nCl-wd-5JS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3054" y="-601"/>
+            <point key="canvasLocation" x="3074" y="-505"/>
         </scene>
         <!--Key Type View Controller-->
         <scene sceneID="6cz-Mg-rff">
@@ -386,7 +387,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Pb-Kn-JY6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3729" y="-601"/>
+            <point key="canvasLocation" x="3907" y="-941"/>
+        </scene>
+        <!--Scanning View Controller-->
+        <scene sceneID="uxE-Cx-ZVn">
+            <objects>
+                <viewController id="Sli-Ax-YQY" userLabel="Scanning View Controller" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="EwX-6f-W1Y"/>
+                        <viewControllerLayoutGuide type="bottom" id="iVA-Do-3xN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2Dd-3q-jjF">
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DUu-Jd-zXW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3907" y="-160"/>
         </scene>
         <!--Number Of Keys-->
         <scene sceneID="S7w-4u-xQY">
@@ -466,7 +485,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Blp-kg-ZzC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4385" y="-601"/>
+            <point key="canvasLocation" x="4613" y="-941"/>
         </scene>
         <!--ProvideKey-->
         <scene sceneID="GQ5-4G-oR8">
@@ -537,7 +556,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="req-1E-p2b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5138" y="-580"/>
+            <point key="canvasLocation" x="5346" y="-941"/>
         </scene>
         <!--Encrypted File-->
         <scene sceneID="KgL-Yt-Vv4">
@@ -632,7 +651,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zZm-mr-hc1" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="JSn-jz-IV3" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="5844" y="-580"/>
+            <point key="canvasLocation" x="6060" y="-941"/>
         </scene>
         <!--Library-->
         <scene sceneID="VV6-CX-haO">
@@ -649,7 +668,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vnN-N5-b4j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1624" y="282"/>
+            <point key="canvasLocation" x="1660" y="616"/>
         </scene>
         <!--Library Directory View Controller-->
         <scene sceneID="D7r-no-96W">
@@ -745,7 +764,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lET-3Y-jAH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2309" y="282"/>
+            <point key="canvasLocation" x="2345" y="616"/>
         </scene>
         <!--Library View Controller-->
         <scene sceneID="gjD-cL-gjw">
@@ -808,7 +827,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i8x-6Z-CQl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3038" y="282"/>
+            <point key="canvasLocation" x="3074" y="616"/>
         </scene>
         <!--View File View Controller-->
         <scene sceneID="QB0-dJ-TCP">
@@ -845,7 +864,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aaI-fZ-X4a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3719" y="282"/>
+            <point key="canvasLocation" x="3755" y="616"/>
         </scene>
         <!--Settings-->
         <scene sceneID="0bw-e2-JC4">
@@ -862,7 +881,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H5o-Ne-Kix" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1624" y="975"/>
+            <point key="canvasLocation" x="1660" y="1547"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="qjS-48-ohZ">
@@ -884,7 +903,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kqk-Ls-IG4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2309" y="975"/>
+            <point key="canvasLocation" x="2345" y="1547"/>
         </scene>
     </scenes>
     <resources>
@@ -897,4 +916,7 @@
         <image name="SettingsButton" width="32" height="32"/>
         <image name="SettingsButtonSelected" width="32" height="32"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="KN1-gi-ukS"/>
+    </inferredMetricsTieBreakers>
 </document>

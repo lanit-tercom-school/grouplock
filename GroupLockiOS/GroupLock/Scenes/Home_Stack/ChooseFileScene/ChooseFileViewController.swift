@@ -124,6 +124,17 @@ class ChooseFileViewController: UICollectionViewController, ChooseFileViewContro
         collectionView?.dataSource = dataSourceProvider.collectionViewDataSource
     }
 
+    // MARK: - Event handling
+
+    @IBAction func onNext(sender: UIBarButtonItem) {
+        if output.encryption {
+            router.navigateToKeyTypeScene()
+        } else {
+            router.navigateToScanningScene()
+        }
+    }
+
+
     // MARK: - UICollectionViewDelegate
 
     override func collectionView(collectionView: UICollectionView,
