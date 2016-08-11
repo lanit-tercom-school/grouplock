@@ -1,10 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="16A254g" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Password View Controller-->
@@ -215,7 +216,7 @@
         <!--Chose File View Controller-->
         <scene sceneID="mVe-dl-GrD">
             <objects>
-                <collectionViewController id="X0n-VS-yrO" userLabel="Chose File View Controller" customClass="ChooseFileViewController" customModule="GroupLock" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="ChooseFileViewController" id="X0n-VS-yrO" userLabel="Chose File View Controller" customClass="ChooseFileViewController" customModule="GroupLock" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="xy1-d9-7SE">
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -226,7 +227,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="fileToProcessCell" id="kQ2-9z-jjv" userLabel="fileToProcessCell" customClass="ChooseFileViewCell" customModule="GroupLock" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="fileToProcessCell" id="kQ2-9z-jjv" userLabel="fileToProcessCell" customClass="FileCollectionViewCell" customModule="GroupLock" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -278,7 +279,7 @@
                         <barButtonItem key="backBarButtonItem" title="Back" id="zu9-7U-oVW"/>
                         <barButtonItem key="rightBarButtonItem" enabled="NO" title="Next" id="Leg-Dc-weu">
                             <connections>
-                                <segue destination="vTA-sU-hsi" kind="show" id="FDU-TG-gZg"/>
+                                <segue destination="vTA-sU-hsi" kind="show" identifier="KeyType" id="4aj-4M-Izd"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -293,7 +294,7 @@
         <!--Key Type View Controller-->
         <scene sceneID="6cz-Mg-rff">
             <objects>
-                <viewController id="vTA-sU-hsi" userLabel="Key Type View Controller" customClass="KeyTypeViewController" customModule="GroupLock" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="KeyTypeViewController" id="vTA-sU-hsi" userLabel="Key Type View Controller" customClass="KeyTypeViewController" customModule="GroupLock" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="VyY-QW-SD6"/>
                         <viewControllerLayoutGuide type="bottom" id="faO-N4-gBT"/>
@@ -317,7 +318,6 @@
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="onKeyType:" destination="vTA-sU-hsi" eventType="touchUpInside" id="IX2-Pm-YwS"/>
-                                            <segue destination="PUy-bJ-rb1" kind="show" id="Dda-2a-aci"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FrU-oc-tTg">
@@ -380,6 +380,9 @@
                     <navigationItem key="navigationItem" title="Key Type" id="Eh1-9k-KC5">
                         <barButtonItem key="backBarButtonItem" title="Back" id="Kxk-XD-55A"/>
                     </navigationItem>
+                    <connections>
+                        <segue destination="PUy-bJ-rb1" kind="show" identifier="NumberOfKeys" id="bhs-K2-zKG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Pb-Kn-JY6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -388,7 +391,7 @@
         <!--Number Of Keys-->
         <scene sceneID="S7w-4u-xQY">
             <objects>
-                <viewController id="PUy-bJ-rb1" customClass="NumberOfKeysViewController" customModule="GroupLock" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NumberOfKeysViewController" id="PUy-bJ-rb1" customClass="NumberOfKeysViewController" customModule="GroupLock" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="u5W-qr-D7n"/>
                         <viewControllerLayoutGuide type="bottom" id="NUO-f3-vRZ"/>
@@ -450,37 +453,186 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <navigationItem key="navigationItem" title="Number Of Keys" id="Jgk-CV-ccW">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="HLb-FG-cDF"/>
                         <barButtonItem key="rightBarButtonItem" title="Next" id="3N9-g4-PfW">
                             <connections>
-                                <segue destination="HEe-yN-wu7" kind="show" id="Lei-5G-IFL"/>
+                                <segue destination="nBG-Ui-WPY" kind="show" identifier="ProvideKey" id="tde-5B-Flf"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="pickerView" destination="02R-1n-hYV" id="Ydh-XG-evt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Blp-kg-ZzC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4385" y="-601"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="q5a-bC-fCN">
+        <!--ProvideKey-->
+        <scene sceneID="GQ5-4G-oR8">
             <objects>
-                <viewController id="HEe-yN-wu7" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="d9C-hs-mQj"/>
-                        <viewControllerLayoutGuide type="bottom" id="bWB-of-WSr"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="6tZ-xD-zZt">
+                <collectionViewController storyboardIdentifier="ProvideKeyViewController" id="nBG-Ui-WPY" userLabel="ProvideKey" customClass="ProvideKeyViewController" customModule="GroupLock" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="w2s-Bi-0nc">
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="m9l-jz-Hub">
+                            <size key="itemSize" width="192" height="192"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="QRCodeCell" id="bNQ-5u-euP" customClass="ProvideKeyCell" customModule="GroupLock" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="192" height="192"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="192" height="192"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gjb-q1-3fM" userLabel="QR-Code View">
+                                            <rect key="frame" x="0.0" y="0.0" width="192" height="192"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="gjb-q1-3fM" secondAttribute="height" multiplier="1:1" id="d9J-g3-WAq"/>
+                                            </constraints>
+                                        </imageView>
+                                        <view hidden="YES" alpha="0.65000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xmp-Xa-haS" userLabel="Darkening View">
+                                            <rect key="frame" x="0.0" y="0.0" width="192" height="192"/>
+                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="Xmp-Xa-haS" firstAttribute="leading" secondItem="gjb-q1-3fM" secondAttribute="leading" id="8lG-FL-ofn"/>
+                                    <constraint firstItem="gjb-q1-3fM" firstAttribute="width" secondItem="bNQ-5u-euP" secondAttribute="width" id="M4E-5K-9OU"/>
+                                    <constraint firstItem="gjb-q1-3fM" firstAttribute="centerY" secondItem="bNQ-5u-euP" secondAttribute="centerY" id="MOl-6R-M4C"/>
+                                    <constraint firstItem="gjb-q1-3fM" firstAttribute="centerX" secondItem="bNQ-5u-euP" secondAttribute="centerX" id="TAl-xm-63g"/>
+                                    <constraint firstItem="Xmp-Xa-haS" firstAttribute="trailing" secondItem="gjb-q1-3fM" secondAttribute="trailing" id="sLH-EJ-0x4"/>
+                                    <constraint firstItem="Xmp-Xa-haS" firstAttribute="bottom" secondItem="gjb-q1-3fM" secondAttribute="bottom" id="tO4-8G-kqs"/>
+                                    <constraint firstItem="Xmp-Xa-haS" firstAttribute="top" secondItem="gjb-q1-3fM" secondAttribute="top" id="wTB-ne-ruV"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="CollectionViewCell"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="darkeningView" destination="Xmp-Xa-haS" id="D3F-Oe-jeC"/>
+                                    <outlet property="keyImageView" destination="gjb-q1-3fM" id="Fp9-hm-GMO"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="GeneralView"/>
                         </userDefinedRuntimeAttributes>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="m8w-b8-aDb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <connections>
+                            <outlet property="delegate" destination="nBG-Ui-WPY" id="1FB-zW-jLh"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Your Keys" id="LcH-P9-HxB">
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="MMT-rg-Zc8">
+                            <connections>
+                                <segue destination="EMn-t3-28b" kind="show" id="jDq-Ks-DDQ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="req-1E-p2b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5061" y="-601"/>
+            <point key="canvasLocation" x="5138" y="-580"/>
+        </scene>
+        <!--Encrypted File-->
+        <scene sceneID="KgL-Yt-Vv4">
+            <objects>
+                <collectionViewController storyboardIdentifier="EncryptedFileViewController" id="EMn-t3-28b" userLabel="Encrypted File" customClass="EncryptedFileViewController" customModule="GroupLock" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="CCc-7r-cUG">
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="PmQ-Ob-ApJ">
+                            <size key="itemSize" width="156" height="156"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EncryptedFileCell" id="arA-jv-RlQ" userLabel="EncryptedFile Cell" customClass="FileCollectionViewCell" customModule="GroupLock" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="156" height="156"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="156" height="156"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ago-jO-Opw" userLabel="EncryptedFile View">
+                                            <rect key="frame" x="0.0" y="0.0" width="156" height="156"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="ago-jO-Opw" secondAttribute="height" multiplier="1:1" id="Pxp-ex-gT6"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filename" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cky-UE-9GE">
+                                            <rect key="frame" x="0.0" y="117" width="156" height="39"/>
+                                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LockIcon" translatesAutoresizingMaskIntoConstraints="NO" id="egy-d2-1Pb">
+                                            <rect key="frame" x="46.5" y="34" width="64" height="64.5"/>
+                                            <color key="tintColor" red="0.29803921568627451" green="0.68627450980392157" blue="0.30196078431372547" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="egy-d2-1Pb" secondAttribute="height" multiplier="1:1" id="QPM-HE-FsR"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="egy-d2-1Pb" firstAttribute="centerY" secondItem="ago-jO-Opw" secondAttribute="centerY" multiplier="0.85" id="NRz-Ho-Zmr"/>
+                                    <constraint firstItem="cky-UE-9GE" firstAttribute="bottom" secondItem="ago-jO-Opw" secondAttribute="bottom" id="bcw-Tp-qjI"/>
+                                    <constraint firstItem="cky-UE-9GE" firstAttribute="trailing" secondItem="ago-jO-Opw" secondAttribute="trailing" id="cPM-UA-rWa"/>
+                                    <constraint firstItem="ago-jO-Opw" firstAttribute="centerX" secondItem="arA-jv-RlQ" secondAttribute="centerX" id="gp7-CD-1NO"/>
+                                    <constraint firstItem="ago-jO-Opw" firstAttribute="width" secondItem="arA-jv-RlQ" secondAttribute="width" id="iuc-XX-AOb"/>
+                                    <constraint firstItem="ago-jO-Opw" firstAttribute="centerY" secondItem="arA-jv-RlQ" secondAttribute="centerY" id="oQW-Bw-Tbb"/>
+                                    <constraint firstItem="egy-d2-1Pb" firstAttribute="centerX" secondItem="ago-jO-Opw" secondAttribute="centerX" id="ouF-DD-CBU"/>
+                                    <constraint firstItem="cky-UE-9GE" firstAttribute="leading" secondItem="ago-jO-Opw" secondAttribute="leading" id="ozo-bz-e7W"/>
+                                    <constraint firstItem="cky-UE-9GE" firstAttribute="height" secondItem="ago-jO-Opw" secondAttribute="height" multiplier="0.25" id="wrD-lt-cgK"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="CollectionViewCell"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="filenameLabel" destination="cky-UE-9GE" id="fm7-bz-db7"/>
+                                    <outlet property="lockIcon" destination="egy-d2-1Pb" id="z0k-1B-DIk"/>
+                                    <outlet property="thumbnailView" destination="ago-jO-Opw" id="A8C-hw-BSr"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="GeneralView"/>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <outlet property="delegate" destination="EMn-t3-28b" id="gd8-Wc-Krx"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Encrypted Files" id="upF-R3-NhI">
+                        <rightBarButtonItems>
+                            <barButtonItem style="done" systemItem="save" id="VZy-dk-B3v">
+                                <connections>
+                                    <action selector="onSaveButton:" destination="EMn-t3-28b" id="NwQ-On-3Y9"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="action" id="cCH-iN-QJV">
+                                <connections>
+                                    <action selector="onShareButton:" destination="EMn-t3-28b" id="7f8-SL-Miy"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="JSn-jz-IV3" kind="unwind" identifier="ReturnToHomeScreen" unwindAction="unwindToHome:" id="fKZ-2c-BVO"/>
+                    </connections>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zZm-mr-hc1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="JSn-jz-IV3" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="5844" y="-580"/>
         </scene>
         <!--Library-->
         <scene sceneID="VV6-CX-haO">
@@ -741,6 +893,7 @@
         <image name="HomeButtonSelected" width="32" height="32"/>
         <image name="LibraryButton" width="32" height="32"/>
         <image name="LibraryButtonSelected" width="32" height="32"/>
+        <image name="LockIcon" width="64" height="64"/>
         <image name="SettingsButton" width="32" height="32"/>
         <image name="SettingsButtonSelected" width="32" height="32"/>
     </resources>

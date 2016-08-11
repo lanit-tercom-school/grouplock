@@ -10,24 +10,24 @@ import XCTest
 @testable import GroupLock
 
 class ChooseFileWorkerTests: XCTestCase {
-    
+
     // MARK: Subject under test
     var sut: ChooseFileWorker!
-    
+
     // MARK: - Test lifecycle
     override func setUp() {
         super.setUp()
-        
+
         sut = ChooseFileWorker()
     }
-    
+
     override func tearDown() {
-        
+
         super.tearDown()
     }
-    
+
     // MARK: - Test doubles
-    
+
     // MARK: - Tests
-    
+
 }

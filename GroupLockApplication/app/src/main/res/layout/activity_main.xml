@@ -5,8 +5,21 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity"
-    android:backgroundTint="@color/colorBackGround"
-    android:id="@+id/backGround">
+    android:id="@+id/backGround"
+    android:background="@color/colorBackGroundPass">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="ENTER \nPASSWORD"
+        android:textColor="@color/colorPasswordCorrect"
+        android:id="@+id/Password"
+        android:textSize="@dimen/enter_password"
+        android:layout_marginTop="48dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -14,32 +27,30 @@
         android:inputType="textPassword"
         android:ems="10"
         android:id="@+id/editText"
-        android:layout_marginTop="141dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_marginTop="31dp"
+        android:background="#ffffff"
+        android:layout_below="@+id/Password"
+        android:layout_alignLeft="@+id/Password"
+        android:layout_alignStart="@+id/Password"
+        android:layout_alignRight="@+id/Password"
+        android:layout_alignEnd="@+id/Password"
+        android:textAlignment="center"
+        android:cursorVisible="false"
+        android:textSize="36dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Enter"
-        android:textColor="@color/colorButtonText"
+        android:textColor="#ffffff"
         android:id="@+id/EnterButton"
-        android:layout_centerVertical="true"
+        android:textSize="@dimen/activity_button_text"
+        android:onClick="GoToNextActivity"
+        android:layout_marginTop="36dp"
+        android:layout_below="@+id/editText"
         android:layout_centerHorizontal="true"
-        android:textSize="@dimen/abc_text_size_title_material"
-        android:onClick="GoToNextActivity" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Password"
-        android:textColor="@color/colorText"
-        android:id="@+id/Password"
-        android:textSize="@dimen/abc_text_size_title_material"
-        android:layout_alignParentTop="true"
-        android:layout_alignRight="@+id/EnterButton"
-        android:layout_alignEnd="@+id/EnterButton" />
+        android:height="@dimen/activity_button_hight"
+        android:background="#4caf4d" />
 
 
 </RelativeLayout>

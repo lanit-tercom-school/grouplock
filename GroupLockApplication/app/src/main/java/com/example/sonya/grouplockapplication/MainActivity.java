@@ -1,9 +1,12 @@
 package com.example.sonya.grouplockapplication;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.app.Activity;
 import android.content.SharedPreferences;
@@ -15,10 +18,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
 
 public class MainActivity extends Activity implements OnClickListener {
 
-    EditText edText, editText;
+    TextView textEntPass;
+    EditText editText;
     Button EnterButton;
     SharedPreferences sPref;
     String savedText;
@@ -30,10 +36,15 @@ public class MainActivity extends Activity implements OnClickListener {
         super.onCreate(savedInstanceState);
         loadData();
         setContentView(R.layout.activity_main);
+        textEntPass=(TextView)findViewById(R.id.Password);
         editText = (EditText) findViewById(R.id.editText);
-
         EnterButton  = (Button) findViewById(R.id.EnterButton);
         EnterButton.setOnClickListener(this);
+
+        if(editText.requestFocus()) {
+            getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+        }
+
         // loadText();
         if (passReq==false)
             GoToNextActivity();
@@ -54,6 +65,8 @@ public class MainActivity extends Activity implements OnClickListener {
                     GoToNextActivity();
                 }
                 else {
+                    textEntPass.setTextColor(getResources().getColor(R.color.colorPasswordIncorrect));
+                    editText.setText("");
                     Toast.makeText(this, "Password is incorrect", Toast.LENGTH_SHORT).show();
                 }
                 break;

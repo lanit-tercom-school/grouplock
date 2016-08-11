@@ -3,13 +3,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.sonya.grouplockapplication" >
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/typography_72x72"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme" >
-        <activity android:name=".MainActivity" >
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -18,32 +21,57 @@
         </activity>
         <activity
             android:name=".ChooseToDoActivity"
-            android:label="Home" >
+            android:label="Home"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".LoadActivity"
-            android:label="Load" >
+            android:label="Load"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".LibraryActivity"
-            android:label="Library" >
+            android:label="Library"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".KeysTypeSelectionActivity"
-            android:label="@string/title_activity_keys_type_selection">
+            android:label="@string/title_activity_keys_type_selection"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".SettingsActivity"
-            android:label="Settings">
+        <activity
+            android:name=".SettingsActivity"
+            android:label="Settings"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".NumberOfKeysActivity"
-            android:label="Step 3/6">
+            android:label="Step 3/6"
+            android:screenOrientation="portrait">
         </activity>
         <activity android:name=".QrReaderActivity"
-            android:label="QrReader">
+            android:label="QrReader"
+            android:screenOrientation="portrait">
         </activity>
         <activity android:name=".QrCreateActivity"
-            android:label="QrReader">
+            android:label="QrCreate"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".EncrImgAndQr"
+            android:label="EncrImg"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".DecrImg"
+            android:label="DecrImg"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".OutputQrActivity"
+            android:label="OutputQrActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".OpenQrActivity"
+            android:label="OpenQrActivity"
+            android:screenOrientation="portrait">
         </activity>
 
 

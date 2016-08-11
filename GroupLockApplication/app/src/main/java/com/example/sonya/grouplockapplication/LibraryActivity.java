@@ -193,12 +193,13 @@ public class LibraryActivity extends AppCompatActivity {
      * We can only encrypt from "Decrypted" directory and decrypt from "Encrypted" directory
      * */
     private void setCryptMenuItemsAccess() {
-        if (menuItemEncrypt != null && menuItemDecrypt != null) {
-            menuItemEncrypt.setEnabled(currentDirectory.getAbsolutePath()
-                                                       .contains(libraryRootPath + "/" + DECRYPTED_FOLDER_NAME));
-            menuItemDecrypt.setEnabled(currentDirectory.getAbsolutePath()
-                                                       .contains(libraryRootPath + "/" + ENCRYPTED_FOLDER_NAME));
-        }
+            if (menuItemEncrypt != null && menuItemDecrypt != null) {
+                Log.i("Libr",currentDirectory.getAbsolutePath());
+                menuItemEncrypt.setEnabled(currentDirectory.getAbsolutePath()
+                        .contains(libraryRootPath + "/" + DECRYPTED_FOLDER_NAME));
+                menuItemDecrypt.setEnabled(currentDirectory.getAbsolutePath()
+                        .contains(libraryRootPath + "/" + ENCRYPTED_FOLDER_NAME));
+            }
     }
 
     /**
@@ -208,6 +209,7 @@ public class LibraryActivity extends AppCompatActivity {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             LibraryEntry selectedEntry = currentDirectoryEntries.get(position);
+            Log.i("Choose file:", selectedEntry.getAbsolutePath());
             /* If directory is clicked on, go to its content.
              * If file is clicked on and we select files, toggle its selection status */
             if (selectedEntry.isDirectory()) {
@@ -288,12 +290,18 @@ public class LibraryActivity extends AppCompatActivity {
     public void goToNextStep(View v) {
 
         if (currentLibraryState == LibraryState.ENCRYPT_SELECTING) {
-            Intent intent = new Intent(this, KeysTypeSelectionActivity.class);
+            Intent intent = new Intent(this, NumberOfKeysActivity.class);
             /* Pass files list to new activity */
             intent.putExtra("files", filesToOperateWith);
             startActivity(intent);
 
         } else if (currentLibraryState == LibraryState.DECRYPT_SELECTING) {
+
+            Intent intent = new Intent(this, DecrImg.class);        //???????????
+            /* Pass files list to new activity */
+            intent.putExtra("files", filesToOperateWith);
+            startActivity(intent);
+
             // TODO: go to decryption, transfer filesToOperateWith list
             /* debug log */
             Log.d("crypt", filesToOperateWith.size() + " items selected to decrypt:\n");

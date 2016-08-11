@@ -4,13 +4,14 @@ xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="fill_parent"
 android:layout_height="fill_parent"
 android:orientation="vertical"
-tools:context=".NumberOfKeysActivity" >
+tools:context=".NumberOfKeysActivity"
+    android:background="@color/colorBackGround">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/keys_type_selection_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
+        android:background="@color/colorToolbar"
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
@@ -30,22 +31,22 @@ tools:context=".NumberOfKeysActivity" >
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/minKeys"
-        android:layout_above="@+id/button4"
-        android:layout_alignRight="@+id/textView"
-        android:layout_alignEnd="@+id/textView"
-        android:layout_marginRight="35dp"
-        android:layout_marginEnd="35dp"
-        android:layout_marginBottom="150dp" />
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/textView"
+        android:layout_toStartOf="@+id/textView" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/maxStart"
         android:id="@+id/textMax"
+        android:textSize="15dp"
         android:layout_above="@+id/maxKeys"
+        android:layout_alignLeft="@+id/maxKeys"
+        android:layout_alignStart="@+id/maxKeys"
         android:layout_alignRight="@+id/maxKeys"
         android:layout_alignEnd="@+id/maxKeys"
-        android:textSize="15dp" />
+        android:textAlignment="center" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -55,7 +56,10 @@ tools:context=".NumberOfKeysActivity" >
         android:layout_above="@+id/minKeys"
         android:layout_alignLeft="@+id/minKeys"
         android:layout_alignStart="@+id/minKeys"
-        android:textSize="15dp" />
+        android:textSize="15dp"
+        android:layout_alignRight="@+id/minKeys"
+        android:layout_alignEnd="@+id/minKeys"
+        android:textAlignment="center" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -81,10 +85,16 @@ tools:context=".NumberOfKeysActivity" >
         android:layout_height="wrap_content"
         android:id="@+id/maxKeys"
         android:layout_alignTop="@+id/minKeys"
-        android:layout_alignLeft="@+id/textView"
-        android:layout_alignStart="@+id/textView"
-        android:layout_marginLeft="39dp"
-        android:layout_marginStart="39dp" />
+        android:layout_toRightOf="@+id/textView"
+        android:layout_toEndOf="@+id/textView" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageKS"
+        android:layout_below="@+id/maxKeys"
+        android:layout_toRightOf="@+id/button4"
+        android:layout_toEndOf="@+id/button4" />
 
 
 </RelativeLayout>
