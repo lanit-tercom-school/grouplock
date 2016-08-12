@@ -1,56 +1,38 @@
+
 matrix:
   include:
 # For iOS builds:
   - language: swift
     os: osx
     osx_image: xcode7.3
-    env: DEVICE="iPhone 4s" VERSION=9.3 PLATFORM="iOS"
+    env: DEVICE="iPhone 4s" VERSION=9.3 TARGET="iOS"
   - language: swift
     os: osx
     osx_image: xcode7.3
-    env: DEVICE="iPhone 5s" VERSION=9.3 PLATFORM="iOS"
+    env: DEVICE="iPhone 5s" VERSION=9.3 TARGET="iOS"
   - language: swift
     os: osx
     osx_image: xcode7.3
-    env: DEVICE="iPhone 6s" VERSION=9.3 PLATFORM="iOS"
+    env: DEVICE="iPhone 6s" VERSION=9.3 TARGET="iOS"
   - language: swift
     os: osx
     osx_image: xcode7.3
-    env: DEVICE="iPhone 6s Plus" VERSION=9.3 PLATFORM="iOS"
-  - language: swift
+    env: DEVICE="iPhone 6s Plus" VERSION=9.3 TARGET="iOS"
+# For C++ library builds:
+  - language: cpp
     os: osx
-    osx_image: xcode7.3
-    env: DEVICE="iPhone 4s" VERSION=9.0 PLATFORM="iOS"
-  - language: swift
-    os: osx
-    osx_image: xcode7.3
-    env: DEVICE="iPhone 5s" VERSION=9.0 PLATFORM="iOS"
-  - language: swift
-    os: osx
-    osx_image: xcode7.3
-    env: DEVICE="iPhone 6s" VERSION=9.0 PLATFORM="iOS"
-  - language: swift
-    os: osx
-    osx_image: xcode7.3
-    env: DEVICE="iPhone 6s Plus" VERSION=9.0 PLATFORM="iOS"
-# For Android builds:
-  # - language: android
-    # env: PLATFORM="Android"
-    # android:
-      # components:
-        # etc.
+    compiler: clang
+    env: TARGET="Lib"
 
 before_install:
-  - rvm use 2.2
-  - sh -c "if [ '$PLATFORM' = 'iOS' ]; then sudo gem install xcpretty --no-rdoc --no-ri --no-document; fi"
-  - sh -c "if [ '$PLATFORM' = 'iOS' ]; then sudo gem install cocoapods --no-rdoc --no-ri; fi"
-  - sh -c "if [ '$PLATFORM' = 'iOS' ]; then pod install --project-directory=GroupLockiOS --repo-update; fi"
-# - sh -c "if [ '$PLATFORM' = 'Android' ]; then <# perform commands for Android build #>; fi"
+  - if [ "$TARGET" == "iOS" ]; rvm use 2.2; fi
+  - if [ "$TARGET" == "iOS" ]; then sudo gem install xcpretty --no-rdoc --no-ri --no-document; fi
+  - if [ "$TARGET" == "iOS" ]; then sudo gem install cocoapods --no-rdoc --no-ri; fi
+  - if [ "$TARGET" == "iOS" ]; then pod install --project-directory=GroupLockiOS --repo-update; fi
 
 script:
-  - travis_retry sh -c "if [ '$PLATFORM' = 'iOS' ]; then set -o pipefail && xcodebuild -workspace GroupLockiOS/GroupLock.xcworkspace -scheme GroupLock -destination \"platform=iOS Simulator,name=$DEVICE,OS=$VERSION\" build test | xcpretty; fi"
-# - travis_retry sh -c "if [ '$PLATFORM' = 'Android' ]; then <# perform commands for Android build #>; fi"
+  - if [ "$TARGET" == "iOS" ]; then set -o pipefail && xcodebuild -workspace GroupLockiOS/GroupLock.xcworkspace -scheme GroupLock -destination "platform=iOS Simulator,name=$DEVICE,OS=$VERSION" build test | xcpretty; fi
+  - if [ "$TARGET" == "Lib" ]; then cd GroupLockCrypto/Build && cmake .. && make; fi
 
 after_success:
-  - if [ \"$PLATFORM\" = \"iOS\" ]; then bash <(curl -s https://codecov.io/bash) -J 'GroupLock'; fi
-# - if [ \"$PLATFORM\" = \"Android\" ]; then <# perform commands for Android build #>; fi
+  - bash <(curl -s https://codecov.io/bash)
