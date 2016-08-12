@@ -25,14 +25,14 @@ matrix:
     env: TARGET="Lib"
 
 before_install:
-  - if [ "$TARGET" == "iOS" ]; rvm use 2.2; fi
-  - if [ "$TARGET" == "iOS" ]; then sudo gem install xcpretty --no-rdoc --no-ri --no-document; fi
-  - if [ "$TARGET" == "iOS" ]; then sudo gem install cocoapods --no-rdoc --no-ri; fi
-  - if [ "$TARGET" == "iOS" ]; then pod install --project-directory=GroupLockiOS --repo-update; fi
+  - if [[ $TARGET == "iOS" ]] ; rvm use 2.2; fi
+  - if [[ $TARGET == "iOS" ]] ; then sudo gem install xcpretty --no-rdoc --no-ri --no-document; fi
+  - if [[ $TARGET == "iOS" ]] ; then sudo gem install cocoapods --no-rdoc --no-ri; fi
+  - if [[ $TARGET == "iOS" ]] ; then pod install --project-directory=GroupLockiOS --repo-update; fi
 
 script:
-  - if [ "$TARGET" == "iOS" ]; then set -o pipefail && xcodebuild -workspace GroupLockiOS/GroupLock.xcworkspace -scheme GroupLock -destination "platform=iOS Simulator,name=$DEVICE,OS=$VERSION" build test | xcpretty; fi
-  - if [ "$TARGET" == "Lib" ]; then cd GroupLockCrypto/Build && cmake .. && make; fi
+  - if [[ $TARGET == "iOS" ]] ; then set -o pipefail && xcodebuild -workspace GroupLockiOS/GroupLock.xcworkspace -scheme GroupLock -destination "platform=iOS Simulator,name=$DEVICE,OS=$VERSION" build test | xcpretty; fi
+  - if [[ $TARGET == "Lib" ]] ; then cd GroupLockCrypto/Build && cmake .. && make; fi
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
