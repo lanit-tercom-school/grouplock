@@ -18,19 +18,19 @@ Installation
 ------------
 
 ### C++ Crypto Library (libsodium-based)
-For building the crypto library we use [CMake](cmake.org) as frontend.
-> CMake is used to control the software compilation process using simple platform and compiler independent configuration files, and generate native makefiles and workspaces that can be used in the compiler environment of your choice. 
+For building the crypto library we use [CMake](http://cmake.org) as frontend.
+> CMake is used to control the software compilation process using simple platform and compiler independent configuration files, and generate native makefiles and workspaces that can be used in the compiler environment of your choice.
 
 So, using CMake not only you can generate Unix Makefiles to build and test the project using `make` and `make test` commands, but also generate fully functional MS Visual Studio projects or Apple Xcode projects, so you can keep developing using an IDE you like.
 
 All the configuration settings are in the `CMakeLists.txt` file.
 
-First of all, you need to install CMake. Download it for your platform from [here](cmake.org/download/) and install. As soon as you did, follow these steps:
+First of all, you need to install CMake. Download it for your platform from [here](http://cmake.org/download/) and install. As soon as you did, follow these steps:
 #### If you like GUI
 1. Open CMake app.
 1. In the first line (for source code) paste a path to wherever a top-level `CMakeLists.txt` file is located, namely `GroupLockCrypto` directory.
 1. In the second line (for binaries) paste a path to the `Build` directory.
-![CMake GUI](Images/CMake/cmake_gui.png) 
+![CMake GUI](Images/CMake/cmake_gui.png)
 1. Click **Configure**. Choose what you want CMake to generate: Visual Studio project, Makefile or something else.
 ![CMake Configuration](Images/CMake/cmake_configure.png)
 1. When configuration succeeds, click **Generate**. After that something appears in the `Build` directory depending on what you've chosen to generate.
