@@ -21,7 +21,7 @@ Installation
 For building the crypto library we use [CMake](http://cmake.org) as frontend.
 > CMake is used to control the software compilation process using simple platform and compiler independent configuration files, and generate native makefiles and workspaces that can be used in the compiler environment of your choice.
 
-So, using CMake not only you can generate Unix Makefiles to build and test the project using `make` and `make test` commands, but also generate fully functional MS Visual Studio projects or Apple Xcode projects, so you can keep developing using an IDE you like.
+So, using CMake not only can you generate Unix Makefiles to build and test the project using `make` and `make test` commands, but also generate fully functional MS Visual Studio projects or Apple Xcode projects, so you can keep developing using an IDE you like.
 
 All the configuration settings are in the `CMakeLists.txt` file.
 
