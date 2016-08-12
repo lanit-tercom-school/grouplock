@@ -25,7 +25,7 @@ matrix:
     env: TARGET="Lib"
 
 before_install:
-  - if [[ $TARGET == "iOS" ]] ; rvm use 2.2; fi
+  - if [[ $TARGET == "iOS" ]] ; then rvm use 2.2; fi
   - if [[ $TARGET == "iOS" ]] ; then sudo gem install xcpretty --no-rdoc --no-ri --no-document; fi
   - if [[ $TARGET == "iOS" ]] ; then sudo gem install cocoapods --no-rdoc --no-ri; fi
   - if [[ $TARGET == "iOS" ]] ; then pod install --project-directory=GroupLockiOS --repo-update; fi
