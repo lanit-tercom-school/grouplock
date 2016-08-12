@@ -22,7 +22,8 @@ int main()
 
 	decryptBMP(_T("D:/encrypt.bmp"), nonce, key);
 
+#if defined(_WIN32) || defined(_WIN64)
 	system("pause");
-
+#endif
 	return 0;
 }
