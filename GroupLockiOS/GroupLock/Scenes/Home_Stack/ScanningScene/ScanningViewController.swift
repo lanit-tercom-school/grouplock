@@ -8,14 +8,16 @@
 
 import UIKit
 import AVFoundation
+import NUI
 
 protocol ScanningViewControllerInput {
-
+    func displayKeyScan(viewModel: Scanning.Keys.ViewModel)
 }
 
 protocol ScanningViewControllerOutput {
     var captureSession: AVCaptureSession! { get }
-    var scannedKeys: Set<String> { get set }
+    var scannedKeys: [String] { get }
+    var metadataOutputObjectsDelegate: AVCaptureMetadataOutputObjectsDelegate! { get }
     func configureCaptureSession(request: Scanning.Configure.Request)
 }
 
@@ -23,6 +25,26 @@ class ScanningViewController: UIViewController, ScanningViewControllerInput {
 
     var output: ScanningViewControllerOutput!
     var router: ScanningRouter!
+
+    var cameraPreview: UIView { return view }
+
+    var qrCodeFrameLayer: CAShapeLayer? {
+        didSet {
+            if let layer = qrCodeFrameLayer {
+                cameraPreview.layer.addSublayer(layer)
+            } else {
+                oldValue?.removeFromSuperlayer()
+            }
+            cameraPreview.layer.setNeedsDisplay()
+        }
+    }
+
+    // MARK: - UI Elements
+
+    @IBOutlet var keysCounter: UILabel!
+    @IBOutlet var scanOneMoreButton: UIButton!
+    @IBOutlet var proceedButton: UIButton!
+
 
     // MARK: - View Controller lifecycle
 
@@ -32,7 +54,7 @@ class ScanningViewController: UIViewController, ScanningViewControllerInput {
         navigationController?.setNavigationBarHidden(true, animated: true)
         tabBarController?.tabBar.hidden = true
         output.configureCaptureSession(Scanning.Configure.Request())
-        configurePreview(view)
+        configurePreview(cameraPreview)
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -49,17 +71,57 @@ class ScanningViewController: UIViewController, ScanningViewControllerInput {
         return true
     }
 
-    func configurePreview(view: UIView) {
+    private func configurePreview(view: UIView) {
+
         let previewLayer = AVCaptureVideoPreviewLayer(session: output.captureSession)
         previewLayer.frame = view.layer.frame
         previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
+        (output.metadataOutputObjectsDelegate as? MetadataOutputObjectsDelegate)?.layer = previewLayer
         view.layer.addSublayer(previewLayer)
+
+        view.subviews.forEach(view.bringSubviewToFront)
     }
 
 
     // MARK: - Display logic
 
+    func displayKeyScan(viewModel: Scanning.Keys.ViewModel) {
+        output.captureSession.stopRunning()
+        keysCounter.text = "\(viewModel.numberOfDifferentKeys)"
+        scanOneMoreButton.enabled = true
+        proceedButton.enabled = true
 
+        let frameColor = viewModel.isNewKey ?
+            NUISettings.getColor("stroke-color-success", withClass: "DetectedQRCodeFrame") :
+            NUISettings.getColor("stroke-color-failure", withClass: "DetectedQRCodeFrame")
+
+        if let layer = qrCodeFrameLayer {
+            layer.path = viewModel.qrCodeCGPath
+            layer.strokeColor = frameColor.CGColor
+            cameraPreview.layer.setNeedsDisplay()
+        } else {
+            qrCodeFrameLayer = qrCodeFrameLayer(with: viewModel.qrCodeCGPath, color: frameColor)
+        }
+    }
+
+    private func qrCodeFrameLayer(with path: CGPath, color: UIColor) -> CAShapeLayer {
+        let layer = CAShapeLayer()
+        layer.frame = cameraPreview.layer.frame
+        layer.strokeColor = color.CGColor
+        layer.fillColor = UIColor.clearColor().CGColor
+        layer.lineWidth = CGFloat(NUISettings.getFloat("line-width", withClass: "DetectedQRCodeFrame"))
+        layer.lineJoin = kCALineJoinRound
+        layer.path = path
+        return layer
+    }
+
+
+    // MARK: - Event Handling
+
+    @IBAction func onScanOneMore(sender: UIButton) {
+        qrCodeFrameLayer = nil
+        output.captureSession.startRunning()
+    }
 }
 
 extension ScanningViewController {

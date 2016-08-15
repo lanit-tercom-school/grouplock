@@ -122,3 +122,9 @@ CounterLabel {
     corner-radius: 22;
     font-color: white;
 }
+
+DetectedQRCodeFrame {
+    line-width: 4;
+    stroke-color-success: green;
+    stroke-color-failure: red;
+}

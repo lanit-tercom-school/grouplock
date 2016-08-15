@@ -11,28 +11,34 @@ import AVFoundation
 
 protocol ScanningInteractorInput {
     var captureSession: AVCaptureSession! { get }
-    var scannedKeys: Set<String> { get set }
+    var scannedKeys: [String] { get }
+    var metadataOutputObjectsDelegate: AVCaptureMetadataOutputObjectsDelegate! { get }
+
     func configureCaptureSession(request: Scanning.Configure.Request)
 }
 
 protocol ScanningInteractorOutput {
-
+    func formatKeyScan(response: Scanning.Keys.Response)
 }
 
 class ScanningInteractor: NSObject, ScanningInteractorInput {
 
     var output: ScanningInteractorOutput!
+    lazy var metadataOutputObjectsDelegate: AVCaptureMetadataOutputObjectsDelegate! = {
+        let delegate = MetadataOutputObjectsDelegate()
+        delegate.scanningInteractor = self
+        return delegate
+    }()
 
     var captureSession: AVCaptureSession!
 
-    var scannedKeys = Set<String>()
+    var scannedKeys = [String]()
 
     // MARK: - Business logic
 
     func configureCaptureSession(request: Scanning.Configure.Request) {
 
         let captureDevice = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
-
         captureSession = AVCaptureSession()
 
         do {
@@ -46,19 +52,12 @@ class ScanningInteractor: NSObject, ScanningInteractorInput {
         let captureMetadataOutput = AVCaptureMetadataOutput()
         captureSession.addOutput(captureMetadataOutput)
 
-        captureMetadataOutput.setMetadataObjectsDelegate(self, queue: dispatch_get_main_queue())
-        captureMetadataOutput.metadataObjectTypes = [AVMetadataObjectTypeQRCode]
-    }
-}
+        captureMetadataOutput.setMetadataObjectsDelegate(metadataOutputObjectsDelegate,
+                                                         queue: dispatch_get_main_queue())
 
-extension ScanningInteractor: AVCaptureMetadataOutputObjectsDelegate {
-    func captureOutput(captureOutput: AVCaptureOutput!,
-                       didOutputMetadataObjects metadataObjects: [AnyObject]!,
-                                                fromConnection connection: AVCaptureConnection!) {
-        guard metadataObjects != nil && !metadataObjects.isEmpty else { return }
-
-        if let metadataObject = metadataObjects.first as? AVMetadataMachineReadableCodeObject {
-            scannedKeys.insert(metadataObject.stringValue)
+        // swiftlint:disable:next force_cast (since documentaion says it is array of strings)
+        if (captureMetadataOutput.availableMetadataObjectTypes as! [String]).contains(AVMetadataObjectTypeQRCode) {
+            captureMetadataOutput.metadataObjectTypes = [AVMetadataObjectTypeQRCode]
         }
     }
 }

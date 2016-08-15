@@ -57,6 +57,7 @@
 		87671ECA1D4622A100A0C353 /* EncryptedFilePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87671EC61D4622A100A0C353 /* EncryptedFilePresenterTests.swift */; };
 		87671ECB1D4622A100A0C353 /* EncryptedFileViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87671EC71D4622A100A0C353 /* EncryptedFileViewControllerTests.swift */; };
 		87671ECE1D46249100A0C353 /* EncryptedFileDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87671ECD1D46249100A0C353 /* EncryptedFileDataSourceTests.swift */; };
+		87718F611D6204F5005F34EC /* CGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87718F601D6204F5005F34EC /* CGPoint.swift */; };
 		87736F121D3D49C200B93D7B /* KeyTypeConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87736F0C1D3D49C200B93D7B /* KeyTypeConfigurator.swift */; };
 		87736F131D3D49C200B93D7B /* KeyTypeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87736F0D1D3D49C200B93D7B /* KeyTypeInteractor.swift */; };
 		87736F141D3D49C200B93D7B /* KeyTypeModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87736F0E1D3D49C200B93D7B /* KeyTypeModels.swift */; };
@@ -91,6 +92,8 @@
 		87D0AE101D59E190005BDCFD /* ScanningPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D0AE091D59E190005BDCFD /* ScanningPresenter.swift */; };
 		87D0AE111D59E190005BDCFD /* ScanningRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D0AE0A1D59E190005BDCFD /* ScanningRouter.swift */; };
 		87D0AE121D59E190005BDCFD /* ScanningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D0AE0B1D59E190005BDCFD /* ScanningViewController.swift */; };
+		87DB46051D620E1100F64F35 /* CGPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DB46041D620E1100F64F35 /* CGPath.swift */; };
+		87DB46071D62484900F64F35 /* MetadataOutputObjectsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DB46061D62484900F64F35 /* MetadataOutputObjectsDelegate.swift */; };
 		87DE60DE1CB46373005EA79E /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87DE60DD1CB46373005EA79E /* LocalAuthentication.framework */; };
 		87EA7C3F1D40C76D008FB4DA /* QRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EA7C3E1D40C76D008FB4DA /* QRCode.swift */; };
 		87F118F01CBF0CD40038F956 /* NUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87F118EF1CBF0CD40038F956 /* NUI.framework */; };
@@ -178,6 +181,7 @@
 		87671EC61D4622A100A0C353 /* EncryptedFilePresenterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncryptedFilePresenterTests.swift; sourceTree = "<group>"; };
 		87671EC71D4622A100A0C353 /* EncryptedFileViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncryptedFileViewControllerTests.swift; sourceTree = "<group>"; };
 		87671ECD1D46249100A0C353 /* EncryptedFileDataSourceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncryptedFileDataSourceTests.swift; sourceTree = "<group>"; };
+		87718F601D6204F5005F34EC /* CGPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CGPoint.swift; path = Class_Extensions/CGPoint.swift; sourceTree = "<group>"; };
 		87736F0C1D3D49C200B93D7B /* KeyTypeConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyTypeConfigurator.swift; path = Scenes/Home_Stack/KeyTypeScene/KeyTypeConfigurator.swift; sourceTree = "<group>"; };
 		87736F0D1D3D49C200B93D7B /* KeyTypeInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyTypeInteractor.swift; path = Scenes/Home_Stack/KeyTypeScene/KeyTypeInteractor.swift; sourceTree = "<group>"; };
 		87736F0E1D3D49C200B93D7B /* KeyTypeModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyTypeModels.swift; path = Scenes/Home_Stack/KeyTypeScene/KeyTypeModels.swift; sourceTree = "<group>"; };
@@ -218,6 +222,8 @@
 		87D0AE091D59E190005BDCFD /* ScanningPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScanningPresenter.swift; path = Scenes/Home_Stack/ScanningScene/ScanningPresenter.swift; sourceTree = "<group>"; };
 		87D0AE0A1D59E190005BDCFD /* ScanningRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScanningRouter.swift; path = Scenes/Home_Stack/ScanningScene/ScanningRouter.swift; sourceTree = "<group>"; };
 		87D0AE0B1D59E190005BDCFD /* ScanningViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScanningViewController.swift; path = Scenes/Home_Stack/ScanningScene/ScanningViewController.swift; sourceTree = "<group>"; };
+		87DB46041D620E1100F64F35 /* CGPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CGPath.swift; path = Class_Extensions/CGPath.swift; sourceTree = "<group>"; };
+		87DB46061D62484900F64F35 /* MetadataOutputObjectsDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MetadataOutputObjectsDelegate.swift; path = Scenes/Home_Stack/ScanningScene/MetadataOutputObjectsDelegate.swift; sourceTree = "<group>"; };
 		87DE60DD1CB46373005EA79E /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		87EA7C3E1D40C76D008FB4DA /* QRCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QRCode.swift; path = Core/QRCode.swift; sourceTree = "<group>"; };
 		87F118EF1CBF0CD40038F956 /* NUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NUI.framework; path = "../../../Library/Developer/Xcode/DerivedData/GroupLock-ffmgilidnbhbqnfkgswyglwucvmu/Build/Products/Debug-iphonesimulator/NUI.framework"; sourceTree = "<group>"; };
@@ -391,6 +397,8 @@
 			children = (
 				87B6927E1CB45188008ACB6A /* UIViewController.swift */,
 				870912261D523B66006222BA /* Agrume.swift */,
+				87718F601D6204F5005F34EC /* CGPoint.swift */,
+				87DB46041D620E1100F64F35 /* CGPath.swift */,
 			);
 			name = "Class Extensions";
 			sourceTree = "<group>";
@@ -530,6 +538,7 @@
 				87D0AE0A1D59E190005BDCFD /* ScanningRouter.swift */,
 				87D0AE0B1D59E190005BDCFD /* ScanningViewController.swift */,
 				87D0AE071D59E190005BDCFD /* ScanningInteractor.swift */,
+				87DB46061D62484900F64F35 /* MetadataOutputObjectsDelegate.swift */,
 				87D0AE091D59E190005BDCFD /* ScanningPresenter.swift */,
 				87D0AE061D59E190005BDCFD /* ScanningConfigurator.swift */,
 				87D0AE081D59E190005BDCFD /* ScanningModels.swift */,
@@ -900,8 +909,10 @@
 				87FFF0521D34E9AE007315C7 /* ChooseFileRouter.swift in Sources */,
 				87736F141D3D49C200B93D7B /* KeyTypeModels.swift in Sources */,
 				870DBF951D3F932C004430A5 /* NumberOfKeysPresenter.swift in Sources */,
+				87DB46051D620E1100F64F35 /* CGPath.swift in Sources */,
 				870DBF931D3F932C004430A5 /* NumberOfKeysInteractor.swift in Sources */,
 				87D0AE121D59E190005BDCFD /* ScanningViewController.swift in Sources */,
+				87718F611D6204F5005F34EC /* CGPoint.swift in Sources */,
 				8704DED01D3D03990017F88E /* ProvideKeyRouter.swift in Sources */,
 				8730226E1D42197100222606 /* EncryptedFileInteractor.swift in Sources */,
 				87FFF0531D34E9AE007315C7 /* ChooseFileWorker.swift in Sources */,
@@ -912,6 +923,7 @@
 				8AE919DA1D2F508A002024AC /* NumberOfKeysViewController.swift in Sources */,
 				870DBF921D3F932C004430A5 /* NumberOfKeysConfigurator.swift in Sources */,
 				8704DECD1D3D03990017F88E /* ProvideKeyInteractor.swift in Sources */,
+				87DB46071D62484900F64F35 /* MetadataOutputObjectsDelegate.swift in Sources */,
 				8704DED11D3D03990017F88E /* ProvideKeyViewController.swift in Sources */,
 				8704DEB31D3CCD8E0017F88E /* ManagedFile+CoreDataProperties.swift in Sources */,
 				87FD45381CE4B32800984269 /* Directory.swift in Sources */,

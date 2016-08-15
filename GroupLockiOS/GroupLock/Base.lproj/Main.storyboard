@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="16A270f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="16A286a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -395,7 +395,6 @@
         <!--Scanning View Controller-->
         <scene sceneID="uxE-Cx-ZVn">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="DUu-Jd-zXW" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="ScanningViewController" id="Sli-Ax-YQY" userLabel="Scanning View Controller" customClass="ScanningViewController" customModule="GroupLock" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="EwX-6f-W1Y"/>
@@ -417,6 +416,9 @@
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="WhiteTextButton"/>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="onScanOneMore:" destination="Sli-Ax-YQY" eventType="touchUpInside" id="bbn-Mh-45z"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PE5-EV-2G4">
                                                 <rect key="frame" x="300" y="0.0" width="300" height="60"/>
@@ -454,7 +456,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.5" green="0.34580125777363285" blue="0.066559794099549929" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="dGf-eP-IyT" secondAttribute="trailing" id="IFB-6g-rHO"/>
                             <constraint firstItem="iVA-Do-3xN" firstAttribute="top" secondItem="dGf-eP-IyT" secondAttribute="bottom" id="Lay-BN-Nn2"/>
@@ -463,7 +465,13 @@
                             <constraint firstItem="mGO-bB-SqJ" firstAttribute="top" secondItem="EwX-6f-W1Y" secondAttribute="bottom" constant="20" id="sIc-4a-pPM"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="keysCounter" destination="mGO-bB-SqJ" id="1yP-Jh-Qiv"/>
+                        <outlet property="proceedButton" destination="PE5-EV-2G4" id="GdB-bT-R2S"/>
+                        <outlet property="scanOneMoreButton" destination="N7g-pe-2Kr" id="LT2-M1-WZ6"/>
+                    </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DUu-Jd-zXW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3907" y="-98"/>
         </scene>
