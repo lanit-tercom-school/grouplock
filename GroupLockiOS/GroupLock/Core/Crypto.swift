@@ -32,7 +32,17 @@ protocol CryptoWrapperProtocol {
 
      - returns: Encrypted image
      */
-    func encryptImage(image image: NSData, withEncryptionKey key: String) -> NSData
+    func encryptImage(image image: NSData, withEncryptionKey key: String) -> NSData?
+
+    /**
+     Forms a request for the crypto library ro decrypt given image useing given decryptionKey.
+
+     - parameter image: Image to decrypt
+     - parameter key:   Decryption key
+
+     - returns: Decrypted image
+     */
+    func decryptImage(image image: NSData, withDecryptionKey key: String) -> NSData?
 }
 
 /// Default implementation of the `CryptoWrapperProtocol`
@@ -41,12 +51,18 @@ class Crypto: CryptoWrapperProtocol {
     func getKeys(min min: Int, max: Int) -> [String] {
 
         // implementation goes here
-        return [Int](1...max).map { String($0) }
+        return [Int](1...max).map(String.init)
     }
 
-    func encryptImage(image image: NSData, withEncryptionKey key: String) -> NSData {
+    func encryptImage(image image: NSData, withEncryptionKey key: String) -> NSData? {
 
         // implementation goes here
+        return image
+    }
+
+    func decryptImage(image image: NSData, withDecryptionKey key: String) -> NSData? {
+
+        // implementatiuon goes here
         return image
     }
 

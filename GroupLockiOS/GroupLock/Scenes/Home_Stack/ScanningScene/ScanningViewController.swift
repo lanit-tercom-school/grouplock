@@ -120,6 +120,7 @@ class ScanningViewController: UIViewController, ScanningViewControllerInput {
 
     @IBAction func onScanOneMore(sender: UIButton) {
         qrCodeFrameLayer = nil
+        scanOneMoreButton.enabled = false
         output.captureSession.startRunning()
     }
 }

@@ -45,6 +45,7 @@ class ScanningInteractor: NSObject, ScanningInteractorInput {
             let input = try AVCaptureDeviceInput(device: captureDevice)
             captureSession.addInput(input)
         } catch let error as NSError {
+            // TODO: Trigger alert
             NSLog(error.localizedDescription)
             return
         }
@@ -52,12 +53,12 @@ class ScanningInteractor: NSObject, ScanningInteractorInput {
         let captureMetadataOutput = AVCaptureMetadataOutput()
         captureSession.addOutput(captureMetadataOutput)
 
-        captureMetadataOutput.setMetadataObjectsDelegate(metadataOutputObjectsDelegate,
-                                                         queue: dispatch_get_main_queue())
-
         // swiftlint:disable:next force_cast (since documentaion says it is array of strings)
         if (captureMetadataOutput.availableMetadataObjectTypes as! [String]).contains(AVMetadataObjectTypeQRCode) {
             captureMetadataOutput.metadataObjectTypes = [AVMetadataObjectTypeQRCode]
         }
+
+        captureMetadataOutput.setMetadataObjectsDelegate(metadataOutputObjectsDelegate,
+                                                         queue: dispatch_get_main_queue())
     }
 }
