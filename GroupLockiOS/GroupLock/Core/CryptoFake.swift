@@ -15,17 +15,47 @@ class CryptoFake: CryptoWrapperProtocol {
 
     let maximumNumberOfKeys = 1
 
+    /**
+     Creates 120-digit random key and represents it as a String.
+
+     - parameter min: Concrete value does not play a role for now
+     - parameter max: Concrete value does not play a role for now
+
+     - precondition: `max` is not greater than `maximumNumberOfKeys` and `min` is not greater than `max`
+
+     - returns: String representation of the key
+     */
     func getKeys(min min: Int, max: Int) -> [String] {
-        return []
+        precondition(max <= maximumNumberOfKeys,
+                     "Maximum number of keys provided is exceeds the value of maximumNumberOfKeys")
+        precondition(min <= max, "min should be less than or equal to max")
+
+        let digitalKey = (0 ..< 40).map { _ in UInt8(arc4random_uniform(256)) }
+
+        return [digitalKey.map { String(format: "%03d", $0) }.reduce("", combine: +)]
     }
 
+    /**
+     Encrypts given image with given key.
+
+     Expands the key using linear congruential pseudorandom generator and encrypts the image
+     using improved Kasenkov's cipher
+
+     - parameter data: Image data to encrypt
+     - parameter key:  Encryption key
+
+     - returns: Encrypted data, or `nil` is something went wrong. For example, the key is invalid or the data is
+     not image-representable
+     */
     func encryptImage(image data: NSData, withEncryptionKey key: String) -> NSData? {
 
         guard let parsedKey = parseKey(key),
-              let cgImage = image(from: data) else { return nil }
+            let cgImage = image(from: data) else { return nil }
+
+        let expandedKey = expand(parsedKey, for: cgImage)
 
         let imagePixels = cgImage.pixels
-        let encryptedPixels = encrypted(pixels: imagePixels, withKey: parsedKey)
+        let encryptedPixels = encrypted(pixels: imagePixels, withKey: expandedKey)
         let width = CGImageGetWidth(cgImage)
         let height = CGImageGetHeight(cgImage)
 
@@ -34,17 +64,46 @@ class CryptoFake: CryptoWrapperProtocol {
         return encryptedImage.pngData
     }
 
+    /**
+     Decrypts given image with given decryption key.
+
+     Expands the key using linear congruential pseudorandom generator and decrypts the image
+     using improved Kasenkov's cipher
+
+     - parameter data: Encrypted data
+     - parameter key:  Decryption key
+
+     - returns: Decrypted data, or `nil` is something went wrong. For example, the key is invalid or the data is
+     not image-representable
+     */
     func decryptImage(image data: NSData, withDecryptionKey key: String) -> NSData? {
 
         guard let parsedKey = parseKey(key),
-              let cgImage = image(from: data) else { return nil }
+            let cgImage = image(from: data) else { return nil }
+
+        let expandedKey = expand(parsedKey, for: cgImage)
 
         let imagePixels = cgImage.pixels
-        let decryptedPixels = decrypted(pixels: imagePixels, withKey: parsedKey)
+        let decryptedPixels = decrypted(pixels: imagePixels, withKey: expandedKey)
         let width = CGImageGetWidth(cgImage)
         let height = CGImageGetHeight(cgImage)
         let decryptedImage = CGImage.fromPixels(decryptedPixels, width: width, height: height)
         return decryptedImage?.pngData
+    }
+
+    private func expand(key: [UInt8], for image: CGImage) -> [UInt8] {
+
+        let numberOfBytes = CGImageGetHeight(image) * CGImageGetBytesPerRow(image)
+
+        let expandingFactor = numberOfBytes / key.count + 1
+
+        func generateExpansion(for element: UInt8) -> [UInt8] {
+            let lcg = LinearCongruentialGenerator(seed: Double(element))
+            let expansion: [UInt8] = (0 ..< expandingFactor).map({ _ in return UInt8(lcg.random() * 255) })
+            return expansion
+        }
+
+        return key.map(generateExpansion).flatMap { $0 }
     }
 
     private func image(from data: NSData) -> CGImage? {
@@ -89,12 +148,25 @@ class CryptoFake: CryptoWrapperProtocol {
         return parsedKey
     }
 
+    private struct ColorOffsets {
+        static let red = 234
+        static let green = -132
+        static let blue = 17
+    }
+
     private func decrypted(pixels pixels: [Pixel], withKey key: [UInt8]) -> [Pixel] {
 
+        precondition(key.count > 3, "key is too short")
+
         func decrypted(pixel pixel: Pixel, inIndex index: Int, withKey key: [UInt8]) -> Pixel {
-            let red = UInt8(((Int(pixel.red)     + Int(key[index % (key.count - 3)    ]))) % 256)
-            let green = UInt8(((Int(pixel.green) + Int(key[index % (key.count - 3) + 1]))) % 256)
-            let blue = UInt8(((Int(pixel.blue)   + Int(key[index % (key.count - 3) + 2]))) % 256)
+
+            let _red = Int(pixel.red)     + Int(key[index % (key.count - 3)    ]) + 512 - ColorOffsets.red
+            let _green = Int(pixel.green) + Int(key[index % (key.count - 3) + 1]) + 512 - ColorOffsets.green
+            let _blue = Int(pixel.blue)   + Int(key[index % (key.count - 3) + 2]) + 512 - ColorOffsets.blue
+
+            let red =   UInt8(_red % 256)
+            let green = UInt8(_green % 256)
+            let blue =  UInt8(_blue % 256)
             return Pixel(red: red, green: green, blue: blue, alpha: pixel.alpha)
         }
 
@@ -108,10 +180,17 @@ class CryptoFake: CryptoWrapperProtocol {
 
     private func encrypted(pixels pixels: [Pixel], withKey key: [UInt8]) -> [Pixel] {
 
+        precondition(key.count > 3, "key is too short")
+
         func encrypted(pixel pixel: Pixel, inIndex index: Int, withKey key: [UInt8]) -> Pixel {
-            let red =   UInt8(((Int(pixel.red)   - Int(key[index % (key.count - 3)    ])) + 256) % 256)
-            let green = UInt8(((Int(pixel.green) - Int(key[index % (key.count - 3) + 1])) + 256) % 256)
-            let blue =  UInt8(((Int(pixel.blue)  - Int(key[index % (key.count - 3) + 2])) + 256) % 256)
+
+            let _red = Int(pixel.red)     - Int(key[index % (key.count - 3)    ]) + 512 + ColorOffsets.red
+            let _green = Int(pixel.green) - Int(key[index % (key.count - 3) + 1]) + 512 + ColorOffsets.green
+            let _blue = Int(pixel.blue)   - Int(key[index % (key.count - 3) + 2]) + 512 + ColorOffsets.blue
+
+            let red =   UInt8(_red % 256)
+            let green = UInt8(_green % 256)
+            let blue =  UInt8(_blue % 256)
             return Pixel(red: red, green: green, blue: blue, alpha: pixel.alpha)
         }
 

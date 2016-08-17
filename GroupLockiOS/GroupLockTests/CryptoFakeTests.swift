@@ -61,10 +61,28 @@ class CryptoFakeTests: XCTestCase {
         // When
         let initialImage = UIImage(data: dataToEncrypt)
         let returnedImage = UIImage(data: decryptedData!)
+
+        // Then
         XCTAssertNotNil(returnedImage, "Decrypted data should be image-representable")
         XCTAssertTrue(initialImage!.isEqualToImage(returnedImage!),
-                      "Decrypting an image with the same key as the one used to encrypt it should produce" +
+                      "Decrypting an image with the same key as the one used to encrypt it should produce the" +
             " initial image")
+    }
+
+    func test_ThatCryptoFake_GeneratesEncryptionKey() {
+
+        // Given
+
+        // When
+        let key = sut.getKeys(min: 1, max: 1).first
+
+        // Then
+        XCTAssertNotNil(key)
+        XCTAssertEqual(key?.characters.count, 120, "120-digit key should be generated")
+
+        // When
+        let encryptedData = sut.encryptImage(image: dataToEncrypt, withEncryptionKey: key!)
+        XCTAssertNotNil(encryptedData, "The key generated should be valid encryption key")
     }
 
     func test_EncryptionPerformance() {
