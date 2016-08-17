@@ -1,2 +1,2 @@
-#include "windows.h"
-BITMAP loadBMP(wchar_t *fname, HBITMAP &hBmp);
+
+int loadBMP(char *fname, unsigned char *&map, unsigned char *&head);

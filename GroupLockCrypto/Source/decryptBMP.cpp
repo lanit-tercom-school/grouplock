@@ -1,38 +1,30 @@
+#include "stdafx.h"
 #include "sodium.h"
 #include "string"
 #include "iostream"
 #include "loadbmp.h"
-#include "sstream"
 #include "savebmp.h"
 
 using namespace std;
 
 void decryptBMP(
-	wchar_t *fname,
+	char *fname, 
 	unsigned char nonce[crypto_secretbox_NONCEBYTES],
 	unsigned char key[crypto_secretbox_KEYBYTES])
 {
 	sodium_init();
-
-    BITMAP bmp;
-	HBITMAP hBmp;
-	LPVOID *map;
-
-	bmp = loadBMP(fname, hBmp);
-	int sizeOfBait = bmp.bmHeight*bmp.bmWidth*bmp.bmBitsPixel / 8;
-	int sizeOfPixel = bmp.bmHeight*bmp.bmWidth;
-
-	map = new LPVOID[sizeOfPixel];
-
+	
+    
+	unsigned char *map = nullptr;
+	unsigned char *head = nullptr;
+	
+	int sizeOfBait;
+	sizeOfBait = loadBMP(fname, map, head);
+	
 	unsigned char *ciphertext;
 	ciphertext = new unsigned char[sizeOfBait];
 
-	GetBitmapBits(hBmp, sizeOfBait, map);
+	crypto_stream_salsa20_xor(ciphertext, map, sizeOfBait, nonce, key);
 
-	crypto_stream_salsa20_xor(ciphertext,
-		(unsigned char *)map, sizeOfBait, nonce, key);
-
-	SetBitmapBits(hBmp, sizeOfBait, (LPVOID *)ciphertext);
-
-	saveBMP(_T("D:\\decrypt.bmp"), hBmp);
+	saveBMP("D:/decrypt.bmp", ciphertext, head);
 }

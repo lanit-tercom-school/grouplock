@@ -30,10 +30,13 @@ set(IMPORTED_LIBS libsodium)
 if(UNIX)
   set(STATIC_LIBRARY_EXTENSION "a")
 elseif(WIN32 OR WIN64)
+  message(STATUS ${WIN32})
   set(STATIC_LIBRARY_EXTENSION "lib")
 else(UNIX)
   message(FATAL_ERROR "This OS (${CMAKE_SYSTEM}) is not supported.")
 endif(UNIX)
+
+message(STATUS ${CMAKE_SYSTEM_NAME})
 
 # Connect imported libraries
 include_directories("${PROJECT_SOURCE_DIR}/${IMPORTED_LIBS}/include")
@@ -44,6 +47,8 @@ set_property(TARGET ${IMPORTED_LIBS} PROPERTY IMPORTED_LOCATION "${PROJECT_SOURC
 
 # Add output static library target
 add_library(${PROJECT_NAME} STATIC ${SOURCES} ${HEADERS})
+add_executable(${PROJECT_NAME}-main ${SOURCES} ${HEADERS})
 
 # Link with external libraries
 target_link_libraries(${PROJECT_NAME} ${IMPORTED_LIBS})
+target_link_libraries(${PROJECT_NAME}-main ${IMPORTED_LIBS})

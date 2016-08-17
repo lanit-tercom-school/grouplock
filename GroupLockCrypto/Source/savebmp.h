@@ -1,1 +1,2 @@
-void saveBMP(wchar_t * indirect, HBITMAP hBmp);
+
+void saveBMP(char *indirect, unsigned char *map, unsigned char *head);

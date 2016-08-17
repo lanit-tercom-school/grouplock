@@ -1,41 +1,37 @@
+
+#include "stdafx.h"
 #include "sodium.h"
+#include "string"
 #include "iostream"
 #include "loadbmp.h"
-#include "sstream"
 #include "savebmp.h"
+#include <fstream>
+
 
 using namespace std;
 void encryptBMP(
-	wchar_t *fname,
+	char *fname,
 	unsigned char nonce[crypto_secretbox_NONCEBYTES],
 	unsigned char key[crypto_secretbox_KEYBYTES])
 {
-	//пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+	//еще бы записывать в тот же файл откуда взяли
 	sodium_init();
-
+	
 	randombytes_buf(nonce, sizeof nonce);
 	randombytes_buf(key, sizeof key);
 
-	BITMAP bmp;
-	HBITMAP hBmp;
-	LPVOID *map;
+	unsigned char *map = nullptr;
+	unsigned char *head = nullptr;
 
-	bmp = loadBMP(fname, hBmp);
-	int sizeOfBait = bmp.bmHeight*bmp.bmWidth*bmp.bmBitsPixel / 8;
-	int sizeOfPixel = bmp.bmHeight*bmp.bmWidth;
-
-	map = new LPVOID[sizeOfPixel];
+	int sizeOfBait;
+	sizeOfBait = loadBMP(fname, map, head);
 
 	unsigned char *ciphertext;
 	ciphertext = new unsigned char[sizeOfBait];
-
-	GetBitmapBits(hBmp, sizeOfBait, map);
-
+	
 	crypto_stream_salsa20_xor(ciphertext,
-		(unsigned char *)map, sizeOfBait, nonce, key);
+		map, sizeOfBait, nonce, key);
 
-	SetBitmapBits(hBmp, sizeOfBait, (LPVOID *)ciphertext);
-
-	saveBMP(_T("D:\\encrypt.bmp"), hBmp);
+	saveBMP("D:/encrypt.bmp", ciphertext, head);
 
 }
