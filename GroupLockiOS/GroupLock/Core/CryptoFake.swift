@@ -44,6 +44,8 @@ class CryptoFake: CryptoWrapperProtocol {
      - parameter data: Image data to encrypt
      - parameter key:  Encryption key
 
+     - precondition: `key` is at least 9 digits long.
+
      - returns: Encrypted data, or `nil` is something went wrong. For example, the key is invalid or the data is
      not image-representable
      */
@@ -72,6 +74,8 @@ class CryptoFake: CryptoWrapperProtocol {
 
      - parameter data: Encrypted data
      - parameter key:  Decryption key
+
+     - precondition: `key` is at least 9 digits long.
 
      - returns: Decrypted data, or `nil` is something went wrong. For example, the key is invalid or the data is
      not image-representable
@@ -103,7 +107,7 @@ class CryptoFake: CryptoWrapperProtocol {
             return expansion
         }
 
-        return Array(key.map(generateExpansion).flatten())
+        return key.flatMap(generateExpansion)
     }
 
     private func image(from data: NSData) -> CGImage? {
