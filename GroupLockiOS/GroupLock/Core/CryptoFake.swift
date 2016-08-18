@@ -103,7 +103,7 @@ class CryptoFake: CryptoWrapperProtocol {
             return expansion
         }
 
-        return key.map(generateExpansion).flatMap { $0 }
+        return Array(key.map(generateExpansion).flatten())
     }
 
     private func image(from data: NSData) -> CGImage? {
