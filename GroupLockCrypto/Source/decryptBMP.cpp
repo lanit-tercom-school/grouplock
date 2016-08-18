@@ -1,3 +1,10 @@
+//
+//  decryptBMP.cpp
+//  glcrypto
+//
+//  Created by Kirill Solntsev.
+//
+
 #include "stdafx.h"
 #include "sodium.h"
 #include "string"
@@ -7,11 +14,12 @@
 
 using namespace std;
 
-void decryptBMP(
-	char *fname, 
-	unsigned char nonce[crypto_secretbox_NONCEBYTES],
-	unsigned char key[crypto_secretbox_KEYBYTES])
+void decryptBMP(const char *fname,
+                unsigned char nonce[crypto_secretbox_NONCEBYTES],
+                unsigned char key[crypto_secretbox_KEYBYTES])
 {
+
+    // TODO: Handle returned result
 	sodium_init();
 	
     

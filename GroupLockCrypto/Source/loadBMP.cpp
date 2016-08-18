@@ -1,19 +1,16 @@
-#include "iostream"
+//
+//  loadBMP.h
+//  glcrypto
+//
+//  Created by Kirill Solntsev.
+//
 
-//#include "EasyBMP_1.06\EasyBMP.h"
+#include "iostream"
 
 using namespace std;
 
-int loadBMP(char *fname, unsigned char *&map, unsigned char *&head)
+int loadBMP(const char *fname, unsigned char *&map, unsigned char *&head)
 {
-	/*BITMAP bmp;
-
-	LPWSTR fn;
-	fn = fname;
-	hBmp = (HBITMAP)LoadImage(GetModuleHandle(0), fn,
-	IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-	GetObjectW(hBmp, sizeof(BITMAP), &bmp);
-	*/
 	char buff;
 	FILE *f;
 	int begimg;
@@ -42,5 +39,3 @@ int loadBMP(char *fname, unsigned char *&map, unsigned char *&head)
 	fclose(f);
 	return size;
 }
-
-

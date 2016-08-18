@@ -1,3 +1,10 @@
+//
+//  encryptBMP.cpp
+//  glcrypto
+//
+//  Created by Kirill Solntsev.
+//
+
 
 #include "stdafx.h"
 #include "sodium.h"
@@ -9,14 +16,13 @@
 
 
 using namespace std;
-void encryptBMP(
-	char *fname,
-	unsigned char nonce[crypto_secretbox_NONCEBYTES],
-	unsigned char key[crypto_secretbox_KEYBYTES])
+void encryptBMP(const char *fname,
+                unsigned char nonce[crypto_secretbox_NONCEBYTES],
+                unsigned char key[crypto_secretbox_KEYBYTES])
 {
-	//еще бы записывать в тот же файл откуда взяли
+	// TODO: Handle returned result
 	sodium_init();
-	
+
 	randombytes_buf(nonce, sizeof nonce);
 	randombytes_buf(key, sizeof key);
 
@@ -29,9 +35,7 @@ void encryptBMP(
 	unsigned char *ciphertext;
 	ciphertext = new unsigned char[sizeOfBait];
 	
-	crypto_stream_salsa20_xor(ciphertext,
-		map, sizeOfBait, nonce, key);
+	crypto_stream_salsa20_xor(ciphertext, map, sizeOfBait, nonce, key);
 
 	saveBMP("encrypt.bmp", ciphertext, head);
-
 }

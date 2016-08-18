@@ -1,2 +1,13 @@
+//
+//  saveBMP.h
+//  glcrypto
+//
+//  Created by Kirill Solntsev.
+//
 
-void saveBMP(char *indirect, unsigned char *map, unsigned char *head);
+#ifndef savebmp_h
+#define savebmp_h
+
+void saveBMP(const char *indirect, unsigned char *map, unsigned char *head);
+
+#endif /* savebmp_h */

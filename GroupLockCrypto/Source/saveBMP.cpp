@@ -1,8 +1,15 @@
+//
+//  saveBMP.cpp
+//  glcrypto
+//
+//  Created by Kirill Solntsev.
+//
+
 #include "iostream"
 
 using namespace std;
 
-void saveBMP(char *indirect, unsigned char *map, unsigned char *head)
+void saveBMP(const char *indirect, unsigned char *map, unsigned char *head)
 {
 	FILE *f;
 	int offset;

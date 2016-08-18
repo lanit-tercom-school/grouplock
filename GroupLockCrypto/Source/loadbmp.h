@@ -1,2 +1,13 @@
+//
+//  loadBMP.h
+//  glcrypto
+//
+//  Created by Kirill Solntsev.
+//
 
-int loadBMP(char *fname, unsigned char *&map, unsigned char *&head);
+#ifndef loadbmp_h
+#define loadbmp_h
+
+int loadBMP(const char *fname, unsigned char *&map, unsigned char *&head);
+
+#endif /* loadbmp_h */
