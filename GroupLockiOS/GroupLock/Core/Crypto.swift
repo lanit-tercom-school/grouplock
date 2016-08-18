@@ -25,6 +25,15 @@ protocol CryptoWrapperProtocol {
     func getKeys(min min: Int, max: Int) -> [String]
 
     /**
+     Forms a request for the crypto library to validate provided key.
+
+     - parameter key: Key to validate
+
+     - returns: `true` if the key is valid, otherwise `false`
+     */
+    func validate(key key: String) -> Bool
+
+    /**
      Forms a request for the crypto library to encrypt given image using given encryption key.
 
      - parameter image: Image to encrypt
@@ -52,6 +61,10 @@ class Crypto: CryptoWrapperProtocol {
 
         // implementation goes here
         return [Int](1...max).map(String.init)
+    }
+
+    func validate(key key: String) -> Bool {
+        return false
     }
 
     func encryptImage(image image: NSData, withEncryptionKey key: String) -> NSData? {

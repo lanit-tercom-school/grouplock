@@ -22,11 +22,14 @@ struct Scanning {
     // MARK: Use Case
     struct Keys {
 
-        struct Request {}
+        struct Request {
+            var keyScanned: String
+            var qrCodeCorners: [CFDictionary]
+        }
 
         struct Response {
             var keyScanned: String
-            var isNewKey: Bool
+            var isValidKey: Bool
             var qrCodeCorners: [CFDictionary]
             var keys: [String]
         }

@@ -18,7 +18,7 @@ protocol ScanningViewControllerInput {
 protocol ScanningViewControllerOutput {
     var captureSession: AVCaptureSession! { get }
     var scannedKeys: [String] { get }
-    var metadataOutputObjectsDelegate: AVCaptureMetadataOutputObjectsDelegate! { get }
+    var metadataOutputObjectsDelegate: AVCaptureMetadataOutputObjectsDelegate? { get }
     func configureCaptureSession(request: Scanning.Configure.Request)
 }
 

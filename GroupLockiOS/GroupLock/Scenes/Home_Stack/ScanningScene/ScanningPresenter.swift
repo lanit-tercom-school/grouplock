@@ -29,7 +29,7 @@ class ScanningPresenter: ScanningPresenterInput {
         let qrCodeCGPath = CGPath.create(response.qrCodeCorners.map(CGPoint.init))
         let viewModel = Scanning.Keys.ViewModel(numberOfDifferentKeys: numberOfDifferentKeys,
                                                 qrCodeCGPath: qrCodeCGPath,
-                                                isNewKey: response.isNewKey)
+                                                isNewKey: response.isValidKey)
         output.displayKeyScan(viewModel)
     }
 

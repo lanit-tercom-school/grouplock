@@ -85,6 +85,25 @@ class CryptoFakeTests: XCTestCase {
         XCTAssertNotNil(encryptedData, "The key generated should be valid encryption key")
     }
 
+    func test_ThatValidateMethod_ValidatesKey() {
+
+        // Given
+        let validKey = encryptionKey
+        let wrongNumbersKey = "999367-11876"
+        let wrongCharactersKey = "abcdefghijklmnopqrstuvwxyz"
+        let tooShortKey = "123123123"
+        let emptyKey = ""
+
+        // When
+
+        // Then
+        XCTAssertTrue(sut.validate(key: validKey), "validate method should return true for a truly valid key")
+        XCTAssertFalse(sut.validate(key: wrongNumbersKey), "Key with numbers out of range 0–255 is not valid")
+        XCTAssertFalse(sut.validate(key: wrongCharactersKey), "Key with symbols other than numbers is not valid")
+        XCTAssertFalse(sut.validate(key: tooShortKey), "Key should be at least 12 characters long")
+        XCTAssertFalse(sut.validate(key: emptyKey), "Empty key is not valid")
+    }
+
     func test_EncryptionPerformance() {
 
         measureBlock { [unowned self] in

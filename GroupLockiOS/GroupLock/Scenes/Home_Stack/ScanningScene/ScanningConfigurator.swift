@@ -36,5 +36,9 @@ class ScanningConfigurator {
 
         viewController.output = interactor
         viewController.router = router
+
+        let metadataOutputObjectsDelegate = MetadataOutputObjectsDelegate()
+        metadataOutputObjectsDelegate.output = interactor
+        interactor.metadataOutputObjectsDelegate = metadataOutputObjectsDelegate
     }
 }

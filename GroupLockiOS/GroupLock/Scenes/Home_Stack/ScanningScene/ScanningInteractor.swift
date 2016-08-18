@@ -12,9 +12,10 @@ import AVFoundation
 protocol ScanningInteractorInput {
     var captureSession: AVCaptureSession! { get }
     var scannedKeys: [String] { get }
-    var metadataOutputObjectsDelegate: AVCaptureMetadataOutputObjectsDelegate! { get }
+    var metadataOutputObjectsDelegate: AVCaptureMetadataOutputObjectsDelegate? { get }
 
     func configureCaptureSession(request: Scanning.Configure.Request)
+    func qrCodeCaptured(request: Scanning.Keys.Request)
 }
 
 protocol ScanningInteractorOutput {
@@ -22,16 +23,13 @@ protocol ScanningInteractorOutput {
     func formatCameraError(response: Scanning.CameraError.Response)
 }
 
-class ScanningInteractor: NSObject, ScanningInteractorInput {
+class ScanningInteractor: ScanningInteractorInput {
 
     var output: ScanningInteractorOutput!
-    lazy var metadataOutputObjectsDelegate: AVCaptureMetadataOutputObjectsDelegate! = {
-        let delegate = MetadataOutputObjectsDelegate()
-        delegate.scanningInteractor = self
-        return delegate
-    }()
+    weak var metadataOutputObjectsDelegate: AVCaptureMetadataOutputObjectsDelegate?
 
     var captureSession: AVCaptureSession!
+    var cryptoLibrary: CryptoWrapperProtocol = CryptoFake()
 
     var scannedKeys = [String]()
 
@@ -60,5 +58,26 @@ class ScanningInteractor: NSObject, ScanningInteractorInput {
 
         captureMetadataOutput.setMetadataObjectsDelegate(metadataOutputObjectsDelegate,
                                                          queue: dispatch_get_main_queue())
+    }
+
+    func qrCodeCaptured(request: Scanning.Keys.Request) {
+
+        let key = request.keyScanned
+        let corners = request.qrCodeCorners
+
+        if !cryptoLibrary.validate(key: key) && scannedKeys.contains(key) {
+            let response = Scanning.Keys.Response(keyScanned: key,
+                                                  isValidKey: false,
+                                                  qrCodeCorners: corners,
+                                                  keys: scannedKeys)
+            output.formatKeyScan(response)
+        } else {
+            scannedKeys.append(key)
+            let response = Scanning.Keys.Response(keyScanned: key,
+                                                  isValidKey: true,
+                                                  qrCodeCorners: corners,
+                                                  keys: scannedKeys)
+            output.formatKeyScan(response)
+        }
     }
 }

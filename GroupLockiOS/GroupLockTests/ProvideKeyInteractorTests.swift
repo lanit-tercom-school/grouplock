@@ -40,6 +40,9 @@ class ProvideKeyInteractorTests: XCTestCase {
         func getKeys(min min: Int, max: Int) -> [String] {
             return Seeds.keys
         }
+        func validate(key key: String) -> Bool {
+            return false
+        }
 
         func encryptImage(image image: NSData, withEncryptionKey key: String) -> NSData? {
             return NSData()

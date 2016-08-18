@@ -35,6 +35,13 @@ class CryptoFake: CryptoWrapperProtocol {
         return [digitalKey.map { String(format: "%03d", $0) }.reduce("", combine: +)]
     }
 
+    func validate(key key: String) -> Bool {
+
+        let parsedKey = parse(key: key)
+        // swiftlint:disable:next force_unwrapping (since we check for nil)
+        return parsedKey != nil && parsedKey!.count > 3
+    }
+
     /**
      Encrypts given image with given key.
 
@@ -51,7 +58,7 @@ class CryptoFake: CryptoWrapperProtocol {
      */
     func encryptImage(image data: NSData, withEncryptionKey key: String) -> NSData? {
 
-        guard let parsedKey = parseKey(key),
+        guard let parsedKey = parse(key: key),
             let cgImage = image(from: data) else { return nil }
 
         let expandedKey = expand(parsedKey, for: cgImage)
@@ -82,7 +89,7 @@ class CryptoFake: CryptoWrapperProtocol {
      */
     func decryptImage(image data: NSData, withDecryptionKey key: String) -> NSData? {
 
-        guard let parsedKey = parseKey(key),
+        guard let parsedKey = parse(key: key),
             let cgImage = image(from: data) else { return nil }
 
         let expandedKey = expand(parsedKey, for: cgImage)
@@ -139,7 +146,7 @@ class CryptoFake: CryptoWrapperProtocol {
         }
     }
 
-    private func parseKey(key: String) -> [UInt8]? {
+    private func parse(key key: String) -> [UInt8]? {
 
         guard !key.characters.isEmpty else { return nil }
         let digits = key.characters.map { String.init($0) }
