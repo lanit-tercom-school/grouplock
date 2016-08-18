@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ScanningRouterInput {
-
+    func navigateBackToChooseFile()
 }
 
 class ScanningRouter: ScanningRouterInput {
@@ -18,7 +18,9 @@ class ScanningRouter: ScanningRouterInput {
 
     // MARK: - Navigation
 
-
+    func navigateBackToChooseFile() {
+        viewController.navigationController?.popViewControllerAnimated(true)
+    }
 
     // MARK: - Communication
 

@@ -12,6 +12,7 @@ import NUI
 
 protocol ScanningViewControllerInput {
     func displayKeyScan(viewModel: Scanning.Keys.ViewModel)
+    func displayCameraErrorMessage(viewModel: Scanning.CameraError.ViewModel)
 }
 
 protocol ScanningViewControllerOutput {
@@ -50,25 +51,29 @@ class ScanningViewController: UIViewController, ScanningViewControllerInput {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        navigationController?.setNavigationBarHidden(true, animated: true)
-        tabBarController?.tabBar.hidden = true
         output.configureCaptureSession(Scanning.Configure.Request())
         configurePreview(cameraPreview)
     }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        setBars(hidden: true)
         output.captureSession.startRunning()
     }
 
     override func viewWillDisappear(animated: Bool) {
         output.captureSession.stopRunning()
+        setBars(hidden: false)
         super.viewWillDisappear(animated)
     }
 
     override func prefersStatusBarHidden() -> Bool {
         return true
+    }
+
+    private func setBars(hidden hidden: Bool) {
+        navigationController?.setNavigationBarHidden(hidden, animated: true)
+        tabBarController?.tabBar.hidden = hidden
     }
 
     private func configurePreview(view: UIView) {
@@ -115,6 +120,15 @@ class ScanningViewController: UIViewController, ScanningViewControllerInput {
         return layer
     }
 
+    func displayCameraErrorMessage(viewModel: Scanning.CameraError.ViewModel) {
+        let alert = UIAlertController(title: viewModel.errorName,
+                                      message: viewModel.errorDescription,
+                                      preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "Back", style: .Default) { _ in
+            self.router.navigateBackToChooseFile()
+        })
+        presentViewController(alert, animated: true, completion: nil)
+    }
 
     // MARK: - Event Handling
 

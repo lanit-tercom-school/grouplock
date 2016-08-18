@@ -7,32 +7,22 @@
 //
 
 import CoreGraphics
+import Foundation
 
 // MARK: Scene
 struct Scanning {
 
     // MARK: Use Case
     struct Configure {
-
-        struct Request {
-
-        }
-
-        struct Response {
-
-        }
-
-        struct ViewModel {
-
-        }
+        struct Request {}
+        struct Response {}
+        struct ViewModel {}
     }
 
     // MARK: Use Case
     struct Keys {
 
-        struct Request {
-
-        }
+        struct Request {}
 
         struct Response {
             var keyScanned: String
@@ -45,6 +35,21 @@ struct Scanning {
             var numberOfDifferentKeys: Int
             var qrCodeCGPath: CGPath
             var isNewKey: Bool
+        }
+    }
+
+    // MARK: Use Case
+    struct CameraError {
+
+        struct Request {}
+
+        struct Response {
+            var error: NSError
+        }
+
+        struct ViewModel {
+            var errorName: String
+            var errorDescription: String
         }
     }
 }

@@ -19,6 +19,7 @@ protocol ScanningInteractorInput {
 
 protocol ScanningInteractorOutput {
     func formatKeyScan(response: Scanning.Keys.Response)
+    func formatCameraError(response: Scanning.CameraError.Response)
 }
 
 class ScanningInteractor: NSObject, ScanningInteractorInput {
@@ -45,8 +46,7 @@ class ScanningInteractor: NSObject, ScanningInteractorInput {
             let input = try AVCaptureDeviceInput(device: captureDevice)
             captureSession.addInput(input)
         } catch let error as NSError {
-            // TODO: Trigger alert
-            NSLog(error.localizedDescription)
+            output.formatCameraError(Scanning.CameraError.Response(error: error))
             return
         }
 
