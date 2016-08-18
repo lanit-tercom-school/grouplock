@@ -17,10 +17,10 @@ int main()
 	unsigned char nonce[crypto_secretbox_NONCEBYTES];
 	unsigned char key[crypto_secretbox_KEYBYTES];
 	encryptBMP(
-		"D:/pict.bmp",
+		"pict.bmp",
 		nonce,key);
 
-	decryptBMP("D:/encrypt.bmp", nonce, key);
+	decryptBMP("encrypt.bmp", nonce, key);
 
 	system("pause");
 

@@ -18,7 +18,7 @@ int loadBMP(char *fname, unsigned char *&map, unsigned char *&head)
 	FILE *f;
 	int begimg;
 	int i = 0;
-	fopen_s(&f, fname, "rb");
+	f = fopen(fname, "rb");
 	long int size = 0;
 	fseek(f, 0, SEEK_END);
 	size = ftell(f);

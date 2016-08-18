@@ -32,6 +32,6 @@ void encryptBMP(
 	crypto_stream_salsa20_xor(ciphertext,
 		map, sizeOfBait, nonce, key);
 
-	saveBMP("D:/encrypt.bmp", ciphertext, head);
+	saveBMP("encrypt.bmp", ciphertext, head);
 
 }

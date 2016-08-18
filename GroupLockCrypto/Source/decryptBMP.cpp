@@ -26,5 +26,5 @@ void decryptBMP(
 
 	crypto_stream_salsa20_xor(ciphertext, map, sizeOfBait, nonce, key);
 
-	saveBMP("D:/decrypt.bmp", ciphertext, head);
+	saveBMP("decrypt.bmp", ciphertext, head);
 }

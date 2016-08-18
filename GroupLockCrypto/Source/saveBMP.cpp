@@ -10,7 +10,7 @@ void saveBMP(char *indirect, unsigned char *map, unsigned char *head)
 	int size;
 	size = (head[2] << 0) | (head[3] << 8) | (head[4] << 16) | (head[5] << 24);
 	
-	fopen_s(&f, indirect, "wb");
+	f = fopen(indirect, "wb");
 	
 	fwrite(head, sizeof(unsigned char), offset, f);
 	fwrite(map, sizeof(unsigned char), size - offset, f);
