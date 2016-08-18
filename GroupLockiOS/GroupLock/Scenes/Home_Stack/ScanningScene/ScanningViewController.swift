@@ -61,23 +61,24 @@ class ScanningViewController: UIViewController, ScanningViewControllerInput {
         super.viewWillAppear(animated)
         setBars(hidden: true)
         output.captureSession.startRunning()
+        qrCodeFrameLayer = nil
     }
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-
         let gestureRecofnizer = navigationController?.interactivePopGestureRecognizer
         interactivePopGestureRecognizerDelegate = gestureRecofnizer?.delegate
         navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
 
     override func viewWillDisappear(animated: Bool) {
-        output.captureSession.stopRunning()
         setBars(hidden: false)
         super.viewWillDisappear(animated)
     }
 
     override func viewDidDisappear(animated: Bool) {
+        qrCodeFrameLayer = nil
+        output.captureSession.stopRunning()
         navigationController?
             .interactivePopGestureRecognizer?.delegate = interactivePopGestureRecognizerDelegate
         super.viewDidDisappear(animated)

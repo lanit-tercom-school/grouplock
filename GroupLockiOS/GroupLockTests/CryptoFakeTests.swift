@@ -92,6 +92,7 @@ class CryptoFakeTests: XCTestCase {
         let wrongNumbersKey = "999367-11876"
         let wrongCharactersKey = "abcdefghijklmnopqrstuvwxyz"
         let tooShortKey = "123123123"
+        let incompleteKey = "12312312312"
         let emptyKey = ""
 
         // When
@@ -101,6 +102,8 @@ class CryptoFakeTests: XCTestCase {
         XCTAssertFalse(sut.validate(key: wrongNumbersKey), "Key with numbers out of range 0–255 is not valid")
         XCTAssertFalse(sut.validate(key: wrongCharactersKey), "Key with symbols other than numbers is not valid")
         XCTAssertFalse(sut.validate(key: tooShortKey), "Key should be at least 12 characters long")
+        XCTAssertFalse(sut.validate(key: incompleteKey),
+                       "Key with number of digits that is not a multiple of 3 is not valid")
         XCTAssertFalse(sut.validate(key: emptyKey), "Empty key is not valid")
     }
 

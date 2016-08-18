@@ -14,7 +14,7 @@ protocol MetadataOutputObjectsDelegateOutput {
 
 class MetadataOutputObjectsDelegate: NSObject, AVCaptureMetadataOutputObjectsDelegate {
 
-    var output: ScanningInteractorInput?
+    weak var output: ScanningInteractorInput?
     var layer: AVCaptureVideoPreviewLayer?
 
     func captureOutput(captureOutput: AVCaptureOutput!,

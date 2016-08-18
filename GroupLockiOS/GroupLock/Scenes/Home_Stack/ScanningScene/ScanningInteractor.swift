@@ -9,7 +9,7 @@
 
 import AVFoundation
 
-protocol ScanningInteractorInput {
+protocol ScanningInteractorInput: class {
     var captureSession: AVCaptureSession! { get }
     var scannedKeys: [String] { get }
     var metadataOutputObjectsDelegate: AVCaptureMetadataOutputObjectsDelegate? { get }
@@ -26,7 +26,7 @@ protocol ScanningInteractorOutput {
 class ScanningInteractor: ScanningInteractorInput {
 
     var output: ScanningInteractorOutput!
-    weak var metadataOutputObjectsDelegate: AVCaptureMetadataOutputObjectsDelegate?
+    var metadataOutputObjectsDelegate: AVCaptureMetadataOutputObjectsDelegate?
 
     var captureSession: AVCaptureSession!
     var cryptoLibrary: CryptoWrapperProtocol = CryptoFake()
@@ -65,7 +65,7 @@ class ScanningInteractor: ScanningInteractorInput {
         let key = request.keyScanned
         let corners = request.qrCodeCorners
 
-        if !cryptoLibrary.validate(key: key) && scannedKeys.contains(key) {
+        if !cryptoLibrary.validate(key: key) || scannedKeys.contains(key) {
             let response = Scanning.Keys.Response(keyScanned: key,
                                                   isValidKey: false,
                                                   qrCodeCorners: corners,

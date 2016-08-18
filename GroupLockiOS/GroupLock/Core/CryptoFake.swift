@@ -151,7 +151,7 @@ class CryptoFake: CryptoWrapperProtocol {
         guard !key.characters.isEmpty else { return nil }
         let digits = key.characters.map { String.init($0) }
         var parsedKey = [UInt8](count: digits.count / 3, repeatedValue: 0)
-        for i in 0.stride(to: digits.count, by: 3) {
+        for i in 0.stride(to: digits.count, by: 3) where i + 2 < digits.count {
             if let number = UInt8(digits[i] + digits[i + 1] + digits[i + 2]) {
                 parsedKey[i / 3] = number
             } else { return nil }
