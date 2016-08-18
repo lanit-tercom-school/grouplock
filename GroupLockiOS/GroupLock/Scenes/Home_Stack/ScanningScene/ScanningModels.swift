@@ -37,7 +37,7 @@ struct Scanning {
         struct ViewModel {
             var numberOfDifferentKeys: Int
             var qrCodeCGPath: CGPath
-            var isNewKey: Bool
+            var isValidKey: Bool
         }
     }
 

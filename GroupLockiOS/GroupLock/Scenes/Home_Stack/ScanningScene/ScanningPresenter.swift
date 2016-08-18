@@ -29,14 +29,16 @@ class ScanningPresenter: ScanningPresenterInput {
         let qrCodeCGPath = CGPath.create(response.qrCodeCorners.map(CGPoint.init))
         let viewModel = Scanning.Keys.ViewModel(numberOfDifferentKeys: numberOfDifferentKeys,
                                                 qrCodeCGPath: qrCodeCGPath,
-                                                isNewKey: response.isValidKey)
+                                                isValidKey: response.isValidKey)
         output.displayKeyScan(viewModel)
     }
 
     func formatCameraError(response: Scanning.CameraError.Response) {
 
         let errorDescription = response.error.localizedDescription
-        let formattedDescription = String(errorDescription.characters[errorDescription.startIndex]) +
+
+        // swiftlint:disable:next force_unwrapping (since description is never empty)
+        let formattedDescription = String(errorDescription.characters.first!).uppercaseString +
             String(errorDescription.characters.dropFirst()).lowercaseString + "."
 
         let viewModel = Scanning.CameraError.ViewModel(errorName: "Camera Error",

@@ -112,7 +112,7 @@ class ScanningViewController: UIViewController, ScanningViewControllerInput {
         scanOneMoreButton.enabled = true
         proceedButton.enabled = true
 
-        let frameColor = viewModel.isNewKey ?
+        let frameColor = viewModel.isValidKey ?
             NUISettings.getColor("stroke-color-success", withClass: "DetectedQRCodeFrame") :
             NUISettings.getColor("stroke-color-failure", withClass: "DetectedQRCodeFrame")
 
