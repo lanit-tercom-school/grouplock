@@ -118,7 +118,7 @@ MaxMinLabel {
 
 /* Scanning Scene */
 
-CounterLabel {
+ScanningTopLabel {
     corner-radius: 22;
     font-color: white;
 }

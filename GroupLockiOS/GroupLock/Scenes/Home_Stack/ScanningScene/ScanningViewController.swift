@@ -49,6 +49,8 @@ class ScanningViewController: UIViewController, ScanningViewControllerInput {
 
     // MARK: - View Controller lifecycle
 
+    private var interactivePopGestureRecognizerDelegate: UIGestureRecognizerDelegate?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         output.configureCaptureSession(Scanning.Configure.Request())
@@ -61,10 +63,24 @@ class ScanningViewController: UIViewController, ScanningViewControllerInput {
         output.captureSession.startRunning()
     }
 
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+
+        let gestureRecofnizer = navigationController?.interactivePopGestureRecognizer
+        interactivePopGestureRecognizerDelegate = gestureRecofnizer?.delegate
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
+    }
+
     override func viewWillDisappear(animated: Bool) {
         output.captureSession.stopRunning()
         setBars(hidden: false)
         super.viewWillDisappear(animated)
+    }
+
+    override func viewDidDisappear(animated: Bool) {
+        navigationController?
+            .interactivePopGestureRecognizer?.delegate = interactivePopGestureRecognizerDelegate
+        super.viewDidDisappear(animated)
     }
 
     override func prefersStatusBarHidden() -> Bool {
@@ -124,9 +140,10 @@ class ScanningViewController: UIViewController, ScanningViewControllerInput {
         let alert = UIAlertController(title: viewModel.errorName,
                                       message: viewModel.errorDescription,
                                       preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: "Back", style: .Default) { _ in
+        let backAction = UIAlertAction(title: "Back", style: .Cancel) { _ in
             self.router.navigateBackToChooseFile()
-        })
+        }
+        alert.addAction(backAction)
         presentViewController(alert, animated: true, completion: nil)
     }
 
@@ -137,6 +154,14 @@ class ScanningViewController: UIViewController, ScanningViewControllerInput {
         scanOneMoreButton.enabled = false
         output.captureSession.startRunning()
     }
+
+    @IBAction func onBack(sender: UIButton) {
+        router.navigateBackToChooseFile()
+    }
+}
+
+extension ScanningViewController: UIGestureRecognizerDelegate {
+    func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool { return true }
 }
 
 extension ScanningViewController {
