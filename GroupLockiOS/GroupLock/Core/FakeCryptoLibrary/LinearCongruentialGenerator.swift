@@ -27,7 +27,7 @@ class LinearCongruentialGenerator {
      - returns: Pseudorandom floating point number from 0 to 1
      */
     func random() -> Double {
-        seed = (seed * a + c) % m
+        seed = (seed * a + c).truncatingRemainder(dividingBy: m)
         return seed / m
     }
 

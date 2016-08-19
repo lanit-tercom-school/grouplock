@@ -19,12 +19,12 @@ class EncryptedFileRouter: EncryptedFileRouterInput {
     // MARK: - Navigation
 
     func returnToHomeScene() {
-        viewController.performSegueWithIdentifier("ReturnToHomeScreen", sender: nil)
+        viewController.performSegue(withIdentifier: "ReturnToHomeScreen", sender: nil)
     }
 
     // MARK: - Communication
 
-    func passDataToNextScene(segue: UIStoryboardSegue) {
+    func passDataToNextScene(_ segue: UIStoryboardSegue) {
 
     }
 

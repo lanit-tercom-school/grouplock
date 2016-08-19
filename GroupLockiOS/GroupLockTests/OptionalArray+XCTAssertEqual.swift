@@ -8,14 +8,14 @@
 
 import XCTest
 
-internal func XCTAssertEqual<T: Equatable>(@autoclosure expression1: () throws -> [T]?,
-                                   @autoclosure _ expression2: () throws -> [T]?,
-                                   @autoclosure _ message: () -> String = "",
+internal func XCTAssertEqual<T: Equatable>(_ expression1: @autoclosure () throws -> [T]?,
+                                   _ expression2: @autoclosure () throws -> [T]?,
+                                   _ message: @autoclosure () -> String = "",
                                    file: StaticString = #file,
                                    line: UInt = #line) {
 
-    func nilAssertion(@autoclosure expression1: () throws -> [T]?,
-                                @autoclosure _ expression2: () throws -> [T]?) rethrows -> Bool {
+    func nilAssertion(_ expression1: @autoclosure () throws -> [T]?,
+                                _ expression2: @autoclosure () throws -> [T]?) rethrows -> Bool {
 
         let (value1, value2) = (try expression1(), try expression2())
 
@@ -29,7 +29,7 @@ internal func XCTAssertEqual<T: Equatable>(@autoclosure expression1: () throws -
         let bothNil = try nilAssertion(expression1, expression2)
         if bothNil {
             XCTAssert(true, message, file: file, line: line)
-        } else if let value1 = try expression1(), value2 = try expression2() {
+        } else if let value1 = try expression1(), let value2 = try expression2() {
             XCTAssertEqual(value1, value2, message, file: file, line: line)
         } else {
             XCTFail(message(), file: file, line: line)

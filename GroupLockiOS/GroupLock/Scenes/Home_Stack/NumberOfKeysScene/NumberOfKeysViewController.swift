@@ -27,24 +27,24 @@ class NumberOfKeysViewController: UIViewController {
 
 extension NumberOfKeysViewController: UIPickerViewDataSource {
 
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 2
     }
 
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return output.numberOfKeys
 
     }
 
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return "\(row + 1)"
     }
 }
 
 extension NumberOfKeysViewController: UIPickerViewDelegate {
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if pickerView.selectedRowInComponent(0) > pickerView.selectedRowInComponent(1) {
-            pickerView.selectRow(pickerView.selectedRowInComponent(component),
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if pickerView.selectedRow(inComponent: 0) > pickerView.selectedRow(inComponent: 1) {
+            pickerView.selectRow(pickerView.selectedRow(inComponent: component),
                                  inComponent: -component + 1,
                                  animated: true)
         }

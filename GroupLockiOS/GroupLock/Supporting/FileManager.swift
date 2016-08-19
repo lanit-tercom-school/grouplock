@@ -30,8 +30,7 @@ class FileManager: NSObject {
      - returns: An array of files.
      */
     func files(insideDirectory directory: Directory) -> [ManagedFile] {
-        let entityDescription = entity(name: "File", context: context)
-        let fetchRequest = FetchRequest<ManagedFile>(entity: entityDescription)
+        let fetchRequest = NSFetchRequest<ManagedFile>(entityName: "File")
         switch directory {
         case .Encrypted:
             fetchRequest.predicate = NSPredicate(format: "encrypted == true")
@@ -39,7 +38,12 @@ class FileManager: NSObject {
             fetchRequest.predicate = NSPredicate(format: "encrypted == false")
         }
         do {
-            let files = try context.fetch(request: fetchRequest)
+            let files: [ManagedFile]
+            if #available(iOS 10.0, *) {
+                files = try fetchRequest.execute()
+            } else {
+                files = try context.fetch(fetchRequest)
+            }
             return files
         } catch {
             print(error)
@@ -52,13 +56,13 @@ class FileManager: NSObject {
 
      - returns: Created file
      */
-    func createFile(name: String, type: String, encrypted: Bool, contents: NSData?) -> ManagedFile? {
-        guard let entity = NSEntityDescription.entityForName("File",
-                                                             inManagedObjectContext: context) else {
+    func createFile(_ name: String, type: String, encrypted: Bool, contents: Data?) -> ManagedFile? {
+        guard let entity = NSEntityDescription.entity(forEntityName: "File",
+                                                             in: context) else {
             return nil
         }
 
-        let file = ManagedFile(entity: entity, insertIntoManagedObjectContext: nil)
+        let file = ManagedFile(entity: entity, insertInto: nil)
         file.name = name
         file.type = type
         file.encrypted = encrypted
@@ -66,22 +70,20 @@ class FileManager: NSObject {
         return file
     }
 
-    func createFileFromURL(url: NSURL, withName name: String, encrypted: Bool) -> ManagedFile? {
-        guard let fileType = url.pathExtension else {
-            return nil
-        }
+    func createFileFromURL(_ url: URL, withName name: String, encrypted: Bool) -> ManagedFile? {
+        let fileType = url.pathExtension
         let data = getImageContentsForURL(url)
         return createFile(name, type: fileType, encrypted: encrypted, contents: data)
     }
 
-    private func getImageContentsForURL(url: NSURL) -> NSData? {
+    private func getImageContentsForURL(_ url: URL) -> Data? {
 
-        let fetchResult = PHAsset.fetchAssetsWithALAssetURLs([url], options: nil)
-        if let asset = fetchResult.firstObject as? PHAsset {
-            var data: NSData?
+        let fetchResult = PHAsset.fetchAssets(withALAssetURLs: [url], options: nil)
+        if let asset = fetchResult.firstObject {
+            var data: Data?
             let options = PHImageRequestOptions()
-            options.synchronous = true
-            PHImageManager.defaultManager().requestImageDataForAsset(asset, options: options) {
+            options.isSynchronous = true
+            PHImageManager.default().requestImageData(for: asset, options: options) {
                 (imageData, _, _, _) in
                 data = imageData
             }

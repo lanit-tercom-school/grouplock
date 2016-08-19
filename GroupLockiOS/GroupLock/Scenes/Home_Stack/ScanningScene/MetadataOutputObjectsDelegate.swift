@@ -9,7 +9,7 @@
 import AVFoundation
 
 protocol MetadataOutputObjectsDelegateOutput {
-    func qrCodeCaptured(request: Scanning.Keys.Request)
+    func qrCodeCaptured(_ request: Scanning.Keys.Request)
 }
 
 class MetadataOutputObjectsDelegate: NSObject, AVCaptureMetadataOutputObjectsDelegate {
@@ -17,12 +17,12 @@ class MetadataOutputObjectsDelegate: NSObject, AVCaptureMetadataOutputObjectsDel
     weak var output: ScanningInteractorInput?
     var layer: AVCaptureVideoPreviewLayer?
 
-    func captureOutput(captureOutput: AVCaptureOutput!,
-                       didOutputMetadataObjects metadataObjects: [AnyObject]!,
-                                                fromConnection connection: AVCaptureConnection!) {
+    func captureOutput(_ captureOutput: AVCaptureOutput!,
+                       didOutputMetadataObjects metadataObjects: [Any]!,
+                                                from connection: AVCaptureConnection!) {
         guard metadataObjects != nil && !metadataObjects.isEmpty else { return }
         guard let metadataObject = metadataObjects.first as? AVMetadataMachineReadableCodeObject,
-              let transformedMetadataObject = layer?.transformedMetadataObjectForMetadataObject(metadataObject)
+              let transformedMetadataObject = layer?.transformedMetadataObject(for: metadataObject)
                 as? AVMetadataMachineReadableCodeObject,
               let key = metadataObject.stringValue,
               let corners = transformedMetadataObject.corners as? [CFDictionary] else { return }

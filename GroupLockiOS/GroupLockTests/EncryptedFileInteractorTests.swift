@@ -18,18 +18,18 @@ class EncryptedFileInteractorTests: XCTestCase {
         }
 
         struct Share {
-            private static let dataToShareAfterFilesWereSelected = [fileContents[1]!, NSData()]
+            private static let dataToShareAfterFilesWereSelected = [fileContents[1]!, Data()]
             private static let dataToShareAfterFileWasDeselected = [fileContents[1]!]
-            private static let excludedActivityTypes = [
-                UIActivityTypePrint,
-                UIActivityTypePostToVimeo,
-                UIActivityTypePostToWeibo,
-                UIActivityTypePostToFlickr,
-                UIActivityTypePostToTwitter,
-                UIActivityTypePostToFacebook,
-                UIActivityTypeAddToReadingList,
-                UIActivityTypePostToTencentWeibo
-                ].sort()
+            private static let excludedActivityTypes: [UIActivityType] = [
+                .print,
+                .postToVimeo,
+                .postToWeibo,
+                .postToFlickr,
+                .postToTwitter,
+                .postToFacebook,
+                .addToReadingList,
+                .postToTencentWeibo
+                ].sorted(by: { $0.rawValue < $1.rawValue })
 
             static let responseAfterFilesWereSelected = EncryptedFile.Share.Response(
                 dataToShare: dataToShareAfterFilesWereSelected, excludedActivityTypes: excludedActivityTypes)
@@ -38,11 +38,11 @@ class EncryptedFileInteractorTests: XCTestCase {
                 dataToShare: dataToShareAfterFileWasDeselected, excludedActivityTypes: excludedActivityTypes)
 
             static let selectedFilesIndexPaths = [
-                NSIndexPath(forItem: 1, inSection: 0),
-                NSIndexPath(forItem: 2, inSection: 0)
+                IndexPath(item: 1, section: 0),
+                IndexPath(item: 2, section: 0)
             ]
 
-            static let deselectedFileIndexPath = NSIndexPath(forItem: 2, inSection: 0)
+            static let deselectedFileIndexPath = IndexPath(item: 2, section: 0)
         }
 
         struct SaveFiles {
@@ -50,8 +50,8 @@ class EncryptedFileInteractorTests: XCTestCase {
         }
 
         private static let fileContents = [
-            "data1".dataUsingEncoding(NSISOLatin1StringEncoding),
-            "data2".dataUsingEncoding(NSISOLatin1StringEncoding),
+            "data1".data(using: String.Encoding.isoLatin1),
+            "data2".data(using: String.Encoding.isoLatin1),
             nil
         ]
 
@@ -80,11 +80,11 @@ class EncryptedFileInteractorTests: XCTestCase {
         var fetchResponseReceived: EncryptedFile.Fetch.Response?
         var shareResponseReceived: EncryptedFile.Share.Response?
 
-        func presentFiles(response: EncryptedFile.Fetch.Response) {
+        func presentFiles(_ response: EncryptedFile.Fetch.Response) {
             fetchResponseReceived = response
         }
 
-        func shareFiles(response: EncryptedFile.Share.Response) {
+        func shareFiles(_ response: EncryptedFile.Share.Response) {
             shareResponseReceived = response
         }
     }

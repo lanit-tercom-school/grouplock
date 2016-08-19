@@ -37,10 +37,10 @@ class PasswordViewControllerTests: XCTestCase {
 
     func setupPasswordViewController() {
 
-        let bundle = NSBundle.mainBundle()
+        let bundle = Bundle.main
         let storyboard = UIStoryboard(name: "Main", bundle: bundle)
-        sut = storyboard.instantiateViewControllerWithIdentifier(
-            "PasswordViewController") as! PasswordViewController
+        sut = storyboard.instantiateViewController(
+            withIdentifier: "PasswordViewController") as! PasswordViewController
 
         _ = sut.view
         loadView()
@@ -48,7 +48,7 @@ class PasswordViewControllerTests: XCTestCase {
 
     func loadView() {
         window.addSubview(sut.view)
-        NSRunLoop.currentRunLoop().runUntilDate(NSDate())
+        RunLoop.current.run(until: Date())
     }
 
     // MARK: - Test doubles
@@ -57,7 +57,7 @@ class PasswordViewControllerTests: XCTestCase {
 
         var passwordIsCorrect_isCalled = false // swiftlint:disable:this variable_name
 
-        func passwordIsCorrect(password: String?) -> Bool {
+        func passwordIsCorrect(_ password: String?) -> Bool {
 
             passwordIsCorrect_isCalled = true
             return true
@@ -72,7 +72,7 @@ class PasswordViewControllerTests: XCTestCase {
             self.passwordIsCorrectValue = passwordIsCorrectValue
         }
 
-        func passwordIsCorrect(password: String?) -> Bool {
+        func passwordIsCorrect(_ password: String?) -> Bool {
             return passwordIsCorrectValue
         }
     }
@@ -89,25 +89,25 @@ class PasswordViewControllerTests: XCTestCase {
     // MARK: - Tests
 
     func test_ThatPasswordTextField_BecomesFirstResponderWhenViewIsLoaded() {
-        XCTAssertTrue(sut.passwordTextField.isFirstResponder(),
+        XCTAssertTrue(sut.passwordTextField.isFirstResponder,
                       "Password Text Field should be in focus when the view is loaded")
     }
 
     func test_ThatProceedButton_IsInitiallyHidden() {
 
         // Given
-        let proceedButton = sut.proceedButton
+        let proceedButton = sut.proceedButton!
 
         // When
 
         // Then
-        XCTAssertTrue(proceedButton.hidden, "Proceed button should be hidden when view is initially loaded")
+        XCTAssertTrue(proceedButton.isHidden, "Proceed button should be hidden when view is initially loaded")
     }
 
     func test_ThatProceedButton_IsHiddenWhenPasswordTextFieldIsEmpty() {
 
         // Given
-        let proceedButton = sut.proceedButton
+        let proceedButton = sut.proceedButton!
         let textField = UITextField()
 
         // When
@@ -115,7 +115,7 @@ class PasswordViewControllerTests: XCTestCase {
         sut.textFieldEditingChanged(textField)
 
         // Then
-        XCTAssertTrue(proceedButton.hidden,
+        XCTAssertTrue(proceedButton.isHidden,
                       "Proceed button should be hidden when the text field's text is not specified")
 
         // When
@@ -123,13 +123,13 @@ class PasswordViewControllerTests: XCTestCase {
         sut.textFieldEditingChanged(textField)
 
         // Then
-        XCTAssertTrue(proceedButton.hidden, "Proceed button should be hidden when the text field is empty")
+        XCTAssertTrue(proceedButton.isHidden, "Proceed button should be hidden when the text field is empty")
     }
 
     func test_ThatProceedButton_IsShownWhenPasswordTextFieldIsNotEmpty() {
 
         // Given
-        let proceedButton = sut.proceedButton
+        let proceedButton = sut.proceedButton!
         let textField = UITextField()
 
         // When
@@ -137,7 +137,7 @@ class PasswordViewControllerTests: XCTestCase {
         sut.textFieldEditingChanged(textField)
 
         // Then
-        XCTAssertFalse(proceedButton.hidden, "Proceed button should be shown when the text field is not empty")
+        XCTAssertFalse(proceedButton.isHidden, "Proceed button should be shown when the text field is not empty")
     }
 
     func test_ThatProceedButton_TriggersPasswordCheck() {
@@ -184,7 +184,7 @@ class PasswordViewControllerTests: XCTestCase {
         // Then
         XCTAssertTrue(passwordRouterSpy.navigateToMainScreen_isCalled,
                       "If the password is correct, we should segue to the main screen")
-        XCTAssertFalse(sut.passwordTextField.isFirstResponder(),
+        XCTAssertFalse(sut.passwordTextField.isFirstResponder,
                        "Password Text Field should lose focus if the password is correct")
     }
 
@@ -203,7 +203,7 @@ class PasswordViewControllerTests: XCTestCase {
         // Then
         XCTAssertTrue(passwordRouterSpy.navigateToMainScreen_isCalled,
                       "If the password is correct, we should segue to the main screen")
-        XCTAssertFalse(sut.passwordTextField.isFirstResponder(),
+        XCTAssertFalse(sut.passwordTextField.isFirstResponder,
                        "Password Text Field should lose focus if the password is correct")
     }
 
@@ -222,7 +222,7 @@ class PasswordViewControllerTests: XCTestCase {
         // Then
         XCTAssertFalse(passwordRouterSpy.navigateToMainScreen_isCalled,
                        "If the password is incorrect, no segue should be performed")
-        XCTAssertTrue(sut.passwordTextField.isFirstResponder(),
+        XCTAssertTrue(sut.passwordTextField.isFirstResponder,
                       "Password Text Field should keep focus if the password is incorrect")
     }
 
@@ -241,7 +241,7 @@ class PasswordViewControllerTests: XCTestCase {
         // Then
         XCTAssertFalse(passwordRouterSpy.navigateToMainScreen_isCalled,
                        "If the password is incorrect, no segue should be performed")
-        XCTAssertTrue(sut.passwordTextField.isFirstResponder(),
+        XCTAssertTrue(sut.passwordTextField.isFirstResponder,
                       "Password Text Field should keep focus if the password is incorrect")
     }
 }

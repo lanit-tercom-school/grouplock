@@ -36,15 +36,15 @@ class ScanningViewControllerTests: XCTestCase {
 
     func setupScanningViewController() {
 
-        let bundle = NSBundle.mainBundle()
+        let bundle = Bundle.main
         let storyboard = UIStoryboard(name: "Main", bundle: bundle)
         sut = storyboard
-            .instantiateViewControllerWithIdentifier("ScanningViewController") as! ScanningViewController
+            .instantiateViewController(withIdentifier: "ScanningViewController") as! ScanningViewController
     }
 
     func loadView() {
         window.addSubview(sut.view)
-        NSRunLoop.currentRunLoop().runUntilDate(NSDate())
+        RunLoop.current.run(until: Date())
     }
 
     // MARK: - Test doubles

@@ -16,7 +16,7 @@ class ChooseFilePresenterTests: XCTestCase {
     struct Seeds {
         struct FileFormat {
             static let fileName = "File Name"
-            static let fileContents = NSData(contentsOfFile: "test-image")
+            static let fileContents = try? Data(contentsOf: URL(fileURLWithPath: "test-image"))
             static let fileThumbnail = UIImage()
         }
     }

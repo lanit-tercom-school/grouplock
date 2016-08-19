@@ -26,7 +26,7 @@ class UIViewControllerTests: XCTestCase {
         // Add the main view to the view hierarchy
         window.addSubview(sut.view)
 
-        NSRunLoop.currentRunLoop().runUntilDate(NSDate())
+        RunLoop.current.run(until: Date())
     }
 
     override func tearDown() {
@@ -44,7 +44,7 @@ class UIViewControllerTests: XCTestCase {
         sut.view.addSubview(textField)
         textField.becomeFirstResponder()
         sut.dismissKeyboard()
-        XCTAssertFalse(textField.isFirstResponder(), "Text field should lose keyboard focus")
+        XCTAssertFalse(textField.isFirstResponder, "Text field should lose keyboard focus")
     }
 
 }

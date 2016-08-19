@@ -12,11 +12,11 @@ protocol ProvideKeyInteractorInput {
     var files: [File] { get set }
     var numberOfKeys: (Int, Int) { get set }
 
-    func getKeys(request: ProvideKey.Configure.Request)
+    func getKeys(_ request: ProvideKey.Configure.Request)
 }
 
 protocol ProvideKeyInteractorOutput {
-    func createQRCodes(response: ProvideKey.Configure.Response)
+    func createQRCodes(_ response: ProvideKey.Configure.Response)
 
 }
 
@@ -32,7 +32,7 @@ class ProvideKeyInteractor: ProvideKeyInteractorInput {
 
     var numberOfKeys = (1, 1)
 
-    func getKeys(request: ProvideKey.Configure.Request) {
+    func getKeys(_ request: ProvideKey.Configure.Request) {
 
         let keys = cryptoLibrary.getKeys(min: numberOfKeys.0, max: numberOfKeys.1)
 

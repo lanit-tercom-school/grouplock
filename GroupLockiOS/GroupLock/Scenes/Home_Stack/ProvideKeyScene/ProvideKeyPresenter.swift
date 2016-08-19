@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ProvideKeyPresenterInput {
-    func createQRCodes(response: ProvideKey.Configure.Response)
+    func createQRCodes(_ response: ProvideKey.Configure.Response)
 }
 
 protocol ProvideKeyPresenterOutput: class {
@@ -22,11 +22,11 @@ class ProvideKeyPresenter: ProvideKeyPresenterInput {
 
     // MARK: - Presentation logic
 
-    func createQRCodes(response: ProvideKey.Configure.Response) {
+    func createQRCodes(_ response: ProvideKey.Configure.Response) {
 
         let keys = response.decryptionKeys
 
-        let screenSize = UIScreen.mainScreen().nativeBounds.size
+        let screenSize = UIScreen.main.nativeBounds.size
         let screenWidth = min(screenSize.width, screenSize.height)
 
         let uiImageQRCodes = keys.map {

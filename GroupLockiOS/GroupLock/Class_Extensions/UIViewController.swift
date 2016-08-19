@@ -31,35 +31,35 @@ extension UIViewController: UIImagePickerControllerDelegate, UINavigationControl
     func presentImagePicker() {
         let albumPicker = UIImagePickerController()
         albumPicker.delegate = self
-        albumPicker.navigationBar.translucent = false
+        albumPicker.navigationBar.isTranslucent = false
         albumPicker.mediaTypes = [kUTTypeImage as String]
-        presentViewController(albumPicker, animated: true, completion: nil)
+        present(albumPicker, animated: true, completion: nil)
     }
 
     func pickEncryptionStatusAlert(forFile file: ManagedFile, completion: ((ManagedFile) -> Void)?) {
         let actionSheet = UIAlertController(title: nil, message: "What do you to load this file for?",
-                                            preferredStyle: .ActionSheet)
-        let forEncryption = UIAlertAction(title: "Encryption", style: .Default) { _ in
+                                            preferredStyle: .actionSheet)
+        let forEncryption = UIAlertAction(title: "Encryption", style: .default) { _ in
             file.encrypted = false
             completion?(file)
         }
-        let forDecryption = UIAlertAction(title: "Decryption", style: .Default) { _ in
+        let forDecryption = UIAlertAction(title: "Decryption", style: .default) { _ in
             file.encrypted = true
             completion?(file)
         }
         actionSheet.addAction(forEncryption)
         actionSheet.addAction(forDecryption)
 
-        presentViewController(actionSheet, animated: true, completion: nil)
+        present(actionSheet, animated: true, completion: nil)
     }
 
     // TODO: Implement uniqueness check
-    func setFileNameAlert(file: ManagedFile, completion: ((ManagedFile) -> Void)?) -> Void {
+    func setFileNameAlert(_ file: ManagedFile, completion: ((ManagedFile) -> Void)?) -> Void {
         let nameAlert = UIAlertController(title: "Name", message: "Type a desired name for this file.",
-                                          preferredStyle: .Alert)
-        nameAlert.addTextFieldWithConfigurationHandler(nil)
+                                          preferredStyle: .alert)
+        nameAlert.addTextField(configurationHandler: nil)
 
-        let action = UIAlertAction(title: "OK", style: .Default) { _ in
+        let action = UIAlertAction(title: "OK", style: .default) { _ in
             if let name = nameAlert.textFields?.first?.text {
                 file.name = name
                 completion?(file)
@@ -68,6 +68,6 @@ extension UIViewController: UIImagePickerControllerDelegate, UINavigationControl
 
         nameAlert.addAction(action)
 
-        presentViewController(nameAlert, animated: false, completion: nil)
+        present(nameAlert, animated: false, completion: nil)
     }
 }

@@ -19,12 +19,12 @@ class ScanningRouter: ScanningRouterInput {
     // MARK: - Navigation
 
     func navigateBackToChooseFile() {
-        viewController.navigationController?.popViewControllerAnimated(true)
+        viewController.navigationController?.popViewController(animated: true)
     }
 
     // MARK: - Communication
 
-    func passDataToNextScene(segue: UIStoryboardSegue) {
+    func passDataToNextScene(_ segue: UIStoryboardSegue) {
 
         if segue.identifier == "" {
 

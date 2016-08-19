@@ -11,7 +11,7 @@ import UIKit
 // MARK: - Connect View, Interactor, and Presenter
 
 extension NumberOfKeysViewController: NumberOfKeysPresenterOutput {
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         router.passDataToNextScene(segue)
     }
 }
@@ -24,7 +24,7 @@ class NumberOfKeysConfigurator {
 
     // MARK: - Configuration
 
-    static func configure(viewController: NumberOfKeysViewController) {
+    static func configure(_ viewController: NumberOfKeysViewController) {
         let router = NumberOfKeysRouter()
         router.viewController = viewController
 

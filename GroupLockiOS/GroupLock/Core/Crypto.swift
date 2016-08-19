@@ -22,7 +22,7 @@ protocol CryptoWrapperProtocol {
 
      - returns: An array of decryption keys constructed by a crypto library.
      */
-    func getKeys(min min: Int, max: Int) -> [String]
+    func getKeys(min: Int, max: Int) -> [String]
 
     /**
      Forms a request for the crypto library to validate provided key.
@@ -31,7 +31,7 @@ protocol CryptoWrapperProtocol {
 
      - returns: `true` if the key is valid, otherwise `false`
      */
-    func validate(key key: [String]) -> Bool
+    func validate(key: [String]) -> Bool
 
     /**
      Forms a request for the crypto library to validate a part of shared secret
@@ -40,7 +40,7 @@ protocol CryptoWrapperProtocol {
 
      - returns: `true` if the key is valid, otherwise `false`
      */
-    func validatePart(key: String) -> Bool
+    func validatePart(_ key: String) -> Bool
 
     /**
      Forms a request for the crypto library to encrypt given image using given encryption key.
@@ -50,7 +50,7 @@ protocol CryptoWrapperProtocol {
 
      - returns: Encrypted image
      */
-    func encryptImage(image image: NSData, withEncryptionKey key: [String]) -> NSData?
+    func encrypt(image: Data, withEncryptionKey key: [String]) -> Data?
 
     /**
      Forms a request for the crypto library ro decrypt given image useing given decryptionKey.
@@ -60,33 +60,33 @@ protocol CryptoWrapperProtocol {
 
      - returns: Decrypted image
      */
-    func decryptImage(image image: NSData, withDecryptionKey key: [String]) -> NSData?
+    func decrypt(image: Data, withDecryptionKey key: [String]) -> Data?
 }
 
 /// Default implementation of the `CryptoWrapperProtocol`
 class Crypto: CryptoWrapperProtocol {
 
-    func getKeys(min min: Int, max: Int) -> [String] {
+    func getKeys(min: Int, max: Int) -> [String] {
 
         // implementation goes here
         return [Int](1...max).map(String.init)
     }
 
-    func validate(key key: [String]) -> Bool {
+    func validate(key: [String]) -> Bool {
         return false
     }
 
-    func validatePart(key: String) -> Bool {
+    func validatePart(_ key: String) -> Bool {
         return false
     }
 
-    func encryptImage(image image: NSData, withEncryptionKey key: [String]) -> NSData? {
+    func encrypt(image: Data, withEncryptionKey key: [String]) -> Data? {
 
         // implementation goes here
         return image
     }
 
-    func decryptImage(image image: NSData, withDecryptionKey key: [String]) -> NSData? {
+    func decrypt(image: Data, withDecryptionKey key: [String]) -> Data? {
 
         // implementatiuon goes here
         return image

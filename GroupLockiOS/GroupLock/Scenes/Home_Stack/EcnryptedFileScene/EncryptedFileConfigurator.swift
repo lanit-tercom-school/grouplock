@@ -11,7 +11,7 @@ import UIKit
 // MARK: - Connect View, Interactor, and Presenter
 
 extension EncryptedFileViewController: EncryptedFilePresenterOutput {
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         router.passDataToNextScene(segue)
     }
 }
@@ -24,7 +24,7 @@ class EncryptedFileConfigurator {
 
     // MARK: - Configuration
 
-    static func configure(viewController: EncryptedFileViewController) {
+    static func configure(_ viewController: EncryptedFileViewController) {
         let router = EncryptedFileRouter()
         router.viewController = viewController
 

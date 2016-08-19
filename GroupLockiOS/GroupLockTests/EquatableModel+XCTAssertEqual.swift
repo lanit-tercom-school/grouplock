@@ -13,14 +13,14 @@ internal protocol EquatableModel {
 }
 
 
-internal func XCTAssertEqual<T: EquatableModel>(@autoclosure expression1: () throws -> T?,
-                                   @autoclosure _ expression2: () throws -> T?,
-                                   @autoclosure _ message: () -> String = "",
+internal func XCTAssertEqual<T: EquatableModel>(_ expression1: @autoclosure () throws -> T?,
+                                   _ expression2: @autoclosure () throws -> T?,
+                                   _ message: @autoclosure () -> String = "",
                                    file: StaticString = #file,
                                    line: UInt = #line) {
 
-    func assertion(@autoclosure expression1: () throws -> T?,
-                   @autoclosure _ expression2: () throws -> T?) rethrows -> Bool {
+    func assertion(_ expression1: @autoclosure () throws -> T?,
+                   _ expression2: @autoclosure () throws -> T?) rethrows -> Bool {
 
         let (value1, value2) = (try expression1(), try expression2())
 
@@ -28,7 +28,7 @@ internal func XCTAssertEqual<T: EquatableModel>(@autoclosure expression1: () thr
             return true
         }
 
-        if let value1 = value1, value2 = value2 {
+        if let value1 = value1, let value2 = value2 {
             return value1.isEqualTo(value2)
         }
 

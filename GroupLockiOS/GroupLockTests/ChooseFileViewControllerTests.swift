@@ -36,15 +36,15 @@ class ChooseFileViewControllerTests: XCTestCase {
 
     func setupChooseFileViewController() {
 
-        let bundle = NSBundle.mainBundle()
+        let bundle = Bundle.main
         let storyboard = UIStoryboard(name: "Main", bundle: bundle)
         sut = storyboard
-            .instantiateViewControllerWithIdentifier("ChooseFileViewController") as! ChooseFileViewController
+            .instantiateViewController(withIdentifier: "ChooseFileViewController") as! ChooseFileViewController
     }
 
     func loadView() {
         window.addSubview(sut.view)
-        NSRunLoop.currentRunLoop().runUntilDate(NSDate())
+        RunLoop.current.run(until: Date())
     }
 
     // MARK: - Test doubles

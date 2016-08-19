@@ -10,26 +10,27 @@ import XCTest
 @testable import GroupLock
 
 // swiftlint:disable force_unwrapping
+// swiftlint:disable force_try
 class QRCodeTests: XCTestCase {
 
     struct Seeds {
-        private static let qrCodeURL = NSBundle(forClass: QRCodeTests.self)
-            .URLForResource("QR-Code", withExtension: "png")!
+        private static let qrCodeURL = Bundle(for: QRCodeTests.self)
+            .url(forResource: "QR-Code", withExtension: "png")!
 
-        private static let tooMassiveDataURL = NSBundle(forClass: QRCodeTests.self)
-            .URLForResource("test-image", withExtension: "png")!
+        private static let tooMassiveDataURL = Bundle(for: QRCodeTests.self)
+            .url(forResource: "test-image", withExtension: "png")!
 
         static let validString = "Arbitrary string"
         static let invalidString = "🤔"
         static let qrCodeWidth: CGFloat = 128
 
         static var qrCodeUIImage = UIImage(named: "QR-Code",
-                           inBundle: NSBundle(forClass: QRCodeTests.self),
-                           compatibleWithTraitCollection: nil)!
+                           in: Bundle(for: QRCodeTests.self),
+                           compatibleWith: nil)!
 
-        static var qrCodeCGImage: CGImage { return qrCodeUIImage.CGImage! }
+        static var qrCodeCGImage: CGImage { return qrCodeUIImage.cgImage! }
 
-        static let tooMassiveData = NSData(contentsOfURL: tooMassiveDataURL)!
+        static let tooMassiveData = try! Data(contentsOf: tooMassiveDataURL)
     }
 
     // MARK: - Test methods
@@ -83,3 +84,4 @@ class QRCodeTests: XCTestCase {
     }
 }
 // swiftlint:enable force_unwrapping
+// swiftlint:enable force_try

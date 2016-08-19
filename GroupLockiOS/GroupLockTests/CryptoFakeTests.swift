@@ -10,6 +10,7 @@ import XCTest
 @testable import GroupLock
 
 // swiftlint:disable force_unwrapping
+// swiftlint:disable force_try
 class CryptoFakeTests: XCTestCase {
 
     var sut: CryptoFake!
@@ -17,8 +18,8 @@ class CryptoFakeTests: XCTestCase {
     let encryptionKey = "01_01_014135065011031120213098090225235002159164069053046054089221166018143" +
     "252176014191220128248108194211155076048237028002186"
 
-    let dataToEncrypt = NSData(contentsOfURL:
-        NSBundle(forClass: CryptoFakeTests.self).URLForResource("grumpy", withExtension: "jpg")!)!
+    let dataToEncrypt = try! Data(contentsOf: Bundle(for: CryptoFakeTests.self)
+        .url(forResource: "grumpy", withExtension: "jpg")!)
 
     override func setUp() {
         super.setUp()
@@ -31,7 +32,7 @@ class CryptoFakeTests: XCTestCase {
         // Given
 
         // When
-        let encryptedData = sut.encryptImage(image: dataToEncrypt, withEncryptionKey: [encryptionKey])
+        let encryptedData = sut.encrypt(image: dataToEncrypt, withEncryptionKey: [encryptionKey])
 
         // Then
         XCTAssertNotNil(encryptedData, "Encryption should give some result")
@@ -51,9 +52,9 @@ class CryptoFakeTests: XCTestCase {
         // Given
 
         // When
-        let encryptedData = sut.encryptImage(image: dataToEncrypt, withEncryptionKey: [encryptionKey])
+        let encryptedData = sut.encrypt(image: dataToEncrypt, withEncryptionKey: [encryptionKey])
         XCTAssertNotNil(encryptedData)
-        let decryptedData = sut.decryptImage(image: encryptedData!, withDecryptionKey: [encryptionKey])
+        let decryptedData = sut.decrypt(image: encryptedData!, withDecryptionKey: [encryptionKey])
 
         // Then
         XCTAssertNotNil(decryptedData, "Decryption should give some result")
@@ -81,7 +82,7 @@ class CryptoFakeTests: XCTestCase {
         XCTAssertEqual(key?.characters.count, 126, "120-digit key should be generated with 6 prefix symbols")
 
         // When
-        let encryptedData = sut.encryptImage(image: dataToEncrypt, withEncryptionKey: [key!])
+        let encryptedData = sut.encrypt(image: dataToEncrypt, withEncryptionKey: [key!])
 
         // Then
         XCTAssertNotNil(encryptedData, "The key generated should be valid encryption key")
@@ -117,19 +118,20 @@ class CryptoFakeTests: XCTestCase {
 
     func test_EncryptionPerformance() {
 
-        measureBlock { [unowned self] in
-            self.sut.encryptImage(image: self.dataToEncrypt, withEncryptionKey: [self.encryptionKey])
+        measure { [unowned self] in
+            _ = self.sut.encrypt(image: self.dataToEncrypt, withEncryptionKey: [self.encryptionKey])
         }
     }
 
     func test_DecryptionPerformance() {
 
-        let dataToDecrypt = sut.encryptImage(image: dataToEncrypt, withEncryptionKey: [encryptionKey])
+        let dataToDecrypt = sut.encrypt(image: dataToEncrypt, withEncryptionKey: [encryptionKey])
         XCTAssertNotNil(dataToDecrypt)
 
-        measureBlock { [unowned self] in
-            self.sut.decryptImage(image: dataToDecrypt!, withDecryptionKey: [self.encryptionKey])
+        measure { [unowned self] in
+            _ = self.sut.decrypt(image: dataToDecrypt!, withDecryptionKey: [self.encryptionKey])
         }
     }
 }
 // swiftlint:enable force_unwrapping
+// swiftlint:enable force_try

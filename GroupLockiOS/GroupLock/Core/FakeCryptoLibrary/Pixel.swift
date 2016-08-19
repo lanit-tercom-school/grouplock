@@ -20,16 +20,13 @@ struct Pixel {
 
 extension CGImage {
 
-    var width: Int { return CGImageGetWidth(self) }
-    var height: Int { return CGImageGetHeight(self) }
-
     var pixels: [Pixel] {
 
-        let context = bitmapContext
+        let context = bitmapContext!
         let rect = CGRect(x: 0, y: 0, width: width, height: height)
-        CGContextDrawImage(context, rect, self)
-
-        let data = UnsafePointer<UInt8>(CGBitmapContextGetData(context))
+        context.draw(self, in: rect)
+        
+        let data = context.data!.assumingMemoryBound(to: UInt8.self)
 
         func pixel(in index: Int) -> Pixel {
             let offset = 4 * index
@@ -46,41 +43,43 @@ extension CGImage {
     var bitmapContext: CGContext? {
 
         let colorSpace = CGColorSpaceCreateDeviceRGB()
-        let alphaInfo = CGImageAlphaInfo.PremultipliedFirst
-        let bytesPerPixel = CGImageGetBitsPerPixel(self) / 8
+        let alphaInfo = CGImageAlphaInfo.premultipliedFirst
+        let bytesPerPixel = bitsPerPixel / 8
         let bytesPerRow = bytesPerPixel * width
-        return CGBitmapContextCreate(nil,
-                                     width,
-                                     height,
-                                     CGImageGetBitsPerComponent(self),
-                                     bytesPerRow,
-                                     colorSpace,
-                                     alphaInfo.rawValue)
+        return CGContext(data: nil,
+                         width: width,
+                         height: height,
+                         bitsPerComponent: bitsPerComponent,
+                         bytesPerRow: bytesPerRow,
+                         space: colorSpace,
+                         bitmapInfo: alphaInfo.rawValue)
     }
 
-    var pngData: NSData? { return getData(ofType: kUTTypePNG) }
+    var pngData: Data? { return getData(ofType: kUTTypePNG) }
 
-    private func getData(ofType type: CFString) -> NSData? {
+    private func getData(ofType type: CFString) -> Data? {
         let data = NSMutableData()
-        guard let imageDestination = CGImageDestinationCreateWithData(data, type, 1, nil) else { return nil }
+        guard let imageDestination = CGImageDestinationCreateWithData(data, type, 1, nil) else {
+            return nil
+        }
 
         CGImageDestinationAddImage(imageDestination, self, nil)
 
         if CGImageDestinationFinalize(imageDestination) {
-            return data
+            return data as Data
         }
 
         return nil
     }
 
-    static func fromPixels(pixels: [Pixel], width: Int, height: Int) -> CGImage? {
+    static func fromPixels(_ pixels: [Pixel], width: Int, height: Int) -> CGImage? {
 
         let colorSpace = CGColorSpaceCreateDeviceRGB()
-        let alphaInfo = CGImageAlphaInfo.PremultipliedFirst
+        let alphaInfo = CGImageAlphaInfo.premultipliedFirst
         let bytesPerPixel = 4
         let bytesPerRow = bytesPerPixel * width
 
-        let bitmap = UnsafeMutablePointer<UInt8>.alloc(bytesPerRow * height)
+        let bitmap = UnsafeMutablePointer<UInt8>.allocate(capacity: bytesPerRow * height)
 
         for pixelIndex in 0 ..< pixels.count {
             bitmap[bytesPerPixel * pixelIndex] = pixels[pixelIndex].alpha
@@ -89,17 +88,17 @@ extension CGImage {
             bitmap[bytesPerPixel * pixelIndex + 3] = pixels[pixelIndex].blue
         }
 
-        let context = CGBitmapContextCreate(bitmap,
-                                            width,
-                                            height,
-                                            8,
-                                            bytesPerRow,
-                                            colorSpace,
-                                            alphaInfo.rawValue)
+        let context = CGContext(data: bitmap,
+                                            width: width,
+                                            height: height,
+                                            bitsPerComponent: 8,
+                                            bytesPerRow: bytesPerRow,
+                                            space: colorSpace,
+                                            bitmapInfo: alphaInfo.rawValue)
 
-        let image = CGBitmapContextCreateImage(context)
-        bitmap.destroy(bytesPerRow * height)
-        bitmap.dealloc(bytesPerRow * height)
+        let image = context?.makeImage()
+        bitmap.deinitialize(count: bytesPerRow * height)
+        bitmap.deallocate(capacity: bytesPerRow * height)
 
         return image
     }

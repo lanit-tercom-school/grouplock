@@ -10,7 +10,7 @@ import Foundation
 
 struct File: Equatable {
 
-    var contents: NSData?
+    var contents: Data?
     var encrypted: Bool
     var name: String
     var type: String
@@ -22,7 +22,7 @@ struct File: Equatable {
         contents = managedFile.contents
     }
 
-    init(name: String, type: String, encrypted: Bool, contents: NSData?) {
+    init(name: String, type: String, encrypted: Bool, contents: Data?) {
         self.name = name
         self.type = type
         self.encrypted = encrypted

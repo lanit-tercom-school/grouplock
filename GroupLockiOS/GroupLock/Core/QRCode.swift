@@ -11,7 +11,7 @@ import UIKit
 /// This structure provides an easy way to generate QR-codes from binary data or strings.
 struct QRCode {
 
-    private var data: NSData
+    private var data: Data
 
     private var outputImage: CIImage
 
@@ -22,7 +22,7 @@ struct QRCode {
 
      - returns: `nil` if QR-code generation failed.
      */
-    init?(data: NSData) {
+    init?(data: Data) {
 
         guard let filter = CIFilter(name: "CIQRCodeGenerator",
                                     withInputParameters: [
@@ -42,7 +42,7 @@ struct QRCode {
      - returns: `nil` if QR-code generation failed.
      */
     init?(string: String) {
-        guard let data = string.dataUsingEncoding(NSISOLatin1StringEncoding,
+        guard let data = string.data(using: String.Encoding.isoLatin1,
                                                   allowLossyConversion: false) else { return nil }
 
         self.init(data: data)
@@ -55,12 +55,12 @@ struct QRCode {
 
      - returns: An image representation of a QR-code as a CIImage object.
      */
-    func createCIImage(width width: CGFloat) -> CIImage {
+    func createCIImage(width: CGFloat) -> CIImage {
 
         let scale = width / outputImage.extent.width
-        let scaleTransform = CGAffineTransformMakeScale(scale, scale)
+        let scaleTransform = CGAffineTransform(scaleX: scale, y: scale)
 
-        return outputImage.imageByApplyingTransform(scaleTransform)
+        return outputImage.applying(scaleTransform)
     }
 
     /**
@@ -70,12 +70,12 @@ struct QRCode {
 
      - returns: An image representation of a QR-code as a CGImage object.
      */
-    func createCGImage(width width: CGFloat) -> CGImage {
+    func createCGImage(width: CGFloat) -> CGImage {
 
         let ciImage = createCIImage(width: width)
         let context = CIContext()
 
-        return context.createCGImage(ciImage, fromRect: ciImage.extent)
+        return context.createCGImage(ciImage, from: ciImage.extent)!
     }
 
     /**
@@ -85,7 +85,7 @@ struct QRCode {
 
      - returns: An image representation of a QR-code as a UIImage object.
      */
-    func createUIImage(width width: CGFloat) -> UIImage {
-        return UIImage(CIImage: createCIImage(width: width))
+    func createUIImage(width: CGFloat) -> UIImage {
+        return UIImage(ciImage: createCIImage(width: width))
     }
 }

@@ -19,12 +19,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     /// Provides a singleton object of an application delegate
     static var sharedInstance = AppDelegate()
 
-    func application(application: UIApplication,
-                     didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    private func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [NSObject: Any]?) -> Bool {
         // Override point for customization after application launch.
 
         #if DEBUG
-            if let projectDirectory = NSProcessInfo().environment["PROJECT_DIR"] {
+            if let projectDirectory = ProcessInfo().environment["PROJECT_DIR"] {
                 NUISettings.setAutoUpdatePath("\(projectDirectory)/GroupLock/UI.nss")
             }
         #endif
@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NUISettings.initWithStylesheet("UI")
 
 
-        self.window?.backgroundColor = UIColor.whiteColor()
+        self.window?.backgroundColor = .white
         return true
     }
 
@@ -41,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     lazy var coreDataStack: CoreDataStack! = {
 
-        let bundle = NSBundle.mainBundle()
+        let bundle = Bundle.main
         let model = CoreDataModel(name: "GroupLock", bundle: bundle)
         let factory = CoreDataStackFactory(model: model)
 
