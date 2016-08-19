@@ -65,7 +65,7 @@ class ScanningInteractor: ScanningInteractorInput {
         let key = request.keyScanned
         let corners = request.qrCodeCorners
 
-        if !cryptoLibrary.validate(key: key) || scannedKeys.contains(key) {
+        if !cryptoLibrary.validatePart(key) || scannedKeys.contains(key) {
             let response = Scanning.Keys.Response(keyScanned: key,
                                                   isValidKey: false,
                                                   qrCodeCorners: corners,

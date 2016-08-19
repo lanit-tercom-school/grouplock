@@ -13,13 +13,13 @@ import MobileCoreServices
 
 class CryptoFake: CryptoWrapperProtocol {
 
-    let maximumNumberOfKeys = 1
+    let maximumNumberOfKeys = 15
 
     /**
      Creates 120-digit random key and represents it as a String.
 
      - parameter min: Concrete value does not play a role for now
-     - parameter max: Concrete value does not play a role for now
+     - parameter max: Number of parts to divide the key into.
 
      - precondition: `max` is not greater than `maximumNumberOfKeys` and `min` is not greater than `max`
 
@@ -27,19 +27,46 @@ class CryptoFake: CryptoWrapperProtocol {
      */
     func getKeys(min min: Int, max: Int) -> [String] {
         precondition(max <= maximumNumberOfKeys,
-                     "Maximum number of keys provided is exceeds the value of maximumNumberOfKeys")
+                     "Maximum number of keys provided exceeds the value of maximumNumberOfKeys")
         precondition(min <= max, "min should be less than or equal to max")
 
         let digitalKey = (0 ..< 40).map { _ in UInt8(arc4random_uniform(256)) }
+        let stringKey = digitalKey.map { String(format: "%03d", $0) }.reduce("", combine: +)
 
-        return [digitalKey.map { String(format: "%03d", $0) }.reduce("", combine: +)]
+        return splitKey(stringKey, intoParts: max)
+            .enumerate()
+            .map { String(format: "%02d_%02d_", $0, max) + $1 }
     }
 
-    func validate(key key: String) -> Bool {
+    private func splitKey(key: String, intoParts parts: Int) -> [String] {
 
-        let parsedKey = parse(key: key)
+        let splittedSize = Int(round(Double(key.characters.count) / Double(parts)))
+
+        return (0 ..< parts - 1).map { (i: Int) -> String in
+            let start = key.startIndex.advancedBy(i * splittedSize)
+            let end = key.startIndex.advancedBy((i + 1) * splittedSize)
+            return key.substringWithRange(start ..< end)
+            } + [key.substringFromIndex(key.startIndex.advancedBy((parts - 1) * splittedSize))]
+    }
+
+    private func mergeKeys(keys: [String]) -> String {
+        return keys.reduce("", combine: +)
+    }
+
+    func validate(key key: [String]) -> Bool {
+
+        guard let processedKey = processKeys(key) else { return false }
+
+        let parsedKey = parse(key: processedKey)
         // swiftlint:disable:next force_unwrapping (since we check for nil)
         return parsedKey != nil && parsedKey!.count > 3
+    }
+
+    func validatePart(key: String) -> Bool {
+        let regex = try? NSRegularExpression(pattern: "[0-9]{2}_[0-9]{2}_[0-9]+", options: [])
+        let stringToMatch = key as NSString
+        return !(regex?.matchesInString(key, options: [],
+            range: NSRange(location: 0, length: stringToMatch.length)).isEmpty ?? true)
     }
 
     /**
@@ -51,14 +78,15 @@ class CryptoFake: CryptoWrapperProtocol {
      - parameter data: Image data to encrypt
      - parameter key:  Encryption key
 
-     - precondition: `key` is at least 9 digits long.
+     - precondition: `key` is at least 12 digits long.
 
      - returns: Encrypted data, or `nil` is something went wrong. For example, the key is invalid or the data is
      not image-representable
      */
-    func encryptImage(image data: NSData, withEncryptionKey key: String) -> NSData? {
+    func encryptImage(image data: NSData, withEncryptionKey key: [String]) -> NSData? {
 
-        guard let parsedKey = parse(key: key),
+        guard let mergedKey = processKeys(key),
+            let parsedKey = parse(key: mergedKey),
             let cgImage = image(from: data) else { return nil }
 
         let expandedKey = expand(parsedKey, for: cgImage)
@@ -82,14 +110,15 @@ class CryptoFake: CryptoWrapperProtocol {
      - parameter data: Encrypted data
      - parameter key:  Decryption key
 
-     - precondition: `key` is at least 9 digits long.
+     - precondition: `key` is at least 12 digits long.
 
      - returns: Decrypted data, or `nil` is something went wrong. For example, the key is invalid or the data is
      not image-representable
      */
-    func decryptImage(image data: NSData, withDecryptionKey key: String) -> NSData? {
+    func decryptImage(image data: NSData, withDecryptionKey key: [String]) -> NSData? {
 
-        guard let parsedKey = parse(key: key),
+        guard let mergedKey = processKeys(key),
+            let parsedKey = parse(key: mergedKey),
             let cgImage = image(from: data) else { return nil }
 
         let expandedKey = expand(parsedKey, for: cgImage)
@@ -100,6 +129,21 @@ class CryptoFake: CryptoWrapperProtocol {
         let height = CGImageGetHeight(cgImage)
         let decryptedImage = CGImage.fromPixels(decryptedPixels, width: width, height: height)
         return decryptedImage?.pngData
+    }
+
+    private func processKeys(keys: [String]) -> String? {
+
+        guard keys.map(validatePart).reduce(true, combine: { $0 && $1 }) else { return nil }
+
+        return mergeKeys(
+            keys.map { $0.characters.split("_") }.map { characters -> (Int, String) in
+
+            // swiftlint:disable:next force_unwrapping (since we validate the key)
+            let number = Int(String(characters[0]))!
+            let key = String(characters[2])
+            return (number, key)
+            }.sort { $0.0 < $0.0 }.map { $0.1 }
+        )
     }
 
     private func expand(key: [UInt8], for image: CGImage) -> [UInt8] {

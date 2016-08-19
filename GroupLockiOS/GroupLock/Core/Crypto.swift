@@ -31,7 +31,16 @@ protocol CryptoWrapperProtocol {
 
      - returns: `true` if the key is valid, otherwise `false`
      */
-    func validate(key key: String) -> Bool
+    func validate(key key: [String]) -> Bool
+
+    /**
+     Forms a request for the crypto library to validate a part of shared secret
+
+     - parameter key: A part of shared secret
+
+     - returns: `true` if the key is valid, otherwise `false`
+     */
+    func validatePart(key: String) -> Bool
 
     /**
      Forms a request for the crypto library to encrypt given image using given encryption key.
@@ -41,7 +50,7 @@ protocol CryptoWrapperProtocol {
 
      - returns: Encrypted image
      */
-    func encryptImage(image image: NSData, withEncryptionKey key: String) -> NSData?
+    func encryptImage(image image: NSData, withEncryptionKey key: [String]) -> NSData?
 
     /**
      Forms a request for the crypto library ro decrypt given image useing given decryptionKey.
@@ -51,7 +60,7 @@ protocol CryptoWrapperProtocol {
 
      - returns: Decrypted image
      */
-    func decryptImage(image image: NSData, withDecryptionKey key: String) -> NSData?
+    func decryptImage(image image: NSData, withDecryptionKey key: [String]) -> NSData?
 }
 
 /// Default implementation of the `CryptoWrapperProtocol`
@@ -63,17 +72,21 @@ class Crypto: CryptoWrapperProtocol {
         return [Int](1...max).map(String.init)
     }
 
-    func validate(key key: String) -> Bool {
+    func validate(key key: [String]) -> Bool {
         return false
     }
 
-    func encryptImage(image image: NSData, withEncryptionKey key: String) -> NSData? {
+    func validatePart(key: String) -> Bool {
+        return false
+    }
+
+    func encryptImage(image image: NSData, withEncryptionKey key: [String]) -> NSData? {
 
         // implementation goes here
         return image
     }
 
-    func decryptImage(image image: NSData, withDecryptionKey key: String) -> NSData? {
+    func decryptImage(image image: NSData, withDecryptionKey key: [String]) -> NSData? {
 
         // implementatiuon goes here
         return image

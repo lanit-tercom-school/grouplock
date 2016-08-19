@@ -35,15 +35,19 @@ class NumberOfKeysInteractorTests: XCTestCase {
             return []
         }
 
-        func validate(key key: String) -> Bool {
+        func validate(key key: [String]) -> Bool {
             return false
         }
 
-        func encryptImage(image image: NSData, withEncryptionKey key: String) -> NSData? {
+        func validatePart(key: String) -> Bool {
+            return false
+        }
+
+        func encryptImage(image image: NSData, withEncryptionKey key: [String]) -> NSData? {
             return NSData()
         }
 
-        func decryptImage(image image: NSData, withDecryptionKey key: String) -> NSData? {
+        func decryptImage(image image: NSData, withDecryptionKey key: [String]) -> NSData? {
             return NSData()
         }
     }
