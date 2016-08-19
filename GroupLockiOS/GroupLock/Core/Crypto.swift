@@ -25,6 +25,15 @@ protocol CryptoWrapperProtocol {
     func getKeys(min min: Int, max: Int) -> [String]
 
     /**
+     Forms a request for the crypto library to validate provided key.
+
+     - parameter key: Key to validate
+
+     - returns: `true` if the key is valid, otherwise `false`
+     */
+    func validate(key key: String) -> Bool
+
+    /**
      Forms a request for the crypto library to encrypt given image using given encryption key.
 
      - parameter image: Image to encrypt
@@ -32,7 +41,17 @@ protocol CryptoWrapperProtocol {
 
      - returns: Encrypted image
      */
-    func encryptImage(image image: NSData, withEncryptionKey key: String) -> NSData
+    func encryptImage(image image: NSData, withEncryptionKey key: String) -> NSData?
+
+    /**
+     Forms a request for the crypto library ro decrypt given image useing given decryptionKey.
+
+     - parameter image: Image to decrypt
+     - parameter key:   Decryption key
+
+     - returns: Decrypted image
+     */
+    func decryptImage(image image: NSData, withDecryptionKey key: String) -> NSData?
 }
 
 /// Default implementation of the `CryptoWrapperProtocol`
@@ -41,12 +60,22 @@ class Crypto: CryptoWrapperProtocol {
     func getKeys(min min: Int, max: Int) -> [String] {
 
         // implementation goes here
-        return [Int](1...max).map { String($0) }
+        return [Int](1...max).map(String.init)
     }
 
-    func encryptImage(image image: NSData, withEncryptionKey key: String) -> NSData {
+    func validate(key key: String) -> Bool {
+        return false
+    }
+
+    func encryptImage(image image: NSData, withEncryptionKey key: String) -> NSData? {
 
         // implementation goes here
+        return image
+    }
+
+    func decryptImage(image image: NSData, withDecryptionKey key: String) -> NSData? {
+
+        // implementatiuon goes here
         return image
     }
 

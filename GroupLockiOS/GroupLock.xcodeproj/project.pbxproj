@@ -45,6 +45,9 @@
 		8741584C1D5203FC004B2D63 /* ProvideKeyPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874158481D5203FC004B2D63 /* ProvideKeyPresenterTests.swift */; };
 		8741584D1D5203FC004B2D63 /* ProvideKeyViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874158491D5203FC004B2D63 /* ProvideKeyViewControllerTests.swift */; };
 		8741CE871CE6872D0034A820 /* LibraryDirectoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8741CE861CE6872D0034A820 /* LibraryDirectoryViewController.swift */; };
+		8744EBDD1D636C0500624392 /* Pixel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8744EBDC1D636C0500624392 /* Pixel.swift */; };
+		8744EBDF1D63B52F00624392 /* CryptoFakeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8744EBDE1D63B52F00624392 /* CryptoFakeTests.swift */; };
+		8744EBE11D63B53900624392 /* grumpy.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8744EBE01D63B53900624392 /* grumpy.jpg */; };
 		8748017E1D365349001A086C /* PresentedDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8748017D1D365349001A086C /* PresentedDataSource.swift */; };
 		874801821D3660D7001A086C /* CollectionViewLayoutProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874801811D3660D7001A086C /* CollectionViewLayoutProperties.swift */; };
 		8748018C1D36C434001A086C /* ChooseFileInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874801881D36C434001A086C /* ChooseFileInteractorTests.swift */; };
@@ -53,10 +56,12 @@
 		8748018F1D36C434001A086C /* ChooseFileWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8748018B1D36C434001A086C /* ChooseFileWorkerTests.swift */; };
 		874801911D36CB8E001A086C /* PresentedDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874801901D36CB8E001A086C /* PresentedDataSourceTests.swift */; };
 		874BEC691CE9385400F6CDE9 /* ViewFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874BEC681CE9385400F6CDE9 /* ViewFileViewController.swift */; };
+		875BC69E1D63C70A003457CE /* LinearCongruentialGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875BC69D1D63C70A003457CE /* LinearCongruentialGenerator.swift */; };
 		87671EC91D4622A100A0C353 /* EncryptedFileInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87671EC51D4622A100A0C353 /* EncryptedFileInteractorTests.swift */; };
 		87671ECA1D4622A100A0C353 /* EncryptedFilePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87671EC61D4622A100A0C353 /* EncryptedFilePresenterTests.swift */; };
 		87671ECB1D4622A100A0C353 /* EncryptedFileViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87671EC71D4622A100A0C353 /* EncryptedFileViewControllerTests.swift */; };
 		87671ECE1D46249100A0C353 /* EncryptedFileDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87671ECD1D46249100A0C353 /* EncryptedFileDataSourceTests.swift */; };
+		87718F611D6204F5005F34EC /* CGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87718F601D6204F5005F34EC /* CGPoint.swift */; };
 		87736F121D3D49C200B93D7B /* KeyTypeConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87736F0C1D3D49C200B93D7B /* KeyTypeConfigurator.swift */; };
 		87736F131D3D49C200B93D7B /* KeyTypeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87736F0D1D3D49C200B93D7B /* KeyTypeInteractor.swift */; };
 		87736F141D3D49C200B93D7B /* KeyTypeModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87736F0E1D3D49C200B93D7B /* KeyTypeModels.swift */; };
@@ -85,6 +90,19 @@
 		87B6921E1CB425E0008ACB6A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87B6921C1CB425E0008ACB6A /* LaunchScreen.storyboard */; };
 		87B6927F1CB45188008ACB6A /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B6927E1CB45188008ACB6A /* UIViewController.swift */; };
 		87CF826A1D3E3058000147EB /* ProvideKeyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CF82691D3E3058000147EB /* ProvideKeyCell.swift */; };
+		87D0AE0D1D59E190005BDCFD /* ScanningConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D0AE061D59E190005BDCFD /* ScanningConfigurator.swift */; };
+		87D0AE0E1D59E190005BDCFD /* ScanningInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D0AE071D59E190005BDCFD /* ScanningInteractor.swift */; };
+		87D0AE0F1D59E190005BDCFD /* ScanningModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D0AE081D59E190005BDCFD /* ScanningModels.swift */; };
+		87D0AE101D59E190005BDCFD /* ScanningPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D0AE091D59E190005BDCFD /* ScanningPresenter.swift */; };
+		87D0AE111D59E190005BDCFD /* ScanningRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D0AE0A1D59E190005BDCFD /* ScanningRouter.swift */; };
+		87D0AE121D59E190005BDCFD /* ScanningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D0AE0B1D59E190005BDCFD /* ScanningViewController.swift */; };
+		87DA0AEF1D65E72100DDBB79 /* ScanningInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DA0AEB1D65E72100DDBB79 /* ScanningInteractorTests.swift */; };
+		87DA0AF01D65E72100DDBB79 /* ScanningPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DA0AEC1D65E72100DDBB79 /* ScanningPresenterTests.swift */; };
+		87DA0AF11D65E72100DDBB79 /* ScanningViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DA0AED1D65E72100DDBB79 /* ScanningViewControllerTests.swift */; };
+		87DA0AF41D65E7E100DDBB79 /* ScanningModelsComparison.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DA0AF31D65E7E100DDBB79 /* ScanningModelsComparison.swift */; };
+		87DB46051D620E1100F64F35 /* CGPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DB46041D620E1100F64F35 /* CGPath.swift */; };
+		87DB46071D62484900F64F35 /* MetadataOutputObjectsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DB46061D62484900F64F35 /* MetadataOutputObjectsDelegate.swift */; };
+		87DB460B1D632C0B00F64F35 /* CryptoFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DB460A1D632C0B00F64F35 /* CryptoFake.swift */; };
 		87DE60DE1CB46373005EA79E /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87DE60DD1CB46373005EA79E /* LocalAuthentication.framework */; };
 		87EA7C3F1D40C76D008FB4DA /* QRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EA7C3E1D40C76D008FB4DA /* QRCode.swift */; };
 		87F118F01CBF0CD40038F956 /* NUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87F118EF1CBF0CD40038F956 /* NUI.framework */; };
@@ -160,6 +178,9 @@
 		874158481D5203FC004B2D63 /* ProvideKeyPresenterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProvideKeyPresenterTests.swift; sourceTree = "<group>"; };
 		874158491D5203FC004B2D63 /* ProvideKeyViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProvideKeyViewControllerTests.swift; sourceTree = "<group>"; };
 		8741CE861CE6872D0034A820 /* LibraryDirectoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LibraryDirectoryViewController.swift; path = Scenes/Library_Stack/LibraryDirectoryViewController.swift; sourceTree = "<group>"; };
+		8744EBDC1D636C0500624392 /* Pixel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Pixel.swift; path = Core/FakeCryptoLibrary/Pixel.swift; sourceTree = "<group>"; };
+		8744EBDE1D63B52F00624392 /* CryptoFakeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CryptoFakeTests.swift; sourceTree = "<group>"; };
+		8744EBE01D63B53900624392 /* grumpy.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = grumpy.jpg; sourceTree = "<group>"; };
 		8748017D1D365349001A086C /* PresentedDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PresentedDataSource.swift; path = Scenes/Home_Stack/ChooseFileScene/PresentedDataSource.swift; sourceTree = "<group>"; };
 		874801811D3660D7001A086C /* CollectionViewLayoutProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionViewLayoutProperties.swift; path = Layout/CollectionViewLayoutProperties.swift; sourceTree = "<group>"; };
 		874801881D36C434001A086C /* ChooseFileInteractorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseFileInteractorTests.swift; sourceTree = "<group>"; };
@@ -168,10 +189,12 @@
 		8748018B1D36C434001A086C /* ChooseFileWorkerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseFileWorkerTests.swift; sourceTree = "<group>"; };
 		874801901D36CB8E001A086C /* PresentedDataSourceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentedDataSourceTests.swift; sourceTree = "<group>"; };
 		874BEC681CE9385400F6CDE9 /* ViewFileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewFileViewController.swift; path = Scenes/Library_Stack/ViewFileViewController.swift; sourceTree = "<group>"; };
+		875BC69D1D63C70A003457CE /* LinearCongruentialGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LinearCongruentialGenerator.swift; path = Core/FakeCryptoLibrary/LinearCongruentialGenerator.swift; sourceTree = "<group>"; };
 		87671EC51D4622A100A0C353 /* EncryptedFileInteractorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncryptedFileInteractorTests.swift; sourceTree = "<group>"; };
 		87671EC61D4622A100A0C353 /* EncryptedFilePresenterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncryptedFilePresenterTests.swift; sourceTree = "<group>"; };
 		87671EC71D4622A100A0C353 /* EncryptedFileViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncryptedFileViewControllerTests.swift; sourceTree = "<group>"; };
 		87671ECD1D46249100A0C353 /* EncryptedFileDataSourceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncryptedFileDataSourceTests.swift; sourceTree = "<group>"; };
+		87718F601D6204F5005F34EC /* CGPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CGPoint.swift; path = Class_Extensions/CGPoint.swift; sourceTree = "<group>"; };
 		87736F0C1D3D49C200B93D7B /* KeyTypeConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyTypeConfigurator.swift; path = Scenes/Home_Stack/KeyTypeScene/KeyTypeConfigurator.swift; sourceTree = "<group>"; };
 		87736F0D1D3D49C200B93D7B /* KeyTypeInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyTypeInteractor.swift; path = Scenes/Home_Stack/KeyTypeScene/KeyTypeInteractor.swift; sourceTree = "<group>"; };
 		87736F0E1D3D49C200B93D7B /* KeyTypeModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyTypeModels.swift; path = Scenes/Home_Stack/KeyTypeScene/KeyTypeModels.swift; sourceTree = "<group>"; };
@@ -206,6 +229,19 @@
 		87B6922A1CB425E0008ACB6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87B6927E1CB45188008ACB6A /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.swift; name = UIViewController.swift; path = Class_Extensions/UIViewController.swift; sourceTree = "<group>"; tabWidth = 4; };
 		87CF82691D3E3058000147EB /* ProvideKeyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProvideKeyCell.swift; path = Scenes/Home_Stack/ProvideKeyScene/ProvideKeyCell.swift; sourceTree = "<group>"; };
+		87D0AE061D59E190005BDCFD /* ScanningConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScanningConfigurator.swift; path = Scenes/Home_Stack/ScanningScene/ScanningConfigurator.swift; sourceTree = "<group>"; };
+		87D0AE071D59E190005BDCFD /* ScanningInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScanningInteractor.swift; path = Scenes/Home_Stack/ScanningScene/ScanningInteractor.swift; sourceTree = "<group>"; };
+		87D0AE081D59E190005BDCFD /* ScanningModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScanningModels.swift; path = Scenes/Home_Stack/ScanningScene/ScanningModels.swift; sourceTree = "<group>"; };
+		87D0AE091D59E190005BDCFD /* ScanningPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScanningPresenter.swift; path = Scenes/Home_Stack/ScanningScene/ScanningPresenter.swift; sourceTree = "<group>"; };
+		87D0AE0A1D59E190005BDCFD /* ScanningRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScanningRouter.swift; path = Scenes/Home_Stack/ScanningScene/ScanningRouter.swift; sourceTree = "<group>"; };
+		87D0AE0B1D59E190005BDCFD /* ScanningViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScanningViewController.swift; path = Scenes/Home_Stack/ScanningScene/ScanningViewController.swift; sourceTree = "<group>"; };
+		87DA0AEB1D65E72100DDBB79 /* ScanningInteractorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanningInteractorTests.swift; sourceTree = "<group>"; };
+		87DA0AEC1D65E72100DDBB79 /* ScanningPresenterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanningPresenterTests.swift; sourceTree = "<group>"; };
+		87DA0AED1D65E72100DDBB79 /* ScanningViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanningViewControllerTests.swift; sourceTree = "<group>"; };
+		87DA0AF31D65E7E100DDBB79 /* ScanningModelsComparison.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanningModelsComparison.swift; sourceTree = "<group>"; };
+		87DB46041D620E1100F64F35 /* CGPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CGPath.swift; path = Class_Extensions/CGPath.swift; sourceTree = "<group>"; };
+		87DB46061D62484900F64F35 /* MetadataOutputObjectsDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MetadataOutputObjectsDelegate.swift; path = Scenes/Home_Stack/ScanningScene/MetadataOutputObjectsDelegate.swift; sourceTree = "<group>"; };
+		87DB460A1D632C0B00F64F35 /* CryptoFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CryptoFake.swift; path = Core/CryptoFake.swift; sourceTree = "<group>"; };
 		87DE60DD1CB46373005EA79E /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		87EA7C3E1D40C76D008FB4DA /* QRCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QRCode.swift; path = Core/QRCode.swift; sourceTree = "<group>"; };
 		87F118EF1CBF0CD40038F956 /* NUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NUI.framework; path = "../../../Library/Developer/Xcode/DerivedData/GroupLock-ffmgilidnbhbqnfkgswyglwucvmu/Build/Products/Debug-iphonesimulator/NUI.framework"; sourceTree = "<group>"; };
@@ -279,6 +315,8 @@
 			isa = PBXGroup;
 			children = (
 				8704DED41D3D08320017F88E /* Crypto.swift */,
+				87DB460A1D632C0B00F64F35 /* CryptoFake.swift */,
+				8744EBDB1D636BD100624392 /* FakeCryptoLibrary */,
 				87EA7C3E1D40C76D008FB4DA /* QRCode.swift */,
 			);
 			name = Core;
@@ -313,6 +351,7 @@
 				87FAC9EF1D34ECBE00FE3602 /* NumberOfKeysScene */,
 				8704DEC41D3D031A0017F88E /* ProvideKeyScene */,
 				873022651D4213DE00222606 /* EncryptedFileScene */,
+				87D0AE051D59E154005BDCFD /* ScanningScene */,
 			);
 			name = "Home Stack";
 			sourceTree = "<group>";
@@ -345,6 +384,7 @@
 		873419B31D3817A0005D036C /* Test Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8744EBE01D63B53900624392 /* grumpy.jpg */,
 				873419B41D3817BC005D036C /* test-image.png */,
 				87AA21871D40F01C00FDF227 /* QR-Code.png */,
 			);
@@ -359,6 +399,15 @@
 				874158491D5203FC004B2D63 /* ProvideKeyViewControllerTests.swift */,
 			);
 			name = ProvideKeySceneTests;
+			sourceTree = "<group>";
+		};
+		8744EBDB1D636BD100624392 /* FakeCryptoLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				8744EBDC1D636C0500624392 /* Pixel.swift */,
+				875BC69D1D63C70A003457CE /* LinearCongruentialGenerator.swift */,
+			);
+			name = FakeCryptoLibrary;
 			sourceTree = "<group>";
 		};
 		874801871D36C3F8001A086C /* ChooseFileSceneTests */ = {
@@ -378,11 +427,13 @@
 			children = (
 				87B6927E1CB45188008ACB6A /* UIViewController.swift */,
 				870912261D523B66006222BA /* Agrume.swift */,
+				87718F601D6204F5005F34EC /* CGPoint.swift */,
+				87DB46041D620E1100F64F35 /* CGPath.swift */,
 			);
 			name = "Class Extensions";
 			sourceTree = "<group>";
 		};
-		87671EC41D46226F00A0C353 /* EncryptedFileTests */ = {
+		87671EC41D46226F00A0C353 /* EncryptedFileSceneTests */ = {
 			isa = PBXGroup;
 			children = (
 				87671EC51D4622A100A0C353 /* EncryptedFileInteractorTests.swift */,
@@ -391,7 +442,7 @@
 				87671ECD1D46249100A0C353 /* EncryptedFileDataSourceTests.swift */,
 				870D094E1D47701000B65A0C /* EncryptedFileModelsComparison.swift */,
 			);
-			name = EncryptedFileTests;
+			name = EncryptedFileSceneTests;
 			sourceTree = "<group>";
 		};
 		877078441D33A47500A61E96 /* PasswordScene */ = {
@@ -437,6 +488,7 @@
 			isa = PBXGroup;
 			children = (
 				87AA21851D40DE8E00FDF227 /* QRCodeTests.swift */,
+				8744EBDE1D63B52F00624392 /* CryptoFakeTests.swift */,
 			);
 			name = CoreTests;
 			sourceTree = "<group>";
@@ -504,11 +556,37 @@
 				87736F181D3D562800B93D7B /* KeyTypeSceneTests */,
 				870DBF991D3F9BBB004430A5 /* NumberOfKeysSceneTests */,
 				874158461D5203CC004B2D63 /* ProvideKeySceneTests */,
-				87671EC41D46226F00A0C353 /* EncryptedFileTests */,
+				87671EC41D46226F00A0C353 /* EncryptedFileSceneTests */,
+				87DA0AEA1D65E6F600DDBB79 /* ScanningSceneTests */,
 				877ED3301CF7B1F000C5D0D4 /* ViewController Tests */,
 				87B6922A1CB425E0008ACB6A /* Info.plist */,
 			);
 			path = GroupLockTests;
+			sourceTree = "<group>";
+		};
+		87D0AE051D59E154005BDCFD /* ScanningScene */ = {
+			isa = PBXGroup;
+			children = (
+				87D0AE0A1D59E190005BDCFD /* ScanningRouter.swift */,
+				87D0AE0B1D59E190005BDCFD /* ScanningViewController.swift */,
+				87D0AE071D59E190005BDCFD /* ScanningInteractor.swift */,
+				87DB46061D62484900F64F35 /* MetadataOutputObjectsDelegate.swift */,
+				87D0AE091D59E190005BDCFD /* ScanningPresenter.swift */,
+				87D0AE061D59E190005BDCFD /* ScanningConfigurator.swift */,
+				87D0AE081D59E190005BDCFD /* ScanningModels.swift */,
+			);
+			name = ScanningScene;
+			sourceTree = "<group>";
+		};
+		87DA0AEA1D65E6F600DDBB79 /* ScanningSceneTests */ = {
+			isa = PBXGroup;
+			children = (
+				87DA0AED1D65E72100DDBB79 /* ScanningViewControllerTests.swift */,
+				87DA0AEB1D65E72100DDBB79 /* ScanningInteractorTests.swift */,
+				87DA0AEC1D65E72100DDBB79 /* ScanningPresenterTests.swift */,
+				87DA0AF31D65E7E100DDBB79 /* ScanningModelsComparison.swift */,
+			);
+			name = ScanningSceneTests;
 			sourceTree = "<group>";
 		};
 		87FAC9EE1D34ECB600FE3602 /* KeyTypeScene */ = {
@@ -707,6 +785,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				873419B51D3817BC005D036C /* test-image.png in Resources */,
+				8744EBE11D63B53900624392 /* grumpy.jpg in Resources */,
 				87AA21881D40F01C00FDF227 /* QR-Code.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -851,6 +930,8 @@
 				8730226F1D42197100222606 /* EncryptedFileModels.swift in Sources */,
 				87FFF04E1D34E9AE007315C7 /* ChooseFileConfigurator.swift in Sources */,
 				870912271D523B66006222BA /* Agrume.swift in Sources */,
+				8744EBDD1D636C0500624392 /* Pixel.swift in Sources */,
+				87D0AE111D59E190005BDCFD /* ScanningRouter.swift in Sources */,
 				874801821D3660D7001A086C /* CollectionViewLayoutProperties.swift in Sources */,
 				8704DEB71D3CD0CC0017F88E /* File.swift in Sources */,
 				87B692131CB425E0008ACB6A /* PasswordViewController.swift in Sources */,
@@ -865,15 +946,21 @@
 				87FFF0311D33ACCE007315C7 /* PasswordPresenter.swift in Sources */,
 				87736F161D3D49C200B93D7B /* KeyTypeRouter.swift in Sources */,
 				873022701D42197100222606 /* EncryptedFilePresenter.swift in Sources */,
+				87D0AE101D59E190005BDCFD /* ScanningPresenter.swift in Sources */,
 				87FFF02F1D33ACCE007315C7 /* PasswordInteractor.swift in Sources */,
 				8713DE4B1CEFA5400089C92A /* ChooseFileViewController.swift in Sources */,
 				873022721D42197100222606 /* EncryptedFileViewController.swift in Sources */,
+				87D0AE0F1D59E190005BDCFD /* ScanningModels.swift in Sources */,
 				87FFF0521D34E9AE007315C7 /* ChooseFileRouter.swift in Sources */,
 				87736F141D3D49C200B93D7B /* KeyTypeModels.swift in Sources */,
 				870DBF951D3F932C004430A5 /* NumberOfKeysPresenter.swift in Sources */,
+				87DB46051D620E1100F64F35 /* CGPath.swift in Sources */,
 				870DBF931D3F932C004430A5 /* NumberOfKeysInteractor.swift in Sources */,
+				87D0AE121D59E190005BDCFD /* ScanningViewController.swift in Sources */,
+				87718F611D6204F5005F34EC /* CGPoint.swift in Sources */,
 				8704DED01D3D03990017F88E /* ProvideKeyRouter.swift in Sources */,
 				8730226E1D42197100222606 /* EncryptedFileInteractor.swift in Sources */,
+				875BC69E1D63C70A003457CE /* LinearCongruentialGenerator.swift in Sources */,
 				87FFF0531D34E9AE007315C7 /* ChooseFileWorker.swift in Sources */,
 				87B509C11CD0B67A00641EC3 /* FileManager.swift in Sources */,
 				87FFF0501D34E9AE007315C7 /* ChooseFileModels.swift in Sources */,
@@ -882,6 +969,7 @@
 				8AE919DA1D2F508A002024AC /* NumberOfKeysViewController.swift in Sources */,
 				870DBF921D3F932C004430A5 /* NumberOfKeysConfigurator.swift in Sources */,
 				8704DECD1D3D03990017F88E /* ProvideKeyInteractor.swift in Sources */,
+				87DB46071D62484900F64F35 /* MetadataOutputObjectsDelegate.swift in Sources */,
 				8704DED11D3D03990017F88E /* ProvideKeyViewController.swift in Sources */,
 				8704DEB31D3CCD8E0017F88E /* ManagedFile+CoreDataProperties.swift in Sources */,
 				87FD45381CE4B32800984269 /* Directory.swift in Sources */,
@@ -894,8 +982,11 @@
 				8704DED51D3D08320017F88E /* Crypto.swift in Sources */,
 				87B692111CB425E0008ACB6A /* AppDelegate.swift in Sources */,
 				87AEA5F41D48CA63009D8619 /* FileCollectionViewConfigurator.swift in Sources */,
+				87D0AE0D1D59E190005BDCFD /* ScanningConfigurator.swift in Sources */,
 				87CF826A1D3E3058000147EB /* ProvideKeyCell.swift in Sources */,
+				87DB460B1D632C0B00F64F35 /* CryptoFake.swift in Sources */,
 				870DBF961D3F932C004430A5 /* NumberOfKeysRouter.swift in Sources */,
+				87D0AE0E1D59E190005BDCFD /* ScanningInteractor.swift in Sources */,
 				873419B21D37D686005D036C /* GroupLock.xcdatamodeld in Sources */,
 				87FFF02E1D33ACCE007315C7 /* PasswordConfigurator.swift in Sources */,
 			);
@@ -907,6 +998,8 @@
 			files = (
 				87FFF0411D33C020007315C7 /* PasswordViewControllerTests.swift in Sources */,
 				870D094F1D47701000B65A0C /* EncryptedFileModelsComparison.swift in Sources */,
+				87DA0AF01D65E72100DDBB79 /* ScanningPresenterTests.swift in Sources */,
+				87DA0AF11D65E72100DDBB79 /* ScanningViewControllerTests.swift in Sources */,
 				87671ECB1D4622A100A0C353 /* EncryptedFileViewControllerTests.swift in Sources */,
 				877ED32F1CF7B1E300C5D0D4 /* UIViewControllerTests.swift in Sources */,
 				87AEA5F61D48E97A009D8619 /* OptionalArray+XCTAssertEqual.swift in Sources */,
@@ -920,12 +1013,15 @@
 				87AA21861D40DE8E00FDF227 /* QRCodeTests.swift in Sources */,
 				8748018F1D36C434001A086C /* ChooseFileWorkerTests.swift in Sources */,
 				87FFF03F1D33C020007315C7 /* PasswordInteractorTests.swift in Sources */,
+				87DA0AF41D65E7E100DDBB79 /* ScanningModelsComparison.swift in Sources */,
+				87DA0AEF1D65E72100DDBB79 /* ScanningInteractorTests.swift in Sources */,
 				87A2081B1D48025200793B54 /* Extensions.swift in Sources */,
 				8748018C1D36C434001A086C /* ChooseFileInteractorTests.swift in Sources */,
 				87671EC91D4622A100A0C353 /* EncryptedFileInteractorTests.swift in Sources */,
 				8748018E1D36C434001A086C /* ChooseFileViewControllerTests.swift in Sources */,
 				8741584B1D5203FC004B2D63 /* ProvideKeyInteractorTests.swift in Sources */,
 				8741584D1D5203FC004B2D63 /* ProvideKeyViewControllerTests.swift in Sources */,
+				8744EBDF1D63B52F00624392 /* CryptoFakeTests.swift in Sources */,
 				874801911D36CB8E001A086C /* PresentedDataSourceTests.swift in Sources */,
 				870D09511D477E8D00B65A0C /* EquatableModel+XCTAssertEqual.swift in Sources */,
 				87671ECA1D4622A100A0C353 /* EncryptedFilePresenterTests.swift in Sources */,

@@ -9,12 +9,23 @@
 import UIKit
 
 protocol ChooseFileRouterInput {
-
+    func navigateToKeyTypeScene()
+    func navigateToScanningScene()
 }
 
 class ChooseFileRouter: ChooseFileRouterInput {
 
     weak var viewController: ChooseFileViewController!
+
+    // MARK: - Navigation
+
+    func navigateToKeyTypeScene() {
+        viewController.performSegueWithIdentifier("toKeyType", sender: nil)
+    }
+
+    func navigateToScanningScene() {
+        viewController.performSegueWithIdentifier("toScanning", sender: nil)
+    }
 
     // MARK: - Communication
 
@@ -22,6 +33,8 @@ class ChooseFileRouter: ChooseFileRouterInput {
 
         if segue.identifier == "toKeyType" {
             passDataToKeyTypeScene(segue)
+        } else if segue.identifier == "toScanning" {
+            passDataToScanningScene(segue)
         }
     }
 
@@ -29,5 +42,11 @@ class ChooseFileRouter: ChooseFileRouterInput {
         // swiftlint:disable:next force_cast (since the destination is known)
         let keyTypeViewController = segue.destinationViewController as! KeyTypeViewController
         keyTypeViewController.output.files = viewController.output.chosenFiles
+    }
+
+    func passDataToScanningScene(segue: UIStoryboardSegue) {
+        // swiftlint:disable:next force_cast (since the destination is known)
+//        let scanningViewController = segue.destinationViewController as! ScanningViewController
+
     }
 }
