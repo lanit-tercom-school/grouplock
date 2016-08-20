@@ -5,7 +5,7 @@ matrix:
   - language: swift
     os: osx
     osx_image: xcode8
-    env: DEVICE="iPhone 4s" VERSION=10.0 TARGET="iOS"
+    env: DEVICE="iPhone SE" VERSION=10.0 TARGET="iOS"
   - language: swift
     os: osx
     osx_image: xcode8
