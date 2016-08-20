@@ -19,8 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     /// Provides a singleton object of an application delegate
     static var sharedInstance = AppDelegate()
 
-    private func application(_ application: UIApplication,
-                     didFinishLaunchingWithOptions launchOptions: [NSObject: Any]?) -> Bool {
+
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]?) -> Bool {
+
         // Override point for customization after application launch.
 
         #if DEBUG

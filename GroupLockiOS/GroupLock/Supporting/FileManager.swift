@@ -37,18 +37,30 @@ class FileManager: NSObject {
         case .Decrypted:
             fetchRequest.predicate = NSPredicate(format: "encrypted == false")
         }
-        do {
-            let files: [ManagedFile]
-            if #available(iOS 10.0, *) {
-                files = try fetchRequest.execute()
-            } else {
-                files = try context.fetch(fetchRequest)
+
+        var files: [ManagedFile] = []
+
+        if #available(iOS 10.0, *) {
+
+            context.performAndWait {
+                do {
+                    files = try fetchRequest.execute()
+                } catch {
+                    print(error)
+                    abort()
+                }
             }
-            return files
-        } catch {
-            print(error)
-            abort()
+        } else {
+
+            do {
+                files = try context.fetch(fetchRequest)
+            } catch {
+                print(error)
+                abort()
+            }
         }
+
+        return files
     }
 
     /**
