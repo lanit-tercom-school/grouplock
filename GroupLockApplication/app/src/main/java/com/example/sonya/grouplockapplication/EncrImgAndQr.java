@@ -85,7 +85,9 @@ public class EncrImgAndQr extends AppCompatActivity {
         //Загружаем файл из библиотеки и шифруем его
         Bitmap bitmap = BitmapFactory.decodeFile(Environment.getExternalStorageDirectory().getAbsolutePath() + "/GroupLock/Decrypted/" + nameFile);
         Factory factory = new Factory(bitmap);
-        IEncryption EncrClass = factory.getClass("bmp");
+        IEncryption EncrClass = factory.getClass(String.copyValueOf(nameFile.toCharArray(),
+                nameFile.lastIndexOf('.') + 1, nameFile.length() - nameFile.lastIndexOf('.') - 1)
+                .toLowerCase());
         EncrClass.EncrImg();
         Bitmap img=EncrClass.ResultEncr();
         Key = EncrClass.PartsOfSecret(minK, maxK);
@@ -134,13 +136,8 @@ public class EncrImgAndQr extends AppCompatActivity {
 
 
         // Сохраняем получившейся результат
-        String sdcardBmpPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/GroupLock/Encrypted/" + nameFile;
-        SaveBMP bmpUtil = new SaveBMP();
-        try {
-            boolean isSaveResult = bmpUtil.save(img, sdcardBmpPath);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        String sdcardFilePath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/GroupLock/Encrypted/" + nameFile;
+        EncrClass.SaveResult(sdcardFilePath);
 
         // Удаляем исходную картинку
         File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/GroupLock/Decrypted/", nameFile);

@@ -132,8 +132,7 @@ public class LoadActivity extends AppCompatActivity {
         String typeFile=String.copyValueOf(nameFile.toCharArray(), nameFile.lastIndexOf('.') + 1,
                 nameFile.length() - nameFile.lastIndexOf('.') - 1);
 
-        if (typeFile.equals("jpg")||typeFile.equals("jpeg")||
-                typeFile.equals("JPG")||typeFile.equals("JPEG")) {
+        if ((typeFile.toLowerCase().equals("jpg"))||typeFile.toLowerCase().equals("jpeg")) {
             try {
                 File myDir = new File(root + "/GroupLock/" + str);
                 myDir.mkdirs();
@@ -147,11 +146,25 @@ public class LoadActivity extends AppCompatActivity {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        } else if (typeFile.equals("bmp")||typeFile.equals("BMP")) {
+        } else if (typeFile.toLowerCase().equals("bmp")) {
             SaveBMP SB = new SaveBMP();
             try {
                 SB.save(finalBitmap, root + "/GroupLock/" + str + "/" + nameFile);
             } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else if (typeFile.toLowerCase().equals("png")) {
+            try {
+                File myDir = new File(root + "/GroupLock/" + str);
+                myDir.mkdirs();
+                File file = new File (myDir, nameFile);
+                if (file.exists ()) file.delete ();
+                FileOutputStream out = new FileOutputStream(file);
+                finalBitmap.compress(Bitmap.CompressFormat.PNG, 90, out);
+                out.flush();
+                out.close();
+
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }

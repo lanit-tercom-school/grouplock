@@ -13,8 +13,10 @@ public class Factory {
     public IEncryption getClass(String typeImg){
         if(typeImg.equals("bmp"))
             return new EncrBMP(image);
-        else if(typeImg.equals("jpg"))
-            return new EncrJPG();
+        else if(typeImg.equals("jpg")||typeImg.equals("jpeg"))
+            return new EncrJPG(image);
+        else if(typeImg.equals("png"))
+            return new EncrPNG(image);
         return null;
     }
 }

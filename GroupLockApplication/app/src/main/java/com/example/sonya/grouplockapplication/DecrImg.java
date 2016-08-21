@@ -91,21 +91,22 @@ public class DecrImg extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
 
-        if (AmountScanKeys==0){
-            Keys= new String[Integer.parseInt(String.copyValueOf(result.getContents().toCharArray(),2,2))];
-            for(int i=0;i<Keys.length;i++)
-                Keys[i]="";
-            Log.i("wh", "Зоздан массив из "+ Integer.toString(Keys.length)+" элементов");
-        }
         if(result != null) {
             if(result.getContents() == null) {
-                Log.d("MainActivity", "Cancelled scan");
-                Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show();
+             // Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(DecrImg.this, ChooseToDoActivity.class);
+                startActivity(intent);
             } else {
-                Log.d("MainActivity", "Scanned");
              //   Toast.makeText(this, "Scanned123: " + result.getContents(), Toast.LENGTH_LONG).show();
+                if (AmountScanKeys==0){
+                    Keys= new String[Integer.parseInt(String.copyValueOf(result.getContents().toCharArray(),2,2))];
+                    for(int i=0;i<Keys.length;i++)
+                        Keys[i]="";
+                    Log.i("wh", "Зоздан массив из "+ Integer.toString(Keys.length)+" элементов");
+                }
+
                 int index=Integer.parseInt(String.copyValueOf(result.getContents().toCharArray(),0,2));
-                if(Keys[index-1].equals("")){
+                if((index<=Keys.length)&&(Keys[index-1].equals(""))){
                     Log.i("wh", "опознал как нужный");
                     Keys[index-1]=String.copyValueOf(result.getContents().toCharArray(),4,result.getContents().length()-4);
                     AmountScanKeys++;           //!!!!!!!!!
@@ -118,10 +119,6 @@ public class DecrImg extends AppCompatActivity {
                     Log.i("wh", "опознал как ненужный");
                     DialogMessage(false);
                 }
-
-             //   Rashifr(result.getContents());
-
-
             }
         } else {
             // This is important, otherwise the result will not be passed to the fragment
@@ -175,14 +172,11 @@ public class DecrImg extends AppCompatActivity {
         }
         Bitmap img = EncrClass.ResultDecr(DecrKey);
         IwDecrImg.setImageBitmap(img);
-        SaveBMP bmpUtil = new SaveBMP();
-        try {
-            boolean isSaveResult = bmpUtil.save(img, Environment.getExternalStorageDirectory().getAbsolutePath() + "/GroupLock/Decrypted/" + nameFile);
-            File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/GroupLock/Encrypted/", nameFile);
-            file.delete();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+      //  SaveBMP bmpUtil = new SaveBMP();
+        //   boolean isSaveResult = bmpUtil.save(img, Environment.getExternalStorageDirectory().getAbsolutePath() + "/GroupLock/Decrypted/" + nameFile);
+        EncrClass.SaveResult(Environment.getExternalStorageDirectory().getAbsolutePath() + "/GroupLock/Decrypted/" + nameFile);
+        File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/GroupLock/Encrypted/", nameFile);
+        file.delete();
     }
 
 }
