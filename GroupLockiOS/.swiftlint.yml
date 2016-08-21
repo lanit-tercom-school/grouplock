@@ -1,0 +1,22 @@
+# Excluded paths
+excluded:
+  - Pods
+
+# Disabled rules
+disabled_rules:
+  - nesting
+  - todo
+  - valid_docs
+  - conditional_binding_cascade
+
+# Enabled opt-in rules
+opt_in_rules:
+  - empty_count
+  - force_unwrapping
+
+# Configurable rules:
+line_length:
+  - 115
+  - 115
+
+force_cast: warning
