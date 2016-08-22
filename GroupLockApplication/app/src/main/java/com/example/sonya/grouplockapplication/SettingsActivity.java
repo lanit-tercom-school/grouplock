@@ -2,14 +2,19 @@ package com.example.sonya.grouplockapplication;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class SettingsActivity extends AppCompatActivity {
@@ -21,17 +26,22 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         loadData();
         setContentView(R.layout.activity_settings);
-        Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar_actionbar);
+
+        Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
 
+        try {
+            ActivityInfo activityInfo = getPackageManager().getActivityInfo(
+                    getComponentName(), PackageManager.GET_META_DATA);
+            TextView tw=(TextView)findViewById(R.id.textViewPage);
+            tw.setText(activityInfo.loadLabel(getPackageManager())
+                    .toString()+" ▼");
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
 
         Switch switchPass = (Switch)findViewById(R.id.switchPass);
         switchPass.setChecked(passReq);
-       /* if (passReq)
-            switchPass.setChecked(true);
-        else
-            switchPass.setChecked(false);*/
-
 
         switchPass.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
@@ -42,12 +52,12 @@ public class SettingsActivity extends AppCompatActivity {
         });
     }
 
-    public boolean onCreateOptionsMenu(Menu menu) {
+  /*  public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.settings_menu, menu);
         return true;
-    }
+    }*/
 
-    @Override
+  /*  @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
@@ -67,7 +77,7 @@ public class SettingsActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
-    }
+    }*/
 
     void loadData() {
         //sPref = getPreferences(MODE_PRIVATE);
@@ -84,4 +94,41 @@ public class SettingsActivity extends AppCompatActivity {
         Toast.makeText(this, "Settings changed", Toast.LENGTH_SHORT).show();
     }
 
+    public void showMenu(View v) {
+        PopupMenu popupMenu = new PopupMenu(SettingsActivity.this, v);
+        popupMenu.inflate(R.menu.home_menu);
+        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+
+                switch (item.getItemId()) {
+
+                    case R.id.library:{
+                        Intent intent = new Intent(SettingsActivity.this, LibraryActivity.class);
+                        startActivity(intent);
+                        return true;
+                    }
+                    case R.id.home:{
+                        Intent intent = new Intent(SettingsActivity.this, ChooseToDoActivity.class);
+                        startActivity(intent);
+                        return true;
+                    }
+                    case R.id.info:{
+                        TextView infoMessage = (TextView) findViewById(R.id.textViewInfoMessage);
+                        infoMessage.setVisibility(View.VISIBLE);
+                        return true;
+                    }
+                    case R.id.qr:{
+                        Intent intent = new Intent(SettingsActivity.this, QrReaderActivity.class);
+                        startActivity(intent);
+                        return true;
+                    }
+                    default:
+                        return false;
+                }
+            }
+        });
+        popupMenu.show();
+    }
 }

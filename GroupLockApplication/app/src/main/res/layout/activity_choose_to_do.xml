@@ -8,7 +8,7 @@ tools:context=".LibraryActivity"
     android:background="@color/colorBackGround">
 
 
-<include layout="@layout/library_toolbar" />
+<include layout="@layout/toolbar" />
 
     <LinearLayout android:id="@+id/home_buttons_container"
                   android:layout_width="match_parent"

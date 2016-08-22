@@ -63,6 +63,8 @@ public class MainActivity extends Activity implements OnClickListener {
                 if (editText.getText().toString().equals(savedText)) {
                     Toast.makeText(this, "Accept!", Toast.LENGTH_SHORT).show();
                     GoToNextActivity();
+                    editText.setText("");
+
                 }
                 else {
                     textEntPass.setTextColor(getResources().getColor(R.color.colorPasswordIncorrect));

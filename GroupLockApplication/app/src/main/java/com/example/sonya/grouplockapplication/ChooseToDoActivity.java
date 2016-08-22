@@ -1,14 +1,16 @@
 package com.example.sonya.grouplockapplication;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
-import android.view.Menu;
 import android.view.MenuItem;
+
 
 
 public class ChooseToDoActivity extends AppCompatActivity {
@@ -18,9 +20,56 @@ public class ChooseToDoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_to_do);
-        Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar_actionbar);
-        setSupportActionBar(mToolbar);
 
+        Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(mToolbar);
+        try {
+            ActivityInfo activityInfo = getPackageManager().getActivityInfo(
+                    getComponentName(), PackageManager.GET_META_DATA);
+            TextView tw=(TextView)findViewById(R.id.textViewPage);
+            tw.setText(activityInfo.loadLabel(getPackageManager())
+                    .toString()+" ▼");
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showMenu(View v) {
+        PopupMenu popupMenu = new PopupMenu(ChooseToDoActivity.this, v);
+        popupMenu.inflate(R.menu.home_menu);
+        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+
+                switch (item.getItemId()) {
+
+                    case R.id.library:{
+                        Intent intent = new Intent(ChooseToDoActivity.this, LibraryActivity.class);
+                        startActivity(intent);
+                        return true;
+                    }
+                    case R.id.settings:{
+                        Intent intent = new Intent(ChooseToDoActivity.this, SettingsActivity.class);
+                        startActivity(intent);
+                        return true;
+                    }
+                    case R.id.info:{
+                        TextView infoMessage = (TextView) findViewById(R.id.textViewInfoMessage);
+                        infoMessage.setVisibility(View.VISIBLE);
+                        return true;
+                    }
+                    case R.id.qr:{
+                        Intent intent = new Intent(ChooseToDoActivity.this, QrReaderActivity.class);
+                        startActivity(intent);
+                        return true;
+                    }
+                    default:
+                        return false;
+                }
+            }
+        });
+        popupMenu.show();
     }
 
     public void loadPage(View view) {
@@ -29,58 +78,25 @@ public class ChooseToDoActivity extends AppCompatActivity {
     }
 
 
-    public void chooseEncrypt(View v)
-    {
-        Intent intent  = new Intent(this, LibraryActivity.class);
+    public void chooseEncrypt(View v) {
+        Intent intent = new Intent(this, LibraryActivity.class);
         intent.putExtra("state", LibraryActivity.LibraryState.ENCRYPT_SELECTING);
         startActivity(intent);
     }
 
-    public void chooseDecrypt(View v)
-    {
-        Intent intent  = new Intent(this, LibraryActivity.class);
+    public void chooseDecrypt(View v) {
+        Intent intent = new Intent(this, LibraryActivity.class);
         intent.putExtra("state", LibraryActivity.LibraryState.DECRYPT_SELECTING);
         startActivity(intent);
     }
 
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.home_menu, menu);
-        return true;
-    }
-
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
+    public void onBackPressed() {
+        moveTaskToBack(true);
 
-        switch (id) {
-            case R.id.library: {
-                Intent intent = new Intent(this, LibraryActivity.class);
-                startActivity(intent);
-                return true;
-            }
+        super.onDestroy();
 
-            case R.id.settings: {
-                Intent intent = new Intent(this, SettingsActivity.class);
-                startActivity(intent);
-                return true;
-            }
-
-            case R.id.info:
-            {
-                TextView infoMessage = (TextView) findViewById(R.id.textViewInfoMessage);
-                infoMessage.setVisibility(View.VISIBLE);
-                return true;
-            }
-
-            case R.id.qr:
-            {
-                Intent intent = new Intent(this, QrReaderActivity.class);
-                startActivity(intent);
-                return true;
-            }
-
-            default:
-                return super.onOptionsItemSelected(item);
-        }
+        System.runFinalizersOnExit(true);
+        System.exit(0);
     }
 }
