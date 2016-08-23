@@ -27,6 +27,7 @@ class ScanningPresenter: ScanningPresenterInput {
     func formatKeyScan(_ response: Scanning.Keys.Response) {
         let numberOfDifferentKeys = response.keys.count
 
+        // swiftlint:disable:next force_unwrapping (corners (CFDictionaries) are guaranteed to represent points)
         let qrCodeCGPath = CGPath.create(response.qrCodeCorners.map { CGPoint(dictionaryRepresentation: $0)! })
         let viewModel = Scanning.Keys.ViewModel(numberOfDifferentKeys: numberOfDifferentKeys,
                                                 qrCodeCGPath: qrCodeCGPath,

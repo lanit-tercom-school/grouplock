@@ -75,6 +75,7 @@ struct QRCode {
         let ciImage = createCIImage(width: width)
         let context = CIContext()
 
+        // swiftlint:disable:next force_unwrapping (what can possibly go wrong)
         return context.createCGImage(ciImage, from: ciImage.extent)!
     }
 

@@ -10,6 +10,7 @@ import XCTest
 @testable import GroupLock
 
 // swiftlint:disable force_cast
+// swiftlint:disable force_unwrapping
 class NumberOfKeysViewControllerTests: XCTestCase {
 
     struct Seeds {
@@ -190,3 +191,4 @@ class NumberOfKeysViewControllerTests: XCTestCase {
     }
 }
 // swiftlint:enable force_cast
+// swiftlint:enable force_unwrapping

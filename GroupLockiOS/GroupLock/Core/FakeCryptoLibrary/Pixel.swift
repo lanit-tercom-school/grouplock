@@ -24,10 +24,10 @@ extension CGImage {
     /// - complexity: O(n) where n is a number of pixels
     var pixels: [Pixel] {
 
-        let context = bitmapContext!
+        let context = bitmapContext
         let rect = CGRect(x: 0, y: 0, width: width, height: height)
         context.draw(self, in: rect)
-
+        // swiftlint:disable:next force_unwrapping (it is safe, see documentation)
         let data = context.data!.assumingMemoryBound(to: UInt8.self)
 
         func pixel(in index: Int) -> Pixel {
@@ -42,7 +42,7 @@ extension CGImage {
         return (0 ..< width * height).map(pixel)
     }
 
-    private var bitmapContext: CGContext? {
+    private var bitmapContext: CGContext {
 
         let colorSpace = CGColorSpaceCreateDeviceRGB()
         let alphaInfo = CGImageAlphaInfo.premultipliedFirst
@@ -54,7 +54,9 @@ extension CGImage {
                          bitsPerComponent: bitsPerComponent,
                          bytesPerRow: bytesPerRow,
                          space: colorSpace,
-                         bitmapInfo: alphaInfo.rawValue)
+                         bitmapInfo: alphaInfo.rawValue)!
+        // swiftlint:disable:previous force_unwrapping (the settings are ok, context is presumably
+        // guaranteed to be created)
     }
 
     var pngData: Data? { return getData(ofType: kUTTypePNG) }

@@ -19,7 +19,7 @@ protocol CryptoWrapperProtocol {
 
      - parameter min: The minimum amount of keys needed to be applied in order to decrypt a file.
      - parameter max: The overall amount of keys to generate.
-     
+
      - precondition: `max` is not less than `min` and not greater than `maximumNumberOfKeys`
 
      - returns: An array of decryption keys constructed by a crypto library.

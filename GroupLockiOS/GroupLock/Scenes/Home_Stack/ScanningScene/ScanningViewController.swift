@@ -93,11 +93,12 @@ class ScanningViewController: UIViewController, ScanningViewControllerInput {
 
     private func configurePreview(_ view: UIView) {
 
-        let previewLayer = AVCaptureVideoPreviewLayer(session: output.captureSession)
-        previewLayer?.frame = view.layer.frame
-        previewLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill
+        // swiftlint:disable:next force_unwrapping (layer is implicitly unwrapped optional anyway)
+        let previewLayer = AVCaptureVideoPreviewLayer(session: output.captureSession)!
+        previewLayer.frame = view.layer.frame
+        previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
         (output.metadataOutputObjectsDelegate as? MetadataOutputObjectsDelegate)?.layer = previewLayer
-        view.layer.addSublayer(previewLayer!)
+        view.layer.addSublayer(previewLayer)
 
         view.subviews.forEach(view.bringSubview(toFront:))
     }
@@ -120,7 +121,7 @@ class ScanningViewController: UIViewController, ScanningViewControllerInput {
             layer.strokeColor = frameColor?.cgColor
             cameraPreview.layer.setNeedsDisplay()
         } else {
-            qrCodeFrameLayer = qrCodeFrameLayer(with: viewModel.qrCodeCGPath, color: frameColor!)
+            qrCodeFrameLayer = qrCodeFrameLayer(with: viewModel.qrCodeCGPath, color: frameColor ?? .clear)
         }
     }
 

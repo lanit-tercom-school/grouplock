@@ -10,6 +10,7 @@ import XCTest
 @testable import GroupLock
 
 // swiftlint:disable force_cast
+// swiftlint:disable force_unwrapping
 class PasswordViewControllerTests: XCTestCase {
 
     // MARK: Subject under test
@@ -246,3 +247,4 @@ class PasswordViewControllerTests: XCTestCase {
     }
 }
 // swiftlint:enable force_cast
+// swiftlint:enable force_unwrapping

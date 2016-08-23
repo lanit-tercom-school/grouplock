@@ -163,20 +163,21 @@ class CryptoFake: CryptoWrapperProtocol {
 
     private func image(from data: Data) -> CGImage? {
 
+        // swiftlint:disable:next force_unwrapping (no failure case is documented, what can possibly go wrong)
         let cgDataProvider = CGDataProvider(data: data as CFData)!
         switch getImageType(from: data) {
         case .some("JPG"):
-            // swiftlint:disable:next force_unwrapping (since we check for type)
             return CGImage(jpegDataProviderSource: cgDataProvider,
                            decode: nil,
                            shouldInterpolate: false,
                            intent: .defaultIntent)!
+            // swiftlint:disable:previous force_unwrapping (since we check for type)
         case .some("PNG"):
-            // swiftlint:disable:next force_unwrapping (since we check for type)
             return CGImage(pngDataProviderSource: cgDataProvider,
                            decode: nil,
                            shouldInterpolate: false,
                            intent: .defaultIntent)!
+            // swiftlint:disable:previous force_unwrapping (since we check for type)
         default:
             return nil
         }
@@ -185,8 +186,7 @@ class CryptoFake: CryptoWrapperProtocol {
     private func getImageType(from data: Data) -> String? {
 
         var acc: UInt8 = 0
-        // FIXME: Use Data
-        (data as NSData).getBytes(&acc, length: 1)
+        data.copyBytes(to: &acc, count: 1)
 
         switch acc {
         case 0xFF: return "JPG"

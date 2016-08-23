@@ -19,7 +19,7 @@ class ScanningRouter: ScanningRouterInput {
     // MARK: - Navigation
 
     func navigateBackToChooseFile() {
-        viewController.navigationController?.popViewController(animated: true)
+        _ = viewController.navigationController?.popViewController(animated: true)
     }
 
     // MARK: - Communication
