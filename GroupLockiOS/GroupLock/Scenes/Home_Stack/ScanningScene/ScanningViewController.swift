@@ -55,6 +55,7 @@ class ScanningViewController: UIViewController, ScanningViewControllerInput {
         super.viewDidLoad()
         output.configureCaptureSession(Scanning.Configure.Request())
         configurePreview(cameraPreview)
+        interactivePopGestureRecognizerDelegate = navigationController?.interactivePopGestureRecognizer?.delegate
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -66,24 +67,23 @@ class ScanningViewController: UIViewController, ScanningViewControllerInput {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let gestureRecofnizer = navigationController?.interactivePopGestureRecognizer
-        interactivePopGestureRecognizerDelegate = gestureRecofnizer?.delegate
         navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         setBars(hidden: false)
+        navigationController?
+            .interactivePopGestureRecognizer?.delegate = interactivePopGestureRecognizerDelegate
         super.viewWillDisappear(animated)
     }
 
     override func viewDidDisappear(_ animated: Bool) {
         qrCodeFrameLayer = nil
         output.captureSession.stopRunning()
-        navigationController?
-            .interactivePopGestureRecognizer?.delegate = interactivePopGestureRecognizerDelegate
+
         super.viewDidDisappear(animated)
     }
-    
+
     override var prefersStatusBarHidden: Bool { return true }
 
     private func setBars(hidden: Bool) {
