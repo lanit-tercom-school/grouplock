@@ -242,7 +242,9 @@ class ProvideKeyViewControllerTests: XCTestCase {
 
         // Given
         let agrumeSpy = AgrumeSpy()
-        sut.agrume = agrumeSpy
+        sut.imageViewerProvider = { _ in
+            return agrumeSpy
+        }
 
         // When
         sut.displayKeys(with: Seeds.viewModel)
@@ -283,17 +285,21 @@ class ProvideKeyViewControllerTests: XCTestCase {
                                                     collectionViewLayout: UICollectionViewFlowLayout())
         sut.collectionView = collectionViewMock
         let cell = sut.collectionView!.cellForItem(at: Seeds.indexPathToSelect) as! ProvideKeyCell
+        let agrumeSpy = AgrumeSpy()
+        sut.imageViewerProvider = { _ in
+            return agrumeSpy
+        }
 
         sut.displayKeys(with: Seeds.viewModel)
         sut.collectionView!.selectItem(at: Seeds.indexPathToSelect, animated: false, scrollPosition: [])
         sut.collectionView(sut.collectionView!, didSelectItemAt: Seeds.indexPathToSelect)
-        XCTAssertNotNil(sut.agrume.didScroll, "Agrume should process scrolling")
+        XCTAssertNotNil(sut.imageViewerProvider([]).didScroll, "Agrume should process scrolling")
         // Resetting some cell properties so we can test that Agrume sets them when scrolling
         cell.darkeningView.isHidden = true
         cell.isSelected = false
 
         // When
-        sut.agrume.didScroll!(Seeds.indexPathToSelect.item)
+        sut.imageViewerProvider([]).didScroll!(Seeds.indexPathToSelect.item)
 
         // Then
         XCTAssertFalse(cell.darkeningView.isHidden, "Agrume should darken scrolled QR-codes")

@@ -1,4 +1,3 @@
-
 //
 //  ProvideKeyViewController.swift
 //  GroupLock
@@ -36,7 +35,12 @@ class ProvideKeyViewController: UICollectionViewController, ProvideKeyViewContro
                                                        CollectionViewCellFactory>!
     var dataSource: CollectionViewDataSource!
 
-    lazy var agrume: ImageViewer = { return Agrume(images: self.dataSource[0].items) }()
+
+
+    /// Creates an instance of an image viewer
+    var imageViewerProvider: ([UIImage]) -> ImageViewer = { images in
+        return Agrume(images: images)
+    }
 
     // MARK: - View Controller lifecycle
 
@@ -82,16 +86,16 @@ class ProvideKeyViewController: UICollectionViewController, ProvideKeyViewContro
     fileprivate func showKey(atIndexPath indexPath: IndexPath) {
 
         darkenItem(atIndexPath: indexPath)
-
-        agrume.showFrom(self)
-        agrume.showImage(atIndex: indexPath.item)
-        agrume.didScroll = { [ unowned self ] index in
+        let imageViewer = imageViewerProvider(dataSource[0].items)
+        imageViewer.showFrom(self)
+        imageViewer.showImage(atIndex: indexPath.item)
+        imageViewer.didScroll = { [ unowned self ] index in
             let indexPathToDarken = IndexPath(item: index, section: indexPath.section)
             self.darkenItem(atIndexPath: indexPathToDarken)
             // swiftlint:disable:next force_unwrapping (since by this time collectionView is initialized)
             self.collectionView!.selectItem(at: indexPathToDarken,
-                                                       animated: false,
-                                                       scrollPosition: UICollectionViewScrollPosition())
+                                            animated: false,
+                                            scrollPosition: [])
         }
     }
 }

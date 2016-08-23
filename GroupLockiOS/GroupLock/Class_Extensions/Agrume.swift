@@ -12,7 +12,7 @@ import Agrume
  * A class conforming to `ImageViewer` protocol is responsible for presenting an interface for viewing
  * a single image or an array of images.
  */
-protocol ImageViewer {
+protocol ImageViewer: class {
 
     /**
      Presents viewing interface.
