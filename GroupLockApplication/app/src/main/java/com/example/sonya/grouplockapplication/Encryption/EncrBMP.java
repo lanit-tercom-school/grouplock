@@ -2,6 +2,8 @@ package com.example.sonya.grouplockapplication.Encryption;
 
 import android.graphics.Bitmap;
 
+import java.io.IOException;
+
 /**
  * Created by NIKKAS on 14.07.2016.
  */
@@ -44,5 +46,14 @@ public class EncrBMP implements IEncryption {
     public String[] PartsOfSecret(int minK, int maxK){
         SecretSharing Sec=new SecretSharing(keyForDecr,minK,maxK);
         return Sec.Sharing();
+    }
+
+    public void SaveResult(String FilePath){
+        SaveBMP bmpUtil = new SaveBMP();
+        try {
+            boolean isSaveResult = bmpUtil.save(image, FilePath);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
