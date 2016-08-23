@@ -21,7 +21,7 @@ class NumberOfKeysInteractor: NumberOfKeysInteractorInput {
 
     var output: NumberOfKeysInteractorOutput!
 
-    var cryptoLibrary: CryptoWrapperProtocol = Crypto()
+    var cryptoLibrary: CryptoWrapperProtocol = CryptoFake()
 
     // MARK: - Business logic
 

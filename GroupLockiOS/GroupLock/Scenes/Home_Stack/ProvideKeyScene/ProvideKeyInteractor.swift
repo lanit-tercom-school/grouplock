@@ -26,7 +26,7 @@ class ProvideKeyInteractor: ProvideKeyInteractorInput {
 
     var files: [File] = []
 
-    var cryptoLibrary: CryptoWrapperProtocol = Crypto()
+    var cryptoLibrary: CryptoWrapperProtocol = CryptoFake()
 
     // MARK: - Business logic
 

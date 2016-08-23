@@ -43,11 +43,18 @@ extension NumberOfKeysViewController: UIPickerViewDataSource {
 
 extension NumberOfKeysViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+
+        // FIXME: temporary solution until shared secret is implemented
+        let otherComponent = -component + 1
+        pickerView.selectRow(row, inComponent: otherComponent, animated: true)
+
+        /*
         if pickerView.selectedRow(inComponent: 0) > pickerView.selectedRow(inComponent: 1) {
             pickerView.selectRow(pickerView.selectedRow(inComponent: component),
-                                 inComponent: -component + 1,
+                                 inComponent: otherComponent,
                                  animated: true)
         }
+        */
     }
 }
 
