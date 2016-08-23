@@ -13,7 +13,7 @@ protocol ProvideKeyPresenterInput {
 }
 
 protocol ProvideKeyPresenterOutput: class {
-    func displayKeys(with viewModel: ProvideKey.Configure.ViewModel)
+    func displayKeys(_ viewModel: ProvideKey.Configure.ViewModel)
 }
 
 class ProvideKeyPresenter: ProvideKeyPresenterInput {
@@ -35,6 +35,6 @@ class ProvideKeyPresenter: ProvideKeyPresenterInput {
 
         let viewModel = ProvideKey.Configure.ViewModel(qrCodes: uiImageQRCodes)
 
-        output.displayKeys(with: viewModel)
+        output.displayKeys(viewModel)
     }
 }

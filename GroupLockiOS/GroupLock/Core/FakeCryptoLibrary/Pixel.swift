@@ -20,12 +20,14 @@ struct Pixel {
 
 extension CGImage {
 
+    /// An array of pixels of the image
+    /// - complexity: O(n) where n is a number of pixels
     var pixels: [Pixel] {
 
         let context = bitmapContext!
         let rect = CGRect(x: 0, y: 0, width: width, height: height)
         context.draw(self, in: rect)
-        
+
         let data = context.data!.assumingMemoryBound(to: UInt8.self)
 
         func pixel(in index: Int) -> Pixel {
@@ -40,7 +42,7 @@ extension CGImage {
         return (0 ..< width * height).map(pixel)
     }
 
-    var bitmapContext: CGContext? {
+    private var bitmapContext: CGContext? {
 
         let colorSpace = CGColorSpaceCreateDeviceRGB()
         let alphaInfo = CGImageAlphaInfo.premultipliedFirst
@@ -80,6 +82,9 @@ extension CGImage {
         let bytesPerRow = bytesPerPixel * width
 
         let bitmap = UnsafeMutablePointer<UInt8>.allocate(capacity: bytesPerRow * height)
+        defer {
+            bitmap.deallocate(capacity: bytesPerRow * height)
+        }
 
         for pixelIndex in 0 ..< pixels.count {
             bitmap[bytesPerPixel * pixelIndex] = pixels[pixelIndex].alpha
@@ -98,7 +103,6 @@ extension CGImage {
 
         let image = context?.makeImage()
         bitmap.deinitialize(count: bytesPerRow * height)
-        bitmap.deallocate(capacity: bytesPerRow * height)
 
         return image
     }

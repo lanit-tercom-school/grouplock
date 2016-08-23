@@ -49,7 +49,7 @@
 		8744EBDF1D63B52F00624392 /* CryptoFakeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8744EBDE1D63B52F00624392 /* CryptoFakeTests.swift */; };
 		8744EBE11D63B53900624392 /* grumpy.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8744EBE01D63B53900624392 /* grumpy.jpg */; };
 		8748017E1D365349001A086C /* PresentedDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8748017D1D365349001A086C /* PresentedDataSource.swift */; };
-		874801821D3660D7001A086C /* CollectionViewLayoutProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874801811D3660D7001A086C /* CollectionViewLayoutProperties.swift */; };
+		874801821D3660D7001A086C /* CollectionViewGridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874801811D3660D7001A086C /* CollectionViewGridLayout.swift */; };
 		8748018C1D36C434001A086C /* ChooseFileInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874801881D36C434001A086C /* ChooseFileInteractorTests.swift */; };
 		8748018D1D36C434001A086C /* ChooseFilePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874801891D36C434001A086C /* ChooseFilePresenterTests.swift */; };
 		8748018E1D36C434001A086C /* ChooseFileViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8748018A1D36C434001A086C /* ChooseFileViewControllerTests.swift */; };
@@ -181,7 +181,7 @@
 		8744EBDE1D63B52F00624392 /* CryptoFakeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CryptoFakeTests.swift; sourceTree = "<group>"; };
 		8744EBE01D63B53900624392 /* grumpy.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = grumpy.jpg; sourceTree = "<group>"; };
 		8748017D1D365349001A086C /* PresentedDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PresentedDataSource.swift; path = Scenes/Home_Stack/ChooseFileScene/PresentedDataSource.swift; sourceTree = "<group>"; };
-		874801811D3660D7001A086C /* CollectionViewLayoutProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionViewLayoutProperties.swift; path = Layout/CollectionViewLayoutProperties.swift; sourceTree = "<group>"; };
+		874801811D3660D7001A086C /* CollectionViewGridLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionViewGridLayout.swift; path = Layout/CollectionViewGridLayout.swift; sourceTree = "<group>"; };
 		874801881D36C434001A086C /* ChooseFileInteractorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseFileInteractorTests.swift; sourceTree = "<group>"; };
 		874801891D36C434001A086C /* ChooseFilePresenterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseFilePresenterTests.swift; sourceTree = "<group>"; };
 		8748018A1D36C434001A086C /* ChooseFileViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseFileViewControllerTests.swift; sourceTree = "<group>"; };
@@ -371,7 +371,7 @@
 		873419AB1D37CB21005D036C /* Layout */ = {
 			isa = PBXGroup;
 			children = (
-				874801811D3660D7001A086C /* CollectionViewLayoutProperties.swift */,
+				874801811D3660D7001A086C /* CollectionViewGridLayout.swift */,
 				878C29A21CF0B9D300323C9D /* FileCollectionViewCell.swift */,
 				8789D1981D465CAF0000AA8D /* FileCollectionViewCellProvider.swift */,
 				87AEA5F31D48CA63009D8619 /* FileCollectionViewConfigurator.swift */,
@@ -931,7 +931,7 @@
 				870912271D523B66006222BA /* Agrume.swift in Sources */,
 				8744EBDD1D636C0500624392 /* Pixel.swift in Sources */,
 				87D0AE111D59E190005BDCFD /* ScanningRouter.swift in Sources */,
-				874801821D3660D7001A086C /* CollectionViewLayoutProperties.swift in Sources */,
+				874801821D3660D7001A086C /* CollectionViewGridLayout.swift in Sources */,
 				8704DEB71D3CD0CC0017F88E /* File.swift in Sources */,
 				87B692131CB425E0008ACB6A /* PasswordViewController.swift in Sources */,
 				8730226D1D42197100222606 /* EncryptedFileConfigurator.swift in Sources */,

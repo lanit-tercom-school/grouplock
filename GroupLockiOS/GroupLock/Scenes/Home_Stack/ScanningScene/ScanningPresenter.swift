@@ -26,7 +26,7 @@ class ScanningPresenter: ScanningPresenterInput {
 
     func formatKeyScan(_ response: Scanning.Keys.Response) {
         let numberOfDifferentKeys = response.keys.count
-        
+
         let qrCodeCGPath = CGPath.create(response.qrCodeCorners.map { CGPoint(dictionaryRepresentation: $0)! })
         let viewModel = Scanning.Keys.ViewModel(numberOfDifferentKeys: numberOfDifferentKeys,
                                                 qrCodeCGPath: qrCodeCGPath,

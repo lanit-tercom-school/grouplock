@@ -11,7 +11,7 @@ import JSQDataSourcesKit
 import Agrume
 
 protocol ProvideKeyViewControllerInput {
-    func displayKeys(with viewModel: ProvideKey.Configure.ViewModel)
+    func displayKeys(_ viewModel: ProvideKey.Configure.ViewModel)
 }
 
 protocol ProvideKeyViewControllerOutput {
@@ -54,7 +54,7 @@ class ProvideKeyViewController: UICollectionViewController, ProvideKeyViewContro
 
     // MARK: - Display logic
 
-    func displayKeys(with viewModel: ProvideKey.Configure.ViewModel) {
+    func displayKeys(_ viewModel: ProvideKey.Configure.ViewModel) {
 
         let section = Section(viewModel.qrCodes)
         dataSource = DataSource(sections: section)
@@ -78,20 +78,20 @@ class ProvideKeyViewController: UICollectionViewController, ProvideKeyViewContro
         collectionView?.dataSource = dataSourceProvider.collectionViewDataSource
     }
 
-    private func darkenItem(atIndexPath indexPath: IndexPath) {
+    private func darkenItem(at indexPath: IndexPath) {
         guard let cell = collectionView?.cellForItem(at: indexPath) as? ProvideKeyCell else { return }
         cell.darkeningView.isHidden = false
     }
 
-    fileprivate func showKey(atIndexPath indexPath: IndexPath) {
+    fileprivate func showKey(at indexPath: IndexPath) {
 
-        darkenItem(atIndexPath: indexPath)
+        darkenItem(at: indexPath)
         let imageViewer = imageViewerProvider(dataSource[0].items)
         imageViewer.showFrom(self)
         imageViewer.showImage(atIndex: indexPath.item)
         imageViewer.didScroll = { [ unowned self ] index in
             let indexPathToDarken = IndexPath(item: index, section: indexPath.section)
-            self.darkenItem(atIndexPath: indexPathToDarken)
+            self.darkenItem(at: indexPathToDarken)
             // swiftlint:disable:next force_unwrapping (since by this time collectionView is initialized)
             self.collectionView!.selectItem(at: indexPathToDarken,
                                             animated: false,
@@ -106,12 +106,12 @@ extension ProvideKeyViewController {
     override func collectionView(_ collectionView: UICollectionView,
                                  didSelectItemAt indexPath: IndexPath) {
 
-        showKey(atIndexPath: indexPath)
+        showKey(at: indexPath)
     }
 
     override func collectionView(_ collectionView: UICollectionView,
                                  shouldDeselectItemAt indexPath: IndexPath) -> Bool {
-        showKey(atIndexPath: indexPath)
+        showKey(at: indexPath)
         return false
     }
 }
