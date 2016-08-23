@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
@@ -54,13 +55,24 @@ public class LibraryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.library_layout);
 
-        Toolbar mToolbar = (Toolbar) findViewById(R.id.library_toolbar);
+        Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
+        ImageView imageInfo=(ImageView)findViewById(R.id.imageInfo);
+        imageInfo.setVisibility(View.INVISIBLE);
+
+        try {
+            ActivityInfo activityInfo = getPackageManager().getActivityInfo(
+                    getComponentName(), PackageManager.GET_META_DATA);
+            TextView tw=(TextView)findViewById(R.id.textViewPage);
+            tw.setText(activityInfo.loadLabel(getPackageManager())
+                    .toString()+" ▼");
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
 
 
-
-        ActionBar ab = getSupportActionBar();
-        ab.setDisplayHomeAsUpEnabled(true);
+    /*    ActionBar ab = getSupportActionBar();
+        ab.setDisplayHomeAsUpEnabled(true);*/
 
         /* Check if directories exist, create if needed */
             libraryRootPath = Environment.getExternalStorageDirectory().getPath() + "/" + LIBRARY_FOLDER_NAME;
@@ -183,10 +195,10 @@ public class LibraryActivity extends AppCompatActivity {
 
 
         /* Set title of the screen */
-        TextView currentLocationInLibrary = (TextView) findViewById(R.id.current_location_in_library);
+       // TextView currentLocationInLibrary = (TextView) findViewById(R.id.current_location_in_library);
         /* Remove part of the path before the library root -
            user doesn't need to know where library is located physically */
-        currentLocationInLibrary.setText(entry.getAbsolutePath().replace(libraryRootPath, ""));
+     //   currentLocationInLibrary.setText(entry.getAbsolutePath().replace(libraryRootPath, ""));
 
         /* Redraw menu if needed */
         invalidateOptionsMenu();
@@ -480,6 +492,35 @@ public class LibraryActivity extends AppCompatActivity {
         showMenu = visible;
         /* Redraw menu if needed */
         invalidateOptionsMenu();
+    }
+
+    public void showMenu(View v) {
+        IconizedMenu popupMenu = new IconizedMenu(this, v);
+        MenuInflater inflater = popupMenu.getMenuInflater();
+        inflater.inflate(R.menu.home_menu, popupMenu.getMenu());
+        popupMenu.setOnMenuItemClickListener(new IconizedMenu.OnMenuItemClickListener() {
+
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+
+                switch (item.getItemId()) {
+
+                    case R.id.settings:{
+                        Intent intent = new Intent(LibraryActivity.this, SettingsActivity.class);
+                        startActivity(intent);
+                        return true;
+                    }
+                    case R.id.home:{
+                        Intent intent = new Intent(LibraryActivity.this, ChooseToDoActivity.class);
+                        startActivity(intent);
+                        return true;
+                    }
+                    default:
+                        return false;
+                }
+            }
+        });
+        popupMenu.show();
     }
 
 }

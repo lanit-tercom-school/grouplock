@@ -7,7 +7,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuInflater;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.view.MenuItem;
 
@@ -29,15 +32,18 @@ public class ChooseToDoActivity extends AppCompatActivity {
             TextView tw=(TextView)findViewById(R.id.textViewPage);
             tw.setText(activityInfo.loadLabel(getPackageManager())
                     .toString()+" ▼");
+
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
     }
 
     public void showMenu(View v) {
-        PopupMenu popupMenu = new PopupMenu(ChooseToDoActivity.this, v);
-        popupMenu.inflate(R.menu.home_menu);
-        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+
+        IconizedMenu popupMenu = new IconizedMenu(this, v);
+        MenuInflater inflater = popupMenu.getMenuInflater();
+        inflater.inflate(R.menu.home_menu, popupMenu.getMenu());
+        popupMenu.setOnMenuItemClickListener(new IconizedMenu.OnMenuItemClickListener() {
 
             @Override
             public boolean onMenuItemClick(MenuItem item) {
@@ -54,22 +60,21 @@ public class ChooseToDoActivity extends AppCompatActivity {
                         startActivity(intent);
                         return true;
                     }
-                    case R.id.info:{
-                        TextView infoMessage = (TextView) findViewById(R.id.textViewInfoMessage);
-                        infoMessage.setVisibility(View.VISIBLE);
-                        return true;
-                    }
-                    case R.id.qr:{
-                        Intent intent = new Intent(ChooseToDoActivity.this, QrReaderActivity.class);
-                        startActivity(intent);
-                        return true;
-                    }
+
                     default:
                         return false;
                 }
             }
         });
         popupMenu.show();
+    }
+
+    public void showInfo(View view){
+        TextView infoMessage = (TextView) findViewById(R.id.textViewInfoMessage);
+        if (infoMessage.getVisibility()!=View.VISIBLE)
+            infoMessage.setVisibility(View.VISIBLE);
+        else
+            infoMessage.setVisibility(View.INVISIBLE);
     }
 
     public void loadPage(View view) {

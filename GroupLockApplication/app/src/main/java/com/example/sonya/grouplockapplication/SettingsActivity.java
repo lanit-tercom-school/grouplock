@@ -9,10 +9,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,6 +31,9 @@ public class SettingsActivity extends AppCompatActivity {
 
         Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
+
+        ImageView imageInfo=(ImageView)findViewById(R.id.imageInfo);
+        imageInfo.setVisibility(View.INVISIBLE);
 
         try {
             ActivityInfo activityInfo = getPackageManager().getActivityInfo(
@@ -95,9 +100,10 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void showMenu(View v) {
-        PopupMenu popupMenu = new PopupMenu(SettingsActivity.this, v);
-        popupMenu.inflate(R.menu.home_menu);
-        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+        IconizedMenu popupMenu = new IconizedMenu(this, v);
+        MenuInflater inflater = popupMenu.getMenuInflater();
+        inflater.inflate(R.menu.home_menu, popupMenu.getMenu());
+        popupMenu.setOnMenuItemClickListener(new IconizedMenu.OnMenuItemClickListener() {
 
             @Override
             public boolean onMenuItemClick(MenuItem item) {
@@ -114,16 +120,11 @@ public class SettingsActivity extends AppCompatActivity {
                         startActivity(intent);
                         return true;
                     }
-                    case R.id.info:{
+               /*     case R.id.info:{
                         TextView infoMessage = (TextView) findViewById(R.id.textViewInfoMessage);
                         infoMessage.setVisibility(View.VISIBLE);
                         return true;
-                    }
-                    case R.id.qr:{
-                        Intent intent = new Intent(SettingsActivity.this, QrReaderActivity.class);
-                        startActivity(intent);
-                        return true;
-                    }
+                    }*/
                     default:
                         return false;
                 }

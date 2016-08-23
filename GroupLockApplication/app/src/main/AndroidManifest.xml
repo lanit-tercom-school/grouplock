@@ -49,24 +49,12 @@
             android:label="Step 3/6"
             android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".QrReaderActivity"
-            android:label="QrReader"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".QrCreateActivity"
-            android:label="QrCreate"
-            android:screenOrientation="portrait">
-        </activity>
         <activity android:name=".EncrImgAndQr"
             android:label="EncrImg"
             android:screenOrientation="portrait">
         </activity>
         <activity android:name=".DecrImg"
             android:label="DecrImg"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".OutputQrActivity"
-            android:label="OutputQrActivity"
             android:screenOrientation="portrait">
         </activity>
         <activity android:name=".OpenQrActivity"

@@ -12,33 +12,37 @@
         android:background="@color/colorToolbar"
         android:weightSum="1">
 
-        <LinearLayout
-            android:orientation="horizontal"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_vertical"
-            android:weightSum="1">
+            android:layout_height="match_parent">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text=""
                 android:id="@+id/textViewPage"
                 android:textColor="#ffffff"
                 android:textSize="14pt"
                 android:gravity="center_vertical|center_horizontal"
                 android:onClick="showMenu"/>
 
-         <!--   <android.support.v7.widget.ActionMenuView
-                android:layout_width="wrap_content"
+
+            <ImageView
+                android:layout_width="64dp"
                 android:layout_height="match_parent"
-                android:id="@+id/menu_toolbar"
-                android:foregroundGravity="left" />-->
+                android:id="@+id/imageInfo"
+                android:src="@drawable/ic_info_outline_white_24dp"
+                android:baselineAlignBottom="false"
+                android:layout_gravity="right"
+                android:clickable="false"
+                android:adjustViewBounds="false"
+                android:contextClickable="false"
+                android:cropToPadding="false"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:visibility="visible"
+                android:onClick="showInfo" />
 
-
-        </LinearLayout>
-
+        </RelativeLayout>
     </android.support.v7.widget.Toolbar>
-
 </LinearLayout>
