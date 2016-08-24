@@ -53,6 +53,7 @@ public class EncrImgAndQr extends AppCompatActivity {
     int minK;
     int maxK;
     String nameFile;
+    String[] Key;
 
     ArrayList<Bitmap> QrCodes=new ArrayList<Bitmap>();
     ArrayList<ImageButton> buttonList = new ArrayList<ImageButton>();
@@ -84,10 +85,12 @@ public class EncrImgAndQr extends AppCompatActivity {
         //Загружаем файл из библиотеки и шифруем его
         Bitmap bitmap = BitmapFactory.decodeFile(Environment.getExternalStorageDirectory().getAbsolutePath() + "/GroupLock/Decrypted/" + nameFile);
         Factory factory = new Factory(bitmap);
-        IEncryption EncrClass = factory.getClass("bmp");
+        IEncryption EncrClass = factory.getClass(String.copyValueOf(nameFile.toCharArray(),
+                nameFile.lastIndexOf('.') + 1, nameFile.length() - nameFile.lastIndexOf('.') - 1)
+                .toLowerCase());
         EncrClass.EncrImg();
         Bitmap img=EncrClass.ResultEncr();
-        String[] Key = EncrClass.PartsOfSecret(minK, maxK);
+        Key = EncrClass.PartsOfSecret(minK, maxK);
 
         // Выводим QR-коды:
         Display display = getWindowManager().getDefaultDisplay();
@@ -106,7 +109,7 @@ public class EncrImgAndQr extends AppCompatActivity {
             for(int j = 0; j < 3; j++) {
                 final int numberimage = i * 3 + j;
                 if (numberimage >= nKeys) break;
-                Bitmap QrOriginal = crQR(Key[numberimage]);
+                Bitmap QrOriginal = crQR(numberimage);
                 Bitmap QrNewSize = Bitmap.createScaledBitmap(QrOriginal, (int) WidthScreen,
                         (int) WidthScreen, false);
 
@@ -133,13 +136,8 @@ public class EncrImgAndQr extends AppCompatActivity {
 
 
         // Сохраняем получившейся результат
-        String sdcardBmpPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/GroupLock/Encrypted/" + nameFile;
-        SaveBMP bmpUtil = new SaveBMP();
-        try {
-            boolean isSaveResult = bmpUtil.save(img, sdcardBmpPath);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        String sdcardFilePath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/GroupLock/Encrypted/" + nameFile;
+        EncrClass.SaveResult(sdcardFilePath);
 
         // Удаляем исходную картинку
         File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/GroupLock/Decrypted/", nameFile);
@@ -147,7 +145,7 @@ public class EncrImgAndQr extends AppCompatActivity {
     }
 
 
-    public Bitmap crQR(String shifr){
+    public Bitmap crQR(int index){
         Bitmap bitmap = null;
         WindowManager manager = (WindowManager) getSystemService(WINDOW_SERVICE);
         Display display = manager.getDefaultDisplay();
@@ -159,7 +157,9 @@ public class EncrImgAndQr extends AppCompatActivity {
         smallerDimension = smallerDimension /3;
 
         //Encode with a QR Code image
-        QRCodeEncoder qrCodeEncoder = new QRCodeEncoder(shifr,
+        String textQr=String.format("%02d",index+1)+String.format("%02d",Key.length)+Key[index];
+      //  String textQr=Key[index];
+        QRCodeEncoder qrCodeEncoder = new QRCodeEncoder(textQr,
                 null,
                 "TEXT_TYPE",
                 BarcodeFormat.QR_CODE.toString(),

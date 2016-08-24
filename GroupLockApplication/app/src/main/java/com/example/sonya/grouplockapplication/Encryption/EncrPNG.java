@@ -8,11 +8,11 @@ import java.io.IOException;
 /**
  * Created by NIKKAS on 14.07.2016.
  */
-public class EncrJPG implements IEncryption {
+public class EncrPNG implements IEncryption {
     public Bitmap image;
     public String key;
     public String keyForDecr;
-    EncrJPG(Bitmap img){
+    EncrPNG(Bitmap img){
         image=img;
     }
 

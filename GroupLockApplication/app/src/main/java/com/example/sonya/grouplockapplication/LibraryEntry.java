@@ -2,6 +2,7 @@ package com.example.sonya.grouplockapplication;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.Log;
 
 import java.io.File;
 
@@ -87,9 +88,13 @@ public class LibraryEntry extends File implements Parcelable {
      *
      */
     public boolean canBeSelected() {
-        return !isDirectory() && (getName().endsWith(".jpg")||getName().endsWith(".JPG")||
-                getName().endsWith(".jepg")||getName().endsWith(".JEPG")||
-                getName().endsWith(".bmp")||getName().endsWith(".BMP"));
+        String typeF=String.copyValueOf(getName().toCharArray(), getName().lastIndexOf('.') + 1,
+                getName().length() - getName().lastIndexOf('.') - 1);
+        Log.i("qwwreyyr",typeF);
+        return !isDirectory() && (typeF.toLowerCase().equals("jpg")||
+                typeF.toLowerCase().equals("jpeg")||
+                typeF.toLowerCase().equals("bmp")||
+                typeF.toLowerCase().equals("png"));
     }
 
     @Override

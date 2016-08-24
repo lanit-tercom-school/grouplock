@@ -10,4 +10,6 @@ public interface IEncryption {
     Bitmap ResultDecr(String DecrKey);
 
     String[] PartsOfSecret(int minK, int maxK);
+
+    void SaveResult(String FilePath);
 }
