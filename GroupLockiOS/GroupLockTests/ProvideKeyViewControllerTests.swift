@@ -151,7 +151,7 @@ class ProvideKeyViewControllerTests: XCTestCase {
         // Given
 
         // When
-        sut.displayKeys(with: Seeds.viewModel)
+        sut.displayKeys(Seeds.viewModel)
 
         // Then
         XCTAssertTrue(sut.dataSourceProvider.collectionViewDataSource === sut.collectionView!.dataSource,
@@ -167,7 +167,7 @@ class ProvideKeyViewControllerTests: XCTestCase {
         cell.darkeningView = UIView()
 
         // When
-        sut.displayKeys(with: Seeds.viewModel)
+        sut.displayKeys(Seeds.viewModel)
         let returnedCell = sut.dataSourceProvider.cellFactory.configure(view: cell,
                                                                         item: nil,
                                                                         type: .cell,
@@ -188,7 +188,7 @@ class ProvideKeyViewControllerTests: XCTestCase {
         cell.darkeningView = UIView()
 
         // When
-        sut.displayKeys(with: Seeds.viewModel)
+        sut.displayKeys(Seeds.viewModel)
         let returnedCell = sut.dataSourceProvider.cellFactory.configure(view: cell,
                                                                         item: nil,
                                                                         type: .cell,
@@ -209,7 +209,7 @@ class ProvideKeyViewControllerTests: XCTestCase {
         let qrCodeImage = UIImage()
 
         // When
-        sut.displayKeys(with: Seeds.viewModel)
+        sut.displayKeys(Seeds.viewModel)
         let returnedCell = sut.dataSourceProvider.cellFactory.configure(view: cell,
                                                                         item: qrCodeImage,
                                                                         type: .cell,
@@ -230,7 +230,7 @@ class ProvideKeyViewControllerTests: XCTestCase {
         let cell = sut.collectionView!.cellForItem(at: Seeds.indexPathToSelect) as! ProvideKeyCell
 
         // When
-        sut.displayKeys(with: Seeds.viewModel)
+        sut.displayKeys(Seeds.viewModel)
         sut.collectionView!.selectItem(at: Seeds.indexPathToSelect, animated: false, scrollPosition: [])
         sut.collectionView(sut.collectionView!, didSelectItemAt: Seeds.indexPathToSelect)
 
@@ -247,7 +247,7 @@ class ProvideKeyViewControllerTests: XCTestCase {
         }
 
         // When
-        sut.displayKeys(with: Seeds.viewModel)
+        sut.displayKeys(Seeds.viewModel)
         sut.collectionView!.selectItem(at: Seeds.indexPathToSelect, animated: false, scrollPosition: [])
         sut.collectionView(sut.collectionView!, didSelectItemAt: Seeds.indexPathToSelect)
 
@@ -290,7 +290,7 @@ class ProvideKeyViewControllerTests: XCTestCase {
             return agrumeSpy
         }
 
-        sut.displayKeys(with: Seeds.viewModel)
+        sut.displayKeys(Seeds.viewModel)
         sut.collectionView!.selectItem(at: Seeds.indexPathToSelect, animated: false, scrollPosition: [])
         sut.collectionView(sut.collectionView!, didSelectItemAt: Seeds.indexPathToSelect)
         XCTAssertNotNil(sut.imageViewerProvider([]).didScroll, "Agrume should process scrolling")

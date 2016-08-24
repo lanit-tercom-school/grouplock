@@ -45,7 +45,7 @@ class ProvideKeyPresenterTests: XCTestCase {
 
         var qrCodes: [UIImage]?
 
-        func displayKeys(with viewModel: ProvideKey.Configure.ViewModel) {
+        func displayKeys(_ viewModel: ProvideKey.Configure.ViewModel) {
             qrCodes = viewModel.qrCodes
         }
     }

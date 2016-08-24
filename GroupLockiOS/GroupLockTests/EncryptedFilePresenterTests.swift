@@ -40,8 +40,8 @@ class EncryptedFilePresenterTests: XCTestCase {
             ]
 
             private static let filesWithCorrectContents = [
-                File(name: "File 1", type: "JPG", encrypted: true, contents: correctData[0]),
-                File(name: "File 2", type: "PNG", encrypted: false, contents: correctData[1])
+                File(contents: correctData[0], encrypted: true, name: "File 1", type: "JPG"),
+                File(contents: correctData[1], encrypted: false, name: "File 2", type: "PNG")
             ]
 
             static let responseWithCorrectData = EncryptedFile.Fetch.Response(files: filesWithCorrectContents)
@@ -58,8 +58,8 @@ class EncryptedFilePresenterTests: XCTestCase {
             ]
 
             private static let filesWithIncorrectContents = [
-                File(name: "File 1", type: "JPG", encrypted: true, contents: Data()),
-                File(name: "File 2", type: "JPG", encrypted: false, contents: nil)
+                File(contents: Data(), encrypted: true, name: "File 1", type: "JPG"),
+                File(contents: nil, encrypted: false, name: "File 2", type: "JPG")
             ]
 
             static let responseWithIncorrectData = EncryptedFile.Fetch.Response(files: filesWithIncorrectContents)

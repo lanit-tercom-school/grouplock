@@ -56,9 +56,9 @@ class EncryptedFileInteractorTests: XCTestCase {
         ]
 
         static let encryptedFiles = [
-            File(name: "File 1", type: "JPG", encrypted: true, contents: fileContents[0]),
-            File(name: "File 2", type: "PNG", encrypted: false, contents: fileContents[1]),
-            File(name: "File 3", type: "TIFF", encrypted: true, contents: fileContents[2])
+            File(contents: fileContents[0], encrypted: true, name: "File 1", type: "JPG"),
+            File(contents: fileContents[1], encrypted: false, name: "File 2", type: "PNG"),
+            File(contents: fileContents[2], encrypted: true, name: "File 3", type: "TIFF")
         ]
     }
 
