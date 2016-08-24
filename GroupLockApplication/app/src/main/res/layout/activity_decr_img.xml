@@ -8,18 +8,43 @@
     android:background="@color/colorBackGround">
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/keys_type_selection_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_height="?android:actionBarSize"
+        android:id="@+id/decr_img_toolbar"
         android:background="@color/colorToolbar"
-        android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+        android:weightSum="1">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/textNext"
+                android:text="Go Home"
+                android:textColor="#ffffff"
+                android:textSize="14pt"
+                android:gravity="center_vertical|center_horizontal"
+                android:onClick="goToNextStep"
+                android:visibility="visible"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="20dp"
+                android:layout_marginEnd="20dp" />
+
+
+        </RelativeLayout>
+    </android.support.v7.widget.Toolbar>
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imageDecr"
-        android:layout_below="@+id/keys_type_selection_toolbar"
+        android:layout_below="@+id/decr_img_toolbar"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="81dp" />
 

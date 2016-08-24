@@ -40,7 +40,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:background="@drawable/load_button_background"/>
+        android:background="@drawable/ic_add_file"/>
 
     <Button
             android:id="@+id/btnNext"

@@ -30,10 +30,12 @@ import java.util.ArrayList;
 public class NumberOfKeysActivity extends AppCompatActivity {
 
     NumberPicker np1, np2;
-    Button goNext,helpButton;
+ //   Button goNext,helpButton;
     boolean check = false;
     Toast toast;
     TextView textMin, textMax;
+    ImageView btnBack, btnInfo;
+    TextView btnNext;
 
     private ArrayList<LibraryEntry> filesToOperateWith;
     Bundle b;
@@ -57,16 +59,23 @@ public class NumberOfKeysActivity extends AppCompatActivity {
         np1.setWrapSelectorWheel(false);
         np2.setWrapSelectorWheel(false);
 
-        goNext = (Button) findViewById(R.id.button3);
-        helpButton = (Button) findViewById(R.id.button4);
+    //    goNext = (Button) findViewById(R.id.button3);
+    //    helpButton = (Button) findViewById(R.id.button4);
 
         textMin = (TextView) findViewById(R.id.textMin);
         textMax = (TextView) findViewById(R.id.textMax);
+        btnNext = (TextView) findViewById(R.id.textNext);
+        btnBack = (ImageView) findViewById(R.id.buttonBack);
+        btnInfo = (ImageView) findViewById(R.id.imageInfo);
 
-        Toolbar mToolbar = (Toolbar) findViewById(R.id.keys_type_selection_toolbar);
+        btnNext.setVisibility(View.VISIBLE);
+        btnBack.setVisibility(View.VISIBLE);
+        btnInfo.setVisibility(View.INVISIBLE);
+
+        Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
-        ActionBar ab = getSupportActionBar();
-        ab.setDisplayHomeAsUpEnabled(true);
+     /*   ActionBar ab = getSupportActionBar();
+        ab.setDisplayHomeAsUpEnabled(true);*/
 
         b = getIntent().getExtras();
         if(b!=null&& b.containsKey("files")){
@@ -106,14 +115,12 @@ public class NumberOfKeysActivity extends AppCompatActivity {
 
                 }
 
-                if ((np1.getValue() != 0) && (np2.getValue() != 0))
-                    nextEnable();   //enable button for turn to the next page
-                else nextDisable(); //disable button for turn to the next page
+                check = ((np1.getValue() != 0) && (np2.getValue() != 0));
             }
         };
 
         //EventListener for buttons
-        View.OnClickListener onClickListener = new View.OnClickListener() {
+  /*      View.OnClickListener onClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 switch (v.getId()) {
@@ -144,25 +151,25 @@ public class NumberOfKeysActivity extends AppCompatActivity {
                     }
                 }
             }
-        };
+        };*/
 
-        goNext.setOnClickListener(onClickListener);
-        helpButton.setOnClickListener(onClickListener);
+    //    goNext.setOnClickListener(onClickListener);
+    //    helpButton.setOnClickListener(onClickListener);
         np1.setOnValueChangedListener(onValueChangeListener);
         np2.setOnValueChangedListener(onValueChangeListener);
     }
 
-    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+ /*   @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     public void nextEnable() {
         check = true;
-        goNext.setBackground(this.getResources().getDrawable(R.drawable.ic_arrow_forward_black_48dp));
+     //   goNext.setBackground(this.getResources().getDrawable(R.drawable.ic_arrow_forward_black_48dp));
     }
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     public void nextDisable() {
         check = false;
-        goNext.setBackground(this.getResources().getDrawable(R.drawable.ic_arrow_forward_grey_48dp));
-    }
+     //   goNext.setBackground(this.getResources().getDrawable(R.drawable.ic_arrow_forward_grey_48dp));
+    }*/
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -176,6 +183,25 @@ public class NumberOfKeysActivity extends AppCompatActivity {
 
             default:
                 return super.onOptionsItemSelected(item);
+        }
+    }
+
+    public void goBack(View v){
+        onBackPressed();
+    }
+    public void goToNextStep(View v){
+        if (check) {    //go to the next page if button active
+            Intent intent = new Intent(NumberOfKeysActivity.this, EncrImgAndQr.class);
+            intent.putExtras(b);
+            intent.putExtra("minK", np1.getValue());
+            intent.putExtra("maxK", np2.getValue());
+            startActivity(intent);
+
+        } else {        //info if button disable
+            toast = Toast.makeText(getApplicationContext(),
+                    R.string.infoNumbers,
+                    Toast.LENGTH_SHORT);
+            toast.show();
         }
     }
 }

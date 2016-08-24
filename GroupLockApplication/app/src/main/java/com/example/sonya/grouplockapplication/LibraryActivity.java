@@ -45,8 +45,9 @@ public class LibraryActivity extends AppCompatActivity {
         DECRYPT_SELECTING
     }
     private LibraryState currentLibraryState;
-
-    private Button btnNext, btnLoadFile;
+    private TextView btnNext, NamePage;
+    private Button /*btnNext,*/ btnLoadFile;
+    private ImageView btnBack;
     MenuItem menuItemEncrypt, menuItemDecrypt;
 
     @Override
@@ -63,8 +64,8 @@ public class LibraryActivity extends AppCompatActivity {
         try {
             ActivityInfo activityInfo = getPackageManager().getActivityInfo(
                     getComponentName(), PackageManager.GET_META_DATA);
-            TextView tw=(TextView)findViewById(R.id.textViewPage);
-            tw.setText(activityInfo.loadLabel(getPackageManager())
+            NamePage=(TextView)findViewById(R.id.textViewPage);
+            NamePage.setText(activityInfo.loadLabel(getPackageManager())
                     .toString()+" ▼");
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
@@ -90,8 +91,11 @@ public class LibraryActivity extends AppCompatActivity {
         }
 
         filesToOperateWith = new ArrayList<LibraryEntry>();
-        btnNext = (Button) findViewById(R.id.btnNext);
+        btnNext = (TextView) findViewById(R.id.textNext);
+        btnBack = (ImageView) findViewById(R.id.buttonBack);
+        NamePage =(TextView)findViewById(R.id.textViewPage);
         btnLoadFile = (Button) findViewById(R.id.btnLoadFile);
+
 
         /* Get library state if had been passed to */
         Bundle b = getIntent().getExtras();
@@ -115,6 +119,8 @@ public class LibraryActivity extends AppCompatActivity {
             }
 
             cryptActionSelect(currentLibraryState);
+            NamePage.setVisibility(View.INVISIBLE);
+            btnBack.setVisibility(View.VISIBLE);
 
         } else {
 
@@ -123,7 +129,6 @@ public class LibraryActivity extends AppCompatActivity {
             showMenu = true;
             avoidBrowsingMode = false;
             currentLibraryState = LibraryState.BROWSING;
-
             showDirectoryLayout(libraryRoot);
         }
     }
@@ -328,13 +333,13 @@ public class LibraryActivity extends AppCompatActivity {
 
     }
 
-    @Override
+  /*  @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.library_menu, menu);
         menuItemEncrypt = menu.findItem(R.id.action_encrypt);
         menuItemDecrypt = menu.findItem(R.id.action_decrypt);
         return true;
-    }
+    }*/
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
@@ -523,4 +528,10 @@ public class LibraryActivity extends AppCompatActivity {
         popupMenu.show();
     }
 
+
+    public void goBack(View v){
+      /*  Intent intent = new Intent(LibraryActivity.this, ChooseToDoActivity.class);
+        startActivity(intent);*/
+        onBackPressed();
+    }
 }
