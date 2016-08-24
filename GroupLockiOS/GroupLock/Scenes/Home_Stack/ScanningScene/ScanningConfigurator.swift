@@ -11,7 +11,7 @@ import UIKit
 // MARK: - Connect View, Interactor, and Presenter
 
 extension ScanningViewController: ScanningPresenterOutput {
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         router.passDataToNextScene(segue)
     }
 }
@@ -24,7 +24,7 @@ class ScanningConfigurator {
 
     // MARK: - Configuration
 
-    static func configure(viewController: ScanningViewController) {
+    static func configure(_ viewController: ScanningViewController) {
         let router = ScanningRouter()
         router.viewController = viewController
 

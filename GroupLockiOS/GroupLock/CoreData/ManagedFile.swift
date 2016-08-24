@@ -12,10 +12,10 @@ import CoreData
 class ManagedFile: NSManagedObject {
 
     convenience init(name: String, insertIntoManagedObjectContext context: NSManagedObjectContext) {
-        let entityDescription = NSEntityDescription.entityForName("File", inManagedObjectContext: context)
+        let entityDescription = NSEntityDescription.entity(forEntityName: "File", in: context)
 
         // swiftlint:disable:next force_unwrapping (since this entityDescription is correct)
-        self.init(entity: entityDescription!, insertIntoManagedObjectContext: context)
+        self.init(entity: entityDescription!, insertInto: context)
 
         self.name = name
     }

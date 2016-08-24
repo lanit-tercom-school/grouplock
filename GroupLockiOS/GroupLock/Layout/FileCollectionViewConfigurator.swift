@@ -19,12 +19,12 @@ protocol CollectionViewConfiguratorProtocol {
      - parameter collectionView:          View to apply settings to.
      - parameter allowsMultipleSelection: Specifies whether multiple cells can be selected.
      */
-    func configure(collectionView: UICollectionView, allowsMultipleSelection: Bool)
+    func configure(_ collectionView: UICollectionView, allowsMultipleSelection: Bool)
 }
 
 struct CollectionViewConfigurator: CollectionViewConfiguratorProtocol {
 
-    func configure(collectionView: UICollectionView, allowsMultipleSelection: Bool = false) {
+    func configure(_ collectionView: UICollectionView, allowsMultipleSelection: Bool = false) {
         collectionView.applyNUI()
         collectionView.allowsMultipleSelection = allowsMultipleSelection
 

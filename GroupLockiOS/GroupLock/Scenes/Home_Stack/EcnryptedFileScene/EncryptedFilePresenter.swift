@@ -9,13 +9,13 @@
 import UIKit
 
 protocol EncryptedFilePresenterInput {
-    func presentFiles(response: EncryptedFile.Fetch.Response)
-    func shareFiles(response: EncryptedFile.Share.Response)
+    func presentFiles(_ response: EncryptedFile.Fetch.Response)
+    func shareFiles(_ response: EncryptedFile.Share.Response)
 }
 
 protocol EncryptedFilePresenterOutput: class {
-    func displayFiles(viewModel: EncryptedFile.Fetch.ViewModel)
-    func displaySharingInterface(response: EncryptedFile.Share.Response)
+    func displayFiles(_ viewModel: EncryptedFile.Fetch.ViewModel)
+    func displaySharingInterface(_ response: EncryptedFile.Share.Response)
 }
 
 class EncryptedFilePresenter: EncryptedFilePresenterInput {
@@ -24,7 +24,7 @@ class EncryptedFilePresenter: EncryptedFilePresenterInput {
 
     // MARK: - Presentation logic
 
-    func presentFiles(response: EncryptedFile.Fetch.Response) {
+    func presentFiles(_ response: EncryptedFile.Fetch.Response) {
 
         let fileInfo: [EncryptedFile.Fetch.ViewModel.FileInfo] = response.files.map {
 
@@ -42,7 +42,7 @@ class EncryptedFilePresenter: EncryptedFilePresenterInput {
         output.displayFiles(EncryptedFile.Fetch.ViewModel(fileInfo: fileInfo))
     }
 
-    func shareFiles(response: EncryptedFile.Share.Response) {
+    func shareFiles(_ response: EncryptedFile.Share.Response) {
 
         // Bypassing the Presenter here
         output.displaySharingInterface(response)

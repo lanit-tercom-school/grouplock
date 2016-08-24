@@ -16,7 +16,7 @@ class EncryptedFileViewControllerTests: XCTestCase {
     struct Seeds {
 
         struct Fetch {
-            private static let fileInfo = [
+            static let fileInfo = [
                 EncryptedFile.Fetch.ViewModel.FileInfo(fileName: "File 1",
                     fileThumbnail: UIImage(), encrypted: false),
                 EncryptedFile.Fetch.ViewModel.FileInfo(fileName: "File 2",
@@ -27,13 +27,13 @@ class EncryptedFileViewControllerTests: XCTestCase {
         }
 
         struct Share {
-            static let response = EncryptedFile.Share.Response(dataToShare: [NSData(), NSData()],
+            static let response = EncryptedFile.Share.Response(dataToShare: [Data(), Data()],
                                                                excludedActivityTypes: nil)
         }
 
         struct SelectFiles {
-            static let indexPathToSelect = NSIndexPath(forItem: 1, inSection: 0)
-            static let indexPathToDeselect = NSIndexPath(forItem: 0, inSection: 0)
+            static let indexPathToSelect = IndexPath(item: 1, section: 0)
+            static let indexPathToDeselect = IndexPath(item: 0, section: 0)
         }
     }
 
@@ -61,15 +61,15 @@ class EncryptedFileViewControllerTests: XCTestCase {
 
     func setupEncryptedFileViewController() {
 
-        let bundle = NSBundle.mainBundle()
+        let bundle = Bundle.main
         let storyboard = UIStoryboard(name: "Main", bundle: bundle)
-        sut = storyboard
-            .instantiateViewControllerWithIdentifier("EncryptedFileViewController") as! EncryptedFileViewController
+        sut = storyboard.instantiateViewController(
+            withIdentifier: "EncryptedFileViewController") as! EncryptedFileViewController
     }
 
     func loadView() {
         window.addSubview(sut.view)
-        NSRunLoop.currentRunLoop().runUntilDate(NSDate())
+        RunLoop.current.run(until: Date())
     }
 
     // MARK: - Test doubles
@@ -80,28 +80,28 @@ class EncryptedFileViewControllerTests: XCTestCase {
         var prepareFilesForSharing_called = false // swiftlint:disable:this variable_name
         var saveFiles_called = false // swiftlint:disable:this variable_name
 
-        var selectedFileIndexPath: NSIndexPath?
-        var deselectedFileIndexPath: NSIndexPath?
+        var selectedFileIndexPath: IndexPath?
+        var deselectedFileIndexPath: IndexPath?
 
         var encryptedFiles: [File] = []
 
-        func fetchFiles(request: EncryptedFile.Fetch.Request) {
+        func fetchFiles(_ request: EncryptedFile.Fetch.Request) {
             fetchFiles_called = true
         }
 
-        func prepareFilesForSharing(request: EncryptedFile.Share.Request) {
+        func prepareFilesForSharing(_ request: EncryptedFile.Share.Request) {
             prepareFilesForSharing_called = true
         }
 
-        func fileSelected(request: EncryptedFile.SelectFiles.Request) {
+        func fileSelected(_ request: EncryptedFile.SelectFiles.Request) {
             selectedFileIndexPath = request.indexPath
         }
 
-        func fileDeselected(request: EncryptedFile.SelectFiles.Request) {
+        func fileDeselected(_ request: EncryptedFile.SelectFiles.Request) {
             deselectedFileIndexPath = request.indexPath
         }
 
-        func saveFiles(request: EncryptedFile.SaveFiles.Request) {
+        func saveFiles(_ request: EncryptedFile.SaveFiles.Request) {
             saveFiles_called = true
         }
     }
@@ -109,7 +109,7 @@ class EncryptedFileViewControllerTests: XCTestCase {
     class CollectionViewConfiguratorSpy: CollectionViewConfiguratorProtocol {
         var collectionViewConfigurated: UICollectionView?
         var allowsMultipleSelection: Bool?
-        func configure(collectionView: UICollectionView, allowsMultipleSelection: Bool) {
+        func configure(_ collectionView: UICollectionView, allowsMultipleSelection: Bool) {
             collectionViewConfigurated = collectionView
             self.allowsMultipleSelection = allowsMultipleSelection
         }
@@ -119,16 +119,16 @@ class EncryptedFileViewControllerTests: XCTestCase {
 
         var viewModelToUpdate: EncryptedFile.Fetch.ViewModel?
 
-        func updateViewModel(viewModel: EncryptedFile.Fetch.ViewModel) {
+        func updateViewModel(_ viewModel: EncryptedFile.Fetch.ViewModel) {
             viewModelToUpdate = viewModel
         }
 
-        func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
             return Seeds.Fetch.fileInfo.count
         }
 
-        func collectionView(collectionView: UICollectionView,
-                            cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        func collectionView(_ collectionView: UICollectionView,
+                            cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
             return UICollectionViewCell()
         }
     }
@@ -150,7 +150,7 @@ class EncryptedFileViewControllerTests: XCTestCase {
             }
         }
 
-        override func cellForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewCell? {
+        override func cellForItem(at indexPath: IndexPath) -> UICollectionViewCell? {
             return cellMock
         }
     }
@@ -311,9 +311,9 @@ class EncryptedFileViewControllerTests: XCTestCase {
         sut.collectionView = collectionViewMock
 
         // When
-        sut.collectionView!.selectItemAtIndexPath(Seeds.SelectFiles.indexPathToSelect,
-                                                  animated: false, scrollPosition: .None)
-        sut.collectionView(sut.collectionView!, didSelectItemAtIndexPath: Seeds.SelectFiles.indexPathToSelect)
+        sut.collectionView!.selectItem(at: Seeds.SelectFiles.indexPathToSelect,
+                                                  animated: false, scrollPosition: [])
+        sut.collectionView(sut.collectionView!, didSelectItemAt: Seeds.SelectFiles.indexPathToSelect)
 
         // Then
         let expectedSelectedFileIndexPath = Seeds.SelectFiles.indexPathToSelect
@@ -339,12 +339,12 @@ class EncryptedFileViewControllerTests: XCTestCase {
         sut.collectionView = collectionViewMock
 
         // When
-        sut.collectionView!.selectItemAtIndexPath(Seeds.SelectFiles.indexPathToDeselect,
-                                                  animated: false, scrollPosition: .None)
-        sut.collectionView(sut.collectionView!, didSelectItemAtIndexPath: Seeds.SelectFiles.indexPathToDeselect)
-        sut.collectionView!.deselectItemAtIndexPath(Seeds.SelectFiles.indexPathToDeselect,
+        sut.collectionView!.selectItem(at: Seeds.SelectFiles.indexPathToDeselect,
+                                                  animated: false, scrollPosition: [])
+        sut.collectionView(sut.collectionView!, didSelectItemAt: Seeds.SelectFiles.indexPathToDeselect)
+        sut.collectionView!.deselectItem(at: Seeds.SelectFiles.indexPathToDeselect,
                                                   animated: false)
-        sut.collectionView(sut.collectionView!, didDeselectItemAtIndexPath: Seeds.SelectFiles.indexPathToDeselect)
+        sut.collectionView(sut.collectionView!, didDeselectItemAt: Seeds.SelectFiles.indexPathToDeselect)
 
         // Then
         let expectedDeselectedFileIndexPath = Seeds.SelectFiles.indexPathToDeselect

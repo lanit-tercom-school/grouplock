@@ -11,14 +11,14 @@ import JSQDataSourcesKit
 import Agrume
 
 protocol ProvideKeyViewControllerInput {
-    func displayKeys(with viewModel: ProvideKey.Configure.ViewModel)
+    func displayKeys(_ viewModel: ProvideKey.Configure.ViewModel)
 }
 
 protocol ProvideKeyViewControllerOutput {
     var files: [File] { get set }
     var numberOfKeys: (Int, Int) { get set }
 
-    func getKeys(request: ProvideKey.Configure.Request)
+    func getKeys(_ request: ProvideKey.Configure.Request)
 }
 
 class ProvideKeyViewController: UICollectionViewController, ProvideKeyViewControllerInput {
@@ -35,7 +35,12 @@ class ProvideKeyViewController: UICollectionViewController, ProvideKeyViewContro
                                                        CollectionViewCellFactory>!
     var dataSource: CollectionViewDataSource!
 
-    lazy var agrume: ImageViewer = { return Agrume(images: self.dataSource[0].items) }()
+
+
+    /// Creates an instance of an image viewer
+    var imageViewerProvider: ([UIImage]) -> ImageViewer = { images in
+        return Agrume(images: images)
+    }
 
     // MARK: - View Controller lifecycle
 
@@ -49,7 +54,7 @@ class ProvideKeyViewController: UICollectionViewController, ProvideKeyViewContro
 
     // MARK: - Display logic
 
-    func displayKeys(with viewModel: ProvideKey.Configure.ViewModel) {
+    func displayKeys(_ viewModel: ProvideKey.Configure.ViewModel) {
 
         let section = Section(viewModel.qrCodes)
         dataSource = DataSource(sections: section)
@@ -57,10 +62,10 @@ class ProvideKeyViewController: UICollectionViewController, ProvideKeyViewContro
         let cellFactory = ViewFactory(reuseIdentifier: "QRCodeCell") {
             (cell, item: UIImage?, type, parentView, indexPath) -> ProvideKeyCell in
             cell.keyImageView.image = item
-            if !cell.selected {
-                cell.darkeningView.hidden = true
+            if !cell.isSelected {
+                cell.darkeningView.isHidden = true
             } else {
-                cell.darkeningView.hidden = false
+                cell.darkeningView.isHidden = false
             }
             return cell
         }
@@ -73,24 +78,24 @@ class ProvideKeyViewController: UICollectionViewController, ProvideKeyViewContro
         collectionView?.dataSource = dataSourceProvider.collectionViewDataSource
     }
 
-    private func darkenItem(atIndexPath indexPath: NSIndexPath) {
-        guard let cell = collectionView?.cellForItemAtIndexPath(indexPath) as? ProvideKeyCell else { return }
-        cell.darkeningView.hidden = false
+    private func darkenItem(at indexPath: IndexPath) {
+        guard let cell = collectionView?.cellForItem(at: indexPath) as? ProvideKeyCell else { return }
+        cell.darkeningView.isHidden = false
     }
 
-    private func showKey(atIndexPath indexPath: NSIndexPath) {
+    fileprivate func showKey(at indexPath: IndexPath) {
 
-        darkenItem(atIndexPath: indexPath)
-
-        agrume.showFrom(self)
-        agrume.showImageAtIndex(indexPath.item)
-        agrume.didScroll = { [ unowned self ] index in
-            let indexPathToDarken = NSIndexPath(forItem: index, inSection: indexPath.section)
-            self.darkenItem(atIndexPath: indexPathToDarken)
+        darkenItem(at: indexPath)
+        let imageViewer = imageViewerProvider(dataSource[0].items)
+        imageViewer.showFrom(self)
+        imageViewer.showImage(atIndex: indexPath.item)
+        imageViewer.didScroll = { [ unowned self ] index in
+            let indexPathToDarken = IndexPath(item: index, section: indexPath.section)
+            self.darkenItem(at: indexPathToDarken)
             // swiftlint:disable:next force_unwrapping (since by this time collectionView is initialized)
-            self.collectionView!.selectItemAtIndexPath(indexPathToDarken,
-                                                       animated: false,
-                                                       scrollPosition: .None)
+            self.collectionView!.selectItem(at: indexPathToDarken,
+                                            animated: false,
+                                            scrollPosition: [])
         }
     }
 }
@@ -98,15 +103,15 @@ class ProvideKeyViewController: UICollectionViewController, ProvideKeyViewContro
 // MARK: UICollectionViewControllerDelegate
 extension ProvideKeyViewController {
 
-    override func collectionView(collectionView: UICollectionView,
-                                 didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    override func collectionView(_ collectionView: UICollectionView,
+                                 didSelectItemAt indexPath: IndexPath) {
 
-        showKey(atIndexPath: indexPath)
+        showKey(at: indexPath)
     }
 
-    override func collectionView(collectionView: UICollectionView,
-                                 shouldDeselectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        showKey(atIndexPath: indexPath)
+    override func collectionView(_ collectionView: UICollectionView,
+                                 shouldDeselectItemAt indexPath: IndexPath) -> Bool {
+        showKey(at: indexPath)
         return false
     }
 }

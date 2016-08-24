@@ -14,7 +14,7 @@ class ProvideKeyPresenterTests: XCTestCase {
 
     struct Seeds {
         static let qrCodeSize: CGSize = {
-            let screenSize = UIScreen.mainScreen().nativeBounds.size
+            let screenSize = UIScreen.main.nativeBounds.size
             let screenWidth = min(screenSize.width, screenSize.height)
             return CGSize(width: screenWidth, height: screenWidth)
         }()
@@ -45,7 +45,7 @@ class ProvideKeyPresenterTests: XCTestCase {
 
         var qrCodes: [UIImage]?
 
-        func displayKeys(with viewModel: ProvideKey.Configure.ViewModel) {
+        func displayKeys(_ viewModel: ProvideKey.Configure.ViewModel) {
             qrCodes = viewModel.qrCodes
         }
     }

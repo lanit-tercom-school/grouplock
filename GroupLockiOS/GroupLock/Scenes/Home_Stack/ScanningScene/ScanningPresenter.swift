@@ -9,13 +9,13 @@
 import CoreGraphics
 
 protocol ScanningPresenterInput {
-    func formatKeyScan(response: Scanning.Keys.Response)
-    func formatCameraError(response: Scanning.CameraError.Response)
+    func formatKeyScan(_ response: Scanning.Keys.Response)
+    func formatCameraError(_ response: Scanning.CameraError.Response)
 }
 
 protocol ScanningPresenterOutput: class {
-    func displayKeyScan(viewModel: Scanning.Keys.ViewModel)
-    func displayCameraErrorMessage(viewModel: Scanning.CameraError.ViewModel)
+    func displayKeyScan(_ viewModel: Scanning.Keys.ViewModel)
+    func displayCameraErrorMessage(_ viewModel: Scanning.CameraError.ViewModel)
 }
 
 class ScanningPresenter: ScanningPresenterInput {
@@ -24,22 +24,24 @@ class ScanningPresenter: ScanningPresenterInput {
 
     // MARK: - Presentation logic
 
-    func formatKeyScan(response: Scanning.Keys.Response) {
+    func formatKeyScan(_ response: Scanning.Keys.Response) {
         let numberOfDifferentKeys = response.keys.count
-        let qrCodeCGPath = CGPath.create(response.qrCodeCorners.map(CGPoint.init))
+
+        // swiftlint:disable:next force_unwrapping (corners (CFDictionaries) are guaranteed to represent points)
+        let qrCodeCGPath = CGPath.create(response.qrCodeCorners.map { CGPoint(dictionaryRepresentation: $0)! })
         let viewModel = Scanning.Keys.ViewModel(numberOfDifferentKeys: numberOfDifferentKeys,
                                                 qrCodeCGPath: qrCodeCGPath,
                                                 isValidKey: response.isValidKey)
         output.displayKeyScan(viewModel)
     }
 
-    func formatCameraError(response: Scanning.CameraError.Response) {
+    func formatCameraError(_ response: Scanning.CameraError.Response) {
 
         let errorDescription = response.error.localizedDescription
 
         // swiftlint:disable:next force_unwrapping (since description is never empty)
-        let formattedDescription = String(errorDescription.characters.first!).uppercaseString +
-            String(errorDescription.characters.dropFirst()).lowercaseString + "."
+        let formattedDescription = String(errorDescription.characters.first!).uppercased() +
+            String(errorDescription.characters.dropFirst()).lowercased() + "."
 
         let viewModel = Scanning.CameraError.ViewModel(errorName: "Camera Error",
                                                        errorDescription: formattedDescription)

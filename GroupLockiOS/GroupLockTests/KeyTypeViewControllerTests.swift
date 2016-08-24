@@ -43,15 +43,16 @@ class KeyTypeViewControllerTests: XCTestCase {
 
     func setupKeyTypeViewController() {
 
-        let bundle = NSBundle.mainBundle()
+        let bundle = Bundle.main
         let storyboard = UIStoryboard(name: "Main", bundle: bundle)
-        sut = storyboard.instantiateViewControllerWithIdentifier("KeyTypeViewController") as! KeyTypeViewController
+        sut = storyboard.instantiateViewController(
+            withIdentifier: "KeyTypeViewController") as! KeyTypeViewController
         loadView()
     }
 
     func loadView() {
         window.addSubview(sut.view)
-        NSRunLoop.currentRunLoop().runUntilDate(NSDate())
+        RunLoop.current.run(until: Date())
     }
 
     // MARK: - Test doubles
@@ -64,7 +65,7 @@ class KeyTypeViewControllerTests: XCTestCase {
         var files: [File] = []
         var keyType = Seeds.SetKeyType.defaultKeyType
 
-        func setKeyType(request: KeyTypeModels.SetType.Request) {
+        func setKeyType(_ request: KeyTypeModels.SetType.Request) {
             setKeyType_called = true
             receivedKeyName = request.keyName
         }
@@ -75,7 +76,7 @@ class KeyTypeViewControllerTests: XCTestCase {
 
         var passDataToNumberOfKeysScene_called = false // swiftlint:disable:this variable_name
 
-        override func passDataToNumberOfKeysScene(segue: UIStoryboardSegue) {
+        override func passDataToNumberOfKeysScene(_ segue: UIStoryboardSegue) {
             passDataToNumberOfKeysScene_called = true
         }
     }
@@ -87,7 +88,7 @@ class KeyTypeViewControllerTests: XCTestCase {
         // Given
         let keyTypeViewControllerOutputSpy = KeyTypeViewControllerOutputSpy()
         sut.output = keyTypeViewControllerOutputSpy
-        let keyTypeButton = UIButton(type: .Custom)
+        let keyTypeButton = UIButton(type: .custom)
         keyTypeButton.titleLabel?.text = Seeds.SetKeyType.buttonLabelText
 
         // When
@@ -103,7 +104,7 @@ class KeyTypeViewControllerTests: XCTestCase {
         // Given
         let keyTypeViewControllerOutputSpy = KeyTypeViewControllerOutputSpy()
         sut.output = keyTypeViewControllerOutputSpy
-        let keyTypeButton = UIButton(type: .Custom)
+        let keyTypeButton = UIButton(type: .custom)
         keyTypeButton.titleLabel?.text = Seeds.SetKeyType.buttonLabelText
 
         // When
@@ -121,7 +122,7 @@ class KeyTypeViewControllerTests: XCTestCase {
         let keyTypeRouterSpy = KeyTypeRouterSpy()
         sut.router = keyTypeRouterSpy
         sut.router.viewController = sut
-        let keyTypeButton = UIButton(type: .Custom)
+        let keyTypeButton = UIButton(type: .custom)
         keyTypeButton.titleLabel?.text = Seeds.SetKeyType.buttonLabelText
 
         // When

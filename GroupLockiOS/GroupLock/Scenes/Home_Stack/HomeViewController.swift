@@ -13,13 +13,13 @@ class HomeViewController: UIViewController {
     @IBOutlet var encryptButton: UIButton!
     @IBOutlet var decryptButton: UIButton!
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        super.prepareForSegue(segue, sender: sender)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
 
-        if let destination = segue.destinationViewController as? ChooseFileViewController {
-            destination.output.encryption = sender === encryptButton
+        if let destination = segue.destination as? ChooseFileViewController {
+            destination.output.encryption = (sender as? UIButton)  === encryptButton
         }
     }
 
-    @IBAction func unwindToHome(segue: UIStoryboardSegue) {}
+    @IBAction func unwindToHome(_ segue: UIStoryboardSegue) {}
 }

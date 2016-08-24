@@ -25,8 +25,8 @@ class EncryptedFileDataSourceTests: XCTestCase {
         ]
         static let viewModel = EncryptedFile.Fetch.ViewModel(fileInfo: fileInfo)
         static var numberOfItems: Int { return fileInfo.count }
-        static let indexPathForEncryptedFile = NSIndexPath(forItem: 2, inSection: 0)
-        static let indexPathForDecryptedFile = NSIndexPath(forItem: 3, inSection: 0)
+        static let indexPathForEncryptedFile = IndexPath(item: 2, section: 0)
+        static let indexPathForDecryptedFile = IndexPath(item: 3, section: 0)
     }
 
     // MARK: Subject under test
@@ -62,12 +62,12 @@ class EncryptedFileDataSourceTests: XCTestCase {
             self.providesSelectedCells = providesSelectedCells
         }
 
-        func cell(for collectionView: UICollectionView, at indexPath: NSIndexPath) -> FileCollectionViewCell {
+        func cell(for collectionView: UICollectionView, at indexPath: IndexPath) -> FileCollectionViewCell {
             let cell = FileCollectionViewCellMock()
             cell.filenameLabel = UILabel()
             cell.thumbnailView = UIImageView()
             cell.lockIcon = UIImageView()
-            cell.selected = providesSelectedCells
+            cell.isSelected = providesSelectedCells
             return cell
         }
     }
@@ -107,7 +107,7 @@ class EncryptedFileDataSourceTests: XCTestCase {
 
         // When
         let cell = sut.collectionView(
-            collectionView, cellForItemAtIndexPath: Seeds.indexPathForEncryptedFile) as! FileCollectionViewCell
+            collectionView, cellForItemAt: Seeds.indexPathForEncryptedFile) as! FileCollectionViewCell
 
         // Then
         let returnedFileName = cell.filenameLabel.text
@@ -126,10 +126,10 @@ class EncryptedFileDataSourceTests: XCTestCase {
 
         // When
         let cell = sut.collectionView(
-            collectionView, cellForItemAtIndexPath: Seeds.indexPathForEncryptedFile) as! FileCollectionViewCell
+            collectionView, cellForItemAt: Seeds.indexPathForEncryptedFile) as! FileCollectionViewCell
 
         // Then
-        XCTAssertFalse(cell.lockIcon.hidden, "Cell should show a lock icon for an encrypted file")
+        XCTAssertFalse(cell.lockIcon.isHidden, "Cell should show a lock icon for an encrypted file")
     }
 
     func test_ThatEncryptedFileDataSource_CausesCellsToHideLockIconForDecryptedFiles() {
@@ -138,10 +138,10 @@ class EncryptedFileDataSourceTests: XCTestCase {
 
         // When
         let cell = sut.collectionView(
-            collectionView, cellForItemAtIndexPath: Seeds.indexPathForDecryptedFile) as! FileCollectionViewCell
+            collectionView, cellForItemAt: Seeds.indexPathForDecryptedFile) as! FileCollectionViewCell
 
         // Then
-        XCTAssertTrue(cell.lockIcon.hidden, "Cell should not show a lock icon for a decrypted file")
+        XCTAssertTrue(cell.lockIcon.isHidden, "Cell should not show a lock icon for a decrypted file")
     }
 
     func test_ThatEncryptedFileDataSource_TellsCellToVisualizeSelection() {
@@ -151,7 +151,7 @@ class EncryptedFileDataSourceTests: XCTestCase {
 
         // When
         let cell = sut.collectionView(
-            collectionView, cellForItemAtIndexPath: Seeds.indexPathForEncryptedFile) as! FileCollectionViewCellMock
+            collectionView, cellForItemAt: Seeds.indexPathForEncryptedFile) as! FileCollectionViewCellMock
 
         // Then
         XCTAssertTrue(cell.visualizeSelection_called,
@@ -167,7 +167,7 @@ class EncryptedFileDataSourceTests: XCTestCase {
 
         // When
         let cell = sut.collectionView(
-            collectionView, cellForItemAtIndexPath: Seeds.indexPathForEncryptedFile) as! FileCollectionViewCellMock
+            collectionView, cellForItemAt: Seeds.indexPathForEncryptedFile) as! FileCollectionViewCellMock
 
         // Then
         XCTAssertTrue(cell.visualizeDeselection_called,

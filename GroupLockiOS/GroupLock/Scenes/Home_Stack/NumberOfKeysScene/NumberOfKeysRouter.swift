@@ -20,19 +20,19 @@ class NumberOfKeysRouter: NumberOfKeysRouterInput {
 
     // MARK: - Communication
 
-    func passDataToNextScene(segue: UIStoryboardSegue) {
+    func passDataToNextScene(_ segue: UIStoryboardSegue) {
 
         if segue.identifier == "ProvideKey" {
             passDataToProvideKeyScene(segue)
         }
     }
 
-    func passDataToProvideKeyScene(segue: UIStoryboardSegue) {
+    func passDataToProvideKeyScene(_ segue: UIStoryboardSegue) {
 
         // swiftlint:disable:next force_cast (since the destination is known)
-        let provideKeysViewController = segue.destinationViewController as! ProvideKeyViewController
-        provideKeysViewController.output.numberOfKeys = (viewController.pickerView.selectedRowInComponent(0) + 1,
-                                                         viewController.pickerView.selectedRowInComponent(1) + 1)
+        let provideKeysViewController = segue.destination as! ProvideKeyViewController
+        provideKeysViewController.output.numberOfKeys = (viewController.pickerView.selectedRow(inComponent: 0) + 1,
+                                                         viewController.pickerView.selectedRow(inComponent: 1) + 1)
         provideKeysViewController.output.files = viewController.output.files
     }
 }

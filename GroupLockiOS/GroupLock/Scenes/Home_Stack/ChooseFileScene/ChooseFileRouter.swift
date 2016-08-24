@@ -20,16 +20,16 @@ class ChooseFileRouter: ChooseFileRouterInput {
     // MARK: - Navigation
 
     func navigateToKeyTypeScene() {
-        viewController.performSegueWithIdentifier("toKeyType", sender: nil)
+        viewController.performSegue(withIdentifier: "toKeyType", sender: nil)
     }
 
     func navigateToScanningScene() {
-        viewController.performSegueWithIdentifier("toScanning", sender: nil)
+        viewController.performSegue(withIdentifier: "toScanning", sender: nil)
     }
 
     // MARK: - Communication
 
-    func passDataToNextScene(segue: UIStoryboardSegue) {
+    func passDataToNextScene(_ segue: UIStoryboardSegue) {
 
         if segue.identifier == "toKeyType" {
             passDataToKeyTypeScene(segue)
@@ -38,13 +38,13 @@ class ChooseFileRouter: ChooseFileRouterInput {
         }
     }
 
-    func passDataToKeyTypeScene(segue: UIStoryboardSegue) {
+    func passDataToKeyTypeScene(_ segue: UIStoryboardSegue) {
         // swiftlint:disable:next force_cast (since the destination is known)
-        let keyTypeViewController = segue.destinationViewController as! KeyTypeViewController
+        let keyTypeViewController = segue.destination as! KeyTypeViewController
         keyTypeViewController.output.files = viewController.output.chosenFiles
     }
 
-    func passDataToScanningScene(segue: UIStoryboardSegue) {
+    func passDataToScanningScene(_ segue: UIStoryboardSegue) {
         // swiftlint:disable:next force_cast (since the destination is known)
 //        let scanningViewController = segue.destinationViewController as! ScanningViewController
 

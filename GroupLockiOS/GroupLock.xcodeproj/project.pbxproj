@@ -49,7 +49,7 @@
 		8744EBDF1D63B52F00624392 /* CryptoFakeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8744EBDE1D63B52F00624392 /* CryptoFakeTests.swift */; };
 		8744EBE11D63B53900624392 /* grumpy.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8744EBE01D63B53900624392 /* grumpy.jpg */; };
 		8748017E1D365349001A086C /* PresentedDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8748017D1D365349001A086C /* PresentedDataSource.swift */; };
-		874801821D3660D7001A086C /* CollectionViewLayoutProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874801811D3660D7001A086C /* CollectionViewLayoutProperties.swift */; };
+		874801821D3660D7001A086C /* CollectionViewGridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874801811D3660D7001A086C /* CollectionViewGridLayout.swift */; };
 		8748018C1D36C434001A086C /* ChooseFileInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874801881D36C434001A086C /* ChooseFileInteractorTests.swift */; };
 		8748018D1D36C434001A086C /* ChooseFilePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874801891D36C434001A086C /* ChooseFilePresenterTests.swift */; };
 		8748018E1D36C434001A086C /* ChooseFileViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8748018A1D36C434001A086C /* ChooseFileViewControllerTests.swift */; };
@@ -61,7 +61,6 @@
 		87671ECA1D4622A100A0C353 /* EncryptedFilePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87671EC61D4622A100A0C353 /* EncryptedFilePresenterTests.swift */; };
 		87671ECB1D4622A100A0C353 /* EncryptedFileViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87671EC71D4622A100A0C353 /* EncryptedFileViewControllerTests.swift */; };
 		87671ECE1D46249100A0C353 /* EncryptedFileDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87671ECD1D46249100A0C353 /* EncryptedFileDataSourceTests.swift */; };
-		87718F611D6204F5005F34EC /* CGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87718F601D6204F5005F34EC /* CGPoint.swift */; };
 		87736F121D3D49C200B93D7B /* KeyTypeConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87736F0C1D3D49C200B93D7B /* KeyTypeConfigurator.swift */; };
 		87736F131D3D49C200B93D7B /* KeyTypeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87736F0D1D3D49C200B93D7B /* KeyTypeInteractor.swift */; };
 		87736F141D3D49C200B93D7B /* KeyTypeModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87736F0E1D3D49C200B93D7B /* KeyTypeModels.swift */; };
@@ -182,7 +181,7 @@
 		8744EBDE1D63B52F00624392 /* CryptoFakeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CryptoFakeTests.swift; sourceTree = "<group>"; };
 		8744EBE01D63B53900624392 /* grumpy.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = grumpy.jpg; sourceTree = "<group>"; };
 		8748017D1D365349001A086C /* PresentedDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PresentedDataSource.swift; path = Scenes/Home_Stack/ChooseFileScene/PresentedDataSource.swift; sourceTree = "<group>"; };
-		874801811D3660D7001A086C /* CollectionViewLayoutProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionViewLayoutProperties.swift; path = Layout/CollectionViewLayoutProperties.swift; sourceTree = "<group>"; };
+		874801811D3660D7001A086C /* CollectionViewGridLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionViewGridLayout.swift; path = Layout/CollectionViewGridLayout.swift; sourceTree = "<group>"; };
 		874801881D36C434001A086C /* ChooseFileInteractorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseFileInteractorTests.swift; sourceTree = "<group>"; };
 		874801891D36C434001A086C /* ChooseFilePresenterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseFilePresenterTests.swift; sourceTree = "<group>"; };
 		8748018A1D36C434001A086C /* ChooseFileViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseFileViewControllerTests.swift; sourceTree = "<group>"; };
@@ -194,7 +193,6 @@
 		87671EC61D4622A100A0C353 /* EncryptedFilePresenterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncryptedFilePresenterTests.swift; sourceTree = "<group>"; };
 		87671EC71D4622A100A0C353 /* EncryptedFileViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncryptedFileViewControllerTests.swift; sourceTree = "<group>"; };
 		87671ECD1D46249100A0C353 /* EncryptedFileDataSourceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncryptedFileDataSourceTests.swift; sourceTree = "<group>"; };
-		87718F601D6204F5005F34EC /* CGPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CGPoint.swift; path = Class_Extensions/CGPoint.swift; sourceTree = "<group>"; };
 		87736F0C1D3D49C200B93D7B /* KeyTypeConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyTypeConfigurator.swift; path = Scenes/Home_Stack/KeyTypeScene/KeyTypeConfigurator.swift; sourceTree = "<group>"; };
 		87736F0D1D3D49C200B93D7B /* KeyTypeInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyTypeInteractor.swift; path = Scenes/Home_Stack/KeyTypeScene/KeyTypeInteractor.swift; sourceTree = "<group>"; };
 		87736F0E1D3D49C200B93D7B /* KeyTypeModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyTypeModels.swift; path = Scenes/Home_Stack/KeyTypeScene/KeyTypeModels.swift; sourceTree = "<group>"; };
@@ -373,7 +371,7 @@
 		873419AB1D37CB21005D036C /* Layout */ = {
 			isa = PBXGroup;
 			children = (
-				874801811D3660D7001A086C /* CollectionViewLayoutProperties.swift */,
+				874801811D3660D7001A086C /* CollectionViewGridLayout.swift */,
 				878C29A21CF0B9D300323C9D /* FileCollectionViewCell.swift */,
 				8789D1981D465CAF0000AA8D /* FileCollectionViewCellProvider.swift */,
 				87AEA5F31D48CA63009D8619 /* FileCollectionViewConfigurator.swift */,
@@ -427,7 +425,6 @@
 			children = (
 				87B6927E1CB45188008ACB6A /* UIViewController.swift */,
 				870912261D523B66006222BA /* Agrume.swift */,
-				87718F601D6204F5005F34EC /* CGPoint.swift */,
 				87DB46041D620E1100F64F35 /* CGPath.swift */,
 			);
 			name = "Class Extensions";
@@ -734,16 +731,18 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Lanit-Tercom School";
 				TargetAttributes = {
 					87B6920C1CB425E0008ACB6A = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = N4X84VA3BB;
+						LastSwiftMigration = 0800;
 					};
 					87B692231CB425E0008ACB6A = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = N4X84VA3BB;
+						LastSwiftMigration = 0800;
 						TestTargetID = 87B6920C1CB425E0008ACB6A;
 					};
 				};
@@ -932,7 +931,7 @@
 				870912271D523B66006222BA /* Agrume.swift in Sources */,
 				8744EBDD1D636C0500624392 /* Pixel.swift in Sources */,
 				87D0AE111D59E190005BDCFD /* ScanningRouter.swift in Sources */,
-				874801821D3660D7001A086C /* CollectionViewLayoutProperties.swift in Sources */,
+				874801821D3660D7001A086C /* CollectionViewGridLayout.swift in Sources */,
 				8704DEB71D3CD0CC0017F88E /* File.swift in Sources */,
 				87B692131CB425E0008ACB6A /* PasswordViewController.swift in Sources */,
 				8730226D1D42197100222606 /* EncryptedFileConfigurator.swift in Sources */,
@@ -957,7 +956,6 @@
 				87DB46051D620E1100F64F35 /* CGPath.swift in Sources */,
 				870DBF931D3F932C004430A5 /* NumberOfKeysInteractor.swift in Sources */,
 				87D0AE121D59E190005BDCFD /* ScanningViewController.swift in Sources */,
-				87718F611D6204F5005F34EC /* CGPoint.swift in Sources */,
 				8704DED01D3D03990017F88E /* ProvideKeyRouter.swift in Sources */,
 				8730226E1D42197100222606 /* EncryptedFileInteractor.swift in Sources */,
 				875BC69E1D63C70A003457CE /* LinearCongruentialGenerator.swift in Sources */,
@@ -1071,6 +1069,7 @@
 		87B692361CB425E0008ACB6A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -1082,15 +1081,16 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = NO;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1110,6 +1110,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_SWIFT_FLAGS = "-D DEBUG";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1119,6 +1120,7 @@
 		87B692371CB425E0008ACB6A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -1130,15 +1132,16 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = NO;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1151,7 +1154,9 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_SWIFT_FLAGS = "-D RELEASE";
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1161,20 +1166,21 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BFDF8566C80CCDB2E8A9388F /* Pods-GroupLock.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = GroupLock/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_SWIFT_FLAGS = "-D DEBUG";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "lanit-tercom-school.GroupLock";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1183,19 +1189,20 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 71996D16419A209B9D5BAD92 /* Pods-GroupLock.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = GroupLock/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_SWIFT_FLAGS = "-D RELEASE";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "lanit-tercom-school.GroupLock";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -1204,11 +1211,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 21A2E2B00C09373CFA5A4705 /* Pods-GroupLockTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = GroupLockTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "lanit-tercom-school.GroupLockTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GroupLock.app/GroupLock";
 			};
 			name = Debug;
@@ -1217,11 +1226,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AF19EA1836F48CDF9CE2777A /* Pods-GroupLockTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = GroupLockTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "lanit-tercom-school.GroupLockTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GroupLock.app/GroupLock";
 			};
 			name = Release;

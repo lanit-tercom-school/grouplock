@@ -10,7 +10,7 @@
 
 extension Scanning.Keys.ViewModel: EquatableModel {
 
-    func isEqualTo(model: Scanning.Keys.ViewModel) -> Bool {
+    func isEqualTo(_ model: Scanning.Keys.ViewModel) -> Bool {
         return numberOfDifferentKeys == model.numberOfDifferentKeys &&
             qrCodeCGPath == model.qrCodeCGPath &&
             isValidKey == model.isValidKey
@@ -19,7 +19,7 @@ extension Scanning.Keys.ViewModel: EquatableModel {
 
 extension Scanning.CameraError.ViewModel: EquatableModel {
 
-    func isEqualTo(model: Scanning.CameraError.ViewModel) -> Bool {
+    func isEqualTo(_ model: Scanning.CameraError.ViewModel) -> Bool {
         return errorName == model.errorName &&
             errorDescription == model.errorDescription
     }

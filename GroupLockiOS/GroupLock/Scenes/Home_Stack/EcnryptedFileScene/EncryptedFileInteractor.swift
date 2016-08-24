@@ -11,16 +11,16 @@ import UIKit
 protocol EncryptedFileInteractorInput {
     var encryptedFiles: [File] { get set }
 
-    func fetchFiles(request: EncryptedFile.Fetch.Request)
-    func prepareFilesForSharing(request: EncryptedFile.Share.Request)
-    func fileSelected(request: EncryptedFile.SelectFiles.Request)
-    func fileDeselected(request: EncryptedFile.SelectFiles.Request)
-    func saveFiles(request: EncryptedFile.SaveFiles.Request)
+    func fetchFiles(_ request: EncryptedFile.Fetch.Request)
+    func prepareFilesForSharing(_ request: EncryptedFile.Share.Request)
+    func fileSelected(_ request: EncryptedFile.SelectFiles.Request)
+    func fileDeselected(_ request: EncryptedFile.SelectFiles.Request)
+    func saveFiles(_ request: EncryptedFile.SaveFiles.Request)
 }
 
 protocol EncryptedFileInteractorOutput {
-    func presentFiles(response: EncryptedFile.Fetch.Response)
-    func shareFiles(response: EncryptedFile.Share.Response)
+    func presentFiles(_ response: EncryptedFile.Fetch.Response)
+    func shareFiles(_ response: EncryptedFile.Share.Response)
 }
 
 // swiftlint:disable line_length
@@ -45,26 +45,26 @@ class EncryptedFileInteractor: EncryptedFileInteractorInput {
 
     var encryptedFiles: [File] = []/* = HardcodedFiles.ef */
 
-    private var selectedFiles = Set<NSIndexPath>()
+    private var selectedFiles = Set<IndexPath>()
 
-    func fetchFiles(request: EncryptedFile.Fetch.Request) {
+    func fetchFiles(_ request: EncryptedFile.Fetch.Request) {
 
         let response = EncryptedFile.Fetch.Response(files: encryptedFiles)
         output.presentFiles(response)
     }
 
-    func prepareFilesForSharing(request: EncryptedFile.Share.Request) {
+    func prepareFilesForSharing(_ request: EncryptedFile.Share.Request) {
 
-        let dataToShare = selectedFiles.map { encryptedFiles[$0.item].contents ?? NSData() }
-        let excludedActivityTypes = [
-            UIActivityTypePrint,
-            UIActivityTypePostToVimeo,
-            UIActivityTypePostToWeibo,
-            UIActivityTypePostToFlickr,
-            UIActivityTypePostToTwitter,
-            UIActivityTypePostToFacebook,
-            UIActivityTypeAddToReadingList,
-            UIActivityTypePostToTencentWeibo
+        let dataToShare = selectedFiles.map { encryptedFiles[$0.item].contents ?? Data() }
+        let excludedActivityTypes: [UIActivityType] = [
+            .print,
+            .postToVimeo,
+            .postToWeibo,
+            .postToFlickr,
+            .postToTwitter,
+            .postToFacebook,
+            .addToReadingList,
+            .postToTencentWeibo
         ]
 
         let response = EncryptedFile.Share.Response(dataToShare: dataToShare,
@@ -72,15 +72,15 @@ class EncryptedFileInteractor: EncryptedFileInteractorInput {
         output.shareFiles(response)
     }
 
-    func fileSelected(request: EncryptedFile.SelectFiles.Request) {
+    func fileSelected(_ request: EncryptedFile.SelectFiles.Request) {
         selectedFiles.insert(request.indexPath)
     }
 
-    func fileDeselected(request: EncryptedFile.SelectFiles.Request) {
+    func fileDeselected(_ request: EncryptedFile.SelectFiles.Request) {
         selectedFiles.remove(request.indexPath)
     }
 
-    func saveFiles(request: EncryptedFile.SaveFiles.Request) {
+    func saveFiles(_ request: EncryptedFile.SaveFiles.Request) {
 
         for file in encryptedFiles {
             _ = ManagedFile(file, insertIntoManagedObjectContext: AppDelegate.sharedInstance.managedObjectContext)

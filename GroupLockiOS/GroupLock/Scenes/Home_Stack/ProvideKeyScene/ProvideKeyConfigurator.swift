@@ -11,7 +11,7 @@ import UIKit
 // MARK: - Connect View, Interactor, and Presenter
 
 extension ProvideKeyViewController: ProvideKeyPresenterOutput {
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         router.passDataToNextScene(segue)
     }
 }
@@ -24,7 +24,7 @@ class ProvideKeyConfigurator {
 
     // MARK: - Configuration
 
-    static func configure(viewController: ProvideKeyViewController) {
+    static func configure(_ viewController: ProvideKeyViewController) {
         let router = ProvideKeyRouter()
         router.viewController = viewController
 

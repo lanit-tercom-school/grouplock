@@ -19,10 +19,10 @@ class ScanningPresenterTests: XCTestCase {
             private static let key = "123456789"
             private static let valid = true
             private static let corners = [
-                CGPointCreateDictionaryRepresentation(CGPoint(x: 1, y: 23)),
-                CGPointCreateDictionaryRepresentation(CGPoint(x: 49, y: 187)),
-                CGPointCreateDictionaryRepresentation(CGPoint(x: 13, y: 0)),
-                CGPointCreateDictionaryRepresentation(CGPoint(x: 0, y: 3))
+                CGPoint(x: 1, y: 23).dictionaryRepresentation,
+                CGPoint(x: 49, y: 187).dictionaryRepresentation,
+                CGPoint(x: 13, y: 0).dictionaryRepresentation,
+                CGPoint(x: 0, y: 3).dictionaryRepresentation
             ]
             private static let keys = ["key1", "key2", "key3"]
 
@@ -100,11 +100,11 @@ class ScanningPresenterTests: XCTestCase {
         var keyScan_viewModel: Scanning.Keys.ViewModel?
         var cameraError_viewModel: Scanning.CameraError.ViewModel?
 
-        func displayKeyScan(viewModel: Scanning.Keys.ViewModel) {
+        func displayKeyScan(_ viewModel: Scanning.Keys.ViewModel) {
             keyScan_viewModel = viewModel
         }
 
-        func displayCameraErrorMessage(viewModel: Scanning.CameraError.ViewModel) {
+        func displayCameraErrorMessage(_ viewModel: Scanning.CameraError.ViewModel) {
             cameraError_viewModel = viewModel
         }
     }

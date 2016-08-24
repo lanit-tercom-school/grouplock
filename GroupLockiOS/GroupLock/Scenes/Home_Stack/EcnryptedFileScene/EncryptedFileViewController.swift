@@ -9,18 +9,18 @@
 import UIKit
 
 protocol EncryptedFileViewControllerInput {
-    func displayFiles(viewModel: EncryptedFile.Fetch.ViewModel)
-    func displaySharingInterface(response: EncryptedFile.Share.Response)
+    func displayFiles(_ viewModel: EncryptedFile.Fetch.ViewModel)
+    func displaySharingInterface(_ response: EncryptedFile.Share.Response)
 }
 
 protocol EncryptedFileViewControllerOutput {
     var encryptedFiles: [File] { get set }
 
-    func fetchFiles(request: EncryptedFile.Fetch.Request)
-    func prepareFilesForSharing(request: EncryptedFile.Share.Request)
-    func fileSelected(request: EncryptedFile.SelectFiles.Request)
-    func fileDeselected(request: EncryptedFile.SelectFiles.Request)
-    func saveFiles(request: EncryptedFile.SaveFiles.Request)
+    func fetchFiles(_ request: EncryptedFile.Fetch.Request)
+    func prepareFilesForSharing(_ request: EncryptedFile.Share.Request)
+    func fileSelected(_ request: EncryptedFile.SelectFiles.Request)
+    func fileDeselected(_ request: EncryptedFile.SelectFiles.Request)
+    func saveFiles(_ request: EncryptedFile.SaveFiles.Request)
 }
 
 class EncryptedFileViewController: UICollectionViewController, EncryptedFileViewControllerInput {
@@ -43,7 +43,7 @@ class EncryptedFileViewController: UICollectionViewController, EncryptedFileView
 
     // MARK: - Display logic
 
-    func displayFiles(viewModel: EncryptedFile.Fetch.ViewModel) {
+    func displayFiles(_ viewModel: EncryptedFile.Fetch.ViewModel) {
         collectionViewDataSource.updateViewModel(viewModel)
         // swiftlint:disable force_unwrapping (when this method is invoked collectionView is initialized)
         collectionView!.dataSource = collectionViewDataSource
@@ -51,23 +51,23 @@ class EncryptedFileViewController: UICollectionViewController, EncryptedFileView
         // swiftlint:enable force_unwrapping
     }
 
-    func displaySharingInterface(response: EncryptedFile.Share.Response) {
+    func displaySharingInterface(_ response: EncryptedFile.Share.Response) {
         // TODO: Disable Share button if no files were selected
         let activityViewController = UIActivityViewController(activityItems: response.dataToShare,
                                                               applicationActivities: nil)
 
         activityViewController.excludedActivityTypes = response.excludedActivityTypes
 
-        presentViewController(activityViewController, animated: true, completion: nil)
+        present(activityViewController, animated: true, completion: nil)
     }
 
     // MARK: - Event Handling
 
-    @IBAction func onShareButton(sender: UIBarButtonItem) {
+    @IBAction func onShareButton(_ sender: UIBarButtonItem) {
         output.prepareFilesForSharing(EncryptedFile.Share.Request())
     }
 
-    @IBAction func onSaveButton(sender: UIBarButtonItem) {
+    @IBAction func onSaveButton(_ sender: UIBarButtonItem) {
         output.saveFiles(EncryptedFile.SaveFiles.Request())
         router.returnToHomeScene()
     }
@@ -75,22 +75,22 @@ class EncryptedFileViewController: UICollectionViewController, EncryptedFileView
 
 extension EncryptedFileViewController {
 
-    override func collectionView(collectionView: UICollectionView,
-                                 didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    override func collectionView(_ collectionView: UICollectionView,
+                                 didSelectItemAt indexPath: IndexPath) {
 
         // swiftlint:disable:next force_cast (since this collectionView uses instances of this class as cells)
-        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! FileCollectionViewCell
+        let cell = collectionView.cellForItem(at: indexPath) as! FileCollectionViewCell
 
         output.fileSelected(EncryptedFile.SelectFiles.Request(indexPath: indexPath))
 
         cell.visualizeSelection()
     }
 
-    override func collectionView(collectionView: UICollectionView,
-                                 didDeselectItemAtIndexPath indexPath: NSIndexPath) {
+    override func collectionView(_ collectionView: UICollectionView,
+                                 didDeselectItemAt indexPath: IndexPath) {
 
         // swiftlint:disable:next force_cast (since this collectionView uses instances of this class as cells)
-        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! FileCollectionViewCell
+        let cell = collectionView.cellForItem(at: indexPath) as! FileCollectionViewCell
 
         output.fileDeselected(EncryptedFile.SelectFiles.Request(indexPath: indexPath))
 

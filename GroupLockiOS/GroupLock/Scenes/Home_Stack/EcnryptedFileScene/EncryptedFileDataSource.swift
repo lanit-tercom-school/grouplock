@@ -9,7 +9,7 @@
 import UIKit
 
 protocol EncryptedFileDataSourceProtocol: UICollectionViewDataSource {
-    func updateViewModel(viewModel: EncryptedFile.Fetch.ViewModel)
+    func updateViewModel(_ viewModel: EncryptedFile.Fetch.ViewModel)
 }
 
 class EncryptedFileDataSource: NSObject, EncryptedFileDataSourceProtocol {
@@ -19,23 +19,23 @@ class EncryptedFileDataSource: NSObject, EncryptedFileDataSourceProtocol {
     var cellProvider: FileCollectionViewCellProviderProtocol =
         FileCollectionViewCellProvider(reuseIdentifier: "EncryptedFileCell")
 
-    func updateViewModel(viewModel: EncryptedFile.Fetch.ViewModel) {
+    func updateViewModel(_ viewModel: EncryptedFile.Fetch.ViewModel) {
         self.viewModel = viewModel
     }
 
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.fileInfo.count
     }
 
-    func collectionView(collectionView: UICollectionView,
-                        cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = cellProvider.cell(for: collectionView, at: indexPath)
-        let fileInfo = viewModel.fileInfo[indexPath.item]
+        let fileInfo = viewModel.fileInfo[(indexPath as NSIndexPath).item]
         cell.filenameLabel.text = fileInfo.fileName
         cell.thumbnailView.image = fileInfo.fileThumbnail
-        cell.lockIcon.hidden = !fileInfo.encrypted
+        cell.lockIcon.isHidden = !fileInfo.encrypted
 
-        if cell.selected {
+        if cell.isSelected {
             cell.visualizeSelection()
         } else {
             cell.visualizeDeselection()

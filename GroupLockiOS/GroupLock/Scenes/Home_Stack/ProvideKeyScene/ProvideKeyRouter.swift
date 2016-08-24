@@ -22,7 +22,7 @@ class ProvideKeyRouter: ProvideKeyRouterInput {
 
     // MARK: - Communication
 
-    func passDataToNextScene(segue: UIStoryboardSegue) {
+    func passDataToNextScene(_ segue: UIStoryboardSegue) {
 
     }
 }

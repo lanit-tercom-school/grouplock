@@ -38,8 +38,8 @@ struct EncryptedFile {
         struct Request {}
 
         struct Response {
-            let dataToShare: [NSData]
-            let excludedActivityTypes: [String]?
+            var dataToShare: [Data]
+            var excludedActivityTypes: [UIActivityType]?
         }
     }
 
@@ -47,7 +47,7 @@ struct EncryptedFile {
     struct SelectFiles {
 
         struct Request {
-            let indexPath: NSIndexPath
+            let indexPath: IndexPath
         }
 
         struct Response {}

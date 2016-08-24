@@ -16,8 +16,8 @@ class ProvideKeyViewControllerTests: XCTestCase {
     struct Seeds {
 
         static let viewModel = ProvideKey.Configure.ViewModel(qrCodes: [UIImage(), UIImage()])
-        static let indexPathDummy = NSIndexPath(forItem: 0, inSection: 0)
-        static let indexPathToSelect = NSIndexPath(forItem: 1, inSection: 0)
+        static let indexPathDummy = IndexPath(item: 0, section: 0)
+        static let indexPathToSelect = IndexPath(item: 1, section: 0)
     }
 
     // MARK: Subject under test
@@ -44,15 +44,15 @@ class ProvideKeyViewControllerTests: XCTestCase {
 
     func setupProvideKeyViewController() {
 
-        let bundle = NSBundle.mainBundle()
+        let bundle = Bundle.main
         let storyboard = UIStoryboard(name: "Main", bundle: bundle)
         sut = storyboard
-            .instantiateViewControllerWithIdentifier("ProvideKeyViewController") as! ProvideKeyViewController
+            .instantiateViewController(withIdentifier: "ProvideKeyViewController") as! ProvideKeyViewController
     }
 
     func loadView() {
         window.addSubview(sut.view)
-        NSRunLoop.currentRunLoop().runUntilDate(NSDate())
+        RunLoop.current.run(until: Date())
     }
 
     // MARK: - Test doubles
@@ -64,7 +64,7 @@ class ProvideKeyViewControllerTests: XCTestCase {
 
         var files: [File] = []
         var numberOfKeys = (0, 0)
-        func getKeys(request: ProvideKey.Configure.Request) {
+        func getKeys(_ request: ProvideKey.Configure.Request) {
             getKeys_called = true
         }
     }
@@ -72,7 +72,7 @@ class ProvideKeyViewControllerTests: XCTestCase {
     class CollectionViewConfiguratorSpy: CollectionViewConfiguratorProtocol {
         var collectionViewConfigurated: UICollectionView?
         var allowsMultipleSelection: Bool?
-        func configure(collectionView: UICollectionView, allowsMultipleSelection: Bool) {
+        func configure(_ collectionView: UICollectionView, allowsMultipleSelection: Bool) {
             collectionViewConfigurated = collectionView
             self.allowsMultipleSelection = allowsMultipleSelection
         }
@@ -88,7 +88,7 @@ class ProvideKeyViewControllerTests: XCTestCase {
             return cell
         }()
 
-        override func cellForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewCell? {
+        override func cellForItem(at indexPath: IndexPath) -> UICollectionViewCell? {
             return _cell
         }
     }
@@ -98,15 +98,15 @@ class ProvideKeyViewControllerTests: XCTestCase {
         var shown = false
         var initialImageIndex = -1
 
-        func showImageAtIndex(index: Int) {
+        func showImage(atIndex index: Int) {
             initialImageIndex = index
         }
 
-        func showFrom(viewController: UIViewController) {
+        func showFrom(_ viewController: UIViewController) {
             shown = true
         }
 
-        var didScroll: ((index: Int) -> Void)?
+        var didScroll: ((_ index: Int) -> Void)?
     }
 
     // MARK: - Tests
@@ -151,7 +151,7 @@ class ProvideKeyViewControllerTests: XCTestCase {
         // Given
 
         // When
-        sut.displayKeys(with: Seeds.viewModel)
+        sut.displayKeys(Seeds.viewModel)
 
         // Then
         XCTAssertTrue(sut.dataSourceProvider.collectionViewDataSource === sut.collectionView!.dataSource,
@@ -162,12 +162,12 @@ class ProvideKeyViewControllerTests: XCTestCase {
 
         // Given
         let cell = ProvideKeyCell(frame: .zero)
-        cell.selected = true
+        cell.isSelected = true
         cell.keyImageView = UIImageView()
         cell.darkeningView = UIView()
 
         // When
-        sut.displayKeys(with: Seeds.viewModel)
+        sut.displayKeys(Seeds.viewModel)
         let returnedCell = sut.dataSourceProvider.cellFactory.configure(view: cell,
                                                                         item: nil,
                                                                         type: .cell,
@@ -175,7 +175,7 @@ class ProvideKeyViewControllerTests: XCTestCase {
                                                                         indexPath: Seeds.indexPathDummy)
 
         // Then
-        XCTAssertFalse(returnedCell.darkeningView.hidden,
+        XCTAssertFalse(returnedCell.darkeningView.isHidden,
                        "CollectionViewCellFactory should darken a cell if it is selected")
     }
 
@@ -183,12 +183,12 @@ class ProvideKeyViewControllerTests: XCTestCase {
 
         // Given
         let cell = ProvideKeyCell(frame: .zero)
-        cell.selected = false
+        cell.isSelected = false
         cell.keyImageView = UIImageView()
         cell.darkeningView = UIView()
 
         // When
-        sut.displayKeys(with: Seeds.viewModel)
+        sut.displayKeys(Seeds.viewModel)
         let returnedCell = sut.dataSourceProvider.cellFactory.configure(view: cell,
                                                                         item: nil,
                                                                         type: .cell,
@@ -196,7 +196,7 @@ class ProvideKeyViewControllerTests: XCTestCase {
                                                                         indexPath: Seeds.indexPathDummy)
 
         // Then
-        XCTAssertTrue(returnedCell.darkeningView.hidden,
+        XCTAssertTrue(returnedCell.darkeningView.isHidden,
                       "CollectionViewCellFactory should not darken a cell if it is deselected")
     }
 
@@ -209,7 +209,7 @@ class ProvideKeyViewControllerTests: XCTestCase {
         let qrCodeImage = UIImage()
 
         // When
-        sut.displayKeys(with: Seeds.viewModel)
+        sut.displayKeys(Seeds.viewModel)
         let returnedCell = sut.dataSourceProvider.cellFactory.configure(view: cell,
                                                                         item: qrCodeImage,
                                                                         type: .cell,
@@ -227,27 +227,29 @@ class ProvideKeyViewControllerTests: XCTestCase {
         let collectionViewMock = CollectionViewMock(frame: .zero,
                                                     collectionViewLayout: UICollectionViewFlowLayout())
         sut.collectionView = collectionViewMock
-        let cell = sut.collectionView!.cellForItemAtIndexPath(Seeds.indexPathToSelect) as! ProvideKeyCell
+        let cell = sut.collectionView!.cellForItem(at: Seeds.indexPathToSelect) as! ProvideKeyCell
 
         // When
-        sut.displayKeys(with: Seeds.viewModel)
-        sut.collectionView!.selectItemAtIndexPath(Seeds.indexPathToSelect, animated: false, scrollPosition: .None)
-        sut.collectionView(sut.collectionView!, didSelectItemAtIndexPath: Seeds.indexPathToSelect)
+        sut.displayKeys(Seeds.viewModel)
+        sut.collectionView!.selectItem(at: Seeds.indexPathToSelect, animated: false, scrollPosition: [])
+        sut.collectionView(sut.collectionView!, didSelectItemAt: Seeds.indexPathToSelect)
 
         // Then
-        XCTAssertFalse(cell.darkeningView.hidden, "QR-code should be darkened after it's tapped")
+        XCTAssertFalse(cell.darkeningView.isHidden, "QR-code should be darkened after it's tapped")
     }
 
     func test_ThatProvideKeyViewController_PresentsAgrumeViewController() {
 
         // Given
         let agrumeSpy = AgrumeSpy()
-        sut.agrume = agrumeSpy
+        sut.imageViewerProvider = { _ in
+            return agrumeSpy
+        }
 
         // When
-        sut.displayKeys(with: Seeds.viewModel)
-        sut.collectionView!.selectItemAtIndexPath(Seeds.indexPathToSelect, animated: false, scrollPosition: .None)
-        sut.collectionView(sut.collectionView!, didSelectItemAtIndexPath: Seeds.indexPathToSelect)
+        sut.displayKeys(Seeds.viewModel)
+        sut.collectionView!.selectItem(at: Seeds.indexPathToSelect, animated: false, scrollPosition: [])
+        sut.collectionView(sut.collectionView!, didSelectItemAt: Seeds.indexPathToSelect)
 
         // Then
         XCTAssertTrue(agrumeSpy.shown,
@@ -263,9 +265,9 @@ class ProvideKeyViewControllerTests: XCTestCase {
         // viewed QR-code
         agrumeSpy.shown = false
         agrumeSpy.initialImageIndex = -1
-        sut.collectionView!.deselectItemAtIndexPath(Seeds.indexPathToSelect, animated: false)
+        sut.collectionView!.deselectItem(at: Seeds.indexPathToSelect, animated: false)
         let shouldDeselect = sut.collectionView(sut.collectionView!,
-                                                shouldDeselectItemAtIndexPath: Seeds.indexPathToSelect)
+                                                shouldDeselectItemAt: Seeds.indexPathToSelect)
 
         // Then
         XCTAssertFalse(shouldDeselect,
@@ -282,22 +284,26 @@ class ProvideKeyViewControllerTests: XCTestCase {
         let collectionViewMock = CollectionViewMock(frame: .zero,
                                                     collectionViewLayout: UICollectionViewFlowLayout())
         sut.collectionView = collectionViewMock
-        let cell = sut.collectionView!.cellForItemAtIndexPath(Seeds.indexPathToSelect) as! ProvideKeyCell
+        let cell = sut.collectionView!.cellForItem(at: Seeds.indexPathToSelect) as! ProvideKeyCell
+        let agrumeSpy = AgrumeSpy()
+        sut.imageViewerProvider = { _ in
+            return agrumeSpy
+        }
 
-        sut.displayKeys(with: Seeds.viewModel)
-        sut.collectionView!.selectItemAtIndexPath(Seeds.indexPathToSelect, animated: false, scrollPosition: .None)
-        sut.collectionView(sut.collectionView!, didSelectItemAtIndexPath: Seeds.indexPathToSelect)
-        XCTAssertNotNil(sut.agrume.didScroll, "Agrume should process scrolling")
+        sut.displayKeys(Seeds.viewModel)
+        sut.collectionView!.selectItem(at: Seeds.indexPathToSelect, animated: false, scrollPosition: [])
+        sut.collectionView(sut.collectionView!, didSelectItemAt: Seeds.indexPathToSelect)
+        XCTAssertNotNil(sut.imageViewerProvider([]).didScroll, "Agrume should process scrolling")
         // Resetting some cell properties so we can test that Agrume sets them when scrolling
-        cell.darkeningView.hidden = true
-        cell.selected = false
+        cell.darkeningView.isHidden = true
+        cell.isSelected = false
 
         // When
-        sut.agrume.didScroll!(index: Seeds.indexPathToSelect.item)
+        sut.imageViewerProvider([]).didScroll!(Seeds.indexPathToSelect.item)
 
         // Then
-        XCTAssertFalse(cell.darkeningView.hidden, "Agrume should darken scrolled QR-codes")
-        XCTAssertTrue(cell.selected, "Agrume should select scrolled QR-codes")
+        XCTAssertFalse(cell.darkeningView.isHidden, "Agrume should darken scrolled QR-codes")
+        XCTAssertTrue(cell.isSelected, "Agrume should select scrolled QR-codes")
     }
 }
 // swiftlint:enable force_cast

@@ -10,23 +10,26 @@ import XCTest
 @testable import GroupLock
 
 // swiftlint:disable force_unwrapping
+// swiftlint:disable force_try
 class EncryptedFilePresenterTests: XCTestCase {
 
     struct Seeds {
         struct Share {
-            static let response = EncryptedFile.Share.Response(dataToShare: [NSData(), NSData()],
-                                                               excludedActivityTypes: ["0", "1", "2"])
+            static let response = EncryptedFile.Share.Response(dataToShare: [Data(), Data()],
+                                                               excludedActivityTypes: [.postToFacebook,
+                                                                                       .postToWeibo,
+                                                                                       .mail])
         }
 
         struct Fetch {
 
-            private static let testImageURL = NSBundle(forClass: EncryptedFilePresenterTests.self)
-                .URLForResource("test-image", withExtension: "png")!
+            private static let testImageURL = Bundle(for: EncryptedFilePresenterTests.self)
+                .url(forResource: "test-image", withExtension: "png")!
 
             // MARK: Seeds for cases where file contains correct image data
             private static let correctData = [
-                NSData(contentsOfURL: testImageURL)!,
-                NSData(contentsOfURL: testImageURL)!
+                (try! Data(contentsOf: testImageURL)),
+                (try! Data(contentsOf: testImageURL))
             ]
 
             private static let fileInfoForCorrectContents = [
@@ -37,8 +40,8 @@ class EncryptedFilePresenterTests: XCTestCase {
             ]
 
             private static let filesWithCorrectContents = [
-                File(name: "File 1", type: "JPG", encrypted: true, contents: correctData[0]),
-                File(name: "File 2", type: "PNG", encrypted: false, contents: correctData[1])
+                File(contents: correctData[0], encrypted: true, name: "File 1", type: "JPG"),
+                File(contents: correctData[1], encrypted: false, name: "File 2", type: "PNG")
             ]
 
             static let responseWithCorrectData = EncryptedFile.Fetch.Response(files: filesWithCorrectContents)
@@ -55,8 +58,8 @@ class EncryptedFilePresenterTests: XCTestCase {
             ]
 
             private static let filesWithIncorrectContents = [
-                File(name: "File 1", type: "JPG", encrypted: true, contents: NSData()),
-                File(name: "File 2", type: "JPG", encrypted: false, contents: nil)
+                File(contents: Data(), encrypted: true, name: "File 1", type: "JPG"),
+                File(contents: nil, encrypted: false, name: "File 2", type: "JPG")
             ]
 
             static let responseWithIncorrectData = EncryptedFile.Fetch.Response(files: filesWithIncorrectContents)
@@ -84,11 +87,11 @@ class EncryptedFilePresenterTests: XCTestCase {
 
         var fetchViewModelReceived: EncryptedFile.Fetch.ViewModel?
 
-        func displayFiles(viewModel: EncryptedFile.Fetch.ViewModel) {
+        func displayFiles(_ viewModel: EncryptedFile.Fetch.ViewModel) {
             fetchViewModelReceived = viewModel
         }
 
-        func displaySharingInterface(response: EncryptedFile.Share.Response) {
+        func displaySharingInterface(_ response: EncryptedFile.Share.Response) {
             shareResponseReceived = response
         }
     }
@@ -152,3 +155,4 @@ class EncryptedFilePresenterTests: XCTestCase {
     }
 }
 // swiftlint:enable force_unwrapping
+// swiftlint:enable force_try
