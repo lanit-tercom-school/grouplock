@@ -59,6 +59,25 @@
             android:layout_below="@+id/encr_img_and_qr_toolbar"
             android:id="@+id/tableLayout2"></TableLayout>
     </ScrollView>
+    <TextView
+        android:shape="ring"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="STEP 3"
+        android:id="@+id/textStep"
+        android:layout_alignBottom="@+id/entries_list_view"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:textColor="@color/colorToolbar"
+        android:visibility="visible"
+        android:textSize="14pt"
+        android:textIsSelectable="false"
+        android:textStyle="bold" />
 
 
 </RelativeLayout>

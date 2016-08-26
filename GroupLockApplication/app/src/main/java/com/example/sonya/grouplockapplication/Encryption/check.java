@@ -4,6 +4,9 @@ import android.os.Environment;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.util.Log;
+
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.Random;
 import java.lang.String;
 
@@ -31,7 +34,9 @@ public class check {
         k=new int[size];
         for (int i = 0; i < size; i++) {
             k[i] = rand.nextInt(255 - 1) + 1;
+         //   Log.i("key", Integer.toString(i)+" "+Integer.toString(k[i]));
         }
+
         expand();
 
         result = Bitmap.createBitmap(Width , Height , Bitmap.Config.ARGB_8888);
@@ -81,7 +86,12 @@ public class check {
         int expandingFactor=numberOfBytes / k.length + 1;
         int[][] expandedKey=new int[k.length][expandingFactor];
         for(int i=0;i<k.length;i++){
-            expandedKey[i]=generateExpansion(k[i],expandingFactor);}
+            expandedKey[i]=generateExpansion(k[i],expandingFactor);
+      /*      String s="";
+            for (int j=0;j<expandedKey[i].length;j++)
+                s=s+expandedKey[i][j]+" ";
+            Log.i("exp",s);*/
+        }
         expKey=new int[k.length*expandingFactor];
         for(int i=0;i<expandedKey.length;i++)
             System.arraycopy(expandedKey[i], 0, expKey, i*expandingFactor, expandingFactor);

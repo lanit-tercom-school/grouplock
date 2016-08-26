@@ -14,7 +14,7 @@
             android:background="@color/colorToolbar"
             android:elevation="4dp"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>-->
-    <include layout="@layout/toolbar"/>
+
 
    <GridView android:id="@+id/entries_list_view"
         android:layout_width="match_parent"
@@ -26,14 +26,15 @@
         android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:drawSelectorOnTop="false"
-        android:layout_below="@id/toolbar"
-       android:layout_marginTop="60dp" />
+       android:layout_alignParentTop="true"
+       android:layout_marginTop="20dp" />
 
     <Button
         android:layout_width="72dp"
         android:layout_height="72dp"
         android:shape="ring"
         android:id="@+id/btnLoadFile"
+        android:onClick="loadPage"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
@@ -42,19 +43,25 @@
         android:layout_marginRight="8dp"
         android:background="@drawable/ic_add_file"/>
 
-    <Button
-            android:id="@+id/btnNext"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toStartOf="@id/btnLoadFile"
-            android:layout_toLeftOf="@id/btnLoadFile"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:visibility="invisible"
-            android:enabled="false"
-            android:onClick="goToNextStep"
-            android:text="@string/common_next_step"/>
+    <TextView
+        android:shape="ring"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="STEP 1"
+        android:id="@+id/textStep"
+        android:layout_alignBottom="@+id/entries_list_view"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:textColor="@color/colorToolbar"
+        android:visibility="invisible"
+        android:textSize="14pt"
+        android:textIsSelectable="false"
+        android:textStyle="bold" />
 
 
 </RelativeLayout>

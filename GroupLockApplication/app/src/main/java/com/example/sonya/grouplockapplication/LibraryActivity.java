@@ -1,17 +1,15 @@
 package com.example.sonya.grouplockapplication;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.v7.app.ActionBar;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -45,16 +43,37 @@ public class LibraryActivity extends AppCompatActivity {
         DECRYPT_SELECTING
     }
     private LibraryState currentLibraryState;
-    private TextView btnNext, NamePage;
+    private TextView btnNext, NamePage, txtStep;
     private Button /*btnNext,*/ btnLoadFile;
     private ImageView btnBack;
     MenuItem menuItemEncrypt, menuItemDecrypt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.library_layout);
+        setContentView(R.layout.activity_library_crypt);
+
+        Bundle b = getIntent().getExtras();
+   /*     if (b != null && b.containsKey("state")) {
+            setContentView(R.layout.activity_library_crypt);
+        }
+        else
+        {
+            setContentView(R.layout.activity_library_tabs);
+            ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
+            SampleFragmentPagerAdapter SMP=new SampleFragmentPagerAdapter(getSupportFragmentManager(),
+                    LibraryActivity.this);
+            viewPager.setAdapter(SMP);
+
+
+            // Give the TabLayout the ViewPager
+            TabLayout tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
+            tabLayout.setupWithViewPager(viewPager);
+            entriesListView = (GridView) SMP.getItem(0).getView().findViewById(R.id.entries_list_view);
+            entriesListView=(GridView) viewPager.getRootView().findViewById(R.id.entries_list_view);
+            entriesListView=(GridView)tabLayout.getRootView().findViewById(R.id.entries_list_view);
+        }*/
+
 
         Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
@@ -71,9 +90,6 @@ public class LibraryActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-
-    /*    ActionBar ab = getSupportActionBar();
-        ab.setDisplayHomeAsUpEnabled(true);*/
 
         /* Check if directories exist, create if needed */
             libraryRootPath = Environment.getExternalStorageDirectory().getPath() + "/" + LIBRARY_FOLDER_NAME;
@@ -94,11 +110,12 @@ public class LibraryActivity extends AppCompatActivity {
         btnNext = (TextView) findViewById(R.id.textNext);
         btnBack = (ImageView) findViewById(R.id.buttonBack);
         NamePage =(TextView)findViewById(R.id.textViewPage);
+        txtStep =(TextView)findViewById(R.id.textStep);
         btnLoadFile = (Button) findViewById(R.id.btnLoadFile);
 
 
         /* Get library state if had been passed to */
-        Bundle b = getIntent().getExtras();
+       // Bundle b = getIntent().getExtras();
 
         if (b != null && b.containsKey("state")) {
 
@@ -121,6 +138,7 @@ public class LibraryActivity extends AppCompatActivity {
             cryptActionSelect(currentLibraryState);
             NamePage.setVisibility(View.INVISIBLE);
             btnBack.setVisibility(View.VISIBLE);
+            txtStep.setVisibility(View.VISIBLE);
 
         } else {
 
@@ -129,6 +147,7 @@ public class LibraryActivity extends AppCompatActivity {
             showMenu = true;
             avoidBrowsingMode = false;
             currentLibraryState = LibraryState.BROWSING;
+
             showDirectoryLayout(libraryRoot);
         }
     }
@@ -142,7 +161,7 @@ public class LibraryActivity extends AppCompatActivity {
         if (entry == null || !entry.isDirectory()) {
             return;
         }
-
+        Log.i("www","11111111111111111");
         /* Show list with files from this directory.
          * We need to sort it properly, all files should go after directories.
          * It is not sorted by default. */
@@ -191,9 +210,14 @@ public class LibraryActivity extends AppCompatActivity {
         }
 
         /* Get container view for the entries */
+        Log.i("www","22222222222222222");
         entriesListView = (GridView) findViewById(R.id.entries_list_view);
+        Log.i("www","333333333333333333");
         LibraryEntriesAdapter adapter = new LibraryEntriesAdapter(this, currentDirectoryEntries, currentLibraryState);
+        Log.i("www","4444444444444444444");
         entriesListView.setAdapter(adapter);
+        Log.i("www","5555555555555555555555");
+
 
         /* Touch listener */
         entriesListView.setOnItemClickListener(onEntryClickListener);
@@ -333,86 +357,6 @@ public class LibraryActivity extends AppCompatActivity {
 
     }
 
-  /*  @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.library_menu, menu);
-        menuItemEncrypt = menu.findItem(R.id.action_encrypt);
-        menuItemDecrypt = menu.findItem(R.id.action_decrypt);
-        return true;
-    }*/
-
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        /* Show or hide every item in the menu */
-        for (int i = 0; i < menu.size(); i++) {
-            menu.getItem(i).setVisible(showMenu);
-        }
-        setCryptMenuItemsAccess();
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        switch (id) {
-            case R.id.action_settings:
-                return true;
-
-            case R.id.action_search:
-                return true;
-                // TODO: implement search
-
-            case R.id.action_create_folder:
-
-                // Create dialog
-                AlertDialog.Builder alert = new AlertDialog.Builder(this)
-                        .setTitle(R.string.create_folder_dialogue_title) //title
-                        .setMessage(R.string.create_folder_dialogue_description);
-
-                // Set an EditText view to get user input
-                final EditText newDirectoryNameInput = new EditText(this);
-                alert.setView(newDirectoryNameInput);
-
-                // Create new folder when user presses OK button
-                alert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int whichButton) {
-                        String name = "/" + newDirectoryNameInput.getText().toString();
-                        File folder = new File(currentDirectory.getAbsolutePath() + name);
-                        if (!folder.exists()) {
-                            folder.mkdir();
-                        }
-                        showDirectoryLayout(currentDirectory);
-                    }
-                });
-                alert.show();
-                return true;
-
-            case R.id.help_button:
-                // Create dialog
-                AlertDialog.Builder helpMe = new AlertDialog.Builder(this)
-                        .setTitle(R.string.information_window_title)
-                        .setMessage(R.string.information_window_description);
-
-                helpMe.show();
-                return true;
-
-            case R.id.action_encrypt:
-                cryptActionSelect(LibraryState.ENCRYPT_SELECTING);
-                return true;
-
-            case R.id.action_decrypt:
-                cryptActionSelect(LibraryState.DECRYPT_SELECTING);
-                return true;
-
-            case android.R.id.home:
-                handleUpAction();
-                return true;
-
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
 
     /**
      * Enters file selection mode, changes title and hides menu.
@@ -530,8 +474,10 @@ public class LibraryActivity extends AppCompatActivity {
 
 
     public void goBack(View v){
-      /*  Intent intent = new Intent(LibraryActivity.this, ChooseToDoActivity.class);
-        startActivity(intent);*/
         onBackPressed();
+    }
+    public void loadPage(View view) {
+        Intent intent = new Intent(LibraryActivity.this, LoadActivity.class);
+        startActivity(intent);
     }
 }

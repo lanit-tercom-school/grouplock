@@ -48,6 +48,7 @@ tools:context=".NumberOfKeysActivity"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="STEP 2"
+        android:visibility="invisible"
         android:id="@+id/textView"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
@@ -62,6 +63,25 @@ tools:context=".NumberOfKeysActivity"
         android:layout_alignTop="@+id/minKeys"
         android:layout_toRightOf="@+id/textView"
         android:layout_toEndOf="@+id/textView" />
+    <TextView
+        android:shape="ring"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="STEP 2"
+        android:id="@+id/textStep"
+        android:layout_alignBottom="@+id/entries_list_view"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:textColor="@color/colorToolbar"
+        android:visibility="visible"
+        android:textSize="14pt"
+        android:textIsSelectable="false"
+        android:textStyle="bold" />
 
 
 </RelativeLayout>
