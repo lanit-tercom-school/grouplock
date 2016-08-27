@@ -11,9 +11,10 @@ import UIKit
 protocol ProcessedFileInteractorInput {
     var files: [File] { get set }
     var processedFiles: [File] { get }
-    var encryptionKey: [String] { get set }
+    var cryptographicKey: [String] { get set }
+    var isEncryption: Bool { get set }
 
-    func encryptFiles(_ request: ProcessedFile.Fetch.Request)
+    func processFiles(_ request: ProcessedFile.Fetch.Request)
     func prepareFilesForSharing(_ request: ProcessedFile.Share.Request)
     func fileSelected(_ request: ProcessedFile.SelectFiles.Request)
     func fileDeselected(_ request: ProcessedFile.SelectFiles.Request)
@@ -28,7 +29,7 @@ protocol ProcessedFileInteractorOutput {
 class ProcessedFileInteractor: ProcessedFileInteractorInput {
 
     var output: ProcessedFileInteractorOutput!
-    private var cryptoLibrary: CryptoWrapperProtocol = CryptoFake()
+    var cryptoLibrary: CryptoWrapperProtocol = CryptoFake()
 
     // MARK: - Business logic
 
@@ -37,24 +38,29 @@ class ProcessedFileInteractor: ProcessedFileInteractorInput {
 
     private var selectedFiles = Set<IndexPath>()
 
-    var encryptionKey: [String] = []
+    var cryptographicKey: [String] = []
+    var isEncryption = true
 
-    func encryptFiles(_ request: ProcessedFile.Fetch.Request) {
+    func processFiles(_ request: ProcessedFile.Fetch.Request) {
 
-        func encrypt(_ file: File, withKey key: [String]) -> File {
+        func process(_ file: File, withKey key: [String]) -> File {
+
             if let dataToEncrypt = file.contents {
-                let encryptedData = cryptoLibrary.encrypt(image: dataToEncrypt, withEncryptionKey: key)
-                var encryptedFile = file
-                encryptedFile.contents = encryptedData
-                encryptedFile.encrypted = true
-                return encryptedFile
+                let processedData = isEncryption ?
+                    cryptoLibrary.encrypt(image: dataToEncrypt, withEncryptionKey: key) :
+                    cryptoLibrary.decrypt(image: dataToEncrypt, withDecryptionKey: key)
+
+                var processedFile = file
+                processedFile.contents = processedData
+                processedFile.encrypted = isEncryption
+                return processedFile
             } else {
                 return file
             }
         }
 
         DispatchQueue.global(qos: .userInitiated).async { [unowned self] in
-            self.processedFiles = self.files.map { encrypt($0, withKey: self.encryptionKey) }
+            self.processedFiles = self.files.map { process($0, withKey: self.cryptographicKey) }
 
             DispatchQueue.main.async { [unowned self] in
                 self.output.presentFiles(ProcessedFile.Fetch.Response(files: self.processedFiles))

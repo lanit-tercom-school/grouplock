@@ -16,9 +16,10 @@ protocol ProcessedFileViewControllerInput {
 protocol ProcessedFileViewControllerOutput {
     var files: [File] { get set }
     var processedFiles: [File] { get }
-    var encryptionKey: [String] { get set }
+    var cryptographicKey: [String] { get set }
+    var isEncryption: Bool { get set }
 
-    func encryptFiles(_ request: ProcessedFile.Fetch.Request)
+    func processFiles(_ request: ProcessedFile.Fetch.Request)
     func prepareFilesForSharing(_ request: ProcessedFile.Share.Request)
     func fileSelected(_ request: ProcessedFile.SelectFiles.Request)
     func fileDeselected(_ request: ProcessedFile.SelectFiles.Request)
@@ -43,7 +44,7 @@ class ProcessedFileViewController: UICollectionViewController, ProcessedFileView
         // swiftlint:disable:next force_unwrapping (when this method is invoked collectionView is initialized)
         collectionViewConfigurator.configure(collectionView!, allowsMultipleSelection: true)
 
-        output.encryptFiles(ProcessedFile.Fetch.Request())
+        output.processFiles(ProcessedFile.Fetch.Request())
     }
 
     // MARK: - Display logic

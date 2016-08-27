@@ -15,9 +15,13 @@ class ProcessedFileInteractorTests: XCTestCase {
     struct Seeds {
 
         struct Fetch {
-            static let response = ProcessedFile.Fetch.Response(files: [
+            static let encryptionResponse = ProcessedFile.Fetch.Response(files: [
                 File(contents: nil, encrypted: true, name: "File 1", type: "JPG"),
                 File(contents: nil, encrypted: true, name: "File 2", type: "PNG"),
+                ])
+            static let decryptionResponse = ProcessedFile.Fetch.Response(files: [
+                File(contents: nil, encrypted: false, name: "File 1", type: "JPG"),
+                File(contents: nil, encrypted: false, name: "File 2", type: "PNG"),
                 ])
         }
 
@@ -91,24 +95,79 @@ class ProcessedFileInteractorTests: XCTestCase {
         }
     }
 
+    class CryptoWrapperSpy: CryptoWrapperProtocol {
+
+        var encryptionCounter = 0
+        var decryptionCounter = 0
+
+        let maximumNumberOfKeys = 15
+
+        func getKeys(min: Int, max: Int) -> [String] {
+            return []
+        }
+
+        func validate(key: [String]) -> Bool {
+            return true
+        }
+
+        func validatePart(_ key: String) -> Bool {
+            return true
+        }
+
+        func encrypt(image: Data, withEncryptionKey key: [String]) -> Data? {
+            encryptionCounter += 1
+            return image
+        }
+
+        func decrypt(image: Data, withDecryptionKey key: [String]) -> Data? {
+            decryptionCounter += 1
+            return image
+        }
+    }
+
     // MARK: - Tests
 
-    func test_ThatProcessedFileInteractor_FormsCorrectResponseWhenAskedToFetchFiles() {
+    func test_ThatProcessedFileInteractor_FormsCorrectResponseWhenAskedToEncryptFiles() {
 
         // Given
         let processedFileInteractorOutputSpy = ProcessedFileInteractorOutputSpy()
         sut.output = processedFileInteractorOutputSpy
+        sut.isEncryption = true
         let predicate = NSPredicate { object, _ in
             (object as! ProcessedFileInteractorOutputSpy).fetchResponseReceived != nil
         }
-        expectation(for: predicate,
-                                                      evaluatedWith: processedFileInteractorOutputSpy)
+        expectation(for: predicate, evaluatedWith: processedFileInteractorOutputSpy)
 
         // When
-        sut.encryptFiles(ProcessedFile.Fetch.Request())
+        sut.processFiles(ProcessedFile.Fetch.Request())
 
         // Then
-        let expectedResponse = Seeds.Fetch.response
+        let expectedResponse = Seeds.Fetch.encryptionResponse
+
+        waitForExpectations(timeout: 1) { _ in
+            let returnedResponse = processedFileInteractorOutputSpy.fetchResponseReceived
+            XCTAssertEqual(expectedResponse, returnedResponse,
+                           "ProcessedFileInteractor should form a correct Fetch.Response and send it" +
+                " to its output")
+        }
+    }
+
+    func test_ThatProcessedFileInteractor_FormsCorrectResponseWhenAskedToDecryptFiles() {
+
+        // Given
+        let processedFileInteractorOutputSpy = ProcessedFileInteractorOutputSpy()
+        sut.output = processedFileInteractorOutputSpy
+        sut.isEncryption = false
+        let predicate = NSPredicate { object, _ in
+            (object as! ProcessedFileInteractorOutputSpy).fetchResponseReceived != nil
+        }
+        expectation(for: predicate, evaluatedWith: processedFileInteractorOutputSpy)
+
+        // When
+        sut.processFiles(ProcessedFile.Fetch.Request())
+
+        // Then
+        let expectedResponse = Seeds.Fetch.decryptionResponse
 
         waitForExpectations(timeout: 1) { _ in
             let returnedResponse = processedFileInteractorOutputSpy.fetchResponseReceived
@@ -163,6 +222,54 @@ class ProcessedFileInteractorTests: XCTestCase {
         XCTAssertEqual(expectedResponse, returnedResponse,
                        "ProcessedFileInteractor should form a correct Share.Response out of selected files" +
             " (even if some, but not all of them were later deselected) and send it to its output")
+    }
+
+    func test_ThatProcessedFileInteractor_AsksCryptoLibraryToEncryptFiles() {
+
+        // Given
+        let cryptoWrapperSpy = CryptoWrapperSpy()
+        sut.cryptoLibrary = cryptoWrapperSpy
+        sut.output = ProcessedFileInteractorOutputSpy()
+        sut.isEncryption = true
+        let predicate = NSPredicate { object, _ -> Bool in
+            (object as! CryptoWrapperSpy).encryptionCounter > 0
+        }
+        expectation(for: predicate, evaluatedWith: cryptoWrapperSpy)
+
+        // When
+        sut.processFiles(ProcessedFile.Fetch.Request())
+
+        // Then
+        waitForExpectations(timeout: 1) { error in
+            if error != nil {
+                XCTFail("ProcessFileInteractor should ask crypto library to encrypt files if isEncryption is" +
+                    " set to true")
+            }
+        }
+    }
+
+    func test_ThatProcessedFileInteractor_AsksCryptoLibraryToDecryptFiles() {
+
+        // Given
+        let cryptoWrapperSpy = CryptoWrapperSpy()
+        sut.cryptoLibrary = cryptoWrapperSpy
+        sut.output = ProcessedFileInteractorOutputSpy()
+        sut.isEncryption = false
+        let predicate = NSPredicate { object, _ -> Bool in
+            (object as! CryptoWrapperSpy).decryptionCounter > 0
+        }
+        expectation(for: predicate, evaluatedWith: cryptoWrapperSpy)
+
+        // When
+        sut.processFiles(ProcessedFile.Fetch.Request())
+
+        // Then
+        waitForExpectations(timeout: 1) { error in
+            if error != nil {
+                XCTFail("ProcessFileInteractor should ask crypto library to decrypt files if isEncryption is" +
+                    " set to false")
+            }
+        }
     }
 }
 // swiftlint:enbale force_cast

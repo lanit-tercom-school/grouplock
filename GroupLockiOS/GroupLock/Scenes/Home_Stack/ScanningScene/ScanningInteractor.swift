@@ -10,6 +10,7 @@
 import AVFoundation
 
 protocol ScanningInteractorInput: class {
+    var files: [File] { get set }
     var captureSession: AVCaptureSession! { get }
     var scannedKeys: [String] { get }
     var metadataOutputObjectsDelegate: AVCaptureMetadataOutputObjectsDelegate? { get }
@@ -28,6 +29,7 @@ class ScanningInteractor: ScanningInteractorInput {
     var output: ScanningInteractorOutput!
     var metadataOutputObjectsDelegate: AVCaptureMetadataOutputObjectsDelegate?
 
+    var files: [File] = []
     var captureSession: AVCaptureSession!
     var cryptoLibrary: CryptoWrapperProtocol = CryptoFake()
 

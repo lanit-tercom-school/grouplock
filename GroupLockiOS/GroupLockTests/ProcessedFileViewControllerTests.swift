@@ -79,9 +79,10 @@ class ProcessedFileViewControllerTests: XCTestCase {
 
         var files: [File] = []
         var processedFiles: [File] = []
-        var encryptionKey = [""]
+        var cryptographicKey = [""]
+        var isEncryption = true
 
-        func encryptFiles(_ request: ProcessedFile.Fetch.Request) {
+        func processFiles(_ request: ProcessedFile.Fetch.Request) {
             fetchFiles_called = true
         }
 

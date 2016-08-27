@@ -400,6 +400,9 @@
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="WhiteTextButton"/>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <segue destination="EMn-t3-28b" kind="show" identifier="ProcessedFile" id="Zsr-Pl-0PI"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -440,18 +443,6 @@
                                     <action selector="onBack:" destination="Sli-Ax-YQY" eventType="touchUpInside" id="yUt-5a-PSa"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bP9-Kj-ii5">
-                                <inset key="contentEdgeInsets" minX="22" minY="0.0" maxX="44" maxY="0.0"/>
-                                <state key="normal" title="Next">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="TranslucentBlackView:ScanningTopLabel"/>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <segue destination="EMn-t3-28b" kind="show" id="5UJ-xm-iOd"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.42032623291015625" green="0.58430171012878418" blue="0.13027089834213257" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -459,9 +450,6 @@
                             <constraint firstItem="QwA-XF-sP8" firstAttribute="leading" secondItem="2Dd-3q-jjF" secondAttribute="leadingMargin" constant="-42" id="DFh-c0-h5U"/>
                             <constraint firstAttribute="trailing" secondItem="dGf-eP-IyT" secondAttribute="trailing" id="IFB-6g-rHO"/>
                             <constraint firstItem="iVA-Do-3xN" firstAttribute="top" secondItem="dGf-eP-IyT" secondAttribute="bottom" id="Lay-BN-Nn2"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="bP9-Kj-ii5" secondAttribute="trailing" constant="-42" id="MFO-yZ-HXw"/>
-                            <constraint firstItem="bP9-Kj-ii5" firstAttribute="top" secondItem="mGO-bB-SqJ" secondAttribute="top" id="dFE-iw-OP9"/>
-                            <constraint firstItem="bP9-Kj-ii5" firstAttribute="height" secondItem="mGO-bB-SqJ" secondAttribute="height" id="eUl-hr-oQV"/>
                             <constraint firstItem="QwA-XF-sP8" firstAttribute="height" secondItem="mGO-bB-SqJ" secondAttribute="height" id="hdi-a2-LKI"/>
                             <constraint firstItem="mGO-bB-SqJ" firstAttribute="centerX" secondItem="2Dd-3q-jjF" secondAttribute="centerX" id="jX9-uB-agH"/>
                             <constraint firstItem="dGf-eP-IyT" firstAttribute="leading" secondItem="2Dd-3q-jjF" secondAttribute="leading" id="kBE-kc-S0Y"/>
@@ -569,7 +557,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="QRCodeCell" id="bNQ-5u-euP" customClass="ProvideKeyCell" customModule="GroupLock" customModuleProvider="target">
-                                <rect key="frame" x="91.5" y="0.0" width="192" height="192"/>
+                                <rect key="frame" x="92" y="0.0" width="192" height="192"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="192" height="192"/>
@@ -819,18 +807,18 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CMQ-io-mJo" id="PXS-Ch-vZO">
-                                    <frame key="frameInset" width="375" height="44"/>
+                                    <frame key="frameInset" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="file.bmp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LO5-ML-5ov">
-                                            <frame key="frameInset" minX="15" minY="12" width="59" height="19.5"/>
+                                            <frame key="frameInset" minX="15" minY="12" width="59" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NSk-7V-N2j">
-                                            <frame key="frameInset" minX="318.5" minY="12" width="41.5" height="19.5"/>
+                                            <frame key="frameInset" minX="318" minY="12" width="42" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -957,6 +945,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="KN1-gi-ukS"/>
-        <segue reference="jDq-Ks-DDQ"/>
+        <segue reference="Zsr-Pl-0PI"/>
     </inferredMetricsTieBreakers>
 </document>

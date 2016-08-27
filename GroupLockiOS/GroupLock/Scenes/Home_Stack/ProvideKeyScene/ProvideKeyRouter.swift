@@ -34,6 +34,7 @@ class ProvideKeyRouter: ProvideKeyRouterInput {
         // swiftlint:disable:next force_cast (since the destination is known)
         let processedFileViewController = segue.destination as! ProcessedFileViewController
         processedFileViewController.output.files = viewController.output.files
-        processedFileViewController.output.encryptionKey = viewController.output.keys
+        processedFileViewController.output.cryptographicKey = viewController.output.keys
+        processedFileViewController.output.isEncryption = true
     }
 }
