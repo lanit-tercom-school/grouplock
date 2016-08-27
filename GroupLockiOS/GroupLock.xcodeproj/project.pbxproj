@@ -45,7 +45,7 @@
 		8741584C1D5203FC004B2D63 /* ProvideKeyPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874158481D5203FC004B2D63 /* ProvideKeyPresenterTests.swift */; };
 		8741584D1D5203FC004B2D63 /* ProvideKeyViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874158491D5203FC004B2D63 /* ProvideKeyViewControllerTests.swift */; };
 		8741CE871CE6872D0034A820 /* LibraryDirectoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8741CE861CE6872D0034A820 /* LibraryDirectoryViewController.swift */; };
-		8744EBDD1D636C0500624392 /* Pixel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8744EBDC1D636C0500624392 /* Pixel.swift */; };
+		8744EBDD1D636C0500624392 /* CGImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8744EBDC1D636C0500624392 /* CGImage.swift */; };
 		8744EBDF1D63B52F00624392 /* CryptoFakeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8744EBDE1D63B52F00624392 /* CryptoFakeTests.swift */; };
 		8744EBE11D63B53900624392 /* grumpy.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8744EBE01D63B53900624392 /* grumpy.jpg */; };
 		8748017E1D365349001A086C /* PresentedDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8748017D1D365349001A086C /* PresentedDataSource.swift */; };
@@ -177,7 +177,7 @@
 		874158481D5203FC004B2D63 /* ProvideKeyPresenterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProvideKeyPresenterTests.swift; sourceTree = "<group>"; };
 		874158491D5203FC004B2D63 /* ProvideKeyViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ProvideKeyViewControllerTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		8741CE861CE6872D0034A820 /* LibraryDirectoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LibraryDirectoryViewController.swift; path = Scenes/Library_Stack/LibraryDirectoryViewController.swift; sourceTree = "<group>"; };
-		8744EBDC1D636C0500624392 /* Pixel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Pixel.swift; path = Core/FakeCryptoLibrary/Pixel.swift; sourceTree = "<group>"; };
+		8744EBDC1D636C0500624392 /* CGImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CGImage.swift; path = Class_Extensions/CGImage.swift; sourceTree = "<group>"; };
 		8744EBDE1D63B52F00624392 /* CryptoFakeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CryptoFakeTests.swift; sourceTree = "<group>"; };
 		8744EBE01D63B53900624392 /* grumpy.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = grumpy.jpg; sourceTree = "<group>"; };
 		8748017D1D365349001A086C /* PresentedDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PresentedDataSource.swift; path = Scenes/Home_Stack/ChooseFileScene/PresentedDataSource.swift; sourceTree = "<group>"; };
@@ -403,7 +403,6 @@
 		8744EBDB1D636BD100624392 /* FakeCryptoLibrary */ = {
 			isa = PBXGroup;
 			children = (
-				8744EBDC1D636C0500624392 /* Pixel.swift */,
 				875BC69D1D63C70A003457CE /* LinearCongruentialGenerator.swift */,
 			);
 			name = FakeCryptoLibrary;
@@ -427,6 +426,7 @@
 				87B6927E1CB45188008ACB6A /* UIViewController.swift */,
 				870912261D523B66006222BA /* Agrume.swift */,
 				87DB46041D620E1100F64F35 /* CGPath.swift */,
+				8744EBDC1D636C0500624392 /* CGImage.swift */,
 			);
 			name = "Class Extensions";
 			sourceTree = "<group>";
@@ -930,7 +930,7 @@
 				8730226F1D42197100222606 /* ProcessedFileModels.swift in Sources */,
 				87FFF04E1D34E9AE007315C7 /* ChooseFileConfigurator.swift in Sources */,
 				870912271D523B66006222BA /* Agrume.swift in Sources */,
-				8744EBDD1D636C0500624392 /* Pixel.swift in Sources */,
+				8744EBDD1D636C0500624392 /* CGImage.swift in Sources */,
 				87D0AE111D59E190005BDCFD /* ScanningRouter.swift in Sources */,
 				874801821D3660D7001A086C /* CollectionViewGridLayout.swift in Sources */,
 				8704DEB71D3CD0CC0017F88E /* File.swift in Sources */,
@@ -1234,7 +1234,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "lanit-tercom-school.GroupLockTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GroupLock.app/GroupLock";
 			};
