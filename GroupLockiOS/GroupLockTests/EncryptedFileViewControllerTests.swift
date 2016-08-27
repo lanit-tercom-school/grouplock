@@ -51,24 +51,18 @@ class EncryptedFileViewControllerTests: XCTestCase {
         setupEncryptedFileViewController()
     }
 
-    override func tearDown() {
-
-        window = nil
-        super.tearDown()
-    }
-
     // MARK: - Test setup
 
     func setupEncryptedFileViewController() {
 
-        let bundle = Bundle.main
-        let storyboard = UIStoryboard(name: "Main", bundle: bundle)
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         sut = storyboard.instantiateViewController(
             withIdentifier: "EncryptedFileViewController") as! EncryptedFileViewController
     }
 
     func loadView() {
         window.addSubview(sut.view)
+
         RunLoop.current.run(until: Date())
     }
 
@@ -83,9 +77,11 @@ class EncryptedFileViewControllerTests: XCTestCase {
         var selectedFileIndexPath: IndexPath?
         var deselectedFileIndexPath: IndexPath?
 
+        var files: [File] = []
         var encryptedFiles: [File] = []
+        var encryptionKey = [""]
 
-        func fetchFiles(_ request: EncryptedFile.Fetch.Request) {
+        func encryptFiles(_ request: EncryptedFile.Fetch.Request) {
             fetchFiles_called = true
         }
 
@@ -129,7 +125,8 @@ class EncryptedFileViewControllerTests: XCTestCase {
 
         func collectionView(_ collectionView: UICollectionView,
                             cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            return UICollectionViewCell()
+            collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "reuse_id")
+            return collectionView.dequeueReusableCell(withReuseIdentifier: "reuse_id", for: indexPath)
         }
     }
 
@@ -218,6 +215,7 @@ class EncryptedFileViewControllerTests: XCTestCase {
     func test_ThatEncryptedFileViewController_displaysFiles() {
 
         // Given
+        loadView()
         let encryptedFileDataSourceMock = EncryptedFileDataSourceMock()
         let collectionViewMock = UICollectionViewMock(frame: CGRect.zero,
                                                     collectionViewLayout: UICollectionViewFlowLayout())
@@ -225,7 +223,6 @@ class EncryptedFileViewControllerTests: XCTestCase {
         sut.collectionView = collectionViewMock
 
         // When
-        loadView()
         sut.displayFiles(Seeds.Fetch.viewModel)
 
         // Then

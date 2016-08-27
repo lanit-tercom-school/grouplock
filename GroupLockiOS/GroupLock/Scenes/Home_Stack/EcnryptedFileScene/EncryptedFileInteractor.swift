@@ -9,9 +9,11 @@
 import UIKit
 
 protocol EncryptedFileInteractorInput {
-    var encryptedFiles: [File] { get set }
+    var files: [File] { get set }
+    var encryptedFiles: [File] { get }
+    var encryptionKey: [String] { get set }
 
-    func fetchFiles(_ request: EncryptedFile.Fetch.Request)
+    func encryptFiles(_ request: EncryptedFile.Fetch.Request)
     func prepareFilesForSharing(_ request: EncryptedFile.Share.Request)
     func fileSelected(_ request: EncryptedFile.SelectFiles.Request)
     func fileDeselected(_ request: EncryptedFile.SelectFiles.Request)
@@ -23,34 +25,41 @@ protocol EncryptedFileInteractorOutput {
     func shareFiles(_ response: EncryptedFile.Share.Response)
 }
 
-// swiftlint:disable line_length
-/*
-struct HardcodedFiles {
-    static let ef = [
-        File(name: "File 1", type: "JPG", encrypted: true, contents: NSData(contentsOfURL: NSBundle.mainBundle().URLForResource("test-image", withExtension: "png")!)),
-        File(name: "File 2", type: "JPG", encrypted: true, contents: NSData(contentsOfURL: NSBundle.mainBundle().URLForResource("test-image", withExtension: "png")!)),
-        File(name: "File 3", type: "JPG", encrypted: true, contents: NSData(contentsOfURL: NSBundle.mainBundle().URLForResource("test-image", withExtension: "png")!)),
-        File(name: "File 4", type: "JPG", encrypted: true, contents: NSData(contentsOfURL: NSBundle.mainBundle().URLForResource("test-image", withExtension: "png")!)),
-        File(name: "File 5", type: "JPG", encrypted: true, contents: NSData(contentsOfURL: NSBundle.mainBundle().URLForResource("test-image", withExtension: "png")!))
-    ]
-}
-*/
-// swiftlint:enable line_length
-
 class EncryptedFileInteractor: EncryptedFileInteractorInput {
 
     var output: EncryptedFileInteractorOutput!
+    private var cryptoLibrary: CryptoWrapperProtocol = CryptoFake()
 
     // MARK: - Business logic
 
-    var encryptedFiles: [File] = []/* = HardcodedFiles.ef */
+    var files: [File] = []
+    var encryptedFiles: [File] = []
 
     private var selectedFiles = Set<IndexPath>()
 
-    func fetchFiles(_ request: EncryptedFile.Fetch.Request) {
+    var encryptionKey: [String] = []
 
-        let response = EncryptedFile.Fetch.Response(files: encryptedFiles)
-        output.presentFiles(response)
+    func encryptFiles(_ request: EncryptedFile.Fetch.Request) {
+
+        func encrypt(_ file: File, withKey key: [String]) -> File {
+            if let dataToEncrypt = file.contents {
+                let encryptedData = cryptoLibrary.encrypt(image: dataToEncrypt, withEncryptionKey: key)
+                var encryptedFile = file
+                encryptedFile.contents = encryptedData
+                encryptedFile.encrypted = true
+                return encryptedFile
+            } else {
+                return file
+            }
+        }
+
+        DispatchQueue.global(qos: .userInitiated).async { [unowned self] in
+            self.encryptedFiles = self.files.map { encrypt($0, withKey: self.encryptionKey) }
+
+            DispatchQueue.main.async { [unowned self] in
+                self.output.presentFiles(EncryptedFile.Fetch.Response(files: self.encryptedFiles))
+            }
+        }
     }
 
     func prepareFilesForSharing(_ request: EncryptedFile.Share.Request) {

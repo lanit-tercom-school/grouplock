@@ -64,6 +64,7 @@ class ProvideKeyViewControllerTests: XCTestCase {
 
         var files: [File] = []
         var numberOfKeys = (0, 0)
+        var keys = [""]
         func getKeys(_ request: ProvideKey.Configure.Request) {
             getKeys_called = true
         }

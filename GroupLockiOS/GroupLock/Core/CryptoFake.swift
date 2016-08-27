@@ -35,7 +35,7 @@ class CryptoFake: CryptoWrapperProtocol {
 
         return splitKey(stringKey, intoParts: max)
             .enumerated()
-            .map { String(format: "%02d_%02d_", $0, max) + $1 }
+            .map { String(format: "%02d%02d", $0, max) + $1 }
     }
 
     private func splitKey(_ key: String, intoParts parts: Int) -> [String] {
@@ -63,10 +63,10 @@ class CryptoFake: CryptoWrapperProtocol {
     }
 
     func validatePart(_ key: String) -> Bool {
-        let regex = try? NSRegularExpression(pattern: "[0-9]{2}_[0-9]{2}_[0-9]+", options: [])
+        let regex = try? NSRegularExpression(pattern: "[0-9]+", options: [])
         let stringToMatch = key as NSString
         return !(regex?.matches(in: key, options: [],
-            range: NSRange(location: 0, length: stringToMatch.length)).isEmpty ?? true)
+                                range: NSRange(location: 0, length: stringToMatch.length)).isEmpty ?? true)
     }
 
     /**
@@ -136,12 +136,15 @@ class CryptoFake: CryptoWrapperProtocol {
         guard keys.map(validatePart).reduce(true, { $0 && $1 }) else { return nil }
 
         return mergeKeys(
-            keys.map { $0.characters.split(separator: "_") }.map { characters -> (Int, String) in
+            keys.map { (key: String) -> (Int, String) in
 
-            // swiftlint:disable:next force_unwrapping (since we validate the key)
-            let number = Int(String(characters[0]))!
-            let key = String(characters[2])
-            return (number, key)
+                let numberIndex = key.index(key.startIndex, offsetBy: 2)
+                let keyIndex = key.index(key.startIndex, offsetBy: 4)
+
+                // swiftlint:disable:next force_unwrapping (since we validate the key)
+                let number = Int(key.substring(to: numberIndex))!
+                let key = key.substring(from: keyIndex)
+                return (number, key)
             }.sorted { $0.0 < $0.0 }.map { $0.1 }
         )
     }
@@ -171,13 +174,13 @@ class CryptoFake: CryptoWrapperProtocol {
                            decode: nil,
                            shouldInterpolate: false,
                            intent: .defaultIntent)!
-            // swiftlint:disable:previous force_unwrapping (since we check for type)
+        // swiftlint:disable:previous force_unwrapping (since we check for type)
         case .some("PNG"):
             return CGImage(pngDataProviderSource: cgDataProvider,
                            decode: nil,
                            shouldInterpolate: false,
                            intent: .defaultIntent)!
-            // swiftlint:disable:previous force_unwrapping (since we check for type)
+        // swiftlint:disable:previous force_unwrapping (since we check for type)
         default:
             return nil
         }

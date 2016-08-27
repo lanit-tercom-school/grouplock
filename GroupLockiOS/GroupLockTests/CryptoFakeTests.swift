@@ -15,7 +15,7 @@ class CryptoFakeTests: XCTestCase {
 
     var sut: CryptoFake!
 
-    let encryptionKey = "01_01_014135065011031120213098090225235002159164069053046054089221166018143" +
+    let encryptionKey = "0101014135065011031120213098090225235002159164069053046054089221166018143" +
     "252176014191220128248108194211155076048237028002186"
 
     let dataToEncrypt = try! Data(contentsOf: Bundle(for: CryptoFakeTests.self)
@@ -79,7 +79,7 @@ class CryptoFakeTests: XCTestCase {
 
         // Then
         XCTAssertNotNil(key)
-        XCTAssertEqual(key?.characters.count, 126, "120-digit key should be generated with 6 prefix symbols")
+        XCTAssertEqual(key?.characters.count, 124, "120-digit key should be generated with 6 prefix symbols")
 
         // When
         let encryptedData = sut.encrypt(image: dataToEncrypt, withEncryptionKey: [key!])
@@ -92,7 +92,7 @@ class CryptoFakeTests: XCTestCase {
 
         // Then
         XCTAssertEqual(sharedKey.count, 13, "CryptoFake should generate an array of keys for shared secret")
-        XCTAssertTrue(sharedKey[3].hasPrefix("03_13_"),
+        XCTAssertTrue(sharedKey[3].hasPrefix("0313"),
                       "Splitted key should contain information about its index and overall number of keys")
     }
 
@@ -100,10 +100,10 @@ class CryptoFakeTests: XCTestCase {
 
         // Given
         let validKey = [encryptionKey]
-        let wrongNumbersKey = ["01_01_999367-11876"]
-        let wrongCharactersKey = ["01_01_abcdefghijklmnopqrstuvwxyz"]
-        let tooShortKey = ["01_01_123123123"]
-        let incompleteKey = ["01_01_12312312312"]
+        let wrongNumbersKey = ["0101999367-11876"]
+        let wrongCharactersKey = ["0101abcdefghijklmnopqrstuvwxyz"]
+        let tooShortKey = ["0101123123123"]
+        let incompleteKey = ["010112312312312"]
 
         // When
 

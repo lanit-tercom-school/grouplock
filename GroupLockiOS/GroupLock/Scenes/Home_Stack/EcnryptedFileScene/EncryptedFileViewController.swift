@@ -14,9 +14,11 @@ protocol EncryptedFileViewControllerInput {
 }
 
 protocol EncryptedFileViewControllerOutput {
-    var encryptedFiles: [File] { get set }
+    var files: [File] { get set }
+    var encryptedFiles: [File] { get }
+    var encryptionKey: [String] { get set }
 
-    func fetchFiles(_ request: EncryptedFile.Fetch.Request)
+    func encryptFiles(_ request: EncryptedFile.Fetch.Request)
     func prepareFilesForSharing(_ request: EncryptedFile.Share.Request)
     func fileSelected(_ request: EncryptedFile.SelectFiles.Request)
     func fileDeselected(_ request: EncryptedFile.SelectFiles.Request)
@@ -31,6 +33,8 @@ class EncryptedFileViewController: UICollectionViewController, EncryptedFileView
     var collectionViewDataSource: EncryptedFileDataSourceProtocol = EncryptedFileDataSource()
     var collectionViewConfigurator: CollectionViewConfiguratorProtocol = CollectionViewConfigurator()
 
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
+
     // MARK: - View Controller lifecycle
 
     override func viewDidLoad() {
@@ -38,17 +42,22 @@ class EncryptedFileViewController: UICollectionViewController, EncryptedFileView
 
         // swiftlint:disable:next force_unwrapping (when this method is invoked collectionView is initialized)
         collectionViewConfigurator.configure(collectionView!, allowsMultipleSelection: true)
-        output.fetchFiles(EncryptedFile.Fetch.Request())
+
+        output.encryptFiles(EncryptedFile.Fetch.Request())
     }
 
     // MARK: - Display logic
 
     func displayFiles(_ viewModel: EncryptedFile.Fetch.ViewModel) {
+
         collectionViewDataSource.updateViewModel(viewModel)
+
         // swiftlint:disable force_unwrapping (when this method is invoked collectionView is initialized)
         collectionView!.dataSource = collectionViewDataSource
         collectionView!.reloadData()
         // swiftlint:enable force_unwrapping
+
+        activityIndicator.stopAnimating()
     }
 
     func displaySharingInterface(_ response: EncryptedFile.Share.Response) {

@@ -14,12 +14,15 @@ class EncryptedFileInteractorTests: XCTestCase {
     struct Seeds {
 
         struct Fetch {
-            static let response = EncryptedFile.Fetch.Response(files: encryptedFiles)
+            static let response = EncryptedFile.Fetch.Response(files: [
+                File(contents: nil, encrypted: true, name: "File 1", type: "JPG"),
+                File(contents: nil, encrypted: true, name: "File 2", type: "PNG"),
+                ])
         }
 
         struct Share {
-            private static let dataToShareAfterFilesWereSelected = [fileContents[1]!, Data()]
-            private static let dataToShareAfterFileWasDeselected = [fileContents[1]!]
+            private static let dataToShareAfterFilesWereSelected = [fileContents[0]!, fileContents[1]!]
+            private static let dataToShareAfterFileWasDeselected = [fileContents[0]!]
             private static let excludedActivityTypes: [UIActivityType] = [
                 .print,
                 .postToVimeo,
@@ -38,11 +41,11 @@ class EncryptedFileInteractorTests: XCTestCase {
                 dataToShare: dataToShareAfterFileWasDeselected, excludedActivityTypes: excludedActivityTypes)
 
             static let selectedFilesIndexPaths = [
-                IndexPath(item: 1, section: 0),
-                IndexPath(item: 2, section: 0)
+                IndexPath(item: 0, section: 0),
+                IndexPath(item: 1, section: 0)
             ]
 
-            static let deselectedFileIndexPath = IndexPath(item: 2, section: 0)
+            static let deselectedFileIndexPath = IndexPath(item: 1, section: 0)
         }
 
         struct SaveFiles {
@@ -52,13 +55,11 @@ class EncryptedFileInteractorTests: XCTestCase {
         private static let fileContents = [
             "data1".data(using: String.Encoding.isoLatin1),
             "data2".data(using: String.Encoding.isoLatin1),
-            nil
         ]
 
-        static let encryptedFiles = [
-            File(contents: fileContents[0], encrypted: true, name: "File 1", type: "JPG"),
+        static let files = [
+            File(contents: fileContents[0], encrypted: false, name: "File 1", type: "JPG"),
             File(contents: fileContents[1], encrypted: false, name: "File 2", type: "PNG"),
-            File(contents: fileContents[2], encrypted: true, name: "File 3", type: "TIFF")
         ]
     }
 
@@ -70,7 +71,7 @@ class EncryptedFileInteractorTests: XCTestCase {
         super.setUp()
 
         sut = EncryptedFileInteractor()
-        sut.encryptedFiles = Seeds.encryptedFiles
+        sut.files = Seeds.files
     }
 
     // MARK: - Test doubles
@@ -96,17 +97,24 @@ class EncryptedFileInteractorTests: XCTestCase {
         // Given
         let encryptedFileInteractorOutputSpy = EncryptedFileInteractorOutputSpy()
         sut.output = encryptedFileInteractorOutputSpy
+        let predicate = NSPredicate { object, _ in
+            (object as! EncryptedFileInteractorOutputSpy).fetchResponseReceived != nil
+        }
+        expectation(for: predicate,
+                                                      evaluatedWith: encryptedFileInteractorOutputSpy)
 
         // When
-        sut.fetchFiles(EncryptedFile.Fetch.Request())
+        sut.encryptFiles(EncryptedFile.Fetch.Request())
 
         // Then
         let expectedResponse = Seeds.Fetch.response
-        let returnedResponse = encryptedFileInteractorOutputSpy.fetchResponseReceived
-        XCTAssertNotNil(returnedResponse,
-                        "EncryptedFileInteractor should invoke presentFiles(_:) method on its output")
-        XCTAssertEqual(expectedResponse, returnedResponse,
-                       "EncryptedFileInteractor should form a correct Fetch.Response and send it to its output")
+
+        waitForExpectations(timeout: 1) { _ in
+            let returnedResponse = encryptedFileInteractorOutputSpy.fetchResponseReceived
+            XCTAssertEqual(expectedResponse, returnedResponse,
+                           "EncryptedFileInteractor should form a correct Fetch.Response and send it" +
+                " to its output")
+        }
     }
 
     func test_ThatEncryptedFileInteractor_PreparesSelectedFilesForSharing() {
@@ -114,6 +122,7 @@ class EncryptedFileInteractorTests: XCTestCase {
         // Given
         let encryptedFileInteractorOutputSpy = EncryptedFileInteractorOutputSpy()
         sut.output = encryptedFileInteractorOutputSpy
+        sut.encryptedFiles = Seeds.files
 
         // When
         for selectedFileIndexPath in Seeds.Share.selectedFilesIndexPaths {
@@ -136,6 +145,7 @@ class EncryptedFileInteractorTests: XCTestCase {
         // Given
         let encryptedFileInteractorOutputSpy = EncryptedFileInteractorOutputSpy()
         sut.output = encryptedFileInteractorOutputSpy
+        sut.encryptedFiles = Seeds.files
 
         // When
         for selectedFileIndexPath in Seeds.Share.selectedFilesIndexPaths {
