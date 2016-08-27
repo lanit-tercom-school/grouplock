@@ -1,5 +1,5 @@
 //
-//  EncryptedFileConfigurator.swift
+//  ProcessedFileConfigurator.swift
 //  GroupLock
 //
 //  Created by Sergej Jaskiewicz on 22.07.16.
@@ -10,28 +10,28 @@ import UIKit
 
 // MARK: - Connect View, Interactor, and Presenter
 
-extension EncryptedFileViewController: EncryptedFilePresenterOutput {
+extension ProcessedFileViewController: ProcessedFilePresenterOutput {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         router.passDataToNextScene(segue)
     }
 }
 
-extension EncryptedFileInteractor: EncryptedFileViewControllerOutput {}
+extension ProcessedFileInteractor: ProcessedFileViewControllerOutput {}
 
-extension EncryptedFilePresenter: EncryptedFileInteractorOutput {}
+extension ProcessedFilePresenter: ProcessedFileInteractorOutput {}
 
-class EncryptedFileConfigurator {
+class ProcessedFileConfigurator {
 
     // MARK: - Configuration
 
-    static func configure(_ viewController: EncryptedFileViewController) {
-        let router = EncryptedFileRouter()
+    static func configure(_ viewController: ProcessedFileViewController) {
+        let router = ProcessedFileRouter()
         router.viewController = viewController
 
-        let presenter = EncryptedFilePresenter()
+        let presenter = ProcessedFilePresenter()
         presenter.output = viewController
 
-        let interactor = EncryptedFileInteractor()
+        let interactor = ProcessedFileInteractor()
         interactor.output = presenter
 
         viewController.output = interactor

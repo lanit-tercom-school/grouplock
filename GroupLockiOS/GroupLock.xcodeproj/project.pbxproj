@@ -29,14 +29,14 @@
 		870DBFA01D3F9BE9004430A5 /* NumberOfKeysViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870DBF9C1D3F9BE9004430A5 /* NumberOfKeysViewControllerTests.swift */; };
 		8713DE4B1CEFA5400089C92A /* ChooseFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8713DE4A1CEFA5400089C92A /* ChooseFileViewController.swift */; };
 		8713DE4F1CEFAAF30089C92A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8713DE4E1CEFAAF30089C92A /* HomeViewController.swift */; };
-		8730226D1D42197100222606 /* EncryptedFileConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873022661D42197100222606 /* EncryptedFileConfigurator.swift */; };
-		8730226E1D42197100222606 /* EncryptedFileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873022671D42197100222606 /* EncryptedFileInteractor.swift */; };
-		8730226F1D42197100222606 /* EncryptedFileModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873022681D42197100222606 /* EncryptedFileModels.swift */; };
-		873022701D42197100222606 /* EncryptedFilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873022691D42197100222606 /* EncryptedFilePresenter.swift */; };
-		873022711D42197100222606 /* EncryptedFileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8730226A1D42197100222606 /* EncryptedFileRouter.swift */; };
-		873022721D42197100222606 /* EncryptedFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8730226B1D42197100222606 /* EncryptedFileViewController.swift */; };
+		8730226D1D42197100222606 /* ProcessedFileConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873022661D42197100222606 /* ProcessedFileConfigurator.swift */; };
+		8730226E1D42197100222606 /* ProcessedFileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873022671D42197100222606 /* ProcessedFileInteractor.swift */; };
+		8730226F1D42197100222606 /* ProcessedFileModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873022681D42197100222606 /* ProcessedFileModels.swift */; };
+		873022701D42197100222606 /* ProcessedFilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873022691D42197100222606 /* ProcessedFilePresenter.swift */; };
+		873022711D42197100222606 /* ProcessedFileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8730226A1D42197100222606 /* ProcessedFileRouter.swift */; };
+		873022721D42197100222606 /* ProcessedFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8730226B1D42197100222606 /* ProcessedFileViewController.swift */; };
 		87305BE41CF0885C00CF7A87 /* UI.nss in Resources */ = {isa = PBXBuildFile; fileRef = 87305BE61CF0885C00CF7A87 /* UI.nss */; };
-		87309D011D422E24006E682A /* EncryptedFileDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87309D001D422E24006E682A /* EncryptedFileDataSource.swift */; };
+		87309D011D422E24006E682A /* ProcessedFileDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87309D001D422E24006E682A /* ProcessedFileDataSource.swift */; };
 		87309D021D425447006E682A /* test-image.png in Resources */ = {isa = PBXBuildFile; fileRef = 873419B41D3817BC005D036C /* test-image.png */; };
 		873419B21D37D686005D036C /* GroupLock.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 873419B01D37D686005D036C /* GroupLock.xcdatamodeld */; };
 		873419B51D3817BC005D036C /* test-image.png in Resources */ = {isa = PBXBuildFile; fileRef = 873419B41D3817BC005D036C /* test-image.png */; };
@@ -147,7 +147,7 @@
 		8704DEC61D3D03990017F88E /* ProvideKeyInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProvideKeyInteractor.swift; path = Scenes/Home_Stack/ProvideKeyScene/ProvideKeyInteractor.swift; sourceTree = "<group>"; };
 		8704DEC71D3D03990017F88E /* ProvideKeyModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProvideKeyModels.swift; path = Scenes/Home_Stack/ProvideKeyScene/ProvideKeyModels.swift; sourceTree = "<group>"; };
 		8704DEC81D3D03990017F88E /* ProvideKeyPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProvideKeyPresenter.swift; path = Scenes/Home_Stack/ProvideKeyScene/ProvideKeyPresenter.swift; sourceTree = "<group>"; };
-		8704DEC91D3D03990017F88E /* ProvideKeyRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProvideKeyRouter.swift; path = Scenes/Home_Stack/ProvideKeyScene/ProvideKeyRouter.swift; sourceTree = "<group>"; };
+		8704DEC91D3D03990017F88E /* ProvideKeyRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = ProvideKeyRouter.swift; path = Scenes/Home_Stack/ProvideKeyScene/ProvideKeyRouter.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		8704DECA1D3D03990017F88E /* ProvideKeyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProvideKeyViewController.swift; path = Scenes/Home_Stack/ProvideKeyScene/ProvideKeyViewController.swift; sourceTree = "<group>"; };
 		8704DED41D3D08320017F88E /* Crypto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Crypto.swift; path = Core/Crypto.swift; sourceTree = "<group>"; };
 		870912261D523B66006222BA /* Agrume.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Agrume.swift; path = Class_Extensions/Agrume.swift; sourceTree = "<group>"; };
@@ -162,20 +162,20 @@
 		870DBF9C1D3F9BE9004430A5 /* NumberOfKeysViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberOfKeysViewControllerTests.swift; sourceTree = "<group>"; };
 		8713DE4A1CEFA5400089C92A /* ChooseFileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChooseFileViewController.swift; path = Scenes/Home_Stack/ChooseFileScene/ChooseFileViewController.swift; sourceTree = "<group>"; };
 		8713DE4E1CEFAAF30089C92A /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = Scenes/Home_Stack/HomeViewController.swift; sourceTree = "<group>"; };
-		873022661D42197100222606 /* EncryptedFileConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EncryptedFileConfigurator.swift; path = Scenes/Home_Stack/EcnryptedFileScene/EncryptedFileConfigurator.swift; sourceTree = "<group>"; };
-		873022671D42197100222606 /* EncryptedFileInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EncryptedFileInteractor.swift; path = Scenes/Home_Stack/EcnryptedFileScene/EncryptedFileInteractor.swift; sourceTree = "<group>"; };
-		873022681D42197100222606 /* EncryptedFileModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EncryptedFileModels.swift; path = Scenes/Home_Stack/EcnryptedFileScene/EncryptedFileModels.swift; sourceTree = "<group>"; };
-		873022691D42197100222606 /* EncryptedFilePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EncryptedFilePresenter.swift; path = Scenes/Home_Stack/EcnryptedFileScene/EncryptedFilePresenter.swift; sourceTree = "<group>"; };
-		8730226A1D42197100222606 /* EncryptedFileRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EncryptedFileRouter.swift; path = Scenes/Home_Stack/EcnryptedFileScene/EncryptedFileRouter.swift; sourceTree = "<group>"; };
-		8730226B1D42197100222606 /* EncryptedFileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EncryptedFileViewController.swift; path = Scenes/Home_Stack/EcnryptedFileScene/EncryptedFileViewController.swift; sourceTree = "<group>"; };
+		873022661D42197100222606 /* ProcessedFileConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessedFileConfigurator.swift; sourceTree = "<group>"; };
+		873022671D42197100222606 /* ProcessedFileInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessedFileInteractor.swift; sourceTree = "<group>"; };
+		873022681D42197100222606 /* ProcessedFileModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessedFileModels.swift; sourceTree = "<group>"; };
+		873022691D42197100222606 /* ProcessedFilePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessedFilePresenter.swift; sourceTree = "<group>"; };
+		8730226A1D42197100222606 /* ProcessedFileRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ProcessedFileRouter.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		8730226B1D42197100222606 /* ProcessedFileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ProcessedFileViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		87305BE51CF0885C00CF7A87 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text; name = Base; path = Base.lproj/UI.nss; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.css; };
-		87309D001D422E24006E682A /* EncryptedFileDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EncryptedFileDataSource.swift; path = Scenes/Home_Stack/EcnryptedFileScene/EncryptedFileDataSource.swift; sourceTree = "<group>"; };
+		87309D001D422E24006E682A /* ProcessedFileDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessedFileDataSource.swift; sourceTree = "<group>"; };
 		873419B11D37D686005D036C /* GroupLock.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GroupLock.xcdatamodel; sourceTree = "<group>"; };
 		873419B41D3817BC005D036C /* test-image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "test-image.png"; sourceTree = "<group>"; };
 		873ED7B51CDAAD5E005A8656 /* FileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FileTableViewCell.swift; path = Scenes/Library_Stack/FileTableViewCell.swift; sourceTree = "<group>"; };
 		874158471D5203FC004B2D63 /* ProvideKeyInteractorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProvideKeyInteractorTests.swift; sourceTree = "<group>"; };
 		874158481D5203FC004B2D63 /* ProvideKeyPresenterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProvideKeyPresenterTests.swift; sourceTree = "<group>"; };
-		874158491D5203FC004B2D63 /* ProvideKeyViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProvideKeyViewControllerTests.swift; sourceTree = "<group>"; };
+		874158491D5203FC004B2D63 /* ProvideKeyViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ProvideKeyViewControllerTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		8741CE861CE6872D0034A820 /* LibraryDirectoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LibraryDirectoryViewController.swift; path = Scenes/Library_Stack/LibraryDirectoryViewController.swift; sourceTree = "<group>"; };
 		8744EBDC1D636C0500624392 /* Pixel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Pixel.swift; path = Core/FakeCryptoLibrary/Pixel.swift; sourceTree = "<group>"; };
 		8744EBDE1D63B52F00624392 /* CryptoFakeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CryptoFakeTests.swift; sourceTree = "<group>"; };
@@ -191,7 +191,7 @@
 		875BC69D1D63C70A003457CE /* LinearCongruentialGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LinearCongruentialGenerator.swift; path = Core/FakeCryptoLibrary/LinearCongruentialGenerator.swift; sourceTree = "<group>"; };
 		87671EC51D4622A100A0C353 /* EncryptedFileInteractorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncryptedFileInteractorTests.swift; sourceTree = "<group>"; };
 		87671EC61D4622A100A0C353 /* EncryptedFilePresenterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncryptedFilePresenterTests.swift; sourceTree = "<group>"; };
-		87671EC71D4622A100A0C353 /* EncryptedFileViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncryptedFileViewControllerTests.swift; sourceTree = "<group>"; };
+		87671EC71D4622A100A0C353 /* EncryptedFileViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = EncryptedFileViewControllerTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		87671ECD1D46249100A0C353 /* EncryptedFileDataSourceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncryptedFileDataSourceTests.swift; sourceTree = "<group>"; };
 		87736F0C1D3D49C200B93D7B /* KeyTypeConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyTypeConfigurator.swift; path = Scenes/Home_Stack/KeyTypeScene/KeyTypeConfigurator.swift; sourceTree = "<group>"; };
 		87736F0D1D3D49C200B93D7B /* KeyTypeInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyTypeInteractor.swift; path = Scenes/Home_Stack/KeyTypeScene/KeyTypeInteractor.swift; sourceTree = "<group>"; };
@@ -253,11 +253,11 @@
 		87FFF03C1D33C020007315C7 /* PasswordPresenterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordPresenterTests.swift; sourceTree = "<group>"; };
 		87FFF03D1D33C020007315C7 /* PasswordViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordViewControllerTests.swift; sourceTree = "<group>"; };
 		87FFF0481D34E9AE007315C7 /* ChooseFileConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChooseFileConfigurator.swift; path = Scenes/Home_Stack/ChooseFileScene/ChooseFileConfigurator.swift; sourceTree = "<group>"; };
-		87FFF0491D34E9AE007315C7 /* ChooseFileInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChooseFileInteractor.swift; path = Scenes/Home_Stack/ChooseFileScene/ChooseFileInteractor.swift; sourceTree = "<group>"; };
+		87FFF0491D34E9AE007315C7 /* ChooseFileInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = ChooseFileInteractor.swift; path = Scenes/Home_Stack/ChooseFileScene/ChooseFileInteractor.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		87FFF04A1D34E9AE007315C7 /* ChooseFileModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChooseFileModels.swift; path = Scenes/Home_Stack/ChooseFileScene/ChooseFileModels.swift; sourceTree = "<group>"; };
 		87FFF04B1D34E9AE007315C7 /* ChooseFilePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChooseFilePresenter.swift; path = Scenes/Home_Stack/ChooseFileScene/ChooseFilePresenter.swift; sourceTree = "<group>"; };
 		87FFF04C1D34E9AE007315C7 /* ChooseFileRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChooseFileRouter.swift; path = Scenes/Home_Stack/ChooseFileScene/ChooseFileRouter.swift; sourceTree = "<group>"; };
-		87FFF04D1D34E9AE007315C7 /* ChooseFileWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChooseFileWorker.swift; path = Scenes/Home_Stack/ChooseFileScene/ChooseFileWorker.swift; sourceTree = "<group>"; };
+		87FFF04D1D34E9AE007315C7 /* ChooseFileWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = ChooseFileWorker.swift; path = Scenes/Home_Stack/ChooseFileScene/ChooseFileWorker.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		8A5BAE3AF1557FD0CA843812 /* Pods-GroupLockUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GroupLockUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GroupLockUITests/Pods-GroupLockUITests.release.xcconfig"; sourceTree = "<group>"; };
 		8AE919D91D2F508A002024AC /* NumberOfKeysViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NumberOfKeysViewController.swift; path = Scenes/Home_Stack/NumberOfKeysScene/NumberOfKeysViewController.swift; sourceTree = "<group>"; };
 		AF19EA1836F48CDF9CE2777A /* Pods-GroupLockTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GroupLockTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GroupLockTests/Pods-GroupLockTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -348,24 +348,25 @@
 				87FAC9EE1D34ECB600FE3602 /* KeyTypeScene */,
 				87FAC9EF1D34ECBE00FE3602 /* NumberOfKeysScene */,
 				8704DEC41D3D031A0017F88E /* ProvideKeyScene */,
-				873022651D4213DE00222606 /* EncryptedFileScene */,
+				873022651D4213DE00222606 /* ProcessedFileScene */,
 				87D0AE051D59E154005BDCFD /* ScanningScene */,
 			);
 			name = "Home Stack";
 			sourceTree = "<group>";
 		};
-		873022651D4213DE00222606 /* EncryptedFileScene */ = {
+		873022651D4213DE00222606 /* ProcessedFileScene */ = {
 			isa = PBXGroup;
 			children = (
-				8730226A1D42197100222606 /* EncryptedFileRouter.swift */,
-				8730226B1D42197100222606 /* EncryptedFileViewController.swift */,
-				873022671D42197100222606 /* EncryptedFileInteractor.swift */,
-				873022691D42197100222606 /* EncryptedFilePresenter.swift */,
-				873022661D42197100222606 /* EncryptedFileConfigurator.swift */,
-				873022681D42197100222606 /* EncryptedFileModels.swift */,
-				87309D001D422E24006E682A /* EncryptedFileDataSource.swift */,
+				8730226A1D42197100222606 /* ProcessedFileRouter.swift */,
+				8730226B1D42197100222606 /* ProcessedFileViewController.swift */,
+				873022671D42197100222606 /* ProcessedFileInteractor.swift */,
+				873022691D42197100222606 /* ProcessedFilePresenter.swift */,
+				873022661D42197100222606 /* ProcessedFileConfigurator.swift */,
+				873022681D42197100222606 /* ProcessedFileModels.swift */,
+				87309D001D422E24006E682A /* ProcessedFileDataSource.swift */,
 			);
-			name = EncryptedFileScene;
+			name = ProcessedFileScene;
+			path = Scenes/Home_Stack/ProcessedFileScene;
 			sourceTree = "<group>";
 		};
 		873419AB1D37CB21005D036C /* Layout */ = {
@@ -916,7 +917,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				873022711D42197100222606 /* EncryptedFileRouter.swift in Sources */,
+				873022711D42197100222606 /* ProcessedFileRouter.swift in Sources */,
 				878C29A51CF0D7E300323C9D /* KeyTypeViewController.swift in Sources */,
 				87FFF0511D34E9AE007315C7 /* ChooseFilePresenter.swift in Sources */,
 				87FFF04F1D34E9AE007315C7 /* ChooseFileInteractor.swift in Sources */,
@@ -926,7 +927,7 @@
 				873ED7B61CDAAD5E005A8656 /* FileTableViewCell.swift in Sources */,
 				874BEC691CE9385400F6CDE9 /* ViewFileViewController.swift in Sources */,
 				8789D1991D465CAF0000AA8D /* FileCollectionViewCellProvider.swift in Sources */,
-				8730226F1D42197100222606 /* EncryptedFileModels.swift in Sources */,
+				8730226F1D42197100222606 /* ProcessedFileModels.swift in Sources */,
 				87FFF04E1D34E9AE007315C7 /* ChooseFileConfigurator.swift in Sources */,
 				870912271D523B66006222BA /* Agrume.swift in Sources */,
 				8744EBDD1D636C0500624392 /* Pixel.swift in Sources */,
@@ -934,7 +935,7 @@
 				874801821D3660D7001A086C /* CollectionViewGridLayout.swift in Sources */,
 				8704DEB71D3CD0CC0017F88E /* File.swift in Sources */,
 				87B692131CB425E0008ACB6A /* PasswordViewController.swift in Sources */,
-				8730226D1D42197100222606 /* EncryptedFileConfigurator.swift in Sources */,
+				8730226D1D42197100222606 /* ProcessedFileConfigurator.swift in Sources */,
 				87736F121D3D49C200B93D7B /* KeyTypeConfigurator.swift in Sources */,
 				87736F151D3D49C200B93D7B /* KeyTypePresenter.swift in Sources */,
 				879797081CCFA61E0064C3AC /* ManagedFile.swift in Sources */,
@@ -944,11 +945,11 @@
 				8713DE4F1CEFAAF30089C92A /* HomeViewController.swift in Sources */,
 				87FFF0311D33ACCE007315C7 /* PasswordPresenter.swift in Sources */,
 				87736F161D3D49C200B93D7B /* KeyTypeRouter.swift in Sources */,
-				873022701D42197100222606 /* EncryptedFilePresenter.swift in Sources */,
+				873022701D42197100222606 /* ProcessedFilePresenter.swift in Sources */,
 				87D0AE101D59E190005BDCFD /* ScanningPresenter.swift in Sources */,
 				87FFF02F1D33ACCE007315C7 /* PasswordInteractor.swift in Sources */,
 				8713DE4B1CEFA5400089C92A /* ChooseFileViewController.swift in Sources */,
-				873022721D42197100222606 /* EncryptedFileViewController.swift in Sources */,
+				873022721D42197100222606 /* ProcessedFileViewController.swift in Sources */,
 				87D0AE0F1D59E190005BDCFD /* ScanningModels.swift in Sources */,
 				87FFF0521D34E9AE007315C7 /* ChooseFileRouter.swift in Sources */,
 				87736F141D3D49C200B93D7B /* KeyTypeModels.swift in Sources */,
@@ -957,7 +958,7 @@
 				870DBF931D3F932C004430A5 /* NumberOfKeysInteractor.swift in Sources */,
 				87D0AE121D59E190005BDCFD /* ScanningViewController.swift in Sources */,
 				8704DED01D3D03990017F88E /* ProvideKeyRouter.swift in Sources */,
-				8730226E1D42197100222606 /* EncryptedFileInteractor.swift in Sources */,
+				8730226E1D42197100222606 /* ProcessedFileInteractor.swift in Sources */,
 				875BC69E1D63C70A003457CE /* LinearCongruentialGenerator.swift in Sources */,
 				87FFF0531D34E9AE007315C7 /* ChooseFileWorker.swift in Sources */,
 				87B509C11CD0B67A00641EC3 /* FileManager.swift in Sources */,
@@ -971,7 +972,7 @@
 				8704DED11D3D03990017F88E /* ProvideKeyViewController.swift in Sources */,
 				8704DEB31D3CCD8E0017F88E /* ManagedFile+CoreDataProperties.swift in Sources */,
 				87FD45381CE4B32800984269 /* Directory.swift in Sources */,
-				87309D011D422E24006E682A /* EncryptedFileDataSource.swift in Sources */,
+				87309D011D422E24006E682A /* ProcessedFileDataSource.swift in Sources */,
 				87FFF0321D33ACCE007315C7 /* PasswordRouter.swift in Sources */,
 				87736F131D3D49C200B93D7B /* KeyTypeInteractor.swift in Sources */,
 				8797970E1CCFEFB20064C3AC /* LibraryViewController.swift in Sources */,

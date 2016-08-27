@@ -1,5 +1,5 @@
 //
-//  EncryptedFileInteractorTests.swift
+//  ProcessedFileInteractorTests.swift
 //  GroupLock
 //
 //  Created by Sergej Jaskiewicz on 25.07.16.
@@ -9,12 +9,13 @@
 import XCTest
 @testable import GroupLock
 
-class EncryptedFileInteractorTests: XCTestCase {
+// swiftlint:disable force_cast
+class ProcessedFileInteractorTests: XCTestCase {
 
     struct Seeds {
 
         struct Fetch {
-            static let response = EncryptedFile.Fetch.Response(files: [
+            static let response = ProcessedFile.Fetch.Response(files: [
                 File(contents: nil, encrypted: true, name: "File 1", type: "JPG"),
                 File(contents: nil, encrypted: true, name: "File 2", type: "PNG"),
                 ])
@@ -32,12 +33,12 @@ class EncryptedFileInteractorTests: XCTestCase {
                 .postToFacebook,
                 .addToReadingList,
                 .postToTencentWeibo
-                ].sorted(by: { $0.rawValue < $1.rawValue })
+            ].sorted(by: { $0.rawValue < $1.rawValue })
 
-            static let responseAfterFilesWereSelected = EncryptedFile.Share.Response(
+            static let responseAfterFilesWereSelected = ProcessedFile.Share.Response(
                 dataToShare: dataToShareAfterFilesWereSelected, excludedActivityTypes: excludedActivityTypes)
 
-            static let responseAfterFileWasDeselected = EncryptedFile.Share.Response(
+            static let responseAfterFileWasDeselected = ProcessedFile.Share.Response(
                 dataToShare: dataToShareAfterFileWasDeselected, excludedActivityTypes: excludedActivityTypes)
 
             static let selectedFilesIndexPaths = [
@@ -64,103 +65,104 @@ class EncryptedFileInteractorTests: XCTestCase {
     }
 
     // MARK: Subject under test
-    var sut: EncryptedFileInteractor!
+    var sut: ProcessedFileInteractor!
 
     // MARK: - Test lifecycle
     override func setUp() {
         super.setUp()
 
-        sut = EncryptedFileInteractor()
+        sut = ProcessedFileInteractor()
         sut.files = Seeds.files
     }
 
     // MARK: - Test doubles
 
-    class EncryptedFileInteractorOutputSpy: EncryptedFileInteractorOutput {
+    class ProcessedFileInteractorOutputSpy: ProcessedFileInteractorOutput {
 
-        var fetchResponseReceived: EncryptedFile.Fetch.Response?
-        var shareResponseReceived: EncryptedFile.Share.Response?
+        var fetchResponseReceived: ProcessedFile.Fetch.Response?
+        var shareResponseReceived: ProcessedFile.Share.Response?
 
-        func presentFiles(_ response: EncryptedFile.Fetch.Response) {
+        func presentFiles(_ response: ProcessedFile.Fetch.Response) {
             fetchResponseReceived = response
         }
 
-        func shareFiles(_ response: EncryptedFile.Share.Response) {
+        func shareFiles(_ response: ProcessedFile.Share.Response) {
             shareResponseReceived = response
         }
     }
 
     // MARK: - Tests
 
-    func test_ThatEncryptedFileInteractor_FormsCorrectResponseWhenAskedToFetchFiles() {
+    func test_ThatProcessedFileInteractor_FormsCorrectResponseWhenAskedToFetchFiles() {
 
         // Given
-        let encryptedFileInteractorOutputSpy = EncryptedFileInteractorOutputSpy()
-        sut.output = encryptedFileInteractorOutputSpy
+        let processedFileInteractorOutputSpy = ProcessedFileInteractorOutputSpy()
+        sut.output = processedFileInteractorOutputSpy
         let predicate = NSPredicate { object, _ in
-            (object as! EncryptedFileInteractorOutputSpy).fetchResponseReceived != nil
+            (object as! ProcessedFileInteractorOutputSpy).fetchResponseReceived != nil
         }
         expectation(for: predicate,
-                                                      evaluatedWith: encryptedFileInteractorOutputSpy)
+                                                      evaluatedWith: processedFileInteractorOutputSpy)
 
         // When
-        sut.encryptFiles(EncryptedFile.Fetch.Request())
+        sut.encryptFiles(ProcessedFile.Fetch.Request())
 
         // Then
         let expectedResponse = Seeds.Fetch.response
 
         waitForExpectations(timeout: 1) { _ in
-            let returnedResponse = encryptedFileInteractorOutputSpy.fetchResponseReceived
+            let returnedResponse = processedFileInteractorOutputSpy.fetchResponseReceived
             XCTAssertEqual(expectedResponse, returnedResponse,
-                           "EncryptedFileInteractor should form a correct Fetch.Response and send it" +
+                           "ProcessedFileInteractor should form a correct Fetch.Response and send it" +
                 " to its output")
         }
     }
 
-    func test_ThatEncryptedFileInteractor_PreparesSelectedFilesForSharing() {
+    func test_ThatProcessedFileInteractor_PreparesSelectedFilesForSharing() {
 
         // Given
-        let encryptedFileInteractorOutputSpy = EncryptedFileInteractorOutputSpy()
-        sut.output = encryptedFileInteractorOutputSpy
-        sut.encryptedFiles = Seeds.files
+        let processedFileInteractorOutputSpy = ProcessedFileInteractorOutputSpy()
+        sut.output = processedFileInteractorOutputSpy
+        sut.processedFiles = Seeds.files
 
         // When
         for selectedFileIndexPath in Seeds.Share.selectedFilesIndexPaths {
-            sut.fileSelected(EncryptedFile.SelectFiles.Request(indexPath: selectedFileIndexPath))
+            sut.fileSelected(ProcessedFile.SelectFiles.Request(indexPath: selectedFileIndexPath))
         }
-        sut.prepareFilesForSharing(EncryptedFile.Share.Request())
+        sut.prepareFilesForSharing(ProcessedFile.Share.Request())
 
         // Then
         let expectedResponse = Seeds.Share.responseAfterFilesWereSelected
-        let returnedResponse = encryptedFileInteractorOutputSpy.shareResponseReceived
+        let returnedResponse = processedFileInteractorOutputSpy.shareResponseReceived
         XCTAssertNotNil(returnedResponse,
-                        "EncryptedFileInteractor should invoke shareFiles(_:) method on its output")
+                        "ProcessedFileInteractor should invoke shareFiles(_:) method on its output")
         XCTAssertEqual(expectedResponse, returnedResponse,
-                       "EncryptedFileInteractor should form a correct Share.Response out of selected files" +
+                       "ProcessedFileInteractor should form a correct Share.Response out of selected files" +
             " and send it to its output")
     }
 
-    func test_ThatEncryptedFileInteractor_PreparesSelectedButNotDeselectedFilesForSharing() {
+    func test_ThatProcessedFileInteractor_PreparesSelectedButNotDeselectedFilesForSharing() {
 
         // Given
-        let encryptedFileInteractorOutputSpy = EncryptedFileInteractorOutputSpy()
-        sut.output = encryptedFileInteractorOutputSpy
-        sut.encryptedFiles = Seeds.files
+        let processedFileInteractorOutputSpy = ProcessedFileInteractorOutputSpy()
+        sut.output = processedFileInteractorOutputSpy
+        sut.processedFiles = Seeds.files
 
         // When
         for selectedFileIndexPath in Seeds.Share.selectedFilesIndexPaths {
-            sut.fileSelected(EncryptedFile.SelectFiles.Request(indexPath: selectedFileIndexPath))
+            sut.fileSelected(ProcessedFile.SelectFiles.Request(indexPath: selectedFileIndexPath))
         }
-        sut.fileDeselected(EncryptedFile.SelectFiles.Request(indexPath: Seeds.Share.deselectedFileIndexPath))
-        sut.prepareFilesForSharing(EncryptedFile.Share.Request())
+        sut.fileDeselected(ProcessedFile.SelectFiles.Request(indexPath: Seeds.Share.deselectedFileIndexPath))
+        sut.prepareFilesForSharing(ProcessedFile.Share.Request())
 
         // Then
         let expectedResponse = Seeds.Share.responseAfterFileWasDeselected
-        let returnedResponse = encryptedFileInteractorOutputSpy.shareResponseReceived
+        let returnedResponse = processedFileInteractorOutputSpy.shareResponseReceived
         XCTAssertNotNil(returnedResponse,
-                        "EncryptedFileInteractor should invoke shareFiles(_:) method on its output")
+                        "ProcessedFileInteractor should invoke shareFiles(_:) method on its output")
         XCTAssertEqual(expectedResponse, returnedResponse,
-                       "EncryptedFileInteractor should form a correct Share.Response out of selected files" +
+                       "ProcessedFileInteractor should form a correct Share.Response out of selected files" +
             " (even if some, but not all of them were later deselected) and send it to its output")
     }
 }
+// swiftlint:enbale force_cast

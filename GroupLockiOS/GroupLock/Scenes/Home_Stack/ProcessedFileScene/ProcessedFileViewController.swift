@@ -1,5 +1,5 @@
 //
-//  EncryptedFileViewController.swift
+//  ProcessedFileViewController.swift
 //  GroupLock
 //
 //  Created by Sergej Jaskiewicz on 22.07.16.
@@ -8,29 +8,29 @@
 
 import UIKit
 
-protocol EncryptedFileViewControllerInput {
-    func displayFiles(_ viewModel: EncryptedFile.Fetch.ViewModel)
-    func displaySharingInterface(_ response: EncryptedFile.Share.Response)
+protocol ProcessedFileViewControllerInput {
+    func displayFiles(_ viewModel: ProcessedFile.Fetch.ViewModel)
+    func displaySharingInterface(_ response: ProcessedFile.Share.Response)
 }
 
-protocol EncryptedFileViewControllerOutput {
+protocol ProcessedFileViewControllerOutput {
     var files: [File] { get set }
-    var encryptedFiles: [File] { get }
+    var processedFiles: [File] { get }
     var encryptionKey: [String] { get set }
 
-    func encryptFiles(_ request: EncryptedFile.Fetch.Request)
-    func prepareFilesForSharing(_ request: EncryptedFile.Share.Request)
-    func fileSelected(_ request: EncryptedFile.SelectFiles.Request)
-    func fileDeselected(_ request: EncryptedFile.SelectFiles.Request)
-    func saveFiles(_ request: EncryptedFile.SaveFiles.Request)
+    func encryptFiles(_ request: ProcessedFile.Fetch.Request)
+    func prepareFilesForSharing(_ request: ProcessedFile.Share.Request)
+    func fileSelected(_ request: ProcessedFile.SelectFiles.Request)
+    func fileDeselected(_ request: ProcessedFile.SelectFiles.Request)
+    func saveFiles(_ request: ProcessedFile.SaveFiles.Request)
 }
 
-class EncryptedFileViewController: UICollectionViewController, EncryptedFileViewControllerInput {
+class ProcessedFileViewController: UICollectionViewController, ProcessedFileViewControllerInput {
 
-    var output: EncryptedFileViewControllerOutput!
-    var router: EncryptedFileRouter!
+    var output: ProcessedFileViewControllerOutput!
+    var router: ProcessedFileRouter!
 
-    var collectionViewDataSource: EncryptedFileDataSourceProtocol = EncryptedFileDataSource()
+    var collectionViewDataSource: ProcessedFileDataSourceProtocol = ProcessedFileDataSource()
     var collectionViewConfigurator: CollectionViewConfiguratorProtocol = CollectionViewConfigurator()
 
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
@@ -43,12 +43,12 @@ class EncryptedFileViewController: UICollectionViewController, EncryptedFileView
         // swiftlint:disable:next force_unwrapping (when this method is invoked collectionView is initialized)
         collectionViewConfigurator.configure(collectionView!, allowsMultipleSelection: true)
 
-        output.encryptFiles(EncryptedFile.Fetch.Request())
+        output.encryptFiles(ProcessedFile.Fetch.Request())
     }
 
     // MARK: - Display logic
 
-    func displayFiles(_ viewModel: EncryptedFile.Fetch.ViewModel) {
+    func displayFiles(_ viewModel: ProcessedFile.Fetch.ViewModel) {
 
         collectionViewDataSource.updateViewModel(viewModel)
 
@@ -60,7 +60,7 @@ class EncryptedFileViewController: UICollectionViewController, EncryptedFileView
         activityIndicator.stopAnimating()
     }
 
-    func displaySharingInterface(_ response: EncryptedFile.Share.Response) {
+    func displaySharingInterface(_ response: ProcessedFile.Share.Response) {
         // TODO: Disable Share button if no files were selected
         let activityViewController = UIActivityViewController(activityItems: response.dataToShare,
                                                               applicationActivities: nil)
@@ -73,16 +73,16 @@ class EncryptedFileViewController: UICollectionViewController, EncryptedFileView
     // MARK: - Event Handling
 
     @IBAction func onShareButton(_ sender: UIBarButtonItem) {
-        output.prepareFilesForSharing(EncryptedFile.Share.Request())
+        output.prepareFilesForSharing(ProcessedFile.Share.Request())
     }
 
     @IBAction func onSaveButton(_ sender: UIBarButtonItem) {
-        output.saveFiles(EncryptedFile.SaveFiles.Request())
+        output.saveFiles(ProcessedFile.SaveFiles.Request())
         router.returnToHomeScene()
     }
 }
 
-extension EncryptedFileViewController {
+extension ProcessedFileViewController {
 
     override func collectionView(_ collectionView: UICollectionView,
                                  didSelectItemAt indexPath: IndexPath) {
@@ -90,7 +90,7 @@ extension EncryptedFileViewController {
         // swiftlint:disable:next force_cast (since this collectionView uses instances of this class as cells)
         let cell = collectionView.cellForItem(at: indexPath) as! FileCollectionViewCell
 
-        output.fileSelected(EncryptedFile.SelectFiles.Request(indexPath: indexPath))
+        output.fileSelected(ProcessedFile.SelectFiles.Request(indexPath: indexPath))
 
         cell.visualizeSelection()
     }
@@ -101,15 +101,15 @@ extension EncryptedFileViewController {
         // swiftlint:disable:next force_cast (since this collectionView uses instances of this class as cells)
         let cell = collectionView.cellForItem(at: indexPath) as! FileCollectionViewCell
 
-        output.fileDeselected(EncryptedFile.SelectFiles.Request(indexPath: indexPath))
+        output.fileDeselected(ProcessedFile.SelectFiles.Request(indexPath: indexPath))
 
         cell.visualizeDeselection()
     }
 }
 
-extension EncryptedFileViewController {
+extension ProcessedFileViewController {
     override func awakeFromNib() {
         super.awakeFromNib()
-        EncryptedFileConfigurator.configure(self)
+        ProcessedFileConfigurator.configure(self)
     }
 }

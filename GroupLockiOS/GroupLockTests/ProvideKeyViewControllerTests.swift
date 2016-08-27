@@ -123,7 +123,7 @@ class ProvideKeyViewControllerTests: XCTestCase {
 
         // Then
         XCTAssertTrue(provideKeyViewControllerOutputSpy.getKeys_called,
-                      "EncryptedFileViewController should tell the interactor to fetch decryption keys from" +
+                      "ProvideKeyViewController should tell the interactor to fetch decryption keys from" +
             " the crypto library once the view is loaded")
     }
 

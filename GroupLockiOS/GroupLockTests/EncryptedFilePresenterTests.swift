@@ -1,5 +1,5 @@
 //
-//  EncryptedFilePresenterTests.swift
+//  ProcessedFilePresenterTests.swift
 //  GroupLock
 //
 //  Created by Sergej Jaskiewicz on 25.07.16.
@@ -11,11 +11,11 @@ import XCTest
 
 // swiftlint:disable force_unwrapping
 // swiftlint:disable force_try
-class EncryptedFilePresenterTests: XCTestCase {
+class ProcessedFilePresenterTests: XCTestCase {
 
     struct Seeds {
         struct Share {
-            static let response = EncryptedFile.Share.Response(dataToShare: [Data(), Data()],
+            static let response = ProcessedFile.Share.Response(dataToShare: [Data(), Data()],
                                                                excludedActivityTypes: [.postToFacebook,
                                                                                        .postToWeibo,
                                                                                        .mail])
@@ -23,7 +23,7 @@ class EncryptedFilePresenterTests: XCTestCase {
 
         struct Fetch {
 
-            private static let testImageURL = Bundle(for: EncryptedFilePresenterTests.self)
+            private static let testImageURL = Bundle(for: ProcessedFilePresenterTests.self)
                 .url(forResource: "test-image", withExtension: "png")!
 
             // MARK: Seeds for cases where file contains correct image data
@@ -33,9 +33,9 @@ class EncryptedFilePresenterTests: XCTestCase {
             ]
 
             private static let fileInfoForCorrectContents = [
-                EncryptedFile.Fetch.ViewModel.FileInfo(fileName: "File 1",
+                ProcessedFile.Fetch.ViewModel.FileInfo(fileName: "File 1",
                     fileThumbnail: UIImage(data: correctData[0])!, encrypted: true),
-                EncryptedFile.Fetch.ViewModel.FileInfo(fileName: "File 2",
+                ProcessedFile.Fetch.ViewModel.FileInfo(fileName: "File 2",
                     fileThumbnail: UIImage(data: correctData[1])!, encrypted: false)
             ]
 
@@ -44,16 +44,16 @@ class EncryptedFilePresenterTests: XCTestCase {
                 File(contents: correctData[1], encrypted: false, name: "File 2", type: "PNG")
             ]
 
-            static let responseWithCorrectData = EncryptedFile.Fetch.Response(files: filesWithCorrectContents)
+            static let responseWithCorrectData = ProcessedFile.Fetch.Response(files: filesWithCorrectContents)
             static let viewModelForCorrectData =
-                EncryptedFile.Fetch.ViewModel(fileInfo: fileInfoForCorrectContents)
+                ProcessedFile.Fetch.ViewModel(fileInfo: fileInfoForCorrectContents)
 
             // MARK: Seeds for cases where file contains incorrect image data or no data at all
 
             private static let fileInfoForIncorrectContents = [
-                EncryptedFile.Fetch.ViewModel.FileInfo(fileName: "File 1",
+                ProcessedFile.Fetch.ViewModel.FileInfo(fileName: "File 1",
                     fileThumbnail: UIImage(), encrypted: true),
-                EncryptedFile.Fetch.ViewModel.FileInfo(fileName: "File 2",
+                ProcessedFile.Fetch.ViewModel.FileInfo(fileName: "File 2",
                     fileThumbnail: UIImage(), encrypted: false)
             ]
 
@@ -62,47 +62,47 @@ class EncryptedFilePresenterTests: XCTestCase {
                 File(contents: nil, encrypted: false, name: "File 2", type: "JPG")
             ]
 
-            static let responseWithIncorrectData = EncryptedFile.Fetch.Response(files: filesWithIncorrectContents)
+            static let responseWithIncorrectData = ProcessedFile.Fetch.Response(files: filesWithIncorrectContents)
             static let viewModelForIncorrectData =
-                EncryptedFile.Fetch.ViewModel(fileInfo: fileInfoForIncorrectContents)
+                ProcessedFile.Fetch.ViewModel(fileInfo: fileInfoForIncorrectContents)
         }
     }
 
     // MARK: Subject under test
-    var sut: EncryptedFilePresenter!
+    var sut: ProcessedFilePresenter!
 
     // MARK: - Test lifecycle
 
     override func setUp() {
         super.setUp()
 
-        sut = EncryptedFilePresenter()
+        sut = ProcessedFilePresenter()
     }
 
     // MARK: - Test doubles
 
-    class EncryptedFilePresenterOutputSpy: EncryptedFilePresenterOutput {
+    class ProcessedFilePresenterOutputSpy: ProcessedFilePresenterOutput {
 
-        var shareResponseReceived: EncryptedFile.Share.Response?
+        var shareResponseReceived: ProcessedFile.Share.Response?
 
-        var fetchViewModelReceived: EncryptedFile.Fetch.ViewModel?
+        var fetchViewModelReceived: ProcessedFile.Fetch.ViewModel?
 
-        func displayFiles(_ viewModel: EncryptedFile.Fetch.ViewModel) {
+        func displayFiles(_ viewModel: ProcessedFile.Fetch.ViewModel) {
             fetchViewModelReceived = viewModel
         }
 
-        func displaySharingInterface(_ response: EncryptedFile.Share.Response) {
+        func displaySharingInterface(_ response: ProcessedFile.Share.Response) {
             shareResponseReceived = response
         }
     }
 
     // MARK: - Tests
 
-    func test_ThatEncryptedFilePresenter_ForwardsShareResponse() {
+    func test_ThatProcessedFilePresenter_ForwardsShareResponse() {
 
         // Given
-        let encryptedFilePresenterOutputSpy = EncryptedFilePresenterOutputSpy()
-        sut.output = encryptedFilePresenterOutputSpy
+        let processedFilePresenterOutputSpy = ProcessedFilePresenterOutputSpy()
+        sut.output = processedFilePresenterOutputSpy
         let response = Seeds.Share.response
 
         // When
@@ -110,47 +110,47 @@ class EncryptedFilePresenterTests: XCTestCase {
 
         // Then
         let expectedResponse = response
-        let returnedResponse = encryptedFilePresenterOutputSpy.shareResponseReceived
+        let returnedResponse = processedFilePresenterOutputSpy.shareResponseReceived
         XCTAssertNotNil(returnedResponse,
-                        "EncryptedFilePresenter should invoke displaySharingInterface(_:) method on its output")
+                        "ProcessedFilePresenter should invoke displaySharingInterface(_:) method on its output")
         XCTAssertEqual(expectedResponse, returnedResponse,
-                       "EncryptedFilePresenter should forward the `Share` response it received to its output")
+                       "ProcessedFilePresenter should forward the `Share` response it received to its output")
     }
 
-    func test_ThatEncryptedFilePresenter_FormsCorrectFetchViewModelForFilesWithCorrectContents() {
+    func test_ThatProcessedFilePresenter_FormsCorrectFetchViewModelForFilesWithCorrectContents() {
 
         // Given
-        let encryptedFilePresenterOutputSpy = EncryptedFilePresenterOutputSpy()
-        sut.output = encryptedFilePresenterOutputSpy
+        let processedFilePresenterOutputSpy = ProcessedFilePresenterOutputSpy()
+        sut.output = processedFilePresenterOutputSpy
 
         // When
         sut.presentFiles(Seeds.Fetch.responseWithCorrectData)
 
         // Then
         let expectedViewModel = Seeds.Fetch.viewModelForCorrectData
-        let returnedViewModel = encryptedFilePresenterOutputSpy.fetchViewModelReceived
+        let returnedViewModel = processedFilePresenterOutputSpy.fetchViewModelReceived
         XCTAssertNotNil(returnedViewModel,
-                        "EncryptedFilePresenter should invoke displayFiles(_:) method on its output")
+                        "ProcessedFilePresenter should invoke displayFiles(_:) method on its output")
         XCTAssertEqual(expectedViewModel, returnedViewModel,
-                       "EncryptedFilePresenter should form a correct view model when asked to present files")
+                       "ProcessedFilePresenter should form a correct view model when asked to present files")
     }
 
-    func test_ThatEncryptedFIlePresenter_FormsCorrectFetchViewModelForFilesWithIncorrectContents() {
+    func test_ThatProcessedFilePresenter_FormsCorrectFetchViewModelForFilesWithIncorrectContents() {
 
         // Given
-        let encryptedFilePresenterOutputSpy = EncryptedFilePresenterOutputSpy()
-        sut.output = encryptedFilePresenterOutputSpy
+        let processedFilePresenterOutputSpy = ProcessedFilePresenterOutputSpy()
+        sut.output = processedFilePresenterOutputSpy
 
         // When
         sut.presentFiles(Seeds.Fetch.responseWithIncorrectData)
 
         // Then
         let expectedViewModel = Seeds.Fetch.viewModelForIncorrectData
-        let returnedViewModel = encryptedFilePresenterOutputSpy.fetchViewModelReceived
+        let returnedViewModel = processedFilePresenterOutputSpy.fetchViewModelReceived
         XCTAssertNotNil(returnedViewModel,
-                        "EncryptedFilePresenter should invoke displayFiles(_:) method on its output")
+                        "ProcessedFilePresenter should invoke displayFiles(_:) method on its output")
         XCTAssertEqual(expectedViewModel, returnedViewModel,
-                       "EncryptedFilePresenter should form a correct view model even for files with incorrect" +
+                       "ProcessedFilePresenter should form a correct view model even for files with incorrect" +
             " contents or no contents at all")
     }
 }

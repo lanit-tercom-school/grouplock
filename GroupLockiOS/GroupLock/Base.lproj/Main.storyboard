@@ -440,6 +440,18 @@
                                     <action selector="onBack:" destination="Sli-Ax-YQY" eventType="touchUpInside" id="yUt-5a-PSa"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bP9-Kj-ii5">
+                                <inset key="contentEdgeInsets" minX="22" minY="0.0" maxX="44" maxY="0.0"/>
+                                <state key="normal" title="Next">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="TranslucentBlackView:ScanningTopLabel"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="EMn-t3-28b" kind="show" id="5UJ-xm-iOd"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.42032623291015625" green="0.58430171012878418" blue="0.13027089834213257" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -447,6 +459,9 @@
                             <constraint firstItem="QwA-XF-sP8" firstAttribute="leading" secondItem="2Dd-3q-jjF" secondAttribute="leadingMargin" constant="-42" id="DFh-c0-h5U"/>
                             <constraint firstAttribute="trailing" secondItem="dGf-eP-IyT" secondAttribute="trailing" id="IFB-6g-rHO"/>
                             <constraint firstItem="iVA-Do-3xN" firstAttribute="top" secondItem="dGf-eP-IyT" secondAttribute="bottom" id="Lay-BN-Nn2"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bP9-Kj-ii5" secondAttribute="trailing" constant="-42" id="MFO-yZ-HXw"/>
+                            <constraint firstItem="bP9-Kj-ii5" firstAttribute="top" secondItem="mGO-bB-SqJ" secondAttribute="top" id="dFE-iw-OP9"/>
+                            <constraint firstItem="bP9-Kj-ii5" firstAttribute="height" secondItem="mGO-bB-SqJ" secondAttribute="height" id="eUl-hr-oQV"/>
                             <constraint firstItem="QwA-XF-sP8" firstAttribute="height" secondItem="mGO-bB-SqJ" secondAttribute="height" id="hdi-a2-LKI"/>
                             <constraint firstItem="mGO-bB-SqJ" firstAttribute="centerX" secondItem="2Dd-3q-jjF" secondAttribute="centerX" id="jX9-uB-agH"/>
                             <constraint firstItem="dGf-eP-IyT" firstAttribute="leading" secondItem="2Dd-3q-jjF" secondAttribute="leading" id="kBE-kc-S0Y"/>
@@ -461,7 +476,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DUu-Jd-zXW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3907" y="-98"/>
+            <point key="canvasLocation" x="5345" y="-233"/>
         </scene>
         <!--Number Of Keys-->
         <scene sceneID="S7w-4u-xQY">
@@ -557,7 +572,7 @@
                                 <rect key="frame" x="91.5" y="0.0" width="192" height="192"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="193" height="192"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="192" height="192"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gjb-q1-3fM" userLabel="QR-Code View">
@@ -598,7 +613,7 @@
                     <navigationItem key="navigationItem" title="Your Keys" id="LcH-P9-HxB">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="MMT-rg-Zc8">
                             <connections>
-                                <segue destination="EMn-t3-28b" kind="show" identifier="EncryptedFile" id="jDq-Ks-DDQ"/>
+                                <segue destination="EMn-t3-28b" kind="show" identifier="ProcessedFile" id="jDq-Ks-DDQ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -607,10 +622,10 @@
             </objects>
             <point key="canvasLocation" x="5346" y="-941"/>
         </scene>
-        <!--Encrypted File-->
+        <!--Processed File-->
         <scene sceneID="KgL-Yt-Vv4">
             <objects>
-                <collectionViewController storyboardIdentifier="EncryptedFileViewController" id="EMn-t3-28b" userLabel="Encrypted File" customClass="EncryptedFileViewController" customModule="GroupLock" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="ProcessedFileViewController" id="EMn-t3-28b" userLabel="Processed File" customClass="ProcessedFileViewController" customModule="GroupLock" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="CCc-7r-cUG">
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -625,14 +640,14 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </activityIndicatorView>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EncryptedFileCell" id="arA-jv-RlQ" userLabel="EncryptedFile Cell" customClass="FileCollectionViewCell" customModule="GroupLock" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ProcessedFileCell" id="arA-jv-RlQ" userLabel="ProcessedFile Cell" customClass="FileCollectionViewCell" customModule="GroupLock" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="156" height="156"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="156" height="156"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ago-jO-Opw" userLabel="EncryptedFile View">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ago-jO-Opw" userLabel="ProcessedFile View">
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="ago-jO-Opw" secondAttribute="height" multiplier="1:1" id="Pxp-ex-gT6"/>
                                             </constraints>
@@ -682,7 +697,7 @@
                             <outlet property="delegate" destination="EMn-t3-28b" id="gd8-Wc-Krx"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Encrypted Files" id="upF-R3-NhI">
+                    <navigationItem key="navigationItem" title="Processed Files" id="upF-R3-NhI">
                         <rightBarButtonItems>
                             <barButtonItem style="done" systemItem="save" id="VZy-dk-B3v">
                                 <connections>
@@ -704,7 +719,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zZm-mr-hc1" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="JSn-jz-IV3" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="6060" y="-941"/>
+            <point key="canvasLocation" x="6322" y="-941"/>
         </scene>
         <!--Library-->
         <scene sceneID="VV6-CX-haO">
@@ -942,5 +957,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="KN1-gi-ukS"/>
+        <segue reference="jDq-Ks-DDQ"/>
     </inferredMetricsTieBreakers>
 </document>

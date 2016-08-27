@@ -1,5 +1,5 @@
 //
-//  EncryptedFileDataSourceTests.swift
+//  ProcessedFileDataSourceTests.swift
 //  GroupLock
 //
 //  Created by Sergej Jaskiewicz on 25.07.16.
@@ -10,11 +10,11 @@ import XCTest
 @testable import GroupLock
 
 // swiftlint:disable force_cast
-class EncryptedFileDataSourceTests: XCTestCase {
+class ProcessedFileDataSourceTests: XCTestCase {
 
     struct Seeds {
 
-        typealias FileInfo = EncryptedFile.Fetch.ViewModel.FileInfo
+        typealias FileInfo = ProcessedFile.Fetch.ViewModel.FileInfo
 
         static let fileInfo = [
             FileInfo(fileName: "File 1", fileThumbnail: UIImage(), encrypted: true),
@@ -23,14 +23,14 @@ class EncryptedFileDataSourceTests: XCTestCase {
             FileInfo(fileName: "File 4", fileThumbnail: UIImage(), encrypted: false),
             FileInfo(fileName: "File 5", fileThumbnail: UIImage(), encrypted: true)
         ]
-        static let viewModel = EncryptedFile.Fetch.ViewModel(fileInfo: fileInfo)
+        static let viewModel = ProcessedFile.Fetch.ViewModel(fileInfo: fileInfo)
         static var numberOfItems: Int { return fileInfo.count }
         static let indexPathForEncryptedFile = IndexPath(item: 2, section: 0)
         static let indexPathForDecryptedFile = IndexPath(item: 3, section: 0)
     }
 
     // MARK: Subject under test
-    var sut: EncryptedFileDataSource!
+    var sut: ProcessedFileDataSource!
 
     var collectionView: UICollectionView!
 
@@ -39,7 +39,7 @@ class EncryptedFileDataSourceTests: XCTestCase {
     override func setUp() {
         super.setUp()
 
-        sut = EncryptedFileDataSource()
+        sut = ProcessedFileDataSource()
         sut.updateViewModel(Seeds.viewModel)
 
         sut.cellProvider = FileCollectionViewCellProviderStub(reuseIdentifier: "Dummy")
@@ -88,7 +88,7 @@ class EncryptedFileDataSourceTests: XCTestCase {
 
     // MARK: - Tests
 
-    func test_ThatEncryptedFileDataSource_ReturnsCorrectNumberOfItemsInSection() {
+    func test_ThatProcessedFileDataSource_ReturnsCorrectNumberOfItemsInSection() {
 
         // Given
 
@@ -98,10 +98,10 @@ class EncryptedFileDataSourceTests: XCTestCase {
         // Then
         let expectedNumberOfItems = Seeds.numberOfItems
         XCTAssertEqual(expectedNumberOfItems, returnedNumberOfItems,
-                       "EncryptedFileDataSource should return exactly the number of items in the view model")
+                       "ProcessedFileDataSource should return exactly the number of items in the view model")
     }
 
-    func test_ThatEncryptedFileDataSource_ReturnsCorrectlyFormattedCell() {
+    func test_ThatProcessedFileDataSource_ReturnsCorrectlyFormattedCell() {
 
         // Given
 
@@ -115,12 +115,12 @@ class EncryptedFileDataSourceTests: XCTestCase {
         let expectedFileName = Seeds.fileInfo[Seeds.indexPathForEncryptedFile.item].fileName
         let expectedThumbnail = Seeds.fileInfo[Seeds.indexPathForEncryptedFile.item].fileThumbnail
 
-        XCTAssertEqual(expectedFileName, returnedFileName, "EncryptedFileDataSource should present file name")
+        XCTAssertEqual(expectedFileName, returnedFileName, "ProcessedFileDataSource should present file name")
         XCTAssertTrue(returnedThumbnail === expectedThumbnail,
                       "File thumbnail and an image in a cell should be the same instances")
     }
 
-    func test_ThatEncryptedFileDataSource_CausesCellsToDisplayLockIconForEncryptedFiles() {
+    func test_ThatProcessedFileDataSource_CausesCellsToDisplayLockIconForEncryptedFiles() {
 
         // Given
 
@@ -132,7 +132,7 @@ class EncryptedFileDataSourceTests: XCTestCase {
         XCTAssertFalse(cell.lockIcon.isHidden, "Cell should show a lock icon for an encrypted file")
     }
 
-    func test_ThatEncryptedFileDataSource_CausesCellsToHideLockIconForDecryptedFiles() {
+    func test_ThatProcessedFileDataSource_CausesCellsToHideLockIconForDecryptedFiles() {
 
         // Given
 
@@ -144,7 +144,7 @@ class EncryptedFileDataSourceTests: XCTestCase {
         XCTAssertTrue(cell.lockIcon.isHidden, "Cell should not show a lock icon for a decrypted file")
     }
 
-    func test_ThatEncryptedFileDataSource_TellsCellToVisualizeSelection() {
+    func test_ThatProcessedFileDataSource_TellsCellToVisualizeSelection() {
 
         // Given
         sut.cellProvider = FileCollectionViewCellProviderStub(providesSelectedCells: true)
@@ -155,12 +155,12 @@ class EncryptedFileDataSourceTests: XCTestCase {
 
         // Then
         XCTAssertTrue(cell.visualizeSelection_called,
-                      "EncryptedFileDataSource should tell selected cells to visualize their selection")
+                      "ProcessedFileDataSource should tell selected cells to visualize their selection")
         XCTAssertFalse(cell.visualizeDeselection_called,
-                       "EncryptedFileDataSource should not tell selected cells to visualize their deselection")
+                       "ProcessedFileDataSource should not tell selected cells to visualize their deselection")
     }
 
-    func test_ThatEncryptedFileDataSource_TellsCellToVisualizeDeselection() {
+    func test_ThatProcessedFileDataSource_TellsCellToVisualizeDeselection() {
 
         // Given
         sut.cellProvider = FileCollectionViewCellProviderStub(providesSelectedCells: false)
@@ -171,9 +171,9 @@ class EncryptedFileDataSourceTests: XCTestCase {
 
         // Then
         XCTAssertTrue(cell.visualizeDeselection_called,
-                      "EncryptedFileDataSource should tell deselected cells to visualize their deselection")
+                      "ProcessedFileDataSource should tell deselected cells to visualize their deselection")
         XCTAssertFalse(cell.visualizeSelection_called,
-                       "EncryptedFileDataSource should not tell deselected cells to visualize their selection")
+                       "ProcessedFileDataSource should not tell deselected cells to visualize their selection")
     }
 }
 // swiftlint:enable force_cast

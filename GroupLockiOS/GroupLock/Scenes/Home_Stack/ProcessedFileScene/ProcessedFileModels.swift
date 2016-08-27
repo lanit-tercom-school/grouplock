@@ -1,5 +1,5 @@
 //
-//  EncryptedFileModels.swift
+//  ProcessedFileModels.swift
 //  GroupLock
 //
 //  Created by Sergej Jaskiewicz on 22.07.16.
@@ -9,7 +9,7 @@
 import UIKit
 
 // MARK: Scene
-struct EncryptedFile {
+struct ProcessedFile {
 
     // MARK: Use Case
     struct Fetch {

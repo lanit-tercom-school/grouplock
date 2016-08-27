@@ -1,5 +1,5 @@
 //
-//  EncryptedFileViewControllerTests.swift
+//  ProcessedFileViewControllerTests.swift
 //  GroupLock
 //
 //  Created by Sergej Jaskiewicz on 25.07.16.
@@ -11,23 +11,23 @@ import XCTest
 
 // swiftlint:disable force_cast
 // swiftlint:disable force_unwrapping
-class EncryptedFileViewControllerTests: XCTestCase {
+class ProcessedFileViewControllerTests: XCTestCase {
 
     struct Seeds {
 
         struct Fetch {
             static let fileInfo = [
-                EncryptedFile.Fetch.ViewModel.FileInfo(fileName: "File 1",
+                ProcessedFile.Fetch.ViewModel.FileInfo(fileName: "File 1",
                     fileThumbnail: UIImage(), encrypted: false),
-                EncryptedFile.Fetch.ViewModel.FileInfo(fileName: "File 2",
+                ProcessedFile.Fetch.ViewModel.FileInfo(fileName: "File 2",
                     fileThumbnail: UIImage(), encrypted: true)
             ]
 
-            static let viewModel = EncryptedFile.Fetch.ViewModel(fileInfo: fileInfo)
+            static let viewModel = ProcessedFile.Fetch.ViewModel(fileInfo: fileInfo)
         }
 
         struct Share {
-            static let response = EncryptedFile.Share.Response(dataToShare: [Data(), Data()],
+            static let response = ProcessedFile.Share.Response(dataToShare: [Data(), Data()],
                                                                excludedActivityTypes: nil)
         }
 
@@ -38,7 +38,7 @@ class EncryptedFileViewControllerTests: XCTestCase {
     }
 
     // MARK: Subject under test
-    var sut: EncryptedFileViewController!
+    var sut: ProcessedFileViewController!
 
     var window: UIWindow!
 
@@ -48,16 +48,16 @@ class EncryptedFileViewControllerTests: XCTestCase {
         super.setUp()
 
         window = UIWindow()
-        setupEncryptedFileViewController()
+        setupProcessedFileViewController()
     }
 
     // MARK: - Test setup
 
-    func setupEncryptedFileViewController() {
+    func setupProcessedFileViewController() {
 
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         sut = storyboard.instantiateViewController(
-            withIdentifier: "EncryptedFileViewController") as! EncryptedFileViewController
+            withIdentifier: "ProcessedFileViewController") as! ProcessedFileViewController
     }
 
     func loadView() {
@@ -68,7 +68,7 @@ class EncryptedFileViewControllerTests: XCTestCase {
 
     // MARK: - Test doubles
 
-    class EncryptedFileViewControllerOutputSpy: EncryptedFileViewControllerOutput {
+    class ProcessedFileViewControllerOutputSpy: ProcessedFileViewControllerOutput {
 
         var fetchFiles_called = false // swiftlint:disable:this variable_name
         var prepareFilesForSharing_called = false // swiftlint:disable:this variable_name
@@ -78,26 +78,26 @@ class EncryptedFileViewControllerTests: XCTestCase {
         var deselectedFileIndexPath: IndexPath?
 
         var files: [File] = []
-        var encryptedFiles: [File] = []
+        var processedFiles: [File] = []
         var encryptionKey = [""]
 
-        func encryptFiles(_ request: EncryptedFile.Fetch.Request) {
+        func encryptFiles(_ request: ProcessedFile.Fetch.Request) {
             fetchFiles_called = true
         }
 
-        func prepareFilesForSharing(_ request: EncryptedFile.Share.Request) {
+        func prepareFilesForSharing(_ request: ProcessedFile.Share.Request) {
             prepareFilesForSharing_called = true
         }
 
-        func fileSelected(_ request: EncryptedFile.SelectFiles.Request) {
+        func fileSelected(_ request: ProcessedFile.SelectFiles.Request) {
             selectedFileIndexPath = request.indexPath
         }
 
-        func fileDeselected(_ request: EncryptedFile.SelectFiles.Request) {
+        func fileDeselected(_ request: ProcessedFile.SelectFiles.Request) {
             deselectedFileIndexPath = request.indexPath
         }
 
-        func saveFiles(_ request: EncryptedFile.SaveFiles.Request) {
+        func saveFiles(_ request: ProcessedFile.SaveFiles.Request) {
             saveFiles_called = true
         }
     }
@@ -111,11 +111,11 @@ class EncryptedFileViewControllerTests: XCTestCase {
         }
     }
 
-    class EncryptedFileDataSourceMock: NSObject, EncryptedFileDataSourceProtocol {
+    class ProcessedFileDataSourceMock: NSObject, ProcessedFileDataSourceProtocol {
 
-        var viewModelToUpdate: EncryptedFile.Fetch.ViewModel?
+        var viewModelToUpdate: ProcessedFile.Fetch.ViewModel?
 
-        func updateViewModel(_ viewModel: EncryptedFile.Fetch.ViewModel) {
+        func updateViewModel(_ viewModel: ProcessedFile.Fetch.ViewModel) {
             viewModelToUpdate = viewModel
         }
 
@@ -166,7 +166,7 @@ class EncryptedFileViewControllerTests: XCTestCase {
         }
     }
 
-    class EncryptedFileRouterSpy: EncryptedFileRouter {
+    class ProcessedFileRouterSpy: ProcessedFileRouter {
 
         var returnToHomeScene_called = false // swiftlint:disable:this variable_name
 
@@ -177,22 +177,22 @@ class EncryptedFileViewControllerTests: XCTestCase {
 
     // MARK: - Tests
 
-    func test_ThatEncryptedFileViewController_CausesFetchingFilesOnLoad() {
+    func test_ThatProcessedFileViewController_CausesFetchingFilesOnLoad() {
 
         // Given
-        let encryptedFileViewControllerOutputSpy = EncryptedFileViewControllerOutputSpy()
-        sut.output = encryptedFileViewControllerOutputSpy
+        let processedFileViewControllerOutputSpy = ProcessedFileViewControllerOutputSpy()
+        sut.output = processedFileViewControllerOutputSpy
 
         // When
         loadView()
 
         // Then
-        XCTAssertTrue(encryptedFileViewControllerOutputSpy.fetchFiles_called,
-                      "EncryptedFileViewController should tell the interactor to fetch encrypted files" +
+        XCTAssertTrue(processedFileViewControllerOutputSpy.fetchFiles_called,
+                      "ProcessedFileViewController should tell the interactor to fetch encrypted files" +
             " once the view is loaded")
     }
 
-    func test_ThatEncryptedFileViewController_ConfiguresCollectionViewOnLoad() {
+    func test_ThatProcessedFileViewController_ConfiguresCollectionViewOnLoad() {
 
         // Given
         let collectionViewConfiguratorSpy = CollectionViewConfiguratorSpy()
@@ -203,23 +203,23 @@ class EncryptedFileViewControllerTests: XCTestCase {
 
         // Then
         XCTAssertNotNil(collectionViewConfiguratorSpy.collectionViewConfigurated,
-                        "EncryptedFileViewController should tell CollectionViewConfigurator to configure" +
+                        "ProcessedFileViewController should tell CollectionViewConfigurator to configure" +
             " its collection view")
         XCTAssertNotNil(collectionViewConfiguratorSpy.allowsMultipleSelection)
         XCTAssertTrue(sut.collectionView === collectionViewConfiguratorSpy.collectionViewConfigurated,
-                      "EncryptedFileViewController should pass CollectionViewConfigurator its collection view")
+                      "ProcessedFileViewController should pass CollectionViewConfigurator its collection view")
         XCTAssertTrue(collectionViewConfiguratorSpy.allowsMultipleSelection!,
-                      "EncryptedFileViewController should allow multiple selection in its collection view")
+                      "ProcessedFileViewController should allow multiple selection in its collection view")
     }
 
-    func test_ThatEncryptedFileViewController_displaysFiles() {
+    func test_ThatProcessedFileViewController_displaysFiles() {
 
         // Given
         loadView()
-        let encryptedFileDataSourceMock = EncryptedFileDataSourceMock()
+        let processedFileDataSourceMock = ProcessedFileDataSourceMock()
         let collectionViewMock = UICollectionViewMock(frame: CGRect.zero,
                                                     collectionViewLayout: UICollectionViewFlowLayout())
-        sut.collectionViewDataSource = encryptedFileDataSourceMock
+        sut.collectionViewDataSource = processedFileDataSourceMock
         sut.collectionView = collectionViewMock
 
         // When
@@ -227,12 +227,12 @@ class EncryptedFileViewControllerTests: XCTestCase {
 
         // Then
         let expectedViewModelToSendToUpdate = Seeds.Fetch.viewModel
-        let actualViewModelSended = encryptedFileDataSourceMock.viewModelToUpdate
+        let actualViewModelSended = processedFileDataSourceMock.viewModelToUpdate
         XCTAssertNotNil(actualViewModelSended, "displayFiles(_:) method should cause updating view model" +
             " in the data source")
         XCTAssertEqual(expectedViewModelToSendToUpdate, actualViewModelSended,
                        "displayFiles(_:) should update view model in the data source with the view it received")
-        XCTAssertTrue(collectionViewMock.dataSource === encryptedFileDataSourceMock,
+        XCTAssertTrue(collectionViewMock.dataSource === processedFileDataSourceMock,
                       "displayFiles(_:) should set a correct data source for the collection view")
         XCTAssertTrue(collectionViewMock.dataReloaded,
                       "displayFiles(_:) should reload data in the collection view after setting its data source")
@@ -241,15 +241,15 @@ class EncryptedFileViewControllerTests: XCTestCase {
     func test_ThatShareButton_CausesPreparingFilesForSharing() {
 
         // Given
-        let encryptedFileViewControllerOutputSpy = EncryptedFileViewControllerOutputSpy()
-        sut.output = encryptedFileViewControllerOutputSpy
+        let processedFileViewControllerOutputSpy = ProcessedFileViewControllerOutputSpy()
+        sut.output = processedFileViewControllerOutputSpy
         let shareButton = UIBarButtonItem()
 
         // When
         sut.onShareButton(shareButton)
 
         // Then
-        XCTAssertTrue(encryptedFileViewControllerOutputSpy.prepareFilesForSharing_called,
+        XCTAssertTrue(processedFileViewControllerOutputSpy.prepareFilesForSharing_called,
                       "Share button should invoke prepareFilesForSharing(_:) method on the view" +
             " controller's output")
     }
@@ -257,24 +257,24 @@ class EncryptedFileViewControllerTests: XCTestCase {
     func test_ThatSaveButton_CausesSavingFiles() {
 
         // Given
-        let encryptedFileViewControllerOutputSpy = EncryptedFileViewControllerOutputSpy()
-        let encryptedFileRouterSpy = EncryptedFileRouterSpy()
-        sut.output = encryptedFileViewControllerOutputSpy
-        sut.router = encryptedFileRouterSpy
+        let processedFileViewControllerOutputSpy = ProcessedFileViewControllerOutputSpy()
+        let processedFileRouterSpy = ProcessedFileRouterSpy()
+        sut.output = processedFileViewControllerOutputSpy
+        sut.router = processedFileRouterSpy
         let saveButton = UIBarButtonItem()
 
         // When
         sut.onSaveButton(saveButton)
 
         // Then
-        XCTAssertTrue(encryptedFileViewControllerOutputSpy.saveFiles_called,
+        XCTAssertTrue(processedFileViewControllerOutputSpy.saveFiles_called,
                       "Save button should invoke saveFile(_:) method on the view" +
             " controller's output")
-        XCTAssertTrue(encryptedFileRouterSpy.returnToHomeScene_called,
+        XCTAssertTrue(processedFileRouterSpy.returnToHomeScene_called,
                       "Save button should unwind to the Home Scene")
     }
 
-    func test_ThatEncryptedFileViewController_PresentsActivityViewController() {
+    func test_ThatProcessedFileViewController_PresentsActivityViewController() {
 
         // Given
         loadView()
@@ -284,9 +284,9 @@ class EncryptedFileViewControllerTests: XCTestCase {
 
         // Then
         XCTAssertNotNil(sut.presentedViewController,
-                        "EncryptedFileViewController should present a sharing interface")
+                        "ProcessedFileViewController should present a sharing interface")
         XCTAssertTrue(sut.presentedViewController is UIActivityViewController,
-                      "EncryptedFileViewController should present UIActivityViewController")
+                      "ProcessedFileViewController should present UIActivityViewController")
         let expectedExcludedActivityTypes = Seeds.Share.response.excludedActivityTypes
         let actualExcludedActivityTypes = (sut.presentedViewController as? UIActivityViewController)?
             .excludedActivityTypes
@@ -295,16 +295,16 @@ class EncryptedFileViewControllerTests: XCTestCase {
             " for UIActivityViewController")
     }
 
-    func test_ThatEncryptedFileViewController_SelectsFiles() {
+    func test_ThatProcessedFileViewController_SelectsFiles() {
 
         // Given
-        let encryptedFileViewControllerOutputSpy = EncryptedFileViewControllerOutputSpy()
+        let processedFileViewControllerOutputSpy = ProcessedFileViewControllerOutputSpy()
         let collectionViewMock = UICollectionViewMock(frame: CGRect.zero,
                                                       collectionViewLayout: UICollectionViewFlowLayout())
         let cellMock = FileCollectionViewCellMock()
 
         collectionViewMock.cellMock = cellMock
-        sut.output = encryptedFileViewControllerOutputSpy
+        sut.output = processedFileViewControllerOutputSpy
         sut.collectionView = collectionViewMock
 
         // When
@@ -314,25 +314,25 @@ class EncryptedFileViewControllerTests: XCTestCase {
 
         // Then
         let expectedSelectedFileIndexPath = Seeds.SelectFiles.indexPathToSelect
-        let actualSelectedFileIndexPath = encryptedFileViewControllerOutputSpy.selectedFileIndexPath
+        let actualSelectedFileIndexPath = processedFileViewControllerOutputSpy.selectedFileIndexPath
         XCTAssertNotNil(actualSelectedFileIndexPath,
-                      "When a cell was selected, EncryptedFileViewController should notify the interactor")
+                      "When a cell was selected, ProcessedFileViewController should notify the interactor")
         XCTAssertEqual(expectedSelectedFileIndexPath, actualSelectedFileIndexPath,
-                       "EncryptedFileViewController should send the interactor the index path of a selected file")
+                       "ProcessedFileViewController should send the interactor the index path of a selected file")
         XCTAssertTrue(cellMock.visualizeSelection_called,
                       "When a cell was selected, it should visualize its selection")
     }
 
-    func test_ThatEncryptedFileViewController_DeselectsFiles() {
+    func test_ThatProcessedFileViewController_DeselectsFiles() {
 
         // Given
-        let encryptedFileViewControllerOutputSpy = EncryptedFileViewControllerOutputSpy()
+        let processedFileViewControllerOutputSpy = ProcessedFileViewControllerOutputSpy()
         let collectionViewMock = UICollectionViewMock(frame: CGRect.zero,
                                                       collectionViewLayout: UICollectionViewFlowLayout())
         let cellMock = FileCollectionViewCellMock()
 
         collectionViewMock.cellMock = cellMock
-        sut.output = encryptedFileViewControllerOutputSpy
+        sut.output = processedFileViewControllerOutputSpy
         sut.collectionView = collectionViewMock
 
         // When
@@ -345,11 +345,11 @@ class EncryptedFileViewControllerTests: XCTestCase {
 
         // Then
         let expectedDeselectedFileIndexPath = Seeds.SelectFiles.indexPathToDeselect
-        let actualDeselectedFileIndexPath = encryptedFileViewControllerOutputSpy.deselectedFileIndexPath
+        let actualDeselectedFileIndexPath = processedFileViewControllerOutputSpy.deselectedFileIndexPath
         XCTAssertNotNil(actualDeselectedFileIndexPath,
-                        "When a cell was deselected, EncryptedFileViewController should notify the interactor")
+                        "When a cell was deselected, ProcessedFileViewController should notify the interactor")
         XCTAssertEqual(expectedDeselectedFileIndexPath, actualDeselectedFileIndexPath,
-                       "EncryptedFileViewController should send the interactor the index path of a deselected" +
+                       "ProcessedFileViewController should send the interactor the index path of a deselected" +
             " file")
         XCTAssertTrue(cellMock.visualizeDeselection_called,
                       "When a cell was deselected, it should visualize its deselection")

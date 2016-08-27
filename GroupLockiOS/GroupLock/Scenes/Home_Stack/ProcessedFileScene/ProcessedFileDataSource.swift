@@ -1,5 +1,5 @@
 //
-//  EncryptedFileDataSource.swift
+//  ProcessedFileDataSource.swift
 //  GroupLock
 //
 //  Created by Sergej Jaskiewicz on 22.07.16.
@@ -8,18 +8,18 @@
 
 import UIKit
 
-protocol EncryptedFileDataSourceProtocol: UICollectionViewDataSource {
-    func updateViewModel(_ viewModel: EncryptedFile.Fetch.ViewModel)
+protocol ProcessedFileDataSourceProtocol: UICollectionViewDataSource {
+    func updateViewModel(_ viewModel: ProcessedFile.Fetch.ViewModel)
 }
 
-class EncryptedFileDataSource: NSObject, EncryptedFileDataSourceProtocol {
+class ProcessedFileDataSource: NSObject, ProcessedFileDataSourceProtocol {
 
-    private var viewModel: EncryptedFile.Fetch.ViewModel!
+    private var viewModel: ProcessedFile.Fetch.ViewModel!
 
     var cellProvider: FileCollectionViewCellProviderProtocol =
-        FileCollectionViewCellProvider(reuseIdentifier: "EncryptedFileCell")
+        FileCollectionViewCellProvider(reuseIdentifier: "ProcessedFileCell")
 
-    func updateViewModel(_ viewModel: EncryptedFile.Fetch.ViewModel) {
+    func updateViewModel(_ viewModel: ProcessedFile.Fetch.ViewModel) {
         self.viewModel = viewModel
     }
 

@@ -1,5 +1,5 @@
 //
-//  EncryptedFileInteractor.swift
+//  ProcessedFileInteractor.swift
 //  GroupLock
 //
 //  Created by Sergej Jaskiewicz on 22.07.16.
@@ -8,38 +8,38 @@
 
 import UIKit
 
-protocol EncryptedFileInteractorInput {
+protocol ProcessedFileInteractorInput {
     var files: [File] { get set }
-    var encryptedFiles: [File] { get }
+    var processedFiles: [File] { get }
     var encryptionKey: [String] { get set }
 
-    func encryptFiles(_ request: EncryptedFile.Fetch.Request)
-    func prepareFilesForSharing(_ request: EncryptedFile.Share.Request)
-    func fileSelected(_ request: EncryptedFile.SelectFiles.Request)
-    func fileDeselected(_ request: EncryptedFile.SelectFiles.Request)
-    func saveFiles(_ request: EncryptedFile.SaveFiles.Request)
+    func encryptFiles(_ request: ProcessedFile.Fetch.Request)
+    func prepareFilesForSharing(_ request: ProcessedFile.Share.Request)
+    func fileSelected(_ request: ProcessedFile.SelectFiles.Request)
+    func fileDeselected(_ request: ProcessedFile.SelectFiles.Request)
+    func saveFiles(_ request: ProcessedFile.SaveFiles.Request)
 }
 
-protocol EncryptedFileInteractorOutput {
-    func presentFiles(_ response: EncryptedFile.Fetch.Response)
-    func shareFiles(_ response: EncryptedFile.Share.Response)
+protocol ProcessedFileInteractorOutput {
+    func presentFiles(_ response: ProcessedFile.Fetch.Response)
+    func shareFiles(_ response: ProcessedFile.Share.Response)
 }
 
-class EncryptedFileInteractor: EncryptedFileInteractorInput {
+class ProcessedFileInteractor: ProcessedFileInteractorInput {
 
-    var output: EncryptedFileInteractorOutput!
+    var output: ProcessedFileInteractorOutput!
     private var cryptoLibrary: CryptoWrapperProtocol = CryptoFake()
 
     // MARK: - Business logic
 
     var files: [File] = []
-    var encryptedFiles: [File] = []
+    var processedFiles: [File] = []
 
     private var selectedFiles = Set<IndexPath>()
 
     var encryptionKey: [String] = []
 
-    func encryptFiles(_ request: EncryptedFile.Fetch.Request) {
+    func encryptFiles(_ request: ProcessedFile.Fetch.Request) {
 
         func encrypt(_ file: File, withKey key: [String]) -> File {
             if let dataToEncrypt = file.contents {
@@ -54,17 +54,17 @@ class EncryptedFileInteractor: EncryptedFileInteractorInput {
         }
 
         DispatchQueue.global(qos: .userInitiated).async { [unowned self] in
-            self.encryptedFiles = self.files.map { encrypt($0, withKey: self.encryptionKey) }
+            self.processedFiles = self.files.map { encrypt($0, withKey: self.encryptionKey) }
 
             DispatchQueue.main.async { [unowned self] in
-                self.output.presentFiles(EncryptedFile.Fetch.Response(files: self.encryptedFiles))
+                self.output.presentFiles(ProcessedFile.Fetch.Response(files: self.processedFiles))
             }
         }
     }
 
-    func prepareFilesForSharing(_ request: EncryptedFile.Share.Request) {
+    func prepareFilesForSharing(_ request: ProcessedFile.Share.Request) {
 
-        let dataToShare = selectedFiles.map { encryptedFiles[$0.item].contents ?? Data() }
+        let dataToShare = selectedFiles.map { processedFiles[$0.item].contents ?? Data() }
         let excludedActivityTypes: [UIActivityType] = [
             .print,
             .postToVimeo,
@@ -76,22 +76,22 @@ class EncryptedFileInteractor: EncryptedFileInteractorInput {
             .postToTencentWeibo
         ]
 
-        let response = EncryptedFile.Share.Response(dataToShare: dataToShare,
+        let response = ProcessedFile.Share.Response(dataToShare: dataToShare,
                                                     excludedActivityTypes: excludedActivityTypes)
         output.shareFiles(response)
     }
 
-    func fileSelected(_ request: EncryptedFile.SelectFiles.Request) {
+    func fileSelected(_ request: ProcessedFile.SelectFiles.Request) {
         selectedFiles.insert(request.indexPath)
     }
 
-    func fileDeselected(_ request: EncryptedFile.SelectFiles.Request) {
+    func fileDeselected(_ request: ProcessedFile.SelectFiles.Request) {
         selectedFiles.remove(request.indexPath)
     }
 
-    func saveFiles(_ request: EncryptedFile.SaveFiles.Request) {
+    func saveFiles(_ request: ProcessedFile.SaveFiles.Request) {
 
-        for file in encryptedFiles {
+        for file in processedFiles {
             _ = ManagedFile(file, insertIntoManagedObjectContext: AppDelegate.sharedInstance.managedObjectContext)
         }
 

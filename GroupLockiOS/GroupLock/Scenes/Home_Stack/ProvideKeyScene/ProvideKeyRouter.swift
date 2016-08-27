@@ -24,16 +24,16 @@ class ProvideKeyRouter: ProvideKeyRouterInput {
 
     func passDataToNextScene(_ segue: UIStoryboardSegue) {
 
-        if segue.identifier == "EncryptedFile" {
-            passDataToEncryptedFileScene(segue)
+        if segue.identifier == "ProcessedFile" {
+            passDataToProcessedFileScene(segue)
         }
     }
 
-    func passDataToEncryptedFileScene(_ segue: UIStoryboardSegue) {
+    func passDataToProcessedFileScene(_ segue: UIStoryboardSegue) {
 
         // swiftlint:disable:next force_cast (since the destination is known)
-        let encryptedFileViewController = segue.destination as! EncryptedFileViewController
-        encryptedFileViewController.output.files = viewController.output.files
-        encryptedFileViewController.output.encryptionKey = viewController.output.keys
+        let processedFileViewController = segue.destination as! ProcessedFileViewController
+        processedFileViewController.output.files = viewController.output.files
+        processedFileViewController.output.encryptionKey = viewController.output.keys
     }
 }

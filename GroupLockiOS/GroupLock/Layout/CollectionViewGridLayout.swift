@@ -18,7 +18,7 @@ class CollectionViewGridLayout {
     }
 
     private static func getItemWidth(for collectionView: UICollectionView) -> CGFloat {
-        return (collectionView.frame.width - 3*getSectionInset(for: collectionView)) / 2
+        return (collectionView.frame.width - 3 * getSectionInset(for: collectionView)) / 2
     }
 
 
