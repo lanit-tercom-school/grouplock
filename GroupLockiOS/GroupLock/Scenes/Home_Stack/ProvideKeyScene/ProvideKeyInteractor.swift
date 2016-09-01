@@ -11,6 +11,7 @@ import Foundation
 protocol ProvideKeyInteractorInput {
     var files: [File] { get set }
     var numberOfKeys: (Int, Int) { get set }
+    var keys: [String] { get }
 
     func getKeys(_ request: ProvideKey.Configure.Request)
 }
@@ -31,10 +32,11 @@ class ProvideKeyInteractor: ProvideKeyInteractorInput {
     // MARK: - Business logic
 
     var numberOfKeys = (1, 1)
+    var keys: [String] = []
 
     func getKeys(_ request: ProvideKey.Configure.Request) {
 
-        let keys = cryptoLibrary.getKeys(min: numberOfKeys.0, max: numberOfKeys.1)
+        keys = cryptoLibrary.getKeys(min: numberOfKeys.0, max: numberOfKeys.1)
 
         let response = ProvideKey.Configure.Response(decryptionKeys: keys)
 

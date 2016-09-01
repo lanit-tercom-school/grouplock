@@ -1,5 +1,5 @@
 //
-//  EncryptedFileRouter.swift
+//  ProcessedFileRouter.swift
 //  GroupLock
 //
 //  Created by Sergej Jaskiewicz on 22.07.16.
@@ -8,13 +8,13 @@
 
 import UIKit
 
-protocol EncryptedFileRouterInput {
+protocol ProcessedFileRouterInput {
     func returnToHomeScene()
 }
 
-class EncryptedFileRouter: EncryptedFileRouterInput {
+class ProcessedFileRouter: ProcessedFileRouterInput {
 
-    weak var viewController: EncryptedFileViewController!
+    weak var viewController: ProcessedFileViewController!
 
     // MARK: - Navigation
 

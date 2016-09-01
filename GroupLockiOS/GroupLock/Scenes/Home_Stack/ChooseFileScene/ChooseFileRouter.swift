@@ -46,7 +46,8 @@ class ChooseFileRouter: ChooseFileRouterInput {
 
     func passDataToScanningScene(_ segue: UIStoryboardSegue) {
         // swiftlint:disable:next force_cast (since the destination is known)
-//        let scanningViewController = segue.destinationViewController as! ScanningViewController
+        let scanningViewController = segue.destination as! ScanningViewController
+        scanningViewController.output.files = viewController.output.chosenFiles
 
     }
 }

@@ -4,14 +4,24 @@
 <dict>
 	<key>classNames</key>
 	<dict>
-		<key>QRCodeTests</key>
+		<key>CryptoFakeTests</key>
 		<dict>
-			<key>testPerformanceExample()</key>
+			<key>test_DecryptionPerformance()</key>
 			<dict>
 				<key>com.apple.XCTPerformanceMetric_WallClockTime</key>
 				<dict>
 					<key>baselineAverage</key>
-					<real>1.5873e-06</real>
+					<real>0.51479</real>
+					<key>baselineIntegrationDisplayName</key>
+					<string>Local Baseline</string>
+				</dict>
+			</dict>
+			<key>test_EncryptionPerformance()</key>
+			<dict>
+				<key>com.apple.XCTPerformanceMetric_WallClockTime</key>
+				<dict>
+					<key>baselineAverage</key>
+					<real>1.839</real>
 					<key>baselineIntegrationDisplayName</key>
 					<string>Local Baseline</string>
 				</dict>

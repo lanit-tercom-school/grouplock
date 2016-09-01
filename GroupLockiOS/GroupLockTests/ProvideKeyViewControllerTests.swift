@@ -64,6 +64,7 @@ class ProvideKeyViewControllerTests: XCTestCase {
 
         var files: [File] = []
         var numberOfKeys = (0, 0)
+        var keys = [""]
         func getKeys(_ request: ProvideKey.Configure.Request) {
             getKeys_called = true
         }
@@ -122,7 +123,7 @@ class ProvideKeyViewControllerTests: XCTestCase {
 
         // Then
         XCTAssertTrue(provideKeyViewControllerOutputSpy.getKeys_called,
-                      "EncryptedFileViewController should tell the interactor to fetch decryption keys from" +
+                      "ProvideKeyViewController should tell the interactor to fetch decryption keys from" +
             " the crypto library once the view is loaded")
     }
 

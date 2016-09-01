@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11198.2" systemVersion="16A294a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11198.2" systemVersion="16A304a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -18,7 +18,7 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fk7-jF-owG">
@@ -138,7 +138,7 @@
                         <viewControllerLayoutGuide type="bottom" id="HO9-uW-Z1N"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Gqg-VS-QNg">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="44" translatesAutoresizingMaskIntoConstraints="NO" id="kxM-cd-HTX">
@@ -202,7 +202,7 @@
             <objects>
                 <collectionViewController storyboardIdentifier="ChooseFileViewController" id="X0n-VS-yrO" userLabel="Chose File View Controller" customClass="ChooseFileViewController" customModule="GroupLock" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="xy1-d9-7SE">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tNw-zV-nGE">
                             <size key="itemSize" width="120" height="120"/>
@@ -286,7 +286,7 @@
                         <viewControllerLayoutGuide type="bottom" id="faO-N4-gBT"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="B4w-Jp-sc7">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="44" translatesAutoresizingMaskIntoConstraints="NO" id="F7c-iy-3WI">
@@ -379,7 +379,7 @@
                         <viewControllerLayoutGuide type="bottom" id="iVA-Do-3xN"/>
                     </layoutGuides>
                     <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="2Dd-3q-jjF">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dGf-eP-IyT">
@@ -400,6 +400,9 @@
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="nuiClass" value="WhiteTextButton"/>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <segue destination="EMn-t3-28b" kind="show" identifier="ProcessedFile" id="Zsr-Pl-0PI"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -461,7 +464,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DUu-Jd-zXW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3907" y="-98"/>
+            <point key="canvasLocation" x="5345" y="-233"/>
         </scene>
         <!--Number Of Keys-->
         <scene sceneID="S7w-4u-xQY">
@@ -472,7 +475,7 @@
                         <viewControllerLayoutGuide type="bottom" id="NUO-f3-vRZ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="r3Z-vU-RLw">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="02R-1n-hYV">
@@ -544,7 +547,7 @@
             <objects>
                 <collectionViewController storyboardIdentifier="ProvideKeyViewController" id="nBG-Ui-WPY" userLabel="ProvideKey" customClass="ProvideKeyViewController" customModule="GroupLock" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="w2s-Bi-0nc">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="m9l-jz-Hub">
                             <size key="itemSize" width="192" height="192"/>
@@ -554,7 +557,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="QRCodeCell" id="bNQ-5u-euP" customClass="ProvideKeyCell" customModule="GroupLock" customModuleProvider="target">
-                                <rect key="frame" x="64" y="0.0" width="192" height="192"/>
+                                <rect key="frame" x="92" y="0.0" width="192" height="192"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="192" height="192"/>
@@ -598,7 +601,7 @@
                     <navigationItem key="navigationItem" title="Your Keys" id="LcH-P9-HxB">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="MMT-rg-Zc8">
                             <connections>
-                                <segue destination="EMn-t3-28b" kind="show" id="jDq-Ks-DDQ"/>
+                                <segue destination="EMn-t3-28b" kind="show" identifier="ProcessedFile" id="jDq-Ks-DDQ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -607,12 +610,12 @@
             </objects>
             <point key="canvasLocation" x="5346" y="-941"/>
         </scene>
-        <!--Encrypted File-->
+        <!--Processed File-->
         <scene sceneID="KgL-Yt-Vv4">
             <objects>
-                <collectionViewController storyboardIdentifier="EncryptedFileViewController" id="EMn-t3-28b" userLabel="Encrypted File" customClass="EncryptedFileViewController" customModule="GroupLock" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="ProcessedFileViewController" id="EMn-t3-28b" userLabel="Processed File" customClass="ProcessedFileViewController" customModule="GroupLock" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="CCc-7r-cUG">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="PmQ-Ob-ApJ">
                             <size key="itemSize" width="156" height="156"/>
@@ -620,15 +623,19 @@
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
+                        <activityIndicatorView key="backgroundView" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" animating="YES" style="gray" id="Iqo-ln-WXc">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </activityIndicatorView>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EncryptedFileCell" id="arA-jv-RlQ" userLabel="EncryptedFile Cell" customClass="FileCollectionViewCell" customModule="GroupLock" customModuleProvider="target">
-                                <rect key="frame" x="82" y="0.0" width="156" height="156"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ProcessedFileCell" id="arA-jv-RlQ" userLabel="ProcessedFile Cell" customClass="FileCollectionViewCell" customModule="GroupLock" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="156" height="156"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="156" height="156"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ago-jO-Opw" userLabel="EncryptedFile View">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ago-jO-Opw" userLabel="ProcessedFile View">
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="ago-jO-Opw" secondAttribute="height" multiplier="1:1" id="Pxp-ex-gT6"/>
                                             </constraints>
@@ -678,7 +685,7 @@
                             <outlet property="delegate" destination="EMn-t3-28b" id="gd8-Wc-Krx"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Encrypted Files" id="upF-R3-NhI">
+                    <navigationItem key="navigationItem" title="Processed Files" id="upF-R3-NhI">
                         <rightBarButtonItems>
                             <barButtonItem style="done" systemItem="save" id="VZy-dk-B3v">
                                 <connections>
@@ -693,13 +700,14 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="Iqo-ln-WXc" id="fcR-YF-REu"/>
                         <segue destination="JSn-jz-IV3" kind="unwind" identifier="ReturnToHomeScreen" unwindAction="unwindToHome:" id="fKZ-2c-BVO"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zZm-mr-hc1" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="JSn-jz-IV3" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="6060" y="-941"/>
+            <point key="canvasLocation" x="6322" y="-941"/>
         </scene>
         <!--Library-->
         <scene sceneID="VV6-CX-haO">
@@ -727,7 +735,7 @@
                         <viewControllerLayoutGuide type="bottom" id="uzX-UX-lh2"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="onr-DE-bbm">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Phd-Ux-wLn">
@@ -791,15 +799,15 @@
             <objects>
                 <tableViewController storyboardIdentifier="LibraryTable" id="B27-qf-ejK" userLabel="Library View Controller" customClass="LibraryViewController" customModule="GroupLock" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ztz-gx-Scm">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="fileCell" textLabel="LO5-ML-5ov" detailTextLabel="NSk-7V-N2j" style="IBUITableViewCellStyleValue1" id="CMQ-io-mJo" customClass="FileTableViewCell" customModule="GroupLock" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CMQ-io-mJo" id="PXS-Ch-vZO">
-                                    <frame key="frameInset" width="320" height="43"/>
+                                    <frame key="frameInset" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="file.bmp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LO5-ML-5ov">
@@ -810,7 +818,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NSk-7V-N2j">
-                                            <frame key="frameInset" minX="263" minY="12" width="42" height="20"/>
+                                            <frame key="frameInset" minX="318" minY="12" width="42" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -858,7 +866,7 @@
                         <viewControllerLayoutGuide type="bottom" id="ctM-zN-eph"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ht1-GN-nJT">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AoC-eP-gw4">
@@ -911,7 +919,7 @@
                         <viewControllerLayoutGuide type="bottom" id="qA6-VR-mA3"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="J8M-dg-wV4">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <userDefinedRuntimeAttributes>
@@ -937,5 +945,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="KN1-gi-ukS"/>
+        <segue reference="Zsr-Pl-0PI"/>
     </inferredMetricsTieBreakers>
 </document>

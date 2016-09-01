@@ -35,7 +35,7 @@ class CryptoFake: CryptoWrapperProtocol {
 
         return splitKey(stringKey, intoParts: max)
             .enumerated()
-            .map { String(format: "%02d_%02d_", $0, max) + $1 }
+            .map { String(format: "%02d%02d", $0, max) + $1 }
     }
 
     private func splitKey(_ key: String, intoParts parts: Int) -> [String] {
@@ -63,10 +63,10 @@ class CryptoFake: CryptoWrapperProtocol {
     }
 
     func validatePart(_ key: String) -> Bool {
-        let regex = try? NSRegularExpression(pattern: "[0-9]{2}_[0-9]{2}_[0-9]+", options: [])
+        let regex = try? NSRegularExpression(pattern: "[0-9]+", options: [])
         let stringToMatch = key as NSString
         return !(regex?.matches(in: key, options: [],
-            range: NSRange(location: 0, length: stringToMatch.length)).isEmpty ?? true)
+                                range: NSRange(location: 0, length: stringToMatch.length)).isEmpty ?? true)
     }
 
     /**
@@ -91,14 +91,16 @@ class CryptoFake: CryptoWrapperProtocol {
 
         let expandedKey = expand(parsedKey, for: cgImage)
 
-        let imagePixels = cgImage.pixels
-        let encryptedPixels = encrypted(imagePixels, withKey: expandedKey)
-        let width = cgImage.width
-        let height = cgImage.height
+        let imagePixelsBuffer = cgImage.createPixelsBuffer()
 
-        // swiftlint:disable:next force_unwrapping (because what can possibly go wrong)
-        let encryptedImage = CGImage.fromPixels(encryptedPixels, width: width, height: height)!
-        return encryptedImage.pngData
+        encryptPixels(imagePixelsBuffer, withKey: expandedKey)
+
+        let encryptedImage = CGImage.createFromPixelsBuffer(imagePixelsBuffer,
+                                                            width: cgImage.width, height: cgImage.height)
+        imagePixelsBuffer.baseAddress?.deinitialize()
+        imagePixelsBuffer.baseAddress?.deallocate(capacity: cgImage.width * cgImage.height)
+
+        return encryptedImage?.createPNGData()
     }
 
     /**
@@ -123,12 +125,16 @@ class CryptoFake: CryptoWrapperProtocol {
 
         let expandedKey = expand(parsedKey, for: cgImage)
 
-        let imagePixels = cgImage.pixels
-        let decryptedPixels = decrypted(imagePixels, withKey: expandedKey)
-        let width = cgImage.width
-        let height = cgImage.height
-        let decryptedImage = CGImage.fromPixels(decryptedPixels, width: width, height: height)
-        return decryptedImage?.pngData
+        let imagePixelsBuffer = cgImage.createPixelsBuffer()
+        decryptPixels(imagePixelsBuffer, withKey: expandedKey)
+
+        let decryptedImage = CGImage.createFromPixelsBuffer(imagePixelsBuffer,
+                                                            width: cgImage.width, height: cgImage.height)
+
+        imagePixelsBuffer.baseAddress?.deinitialize()
+        imagePixelsBuffer.baseAddress?.deallocate(capacity: cgImage.width * cgImage.height)
+
+        return decryptedImage?.createPNGData()
     }
 
     private func processKeys(_ keys: [String]) -> String? {
@@ -136,21 +142,24 @@ class CryptoFake: CryptoWrapperProtocol {
         guard keys.map(validatePart).reduce(true, { $0 && $1 }) else { return nil }
 
         return mergeKeys(
-            keys.map { $0.characters.split(separator: "_") }.map { characters -> (Int, String) in
+            keys.map { (key: String) -> (Int, String) in
 
-            // swiftlint:disable:next force_unwrapping (since we validate the key)
-            let number = Int(String(characters[0]))!
-            let key = String(characters[2])
-            return (number, key)
+                let numberIndex = key.index(key.startIndex, offsetBy: 2)
+                let keyIndex = key.index(key.startIndex, offsetBy: 4)
+
+                // swiftlint:disable:next force_unwrapping (since we validate the key)
+                let number = Int(key.substring(to: numberIndex))!
+                let key = key.substring(from: keyIndex)
+                return (number, key)
             }.sorted { $0.0 < $0.0 }.map { $0.1 }
         )
     }
 
     private func expand(_ key: [UInt8], for image: CGImage) -> [UInt8] {
 
-        let numberOfBytes = image.height * image.bytesPerRow
+        let numberOfPixels = image.height * image.width
 
-        let expandingFactor = numberOfBytes / key.count + 1
+        let expandingFactor = numberOfPixels / key.count + 1
 
         func generateExpansion(for element: UInt8) -> [UInt8] {
             let lcg = LinearCongruentialGenerator(seed: Double(element))
@@ -171,13 +180,13 @@ class CryptoFake: CryptoWrapperProtocol {
                            decode: nil,
                            shouldInterpolate: false,
                            intent: .defaultIntent)!
-            // swiftlint:disable:previous force_unwrapping (since we check for type)
+        // swiftlint:disable:previous force_unwrapping (since we check for type)
         case .some("PNG"):
             return CGImage(pngDataProviderSource: cgDataProvider,
                            decode: nil,
                            shouldInterpolate: false,
                            intent: .defaultIntent)!
-            // swiftlint:disable:previous force_unwrapping (since we check for type)
+        // swiftlint:disable:previous force_unwrapping (since we check for type)
         default:
             return nil
         }
@@ -216,51 +225,42 @@ class CryptoFake: CryptoWrapperProtocol {
         static let blue = 17
     }
 
-    func decrypted(_ pixels: [Pixel], withKey key: [UInt8]) -> [Pixel] {
+    func decryptPixels(_ pixels: UnsafeMutableBufferPointer<UInt32>, withKey key: [UInt8]) {
 
         precondition(key.count > 3, "key is too short")
 
-        func decrypted(_ pixel: Pixel, inIndex index: Int, withKey key: [UInt8]) -> Pixel {
+        for i in 0 ..< pixels.count {
 
-            let _red = Int(pixel.red)     + Int(key[index % (key.count - 3)    ]) + 512 - ColorOffsets.red
-            let _green = Int(pixel.green) + Int(key[index % (key.count - 3) + 1]) + 512 - ColorOffsets.green
-            let _blue = Int(pixel.blue)   + Int(key[index % (key.count - 3) + 2]) + 512 - ColorOffsets.blue
+            let value = pixels[i]
+            let _r = (value & 0xFF0000) >> 16
+            let _g = (value & 0xFF00) >> 8
+            let _b = value & 0xFF
 
-            let red =   UInt8(_red % 256)
-            let green = UInt8(_green % 256)
-            let blue =  UInt8(_blue % 256)
-            return Pixel(red: red, green: green, blue: blue, alpha: pixel.alpha)
+            let r = (Int(_r) - Int(key[i % (key.count - 3)    ]) + 512 - ColorOffsets.red) % 256
+            let g = (Int(_g) - Int(key[i % (key.count - 3) + 1]) + 512 - ColorOffsets.green) % 256
+            let b = (Int(_b) - Int(key[i % (key.count - 3) + 2]) + 512 - ColorOffsets.blue) % 256
+
+            pixels[i] = (value & 0xFF000000) | UInt32(r) << 16 | UInt32(g) << 8 | UInt32(b)
         }
-
-        var decryptedPixels = [Pixel](repeating: Pixel(red: 0, green: 0, blue: 0, alpha: 0),
-                                      count: pixels.count)
-        for index in 0 ..< decryptedPixels.count {
-            decryptedPixels[index] = decrypted(pixels[index], inIndex: index, withKey: key)
-        }
-        return decryptedPixels
     }
 
-    private func encrypted(_ pixels: [Pixel], withKey key: [UInt8]) -> [Pixel] {
+    private func encryptPixels(_ pixels: UnsafeMutableBufferPointer<UInt32>,
+                           withKey key: [UInt8]) {
 
         precondition(key.count > 3, "key is too short")
 
-        func encrypted(_ pixel: Pixel, inIndex index: Int, withKey key: [UInt8]) -> Pixel {
+        for index in 0 ..< pixels.count {
 
-            let _red = Int(pixel.red)     - Int(key[index % (key.count - 3)    ]) + 512 + ColorOffsets.red
-            let _green = Int(pixel.green) - Int(key[index % (key.count - 3) + 1]) + 512 + ColorOffsets.green
-            let _blue = Int(pixel.blue)   - Int(key[index % (key.count - 3) + 2]) + 512 + ColorOffsets.blue
+            let value = pixels[index]
+            let _r = (value & 0xFF0000) >> 16
+            let _g = (value & 0xFF00) >> 8
+            let _b = value & 0xFF
 
-            let red =   UInt8(_red % 256)
-            let green = UInt8(_green % 256)
-            let blue =  UInt8(_blue % 256)
-            return Pixel(red: red, green: green, blue: blue, alpha: pixel.alpha)
+            let r = (Int(_r) + Int(key[index % (key.count - 3)    ]) + 512 + ColorOffsets.red) % 256
+            let g = (Int(_g) + Int(key[index % (key.count - 3) + 1]) + 512 + ColorOffsets.green) % 256
+            let b = (Int(_b) + Int(key[index % (key.count - 3) + 2]) + 512 + ColorOffsets.blue) % 256
+
+            pixels[index] = (value & 0xFF000000) | UInt32(r) << 16 | UInt32(g) << 8 | UInt32(b)
         }
-
-        var encryptedPixels = [Pixel](repeating: Pixel(red: 0, green: 0, blue: 0, alpha: 0),
-                                      count: pixels.count)
-        for index in 0 ..< encryptedPixels.count {
-            encryptedPixels[index] = encrypted(pixels[index], inIndex: index, withKey: key)
-        }
-        return encryptedPixels
     }
 }

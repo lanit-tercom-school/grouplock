@@ -16,6 +16,7 @@ protocol ScanningViewControllerInput {
 }
 
 protocol ScanningViewControllerOutput {
+    var files: [File] { get set }
     var captureSession: AVCaptureSession! { get }
     var scannedKeys: [String] { get }
     var metadataOutputObjectsDelegate: AVCaptureMetadataOutputObjectsDelegate? { get }
