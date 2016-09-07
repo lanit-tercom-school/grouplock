@@ -18,6 +18,7 @@ xcuserdata/
 *.xccheckout
 *.xcscmblueprint
 *.xcuserstate
+.DS_Store
 
 # CocoaPods
 Pods/

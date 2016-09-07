@@ -12,30 +12,30 @@ import Agrume
  * A class conforming to `ImageViewer` protocol is responsible for presenting an interface for viewing
  * a single image or an array of images.
  */
-protocol ImageViewer {
+protocol ImageViewer: class {
 
     /**
      Presents viewing interface.
 
      - parameter viewController: A view controller from which the image viewer should be presented.
      */
-    func showFrom(viewController: UIViewController)
+    func showFrom(_ viewController: UIViewController)
 
     /**
      Provides an initial state for the image viewer if more than one image is to be used.
 
      - parameter index: An index of image in the data source that should be presented initially.
      */
-    func showImageAtIndex(index: Int)
+    func showImage(atIndex index: Int)
 
     /// A handler that is called each time the image viewer scrolls to a next image.
-    var didScroll: ((index: Int) -> Void)? { get set }
+    var didScroll: ((_ index: Int) -> Void)? { get set }
 }
 
 extension Agrume: ImageViewer {}
 
 extension ImageViewer where Self: Agrume {
-    func showFrom(viewController: UIViewController) {
+    func showFrom(_ viewController: UIViewController) {
         showFrom(viewController, backgroundSnapshotVC: nil)
     }
 }

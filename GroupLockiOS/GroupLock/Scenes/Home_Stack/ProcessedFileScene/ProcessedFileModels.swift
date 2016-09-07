@@ -1,5 +1,5 @@
 //
-//  EncryptedFileModels.swift
+//  ProcessedFileModels.swift
 //  GroupLock
 //
 //  Created by Sergej Jaskiewicz on 22.07.16.
@@ -9,7 +9,7 @@
 import UIKit
 
 // MARK: Scene
-struct EncryptedFile {
+struct ProcessedFile {
 
     // MARK: Use Case
     struct Fetch {
@@ -38,8 +38,8 @@ struct EncryptedFile {
         struct Request {}
 
         struct Response {
-            let dataToShare: [NSData]
-            let excludedActivityTypes: [String]?
+            var dataToShare: [Data]
+            var excludedActivityTypes: [UIActivityType]?
         }
     }
 
@@ -47,7 +47,7 @@ struct EncryptedFile {
     struct SelectFiles {
 
         struct Request {
-            let indexPath: NSIndexPath
+            let indexPath: IndexPath
         }
 
         struct Response {}

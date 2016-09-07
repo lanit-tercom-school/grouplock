@@ -30,27 +30,27 @@ class LibraryViewController: UITableViewController {
         navigationItem.title = directory.rawValue
     }
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
     }
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
 
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return files.count
     }
 
 
-    override func tableView(tableView: UITableView,
-                            cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView,
+                            cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        let cell = tableView.dequeueReusableCellWithIdentifier("fileCell",
-                                                               forIndexPath: indexPath) as! FileTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "fileCell",
+                                                               for: indexPath) as! FileTableViewCell
         // swiftlint:disable:previous force_cast (since this tableView uses instances of this class as cells)
 
         cell.correspondingFile = files[indexPath.row]
@@ -61,31 +61,31 @@ class LibraryViewController: UITableViewController {
         return cell
     }
 
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.cellForRowAtIndexPath(indexPath)?.selected = false
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.cellForRow(at: indexPath)?.isSelected = false
     }
 
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
 
-    override func tableView(tableView: UITableView, didEndEditingRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didEndEditingRowAt indexPath: IndexPath?) {
 
     }
 
     // MARK: - Loading a new file using UIImagePickerController
 
-    @IBAction func onLoad(sender: UIBarButtonItem) {
+    @IBAction func onLoad(_ sender: UIBarButtonItem) {
 
         presentImagePicker()
     }
 
-    func imagePickerController(picker: UIImagePickerController,
+    func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
 
         // swiftlint:disable:next force_cast (since the value for this key contains an instance of NSURL)
-        let fileURL = info[UIImagePickerControllerReferenceURL] as! NSURL
+        let fileURL = info[UIImagePickerControllerReferenceURL] as! URL
 
         // Create a new file with some default settings
         if let loadedFile = FileManager.sharedInstance.createFileFromURL(fileURL, withName: "__defaultName",
@@ -99,7 +99,7 @@ class LibraryViewController: UITableViewController {
                 loadedFile.encrypted = true
             }
             setFileNameAlert(loadedFile) { (file) in
-                self.managedObjectContext.insertObject(file)
+                self.managedObjectContext.insert(file)
                 AppDelegate.sharedInstance.saveContext()
                 self.tableView.reloadData()
             }
@@ -107,14 +107,14 @@ class LibraryViewController: UITableViewController {
 
     }
 
-    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        dismissViewControllerAnimated(true, completion: nil)
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
     }
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "viewFile" {
             guard let cell = sender as? FileTableViewCell,
-                let destination = segue.destinationViewController as? ViewFileViewController else {
+                let destination = segue.destination as? ViewFileViewController else {
                 return
             }
             destination.correspondingFile = cell.correspondingFile

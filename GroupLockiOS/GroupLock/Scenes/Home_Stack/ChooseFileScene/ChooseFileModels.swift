@@ -61,7 +61,7 @@ struct ChooseFile {
     struct SelectFiles {
 
         struct Request {
-            var indexPath: NSIndexPath
+            var indexPath: IndexPath
         }
 
         struct Response {}

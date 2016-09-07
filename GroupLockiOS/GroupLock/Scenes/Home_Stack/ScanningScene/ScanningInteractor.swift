@@ -10,17 +10,18 @@
 import AVFoundation
 
 protocol ScanningInteractorInput: class {
+    var files: [File] { get set }
     var captureSession: AVCaptureSession! { get }
     var scannedKeys: [String] { get }
     var metadataOutputObjectsDelegate: AVCaptureMetadataOutputObjectsDelegate? { get }
 
-    func configureCaptureSession(request: Scanning.Configure.Request)
-    func qrCodeCaptured(request: Scanning.Keys.Request)
+    func configureCaptureSession(_ request: Scanning.Configure.Request)
+    func qrCodeCaptured(_ request: Scanning.Keys.Request)
 }
 
 protocol ScanningInteractorOutput {
-    func formatKeyScan(response: Scanning.Keys.Response)
-    func formatCameraError(response: Scanning.CameraError.Response)
+    func formatKeyScan(_ response: Scanning.Keys.Response)
+    func formatCameraError(_ response: Scanning.CameraError.Response)
 }
 
 class ScanningInteractor: ScanningInteractorInput {
@@ -28,6 +29,7 @@ class ScanningInteractor: ScanningInteractorInput {
     var output: ScanningInteractorOutput!
     var metadataOutputObjectsDelegate: AVCaptureMetadataOutputObjectsDelegate?
 
+    var files: [File] = []
     var captureSession: AVCaptureSession!
     var cryptoLibrary: CryptoWrapperProtocol = CryptoFake()
 
@@ -35,9 +37,9 @@ class ScanningInteractor: ScanningInteractorInput {
 
     // MARK: - Business logic
 
-    func configureCaptureSession(request: Scanning.Configure.Request) {
+    func configureCaptureSession(_ request: Scanning.Configure.Request) {
 
-        let captureDevice = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
+        let captureDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
         captureSession = AVCaptureSession()
 
         do {
@@ -57,15 +59,15 @@ class ScanningInteractor: ScanningInteractorInput {
         }
 
         captureMetadataOutput.setMetadataObjectsDelegate(metadataOutputObjectsDelegate,
-                                                         queue: dispatch_get_main_queue())
+                                                         queue: DispatchQueue.main)
     }
 
-    func qrCodeCaptured(request: Scanning.Keys.Request) {
+    func qrCodeCaptured(_ request: Scanning.Keys.Request) {
 
         let key = request.keyScanned
         let corners = request.qrCodeCorners
 
-        if !cryptoLibrary.validate(key: key) || scannedKeys.contains(key) {
+        if !cryptoLibrary.validatePart(key) || scannedKeys.contains(key) {
             let response = Scanning.Keys.Response(keyScanned: key,
                                                   isValidKey: false,
                                                   qrCodeCorners: corners,

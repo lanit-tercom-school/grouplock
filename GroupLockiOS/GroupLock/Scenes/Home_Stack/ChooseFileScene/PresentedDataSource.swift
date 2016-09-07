@@ -13,12 +13,12 @@ class PresentedDataSource<DataSource: DataSourceProtocol, ViewModel>: DataSource
     private var dataSourceToPresent: DataSource
     private var formatDataSource: (DataSource.Item) -> ViewModel
 
-    init(dataSourceToPresent: DataSource, formatDataSource: (DataSource.Item) -> ViewModel) {
+    init(dataSourceToPresent: DataSource, formatDataSource: @escaping (DataSource.Item) -> ViewModel) {
         self.dataSourceToPresent = dataSourceToPresent
         self.formatDataSource = formatDataSource
     }
 
-    func setFormatDataSource(closure: (DataSource.Item) -> ViewModel) {
+    func setFormatDataSource(_ closure: @escaping (DataSource.Item) -> ViewModel) {
         formatDataSource = closure
     }
 

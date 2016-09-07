@@ -1,5 +1,5 @@
 //
-//  EncryptedFileModelsComparison.swift
+//  ProcessedFileModelsComparison.swift
 //  GroupLock
 //
 //  Created by Sergej Jaskiewicz on 26.07.16.
@@ -10,40 +10,41 @@
 
 // We are using this methods and not the `==` operator so that in tests we can define equality in a diferent way.
 
-extension EncryptedFile.Share.Response: EquatableModel {
+extension ProcessedFile.Share.Response: EquatableModel {
 
-    func isEqualTo(response: EncryptedFile.Share.Response) -> Bool {
+    func isEqualTo(_ response: ProcessedFile.Share.Response) -> Bool {
         return self.dataToShare.count == response.dataToShare.count
-            && !zip(self.dataToShare.sort(), response.dataToShare.sort()).contains { $0 != $1 }
+            && !zip(self.dataToShare.sorted(), response.dataToShare.sorted()).contains { $0 != $1 }
             && ((self.excludedActivityTypes == nil && response.excludedActivityTypes == nil)
                 || (self.excludedActivityTypes != nil && response.excludedActivityTypes != nil
                     // swiftlint:disable:next force_unwrapping
-                    && !zip(self.excludedActivityTypes!.sort(),
+                    && !zip(self.excludedActivityTypes!.sorted(by: { $0.rawValue < $1.rawValue }),
                         // swiftlint:disable:next force_unwrapping
-                        response.excludedActivityTypes!.sort()).contains { $0 != $1 }))
+                        response.excludedActivityTypes!.sorted(by: { $0.rawValue < $1.rawValue }))
+                        .contains { $0 != $1 }))
     }
 }
 
-extension EncryptedFile.Fetch.ViewModel.FileInfo: EquatableModel {
+extension ProcessedFile.Fetch.ViewModel.FileInfo: EquatableModel {
 
-    func isEqualTo(fileInfo: EncryptedFile.Fetch.ViewModel.FileInfo) -> Bool {
+    func isEqualTo(_ fileInfo: ProcessedFile.Fetch.ViewModel.FileInfo) -> Bool {
         return self.fileName == fileInfo.fileName
             && self.encrypted == fileInfo.encrypted
             && self.fileThumbnail.isEqualToImage(fileInfo.fileThumbnail)
     }
 }
 
-extension EncryptedFile.Fetch.ViewModel: EquatableModel {
+extension ProcessedFile.Fetch.ViewModel: EquatableModel {
 
-    func isEqualTo(viewModel: EncryptedFile.Fetch.ViewModel) -> Bool {
+    func isEqualTo(_ viewModel: ProcessedFile.Fetch.ViewModel) -> Bool {
         return self.fileInfo.count == viewModel.fileInfo.count
             && !zip(self.fileInfo, viewModel.fileInfo).contains { !$0.isEqualTo($1) }
     }
 }
 
-extension EncryptedFile.Fetch.Response: EquatableModel {
+extension ProcessedFile.Fetch.Response: EquatableModel {
 
-    func isEqualTo(response: EncryptedFile.Fetch.Response) -> Bool {
+    func isEqualTo(_ response: ProcessedFile.Fetch.Response) -> Bool {
         return self.files.count == response.files.count
             && !zip(self.files, response.files).contains { $0 != $1 }
     }

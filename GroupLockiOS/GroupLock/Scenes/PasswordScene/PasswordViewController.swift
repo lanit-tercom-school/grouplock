@@ -12,12 +12,12 @@ protocol PasswordViewControllerInput {
 
     // MARK: UI-sent actions
     func onProceedButton()
-    func textFieldEditingChanged(sender: UITextField)
-    func textFieldShouldReturn(textField: UITextField) -> Bool
+    func textFieldEditingChanged(_ sender: UITextField)
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool
 }
 
 protocol PasswordViewControllerOutput {
-    func passwordIsCorrect(password: String?) -> Bool
+    func passwordIsCorrect(_ password: String?) -> Bool
 }
 
 class PasswordViewController: UIViewController, PasswordViewControllerInput {
@@ -39,20 +39,20 @@ class PasswordViewController: UIViewController, PasswordViewControllerInput {
 
     // MARK: Event handling
     @IBAction func onProceedButton() {
-        processPasswordFromTextField(passwordTextField)
+        processPassword(from: passwordTextField)
     }
 
-    @IBAction func textFieldEditingChanged(sender: UITextField) {
+    @IBAction func textFieldEditingChanged(_ sender: UITextField) {
         // swiftlint:disable:next force_unwrapping (since we explicitly check for nil)
         if sender.text != nil && !sender.text!.characters.isEmpty {
-            proceedButton.hidden = false
+            proceedButton.isHidden = false
         } else {
-            proceedButton.hidden = true
+            proceedButton.isHidden = true
         }
     }
 
     // MARK: Password correctness processing
-    private func processPasswordFromTextField(textField: UITextField) -> Bool {
+    @discardableResult fileprivate func processPassword(from textField: UITextField) -> Bool {
 
         if output.passwordIsCorrect(textField.text) {
             passwordTextField.resignFirstResponder()
@@ -67,8 +67,8 @@ class PasswordViewController: UIViewController, PasswordViewControllerInput {
 
 extension PasswordViewController: UITextFieldDelegate {
 
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        processPasswordFromTextField(textField)
+    @discardableResult func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        processPassword(from: textField)
         return true
     }
 }

@@ -18,13 +18,13 @@ class LibraryDirectoryViewController: UIViewController {
 
     private let managedObjectContext = AppDelegate.sharedInstance.managedObjectContext
 
-    @IBAction func onDirectory(sender: UIButton) {
-        performSegueWithIdentifier("toFiles", sender: sender)
+    @IBAction func onDirectory(_ sender: UIButton) {
+        performSegue(withIdentifier: "toFiles", sender: sender)
     }
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let sender = sender as? UIButton,
-            let destination = segue.destinationViewController as? LibraryViewController {
+            let destination = segue.destination as? LibraryViewController {
             var directory: Directory
             switch sender {
             case encryptedButton:
@@ -40,17 +40,17 @@ class LibraryDirectoryViewController: UIViewController {
 
     // MARK: - Loading a new file using UIImagePickerController
 
-    @IBAction func onLoad(sender: UIButton) {
+    @IBAction func onLoad(_ sender: UIButton) {
 
         presentImagePicker()
     }
 
-    func imagePickerController(picker: UIImagePickerController,
+    func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
 
         // swiftlint:disable:next force_cast (since the value for this key is an instance of NSURL)
-        let fileURL = info[UIImagePickerControllerReferenceURL] as! NSURL
+        let fileURL = info[UIImagePickerControllerReferenceURL] as! URL
 
         if let loadedFile = FileManager.sharedInstance.createFileFromURL(fileURL,
                                                                          withName: "__defaultName",
@@ -58,7 +58,7 @@ class LibraryDirectoryViewController: UIViewController {
 
             pickEncryptionStatusAlert(forFile: loadedFile) { (file) in
                 self.setFileNameAlert(file) { (file) in
-                    self.managedObjectContext.insertObject(file)
+                    self.managedObjectContext.insert(file)
                     AppDelegate.sharedInstance.saveContext()
                 }
 
@@ -67,7 +67,7 @@ class LibraryDirectoryViewController: UIViewController {
 
     }
 
-    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        dismissViewControllerAnimated(true, completion: nil)
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
     }
 }

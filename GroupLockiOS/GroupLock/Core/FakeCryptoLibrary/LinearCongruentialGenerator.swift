@@ -6,9 +6,12 @@
 //  Copyright © 2016 Lanit-Tercom School. All rights reserved.
 //
 
-/// Pseudorandom number generator (implementation is taken from the book "The Swift Progremming Language")
-///
-/// See: [Linear congruential generator (Wikipedia)](https://en.wikipedia.org/wiki/Linear_congruential_generator)
+/**
+ Pseudorandom number generator (implementation is taken from the book "The Swift Progremming Language")
+
+ - seealso:
+ [Linear congruential generator (Wikipedia)](https://en.wikipedia.org/wiki/Linear_congruential_generator)
+*/
 class LinearCongruentialGenerator {
 
     var seed: Double
@@ -27,7 +30,7 @@ class LinearCongruentialGenerator {
      - returns: Pseudorandom floating point number from 0 to 1
      */
     func random() -> Double {
-        seed = (seed * a + c) % m
+        seed = (seed * a + c).truncatingRemainder(dividingBy: m)
         return seed / m
     }
 

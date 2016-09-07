@@ -17,14 +17,14 @@ extension CGPath {
 
      - returns: Polygonal CGPath
      */
-    static func create(points: [CGPoint]) -> CGPath {
-        let path = CGPathCreateMutable()
+    static func create(_ points: [CGPoint]) -> CGPath {
+        let path = CGMutablePath()
         guard let initialPoint = points.first else { return path }
-        CGPathMoveToPoint(path, nil, initialPoint.x, initialPoint.y)
+        path.move(to: initialPoint)
         for point in points {
-            CGPathAddLineToPoint(path, nil, point.x, point.y)
+            path.addLine(to: point)
         }
-        CGPathCloseSubpath(path)
+        path.closeSubpath()
         return path
     }
 }

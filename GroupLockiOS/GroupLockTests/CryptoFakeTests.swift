@@ -10,15 +10,16 @@ import XCTest
 @testable import GroupLock
 
 // swiftlint:disable force_unwrapping
+// swiftlint:disable force_try
 class CryptoFakeTests: XCTestCase {
 
     var sut: CryptoFake!
 
-    let encryptionKey = "014135065011031120213098090225235002159164069053046054089221166018143" +
+    let encryptionKey = "0101014135065011031120213098090225235002159164069053046054089221166018143" +
     "252176014191220128248108194211155076048237028002186"
 
-    let dataToEncrypt = NSData(contentsOfURL:
-        NSBundle(forClass: CryptoFakeTests.self).URLForResource("grumpy", withExtension: "jpg")!)!
+    let dataToEncrypt = try! Data(contentsOf: Bundle(for: CryptoFakeTests.self)
+        .url(forResource: "grumpy", withExtension: "jpg")!)
 
     override func setUp() {
         super.setUp()
@@ -31,7 +32,7 @@ class CryptoFakeTests: XCTestCase {
         // Given
 
         // When
-        let encryptedData = sut.encryptImage(image: dataToEncrypt, withEncryptionKey: encryptionKey)
+        let encryptedData = sut.encrypt(image: dataToEncrypt, withEncryptionKey: [encryptionKey])
 
         // Then
         XCTAssertNotNil(encryptedData, "Encryption should give some result")
@@ -51,9 +52,9 @@ class CryptoFakeTests: XCTestCase {
         // Given
 
         // When
-        let encryptedData = sut.encryptImage(image: dataToEncrypt, withEncryptionKey: encryptionKey)
+        let encryptedData = sut.encrypt(image: dataToEncrypt, withEncryptionKey: [encryptionKey])
         XCTAssertNotNil(encryptedData)
-        let decryptedData = sut.decryptImage(image: encryptedData!, withDecryptionKey: encryptionKey)
+        let decryptedData = sut.decrypt(image: encryptedData!, withDecryptionKey: [encryptionKey])
 
         // Then
         XCTAssertNotNil(decryptedData, "Decryption should give some result")
@@ -78,22 +79,31 @@ class CryptoFakeTests: XCTestCase {
 
         // Then
         XCTAssertNotNil(key)
-        XCTAssertEqual(key?.characters.count, 120, "120-digit key should be generated")
+        XCTAssertEqual(key?.characters.count, 124, "120-digit key should be generated with 6 prefix symbols")
 
         // When
-        let encryptedData = sut.encryptImage(image: dataToEncrypt, withEncryptionKey: key!)
+        let encryptedData = sut.encrypt(image: dataToEncrypt, withEncryptionKey: [key!])
+
+        // Then
         XCTAssertNotNil(encryptedData, "The key generated should be valid encryption key")
+
+        // When
+        let sharedKey = sut.getKeys(min: 13, max: 13)
+
+        // Then
+        XCTAssertEqual(sharedKey.count, 13, "CryptoFake should generate an array of keys for shared secret")
+        XCTAssertTrue(sharedKey[3].hasPrefix("0313"),
+                      "Splitted key should contain information about its index and overall number of keys")
     }
 
     func test_ThatValidateMethod_ValidatesKey() {
 
         // Given
-        let validKey = encryptionKey
-        let wrongNumbersKey = "999367-11876"
-        let wrongCharactersKey = "abcdefghijklmnopqrstuvwxyz"
-        let tooShortKey = "123123123"
-        let incompleteKey = "12312312312"
-        let emptyKey = ""
+        let validKey = [encryptionKey]
+        let wrongNumbersKey = ["0101999367-11876"]
+        let wrongCharactersKey = ["0101abcdefghijklmnopqrstuvwxyz"]
+        let tooShortKey = ["0101123123123"]
+        let incompleteKey = ["010112312312312"]
 
         // When
 
@@ -104,24 +114,24 @@ class CryptoFakeTests: XCTestCase {
         XCTAssertFalse(sut.validate(key: tooShortKey), "Key should be at least 12 characters long")
         XCTAssertFalse(sut.validate(key: incompleteKey),
                        "Key with number of digits that is not a multiple of 3 is not valid")
-        XCTAssertFalse(sut.validate(key: emptyKey), "Empty key is not valid")
     }
 
     func test_EncryptionPerformance() {
 
-        measureBlock { [unowned self] in
-            self.sut.encryptImage(image: self.dataToEncrypt, withEncryptionKey: self.encryptionKey)
+        measure { [unowned self] in
+            _ = self.sut.encrypt(image: self.dataToEncrypt, withEncryptionKey: [self.encryptionKey])
         }
     }
 
     func test_DecryptionPerformance() {
 
-        let dataToDecrypt = sut.encryptImage(image: dataToEncrypt, withEncryptionKey: encryptionKey)
+        let dataToDecrypt = sut.encrypt(image: dataToEncrypt, withEncryptionKey: [encryptionKey])
         XCTAssertNotNil(dataToDecrypt)
 
-        measureBlock { [unowned self] in
-            self.sut.decryptImage(image: dataToDecrypt!, withDecryptionKey: self.encryptionKey)
+        measure { [unowned self] in
+            _ = self.sut.decrypt(image: dataToDecrypt!, withDecryptionKey: [self.encryptionKey])
         }
     }
 }
 // swiftlint:enable force_unwrapping
+// swiftlint:enable force_try

@@ -11,18 +11,18 @@ import NUI
 import JSQDataSourcesKit
 
 protocol ChooseFileViewControllerInput {
-    func displayFiles(with viewModel: ChooseFile.Configure.ViewModel)
+    func displayFiles(_ viewModel: ChooseFile.Configure.ViewModel)
 }
 
 protocol ChooseFileViewControllerOutput {
 
-    func setFetchedResultsDelegate(request: ChooseFile.SetDelegate.Request)
-    func configureFetchedResultsController(request: ChooseFile.Configure.Request)
-    func fetchFiles(request: ChooseFile.FetchFiles.Request)
+    func setFetchedResultsDelegate(_ request: ChooseFile.SetDelegate.Request)
+    func configureFetchedResultsController(_ request: ChooseFile.Configure.Request)
+    func fetchFiles(_ request: ChooseFile.FetchFiles.Request)
 
     var numberOfSelectedFiles: Int { get }
-    func fileSelected(request: ChooseFile.SelectFiles.Request)
-    func fileDeselected(request: ChooseFile.SelectFiles.Request)
+    func fileSelected(_ request: ChooseFile.SelectFiles.Request)
+    func fileDeselected(_ request: ChooseFile.SelectFiles.Request)
 
     var chosenFiles: [File] { get }
     var encryption: Bool { get set }
@@ -56,11 +56,11 @@ class ChooseFileViewController: UICollectionViewController, ChooseFileViewContro
 
         nextButton.setTitleTextAttributes(
             [NSForegroundColorAttributeName : NUISettings.getColor("font-color-disabled", withClass: "BarButton")],
-            forState: .Disabled
+            for: .disabled
         )
     }
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
         output.fetchFiles(ChooseFile.FetchFiles.Request())
@@ -84,7 +84,7 @@ class ChooseFileViewController: UICollectionViewController, ChooseFileViewContro
 
     // MARK: - ChooseFileViewControllerInput
 
-    func displayFiles(with viewModel: ChooseFile.Configure.ViewModel) {
+    func displayFiles(_ viewModel: ChooseFile.Configure.ViewModel) {
 
         let cellFactory = ViewFactory(reuseIdentifier: "fileToProcessCell") {
             (cell, item: ChooseFile.Configure.ViewModel.FileInfo?,
@@ -93,7 +93,7 @@ class ChooseFileViewController: UICollectionViewController, ChooseFileViewContro
             cell.filenameLabel.text = item?.name
             cell.thumbnailView.image = item?.thumbnail
 
-            if !cell.selected {
+            if !cell.isSelected {
                 cell.visualizeDeselection()
             } else {
                 cell.visualizeSelection()
@@ -126,7 +126,7 @@ class ChooseFileViewController: UICollectionViewController, ChooseFileViewContro
 
     // MARK: - Event handling
 
-    @IBAction func onNext(sender: UIBarButtonItem) {
+    @IBAction func onNext(_ sender: UIBarButtonItem) {
         if output.encryption {
             router.navigateToKeyTypeScene()
         } else {
@@ -137,30 +137,30 @@ class ChooseFileViewController: UICollectionViewController, ChooseFileViewContro
 
     // MARK: - UICollectionViewDelegate
 
-    override func collectionView(collectionView: UICollectionView,
-                                 didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    override func collectionView(_ collectionView: UICollectionView,
+                                 didSelectItemAt indexPath: IndexPath) {
 
         // swiftlint:disable:next force_cast (since this collectionView's cells are instances of this class)
-        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! FileCollectionViewCell
+        let cell = collectionView.cellForItem(at: indexPath) as! FileCollectionViewCell
 
         cell.visualizeSelection()
-        nextButton.enabled = true
+        nextButton.isEnabled = true
         let request = ChooseFile.SelectFiles.Request(indexPath: indexPath)
         output.fileSelected(request)
     }
 
-    override func collectionView(collectionView: UICollectionView,
-                                 didDeselectItemAtIndexPath indexPath: NSIndexPath) {
+    override func collectionView(_ collectionView: UICollectionView,
+                                 didDeselectItemAt indexPath: IndexPath) {
 
         // swiftlint:disable:next force_cast (since this collectionView's cells are instances of this class)
-        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! FileCollectionViewCell
+        let cell = collectionView.cellForItem(at: indexPath) as! FileCollectionViewCell
         cell.visualizeDeselection()
 
         let request = ChooseFile.SelectFiles.Request(indexPath: indexPath)
         output.fileDeselected(request)
 
         if output.numberOfSelectedFiles == 0 {
-            nextButton.enabled = false
+            nextButton.isEnabled = false
         }
     }
 }
