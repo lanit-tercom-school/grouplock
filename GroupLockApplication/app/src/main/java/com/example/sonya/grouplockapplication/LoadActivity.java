@@ -2,6 +2,8 @@ package com.example.sonya.grouplockapplication;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -13,6 +15,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -48,10 +51,20 @@ public class LoadActivity extends AppCompatActivity {
       /*  Toolbar mToolbar = (Toolbar) findViewById(R.id.keys_type_selection_toolbar);
         setSupportActionBar(mToolbar);*/
 
-        Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar_actionbar);
+        Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
-        ActionBar ab = getSupportActionBar();
-        ab.setDisplayHomeAsUpEnabled(true);
+
+        try {
+            ActivityInfo activityInfo = getPackageManager().getActivityInfo(
+                    getComponentName(), PackageManager.GET_META_DATA);
+            TextView tw=(TextView)findViewById(R.id.textViewPage);
+            tw.setText(activityInfo.loadLabel(getPackageManager())
+                    .toString());
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+       /* ActionBar ab = getSupportActionBar();
+        ab.setDisplayHomeAsUpEnabled(true);*/
 
 
         loadImagefromGallery();
@@ -113,8 +126,10 @@ public class LoadActivity extends AppCompatActivity {
                         .decodeFile(imgDecodableString));
 
             } else {
-                Toast.makeText(this, "You haven't picked Image",
-                        Toast.LENGTH_LONG).show();
+                /*Toast.makeText(this, "You haven't picked Image",
+                        Toast.LENGTH_LONG).show();*/
+                Intent intent = new Intent(LoadActivity.this, ChooseToDoActivity.class);
+                startActivity(intent);
             }
         } catch (Exception e) {
             Toast.makeText(this, "Something went wrong", Toast.LENGTH_LONG)

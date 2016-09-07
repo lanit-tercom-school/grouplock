@@ -179,4 +179,12 @@ public class DecrImg extends AppCompatActivity {
         file.delete();
     }
 
+    public void onBackPressed(){
+
+    }
+    public void goToNextStep(View v){
+        Intent intent = new Intent(DecrImg.this, ChooseToDoActivity.class);
+        startActivity(intent);
+    }
+
 }

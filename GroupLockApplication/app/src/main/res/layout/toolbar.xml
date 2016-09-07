@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="?android:actionBarSize"
+        android:id="@+id/toolbar"
+        android:background="@color/colorToolbar"
+        android:weightSum="1">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/textViewPage"
+                android:textColor="#ffffff"
+                android:textSize="14pt"
+                android:gravity="center_vertical|center_horizontal"
+                android:onClick="showMenu"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/textNext"
+                android:text="NEXT"
+                android:textColor="#ffffff"
+                android:textSize="14pt"
+                android:gravity="center_vertical|center_horizontal"
+                android:onClick="goToNextStep"
+                android:visibility="invisible"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="20dp"
+                android:layout_marginEnd="20dp" />
+
+
+            <ImageView
+                android:layout_width="64dp"
+                android:layout_height="match_parent"
+                android:id="@+id/imageInfo"
+                android:src="@drawable/ic_info_outline_white_24dp"
+                android:baselineAlignBottom="false"
+                android:layout_gravity="right"
+                android:clickable="false"
+                android:adjustViewBounds="false"
+                android:contextClickable="false"
+                android:cropToPadding="false"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:visibility="visible"
+                android:onClick="showInfo" />
+
+            <ImageView
+                android:layout_width="64dp"
+                android:layout_height="match_parent"
+                android:id="@+id/buttonBack"
+                android:src="@drawable/ic_arrow_back_white_24dp"
+                android:baselineAlignBottom="false"
+                android:layout_gravity="right"
+                android:clickable="true"
+                android:adjustViewBounds="false"
+                android:visibility="invisible"
+                android:onClick="goBack"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true" />
+
+        </RelativeLayout>
+    </android.support.v7.widget.Toolbar>
+</LinearLayout>

@@ -59,6 +59,9 @@ public class EncrImgAndQr extends AppCompatActivity {
     ArrayList<ImageButton> buttonList = new ArrayList<ImageButton>();
     boolean[] viwedQR;
 
+    ImageView btnInfo;
+    TextView btnNext;
+
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     @Override
@@ -68,8 +71,6 @@ public class EncrImgAndQr extends AppCompatActivity {
         setContentView(R.layout.activity_encr_img_and_qr);
         Toolbar mToolbar = (Toolbar) findViewById(R.id.encr_img_and_qr_toolbar);
         setSupportActionBar(mToolbar);
-        ActionBar ab = getSupportActionBar();
-        ab.setDisplayHomeAsUpEnabled(true);
 
 
         // Получение необходимых данных, для шифрования файла
@@ -176,5 +177,13 @@ public class EncrImgAndQr extends AppCompatActivity {
         return bitmap;
     }
 
+    @Override
+    public void onBackPressed(){
 
+    }
+
+    public void goToNextStep(View v){
+            Intent intent = new Intent(EncrImgAndQr.this, ChooseToDoActivity.class);
+            startActivity(intent);
+    }
 }
