@@ -1,7 +1,7 @@
 PODS:
-  - Agrume (3.0.2)
-  - JSQCoreDataKit (4.0.2)
-  - JSQDataSourcesKit (4.0.1)
+  - Agrume (3.0.3)
+  - JSQCoreDataKit (6.0.1)
+  - JSQDataSourcesKit (6.0.0)
   - NUI (0.5.5):
     - NUIParse
   - NUIParse (1.3)
@@ -21,19 +21,19 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   Agrume:
-    :commit: 010545e37c6900f7dbd94e8a4bfee6a42450d6f0
+    :commit: 62f11a3f42f85b073b8c055c7246a464628e60aa
     :git: https://github.com/JanGorman/Agrume.git
   NUI:
     :commit: 9575a63670b4e422a972775c9a501377eda0767e
     :git: https://github.com/broadwaylamb/nui.git
 
 SPEC CHECKSUMS:
-  Agrume: 5698c55f02bb9bd60b6a32fea6ac0e8057ccb927
-  JSQCoreDataKit: 5ff8701184611be7769926b91a0cba2115e4e69a
-  JSQDataSourcesKit: 6d862e41a79e68f52b34f8190c7643b2c8ed7819
+  Agrume: b96babc1dc0a12cc799268e15cdc4571b0e6e1d3
+  JSQCoreDataKit: e3ffa2b9e882a2158a198b3e59d4b1a5b3928c6b
+  JSQDataSourcesKit: 20cda71984408006b4c3e0cf224343fd1a913d58
   NUI: 53de7278003235deb2a375fe6f04c7a3aa3e49eb
   NUIParse: 2e3885ba7807477266396292626bd387d34c2338
 
-PODFILE CHECKSUM: 5aa03ff3defc8e5520647e2e62acb01d606759c0
+PODFILE CHECKSUM: ed8fc4339ef273fdb235f080aaaa05fb9e13f318
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.1.1
