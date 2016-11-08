@@ -1,5 +1,5 @@
 PODS:
-  - Agrume (2.7.1)
+  - Agrume (3.0.2)
   - JSQCoreDataKit (4.0.2)
   - JSQDataSourcesKit (4.0.1)
   - NUI (0.5.5):
@@ -7,46 +7,33 @@ PODS:
   - NUIParse (1.3)
 
 DEPENDENCIES:
-  - Agrume (from `https://github.com/JanGorman/Agrume.git`, branch `swift/3.0`)
-  - JSQCoreDataKit (from `https://github.com/jessesquires/JSQCoreDataKit.git`, branch `swift3.0`)
-  - JSQDataSourcesKit (from `https://github.com/jessesquires/JSQDataSourcesKit.git`, branch `swift3.0`)
+  - Agrume (from `https://github.com/JanGorman/Agrume.git`)
+  - JSQCoreDataKit
+  - JSQDataSourcesKit
   - NUI (from `https://github.com/broadwaylamb/nui.git`, branch `grouplock`)
 
 EXTERNAL SOURCES:
   Agrume:
-    :branch: swift/3.0
     :git: https://github.com/JanGorman/Agrume.git
-  JSQCoreDataKit:
-    :branch: swift3.0
-    :git: https://github.com/jessesquires/JSQCoreDataKit.git
-  JSQDataSourcesKit:
-    :branch: swift3.0
-    :git: https://github.com/jessesquires/JSQDataSourcesKit.git
   NUI:
     :branch: grouplock
     :git: https://github.com/broadwaylamb/nui.git
 
 CHECKOUT OPTIONS:
   Agrume:
-    :commit: b36655061e673bc81d0d9f320b6d088b65cfd289
+    :commit: 010545e37c6900f7dbd94e8a4bfee6a42450d6f0
     :git: https://github.com/JanGorman/Agrume.git
-  JSQCoreDataKit:
-    :commit: 62b9af72be2095c3cd6358266bdb67465a809633
-    :git: https://github.com/jessesquires/JSQCoreDataKit.git
-  JSQDataSourcesKit:
-    :commit: 96c97c5f3202543e6705aefb8e7a2011c87e4f61
-    :git: https://github.com/jessesquires/JSQDataSourcesKit.git
   NUI:
     :commit: 9575a63670b4e422a972775c9a501377eda0767e
     :git: https://github.com/broadwaylamb/nui.git
 
 SPEC CHECKSUMS:
-  Agrume: b5d2ff2830a8fa6dadc009e0046cf4e1a2424e68
+  Agrume: 5698c55f02bb9bd60b6a32fea6ac0e8057ccb927
   JSQCoreDataKit: 5ff8701184611be7769926b91a0cba2115e4e69a
   JSQDataSourcesKit: 6d862e41a79e68f52b34f8190c7643b2c8ed7819
   NUI: 53de7278003235deb2a375fe6f04c7a3aa3e49eb
   NUIParse: 2e3885ba7807477266396292626bd387d34c2338
 
-PODFILE CHECKSUM: 822617a4118ffe8c4e67a7fce7f6054da0cd25ea
+PODFILE CHECKSUM: 5aa03ff3defc8e5520647e2e62acb01d606759c0
 
 COCOAPODS: 1.0.1

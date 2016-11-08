@@ -59,11 +59,16 @@ class ProcessedFileInteractor: ProcessedFileInteractorInput {
             }
         }
 
-        DispatchQueue.global(qos: .userInitiated).async { [unowned self] in
-            self.processedFiles = self.files.map { process($0, withKey: self.cryptographicKey) }
-
-            DispatchQueue.main.async { [unowned self] in
-                self.output.presentFiles(ProcessedFile.Fetch.Response(files: self.processedFiles))
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            if let strongSelf = self {
+                strongSelf.processedFiles = strongSelf
+                    .files
+                    .map { process($0, withKey: strongSelf.cryptographicKey) }
+            }
+            DispatchQueue.main.async { [weak self] in
+                if let strongSelf = self {
+                    strongSelf.output.presentFiles(ProcessedFile.Fetch.Response(files: strongSelf.processedFiles))
+                }
             }
         }
     }
