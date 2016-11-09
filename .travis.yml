@@ -25,7 +25,7 @@ matrix:
   - language: swift
     os: osx
     osx_image: xcode8
-    env: DEVICE="iPhone 7s Plus" VERSION=10.0 TARGET="iOS"
+    env: DEVICE="iPhone 7 Plus" VERSION=10.0 TARGET="iOS"
 
 before_install:
   - if [[ $TARGET == "iOS" ]] ; then rvm use 2.2; fi
