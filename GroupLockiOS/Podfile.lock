@@ -1,52 +1,39 @@
 PODS:
-  - Agrume (2.7.1)
-  - JSQCoreDataKit (4.0.2)
-  - JSQDataSourcesKit (4.0.1)
+  - Agrume (3.0.3)
+  - JSQCoreDataKit (6.0.1)
+  - JSQDataSourcesKit (6.0.0)
   - NUI (0.5.5):
     - NUIParse
   - NUIParse (1.3)
 
 DEPENDENCIES:
-  - Agrume (from `https://github.com/JanGorman/Agrume.git`, branch `swift/3.0`)
-  - JSQCoreDataKit (from `https://github.com/jessesquires/JSQCoreDataKit.git`, branch `swift3.0`)
-  - JSQDataSourcesKit (from `https://github.com/jessesquires/JSQDataSourcesKit.git`, branch `swift3.0`)
+  - Agrume (from `https://github.com/JanGorman/Agrume.git`)
+  - JSQCoreDataKit
+  - JSQDataSourcesKit
   - NUI (from `https://github.com/broadwaylamb/nui.git`, branch `grouplock`)
 
 EXTERNAL SOURCES:
   Agrume:
-    :branch: swift/3.0
     :git: https://github.com/JanGorman/Agrume.git
-  JSQCoreDataKit:
-    :branch: swift3.0
-    :git: https://github.com/jessesquires/JSQCoreDataKit.git
-  JSQDataSourcesKit:
-    :branch: swift3.0
-    :git: https://github.com/jessesquires/JSQDataSourcesKit.git
   NUI:
     :branch: grouplock
     :git: https://github.com/broadwaylamb/nui.git
 
 CHECKOUT OPTIONS:
   Agrume:
-    :commit: b36655061e673bc81d0d9f320b6d088b65cfd289
+    :commit: 62f11a3f42f85b073b8c055c7246a464628e60aa
     :git: https://github.com/JanGorman/Agrume.git
-  JSQCoreDataKit:
-    :commit: 62b9af72be2095c3cd6358266bdb67465a809633
-    :git: https://github.com/jessesquires/JSQCoreDataKit.git
-  JSQDataSourcesKit:
-    :commit: 96c97c5f3202543e6705aefb8e7a2011c87e4f61
-    :git: https://github.com/jessesquires/JSQDataSourcesKit.git
   NUI:
     :commit: 9575a63670b4e422a972775c9a501377eda0767e
     :git: https://github.com/broadwaylamb/nui.git
 
 SPEC CHECKSUMS:
-  Agrume: b5d2ff2830a8fa6dadc009e0046cf4e1a2424e68
-  JSQCoreDataKit: 5ff8701184611be7769926b91a0cba2115e4e69a
-  JSQDataSourcesKit: 6d862e41a79e68f52b34f8190c7643b2c8ed7819
+  Agrume: b96babc1dc0a12cc799268e15cdc4571b0e6e1d3
+  JSQCoreDataKit: e3ffa2b9e882a2158a198b3e59d4b1a5b3928c6b
+  JSQDataSourcesKit: 20cda71984408006b4c3e0cf224343fd1a913d58
   NUI: 53de7278003235deb2a375fe6f04c7a3aa3e49eb
   NUIParse: 2e3885ba7807477266396292626bd387d34c2338
 
-PODFILE CHECKSUM: 822617a4118ffe8c4e67a7fce7f6054da0cd25ea
+PODFILE CHECKSUM: ed8fc4339ef273fdb235f080aaaa05fb9e13f318
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.1.1
