@@ -20,6 +20,10 @@
             <item android:id="@+id/library"
                 android:title="@string/activity_library"
                 app:showAsAction="ifRoom"/>
+            <!--About / will display always -->
+            <item android:id="@+id/info"
+                android:title="@string/activity_info"
+                app:showAsAction="ifRoom"/>
             
         </menu>
     </item>

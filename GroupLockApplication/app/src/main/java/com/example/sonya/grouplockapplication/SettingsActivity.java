@@ -6,9 +6,7 @@ import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,7 +17,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class SettingsActivity extends AppCompatActivity {
+public class SettingsActivity extends AppCompatActivity  {
 
     SharedPreferences sPref;
     boolean passReq;
@@ -33,7 +31,10 @@ public class SettingsActivity extends AppCompatActivity {
         setSupportActionBar(mToolbar);
 
         ImageView imageInfo=(ImageView)findViewById(R.id.imageInfo);
+
         imageInfo.setVisibility(View.INVISIBLE);
+
+
 
         try {
             ActivityInfo activityInfo = getPackageManager().getActivityInfo(
@@ -105,31 +106,39 @@ public class SettingsActivity extends AppCompatActivity {
         inflater.inflate(R.menu.home_menu, popupMenu.getMenu());
         popupMenu.setOnMenuItemClickListener(new IconizedMenu.OnMenuItemClickListener() {
 
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
+                                                 @Override
+             public boolean onMenuItemClick(MenuItem item) {
 
-                switch (item.getItemId()) {
+                  switch (item.getItemId()) {
 
-                    case R.id.library:{
-                        Intent intent = new Intent(SettingsActivity.this, LibraryActivity.class);
-                        startActivity(intent);
-                        return true;
-                    }
-                    case R.id.home:{
-                        Intent intent = new Intent(SettingsActivity.this, ChooseToDoActivity.class);
-                        startActivity(intent);
-                        return true;
-                    }
+                  case R.id.library: {
+                       Intent intent = new Intent(SettingsActivity.this, LibraryActivity.class);
+                       startActivity(intent);
+                       return true;
+                       }
+                  case R.id.home: {
+                       Intent intent = new Intent(SettingsActivity.this, ChooseToDoActivity.class);
+                       startActivity(intent);
+                       return true;
+                       }
+                  case R.id.info: {
+                       Intent intent = new Intent(SettingsActivity.this, InformationActivity.class);
+                       startActivity(intent);
+                       return true;
+                       }
                /*     case R.id.info:{
                         TextView infoMessage = (TextView) findViewById(R.id.textViewInfoMessage);
                         infoMessage.setVisibility(View.VISIBLE);
                         return true;
                     }*/
-                    default:
-                        return false;
-                }
-            }
-        });
-        popupMenu.show();
+                       default:
+                         return false;
+                           }
+                        }
+              }
+
+        );
+            popupMenu.show();
+        }
+
     }
-}

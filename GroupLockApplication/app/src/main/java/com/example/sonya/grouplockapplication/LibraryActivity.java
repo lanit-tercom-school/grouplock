@@ -5,15 +5,19 @@ import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.*;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileFilter;
@@ -459,10 +463,15 @@ public class LibraryActivity extends AppCompatActivity {
                         startActivity(intent);
                         return true;
                     }
-                    case R.id.home:{
+                    case R.id.home: {
                         Intent intent = new Intent(LibraryActivity.this, ChooseToDoActivity.class);
                         startActivity(intent);
                         return true;
+                    }
+                     case R.id.info:{
+                            Intent intent = new Intent(LibraryActivity.this, InformationActivity.class);
+                            startActivity(intent);
+                            return true;
                     }
                     default:
                         return false;
