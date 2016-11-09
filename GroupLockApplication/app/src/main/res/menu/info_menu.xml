@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".InformationActivity">
+
+
+    <item android:id="@+id/menu_info"
+        android:icon="@drawable/ic_more_vert_black_24dp"
+        app:showAsAction="always"
+        android:title="@string/activity_info">
+
+        <menu>
+            <!-- Home / will display always -->
+            <item android:id="@+id/home"
+                android:title="@string/activity_home"
+                app:showAsAction="ifRoom" />
+
+            <!--Library / will display always -->
+            <item android:id="@+id/library"
+                android:title="@string/activity_library"
+                app:showAsAction="ifRoom"/>
+
+            <!--About / will display always -->
+            <item android:id="@+id/info"
+                android:title="@string/activity_info"
+                app:showAsAction="ifRoom"/>
+
+        </menu>
+    </item>
+</menu>
