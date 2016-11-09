@@ -8,12 +8,37 @@
     android:background="@color/colorBackGround">
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/encr_img_and_qr_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_height="?android:actionBarSize"
+        android:id="@+id/encr_img_and_qr_toolbar"
         android:background="@color/colorToolbar"
-        android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+        android:weightSum="1">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/textNext"
+                android:text="Go Home"
+                android:textColor="#ffffff"
+                android:textSize="14pt"
+                android:gravity="center_vertical|center_horizontal"
+                android:onClick="goToNextStep"
+                android:visibility="visible"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="20dp"
+                android:layout_marginEnd="20dp" />
+
+
+        </RelativeLayout>
+    </android.support.v7.widget.Toolbar>
 
     <ScrollView
         android:layout_width="wrap_content"
@@ -34,6 +59,25 @@
             android:layout_below="@+id/encr_img_and_qr_toolbar"
             android:id="@+id/tableLayout2"></TableLayout>
     </ScrollView>
+    <TextView
+        android:shape="ring"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="STEP 3"
+        android:id="@+id/textStep"
+        android:layout_alignBottom="@+id/entries_list_view"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:textColor="@color/colorToolbar"
+        android:visibility="visible"
+        android:textSize="14pt"
+        android:textIsSelectable="false"
+        android:textStyle="bold" />
 
 
 </RelativeLayout>

@@ -18,6 +18,7 @@ public class LibraryEntriesAdapter extends BaseAdapter {
     private ArrayList<LibraryEntry> libraryEntries;
     private final LibraryActivity.LibraryState libraryState;
 
+
     public LibraryEntriesAdapter(Context context,
                                  ArrayList<LibraryEntry> libraryEntries,
                                  LibraryActivity.LibraryState state) {
@@ -26,6 +27,8 @@ public class LibraryEntriesAdapter extends BaseAdapter {
         this.libraryEntries = libraryEntries;
         this.libraryState = state;
     }
+
+
 
     @Override
     public int getCount() {

@@ -9,11 +9,11 @@
 import JSQDataSourcesKit
 
 protocol ChooseFilePresenterInput {
-    func presentFiles(response response: ChooseFile.Configure.Response)
+    func presentFiles(_ response: ChooseFile.Configure.Response)
 }
 
 protocol ChooseFilePresenterOutput: class {
-    func displayFiles(with viewModel: ChooseFile.Configure.ViewModel)
+    func displayFiles(_ viewModel: ChooseFile.Configure.ViewModel)
 }
 
 class ChooseFilePresenter: ChooseFilePresenterInput {
@@ -22,7 +22,7 @@ class ChooseFilePresenter: ChooseFilePresenterInput {
 
     // MARK: - Presentation logic
 
-    func dataFormatter(file: ManagedFile) -> ChooseFile.Configure.ViewModel.FileInfo {
+    func dataFormatter(_ file: ManagedFile) -> ChooseFile.Configure.ViewModel.FileInfo {
 
         let fileName = file.name
         var thumbnail: UIImage?
@@ -34,12 +34,12 @@ class ChooseFilePresenter: ChooseFilePresenterInput {
         return fileInfo
     }
 
-    func presentFiles(response response: ChooseFile.Configure.Response) {
+    func presentFiles(_ response: ChooseFile.Configure.Response) {
 
         let fileInfoDataSource = PresentedDataSource(dataSourceToPresent: response.fetchedResultsController,
                                                      formatDataSource: dataFormatter)
 
         let viewModel = ChooseFile.Configure.ViewModel(fileInfoDataSource: fileInfoDataSource)
-        output.displayFiles(with: viewModel)
+        output.displayFiles(viewModel)
     }
 }

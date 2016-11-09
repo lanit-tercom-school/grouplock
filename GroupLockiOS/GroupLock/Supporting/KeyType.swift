@@ -10,4 +10,7 @@ import Foundation
 
 enum KeyType: String {
     case QRCode = "QR-CODE"
+
+    // ???: Presence of only one case causes crash. Bug in Swift?
+    case Dummy = "Dummy"
 }

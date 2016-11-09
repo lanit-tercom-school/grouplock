@@ -11,7 +11,7 @@ import UIKit
 // MARK: - Connect View, Interactor, and Presenter
 
 extension KeyTypeViewController: KeyTypePresenterOutput {
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         router.passDataToNextScene(segue)
     }
 }
@@ -24,7 +24,7 @@ class KeyTypeConfigurator {
 
     // MARK: - Configuration
 
-    static func configure(viewController: KeyTypeViewController) {
+    static func configure(_ viewController: KeyTypeViewController) {
         let router = KeyTypeRouter()
         router.viewController = viewController
 

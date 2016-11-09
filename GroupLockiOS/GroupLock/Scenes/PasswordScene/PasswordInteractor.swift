@@ -9,7 +9,7 @@
 import Foundation
 
 protocol PasswordInteractorInput {
-    func passwordIsCorrect(password: String?) -> Bool
+    func passwordIsCorrect(_ password: String?) -> Bool
 }
 
 protocol PasswordInteractorOutput {
@@ -29,7 +29,7 @@ class PasswordInteractor: PasswordInteractorInput {
 
      - returns: `true` if password is correct, otherwise `false`.
      */
-    func passwordIsCorrect(password: String?) -> Bool {
+    func passwordIsCorrect(_ password: String?) -> Bool {
 
         return true
     }

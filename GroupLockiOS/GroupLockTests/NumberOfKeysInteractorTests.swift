@@ -31,12 +31,24 @@ class NumberOfKeysInteractorTests: XCTestCase {
 
         let maximumNumberOfKeys = Seeds.maximumNumberOfKeys
 
-        func getKeys(min min: Int, max: Int) -> [String] {
+        func getKeys(min: Int, max: Int) -> [String] {
             return []
         }
 
-        func encryptImage(image image: NSData, withEncryptionKey key: String) -> NSData {
-            return NSData()
+        func validate(key: [String]) -> Bool {
+            return false
+        }
+
+        func validatePart(_ key: String) -> Bool {
+            return false
+        }
+
+        func encrypt(image: Data, withEncryptionKey key: [String]) -> Data? {
+            return Data()
+        }
+
+        func decrypt(image: Data, withDecryptionKey key: [String]) -> Data? {
+            return Data()
         }
     }
 

@@ -7,25 +7,7 @@ android:orientation="vertical"
 tools:context=".NumberOfKeysActivity"
     android:background="@color/colorBackGround">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/keys_type_selection_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/colorToolbar"
-        android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
-
-    <Button
-        android:layout_width="72dp"
-        android:layout_height="72dp"
-        android:id="@+id/button3"
-        android:background="@drawable/ic_arrow_forward_grey_48dp"
-        android:clickable="false"
-        android:enabled="true"
-        android:focusable="true"
-        android:layout_alignBottom="@+id/textView"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+    <include layout="@layout/toolbar" />
 
     <NumberPicker
         android:layout_width="wrap_content"
@@ -65,20 +47,14 @@ tools:context=".NumberOfKeysActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/NumHead"
+        android:text="STEP 2"
+        android:visibility="invisible"
         android:id="@+id/textView"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:textSize="20dp" />
-
-    <Button
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:id="@+id/button4"
-        android:background="@drawable/ic_info_outline_black_24dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:textSize="20dp"
+        android:textColor="@color/colorToolbar"
+        android:textStyle="bold" />
 
     <NumberPicker
         android:layout_width="wrap_content"
@@ -87,14 +63,25 @@ tools:context=".NumberOfKeysActivity"
         android:layout_alignTop="@+id/minKeys"
         android:layout_toRightOf="@+id/textView"
         android:layout_toEndOf="@+id/textView" />
-
-    <ImageView
+    <TextView
+        android:shape="ring"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imageKS"
-        android:layout_below="@+id/maxKeys"
-        android:layout_toRightOf="@+id/button4"
-        android:layout_toEndOf="@+id/button4" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="STEP 2"
+        android:id="@+id/textStep"
+        android:layout_alignBottom="@+id/entries_list_view"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:textColor="@color/colorToolbar"
+        android:visibility="visible"
+        android:textSize="14pt"
+        android:textIsSelectable="false"
+        android:textStyle="bold" />
 
 
 </RelativeLayout>

@@ -14,7 +14,7 @@ import CoreData
 
 extension ManagedFile {
 
-    @NSManaged var contents: NSData?
+    @NSManaged var contents: Data?
     @NSManaged var encrypted: Bool
     @NSManaged var name: String
     @NSManaged var type: String

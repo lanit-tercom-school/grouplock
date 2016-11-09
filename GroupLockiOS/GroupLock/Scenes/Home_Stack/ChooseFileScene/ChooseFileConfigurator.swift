@@ -11,7 +11,7 @@ import UIKit
 // MARK: - Connect View, Interactor, and Presenter
 
 extension ChooseFileViewController: ChooseFilePresenterOutput {
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         router.passDataToNextScene(segue)
     }
 }
@@ -24,7 +24,7 @@ class ChooseFileConfigurator {
 
     // MARK: - Configuration
 
-    static func configure(viewController: ChooseFileViewController) {
+    static func configure(_ viewController: ChooseFileViewController) {
         let router = ChooseFileRouter()
         router.viewController = viewController
 

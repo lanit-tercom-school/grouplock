@@ -49,14 +49,6 @@
             android:label="Step 3/6"
             android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".QrReaderActivity"
-            android:label="QrReader"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".QrCreateActivity"
-            android:label="QrCreate"
-            android:screenOrientation="portrait">
-        </activity>
         <activity android:name=".EncrImgAndQr"
             android:label="EncrImg"
             android:screenOrientation="portrait">
@@ -65,14 +57,14 @@
             android:label="DecrImg"
             android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".OutputQrActivity"
-            android:label="OutputQrActivity"
-            android:screenOrientation="portrait">
-        </activity>
         <activity android:name=".OpenQrActivity"
             android:label="OpenQrActivity"
             android:screenOrientation="portrait">
-        </activity>
+        </activity><!-- ATTENTION: This was auto-generated to add Google Play services to your project for
+     App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
 
 
     </application>

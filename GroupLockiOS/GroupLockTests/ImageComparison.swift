@@ -17,16 +17,16 @@ extension UIImage {
 
      - returns: `true` iff pixel data of `image` is the same as the receiver's pixel data.
      */
-    func isEqualToImage(image: UIImage) -> Bool {
+    func isEqualToImage(_ image: UIImage) -> Bool {
         let data  = image.normilizedData
         let originalData = self.normilizedData
         return originalData == data
     }
 
-    private var normilizedData: NSData? {
+    private var normilizedData: Data? {
         let sizeInPixels = CGSize(width: size.width * scale, height: size.height * scale)
         UIGraphicsBeginImageContext(sizeInPixels)
-        drawInRect(CGRect(x: 0, y: 0, width: sizeInPixels.width, height: sizeInPixels.height))
+        draw(in: CGRect(x: 0, y: 0, width: sizeInPixels.width, height: sizeInPixels.height))
         let drawnImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         if let drawnImage = drawnImage {
@@ -46,7 +46,7 @@ extension CGImage {
 
      - returns: `true` iff pixel data of `image` is the same as the receiver's pixel data.
      */
-    func isEqualToImage(image: CGImage) -> Bool {
-        return UIImage(CGImage: self).isEqualToImage(UIImage(CGImage: image))
+    func isEqualToImage(_ image: CGImage) -> Bool {
+        return UIImage(cgImage: self).isEqualToImage(UIImage(cgImage: image))
     }
 }

@@ -11,20 +11,20 @@ import JSQDataSourcesKit
 
 protocol ChooseFileInteractorInput {
 
-    func setFetchedResultsDelegate(request: ChooseFile.SetDelegate.Request)
-    func configureFetchedResultsController(request: ChooseFile.Configure.Request)
-    func fetchFiles(request: ChooseFile.FetchFiles.Request)
+    func setFetchedResultsDelegate(_ request: ChooseFile.SetDelegate.Request)
+    func configureFetchedResultsController(_ request: ChooseFile.Configure.Request)
+    func fetchFiles(_ request: ChooseFile.FetchFiles.Request)
 
     var numberOfSelectedFiles: Int { get }
-    func fileSelected(request: ChooseFile.SelectFiles.Request)
-    func fileDeselected(request: ChooseFile.SelectFiles.Request)
+    func fileSelected(_ request: ChooseFile.SelectFiles.Request)
+    func fileDeselected(_ request: ChooseFile.SelectFiles.Request)
 
     var chosenFiles: [File] { get }
     var encryption: Bool { get set }
 }
 
 protocol ChooseFileInteractorOutput {
-    func presentFiles(response response: ChooseFile.Configure.Response)
+    func presentFiles(_ response: ChooseFile.Configure.Response)
 }
 
 class ChooseFileInteractor: ChooseFileInteractorInput {
@@ -33,17 +33,17 @@ class ChooseFileInteractor: ChooseFileInteractorInput {
     var worker: ChooseFileWorker!
 
     private var fetchedResultsController: FetchedResultsController<ManagedFile>!
-    private var selectedFiles = Set<NSIndexPath>()
+    private var selectedFiles = Set<IndexPath>()
     var numberOfSelectedFiles: Int { return selectedFiles.count }
     var encryption = true
 
     // MARK: - Business logic
 
-    func setFetchedResultsDelegate(request: ChooseFile.SetDelegate.Request) {
+    func setFetchedResultsDelegate(_ request: ChooseFile.SetDelegate.Request) {
         fetchedResultsController.delegate = request.fetchedResultsControllerDelegate
     }
 
-    func configureFetchedResultsController(request: ChooseFile.Configure.Request) {
+    func configureFetchedResultsController(_ request: ChooseFile.Configure.Request) {
 
         worker = ChooseFileWorker()
         let fetchedResultsController = worker.createFetchedResultsController(
@@ -53,10 +53,10 @@ class ChooseFileInteractor: ChooseFileInteractorInput {
         self.fetchedResultsController = fetchedResultsController
         let response = ChooseFile.Configure.Response(fetchedResultsController: fetchedResultsController)
 
-        output.presentFiles(response: response)
+        output.presentFiles(response)
     }
 
-    func fetchFiles(request: ChooseFile.FetchFiles.Request) {
+    func fetchFiles(_ request: ChooseFile.FetchFiles.Request) {
         do {
             try fetchedResultsController.performFetch()
         } catch {
@@ -64,11 +64,11 @@ class ChooseFileInteractor: ChooseFileInteractorInput {
         }
     }
 
-    func fileSelected(request: ChooseFile.SelectFiles.Request) {
+    func fileSelected(_ request: ChooseFile.SelectFiles.Request) {
         selectedFiles.insert(request.indexPath)
     }
 
-    func fileDeselected(request: ChooseFile.SelectFiles.Request) {
+    func fileDeselected(_ request: ChooseFile.SelectFiles.Request) {
         selectedFiles.remove(request.indexPath)
     }
 

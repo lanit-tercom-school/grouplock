@@ -19,22 +19,22 @@ class KeyTypeRouter: KeyTypeRouterInput {
     // MARK: - Navigation
 
     func navigateToNumberOfKeysScene() {
-        viewController.performSegueWithIdentifier("NumberOfKeys", sender: nil)
+        viewController.performSegue(withIdentifier: "NumberOfKeys", sender: nil)
     }
 
     // MARK: - Communication
 
-    func passDataToNextScene(segue: UIStoryboardSegue) {
+    func passDataToNextScene(_ segue: UIStoryboardSegue) {
 
         if segue.identifier == "NumberOfKeys" {
             passDataToNumberOfKeysScene(segue)
         }
     }
 
-    func passDataToNumberOfKeysScene(segue: UIStoryboardSegue) {
+    func passDataToNumberOfKeysScene(_ segue: UIStoryboardSegue) {
 
         // swiftlint:disable:next force_cast (since the destination is known)
-        let numberOfKeysViewController = segue.destinationViewController as! NumberOfKeysViewController
+        let numberOfKeysViewController = segue.destination as! NumberOfKeysViewController
         numberOfKeysViewController.output.files = viewController.output.files
     }
 }

@@ -6,14 +6,15 @@
 //  Copyright © 2016 Lanit-Tercom School. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-extension NSData: Comparable {}
+extension Data: Comparable {
 
-public func < (lhs: NSData, rhs: NSData) -> Bool {
-    return lhs.length < rhs.length
-}
+    public static func < (lhs: Data, rhs: Data) -> Bool {
+        return lhs.count < rhs.count
+    }
 
-public func <= (lhs: NSData, rhs: NSData) -> Bool {
-    return lhs.length <= rhs.length
+    static public func <= (lhs: Data, rhs: Data) -> Bool {
+        return lhs.count <= rhs.count
+    }
 }

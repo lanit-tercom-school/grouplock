@@ -11,7 +11,7 @@ import UIKit
 // MARK: - Connect View, Interactor, and Presenter
 
 extension PasswordViewController: PasswordPresenterOutput {
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         router.passDataToNextScene(segue)
     }
 }
@@ -24,7 +24,7 @@ class PasswordConfigurator {
 
     // MARK: - Configuration
 
-    static func configure(viewController: PasswordViewController) {
+    static func configure(_ viewController: PasswordViewController) {
         let router = PasswordRouter()
         router.viewController = viewController
 

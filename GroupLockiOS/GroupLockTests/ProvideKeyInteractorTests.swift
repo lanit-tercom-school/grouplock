@@ -37,12 +37,23 @@ class ProvideKeyInteractorTests: XCTestCase {
 
         let maximumNumberOfKeys = -1
 
-        func getKeys(min min: Int, max: Int) -> [String] {
+        func getKeys(min: Int, max: Int) -> [String] {
             return Seeds.keys
         }
+        func validate(key: [String]) -> Bool {
+            return false
+        }
 
-        func encryptImage(image image: NSData, withEncryptionKey key: String) -> NSData {
-            return NSData()
+        func validatePart(_ key: String) -> Bool {
+            return false
+        }
+
+        func encrypt(image: Data, withEncryptionKey key: [String]) -> Data? {
+            return Data()
+        }
+
+        func decrypt(image: Data, withDecryptionKey key: [String]) -> Data? {
+            return Data()
         }
     }
 
@@ -50,7 +61,7 @@ class ProvideKeyInteractorTests: XCTestCase {
 
         var decryptionKeys: [String]?
 
-        func createQRCodes(response: ProvideKey.Configure.Response) {
+        func createQRCodes(_ response: ProvideKey.Configure.Response) {
             decryptionKeys = response.decryptionKeys
         }
     }
