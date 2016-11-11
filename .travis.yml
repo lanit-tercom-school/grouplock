@@ -26,6 +26,11 @@ matrix:
     os: osx
     osx_image: xcode8
     env: DEVICE="iPhone 7 Plus" VERSION=10.0 TARGET="iOS"
+# For C++ library builds:
+  - language: cpp
+    os: osx
+    compiler: clang
+    env: TARGET="Lib"
 
 before_install:
   - if [[ $TARGET == "iOS" ]] ; then rvm use 2.2; fi
@@ -35,6 +40,7 @@ before_install:
 
 script:
   - if [[ $TARGET == "iOS" ]] ; then set -o pipefail && xcodebuild -workspace GroupLockiOS/GroupLock.xcworkspace -scheme GroupLock -destination "platform=iOS Simulator,name=$DEVICE,OS=$VERSION" build test | xcpretty; fi
+  - if [[ $TARGET == "Lib" ]] ; then cd GroupLockCrypto/Build && cmake .. && make; fi
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
