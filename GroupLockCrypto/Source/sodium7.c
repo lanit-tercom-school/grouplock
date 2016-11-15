@@ -5,16 +5,11 @@
 //  Created by Kirill Solntsev.
 //
 
-#include "stdafx.h"
 #include "sodium.h"
-#include "string"
-#include "iostream"
-#include "loadbmp.h"
-#include "savebmp.h"
-#include "encryptBMP.h"
-#include "decryptBMP.h"
-
-using namespace std;
+#include "glcrypto_bmp_loading.h"
+#include "glcrypto_bmp_saving.h"
+#include "glcrypto_bmp_encryption.h"
+#include "glcrypto_bmp_decryption.h"
 
 int main()
 {

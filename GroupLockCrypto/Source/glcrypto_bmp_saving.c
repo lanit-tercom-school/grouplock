@@ -5,9 +5,7 @@
 //  Created by Kirill Solntsev.
 //
 
-#include "iostream"
-
-using namespace std;
+#include <stdio.h>
 
 void saveBMP(const char *indirect, unsigned char *map, unsigned char *head)
 {

@@ -1,3 +1,4 @@
+
 //
 //  decryptBMP.cpp
 //  glcrypto
@@ -5,14 +6,9 @@
 //  Created by Kirill Solntsev.
 //
 
-#include "stdafx.h"
 #include "sodium.h"
-#include "string"
-#include "iostream"
-#include "loadbmp.h"
-#include "savebmp.h"
-
-using namespace std;
+#include "glcrypto_bmp_loading.h"
+#include "glcrypto_bmp_saving.h"
 
 void decryptBMP(const char *fname,
                 unsigned char nonce[crypto_secretbox_NONCEBYTES],
@@ -22,15 +18,14 @@ void decryptBMP(const char *fname,
     // TODO: Handle returned result
 	sodium_init();
 	
-    
-	unsigned char *map = nullptr;
-	unsigned char *head = nullptr;
+	unsigned char *map;
+	unsigned char *head;
 	
 	int sizeOfBait;
-	sizeOfBait = loadBMP(fname, map, head);
+	sizeOfBait = loadBMP(fname, &map, &head);
 	
 	unsigned char *ciphertext;
-	ciphertext = new unsigned char[sizeOfBait];
+	ciphertext = (unsigned char*)malloc(sizeOfBait);
 
 	crypto_stream_salsa20_xor(ciphertext, map, sizeOfBait, nonce, key);
 

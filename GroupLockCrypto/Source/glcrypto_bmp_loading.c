@@ -5,11 +5,10 @@
 //  Created by Kirill Solntsev.
 //
 
-#include "iostream"
+#include <stdio.h>
+#include <stdlib.h>
 
-using namespace std;
-
-int loadBMP(const char *fname, unsigned char *&map, unsigned char *&head)
+int loadBMP(const char *fname, unsigned char **map, unsigned char **head)
 {
 	char buff;
 	FILE *f;
@@ -23,17 +22,19 @@ int loadBMP(const char *fname, unsigned char *&map, unsigned char *&head)
 	fread(&begimg, sizeof(int), 1, f);
 	fseek(f, 0, SEEK_SET);
 
-	head = new unsigned char[begimg];
-	map = new unsigned char[size - begimg];
+	*head = (unsigned char*)malloc(begimg);
+	*map = (unsigned char*)malloc(size - begimg + 1);
+    
 	for (int i = 0; i < begimg; i++)
 	{
 		fread(&buff, sizeof(char), 1, f);
-		head[i] = buff;
+		(*head)[i] = buff;
 	}
-	while (!feof(f))
+
+    while (!feof(f))
 	{
 		fread(&buff, sizeof(char), 1, f);
-		map[i] = buff;
+		(*map)[i] = buff;
 		i++;
 	}
 	fclose(f);
