@@ -7,25 +7,23 @@
 //
 
 #include "sodium.h"
-#include "glcrypto_bmp_loading.h"
-#include "glcrypto_bmp_saving.h"
+#include "glcrypto_bmp.h"
 
 void decryptBMP(const char *fname,
-                unsigned char nonce[crypto_secretbox_NONCEBYTES],
-                unsigned char key[crypto_secretbox_KEYBYTES])
-{
+                glcrypto_byte *nonce,
+                glcrypto_byte *key) {
 
     // TODO: Handle returned result
 	sodium_init();
 	
-	unsigned char *map;
-	unsigned char *head;
+	glcrypto_byte *map;
+	glcrypto_byte *head;
 	
 	int sizeOfBait;
 	sizeOfBait = loadBMP(fname, &map, &head);
 	
-	unsigned char *ciphertext;
-	ciphertext = (unsigned char*)malloc(sizeOfBait);
+	glcrypto_byte *ciphertext;
+	ciphertext = (glcrypto_byte*)malloc(sizeOfBait);
 
 	crypto_stream_salsa20_xor(ciphertext, map, sizeOfBait, nonce, key);
 

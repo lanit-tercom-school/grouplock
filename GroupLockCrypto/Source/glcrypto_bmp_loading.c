@@ -8,12 +8,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int loadBMP(const char *fname, unsigned char **map, unsigned char **head)
-{
+#include "glcrypto_bmp.h"
+
+int loadBMP(const char *fname, glcrypto_byte **map, glcrypto_byte **head) {
+    
 	char buff;
 	FILE *f;
 	int begimg;
-	int i = 0;
+	int i;
+    
 	f = fopen(fname, "rb");
 	long int size = 0;
 	fseek(f, 0, SEEK_END);
@@ -22,21 +25,23 @@ int loadBMP(const char *fname, unsigned char **map, unsigned char **head)
 	fread(&begimg, sizeof(int), 1, f);
 	fseek(f, 0, SEEK_SET);
 
-	*head = (unsigned char*)malloc(begimg);
-	*map = (unsigned char*)malloc(size - begimg + 1);
+	*head = (glcrypto_byte*)malloc(begimg);
+	*map = (glcrypto_byte*)malloc(size - begimg + 1);
     
-	for (int i = 0; i < begimg; i++)
-	{
+	for (int i = 0; i < begimg; i++) {
 		fread(&buff, sizeof(char), 1, f);
 		(*head)[i] = buff;
 	}
 
-    while (!feof(f))
-	{
+    i = 0;
+    
+    while (!feof(f)) {
 		fread(&buff, sizeof(char), 1, f);
 		(*map)[i] = buff;
 		i++;
 	}
+    
 	fclose(f);
+    
 	return size;
 }

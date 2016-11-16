@@ -6,10 +6,8 @@
 //
 
 #include "sodium.h"
-#include "glcrypto_bmp_loading.h"
-#include "glcrypto_bmp_saving.h"
-#include "glcrypto_bmp_encryption.h"
-#include "glcrypto_bmp_decryption.h"
+#include "glcrypto_bmp.h"
+#include "glcrypto.h"
 
 int main()
 {

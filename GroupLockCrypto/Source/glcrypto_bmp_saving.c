@@ -7,12 +7,15 @@
 
 #include <stdio.h>
 
-void saveBMP(const char *indirect, unsigned char *map, unsigned char *head)
-{
+#include "glcrypto_bmp.h"
+
+void saveBMP(const char *indirect, const glcrypto_byte *map, const glcrypto_byte *head) {
+    
 	FILE *f;
 	int offset;
+    int size;
+    
 	offset = (head[10] << 0) | (head[11] << 8) | (head[12] << 16) | (head[13] << 24);
-	int size;
 	size = (head[2] << 0) | (head[3] << 8) | (head[4] << 16) | (head[5] << 24);
 	
 	f = fopen(indirect, "wb");
