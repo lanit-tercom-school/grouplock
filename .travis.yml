@@ -35,7 +35,7 @@ before_install:
 
 script:
   - if [[ $TARGET == "iOS" ]] ; then
-      set -o pipefail && xcodebuild build test -workspace GroupLockiOS/GroupLock.xcworkspace -scheme GroupLock -sdk $SDK -destination "OS=$VERSION,name=$DEVICE" -configuration Debug ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | xcpretty -c;
+      set -o pipefail && xcodebuild build -workspace GroupLockiOS/GroupLock.xcworkspace -scheme GroupLock -sdk $SDK -destination "OS=$VERSION,name=$DEVICE" -configuration Debug ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | xcpretty -c;
       sleep 10;
       set -o pipefail && xcodebuild test -workspace GroupLockiOS/GroupLock.xcworkspace -scheme GroupLock -sdk $SDK -destination "OS=$VERSION,name=$DEVICE" -configuration Debug ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | xcpretty -c;
     fi
