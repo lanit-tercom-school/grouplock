@@ -732,7 +732,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "Lanit-Tercom School";
 				TargetAttributes = {
 					87B6920C1CB425E0008ACB6A = {

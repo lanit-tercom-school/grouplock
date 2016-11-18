@@ -5,40 +5,38 @@ matrix:
 # For iOS builds:
   - language: swift
     os: osx
-    env: DEVICE="iPhone SE" VERSION=10.0 TARGET="iOS"
+    env: TARGET="iOS" SDK="iphonesimulator10.0" DEVICE="iPhone SE" VERSION=10.0
   - language: swift
     os: osx
-    env: DEVICE="iPhone 5s" VERSION=10.0 TARGET="iOS"
+    env: TARGET="iOS" SDK="iphonesimulator10.0" DEVICE="iPhone 5s" VERSION=10.0
   - language: swift
     os: osx
-    env: DEVICE="iPhone 6s" VERSION=10.0 TARGET="iOS"
+    env: TARGET="iOS" SDK="iphonesimulator10.0" DEVICE="iPhone 6s" VERSION=10.0
   - language: swift
     os: osx
-    env: DEVICE="iPhone 6s Plus" VERSION=10.0 TARGET="iOS"
+    env: TARGET="iOS" SDK="iphonesimulator10.0" DEVICE="iPhone 6s Plus" VERSION=10.0
   - language: swift
     os: osx
-    env: DEVICE="iPhone 7" VERSION=10.1 TARGET="iOS"
+    env: TARGET="iOS" SDK="iphonesimulator10.1" DEVICE="iPhone 7" VERSION=10.1
   - language: swift
     os: osx
-    env: DEVICE="iPhone 7 Plus" VERSION=10.1 TARGET="iOS"
+    env: TARGET="iOS" SDK="iphonesimulator10.1" DEVICE="iPhone 7 Plus" VERSION=10.1
 # For C/C++ library builds:
-  - language: c
+  - language: cpp
     os: osx
     compiler: clang
     env: TARGET="Lib"
 
 before_install:
   - if [[ $TARGET == "iOS" ]] ; then
-      rvm install ruby-2.2.4;
-      rvm use 2.2;
-      sudo gem install xcpretty --no-rdoc --no-ri --no-document;
-      sudo gem install cocoapods --no-rdoc --no-ri;
+      gem install cocoapods --no-rdoc --no-ri;
       pod install --project-directory=GroupLockiOS --repo-update;
     fi
 
 script:
   - if [[ $TARGET == "iOS" ]] ; then
-      set -o pipefail && xcodebuild -workspace GroupLockiOS/GroupLock.xcworkspace -scheme GroupLock -destination "platform=iOS Simulator,name=$DEVICE,OS=$VERSION" build test | xcpretty; fi
+      xcodebuild test -workspace GroupLockiOS/GroupLock.xcworkspace -scheme GroupLock -sdk iphonesimulator10.0 -destination "OS=$VERSION,name=$DEVICE" -configuration Debug ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | xcpretty -c;
+    fi
   - if [[ $TARGET == "Lib" ]] ; then
       brew install cmake;
       cd GroupLockCrypto/Build && cmake .. && make;
