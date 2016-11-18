@@ -17,10 +17,10 @@ matrix:
     env: DEVICE="iPhone 6s Plus" VERSION=10.0 TARGET="iOS"
   - language: swift
     os: osx
-    env: DEVICE="iPhone 7" VERSION=10.0 TARGET="iOS"
+    env: DEVICE="iPhone 7" VERSION=10.1 TARGET="iOS"
   - language: swift
     os: osx
-    env: DEVICE="iPhone 7 Plus" VERSION=10.0 TARGET="iOS"
+    env: DEVICE="iPhone 7 Plus" VERSION=10.1 TARGET="iOS"
 # For C++ library builds:
   - language: c
     os: osx
