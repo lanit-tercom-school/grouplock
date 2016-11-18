@@ -1,33 +1,28 @@
+osx_image: xcode8.1
 
 matrix:
   include:
 # For iOS builds:
   - language: swift
     os: osx
-    osx_image: xcode8
     env: DEVICE="iPhone SE" VERSION=10.0 TARGET="iOS"
   - language: swift
     os: osx
-    osx_image: xcode8
     env: DEVICE="iPhone 5s" VERSION=10.0 TARGET="iOS"
   - language: swift
     os: osx
-    osx_image: xcode8
     env: DEVICE="iPhone 6s" VERSION=10.0 TARGET="iOS"
   - language: swift
     os: osx
-    osx_image: xcode8
     env: DEVICE="iPhone 6s Plus" VERSION=10.0 TARGET="iOS"
   - language: swift
     os: osx
-    osx_image: xcode8
     env: DEVICE="iPhone 7" VERSION=10.0 TARGET="iOS"
   - language: swift
     os: osx
-    osx_image: xcode8
     env: DEVICE="iPhone 7 Plus" VERSION=10.0 TARGET="iOS"
 # For C++ library builds:
-  - language: cpp
+  - language: c
     os: osx
     compiler: clang
     env: TARGET="Lib"
