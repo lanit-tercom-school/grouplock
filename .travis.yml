@@ -5,16 +5,16 @@ matrix:
 # For iOS builds:
   - language: swift
     os: osx
-    env: TARGET="iOS" SDK="iphonesimulator10.0" DEVICE="iPhone SE" VERSION=10.0
+    env: TARGET="iOS" SDK="iphonesimulator10.1" DEVICE="iPhone SE" VERSION=10.0
   - language: swift
     os: osx
-    env: TARGET="iOS" SDK="iphonesimulator10.0" DEVICE="iPhone 5s" VERSION=10.0
+    env: TARGET="iOS" SDK="iphonesimulator10.1" DEVICE="iPhone 5s" VERSION=10.0
   - language: swift
     os: osx
-    env: TARGET="iOS" SDK="iphonesimulator10.0" DEVICE="iPhone 6s" VERSION=10.0
+    env: TARGET="iOS" SDK="iphonesimulator10.1" DEVICE="iPhone 6s" VERSION=10.0
   - language: swift
     os: osx
-    env: TARGET="iOS" SDK="iphonesimulator10.0" DEVICE="iPhone 6s Plus" VERSION=10.0
+    env: TARGET="iOS" SDK="iphonesimulator10.1" DEVICE="iPhone 6s Plus" VERSION=10.0
   - language: swift
     os: osx
     env: TARGET="iOS" SDK="iphonesimulator10.1" DEVICE="iPhone 7" VERSION=10.1
