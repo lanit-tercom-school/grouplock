@@ -10,7 +10,7 @@
 
 #include "glcrypto_bmp.h"
 
-int loadBMP(const char *fname, glcrypto_byte **map, glcrypto_byte **head) {
+int loadBMP(const char *fname, glcrypto_BYTE **map, glcrypto_BYTE **head) {
     
 	char buff;
 	FILE *f;
@@ -25,8 +25,8 @@ int loadBMP(const char *fname, glcrypto_byte **map, glcrypto_byte **head) {
 	fread(&begimg, sizeof(int), 1, f);
 	fseek(f, 0, SEEK_SET);
 
-	*head = (glcrypto_byte*)malloc(begimg);
-	*map = (glcrypto_byte*)malloc(size - begimg + 1);
+	*head = malloc(begimg);
+	*map = malloc(size - begimg + 1);
     
 	for (int i = 0; i < begimg; i++) {
 		fread(&buff, sizeof(char), 1, f);

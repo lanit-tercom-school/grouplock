@@ -73,3 +73,8 @@ add_executable(${TEST_TARGET_NAME} ${TEST_SUPPORTING_FILES} ${TESTS})
 include_directories(${SOURCE_ROOT})
 include_directories(${TESTS_ROOT})
 target_link_libraries(${TEST_TARGET_NAME} ${LIBRARY_TARGET_NAME} cunit)
+
+# Add post-build action: copy testing resources to the build directory
+add_custom_command(TARGET ${TEST_TARGET_NAME} POST_BUILD
+                   COMMAND ${CMAKE_COMMAND} -E copy_directory
+                 ${TESTS_ROOT}/suites/resources $<TARGET_FILE_DIR:${TEST_TARGET_NAME}>/resources)

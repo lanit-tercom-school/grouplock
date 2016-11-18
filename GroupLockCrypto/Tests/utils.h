@@ -53,4 +53,22 @@ if (NULL == suite) {\
     CU_cleanup_registry();\
 }\
 
+/**
+ Compares the two files bytewise.
+
+ @param file1 The first file.
+ @param file2 The second file.
+ @return CU_TRUE if the files are equal or both are NULL, otherwise CU_FALSE.
+ */
+CU_BOOL compare_files(FILE *file1, FILE *file2);
+
+/**
+ Compares the two files at the given paths bytewise.
+
+ @param file_path1 The path to the first file.
+ @param file_path2 The path to the second file.
+ @return CU_TRUE if the files are equal, CU_FALSE if they are not equal or could not be opened.
+ */
+CU_BOOL compare_files_at_paths(const char *file_path1, const char *file_path2);
+
 #endif /* utils_h */

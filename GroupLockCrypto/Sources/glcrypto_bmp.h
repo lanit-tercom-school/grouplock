@@ -11,12 +11,12 @@
 
 #include "glcrypto_types.h"
 
-int loadBMP(const char *fname, glcrypto_byte **map, glcrypto_byte **head);
+int loadBMP(const char *fname, glcrypto_BYTE **map, glcrypto_BYTE **head);
 
-void saveBMP(const char *indirect, const glcrypto_byte *map, const glcrypto_byte *head);
+void saveBMP(const char *indirect, const glcrypto_BYTE *map, const glcrypto_BYTE *head);
 
-void encryptBMP(const char *fname, glcrypto_byte *nonce, glcrypto_byte *key);
+void encryptBMP(const char *fname, glcrypto_BYTE *nonce, glcrypto_BYTE *key);
 
-void decryptBMP(const char *fname, glcrypto_byte *nonce, glcrypto_byte *key);
+void decryptBMP(const char *fname, glcrypto_BYTE *nonce, glcrypto_BYTE *key);
 
 #endif /* glcrypto_bmp_h */

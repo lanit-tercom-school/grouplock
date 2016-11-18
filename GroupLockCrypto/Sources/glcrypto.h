@@ -17,36 +17,32 @@
  Encrypts the file at the given path, puts the result into encrypted_data.
 
  @param file_path          The path of the file to encrypt.
- @param min_number_of_keys The minimum number of keys needed to decrypt the file.
- @param max_number_of_keys The overall number of keys.
+ @param key_parameters     The parameters of encryption keys.
  @param encrypted_data     The result of the encryption. In case of success it contains an encrypted
                            file and keys.
 
  @return GLCRYPTO_OK if encryption succeeded, otherwise an error code.
  */
-glcrypto_status glcrypto_encrypt_file_in_location(const char                 * __nonnull  file_path,
-                                                  glcrypto_uint                           min_number_of_keys,
-                                                  glcrypto_uint                           max_number_of_keys,
-                                                  glcrypto_encrypted_data    * __nullable encrypted_data)
-GLCRYPTO_SWIFT_NAME(encrypt(filePath:minNumberOfKeys:maxNumberOfKeys:encryptedData:));
+glcrypto_STATUS glcrypto_encrypt_file_in_location(const char                 * __nonnull  file_path,
+                                                  glcrypto_KeyParameters                  key_parameters,
+                                                  glcrypto_EncryptedData     * __nullable encrypted_data)
+GLCRYPTO_SWIFT_NAME(encrypt(filePath:keyParameters:encryptedData:));
 
 /**
  Encrypts a file in memory, puts the result into encrypted_data.
 
  @param buffer             The buffer that stores the file contents.
  @param size_of_buffer     The size of the buffer.
- @param min_number_of_keys The minimum number of keys needed to decrypt the file.
- @param max_number_of_keys The overall number of keys.
+ @param key_parameters     The parameters of encryption keys.
  @param encrypted_data     The result of the encryption. In case of success it contains an encrypted file and keys.
 
  @return GLCRYPTO_OK if encryption succeeded, otherwise an error code.
  */
-glcrypto_status glcrypto_encrypt_file_in_memory(const glcrypto_byte     * __nonnull  buffer,
-                                                glcrypto_uint                        size_of_buffer,
-                                                glcrypto_uint                        min_number_of_keys,
-                                                glcrypto_uint                        max_number_of_keys,
-                                                glcrypto_encrypted_data * __nullable encrypted_data)
-GLCRYPTO_SWIFT_NAME(encrypt(buffer:sizeOfBuffer:minNumberOfKeys:maxNumberOfKeys:encryptedData:));
+glcrypto_STATUS glcrypto_encrypt_file_in_memory(const glcrypto_BYTE     * __nonnull  buffer,
+                                                glcrypto_UINT                        size_of_buffer,
+                                                glcrypto_KeyParameters               key_parameters,
+                                                glcrypto_EncryptedData  * __nullable encrypted_data)
+GLCRYPTO_SWIFT_NAME(encrypt(buffer:sizeOfBuffer:keyParameters:encryptedData:));
 
 /**
  Decrypts the file at the given path, puts the result into decrypted_data_buffer.
@@ -59,15 +55,15 @@ GLCRYPTO_SWIFT_NAME(encrypt(buffer:sizeOfBuffer:minNumberOfKeys:maxNumberOfKeys:
 
  @return GLCRYPTO_OK if decryption succeeded, otherwise an error code.
  */
-glcrypto_status glcrypto_decrypt_file_in_location(const char     * __nonnull  file_path,
-                                                  glcrypto_key   * __nonnull  keys,
-                                                  glcrypto_uint               number_of_keys,
-                                                  glcrypto_byte  * __nullable decrypted_data_buffer,
-                                                  glcrypto_uint               decrypted_data_buffer_size)
+glcrypto_STATUS glcrypto_decrypt_file_in_location(const char     * __nonnull  file_path,
+                                                  glcrypto_KEY   * __nonnull  keys,
+                                                  glcrypto_UINT               number_of_keys,
+                                                  glcrypto_BYTE  * __nullable decrypted_data_buffer,
+                                                  glcrypto_UINT               decrypted_data_buffer_size)
 GLCRYPTO_SWIFT_NAME(decrypt(filePath:keys:numberOfKeys:decryptedDataBuffer:decryptedDataBufferSize:));
 
 /**
- Decrypts a file in memory puts the result into decrypted_data_buffer.
+ Decrypts a file in memory, puts the result into decrypted_data_buffer.
 
  @param buffer                     The buffer that stores the file contents.
  @param size_of_buffer             The size of the buffer.
@@ -78,12 +74,12 @@ GLCRYPTO_SWIFT_NAME(decrypt(filePath:keys:numberOfKeys:decryptedDataBuffer:decry
 
  @return GLCRYPTO_OK if decryption succeeded, otherwise an error code.
  */
-glcrypto_status glcrypto_decrypt_file_in_memory(const glcrypto_byte * __nonnull  buffer,
-                                                glcrypto_uint                    size_of_buffer,
-                                                glcrypto_key        * __nonnull  keys,
-                                                glcrypto_uint                    number_of_keys,
-                                                glcrypto_byte       * __nullable decrypted_data_buffer,
-                                                glcrypto_uint                    decrypted_data_buffer_size)
+glcrypto_STATUS glcrypto_decrypt_file_in_memory(const glcrypto_BYTE * __nonnull  buffer,
+                                                glcrypto_UINT                    size_of_buffer,
+                                                glcrypto_KEY        * __nonnull  keys,
+                                                glcrypto_UINT                    number_of_keys,
+                                                glcrypto_BYTE       * __nullable decrypted_data_buffer,
+                                                glcrypto_UINT                    decrypted_data_buffer_size)
 GLCRYPTO_SWIFT_NAME(decrypt(buffer:sizeOfBuffer:keys:numberOfKeys:decryptedDataBuffer:decryptedDataBufferSize:));
 
 #endif /* glcrypto_h */

@@ -9,7 +9,7 @@
 
 #include "glcrypto_bmp.h"
 
-void saveBMP(const char *indirect, const glcrypto_byte *map, const glcrypto_byte *head) {
+void saveBMP(const char *indirect, const glcrypto_BYTE *map, const glcrypto_BYTE *head) {
     
 	FILE *f;
 	int offset;
