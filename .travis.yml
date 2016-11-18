@@ -21,8 +21,8 @@ matrix:
   - language: swift
     os: osx
     env: DEVICE="iPhone 7 Plus" VERSION=10.1 TARGET="iOS"
-# For C++ library builds:
-  - language: c
+# For C/C++ library builds:
+  - language: cpp
     os: osx
     compiler: clang
     env: TARGET="Lib"
