@@ -29,6 +29,7 @@ matrix:
 
 before_install:
   - if [[ $TARGET == "iOS" ]] ; then
+      rvm install ruby-2.2.4;
       rvm use 2.2;
       sudo gem install xcpretty --no-rdoc --no-ri --no-document;
       sudo gem install cocoapods --no-rdoc --no-ri;
