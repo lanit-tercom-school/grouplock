@@ -11,7 +11,7 @@
 
 #include "glcrypto_types.h"
 #include "glcrypto_error.h"
-#include "glcrypto_swift_interface.h"
+#include "glcrypto_platforms.h"
 
 /**
  Encrypts the file at the given path, puts the result into encrypted_data.
@@ -26,6 +26,7 @@
 glcrypto_STATUS glcrypto_encrypt_file_in_location(const char                 * __nonnull  file_path,
                                                   glcrypto_KeyParameters                  key_parameters,
                                                   glcrypto_EncryptedData     * __nullable encrypted_data)
+GLCRYPTO_NONNULL_ARGUMENTS(1, 3)
 GLCRYPTO_SWIFT_NAME(encrypt(filePath:keyParameters:encryptedData:));
 
 /**
@@ -42,6 +43,7 @@ glcrypto_STATUS glcrypto_encrypt_file_in_memory(const glcrypto_BYTE     * __nonn
                                                 glcrypto_UINT                        size_of_buffer,
                                                 glcrypto_KeyParameters               key_parameters,
                                                 glcrypto_EncryptedData  * __nullable encrypted_data)
+GLCRYPTO_NONNULL_ARGUMENTS(1, 4)
 GLCRYPTO_SWIFT_NAME(encrypt(buffer:sizeOfBuffer:keyParameters:encryptedData:));
 
 /**
@@ -60,6 +62,7 @@ glcrypto_STATUS glcrypto_decrypt_file_in_location(const char     * __nonnull  fi
                                                   glcrypto_UINT               number_of_keys,
                                                   glcrypto_BYTE  * __nullable decrypted_data_buffer,
                                                   glcrypto_UINT               decrypted_data_buffer_size)
+GLCRYPTO_NONNULL_ARGUMENTS(1, 2, 4)
 GLCRYPTO_SWIFT_NAME(decrypt(filePath:keys:numberOfKeys:decryptedDataBuffer:decryptedDataBufferSize:));
 
 /**
@@ -80,6 +83,7 @@ glcrypto_STATUS glcrypto_decrypt_file_in_memory(const glcrypto_BYTE * __nonnull 
                                                 glcrypto_UINT                    number_of_keys,
                                                 glcrypto_BYTE       * __nullable decrypted_data_buffer,
                                                 glcrypto_UINT                    decrypted_data_buffer_size)
+GLCRYPTO_NONNULL_ARGUMENTS(1, 3, 5)
 GLCRYPTO_SWIFT_NAME(decrypt(buffer:sizeOfBuffer:keys:numberOfKeys:decryptedDataBuffer:decryptedDataBufferSize:));
 
 #endif /* glcrypto_h */

@@ -26,6 +26,10 @@ matrix:
     os: osx
     compiler: clang
     env: TARGET="Lib"
+  - language: cpp
+    os: linux
+    compiler: gcc
+    env: TARGET="Lib"
 
 before_install:
   - if [[ $TARGET == "iOS" ]] ; then
@@ -39,8 +43,10 @@ script:
       sleep 10;
       set -o pipefail && xcodebuild test -workspace GroupLockiOS/GroupLock.xcworkspace -scheme GroupLock -sdk $SDK -destination "OS=$VERSION,name=$DEVICE" -configuration Debug ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | xcpretty -c;
     fi
-  - if [[ $TARGET == "Lib" ]] ; then
+  - if [[ $TRAVIS_OS_NAME == "osx" ]] ; then
       brew install cmake;
+    fi
+  - if [[ $TARGET == "Lib" ]] ; then
       cd GroupLockCrypto/Build && cmake .. && make;
       ./glcrypto_TestRunner;
     fi

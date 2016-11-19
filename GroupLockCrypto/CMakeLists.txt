@@ -4,7 +4,7 @@
 # =================== GENERAL SETTINGS =====================
 
 # Minimum version of CMake required to configure the project
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.1)
 
 # Project name
 project(glcrypto)
@@ -58,6 +58,7 @@ set_property(TARGET cunit PROPERTY IMPORTED_LOCATION "${PROJECT_SOURCE_DIR}/cuni
 
 # Add output static library target
 add_library(${LIBRARY_TARGET_NAME} STATIC ${SOURCES} ${HEADERS})
+set_property(TARGET ${LIBRARY_TARGET_NAME} PROPERTY C_STANDARD 11)
 
 # Link with external libraries
 target_link_libraries(${LIBRARY_TARGET_NAME} ${IMPORTED_LIBS})
@@ -70,6 +71,7 @@ aux_source_directory(${TESTS_ROOT}/suites TESTS)
 
 # Add test target
 add_executable(${TEST_TARGET_NAME} ${TEST_SUPPORTING_FILES} ${TESTS})
+set_property(TARGET ${TEST_TARGET_NAME} PROPERTY C_STANDARD 11)
 include_directories(${SOURCE_ROOT})
 include_directories(${TESTS_ROOT})
 target_link_libraries(${TEST_TARGET_NAME} ${LIBRARY_TARGET_NAME} cunit)

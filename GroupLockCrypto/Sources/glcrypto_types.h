@@ -9,7 +9,7 @@
 #ifndef glcrypto_types_h
 #define glcrypto_types_h
 
-#include "glcrypto_swift_interface.h"
+#include "glcrypto_platforms.h"
 
 typedef unsigned char   glcrypto_BYTE                           GLCRYPTO_SWIFT_NAME(Byte);
 
