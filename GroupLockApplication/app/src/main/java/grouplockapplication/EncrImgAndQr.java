@@ -22,7 +22,7 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import com.example.sonya.grouplockapplication.R;
+import grouplockapplication.R;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.WriterException;
 

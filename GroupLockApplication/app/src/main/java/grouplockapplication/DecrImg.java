@@ -15,7 +15,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.example.sonya.grouplockapplication.R;
+import grouplockapplication.R;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 

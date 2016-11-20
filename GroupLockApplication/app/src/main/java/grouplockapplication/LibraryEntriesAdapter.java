@@ -8,7 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
-import com.example.sonya.grouplockapplication.R;
+import grouplockapplication.R;
 
 import java.util.ArrayList;
 

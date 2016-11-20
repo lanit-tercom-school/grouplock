@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.sonya.grouplockapplication.R;
+import grouplockapplication.R;
 
 /**
  * Created by KAS on 25.08.2016.

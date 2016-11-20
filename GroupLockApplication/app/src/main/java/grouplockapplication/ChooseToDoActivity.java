@@ -11,7 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.sonya.grouplockapplication.R;
+import grouplockapplication.R;
 
 
 public class ChooseToDoActivity extends AppCompatActivity {

@@ -18,7 +18,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.sonya.grouplockapplication.R;
+import grouplockapplication.R;
 
 import java.io.File;
 import java.io.FileOutputStream;

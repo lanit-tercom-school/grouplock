@@ -17,7 +17,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.sonya.grouplockapplication.R;
+import grouplockapplication.R;
 
 public class SettingsActivity extends AppCompatActivity {
 

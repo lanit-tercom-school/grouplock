@@ -12,7 +12,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 
-import com.example.sonya.grouplockapplication.R;
+import grouplockapplication.R;
 
 import java.util.ArrayList;
 
