@@ -1,51 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="fill_parent"
-android:layout_height="fill_parent"
-android:orientation="vertical"
-tools:context=".LibraryActivity"
-    android:background="@color/colorBackGround">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/colorBackGround"
+    android:orientation="vertical"
+    tools:context=".LibraryActivity">
 
 
-<include layout="@layout/toolbar" />
+    <include layout="@layout/toolbar" />
 
-    <LinearLayout android:id="@+id/home_buttons_container"
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:layout_centerVertical="true"
-                  android:orientation="vertical">
+    <LinearLayout
+        android:id="@+id/home_buttons_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:orientation="vertical">
 
         <Button
+            android:id="@+id/btnEncrypt"
             android:layout_width="259dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="40dp"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:background="@color/colorBackGroundButton"
+            android:onClick="chooseEncrypt"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:paddingTop="@dimen/activity_vertical_margin"
             android:text="@string/home_button_encrypt"
             android:textColor="#ffffffff"
-            android:background="@color/colorBackGroundButton"
-            android:id="@+id/btnEncrypt"
-            android:textSize="@dimen/abc_text_size_title_material"
-            android:onClick="chooseEncrypt"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginRight="@dimen/activity_horizontal_margin"
-            android:layout_marginBottom="@dimen/activity_vertical_margin"
-            android:paddingTop="@dimen/activity_vertical_margin"
-            android:paddingBottom="@dimen/activity_vertical_margin"/>
+            android:textSize="@dimen/abc_text_size_title_material" />
 
         <Button
+            android:id="@+id/btnDecrypt"
             android:layout_width="258dp"
             android:layout_height="wrap_content"
-            android:text="@string/home_button_decrypt"
-            android:textColor="#ffffffff"
-            android:background="@color/colorBackGroundButton"
-            android:id="@+id/btnDecrypt"
-            android:textSize="@dimen/abc_text_size_title_material"
-            android:onClick="chooseDecrypt"
             android:layout_gravity="center_horizontal"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:background="@color/colorBackGroundButton"
+            android:onClick="chooseDecrypt"
+            android:paddingBottom="@dimen/activity_vertical_margin"
             android:paddingTop="@dimen/activity_vertical_margin"
-            android:paddingBottom="@dimen/activity_vertical_margin"/>
+            android:text="@string/home_button_decrypt"
+            android:textColor="#ffffffff"
+            android:textSize="@dimen/abc_text_size_title_material" />
 
     </LinearLayout>
 
@@ -54,29 +55,28 @@ tools:context=".LibraryActivity"
         android:id="@+id/textViewInfoMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
+        android:layout_above="@id/home_buttons_container"
+        android:layout_marginBottom="40dp"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
-        android:layout_above="@id/home_buttons_container"
+        android:gravity="center"
         android:text="@string/home_info_message"
-        android:visibility="invisible"/>
+        android:textSize="18sp"
+        android:visibility="invisible" />
 
     <Button
+        android:id="@+id/LoadButton"
         android:layout_width="72dp"
         android:layout_height="72dp"
-        android:shape="ring"
-        android:id="@+id/LoadButton"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:onClick="loadPage"
+        android:layout_alignParentRight="true"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:background="@drawable/ic_add_file"/>
-
-
+        android:background="@drawable/ic_add_file"
+        android:onClick="loadPage"
+        android:shape="ring" />
 
 
 </RelativeLayout>
