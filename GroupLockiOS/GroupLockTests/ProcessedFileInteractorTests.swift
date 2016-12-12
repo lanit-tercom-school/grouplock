@@ -144,7 +144,7 @@ class ProcessedFileInteractorTests: XCTestCase {
         // Then
         let expectedResponse = Seeds.Fetch.encryptionResponse
 
-        waitForExpectations(timeout: 1) { _ in
+        waitForExpectations(timeout: 5) { _ in
             let returnedResponse = processedFileInteractorOutputSpy.fetchResponseReceived
             XCTAssertEqual(expectedResponse, returnedResponse,
                            "ProcessedFileInteractor should form a correct Fetch.Response and send it" +
