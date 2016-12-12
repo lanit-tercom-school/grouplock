@@ -1,32 +1,63 @@
+osx_image: xcode8.1
 
 matrix:
   include:
 # For iOS builds:
   - language: swift
     os: osx
-    osx_image: xcode8
-    env: DEVICE="iPhone SE" VERSION=10.0 TARGET="iOS"
+    env: TARGET="iOS" SDK="iphonesimulator10.1" DEVICE="iPhone SE" VERSION=10.0
   - language: swift
     os: osx
-    osx_image: xcode8
-    env: DEVICE="iPhone 5s" VERSION=10.0 TARGET="iOS"
+    env: TARGET="iOS" SDK="iphonesimulator10.1" DEVICE="iPhone 5s" VERSION=10.0
   - language: swift
     os: osx
-    osx_image: xcode8
-    env: DEVICE="iPhone 6s" VERSION=10.0 TARGET="iOS"
+    env: TARGET="iOS" SDK="iphonesimulator10.1" DEVICE="iPhone 6s" VERSION=10.0
   - language: swift
     os: osx
-    osx_image: xcode8
-    env: DEVICE="iPhone 6s Plus" VERSION=10.0 TARGET="iOS"
+    env: TARGET="iOS" SDK="iphonesimulator10.1" DEVICE="iPhone 6s Plus" VERSION=10.0
+  - language: swift
+    os: osx
+    env: TARGET="iOS" SDK="iphonesimulator10.1" DEVICE="iPhone 7" VERSION=10.1
+  - language: swift
+    os: osx
+    env: TARGET="iOS" SDK="iphonesimulator10.1" DEVICE="iPhone 7 Plus" VERSION=10.1
+# For C/C++ library builds:
+  - language: cpp
+    os: osx
+    compiler: clang
+    env: TARGET="Lib"
+  - language: cpp
+    os: linux
+    compiler: gcc
+    env: TARGET="Lib"
+    addons:
+      apt:
+        sources:
+          - george-edison55-precise-backports
+        packages:
+          - cmake
+          - cmake-data
 
 before_install:
-  - if [[ $TARGET == "iOS" ]] ; then rvm use 2.2; fi
-  - if [[ $TARGET == "iOS" ]] ; then sudo gem install xcpretty --no-rdoc --no-ri --no-document; fi
-  - if [[ $TARGET == "iOS" ]] ; then sudo gem install cocoapods --no-rdoc --no-ri; fi
-  - if [[ $TARGET == "iOS" ]] ; then pod install --project-directory=GroupLockiOS --repo-update; fi
+  - if [[ $TARGET == "iOS" ]] ; then
+      gem install cocoapods --no-rdoc --no-ri;
+      pod install --project-directory=GroupLockiOS --repo-update;
+    fi
+  - if [[ $TARGET == "Lib" && $TRAVIS_OS_NAME == "osx" ]] ; then
+      brew install cmake;
+    fi
+
 
 script:
-  - if [[ $TARGET == "iOS" ]] ; then set -o pipefail && xcodebuild -workspace GroupLockiOS/GroupLock.xcworkspace -scheme GroupLock -destination "platform=iOS Simulator,name=$DEVICE,OS=$VERSION" build test | xcpretty; fi
+  - if [[ $TARGET == "iOS" ]] ; then
+      set -o pipefail && xcodebuild build test -workspace GroupLockiOS/GroupLock.xcworkspace -scheme GroupLock -sdk $SDK -destination "OS=$VERSION,name=$DEVICE" -configuration Debug ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | xcpretty -c;
+      sleep 10;
+      set -o pipefail && xcodebuild test -workspace GroupLockiOS/GroupLock.xcworkspace -scheme GroupLock -sdk $SDK -destination "OS=$VERSION,name=$DEVICE" -configuration Debug ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | xcpretty -c;
+    fi
+  - if [[ $TARGET == "Lib" ]] ; then
+      cd GroupLockCrypto/Build && cmake .. && make;
+      ./glcrypto_TestRunner;
+    fi
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)

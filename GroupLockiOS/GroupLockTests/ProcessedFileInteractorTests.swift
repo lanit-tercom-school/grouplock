@@ -144,7 +144,7 @@ class ProcessedFileInteractorTests: XCTestCase {
         // Then
         let expectedResponse = Seeds.Fetch.encryptionResponse
 
-        waitForExpectations(timeout: 1) { _ in
+        waitForExpectations(timeout: 5) { _ in
             let returnedResponse = processedFileInteractorOutputSpy.fetchResponseReceived
             XCTAssertEqual(expectedResponse, returnedResponse,
                            "ProcessedFileInteractor should form a correct Fetch.Response and send it" +
@@ -169,7 +169,7 @@ class ProcessedFileInteractorTests: XCTestCase {
         // Then
         let expectedResponse = Seeds.Fetch.decryptionResponse
 
-        waitForExpectations(timeout: 1) { _ in
+        waitForExpectations(timeout: 5) { _ in
             let returnedResponse = processedFileInteractorOutputSpy.fetchResponseReceived
             XCTAssertEqual(expectedResponse, returnedResponse,
                            "ProcessedFileInteractor should form a correct Fetch.Response and send it" +
@@ -240,7 +240,7 @@ class ProcessedFileInteractorTests: XCTestCase {
         sut.processFiles(ProcessedFile.Fetch.Request())
 
         // Then
-        waitForExpectations(timeout: 1) { error in
+        waitForExpectations(timeout: 5) { error in
             if error != nil {
                 XCTFail("ProcessFileInteractor should ask crypto library to encrypt files if isEncryption is" +
                     " set to true")
@@ -264,7 +264,7 @@ class ProcessedFileInteractorTests: XCTestCase {
         sut.processFiles(ProcessedFile.Fetch.Request())
 
         // Then
-        waitForExpectations(timeout: 1) { error in
+        waitForExpectations(timeout: 5) { error in
             if error != nil {
                 XCTFail("ProcessFileInteractor should ask crypto library to decrypt files if isEncryption is" +
                     " set to false")
