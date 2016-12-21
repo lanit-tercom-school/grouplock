@@ -1,4 +1,4 @@
-﻿<resources>
+﻿﻿<resources>
     <string name="app_name">GroupLock Application</string>
 
     <!-- Library -->
@@ -33,6 +33,7 @@
     <string name="activity_library">Library</string>
     <string name="activity_info">Info</string>
     <string name="activity_settings">Settings</string>
+
 
     <!-- common -->
     <string name="common_next_step">Next step</string>

@@ -62,6 +62,7 @@ tools:context=".LibraryActivity"
         android:text="@string/home_info_message"
         android:visibility="invisible"/>
 
+
     <Button
         android:layout_width="72dp"
         android:layout_height="72dp"

@@ -3,17 +3,13 @@ package com.example.sonya.grouplockapplication;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.PopupMenu;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuInflater;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 
 
@@ -27,6 +23,8 @@ public class ChooseToDoActivity extends AppCompatActivity {
 
         Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
+
+
         try {
             ActivityInfo activityInfo = getPackageManager().getActivityInfo(
                     getComponentName(), PackageManager.GET_META_DATA);
@@ -61,6 +59,11 @@ public class ChooseToDoActivity extends AppCompatActivity {
                         startActivity(intent);
                         return true;
                     }
+                    case R.id.info:{
+                        Intent intent = new Intent(ChooseToDoActivity.this, InformationActivity.class);
+                        startActivity(intent);
+                        return true;
+                    }
 
                     default:
                         return false;
@@ -70,13 +73,15 @@ public class ChooseToDoActivity extends AppCompatActivity {
         popupMenu.show();
     }
 
-    public void showInfo(View view){
+    public void showInfo(View view){ //выплывающее окно
         TextView infoMessage = (TextView) findViewById(R.id.textViewInfoMessage);
+
         if (infoMessage.getVisibility()!=View.VISIBLE)
             infoMessage.setVisibility(View.VISIBLE);
         else
             infoMessage.setVisibility(View.INVISIBLE);
     }
+
 
     public void loadPage(View view) {
         Intent intent = new Intent(ChooseToDoActivity.this, LoadActivity.class);
@@ -105,4 +110,5 @@ public class ChooseToDoActivity extends AppCompatActivity {
         System.runFinalizersOnExit(true);
         System.exit(0);
     }
+
 }
